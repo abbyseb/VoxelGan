@@ -1,0 +1,20 @@
+# Raw / prepared medical volumes (too large for git)
+Data/
+data/
+*.mha
+*.npy
+
+# Training artifacts
+weights/
+*.pth
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Keep plot images/logs small enough; ignore huge accidental dumps
+deformationField.mha
+
+# Secrets / env
+.env
+*.pem

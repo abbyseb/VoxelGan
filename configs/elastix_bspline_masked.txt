@@ -1,0 +1,38 @@
+// Masked B-spline for lung 4DCT phase pairs (first-pass supervised DVFs).
+// Use with -fMask / -mMask (lung). Metric samples only inside the mask.
+
+(FixedInternalImagePixelType "float")
+(MovingInternalImagePixelType "float")
+(UseDirectionCosines "true")
+
+(Registration "MultiResolutionRegistration")
+(Interpolator "BSplineInterpolator")
+(ResampleInterpolator "FinalBSplineInterpolator")
+(Resampler "DefaultResampler")
+
+(FixedImagePyramid "FixedRecursiveImagePyramid")
+(MovingImagePyramid "MovingRecursiveImagePyramid")
+
+(Optimizer "AdaptiveStochasticGradientDescent")
+(Transform "BSplineTransform")
+(Metric "AdvancedMattesMutualInformation")
+
+(FinalGridSpacingInPhysicalUnits 16)
+(HowToCombineTransforms "Compose")
+
+(NumberOfHistogramBins 32)
+(ErodeMask "false")
+
+(NumberOfResolutions 3)
+(MaximumNumberOfIterations 1000)
+
+(NumberOfSpatialSamples 2048)
+(NewSamplesEveryIteration "true")
+(ImageSampler "Random")
+
+(BSplineInterpolationOrder 1)
+(FinalBSplineInterpolationOrder 3)
+(DefaultPixelValue 0)
+(WriteResultImage "false")
+(ResultImagePixelType "float")
+(ResultImageFormat "mha")
