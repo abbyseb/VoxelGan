@@ -63,19 +63,23 @@ class SmoothnessLoss:
 
 
 class GANLoss:
-    """LSGAN on PatchGAN logits. Real labels smoothed to 0.9."""
+    """LSGAN on PatchGAN logits. Real labels smoothed to 0.9.
+
+    Callers build the two D input volumes (a, b) themselves so the same
+    loss works for dvf-mode ([ref, DVF]) and warp-mode ([warped, target]).
+    """
 
     def __init__(self, real_label=0.9):
         self.real_label = real_label
 
-    def discriminator_loss(self, discriminator, reference_ct, real_dvf, fake_dvf):
-        # fake_dvf must already be .detach()'d at the call site
-        pred_real = discriminator(reference_ct, real_dvf)
-        pred_fake = discriminator(reference_ct, fake_dvf)
+    def discriminator_loss(self, discriminator, real_a, real_b, fake_a, fake_b):
+        # fake_a / fake_b must already be .detach()'d at the call site when needed
+        pred_real = discriminator(real_a, real_b)
+        pred_fake = discriminator(fake_a, fake_b)
         loss_real = F.mse_loss(pred_real, torch.full_like(pred_real, self.real_label))
         loss_fake = F.mse_loss(pred_fake, torch.zeros_like(pred_fake))
         return 0.5 * (loss_real + loss_fake)
 
-    def generator_loss(self, discriminator, reference_ct, fake_dvf):
-        pred = discriminator(reference_ct, fake_dvf)
+    def generator_loss(self, discriminator, fake_a, fake_b):
+        pred = discriminator(fake_a, fake_b)
         return F.mse_loss(pred, torch.ones_like(pred))

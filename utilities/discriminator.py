@@ -1,7 +1,10 @@
 """3D PatchGAN discriminator for phase-conditioned DVF synthesis.
 
-Input is concat[reference CT (1), DVF (3)] = 4 channels. Output is an 8³
-grid of real/fake logits (not a scalar). Spectral norm on every conv.
+Two input modes (same backbone; set in_channels to match):
+  - dvf  (baseline): concat[ref CT (1), DVF (3)] → 4 channels
+  - warp (scenario): concat[warped CT (1), target CT (1)] → 2 channels
+
+Output is an 8³ grid of real/fake logits. Spectral norm on every conv.
 """
 
 import torch
@@ -10,29 +13,32 @@ from torch.nn.utils import spectral_norm
 
 
 class PatchDiscriminator(nn.Module):
-    def __init__(self, in_channels=4):
+    def __init__(self, in_channels=4, base_channels=32):
         super().__init__()
-        # in_channels=4 = ref_CT(1) + DVF(3)
+        # base_channels=32 is the baseline width (→ 2×, 4×, 8×).
+        # Scenario "weaker D" uses base_channels=16.
+        c = base_channels
         self.net = nn.Sequential(
             # D1: 64³ → 32³, no norm
-            spectral_norm(nn.Conv3d(in_channels, 32, kernel_size=4, stride=2, padding=1)),
+            spectral_norm(nn.Conv3d(in_channels, c, kernel_size=4, stride=2, padding=1)),
             nn.LeakyReLU(0.2, inplace=True),
             # D2: 32³ → 16³
-            spectral_norm(nn.Conv3d(32, 64, kernel_size=4, stride=2, padding=1)),
-            nn.InstanceNorm3d(64),
+            spectral_norm(nn.Conv3d(c, c * 2, kernel_size=4, stride=2, padding=1)),
+            nn.InstanceNorm3d(c * 2),
             nn.LeakyReLU(0.2, inplace=True),
             # D3: 16³ → 8³
-            spectral_norm(nn.Conv3d(64, 128, kernel_size=4, stride=2, padding=1)),
-            nn.InstanceNorm3d(128),
+            spectral_norm(nn.Conv3d(c * 2, c * 4, kernel_size=4, stride=2, padding=1)),
+            nn.InstanceNorm3d(c * 4),
             nn.LeakyReLU(0.2, inplace=True),
-            # D4: 8³ → 8³ (padding='same' keeps spatial size with k=4, s=1)
-            spectral_norm(nn.Conv3d(128, 256, kernel_size=4, stride=1, padding='same')),
-            nn.InstanceNorm3d(256),
+            # D4: 8³ → 8³
+            spectral_norm(nn.Conv3d(c * 4, c * 8, kernel_size=4, stride=1, padding='same')),
+            nn.InstanceNorm3d(c * 8),
             nn.LeakyReLU(0.2, inplace=True),
             # Out: 8³ → 8³ logits
-            spectral_norm(nn.Conv3d(256, 1, kernel_size=4, stride=1, padding='same')),
+            spectral_norm(nn.Conv3d(c * 8, 1, kernel_size=4, stride=1, padding='same')),
         )
 
-    def forward(self, reference_ct, dvf):
-        x = torch.cat([reference_ct, dvf], dim=1)
+    def forward(self, a, b):
+        # a, b are volumes; channels must sum to in_channels
+        x = torch.cat([a, b], dim=1)
         return self.net(x)

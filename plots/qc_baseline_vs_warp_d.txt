@@ -1,0 +1,30 @@
+
+=== weights/spare_mc_p1_dvf_gan_phase_mlp_generator.pth → plots/qc_test_phase_mlp ===
+pair       note                L1_pred  L1_zero     cos |p|_lung   negJ%
+01_to_05   held-out target      0.2409   1.4134   0.987    3.317   0.00%
+02_to_05   held-out target      0.2253   1.0270   0.986    2.612   0.00%
+05_to_01   held-out ref         0.2133   1.2994   0.991    3.163   0.00%
+05_to_09   held-out both        0.2144   1.2143   0.984    2.716   0.00%
+09_to_05   held-out both        0.1874   1.2679   0.986    2.803   0.00%
+09_to_06   held-out ref         0.1800   1.2934   0.990    2.899   0.00%
+01_to_01   identity             0.0268   0.0000     nan    0.056   0.00%
+
+=== weights/spare_mc_p1_scenario_warp_d_generator.pth → plots/qc_test_warp_d ===
+pair       note                L1_pred  L1_zero     cos |p|_lung   negJ%
+01_to_05   held-out target      0.1904   1.4134   0.992    3.166   0.00%
+02_to_05   held-out target      0.1719   1.0270   0.991    2.488   0.00%
+05_to_01   held-out ref         0.2426   1.2994   0.990    3.184   0.00%
+05_to_09   held-out both        0.1999   1.2143   0.987    2.745   0.00%
+09_to_05   held-out both        0.2026   1.2679   0.988    2.631   0.00%
+09_to_06   held-out ref         0.1940   1.2934   0.989    2.697   0.00%
+01_to_01   identity             0.0245   0.0000     nan    0.054   0.00%
+
+=== side-by-side (plots/qc_test_phase_mlp vs plots/qc_test_warp_d) ===
+pair           L1_A     L1_B      dL1   cos_A   cos_B
+01_to_05     0.2409   0.1904  -0.0505   0.987   0.992
+02_to_05     0.2253   0.1719  -0.0534   0.986   0.991
+05_to_01     0.2133   0.2426  +0.0293   0.991   0.990
+05_to_09     0.2144   0.1999  -0.0145   0.984   0.987
+09_to_05     0.1874   0.2026  +0.0151   0.986   0.988
+09_to_06     0.1800   0.1940  +0.0140   0.990   0.989
+01_to_01     0.0268   0.0245  -0.0023     nan     nan

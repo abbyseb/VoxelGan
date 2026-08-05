@@ -6,6 +6,7 @@ data/
 
 # Training artifacts
 weights/
+results/
 *.pth
 __pycache__/
 *.pyc

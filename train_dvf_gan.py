@@ -116,7 +116,11 @@ for epoch in range(1, epoch_num + 1):
         if use_adv and (i % d_update_freq == 0):
             optimizer_d.zero_grad()
             loss_d = gan_loss.discriminator_loss(
-                discriminator, reference_ct, target_dvf, fake_dvf.detach()
+                discriminator,
+                reference_ct,
+                target_dvf,
+                reference_ct,
+                fake_dvf.detach(),
             )
             loss_d.backward()
             optimizer_d.step()
@@ -132,7 +136,7 @@ for epoch in range(1, epoch_num + 1):
         if use_adv:
             loss_g = loss_g + lambda_adv * gan_loss.generator_loss(
                 discriminator, reference_ct, fake_dvf
-            )
+            )  # D sees [ref CT, DVF]
         loss_g.backward()
         optimizer_g.step()
         train_loss_g += loss_g.item()
