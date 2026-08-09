@@ -1,0 +1,143 @@
+<mxfile host="app.diagrams.net" modified="2026-08-09T07:45:00.000Z" agent="Voxel_GAN" version="22.1.0" type="device">
+  <diagram id="film-detail" name="FiLM detail φ=1→6">
+    <mxGraphModel dx="1600" dy="1000" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1800" pageHeight="1400" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="FiLM Conditioning in Detail — Example: phase 1 → phase 6&#xa;(utilities/film.py · FiLMConditioner)" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontStyle=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1700" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== STEP 0: INPUTS ========== -->
+        <mxCell id="s0" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="320" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="s0l" value="① Inputs (0-indexed in code)" style="text;html=1;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="85" width="320" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="ph1" value="φ_ref = 1&#xa;(file CT_02 / phase index 1)&#xa;SPARE 1-indexed phase 2" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="120" width="130" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="ph6" value="φ_tgt = 6&#xa;(file CT_07 / phase index 6)&#xa;SPARE 1-indexed phase 7" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="210" y="120" width="130" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== STEP 1: NORMALIZE ========== -->
+        <mxCell id="s1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#6c8ebf;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="400" y="80" width="360" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="s1l" value="② Normalize to continuous [0,1)" style="text;html=1;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="400" y="85" width="360" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="n1" value="t_ref = φ_ref / n_phases&#xa;= 1 / 10 = 0.1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="120" width="150" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="n6" value="t_tgt = φ_tgt / n_phases&#xa;= 6 / 10 = 0.6" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="120" width="150" height="90" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== STEP 2: SHARED PHASE MLP ========== -->
+        <mxCell id="s2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#d6b656;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="80" width="520" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="s2l" value="③ Shared Phase MLP  (same weights for both)" style="text;html=1;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="800" y="85" width="520" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="mlp" value="Linear(1 → 32) → LeakyReLU(0.2) → Linear(32 → 8)&#xa;&#xa;t_ref=0.1  →  e_ref ∈ ℝ⁸&#xa;t_tgt=0.6  →  e_tgt ∈ ℝ⁸&#xa;&#xa;Unseen phases still land on a smooth manifold (why leave-out works)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="820" y="120" width="480" height="100" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== STEP 3: CONTEXT ========== -->
+        <mxCell id="s3" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="280" width="780" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="s3l" value="④ Build context vector  [e_ref ‖ e_tgt ‖ Δe]" style="text;html=1;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="285" width="780" height="24" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="eref" value="e_ref&#xa;ℝ⁸&#xa;(from 0.1)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="60" y="330" width="100" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="etgt" value="e_tgt&#xa;ℝ⁸&#xa;(from 0.6)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="200" y="330" width="100" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="delta" value="Δe = e_tgt − e_ref&#xa;ℝ⁸&#xa;“motion direction”&#xa;in embedding space" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f48fb1;strokeColor=#c2185b;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="320" width="160" height="90" as="geometry"/>
+        </mxCell>
+        <mxCell id="cat" value="concat ‖&#xa;→ context_in ∈ ℝ²⁴&#xa;= [e_ref (8) | e_tgt (8) | Δe (8)]&#xa;&#xa;For 1→6: encodes “from early inhale&#xa;toward mid-exhale” style" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;align=left;spacingLeft=8;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="540" y="320" width="250" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== STEP 4: TRUNK ========== -->
+        <mxCell id="s4" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#82b366;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="860" y="280" width="460" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="s4l" value="⑤ Trunk MLP → shared context c" style="text;html=1;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="860" y="285" width="460" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="trunk" value="Linear(24 → 64) → LReLU&#xa;→ Linear(64 → 128) → LReLU&#xa;→ Linear(128 → 64)&#xa;&#xa;output: c ∈ ℝ⁶⁴&#xa;(one vector for this pair 1→6)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;spacingLeft=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="890" y="325" width="400" height="130" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== STEP 5: HEADS ========== -->
+        <mxCell id="s5" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="1280" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="s5l" value="⑥ Five FiLM heads — one per U-Net scale (from c)" style="text;html=1;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="525" width="1280" height="24" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="h0" value="Head bot&#xa;Linear(64 → 512)&#xa;C=256&#xa;→ Δγ, β ∈ ℝ²⁵⁶&#xa;γ=1+tanh(Δγ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="60" y="570" width="140" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="h1" value="Head Dec4&#xa;Linear(64 → 256)&#xa;C=128&#xa;→ Δγ, β ∈ ℝ¹²⁸&#xa;γ=1+tanh(Δγ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="230" y="570" width="140" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="h2" value="Head Dec3&#xa;Linear(64 → 128)&#xa;C=64&#xa;→ Δγ, β ∈ ℝ⁶⁴&#xa;γ=1+tanh(Δγ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="400" y="570" width="140" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="h3" value="Head Dec2&#xa;Linear(64 → 64)&#xa;C=32&#xa;→ Δγ, β ∈ ℝ³²&#xa;γ=1+tanh(Δγ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="570" y="570" width="140" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="h4" value="Head Dec1&#xa;Linear(64 → 32)&#xa;C=16&#xa;→ Δγ, β ∈ ℝ¹⁶&#xa;γ=1+tanh(Δγ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="740" y="570" width="140" height="120" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="formula" value="FiLM at each scale:&#xa;&#xa;  x′ = γ ⊙ x + β&#xa;&#xa;γ,β broadcast over spatial dims&#xa;(B,C,1,1,1) × (B,C,D,H,W)&#xa;&#xa;γ near 1 = soft scale;&#xa;β = channel-wise shift&#xa;&#xa;Applied AFTER skip fusion&#xa;in decoder (and at bottleneck)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f3e5f5;strokeColor=#9673a6;align=left;spacingLeft=10;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="920" y="560" width="360" height="210" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="where" value="Where applied for pair 1→6:&#xa;bottleneck 8³×256 · Dec4 16³×128 · Dec3 32³×64 · Dec2 64³×32 · Dec1 128³×16&#xa;Encoder stays unconditioned — only anatomy; phases modulate decode path." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#666666;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="60" y="710" width="820" height="60" as="geometry"/>
+        </mxCell>
+
+        <!-- ========== WORKED SUMMARY ========== -->
+        <mxCell id="sum" value="Worked summary for φ=1 → φ=6&#xa;&#xa;1 / 10 = 0.1  →  PhaseMLP  →  e_ref (8)&#xa;6 / 10 = 0.6  →  PhaseMLP  →  e_tgt (8)&#xa;Δe = e_tgt − e_ref&#xa;cat = [e_ref ‖ e_tgt ‖ Δe] ∈ ℝ²⁴&#xa;c = Trunk(cat) ∈ ℝ⁶⁴&#xa;5 heads(c) → {(γ_k, β_k)} for k ∈ {bot, Dec4…Dec1}&#xa;U-Net features at those scales: x ← γ_k ⊙ x + β_k&#xa;→ velocity v → scaling-and-squaring → DVF that warps phase-1 anatomy toward phase-6" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fffde7;strokeColor=#f9a825;align=left;spacingLeft=12;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="820" width="1280" height="200" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="note" value="Note: SPARE files are 1-indexed (CT_01…CT_10). Network uses 0-indexed longs. So “phase 1→6” in SPARE file names is often CT_01→CT_06 → indices 0→5. Diagram uses indices 1 and 6 as a clear numeric example of the math (t=0.1 and 0.6)." style="text;html=1;fontSize=11;fontColor=#666666;align=left;" vertex="1" parent="1">
+          <mxGeometry x="40" y="1030" width="1280" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- EDGES -->
+        <mxCell id="e1" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;" edge="1" parent="1" source="ph1" target="n1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e2" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;" edge="1" parent="1" source="ph6" target="n6"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e3" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#d79b00;" edge="1" parent="1" source="n1" target="mlp"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e4" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#d79b00;" edge="1" parent="1" source="n6" target="mlp"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e5" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c2185b;" edge="1" parent="1" source="mlp" target="eref"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e6" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c2185b;" edge="1" parent="1" source="mlp" target="etgt"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e7" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c2185b;" edge="1" parent="1" source="eref" target="delta"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e8" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c2185b;" edge="1" parent="1" source="etgt" target="delta"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c2185b;fontStyle=1;" edge="1" parent="1" source="delta" target="cat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9b" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c2185b;" edge="1" parent="1" source="eref" target="cat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e9c" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#c2185b;" edge="1" parent="1" source="etgt" target="cat"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e10" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#82b366;" edge="1" parent="1" source="cat" target="trunk"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#9673a6;" edge="1" parent="1" source="trunk" target="h0"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e12" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#9673a6;" edge="1" parent="1" source="trunk" target="h2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;strokeColor=#9673a6;" edge="1" parent="1" source="trunk" target="h4"><mxGeometry relative="1" as="geometry"/></mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
