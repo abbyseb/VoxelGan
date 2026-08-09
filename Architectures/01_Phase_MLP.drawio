@@ -1,0 +1,160 @@
+<mxfile host="app.diagrams.net" modified="2026-08-09T07:00:00.000Z" agent="Voxel_GAN" version="22.1.0" type="device">
+  <diagram id="phase-mlp" name="Phase-MLP FiLM+SVF">
+    <mxGraphModel dx="1400" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="Phase-MLP — UNetFiLM + continuous phase MLP + SVF&#xa;Discriminator: 4-ch [ref CT, DVF] (baseline)" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontStyle=1;fontSize=18;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1520" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- INPUTS -->
+        <mxCell id="in_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="200" height="220" as="geometry"/>
+        </mxCell>
+        <mxCell id="in_lab" value="Inputs" style="text;html=1;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="85" width="200" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="in_ct" value="Reference CT&#xa;1×128³" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="60" y="120" width="160" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="in_ref" value="φ_ref  (0…9)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="60" y="185" width="160" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="in_tgt" value="φ_tgt  (0…9)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="60" y="240" width="160" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- ENCODER -->
+        <mxCell id="enc_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#82b366;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="280" y="80" width="160" height="400" as="geometry"/>
+        </mxCell>
+        <mxCell id="enc_lab" value="Encoder&#xa;(unconditioned)" style="text;html=1;fontStyle=1;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="280" y="85" width="160" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="stem" value="Stem&#xa;1→16  · 128³" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="300" y="130" width="120" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="Down Enc1&#xa;16→32  · 64³" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="300" y="190" width="120" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="Down Enc2&#xa;32→64  · 32³" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="300" y="250" width="120" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="Down Enc3&#xa;64→128 · 16³" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="300" y="310" width="120" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="Down Enc4&#xa;128→256 · 8³" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="300" y="370" width="120" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="note_enc" value="Down = stride-2 Conv³&#xa;+ IN + LeakyReLU&#xa;+ residual ConvBlock" style="text;html=1;fontSize=10;align=left;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="285" y="430" width="150" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- BOTTLENECK -->
+        <mxCell id="bot" value="Bottleneck&#xa;ConvBlock×2 (256)&#xa;+ FiLM (γ,β)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="500" y="350" width="140" height="70" as="geometry"/>
+        </mxCell>
+
+        <!-- PHASE MLP / FiLM -->
+        <mxCell id="film_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff8e1;strokeColor=#d6b656;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="80" width="280" height="240" as="geometry"/>
+        </mxCell>
+        <mxCell id="film_lab" value="FiLMConditioner (continuous Phase-MLP)" style="text;html=1;fontStyle=1;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="480" y="85" width="280" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="pmlp" value="Shared Phase MLP&#xa;φ/n → Linear(1→32) → LReLU → Linear(32→8)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="500" y="120" width="240" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="ctx" value="Context&#xa;[e_ref ‖ e_tgt ‖ Δe] → trunk 24→64→128→64" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="500" y="185" width="240" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="heads" value="5 FiLM heads → (γ,β)&#xa;scales: 256,128,64,32,16&#xa;γ = 1 + tanh(Δγ)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="500" y="250" width="240" height="55" as="geometry"/>
+        </mxCell>
+
+        <!-- DECODER -->
+        <mxCell id="dec_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3f2fd;strokeColor=#6c8ebf;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="80" width="180" height="400" as="geometry"/>
+        </mxCell>
+        <mxCell id="dec_lab" value="Decoder + FiLM&#xa;(after skip fusion)" style="text;html=1;fontStyle=1;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="800" y="85" width="180" height="36" as="geometry"/>
+        </mxCell>
+        <mxCell id="d4" value="Up Dec4&#xa;→128 · FiLM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="820" y="140" width="140" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="d3" value="Up Dec3&#xa;→64 · FiLM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="820" y="200" width="140" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="d2" value="Up Dec2&#xa;→32 · FiLM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="820" y="260" width="140" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="d1" value="Up Dec1&#xa;→16 · FiLM" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="820" y="320" width="140" height="45" as="geometry"/>
+        </mxCell>
+        <mxCell id="out1" value="1×1 Conv → v (3ch)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="820" y="385" width="140" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- SVF -->
+        <mxCell id="svf" value="Scaling-and-Squaring&#xa;v → DVF&#xa;int_steps = 6" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="300" width="160" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="dvf" value="DVF  3×128³&#xa;(diffeomorphic)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1020" y="390" width="160" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- DISCRIMINATOR -->
+        <mxCell id="d_box" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="80" width="320" height="280" as="geometry"/>
+        </mxCell>
+        <mxCell id="d_lab" value="PatchGAN D — DVF-space (4-ch)" style="text;html=1;fontStyle=1;fontSize=12;align=center;" vertex="1" parent="1">
+          <mxGeometry x="1220" y="85" width="320" height="24" as="geometry"/>
+        </mxCell>
+        <mxCell id="d_in" value="concat[ ref CT (1), DVF (3) ] → 4ch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="120" width="280" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="d_net" value="Spectral-norm Conv³ PatchGAN&#xa;64³→32³→16³→8³→8³ logits&#xa;base_ch=32" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="180" width="280" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="d_note" value="Issue: D can cheat on Elastix vs SVF&#xa;spectral cues → D loss collapses (~0)" style="text;html=1;fontSize=11;align=left;fontColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="1240" y="265" width="280" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- LOSSES -->
+        <mxCell id="loss" value="Losses: L_DVF (lung L1) + λ_img·NCC + λ_smooth + λ_adv·LSGAN&#xa;λ_img=0.5  λ_smooth=0.1  λ_adv=0.05" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#666666;align=left;spacingLeft=10;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="700" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="code" value="Code: utilities/generator.py · utilities/film.py · utilities/svf.py · utilities/discriminator.py (in_channels=4)" style="text;html=1;fontSize=11;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="40" y="580" width="900" height="30" as="geometry"/>
+        </mxCell>
+
+        <!-- EDGES -->
+        <mxCell id="a1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="in_ct" target="stem"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="stem" target="e1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="e1" target="e2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="e2" target="e3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="e3" target="e4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="e4" target="bot"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;strokeColor=#d79b00;" edge="1" parent="1" source="in_ref" target="pmlp"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;strokeColor=#d79b00;" edge="1" parent="1" source="in_tgt" target="pmlp"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;strokeColor=#d79b00;" edge="1" parent="1" source="pmlp" target="ctx"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;strokeColor=#d79b00;" edge="1" parent="1" source="ctx" target="heads"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;strokeColor=#9673a6;dashed=1;" edge="1" parent="1" source="heads" target="bot"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="bot" target="d4"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="d4" target="d3"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="d3" target="d2"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="d2" target="d1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="d1" target="out1"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a17" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="out1" target="svf"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;" edge="1" parent="1" source="svf" target="dvf"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;strokeColor=#c2185b;" edge="1" parent="1" source="dvf" target="d_in"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="a20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;html=1;strokeColor=#82b366;dashed=1;exitX=1;exitY=0.5;entryX=0;entryY=0.5;" edge="1" parent="1" source="e3" target="d4"><mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="460" y="332"/><mxPoint x="460" y="162"/><mxPoint x="800" y="162"/></Array></mxGeometry></mxCell>
+        <mxCell id="skl" value="skips" style="text;html=1;fontSize=10;fontColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="450" y="145" width="50" height="20" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
