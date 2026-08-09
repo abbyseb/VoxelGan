@@ -1,0 +1,13 @@
+=== 2026-08-07T18:05:04+10:00 start master pipeline ===
+=== GPU1: Dan LOOCV start ===
+Dan LOOCV pid=671453
+=== GPU0: Our Warp full P1 ===
+=== GPU0: Dan CRB full P1 ===
+=== P2 zero-shot Our Warp ===
+=== P2 fine-tune Our Warp ===
+=== P2 tuned QC Our Warp ===
+=== P2 zero-shot Dan CRB ===
+=== P2 fine-tune Dan CRB ===
+=== P2 tuned QC Dan CRB ===
+=== waiting for Dan LOOCV (pid=671453) ===
+=== 2026-08-08T03:26:27+10:00 ALL DONE ===

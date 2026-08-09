@@ -1,0 +1,711 @@
+=== 2026-08-07T18:05:04+10:00 start master pipeline ===
+=== GPU1: Dan LOOCV start ===
+Dan LOOCV pid=671453
+=== GPU0: Our Warp full P1 ===
+[spare_mc_p1_full_warp_d] device=cuda | D_mode=warp (in=2) | D_base=32 | lambda_adv=0.05 | d_update_freq=2
+[spare_mc_p1_full_warp_d] train 1600 (100 pairs × 16) | val 800 (100 pairs × 8)
+Epoch: 1 | G loss: 0.9587 | D loss: 0.0000 | val G loss: 0.8876 | total time: 0 hours 1 minutes
+Epoch: 2 | G loss: 0.7456 | D loss: 0.0000 | val G loss: 0.6327 | total time: 0 hours 2 minutes
+Epoch: 3 | G loss: 0.5394 | D loss: 0.0000 | val G loss: 0.5065 | total time: 0 hours 3 minutes
+Epoch: 4 | G loss: 0.4678 | D loss: 0.0000 | val G loss: 0.4705 | total time: 0 hours 4 minutes
+Epoch: 5 | G loss: 0.4219 | D loss: 0.0000 | val G loss: 0.4225 | total time: 0 hours 5 minutes
+Epoch: 6 | G loss: 0.4030 | D loss: 0.1170 | val G loss: 0.3866 | total time: 0 hours 6 minutes
+Epoch: 7 | G loss: 0.3677 | D loss: 0.1041 | val G loss: 0.3555 | total time: 0 hours 8 minutes
+Epoch: 8 | G loss: 0.3491 | D loss: 0.1032 | val G loss: 0.3361 | total time: 0 hours 9 minutes
+Epoch: 9 | G loss: 0.3295 | D loss: 0.0945 | val G loss: 0.3516 | total time: 0 hours 10 minutes
+Epoch: 10 | G loss: 0.3167 | D loss: 0.0895 | val G loss: 0.2883 | total time: 0 hours 11 minutes
+Epoch: 11 | G loss: 0.3095 | D loss: 0.0847 | val G loss: 0.2964 | total time: 0 hours 13 minutes
+Epoch: 12 | G loss: 0.2938 | D loss: 0.0858 | val G loss: 0.2811 | total time: 0 hours 14 minutes
+Epoch: 13 | G loss: 0.2831 | D loss: 0.0819 | val G loss: 0.2898 | total time: 0 hours 15 minutes
+Epoch: 14 | G loss: 0.2790 | D loss: 0.0812 | val G loss: 0.2800 | total time: 0 hours 16 minutes
+Epoch: 15 | G loss: 0.2714 | D loss: 0.0788 | val G loss: 0.2512 | total time: 0 hours 17 minutes
+Epoch: 16 | G loss: 0.2632 | D loss: 0.0777 | val G loss: 0.2521 | total time: 0 hours 19 minutes
+Epoch: 17 | G loss: 0.2587 | D loss: 0.0768 | val G loss: 0.2412 | total time: 0 hours 20 minutes
+Epoch: 18 | G loss: 0.2546 | D loss: 0.0758 | val G loss: 0.2605 | total time: 0 hours 21 minutes
+Epoch: 19 | G loss: 0.2557 | D loss: 0.0709 | val G loss: 0.2296 | total time: 0 hours 22 minutes
+Epoch: 20 | G loss: 0.2462 | D loss: 0.0754 | val G loss: 0.2190 | total time: 0 hours 24 minutes
+Epoch: 21 | G loss: 0.2454 | D loss: 0.0716 | val G loss: 0.2444 | total time: 0 hours 25 minutes
+Epoch: 22 | G loss: 0.2384 | D loss: 0.0695 | val G loss: 0.2259 | total time: 0 hours 26 minutes
+Epoch: 23 | G loss: 0.2368 | D loss: 0.0655 | val G loss: 0.2265 | total time: 0 hours 27 minutes
+Epoch: 24 | G loss: 0.2353 | D loss: 0.0659 | val G loss: 0.2087 | total time: 0 hours 28 minutes
+Epoch: 25 | G loss: 0.2314 | D loss: 0.0688 | val G loss: 0.2131 | total time: 0 hours 30 minutes
+Epoch: 26 | G loss: 0.2299 | D loss: 0.0612 | val G loss: 0.2179 | total time: 0 hours 31 minutes
+Epoch: 27 | G loss: 0.2263 | D loss: 0.0637 | val G loss: 0.2120 | total time: 0 hours 32 minutes
+Epoch: 28 | G loss: 0.2232 | D loss: 0.0637 | val G loss: 0.2030 | total time: 0 hours 33 minutes
+Epoch: 29 | G loss: 0.2224 | D loss: 0.0622 | val G loss: 0.1949 | total time: 0 hours 34 minutes
+Epoch: 30 | G loss: 0.2183 | D loss: 0.0632 | val G loss: 0.2088 | total time: 0 hours 36 minutes
+Epoch: 31 | G loss: 0.2166 | D loss: 0.0613 | val G loss: 0.1973 | total time: 0 hours 37 minutes
+Epoch: 32 | G loss: 0.2127 | D loss: 0.0601 | val G loss: 0.1960 | total time: 0 hours 38 minutes
+Epoch: 33 | G loss: 0.2115 | D loss: 0.0585 | val G loss: 0.1855 | total time: 0 hours 39 minutes
+Epoch: 34 | G loss: 0.2107 | D loss: 0.0594 | val G loss: 0.1940 | total time: 0 hours 41 minutes
+Epoch: 35 | G loss: 0.2037 | D loss: 0.0629 | val G loss: 0.1848 | total time: 0 hours 42 minutes
+Epoch: 36 | G loss: 0.2059 | D loss: 0.0597 | val G loss: 0.1906 | total time: 0 hours 43 minutes
+Epoch: 37 | G loss: 0.2041 | D loss: 0.0576 | val G loss: 0.1798 | total time: 0 hours 44 minutes
+Epoch: 38 | G loss: 0.2015 | D loss: 0.0590 | val G loss: 0.1783 | total time: 0 hours 46 minutes
+Epoch: 39 | G loss: 0.1983 | D loss: 0.0572 | val G loss: 0.1710 | total time: 0 hours 47 minutes
+Epoch: 40 | G loss: 0.1973 | D loss: 0.0581 | val G loss: 0.1733 | total time: 0 hours 48 minutes
+Epoch: 41 | G loss: 0.1944 | D loss: 0.0571 | val G loss: 0.1778 | total time: 0 hours 49 minutes
+Epoch: 42 | G loss: 0.1937 | D loss: 0.0553 | val G loss: 0.1805 | total time: 0 hours 50 minutes
+Epoch: 43 | G loss: 0.1893 | D loss: 0.0578 | val G loss: 0.1642 | total time: 0 hours 52 minutes
+Epoch: 44 | G loss: 0.1916 | D loss: 0.0571 | val G loss: 0.1809 | total time: 0 hours 53 minutes
+Epoch: 45 | G loss: 0.1899 | D loss: 0.0547 | val G loss: 0.1631 | total time: 0 hours 54 minutes
+Epoch: 46 | G loss: 0.1891 | D loss: 0.0552 | val G loss: 0.1915 | total time: 0 hours 55 minutes
+Epoch: 47 | G loss: 0.1898 | D loss: 0.0550 | val G loss: 0.1652 | total time: 0 hours 57 minutes
+Epoch: 48 | G loss: 0.1862 | D loss: 0.0549 | val G loss: 0.1706 | total time: 0 hours 58 minutes
+Epoch: 49 | G loss: 0.1862 | D loss: 0.0533 | val G loss: 0.1705 | total time: 0 hours 59 minutes
+Epoch: 50 | G loss: 0.1819 | D loss: 0.0548 | val G loss: 0.1528 | total time: 1 hours 0 minutes
+Epoch: 51 | G loss: 0.1829 | D loss: 0.0524 | val G loss: 0.1576 | total time: 1 hours 2 minutes
+Epoch: 52 | G loss: 0.1792 | D loss: 0.0572 | val G loss: 0.1622 | total time: 1 hours 3 minutes
+Epoch: 53 | G loss: 0.1803 | D loss: 0.0537 | val G loss: 0.1590 | total time: 1 hours 4 minutes
+Epoch: 54 | G loss: 0.1769 | D loss: 0.0553 | val G loss: 0.1588 | total time: 1 hours 5 minutes
+Epoch: 55 | G loss: 0.1791 | D loss: 0.0537 | val G loss: 0.1544 | total time: 1 hours 6 minutes
+Epoch: 56 | G loss: 0.1769 | D loss: 0.0531 | val G loss: 0.1536 | total time: 1 hours 8 minutes
+Epoch: 57 | G loss: 0.1735 | D loss: 0.0553 | val G loss: 0.1503 | total time: 1 hours 9 minutes
+Epoch: 58 | G loss: 0.1771 | D loss: 0.0548 | val G loss: 0.1575 | total time: 1 hours 10 minutes
+Epoch: 59 | G loss: 0.1751 | D loss: 0.0523 | val G loss: 0.1506 | total time: 1 hours 11 minutes
+Epoch: 60 | G loss: 0.1746 | D loss: 0.0513 | val G loss: 0.1571 | total time: 1 hours 13 minutes
+Epoch: 61 | G loss: 0.1731 | D loss: 0.0549 | val G loss: 0.1535 | total time: 1 hours 14 minutes
+Epoch: 62 | G loss: 0.1733 | D loss: 0.0521 | val G loss: 0.1554 | total time: 1 hours 15 minutes
+Epoch: 63 | G loss: 0.1710 | D loss: 0.0522 | val G loss: 0.1423 | total time: 1 hours 16 minutes
+Epoch: 64 | G loss: 0.1701 | D loss: 0.0559 | val G loss: 0.1491 | total time: 1 hours 17 minutes
+Epoch: 65 | G loss: 0.1716 | D loss: 0.0509 | val G loss: 0.1391 | total time: 1 hours 19 minutes
+Epoch: 66 | G loss: 0.1659 | D loss: 0.0577 | val G loss: 0.1385 | total time: 1 hours 20 minutes
+Epoch: 67 | G loss: 0.1690 | D loss: 0.0516 | val G loss: 0.1503 | total time: 1 hours 21 minutes
+Epoch: 68 | G loss: 0.1649 | D loss: 0.0547 | val G loss: 0.1351 | total time: 1 hours 22 minutes
+Epoch: 69 | G loss: 0.1687 | D loss: 0.0529 | val G loss: 0.1508 | total time: 1 hours 24 minutes
+Epoch: 70 | G loss: 0.1662 | D loss: 0.0535 | val G loss: 0.1313 | total time: 1 hours 25 minutes
+Epoch: 71 | G loss: 0.1633 | D loss: 0.0538 | val G loss: 0.1410 | total time: 1 hours 26 minutes
+Epoch: 72 | G loss: 0.1632 | D loss: 0.0522 | val G loss: 0.1349 | total time: 1 hours 27 minutes
+Epoch: 73 | G loss: 0.1653 | D loss: 0.0511 | val G loss: 0.1344 | total time: 1 hours 28 minutes
+Epoch: 74 | G loss: 0.1622 | D loss: 0.0548 | val G loss: 0.1368 | total time: 1 hours 30 minutes
+Epoch: 75 | G loss: 0.1653 | D loss: 0.0536 | val G loss: 0.1451 | total time: 1 hours 31 minutes
+Epoch: 76 | G loss: 0.1616 | D loss: 0.0532 | val G loss: 0.1306 | total time: 1 hours 32 minutes
+Epoch: 77 | G loss: 0.1599 | D loss: 0.0556 | val G loss: 0.1381 | total time: 1 hours 33 minutes
+Epoch: 78 | G loss: 0.1616 | D loss: 0.0539 | val G loss: 0.1379 | total time: 1 hours 35 minutes
+Epoch: 79 | G loss: 0.1608 | D loss: 0.0536 | val G loss: 0.1340 | total time: 1 hours 36 minutes
+Epoch: 80 | G loss: 0.1576 | D loss: 0.0508 | val G loss: 0.1410 | total time: 1 hours 37 minutes
+Epoch: 81 | G loss: 0.1585 | D loss: 0.0542 | val G loss: 0.1386 | total time: 1 hours 38 minutes
+Epoch: 82 | G loss: 0.1574 | D loss: 0.0524 | val G loss: 0.1294 | total time: 1 hours 39 minutes
+Epoch: 83 | G loss: 0.1563 | D loss: 0.0521 | val G loss: 0.1284 | total time: 1 hours 41 minutes
+Epoch: 84 | G loss: 0.1552 | D loss: 0.0545 | val G loss: 0.1317 | total time: 1 hours 42 minutes
+Epoch: 85 | G loss: 0.1550 | D loss: 0.0532 | val G loss: 0.1301 | total time: 1 hours 43 minutes
+Epoch: 86 | G loss: 0.1546 | D loss: 0.0544 | val G loss: 0.1268 | total time: 1 hours 44 minutes
+Epoch: 87 | G loss: 0.1545 | D loss: 0.0556 | val G loss: 0.1437 | total time: 1 hours 46 minutes
+Epoch: 88 | G loss: 0.1542 | D loss: 0.0539 | val G loss: 0.1259 | total time: 1 hours 47 minutes
+Epoch: 89 | G loss: 0.1518 | D loss: 0.0559 | val G loss: 0.1278 | total time: 1 hours 48 minutes
+Epoch: 90 | G loss: 0.1536 | D loss: 0.0517 | val G loss: 0.1311 | total time: 1 hours 49 minutes
+Epoch: 91 | G loss: 0.1537 | D loss: 0.0546 | val G loss: 0.1267 | total time: 1 hours 51 minutes
+Epoch: 92 | G loss: 0.1535 | D loss: 0.0525 | val G loss: 0.1378 | total time: 1 hours 52 minutes
+Epoch: 93 | G loss: 0.1510 | D loss: 0.0539 | val G loss: 0.1308 | total time: 1 hours 53 minutes
+Epoch: 94 | G loss: 0.1502 | D loss: 0.0562 | val G loss: 0.1211 | total time: 1 hours 54 minutes
+Epoch: 95 | G loss: 0.1490 | D loss: 0.0552 | val G loss: 0.1227 | total time: 1 hours 55 minutes
+Epoch: 96 | G loss: 0.1484 | D loss: 0.0551 | val G loss: 0.1248 | total time: 1 hours 57 minutes
+Epoch: 97 | G loss: 0.1485 | D loss: 0.0530 | val G loss: 0.1222 | total time: 1 hours 58 minutes
+Epoch: 98 | G loss: 0.1470 | D loss: 0.0544 | val G loss: 0.1246 | total time: 1 hours 59 minutes
+Epoch: 99 | G loss: 0.1469 | D loss: 0.0554 | val G loss: 0.1239 | total time: 2 hours 0 minutes
+Epoch: 100 | G loss: 0.1461 | D loss: 0.0566 | val G loss: 0.1297 | total time: 2 hours 2 minutes
+=== GPU0: Dan CRB full P1 ===
+[dans_crb_p1_full_warp_d] FULL P1 (no holdout) device=cuda train=1600 val=800
+Epoch: 1 | G loss: 0.9458 | D loss: 0.0000 | val G loss: 0.8893 | total time: 0 hours 0 minutes
+Epoch: 2 | G loss: 0.8173 | D loss: 0.0000 | val G loss: 0.8358 | total time: 0 hours 1 minutes
+Epoch: 3 | G loss: 0.7694 | D loss: 0.0000 | val G loss: 0.7979 | total time: 0 hours 2 minutes
+Epoch: 4 | G loss: 0.7458 | D loss: 0.0000 | val G loss: 0.7955 | total time: 0 hours 3 minutes
+Epoch: 5 | G loss: 0.7394 | D loss: 0.0000 | val G loss: 0.7799 | total time: 0 hours 3 minutes
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/nn/modules/conv.py:720: UserWarning: Using padding='same' with even kernel lengths and odd dilation may require a zero-padded copy of the input be created (Triggered internally at /pytorch/aten/src/ATen/native/Convolution.cpp:1036.)
+  return F.conv3d(
+Epoch: 6 | G loss: 0.7554 | D loss: 0.1161 | val G loss: 0.7792 | total time: 0 hours 4 minutes
+Epoch: 7 | G loss: 0.7389 | D loss: 0.0920 | val G loss: 0.7991 | total time: 0 hours 5 minutes
+Epoch: 8 | G loss: 0.7364 | D loss: 0.0635 | val G loss: 0.7189 | total time: 0 hours 6 minutes
+Epoch: 9 | G loss: 0.6489 | D loss: 0.0562 | val G loss: 0.5910 | total time: 0 hours 7 minutes
+Epoch: 10 | G loss: 0.5564 | D loss: 0.0565 | val G loss: 0.4938 | total time: 0 hours 8 minutes
+Epoch: 11 | G loss: 0.5054 | D loss: 0.0560 | val G loss: 0.4589 | total time: 0 hours 8 minutes
+Epoch: 12 | G loss: 0.4547 | D loss: 0.0550 | val G loss: 0.4219 | total time: 0 hours 9 minutes
+Epoch: 13 | G loss: 0.4439 | D loss: 0.0567 | val G loss: 0.4282 | total time: 0 hours 10 minutes
+Epoch: 14 | G loss: 0.4214 | D loss: 0.0546 | val G loss: 0.3775 | total time: 0 hours 11 minutes
+Epoch: 15 | G loss: 0.4099 | D loss: 0.0562 | val G loss: 0.3834 | total time: 0 hours 12 minutes
+Epoch: 16 | G loss: 0.3921 | D loss: 0.0545 | val G loss: 0.3716 | total time: 0 hours 13 minutes
+Epoch: 17 | G loss: 0.3819 | D loss: 0.0545 | val G loss: 0.3565 | total time: 0 hours 14 minutes
+Epoch: 18 | G loss: 0.3669 | D loss: 0.0558 | val G loss: 0.3551 | total time: 0 hours 15 minutes
+Epoch: 19 | G loss: 0.3548 | D loss: 0.0564 | val G loss: 0.3270 | total time: 0 hours 15 minutes
+Epoch: 20 | G loss: 0.3448 | D loss: 0.0550 | val G loss: 0.3281 | total time: 0 hours 16 minutes
+Epoch: 21 | G loss: 0.3405 | D loss: 0.0536 | val G loss: 0.3159 | total time: 0 hours 17 minutes
+Epoch: 22 | G loss: 0.3306 | D loss: 0.0565 | val G loss: 0.3167 | total time: 0 hours 18 minutes
+Epoch: 23 | G loss: 0.3243 | D loss: 0.0574 | val G loss: 0.2982 | total time: 0 hours 19 minutes
+Epoch: 24 | G loss: 0.3113 | D loss: 0.0530 | val G loss: 0.2916 | total time: 0 hours 20 minutes
+Epoch: 25 | G loss: 0.3109 | D loss: 0.0548 | val G loss: 0.2651 | total time: 0 hours 21 minutes
+Epoch: 26 | G loss: 0.3080 | D loss: 0.0524 | val G loss: 0.2859 | total time: 0 hours 22 minutes
+Epoch: 27 | G loss: 0.3017 | D loss: 0.0521 | val G loss: 0.2957 | total time: 0 hours 22 minutes
+Epoch: 28 | G loss: 0.3018 | D loss: 0.0546 | val G loss: 0.2603 | total time: 0 hours 23 minutes
+Epoch: 29 | G loss: 0.2941 | D loss: 0.0509 | val G loss: 0.2635 | total time: 0 hours 24 minutes
+Epoch: 30 | G loss: 0.2908 | D loss: 0.0514 | val G loss: 0.2861 | total time: 0 hours 25 minutes
+Epoch: 31 | G loss: 0.2837 | D loss: 0.0502 | val G loss: 0.2536 | total time: 0 hours 26 minutes
+Epoch: 32 | G loss: 0.2854 | D loss: 0.0512 | val G loss: 0.2580 | total time: 0 hours 27 minutes
+Epoch: 33 | G loss: 0.2781 | D loss: 0.0491 | val G loss: 0.2396 | total time: 0 hours 28 minutes
+Epoch: 34 | G loss: 0.2762 | D loss: 0.0501 | val G loss: 0.2438 | total time: 0 hours 29 minutes
+Epoch: 35 | G loss: 0.2758 | D loss: 0.0503 | val G loss: 0.2424 | total time: 0 hours 29 minutes
+Epoch: 36 | G loss: 0.2732 | D loss: 0.0488 | val G loss: 0.2340 | total time: 0 hours 30 minutes
+Epoch: 37 | G loss: 0.2722 | D loss: 0.0486 | val G loss: 0.2381 | total time: 0 hours 31 minutes
+Epoch: 38 | G loss: 0.2676 | D loss: 0.0469 | val G loss: 0.2487 | total time: 0 hours 32 minutes
+Epoch: 39 | G loss: 0.2674 | D loss: 0.0482 | val G loss: 0.2400 | total time: 0 hours 33 minutes
+Epoch: 40 | G loss: 0.2612 | D loss: 0.0479 | val G loss: 0.2420 | total time: 0 hours 34 minutes
+Epoch: 41 | G loss: 0.2625 | D loss: 0.0474 | val G loss: 0.2268 | total time: 0 hours 35 minutes
+Epoch: 42 | G loss: 0.2577 | D loss: 0.0468 | val G loss: 0.2235 | total time: 0 hours 36 minutes
+Epoch: 43 | G loss: 0.2555 | D loss: 0.0471 | val G loss: 0.2234 | total time: 0 hours 36 minutes
+Epoch: 44 | G loss: 0.2587 | D loss: 0.0460 | val G loss: 0.2217 | total time: 0 hours 37 minutes
+Epoch: 45 | G loss: 0.2580 | D loss: 0.0478 | val G loss: 0.2202 | total time: 0 hours 38 minutes
+Epoch: 46 | G loss: 0.2509 | D loss: 0.0457 | val G loss: 0.2396 | total time: 0 hours 39 minutes
+Epoch: 47 | G loss: 0.2448 | D loss: 0.0480 | val G loss: 0.2202 | total time: 0 hours 40 minutes
+Epoch: 48 | G loss: 0.2495 | D loss: 0.0465 | val G loss: 0.2086 | total time: 0 hours 41 minutes
+Epoch: 49 | G loss: 0.2473 | D loss: 0.0482 | val G loss: 0.2153 | total time: 0 hours 42 minutes
+Epoch: 50 | G loss: 0.2492 | D loss: 0.0473 | val G loss: 0.2353 | total time: 0 hours 42 minutes
+Epoch: 51 | G loss: 0.2405 | D loss: 0.0469 | val G loss: 0.2488 | total time: 0 hours 43 minutes
+Epoch: 52 | G loss: 0.2491 | D loss: 0.0445 | val G loss: 0.2305 | total time: 0 hours 44 minutes
+Epoch: 53 | G loss: 0.2462 | D loss: 0.0462 | val G loss: 0.2249 | total time: 0 hours 45 minutes
+Epoch: 54 | G loss: 0.2438 | D loss: 0.0480 | val G loss: 0.2205 | total time: 0 hours 46 minutes
+Epoch: 55 | G loss: 0.2382 | D loss: 0.0458 | val G loss: 0.2145 | total time: 0 hours 47 minutes
+Epoch: 56 | G loss: 0.2394 | D loss: 0.0442 | val G loss: 0.2022 | total time: 0 hours 48 minutes
+Epoch: 57 | G loss: 0.2460 | D loss: 0.0463 | val G loss: 0.2251 | total time: 0 hours 49 minutes
+Epoch: 58 | G loss: 0.2368 | D loss: 0.0444 | val G loss: 0.2171 | total time: 0 hours 49 minutes
+Epoch: 59 | G loss: 0.2323 | D loss: 0.0462 | val G loss: 0.2078 | total time: 0 hours 50 minutes
+Epoch: 60 | G loss: 0.2340 | D loss: 0.0468 | val G loss: 0.2095 | total time: 0 hours 51 minutes
+Epoch: 61 | G loss: 0.2313 | D loss: 0.0451 | val G loss: 0.1911 | total time: 0 hours 52 minutes
+Epoch: 62 | G loss: 0.2330 | D loss: 0.0479 | val G loss: 0.2127 | total time: 0 hours 53 minutes
+Epoch: 63 | G loss: 0.2298 | D loss: 0.0467 | val G loss: 0.1914 | total time: 0 hours 54 minutes
+Epoch: 64 | G loss: 0.2317 | D loss: 0.0458 | val G loss: 0.2129 | total time: 0 hours 55 minutes
+Epoch: 65 | G loss: 0.2299 | D loss: 0.0454 | val G loss: 0.1909 | total time: 0 hours 56 minutes
+Epoch: 66 | G loss: 0.2264 | D loss: 0.0450 | val G loss: 0.1883 | total time: 0 hours 57 minutes
+Epoch: 67 | G loss: 0.2254 | D loss: 0.0468 | val G loss: 0.1924 | total time: 0 hours 57 minutes
+Epoch: 68 | G loss: 0.2251 | D loss: 0.0466 | val G loss: 0.2053 | total time: 0 hours 58 minutes
+Epoch: 69 | G loss: 0.2271 | D loss: 0.0436 | val G loss: 0.1996 | total time: 0 hours 59 minutes
+Epoch: 70 | G loss: 0.2251 | D loss: 0.0458 | val G loss: 0.2172 | total time: 1 hours 0 minutes
+Epoch: 71 | G loss: 0.2241 | D loss: 0.0455 | val G loss: 0.2090 | total time: 1 hours 1 minutes
+Epoch: 72 | G loss: 0.2235 | D loss: 0.0424 | val G loss: 0.2061 | total time: 1 hours 2 minutes
+Epoch: 73 | G loss: 0.2277 | D loss: 0.0424 | val G loss: 0.2157 | total time: 1 hours 3 minutes
+Epoch: 74 | G loss: 0.2214 | D loss: 0.0449 | val G loss: 0.1756 | total time: 1 hours 4 minutes
+Epoch: 75 | G loss: 0.2241 | D loss: 0.0449 | val G loss: 0.2055 | total time: 1 hours 4 minutes
+Epoch: 76 | G loss: 0.2151 | D loss: 0.0453 | val G loss: 0.1905 | total time: 1 hours 5 minutes
+Epoch: 77 | G loss: 0.2183 | D loss: 0.0468 | val G loss: 0.2053 | total time: 1 hours 6 minutes
+Epoch: 78 | G loss: 0.2181 | D loss: 0.0444 | val G loss: 0.1953 | total time: 1 hours 7 minutes
+Epoch: 79 | G loss: 0.2189 | D loss: 0.0436 | val G loss: 0.1852 | total time: 1 hours 8 minutes
+Epoch: 80 | G loss: 0.2185 | D loss: 0.0438 | val G loss: 0.1921 | total time: 1 hours 9 minutes
+Epoch: 81 | G loss: 0.2202 | D loss: 0.0432 | val G loss: 0.1990 | total time: 1 hours 10 minutes
+Epoch: 82 | G loss: 0.2193 | D loss: 0.0427 | val G loss: 0.1868 | total time: 1 hours 11 minutes
+Epoch: 83 | G loss: 0.2147 | D loss: 0.0435 | val G loss: 0.1804 | total time: 1 hours 11 minutes
+Epoch: 84 | G loss: 0.2145 | D loss: 0.0442 | val G loss: 0.1735 | total time: 1 hours 12 minutes
+Epoch: 85 | G loss: 0.2168 | D loss: 0.0447 | val G loss: 0.1911 | total time: 1 hours 13 minutes
+Epoch: 86 | G loss: 0.2168 | D loss: 0.0434 | val G loss: 0.1920 | total time: 1 hours 14 minutes
+Epoch: 87 | G loss: 0.2110 | D loss: 0.0448 | val G loss: 0.2276 | total time: 1 hours 15 minutes
+Epoch: 88 | G loss: 0.2141 | D loss: 0.0458 | val G loss: 0.1998 | total time: 1 hours 16 minutes
+Epoch: 89 | G loss: 0.2123 | D loss: 0.0434 | val G loss: 0.1952 | total time: 1 hours 17 minutes
+Epoch: 90 | G loss: 0.2147 | D loss: 0.0410 | val G loss: 0.1902 | total time: 1 hours 18 minutes
+Epoch: 91 | G loss: 0.2103 | D loss: 0.0449 | val G loss: 0.1754 | total time: 1 hours 18 minutes
+Epoch: 92 | G loss: 0.2106 | D loss: 0.0429 | val G loss: 0.1860 | total time: 1 hours 19 minutes
+Epoch: 93 | G loss: 0.2169 | D loss: 0.0422 | val G loss: 0.1758 | total time: 1 hours 20 minutes
+Epoch: 94 | G loss: 0.2064 | D loss: 0.0443 | val G loss: 0.1708 | total time: 1 hours 21 minutes
+Epoch: 95 | G loss: 0.2146 | D loss: 0.0411 | val G loss: 0.1806 | total time: 1 hours 22 minutes
+Epoch: 96 | G loss: 0.2122 | D loss: 0.0416 | val G loss: 0.1866 | total time: 1 hours 23 minutes
+Epoch: 97 | G loss: 0.2102 | D loss: 0.0434 | val G loss: 0.1671 | total time: 1 hours 24 minutes
+Epoch: 98 | G loss: 0.2141 | D loss: 0.0453 | val G loss: 0.1779 | total time: 1 hours 25 minutes
+Epoch: 99 | G loss: 0.2094 | D loss: 0.0416 | val G loss: 0.1748 | total time: 1 hours 25 minutes
+Epoch: 100 | G loss: 0.2074 | D loss: 0.0442 | val G loss: 0.1867 | total time: 1 hours 26 minutes
+finished best_val=0.167117
+=== P2 zero-shot Our Warp ===
+ckpt=weights/spare_mc_p1_full_warp_d_generator.pth  pairs=100  out=P2/our_warp/qc  device=cuda
+Frame: RAI (IEC 61217)
+Plane: axial — slice ⊥ LR
+Display: horizontal → SI, vertical → AP
+Slice index: 52 / 127  (axis 0 = LR)
+DVF arrows: u=SI, v=AP
+Flip H: False  |  Flip V: False
+[001/100] 01_to_01   L1=0.0226 zero=0.0000 cos=nan
+[002/100] 01_to_02   L1=0.1646 zero=0.1534 cos=0.7469
+[003/100] 01_to_03   L1=0.5631 zero=0.4175 cos=0.7350
+[004/100] 01_to_04   L1=0.7457 zero=0.6800 cos=0.7797
+[005/100] 01_to_05   L1=0.8674 zero=0.8665 cos=0.7856
+[006/100] 01_to_06   L1=0.9743 zero=0.9577 cos=0.7487
+[007/100] 01_to_07   L1=0.9371 zero=1.0164 cos=0.6735
+[008/100] 01_to_08   L1=0.9063 zero=0.9552 cos=0.5346
+[009/100] 01_to_09   L1=0.6438 zero=0.6434 cos=0.4696
+[010/100] 01_to_10   L1=0.2496 zero=0.2358 cos=0.4102
+[011/100] 02_to_01   L1=0.1873 zero=0.1571 cos=0.7528
+[012/100] 02_to_02   L1=0.0258 zero=0.0000 cos=nan
+[013/100] 02_to_03   L1=0.2838 zero=0.2242 cos=0.6245
+[014/100] 02_to_04   L1=0.5016 zero=0.4947 cos=0.7066
+[015/100] 02_to_05   L1=0.6511 zero=0.6909 cos=0.7248
+[016/100] 02_to_06   L1=0.8109 zero=0.8086 cos=0.6722
+[017/100] 02_to_07   L1=0.8506 zero=0.9010 cos=0.6049
+[018/100] 02_to_08   L1=0.9140 zero=0.8844 cos=0.3786
+[019/100] 02_to_09   L1=0.7084 zero=0.6546 cos=0.3289
+[020/100] 02_to_10   L1=0.4188 zero=0.3223 cos=0.5118
+[021/100] 03_to_01   L1=0.5541 zero=0.4088 cos=0.7549
+[022/100] 03_to_02   L1=0.2794 zero=0.2238 cos=0.6567
+[023/100] 03_to_03   L1=0.0197 zero=0.0000 cos=nan
+[024/100] 03_to_04   L1=0.1620 zero=0.2079 cos=0.7749
+[025/100] 03_to_05   L1=0.3442 zero=0.3992 cos=0.6959
+[026/100] 03_to_06   L1=0.5434 zero=0.5384 cos=0.6143
+[027/100] 03_to_07   L1=0.6526 zero=0.6469 cos=0.5178
+[028/100] 03_to_08   L1=0.8329 zero=0.6797 cos=0.2160
+[029/100] 03_to_09   L1=0.7537 zero=0.5420 cos=0.3647
+[030/100] 03_to_10   L1=0.6295 zero=0.4155 cos=0.7397
+[031/100] 04_to_01   L1=0.6876 zero=0.6781 cos=0.7959
+[032/100] 04_to_02   L1=0.4766 zero=0.4868 cos=0.7273
+[033/100] 04_to_03   L1=0.1565 zero=0.2105 cos=0.7784
+[034/100] 04_to_04   L1=0.0174 zero=0.0000 cos=nan
+[035/100] 04_to_05   L1=0.1631 zero=0.1522 cos=0.6011
+[036/100] 04_to_06   L1=0.3791 zero=0.3047 cos=0.4653
+[037/100] 04_to_07   L1=0.5172 zero=0.4400 cos=0.3708
+[038/100] 04_to_08   L1=0.7715 zero=0.5126 cos=0.2370
+[039/100] 04_to_09   L1=0.8100 zero=0.5145 cos=0.5169
+[040/100] 04_to_10   L1=0.7574 zero=0.6140 cos=0.7965
+[041/100] 05_to_01   L1=0.8181 zero=0.8538 cos=0.7871
+[042/100] 05_to_02   L1=0.6291 zero=0.6833 cos=0.7278
+[043/100] 05_to_03   L1=0.3265 zero=0.4059 cos=0.7093
+[044/100] 05_to_04   L1=0.1630 zero=0.1591 cos=0.5736
+[045/100] 05_to_05   L1=0.0186 zero=0.0000 cos=nan
+[046/100] 05_to_06   L1=0.1826 zero=0.1361 cos=0.3789
+[047/100] 05_to_07   L1=0.3686 zero=0.2704 cos=0.3464
+[048/100] 05_to_08   L1=0.7751 zero=0.3898 cos=0.2911
+[049/100] 05_to_09   L1=0.8798 zero=0.5400 cos=0.6219
+[050/100] 05_to_10   L1=0.8621 zero=0.7647 cos=0.8006
+[051/100] 06_to_01   L1=0.9158 zero=0.9377 cos=0.7556
+[052/100] 06_to_02   L1=0.7557 zero=0.7939 cos=0.6931
+[053/100] 06_to_03   L1=0.5096 zero=0.5450 cos=0.6205
+[054/100] 06_to_04   L1=0.3543 zero=0.3128 cos=0.4764
+[055/100] 06_to_05   L1=0.1772 zero=0.1351 cos=0.3442
+[056/100] 06_to_06   L1=0.0205 zero=0.0000 cos=nan
+[057/100] 06_to_07   L1=0.1937 zero=0.1105 cos=0.2689
+[058/100] 06_to_08   L1=0.7885 zero=0.2584 cos=0.2870
+[059/100] 06_to_09   L1=0.9465 zero=0.5297 cos=0.6205
+[060/100] 06_to_10   L1=0.9601 zero=0.8061 cos=0.7660
+[061/100] 07_to_01   L1=0.8850 zero=0.9954 cos=0.6855
+[062/100] 07_to_02   L1=0.7807 zero=0.8823 cos=0.6128
+[063/100] 07_to_03   L1=0.6303 zero=0.6502 cos=0.4821
+[064/100] 07_to_04   L1=0.5127 zero=0.4445 cos=0.3400
+[065/100] 07_to_05   L1=0.3863 zero=0.2766 cos=0.2786
+[066/100] 07_to_06   L1=0.2080 zero=0.1071 cos=0.1878
+[067/100] 07_to_07   L1=0.0215 zero=0.0000 cos=nan
+[068/100] 07_to_08   L1=0.3049 zero=0.1543 cos=0.3032
+[069/100] 07_to_09   L1=0.6993 zero=0.4841 cos=0.5929
+[070/100] 07_to_10   L1=0.7899 zero=0.8143 cos=0.7228
+[071/100] 08_to_01   L1=0.8852 zero=0.9591 cos=0.5022
+[072/100] 08_to_02   L1=0.9003 zero=0.8824 cos=0.3325
+[073/100] 08_to_03   L1=0.8857 zero=0.6835 cos=0.1479
+[074/100] 08_to_04   L1=0.8489 zero=0.5096 cos=0.1571
+[075/100] 08_to_05   L1=0.8499 zero=0.3895 cos=0.2108
+[076/100] 08_to_06   L1=0.8401 zero=0.2556 cos=0.2220
+[077/100] 08_to_07   L1=0.3461 zero=0.1513 cos=0.2793
+[078/100] 08_to_08   L1=0.0217 zero=0.0000 cos=nan
+[079/100] 08_to_09   L1=0.2655 zero=0.3056 cos=0.5493
+[080/100] 08_to_10   L1=0.6224 zero=0.7046 cos=0.5607
+[081/100] 09_to_01   L1=0.6117 zero=0.6544 cos=0.4912
+[082/100] 09_to_02   L1=0.6907 zero=0.6672 cos=0.3327
+[083/100] 09_to_03   L1=0.7725 zero=0.5412 cos=0.3259
+[084/100] 09_to_04   L1=0.8451 zero=0.5096 cos=0.4684
+[085/100] 09_to_05   L1=0.9507 zero=0.5345 cos=0.5589
+[086/100] 09_to_06   L1=1.0144 zero=0.5202 cos=0.5661
+[087/100] 09_to_07   L1=0.8059 zero=0.4825 cos=0.5194
+[088/100] 09_to_08   L1=0.2912 zero=0.3018 cos=0.4981
+[089/100] 09_to_09   L1=0.0252 zero=0.0000 cos=nan
+[090/100] 09_to_10   L1=0.3199 zero=0.3452 cos=0.5867
+[091/100] 10_to_01   L1=0.2268 zero=0.2339 cos=0.4629
+[092/100] 10_to_02   L1=0.4081 zero=0.3231 cos=0.5168
+[093/100] 10_to_03   L1=0.6591 zero=0.4108 cos=0.7003
+[094/100] 10_to_04   L1=0.8061 zero=0.6235 cos=0.7680
+[095/100] 10_to_05   L1=0.9217 zero=0.7696 cos=0.7810
+[096/100] 10_to_06   L1=1.0021 zero=0.8206 cos=0.7514
+[097/100] 10_to_07   L1=0.8837 zero=0.8265 cos=0.6980
+[098/100] 10_to_08   L1=0.6375 zero=0.7059 cos=0.5766
+[099/100] 10_to_09   L1=0.3267 zero=0.3451 cos=0.5835
+[100/100] 10_to_10   L1=0.0309 zero=0.0000 cos=nan
+done. non-identity mean L1=0.6141 mean cos=0.5471
+metrics → P2/our_warp/metrics.tsv
+=== P2 fine-tune Our Warp ===
+[spare_mc_p2_warp_d_finetune] device=cuda train=1024 val=288 lr_g=3e-05 lr_d=1e-05
+Epoch 001/30 | G=0.3376 D=0.0000 valG=0.3268 | time=0.01h
+Epoch 002/30 | G=0.2102 D=0.0000 valG=0.2908 | time=0.02h
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/nn/modules/conv.py:720: UserWarning: Using padding='same' with even kernel lengths and odd dilation may require a zero-padded copy of the input be created (Triggered internally at /pytorch/aten/src/ATen/native/Convolution.cpp:1036.)
+  return F.conv3d(
+Epoch 003/30 | G=0.1996 D=0.0860 valG=0.2616 | time=0.03h
+Epoch 004/30 | G=0.1777 D=0.0772 valG=0.2454 | time=0.05h
+Epoch 005/30 | G=0.1660 D=0.0767 valG=0.2390 | time=0.06h
+Epoch 006/30 | G=0.1556 D=0.0787 valG=0.2239 | time=0.07h
+Epoch 007/30 | G=0.1485 D=0.0781 valG=0.2203 | time=0.08h
+Epoch 008/30 | G=0.1433 D=0.0782 valG=0.2127 | time=0.09h
+Epoch 009/30 | G=0.1385 D=0.0777 valG=0.2139 | time=0.11h
+Epoch 010/30 | G=0.1361 D=0.0801 valG=0.2133 | time=0.12h
+Epoch 011/30 | G=0.1312 D=0.0794 valG=0.2069 | time=0.13h
+Epoch 012/30 | G=0.1282 D=0.0806 valG=0.2031 | time=0.14h
+Epoch 013/30 | G=0.1266 D=0.0811 valG=0.1957 | time=0.15h
+Epoch 014/30 | G=0.1235 D=0.0817 valG=0.2022 | time=0.17h
+Epoch 015/30 | G=0.1212 D=0.0821 valG=0.2017 | time=0.18h
+Epoch 016/30 | G=0.1204 D=0.0823 valG=0.2007 | time=0.19h
+Epoch 017/30 | G=0.1179 D=0.0845 valG=0.1980 | time=0.20h
+Epoch 018/30 | G=0.1156 D=0.0818 valG=0.1957 | time=0.21h
+Epoch 019/30 | G=0.1154 D=0.0829 valG=0.1943 | time=0.23h
+Epoch 020/30 | G=0.1135 D=0.0817 valG=0.1955 | time=0.24h
+Epoch 021/30 | G=0.1133 D=0.0819 valG=0.1891 | time=0.25h
+Epoch 022/30 | G=0.1120 D=0.0826 valG=0.1981 | time=0.26h
+Epoch 023/30 | G=0.1113 D=0.0822 valG=0.1898 | time=0.27h
+Epoch 024/30 | G=0.1100 D=0.0824 valG=0.1885 | time=0.29h
+Epoch 025/30 | G=0.1077 D=0.0846 valG=0.1987 | time=0.30h
+Epoch 026/30 | G=0.1098 D=0.0809 valG=0.1883 | time=0.31h
+Epoch 027/30 | G=0.1069 D=0.0831 valG=0.1892 | time=0.32h
+Epoch 028/30 | G=0.1070 D=0.0833 valG=0.1949 | time=0.33h
+Epoch 029/30 | G=0.1057 D=0.0836 valG=0.1947 | time=0.35h
+Epoch 030/30 | G=0.1051 D=0.0823 valG=0.1990 | time=0.36h
+finished best_val=0.188260
+=== P2 tuned QC Our Warp ===
+ckpt=weights/spare_mc_p2_warp_d_finetune_generator.pth  pairs=100  out=P2/our_warp_ft/qc  device=cuda
+Frame: RAI (IEC 61217)
+Plane: axial — slice ⊥ LR
+Display: horizontal → SI, vertical → AP
+Slice index: 52 / 127  (axis 0 = LR)
+DVF arrows: u=SI, v=AP
+Flip H: False  |  Flip V: False
+[001/100] 01_to_01   L1=0.0158 zero=0.0000 cos=nan
+[002/100] 01_to_02   L1=0.0661 zero=0.1534 cos=0.9221
+[003/100] 01_to_03   L1=0.1092 zero=0.4175 cos=0.9735
+[004/100] 01_to_04   L1=0.1428 zero=0.6800 cos=0.9810
+[005/100] 01_to_05   L1=0.1865 zero=0.8665 cos=0.9823
+[006/100] 01_to_06   L1=0.2037 zero=0.9577 cos=0.9839
+[007/100] 01_to_07   L1=0.2087 zero=1.0164 cos=0.9854
+[008/100] 01_to_08   L1=0.1880 zero=0.9552 cos=0.9862
+[009/100] 01_to_09   L1=0.1707 zero=0.6434 cos=0.9708
+[010/100] 01_to_10   L1=0.0848 zero=0.2358 cos=0.9629
+[011/100] 02_to_01   L1=0.0656 zero=0.1571 cos=0.9369
+[012/100] 02_to_02   L1=0.0141 zero=0.0000 cos=nan
+[013/100] 02_to_03   L1=0.0749 zero=0.2242 cos=0.9632
+[014/100] 02_to_04   L1=0.1131 zero=0.4947 cos=0.9799
+[015/100] 02_to_05   L1=0.1627 zero=0.6909 cos=0.9796
+[016/100] 02_to_06   L1=0.1769 zero=0.8086 cos=0.9814
+[017/100] 02_to_07   L1=0.1883 zero=0.9010 cos=0.9832
+[018/100] 02_to_08   L1=0.1773 zero=0.8844 cos=0.9852
+[019/100] 02_to_09   L1=0.1722 zero=0.6546 cos=0.9698
+[020/100] 02_to_10   L1=0.0912 zero=0.3223 cos=0.9646
+[021/100] 03_to_01   L1=0.1088 zero=0.4088 cos=0.9724
+[022/100] 03_to_02   L1=0.0703 zero=0.2238 cos=0.9639
+[023/100] 03_to_03   L1=0.0149 zero=0.0000 cos=nan
+[024/100] 03_to_04   L1=0.0692 zero=0.2079 cos=0.9594
+[025/100] 03_to_05   L1=0.1114 zero=0.3992 cos=0.9723
+[026/100] 03_to_06   L1=0.1209 zero=0.5384 cos=0.9810
+[027/100] 03_to_07   L1=0.1425 zero=0.6469 cos=0.9807
+[028/100] 03_to_08   L1=0.1393 zero=0.6797 cos=0.9840
+[029/100] 03_to_09   L1=0.1532 zero=0.5420 cos=0.9624
+[030/100] 03_to_10   L1=0.1206 zero=0.4155 cos=0.9627
+[031/100] 04_to_01   L1=0.1328 zero=0.6781 cos=0.9840
+[032/100] 04_to_02   L1=0.0989 zero=0.4868 cos=0.9836
+[033/100] 04_to_03   L1=0.0631 zero=0.2105 cos=0.9662
+[034/100] 04_to_04   L1=0.0149 zero=0.0000 cos=nan
+[035/100] 04_to_05   L1=0.0691 zero=0.1522 cos=0.9264
+[036/100] 04_to_06   L1=0.0857 zero=0.3047 cos=0.9705
+[037/100] 04_to_07   L1=0.0957 zero=0.4400 cos=0.9803
+[038/100] 04_to_08   L1=0.1140 zero=0.5126 cos=0.9803
+[039/100] 04_to_09   L1=0.1716 zero=0.5145 cos=0.9365
+[040/100] 04_to_10   L1=0.1472 zero=0.6140 cos=0.9741
+[041/100] 05_to_01   L1=0.1643 zero=0.8538 cos=0.9849
+[042/100] 05_to_02   L1=0.1481 zero=0.6833 cos=0.9832
+[043/100] 05_to_03   L1=0.1166 zero=0.4059 cos=0.9748
+[044/100] 05_to_04   L1=0.0682 zero=0.1591 cos=0.9357
+[045/100] 05_to_05   L1=0.0168 zero=0.0000 cos=nan
+[046/100] 05_to_06   L1=0.0602 zero=0.1361 cos=0.9198
+[047/100] 05_to_07   L1=0.0735 zero=0.2704 cos=0.9674
+[048/100] 05_to_08   L1=0.1077 zero=0.3898 cos=0.9679
+[049/100] 05_to_09   L1=0.1849 zero=0.5400 cos=0.9237
+[050/100] 05_to_10   L1=0.1706 zero=0.7647 cos=0.9777
+[051/100] 06_to_01   L1=0.1725 zero=0.9377 cos=0.9869
+[052/100] 06_to_02   L1=0.1606 zero=0.7939 cos=0.9853
+[053/100] 06_to_03   L1=0.1321 zero=0.5450 cos=0.9802
+[054/100] 06_to_04   L1=0.0923 zero=0.3128 cos=0.9682
+[055/100] 06_to_05   L1=0.0580 zero=0.1351 cos=0.9276
+[056/100] 06_to_06   L1=0.0151 zero=0.0000 cos=nan
+[057/100] 06_to_07   L1=0.0508 zero=0.1105 cos=0.9259
+[058/100] 06_to_08   L1=0.0890 zero=0.2584 cos=0.9532
+[059/100] 06_to_09   L1=0.2004 zero=0.5297 cos=0.9167
+[060/100] 06_to_10   L1=0.1661 zero=0.8061 cos=0.9816
+[061/100] 07_to_01   L1=0.1851 zero=0.9954 cos=0.9874
+[062/100] 07_to_02   L1=0.1707 zero=0.8823 cos=0.9862
+[063/100] 07_to_03   L1=0.1432 zero=0.6502 cos=0.9821
+[064/100] 07_to_04   L1=0.1073 zero=0.4445 cos=0.9751
+[065/100] 07_to_05   L1=0.0754 zero=0.2766 cos=0.9674
+[066/100] 07_to_06   L1=0.0484 zero=0.1071 cos=0.9293
+[067/100] 07_to_07   L1=0.0151 zero=0.0000 cos=nan
+[068/100] 07_to_08   L1=0.0710 zero=0.1543 cos=0.9047
+[069/100] 07_to_09   L1=0.1796 zero=0.4841 cos=0.9282
+[070/100] 07_to_10   L1=0.1579 zero=0.8143 cos=0.9841
+[071/100] 08_to_01   L1=0.1753 zero=0.9591 cos=0.9885
+[072/100] 08_to_02   L1=0.1633 zero=0.8824 cos=0.9881
+[073/100] 08_to_03   L1=0.1471 zero=0.6835 cos=0.9813
+[074/100] 08_to_04   L1=0.1296 zero=0.5096 cos=0.9748
+[075/100] 08_to_05   L1=0.1202 zero=0.3895 cos=0.9611
+[076/100] 08_to_06   L1=0.0999 zero=0.2556 cos=0.9425
+[077/100] 08_to_07   L1=0.0719 zero=0.1513 cos=0.9036
+[078/100] 08_to_08   L1=0.0158 zero=0.0000 cos=nan
+[079/100] 08_to_09   L1=0.1321 zero=0.3056 cos=0.9164
+[080/100] 08_to_10   L1=0.1443 zero=0.7046 cos=0.9839
+[081/100] 09_to_01   L1=0.1765 zero=0.6544 cos=0.9672
+[082/100] 09_to_02   L1=0.1788 zero=0.6672 cos=0.9689
+[083/100] 09_to_03   L1=0.1568 zero=0.5412 cos=0.9607
+[084/100] 09_to_04   L1=0.1682 zero=0.5096 cos=0.9427
+[085/100] 09_to_05   L1=0.1839 zero=0.5345 cos=0.9306
+[086/100] 09_to_06   L1=0.1813 zero=0.5202 cos=0.9364
+[087/100] 09_to_07   L1=0.1850 zero=0.4825 cos=0.9291
+[088/100] 09_to_08   L1=0.1427 zero=0.3018 cos=0.9005
+[089/100] 09_to_09   L1=0.0141 zero=0.0000 cos=nan
+[090/100] 09_to_10   L1=0.1383 zero=0.3452 cos=0.9513
+[091/100] 10_to_01   L1=0.0774 zero=0.2339 cos=0.9673
+[092/100] 10_to_02   L1=0.0901 zero=0.3231 cos=0.9679
+[093/100] 10_to_03   L1=0.1122 zero=0.4108 cos=0.9648
+[094/100] 10_to_04   L1=0.1499 zero=0.6235 cos=0.9712
+[095/100] 10_to_05   L1=0.1835 zero=0.7696 cos=0.9742
+[096/100] 10_to_06   L1=0.1814 zero=0.8206 cos=0.9786
+[097/100] 10_to_07   L1=0.1745 zero=0.8265 cos=0.9821
+[098/100] 10_to_08   L1=0.1540 zero=0.7059 cos=0.9836
+[099/100] 10_to_09   L1=0.1434 zero=0.3451 cos=0.9559
+[100/100] 10_to_10   L1=0.0147 zero=0.0000 cos=nan
+done. non-identity mean L1=0.1324 mean cos=0.9635
+metrics → P2/our_warp_ft/metrics.tsv
+=== P2 zero-shot Dan CRB ===
+ckpt=Dan'sPaperGan/weights/dans_crb_p1_full_warp_d_generator.pth pairs=100 out=P2/dans_gan/qc
+[001/100] 01_to_01 L1=0.0143 cos=nan
+[002/100] 01_to_02 L1=0.1537 cos=-0.0209
+[003/100] 01_to_03 L1=0.8033 cos=0.6909
+[004/100] 01_to_04 L1=1.0330 cos=0.7509
+[005/100] 01_to_05 L1=1.2278 cos=0.7397
+[006/100] 01_to_06 L1=1.3425 cos=0.7029
+[007/100] 01_to_07 L1=1.1082 cos=0.6186
+[008/100] 01_to_08 L1=0.8465 cos=0.6008
+[009/100] 01_to_09 L1=0.5617 cos=0.6164
+[010/100] 01_to_10 L1=0.2222 cos=0.5671
+[011/100] 02_to_01 L1=0.1677 cos=0.2623
+[012/100] 02_to_02 L1=0.0092 cos=nan
+[013/100] 02_to_03 L1=0.2113 cos=0.5713
+[014/100] 02_to_04 L1=0.6154 cos=0.7487
+[015/100] 02_to_05 L1=0.8546 cos=0.7300
+[016/100] 02_to_06 L1=0.9673 cos=0.6503
+[017/100] 02_to_07 L1=0.8775 cos=0.5797
+[018/100] 02_to_08 L1=0.8036 cos=0.4762
+[019/100] 02_to_09 L1=0.6300 cos=0.3509
+[020/100] 02_to_10 L1=0.4427 cos=0.3540
+[021/100] 03_to_01 L1=0.7798 cos=0.6955
+[022/100] 03_to_02 L1=0.2373 cos=0.6343
+[023/100] 03_to_03 L1=0.0015 cos=nan
+[024/100] 03_to_04 L1=0.2093 cos=0.0393
+[025/100] 03_to_05 L1=0.4781 cos=0.5977
+[026/100] 03_to_06 L1=0.6752 cos=0.5074
+[027/100] 03_to_07 L1=0.6974 cos=0.3777
+[028/100] 03_to_08 L1=0.8388 cos=0.0695
+[029/100] 03_to_09 L1=0.8186 cos=0.2243
+[030/100] 03_to_10 L1=0.7806 cos=0.5951
+[031/100] 04_to_01 L1=1.0191 cos=0.7372
+[032/100] 04_to_02 L1=0.4945 cos=0.7029
+[033/100] 04_to_03 L1=0.2091 cos=0.1466
+[034/100] 04_to_04 L1=0.0029 cos=nan
+[035/100] 04_to_05 L1=0.1532 cos=-0.0098
+[036/100] 04_to_06 L1=0.3965 cos=0.2959
+[037/100] 04_to_07 L1=0.5531 cos=0.1822
+[038/100] 04_to_08 L1=0.8113 cos=0.1437
+[039/100] 04_to_09 L1=0.9209 cos=0.4091
+[040/100] 04_to_10 L1=1.0072 cos=0.6963
+[041/100] 05_to_01 L1=0.9322 cos=0.7598
+[042/100] 05_to_02 L1=0.6577 cos=0.7126
+[043/100] 05_to_03 L1=0.3407 cos=0.6948
+[044/100] 05_to_04 L1=0.1626 cos=0.0552
+[045/100] 05_to_05 L1=0.0015 cos=nan
+[046/100] 05_to_06 L1=0.1611 cos=0.2728
+[047/100] 05_to_07 L1=0.3907 cos=0.1813
+[048/100] 05_to_08 L1=0.8336 cos=0.2312
+[049/100] 05_to_09 L1=0.9979 cos=0.5549
+[050/100] 05_to_10 L1=1.0771 cos=0.7394
+[051/100] 06_to_01 L1=1.0746 cos=0.7220
+[052/100] 06_to_02 L1=0.8047 cos=0.6678
+[053/100] 06_to_03 L1=0.5515 cos=0.5835
+[054/100] 06_to_04 L1=0.3551 cos=0.4184
+[055/100] 06_to_05 L1=0.1540 cos=0.2861
+[056/100] 06_to_06 L1=0.0023 cos=nan
+[057/100] 06_to_07 L1=0.1710 cos=0.2305
+[058/100] 06_to_08 L1=0.8395 cos=0.2372
+[059/100] 06_to_09 L1=1.0735 cos=0.5451
+[060/100] 06_to_10 L1=1.1979 cos=0.6992
+[061/100] 07_to_01 L1=1.0478 cos=0.6407
+[062/100] 07_to_02 L1=0.8578 cos=0.6036
+[063/100] 07_to_03 L1=0.6769 cos=0.4438
+[064/100] 07_to_04 L1=0.5298 cos=0.2384
+[065/100] 07_to_05 L1=0.4008 cos=0.1006
+[066/100] 07_to_06 L1=0.1607 cos=0.0877
+[067/100] 07_to_07 L1=0.0076 cos=nan
+[068/100] 07_to_08 L1=0.2950 cos=0.0222
+[069/100] 07_to_09 L1=0.8412 cos=0.4518
+[070/100] 07_to_10 L1=0.9964 cos=0.6466
+[071/100] 08_to_01 L1=0.8640 cos=0.6061
+[072/100] 08_to_02 L1=0.8886 cos=0.3819
+[073/100] 08_to_03 L1=0.9633 cos=-0.0320
+[074/100] 08_to_04 L1=0.9511 cos=0.0246
+[075/100] 08_to_05 L1=1.0077 cos=0.1392
+[076/100] 08_to_06 L1=0.9980 cos=0.1600
+[077/100] 08_to_07 L1=0.2541 cos=0.1779
+[078/100] 08_to_08 L1=0.0004 cos=nan
+[079/100] 08_to_09 L1=0.3005 cos=0.5109
+[080/100] 08_to_10 L1=0.6757 cos=0.5603
+[081/100] 09_to_01 L1=0.5610 cos=0.6188
+[082/100] 09_to_02 L1=0.7354 cos=0.1810
+[083/100] 09_to_03 L1=0.9017 cos=0.1230
+[084/100] 09_to_04 L1=1.0236 cos=0.3536
+[085/100] 09_to_05 L1=1.2524 cos=0.4491
+[086/100] 09_to_06 L1=1.3931 cos=0.4321
+[087/100] 09_to_07 L1=1.0694 cos=0.3187
+[088/100] 09_to_08 L1=0.3936 cos=0.2746
+[089/100] 09_to_09 L1=0.0057 cos=nan
+[090/100] 09_to_10 L1=0.3751 cos=0.5364
+[091/100] 10_to_01 L1=0.2022 cos=0.5511
+[092/100] 10_to_02 L1=0.6816 cos=0.1000
+[093/100] 10_to_03 L1=1.1557 cos=0.3974
+[094/100] 10_to_04 L1=1.4042 cos=0.5522
+[095/100] 10_to_05 L1=1.7481 cos=0.5260
+[096/100] 10_to_06 L1=2.0366 cos=0.4584
+[097/100] 10_to_07 L1=1.9493 cos=0.3284
+[098/100] 10_to_08 L1=0.8884 cos=0.3868
+[099/100] 10_to_09 L1=0.3985 cos=0.5077
+[100/100] 10_to_10 L1=0.0016 cos=nan
+directed mean L1=0.7400 cos=0.4276
+leave-out 5/9 mean L1=0.7302 cos=0.4181
+=== P2 fine-tune Dan CRB ===
+[dans_crb_p2_warp_d_finetune] device=cuda train=1024 val=288 lr_g=3e-05 lr_d=1e-05
+Epoch 001/30 | G=0.3434 D=0.0000 valG=0.3240 | time=0.01h
+Epoch 002/30 | G=0.2380 D=0.0000 valG=0.2866 | time=0.01h
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/nn/modules/conv.py:720: UserWarning: Using padding='same' with even kernel lengths and odd dilation may require a zero-padded copy of the input be created (Triggered internally at /pytorch/aten/src/ATen/native/Convolution.cpp:1036.)
+  return F.conv3d(
+Epoch 003/30 | G=0.2241 D=0.0947 valG=0.2699 | time=0.02h
+Epoch 004/30 | G=0.2015 D=0.0820 valG=0.2625 | time=0.03h
+Epoch 005/30 | G=0.1900 D=0.0811 valG=0.2560 | time=0.04h
+Epoch 006/30 | G=0.1805 D=0.0816 valG=0.2469 | time=0.05h
+Epoch 007/30 | G=0.1745 D=0.0821 valG=0.2459 | time=0.06h
+Epoch 008/30 | G=0.1679 D=0.0827 valG=0.2363 | time=0.07h
+Epoch 009/30 | G=0.1625 D=0.0814 valG=0.2360 | time=0.08h
+Epoch 010/30 | G=0.1586 D=0.0814 valG=0.2339 | time=0.08h
+Epoch 011/30 | G=0.1549 D=0.0817 valG=0.2310 | time=0.09h
+Epoch 012/30 | G=0.1527 D=0.0827 valG=0.2228 | time=0.10h
+Epoch 013/30 | G=0.1492 D=0.0810 valG=0.2172 | time=0.11h
+Epoch 014/30 | G=0.1464 D=0.0812 valG=0.2053 | time=0.12h
+Epoch 015/30 | G=0.1454 D=0.0826 valG=0.2067 | time=0.13h
+Epoch 016/30 | G=0.1414 D=0.0832 valG=0.2075 | time=0.14h
+Epoch 017/30 | G=0.1415 D=0.0828 valG=0.2085 | time=0.14h
+Epoch 018/30 | G=0.1387 D=0.0849 valG=0.2026 | time=0.15h
+Epoch 019/30 | G=0.1382 D=0.0856 valG=0.1972 | time=0.16h
+Epoch 020/30 | G=0.1372 D=0.0842 valG=0.1986 | time=0.17h
+Epoch 021/30 | G=0.1348 D=0.0838 valG=0.1969 | time=0.18h
+Epoch 022/30 | G=0.1333 D=0.0834 valG=0.1937 | time=0.19h
+Epoch 023/30 | G=0.1305 D=0.0845 valG=0.1923 | time=0.20h
+Epoch 024/30 | G=0.1311 D=0.0822 valG=0.1901 | time=0.20h
+Epoch 025/30 | G=0.1295 D=0.0862 valG=0.1916 | time=0.21h
+Epoch 026/30 | G=0.1291 D=0.0839 valG=0.1887 | time=0.22h
+Epoch 027/30 | G=0.1286 D=0.0845 valG=0.1893 | time=0.23h
+Epoch 028/30 | G=0.1269 D=0.0862 valG=0.1863 | time=0.24h
+Epoch 029/30 | G=0.1261 D=0.0877 valG=0.1865 | time=0.25h
+Epoch 030/30 | G=0.1242 D=0.0844 valG=0.1878 | time=0.25h
+finished best_val=0.186288
+=== P2 tuned QC Dan CRB ===
+ckpt=Dan'sPaperGan/weights/dans_crb_p2_warp_d_finetune_generator.pth pairs=100 out=P2/dans_gan_ft/qc
+[001/100] 01_to_01 L1=0.0001 cos=nan
+[002/100] 01_to_02 L1=0.0773 cos=0.9178
+[003/100] 01_to_03 L1=0.1208 cos=0.9755
+[004/100] 01_to_04 L1=0.1434 cos=0.9844
+[005/100] 01_to_05 L1=0.1554 cos=0.9887
+[006/100] 01_to_06 L1=0.1607 cos=0.9912
+[007/100] 01_to_07 L1=0.1661 cos=0.9915
+[008/100] 01_to_08 L1=0.1641 cos=0.9907
+[009/100] 01_to_09 L1=0.1693 cos=0.9746
+[010/100] 01_to_10 L1=0.0820 cos=0.9594
+[011/100] 02_to_01 L1=0.0786 cos=0.9120
+[012/100] 02_to_02 L1=0.0001 cos=nan
+[013/100] 02_to_03 L1=0.0744 cos=0.9702
+[014/100] 02_to_04 L1=0.1179 cos=0.9824
+[015/100] 02_to_05 L1=0.1512 cos=0.9830
+[016/100] 02_to_06 L1=0.1522 cos=0.9872
+[017/100] 02_to_07 L1=0.1522 cos=0.9899
+[018/100] 02_to_08 L1=0.1529 cos=0.9895
+[019/100] 02_to_09 L1=0.1654 cos=0.9727
+[020/100] 02_to_10 L1=0.1058 cos=0.9546
+[021/100] 03_to_01 L1=0.1088 cos=0.9755
+[022/100] 03_to_02 L1=0.0798 cos=0.9672
+[023/100] 03_to_03 L1=0.0015 cos=nan
+[024/100] 03_to_04 L1=0.0782 cos=0.9565
+[025/100] 03_to_05 L1=0.1114 cos=0.9716
+[026/100] 03_to_06 L1=0.1207 cos=0.9835
+[027/100] 03_to_07 L1=0.1335 cos=0.9853
+[028/100] 03_to_08 L1=0.1297 cos=0.9859
+[029/100] 03_to_09 L1=0.1700 cos=0.9413
+[030/100] 03_to_10 L1=0.1246 cos=0.9649
+[031/100] 04_to_01 L1=0.1446 cos=0.9839
+[032/100] 04_to_02 L1=0.1119 cos=0.9836
+[033/100] 04_to_03 L1=0.0764 cos=0.9589
+[034/100] 04_to_04 L1=0.0016 cos=nan
+[035/100] 04_to_05 L1=0.0735 cos=0.9277
+[036/100] 04_to_06 L1=0.0921 cos=0.9674
+[037/100] 04_to_07 L1=0.1093 cos=0.9755
+[038/100] 04_to_08 L1=0.1235 cos=0.9751
+[039/100] 04_to_09 L1=0.1903 cos=0.8967
+[040/100] 04_to_10 L1=0.1422 cos=0.9759
+[041/100] 05_to_01 L1=0.1795 cos=0.9847
+[042/100] 05_to_02 L1=0.1516 cos=0.9836
+[043/100] 05_to_03 L1=0.1161 cos=0.9726
+[044/100] 05_to_04 L1=0.0737 cos=0.9340
+[045/100] 05_to_05 L1=0.0004 cos=nan
+[046/100] 05_to_06 L1=0.0703 cos=0.9073
+[047/100] 05_to_07 L1=0.1019 cos=0.9492
+[048/100] 05_to_08 L1=0.1276 cos=0.9527
+[049/100] 05_to_09 L1=0.2118 cos=0.8891
+[050/100] 05_to_10 L1=0.1640 cos=0.9797
+[051/100] 06_to_01 L1=0.1599 cos=0.9901
+[052/100] 06_to_02 L1=0.1420 cos=0.9894
+[053/100] 06_to_03 L1=0.1308 cos=0.9821
+[054/100] 06_to_04 L1=0.0823 cos=0.9745
+[055/100] 06_to_05 L1=0.0630 cos=0.9207
+[056/100] 06_to_06 L1=0.0007 cos=nan
+[057/100] 06_to_07 L1=0.0547 cos=0.9064
+[058/100] 06_to_08 L1=0.1001 cos=0.9422
+[059/100] 06_to_09 L1=0.2158 cos=0.9025
+[060/100] 06_to_10 L1=0.1564 cos=0.9840
+[061/100] 07_to_01 L1=0.1569 cos=0.9922
+[062/100] 07_to_02 L1=0.1429 cos=0.9910
+[063/100] 07_to_03 L1=0.1287 cos=0.9857
+[064/100] 07_to_04 L1=0.0968 cos=0.9807
+[065/100] 07_to_05 L1=0.0827 cos=0.9616
+[066/100] 07_to_06 L1=0.0528 cos=0.9052
+[067/100] 07_to_07 L1=0.0004 cos=nan
+[068/100] 07_to_08 L1=0.0797 cos=0.8863
+[069/100] 07_to_09 L1=0.2170 cos=0.9040
+[070/100] 07_to_10 L1=0.1527 cos=0.9864
+[071/100] 08_to_01 L1=0.1567 cos=0.9914
+[072/100] 08_to_02 L1=0.1457 cos=0.9904
+[073/100] 08_to_03 L1=0.1354 cos=0.9844
+[074/100] 08_to_04 L1=0.1189 cos=0.9762
+[075/100] 08_to_05 L1=0.1208 cos=0.9567
+[076/100] 08_to_06 L1=0.0963 cos=0.9396
+[077/100] 08_to_07 L1=0.0726 cos=0.8977
+[078/100] 08_to_08 L1=0.0007 cos=nan
+[079/100] 08_to_09 L1=0.1483 cos=0.8807
+[080/100] 08_to_10 L1=0.1602 cos=0.9823
+[081/100] 09_to_01 L1=0.2256 cos=0.9623
+[082/100] 09_to_02 L1=0.2073 cos=0.9641
+[083/100] 09_to_03 L1=0.1840 cos=0.9304
+[084/100] 09_to_04 L1=0.1819 cos=0.9115
+[085/100] 09_to_05 L1=0.2240 cos=0.8701
+[086/100] 09_to_06 L1=0.2417 cos=0.8759
+[087/100] 09_to_07 L1=0.2381 cos=0.8832
+[088/100] 09_to_08 L1=0.1460 cos=0.8955
+[089/100] 09_to_09 L1=0.0116 cos=nan
+[090/100] 09_to_10 L1=0.1505 cos=0.9427
+[091/100] 10_to_01 L1=0.0813 cos=0.9614
+[092/100] 10_to_02 L1=0.0986 cos=0.9579
+[093/100] 10_to_03 L1=0.1219 cos=0.9618
+[094/100] 10_to_04 L1=0.1473 cos=0.9738
+[095/100] 10_to_05 L1=0.1687 cos=0.9793
+[096/100] 10_to_06 L1=0.1598 cos=0.9842
+[097/100] 10_to_07 L1=0.1540 cos=0.9866
+[098/100] 10_to_08 L1=0.1466 cos=0.9854
+[099/100] 10_to_09 L1=0.1385 cos=0.9483
+[100/100] 10_to_10 L1=0.0007 cos=nan
+directed mean L1=0.1344 cos=0.9578
+leave-out 5/9 mean L1=0.1570 cos=0.9382
+=== waiting for Dan LOOCV (pid=671453) ===
+=== 2026-08-08T03:26:27+10:00 ALL DONE ===

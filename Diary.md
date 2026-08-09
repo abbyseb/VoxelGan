@@ -219,14 +219,79 @@ Mean leave-out L1: baseline **0.210** → warp-D **0.200** (slightly better). Co
 
 ---
 
+## 2026-08-05 ~11:17 — Pushed to GitHub
+
+Commit `32ea6d2` on `main` → https://github.com/abbyseb/VoxelGan.git (author abbyseb). Includes Diary, scenario scripts, warp-D train loop/QC, plots/logs. Weights/`results/` still gitignored.
+
+---
+
+## 2026-08-05 ~11:21 — Start leave-one-phase-out LOOCV (warp-D)
+
+**Protocol:** 10 folds; fold holds out phase \(k\), train on pairs that don’t touch \(k\) (81), val on pairs that do (19). Same warp-D recipe as best scenario.
+
+**Code/data:** `data/spare/all/` (100-pair pool via symlinks); `PhasePairDataset(holdout_mode=exclude|include)`; `train_loocv_warp_d.py`; `held_out_phases` in `train_loop`.
+
+**Compute:** sequential on **GPU 1** (`CUDA_VISIBLE_DEVICES=1`). Log: `plots/loocv_warp_d/train_master.log`. Weights: `weights/spare_mc_p1_loocv_warp_d_holdXX_*.pth`. ~1h/fold → ~10h total.
+
+---
+
+## 2026-08-05 ~12:25 — Orientation GUI for QC views
+
+Launched VoxelMap `gui/volume_orientation_viewer.py` on `data/spare/train/CT_01.npy` so we can pick plane / flips for QC panels. User should **Save config JSON** → prefer `configs/dvf_view_config.json` in Voxel_GAN; then re-render QC with that view.
+
+---
+
+## 2026-08-05 ~12:30 — Locked View 1 for CT/warp panels
+
+Saved `configs/dvf_view_config.json`: View 1 = axial, slice 52 ⊥ LR, H→SI V→AP, no flips (RAI / IEC 61217). Helper `utilities/view_config.py`. Re-did **01→06** full 128³ warp-D demo with that view for Ref / Target / Warp (+ DVF mags): `plots/qc_demo_01_to_06_warp_d.png` (L1≈0.235, cos≈0.995 on full volume).
+
+---
+
+## 2026-08-05 ~12:37 — QC all 100 pairs (warp-D, View 1 + mm bars)
+
+Script `scripts/qc_warp_d_all_pairs.py`. Regenerated **100/100** panels in `plots/qc_test_warp_d/` (same orientation + colorbars). Metrics: `plots/qc_test_warp_d/metrics.tsv`.
+
+| Set | mean L1 | mean cos |
+|-----|---------|----------|
+| 90 directed | **0.189** | **0.971** |
+| 10 identity | ~0.04 | — |
+
+Archive copy: `results/scenario_warp_d/qc_test_all100/`.
+
+---
+
+## 2026-08-05 ~13:00 — QC phase-MLP DVF-only (all 100)
+
+Script `scripts/qc_phase_mlp_dvf_only.py`. Panels = **|Elastix| / |pred| / |err|** only (no warp CT). View 1 + mm bars → `plots/qc_test_phase_mlp/`. Directed mean L1 **0.172**, cos **0.975** (slightly better L1 than warp-D’s 0.189 on the same full-vol eval).
+
+---
+
+## 2026-08-05 ~13:03 — phase-MLP QC restored to full layout
+
+User wanted warped CTs back. Regenerated `plots/qc_test_phase_mlp/` with **same 2×3 layout as warp-D**: ref CT | target CT | warp(ref, pred) + |Elastix| | |pred| | |err| (View 1, mm bars). Metrics unchanged (directed L1 0.172).
+
+---
+
+## 2026-08-05 ~13:13 — Drop SI/AP axis labels on all QC
+
+Removed anatomical axis text from QC/mesh figures; ticks off. Regenerated `plots/qc_test_warp_d/` (100), `plots/qc_test_phase_mlp/` (100), `plots/qc_mesh_01_to_06/`, and demo `plots/qc_demo_01_to_06_warp_d.png`.
+
+---
+
 ## Open threads
 
 - [x] Implement **warp-D** scenario on phase-MLP baseline knobs (`train_scenario_warp_d.py`)
 - [x] Finish warp-D train + compare D health / val G vs baseline
 - [x] Leave-phase-out **TEST QC** warp-D vs baseline
+- [x] Finish **10-fold LOOCV** warp-D train (aggregate TEST QC still open)
+- [ ] Full-P1 (no holdout) → P2 ZS → P2 FT for Our Warp + Dan; Dan CRB LOOCV (running via `P2/run_full_p1_transfer.sh`)
+- [x] Apply saved **view-config** to QC plots (View 1 / slice 52)
+- [x] QC **all 100 pairs** with View 1 + mm colorbars
+- [x] QC **phase-MLP** all 100 pairs (full CT+warp+DVF layout)
 - [ ] Optional: finer PatchGAN / feature matching / R1 if boundaries still soft in panels
 - [ ] Defer 5-ch `[ref,tgt,DVF]` unless warp-D QC plateaus
 - [ ] Report framing: patient-specific leave-phase-out; GAN as regularizer, not the main loss
+- [ ] **Revoke the GitHub PAT pasted in chat** and create a new one if needed
 
 ---
 

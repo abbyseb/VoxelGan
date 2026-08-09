@@ -1,0 +1,15 @@
+
+=== LOOCV warp-D start 2026-08-05T11:23:15.863634 ===
+
+=== LOOCV warp-D start 2026-08-05T11:23:51.650394 ===
+fold hold01 best_val=0.385847
+fold hold02 best_val=0.227274
+fold hold03 best_val=0.171337
+fold hold04 best_val=0.146171
+fold hold05 best_val=0.186006
+fold hold06 best_val=0.210626
+fold hold07 best_val=0.260704
+fold hold08 best_val=0.214932
+fold hold09 best_val=0.178828
+fold hold10 best_val=0.288592
+=== LOOCV warp-D done 2026-08-06T01:00:45.103369 ===

@@ -1,0 +1,24 @@
+[dans_crb_p2_warp_d_finetune] device=cuda train=1024 val=288 lr_g=3e-05 lr_d=1e-05
+Epoch 001/20 | G=0.3278 D=0.0000 valG=0.3282 | time=0.01h
+Epoch 002/20 | G=0.2338 D=0.0000 valG=0.2935 | time=0.02h
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/nn/modules/conv.py:720: UserWarning: Using padding='same' with even kernel lengths and odd dilation may require a zero-padded copy of the input be created (Triggered internally at /pytorch/aten/src/ATen/native/Convolution.cpp:1036.)
+  return F.conv3d(
+Epoch 003/20 | G=0.2257 D=0.0924 valG=0.2879 | time=0.02h
+Epoch 004/20 | G=0.2061 D=0.0808 valG=0.2878 | time=0.03h
+Epoch 005/20 | G=0.1964 D=0.0796 valG=0.2675 | time=0.04h
+Epoch 006/20 | G=0.1854 D=0.0809 valG=0.2614 | time=0.05h
+Epoch 007/20 | G=0.1792 D=0.0793 valG=0.2526 | time=0.06h
+Epoch 008/20 | G=0.1744 D=0.0808 valG=0.2498 | time=0.07h
+Epoch 009/20 | G=0.1690 D=0.0803 valG=0.2473 | time=0.07h
+Epoch 010/20 | G=0.1656 D=0.0780 valG=0.2332 | time=0.08h
+Epoch 011/20 | G=0.1599 D=0.0796 valG=0.2353 | time=0.09h
+Epoch 012/20 | G=0.1579 D=0.0773 valG=0.2314 | time=0.10h
+Epoch 013/20 | G=0.1543 D=0.0785 valG=0.2321 | time=0.11h
+Epoch 014/20 | G=0.1525 D=0.0811 valG=0.2294 | time=0.12h
+Epoch 015/20 | G=0.1515 D=0.0793 valG=0.2261 | time=0.13h
+Epoch 016/20 | G=0.1498 D=0.0786 valG=0.2206 | time=0.13h
+Epoch 017/20 | G=0.1477 D=0.0805 valG=0.2179 | time=0.14h
+Epoch 018/20 | G=0.1447 D=0.0802 valG=0.2167 | time=0.15h
+Epoch 019/20 | G=0.1440 D=0.0810 valG=0.2135 | time=0.16h
+Epoch 020/20 | G=0.1418 D=0.0798 valG=0.2160 | time=0.17h
+finished best_val=0.213491

@@ -39,6 +39,9 @@ def run_training(
     patches_per_pair_val=8,
     train_dir='data/spare/train',
     val_dir='data/spare/val',
+    # leave-phase-out: 0-indexed phase id(s). If set, train_dir/val_dir are
+    # usually the same pool (e.g. data/spare/all); train excludes / val includes.
+    held_out_phases=None,
     log_path=None,
 ):
     if d_input_mode not in ('dvf', 'warp'):
@@ -46,18 +49,25 @@ def run_training(
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     d_in_channels = 4 if d_input_mode == 'dvf' else 2
+    held = list(held_out_phases) if held_out_phases is not None else None
 
     trainset = PhasePairDataset(
         im_dir=train_dir,
         im_size=im_size,
         random_crop=True,
         patches_per_pair=patches_per_pair_train,
+        held_out_phases=held,
+        holdout_mode='exclude',
     )
+    # Pre-split dirs (held is None): use all pairs in val_dir.
+    # LOOCV (held set): val keeps only pairs that touch the held-out phase(s).
     valset = PhasePairDataset(
         im_dir=val_dir,
         im_size=im_size,
         random_crop=False,
         patches_per_pair=patches_per_pair_val,
+        held_out_phases=held,
+        holdout_mode='include' if held is not None else 'exclude',
     )
     trainloader = DataLoader(trainset, batch_size=batch_size, shuffle=True)
     valloader = DataLoader(valset, batch_size=batch_size, shuffle=False)
@@ -87,6 +97,7 @@ def run_training(
     print(
         f'[{filename}] device={device} | D_mode={d_input_mode} (in={d_in_channels}) | '
         f'D_base={d_base_channels} | lambda_adv={lambda_adv} | d_update_freq={d_update_freq}'
+        + (f' | held_out_phases={held}' if held is not None else '')
     )
     print(
         f'[{filename}] train {len(trainset)} '

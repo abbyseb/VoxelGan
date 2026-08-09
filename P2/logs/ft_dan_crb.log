@@ -1,0 +1,34 @@
+[dans_crb_p2_warp_d_finetune] device=cuda train=1024 val=288 lr_g=3e-05 lr_d=1e-05
+Epoch 001/30 | G=0.3434 D=0.0000 valG=0.3240 | time=0.01h
+Epoch 002/30 | G=0.2380 D=0.0000 valG=0.2866 | time=0.01h
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/nn/modules/conv.py:720: UserWarning: Using padding='same' with even kernel lengths and odd dilation may require a zero-padded copy of the input be created (Triggered internally at /pytorch/aten/src/ATen/native/Convolution.cpp:1036.)
+  return F.conv3d(
+Epoch 003/30 | G=0.2241 D=0.0947 valG=0.2699 | time=0.02h
+Epoch 004/30 | G=0.2015 D=0.0820 valG=0.2625 | time=0.03h
+Epoch 005/30 | G=0.1900 D=0.0811 valG=0.2560 | time=0.04h
+Epoch 006/30 | G=0.1805 D=0.0816 valG=0.2469 | time=0.05h
+Epoch 007/30 | G=0.1745 D=0.0821 valG=0.2459 | time=0.06h
+Epoch 008/30 | G=0.1679 D=0.0827 valG=0.2363 | time=0.07h
+Epoch 009/30 | G=0.1625 D=0.0814 valG=0.2360 | time=0.08h
+Epoch 010/30 | G=0.1586 D=0.0814 valG=0.2339 | time=0.08h
+Epoch 011/30 | G=0.1549 D=0.0817 valG=0.2310 | time=0.09h
+Epoch 012/30 | G=0.1527 D=0.0827 valG=0.2228 | time=0.10h
+Epoch 013/30 | G=0.1492 D=0.0810 valG=0.2172 | time=0.11h
+Epoch 014/30 | G=0.1464 D=0.0812 valG=0.2053 | time=0.12h
+Epoch 015/30 | G=0.1454 D=0.0826 valG=0.2067 | time=0.13h
+Epoch 016/30 | G=0.1414 D=0.0832 valG=0.2075 | time=0.14h
+Epoch 017/30 | G=0.1415 D=0.0828 valG=0.2085 | time=0.14h
+Epoch 018/30 | G=0.1387 D=0.0849 valG=0.2026 | time=0.15h
+Epoch 019/30 | G=0.1382 D=0.0856 valG=0.1972 | time=0.16h
+Epoch 020/30 | G=0.1372 D=0.0842 valG=0.1986 | time=0.17h
+Epoch 021/30 | G=0.1348 D=0.0838 valG=0.1969 | time=0.18h
+Epoch 022/30 | G=0.1333 D=0.0834 valG=0.1937 | time=0.19h
+Epoch 023/30 | G=0.1305 D=0.0845 valG=0.1923 | time=0.20h
+Epoch 024/30 | G=0.1311 D=0.0822 valG=0.1901 | time=0.20h
+Epoch 025/30 | G=0.1295 D=0.0862 valG=0.1916 | time=0.21h
+Epoch 026/30 | G=0.1291 D=0.0839 valG=0.1887 | time=0.22h
+Epoch 027/30 | G=0.1286 D=0.0845 valG=0.1893 | time=0.23h
+Epoch 028/30 | G=0.1269 D=0.0862 valG=0.1863 | time=0.24h
+Epoch 029/30 | G=0.1261 D=0.0877 valG=0.1865 | time=0.25h
+Epoch 030/30 | G=0.1242 D=0.0844 valG=0.1878 | time=0.25h
+finished best_val=0.186288
