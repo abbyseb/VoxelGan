@@ -8,6 +8,7 @@ Open any `.drawio` file in [diagrams.net](https://app.diagrams.net) (File → Op
 | `02_Warp_D.drawio` | Warp-D scenario | Same generator; **2-ch** PatchGAN `[warp(ref,DVF), target]` |
 | `03_Dans_UNetCRB.drawio` | Dan’s GAN | UNetCRB (encoder CRBs, avg-pool, direct DVF); Warp-D PatchGAN |
 | `04_FiLM_Detail_Phases_1_to_6.drawio` | FiLM only | Step-by-step Phase-MLP → concat → trunk → FiLM heads, worked example φ=1→6 |
+| `05_Discriminator_PatchGAN.drawio` | PatchGAN D | Simple overview: 4-ch DVF-space vs 2-ch Warp-D + shared backbone |
 
 Source of truth in code:
 - Phase-MLP / Warp-D generator: `utilities/generator.py`, `utilities/film.py`, `utilities/svf.py`

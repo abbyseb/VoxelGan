@@ -1,0 +1,92 @@
+<mxfile host="app.diagrams.net" modified="2026-08-09T08:15:00.000Z" agent="Voxel_GAN" version="22.1.0" type="device">
+  <diagram id="disc-simple" name="PatchGAN Discriminator">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <mxCell id="title" value="3D PatchGAN Discriminator — simple overview&#xa;(utilities/discriminator.py)" style="text;html=1;fontStyle=1;fontSize=18;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="1300" height="45" as="geometry"/>
+        </mxCell>
+
+        <!-- TWO MODES -->
+        <mxCell id="mode_lab" value="Two input modes (same backbone)" style="text;html=1;fontStyle=1;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1300" height="30" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="m1" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff3e0;strokeColor=#ef6c00;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="520" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1t" value="A) Phase-MLP baseline — DVF-space (4-ch)" style="text;html=1;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="125" width="520" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1a" value="ref CT&#xa;(1 ch)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#ef6c00;" vertex="1" parent="1">
+          <mxGeometry x="110" y="170" width="100" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1b" value="DVF&#xa;(3 ch)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe0b2;strokeColor=#ef6c00;" vertex="1" parent="1">
+          <mxGeometry x="240" y="170" width="100" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="m1c" value="concat → 4 ch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffcc80;strokeColor=#ef6c00;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="380" y="180" width="180" height="50" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="m2" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#2e7d32;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="120" width="580" height="160" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2t" value="B) Warp-D (Our Warp + Dan) — image-space (2-ch)" style="text;html=1;fontStyle=1;fontSize=13;align=center;" vertex="1" parent="1">
+          <mxGeometry x="680" y="125" width="580" height="28" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2a" value="warp(ref, DVF)&#xa;(1 ch)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;" vertex="1" parent="1">
+          <mxGeometry x="710" y="170" width="140" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2b" value="target CT&#xa;(1 ch)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#c8e6c9;strokeColor=#2e7d32;" vertex="1" parent="1">
+          <mxGeometry x="880" y="170" width="120" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="m2c" value="concat → 2 ch" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#a5d6a7;strokeColor=#2e7d32;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="1030" y="180" width="190" height="50" as="geometry"/>
+        </mxCell>
+
+        <!-- BACKBONE PIPELINE -->
+        <mxCell id="pipe" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fce4ec;strokeColor=#c2185b;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="320" width="1180" height="200" as="geometry"/>
+        </mxCell>
+        <mxCell id="pt" value="Shared PatchGAN backbone (spectral-norm Conv3D)" style="text;html=1;fontStyle=1;fontSize=14;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="325" width="1180" height="28" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="d1" value="Conv 4³ s=2&#xa;→ base (32)&#xa;64³ → 32³" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="110" y="375" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="d2" value="Conv 4³ s=2&#xa;+ IN + LReLU&#xa;32³ → 16³" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="320" y="375" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="d3" value="Conv 4³ s=2&#xa;+ IN + LReLU&#xa;16³ → 8³" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="530" y="375" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="d4" value="Conv 4³ s=1&#xa;+ IN + LReLU&#xa;8³ → 8³" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8bbd0;strokeColor=#c2185b;" vertex="1" parent="1">
+          <mxGeometry x="740" y="375" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="dout" value="Conv → 1 ch&#xa;logits grid&#xa;8³ real/fake" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ec407a;strokeColor=#880e4f;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="950" y="375" width="160" height="80" as="geometry"/>
+        </mxCell>
+        <mxCell id="arr1" value="→" style="text;html=1;fontSize=28;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="270" y="395" width="50" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="arr2" value="→" style="text;html=1;fontSize=28;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="395" width="50" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="arr3" value="→" style="text;html=1;fontSize=28;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="690" y="395" width="50" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="arr4" value="→" style="text;html=1;fontSize=28;align=center;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="900" y="395" width="50" height="40" as="geometry"/>
+        </mxCell>
+
+        <!-- JOB -->
+        <mxCell id="job" value="Job: score local patches as real vs fake (LSGAN).&#xa;&#xa;Real = Elastix pair | Fake = generator pair&#xa;G tries to fool D · D tries to catch G · λ_adv = 0.05&#xa;&#xa;Why Warp-D? D looks at warped CT vs target CT (anatomy mismatch),&#xa;not raw DVF vectors — so it stays alive (~0.05) instead of collapsing (~0)." style="rounded=1;whiteSpace=wrap;html=1;fillColor=#eeeeee;strokeColor=#666666;align=left;spacingLeft=14;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="80" y="560" width="1180" height="140" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
