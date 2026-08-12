@@ -1,0 +1,7 @@
+QC complete: 100 pairs (100 PNG + metrics.tsv)
+Hold-out phases: 3, 6 & 8 (SPARE 1-indexed)
+
+directed mean L1=0.2625  cos=0.9365  (n=90)
+leave-out 3/6/8 mean L1=0.3100  cos=0.9126  (n=48)
+
+Note: run.log footer says "5/9" — hardcoded in shared QC script; ignore it.
