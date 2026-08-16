@@ -49,7 +49,7 @@ All runs: lung-masked **MSE vs Elastix**, no PatchGAN. Full-volume QC L1 (same m
 |-------|-------|---------|---------|-----------|------------------------|
 | **Decoder FiLM** | FiLM bot+dec + SVF | **0.196** | **0.219** | **0.249** | 0.187 |
 | Decoder CRB | CRB decoder | 0.204 | 0.241 | 0.282 | 0.185 |
-| Decoder CRB + Bot | CRB bottleneck + decoder | 0.205 | 0.235 | — | 0.184 |
+| Decoder CRB + Bot | CRB bottleneck + decoder | 0.203 | 0.226 | — | 0.179 |
 | Both CRB | CRB enc+dec | 0.217 | 0.228 | 0.260 | 0.203 |
 | Encoder CRB | CRB encoder | 0.230 | 0.255 | 0.310 | 0.219 |
 

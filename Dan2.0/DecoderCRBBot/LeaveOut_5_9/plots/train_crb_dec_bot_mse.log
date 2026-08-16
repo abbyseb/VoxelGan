@@ -99,3 +99,5 @@ Epoch: 96 | train MSE: 0.056069 | val MSE: 0.085983 | total time: 0 hours 40 min
 Epoch: 97 | train MSE: 0.040181 | val MSE: 0.075849 | total time: 0 hours 40 minutes
 Epoch: 98 | train MSE: 0.046129 | val MSE: 0.100342 | total time: 0 hours 41 minutes
 Epoch: 99 | train MSE: 0.042354 | val MSE: 0.079207 | total time: 0 hours 41 minutes
+Epoch: 100 | train MSE: 0.043491 | val MSE: 0.120359 | total time: 0 hours 42 minutes
+finished best_val_mse=0.066637

@@ -1,6 +1,6 @@
 QC complete: 100 pairs
 DecoderCRBBot MSE, hold-out phases 5 & 9
 
-directed mean L1=0.1838  cos=0.9694
-leave-out 5/9 mean L1=0.2045  cos=0.9595  (n=34)
-best_val_mse=pending
+directed mean L1=0.1788  cos=0.9716
+leave-out 5/9 mean L1=0.2032  cos=0.9600  (n=34)
+best_val_mse=0.066637

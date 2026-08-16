@@ -1,0 +1,15 @@
+[crb_dec_bot_mse_lo_03_06_08] device=cuda | UNetCRBDecoderBot params=1.07M | loss=lung-masked MSE | no D | CRB=bottleneck+decoder | held_out_1idx=[3, 6, 8]
+[crb_dec_bot_mse_lo_03_06_08] train 784 (49 pairs × 16) | val 408 (51 pairs × 8)
+Epoch: 1 | train MSE: 2.451203 | val MSE: 1.870669 | total time: 0 hours 0 minutes
+Epoch: 2 | train MSE: 1.598998 | val MSE: 1.595006 | total time: 0 hours 0 minutes
+Epoch: 3 | train MSE: 1.383516 | val MSE: 1.452340 | total time: 0 hours 1 minutes
+Epoch: 4 | train MSE: 1.213620 | val MSE: 1.243957 | total time: 0 hours 1 minutes
+Epoch: 5 | train MSE: 0.987571 | val MSE: 0.933467 | total time: 0 hours 1 minutes
+Epoch: 6 | train MSE: 0.707292 | val MSE: 0.748389 | total time: 0 hours 1 minutes
+Epoch: 7 | train MSE: 0.578910 | val MSE: 0.657259 | total time: 0 hours 2 minutes
+Epoch: 8 | train MSE: 0.552891 | val MSE: 0.552220 | total time: 0 hours 2 minutes
+Epoch: 9 | train MSE: 0.467324 | val MSE: 0.537781 | total time: 0 hours 2 minutes
+Epoch: 10 | train MSE: 0.419940 | val MSE: 0.474585 | total time: 0 hours 3 minutes
+Epoch: 11 | train MSE: 0.407954 | val MSE: 0.449306 | total time: 0 hours 3 minutes
+Epoch: 12 | train MSE: 0.378528 | val MSE: 0.413816 | total time: 0 hours 3 minutes
+Epoch: 13 | train MSE: 0.312117 | val MSE: 0.355092 | total time: 0 hours 4 minutes
