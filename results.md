@@ -12,17 +12,26 @@ QC view (all panels): View 1, axial slice 52 ⊥ LR, H→SI V→AP (`configs/dvf
 
 ## 1. Models trained
 
+**Names used below**
+
+| Name | Was called | Folder / code |
+|------|------------|---------------|
+| **FiLM DVF** | phase-MLP | UNetFiLM+SVF + 4-ch `[ref,DVF]` D |
+| **FiLM Warp** | warp-D / Our Warp | UNetFiLM+SVF + warp-D PatchGAN |
+| **Dan's V1.0 (Paper Gan)** | Dan CRB | `Dan'sPaperGan/` — UNetCRB + warp-D |
+| **Dan 2.0** | — | `Dan2.0/` — MSE only, no D (Encoder/Decoder/Both CRB, Decoder FiLM) |
+
 | ID | Architecture | Disc | Train data | Hold-out | Epochs | Weights |
 |----|--------------|------|------------|----------|--------|---------|
-| **phase-MLP** | UNetFiLM + SVF (`int_steps=6`), continuous phase MLP | 4-ch `[ref, DVF]` | P1 leave-out | phases 5 & 9 | 100 | `weights/spare_mc_p1_dvf_gan_phase_mlp_*.pth` |
-| **warp-D** | same FiLM+SVF | 2-ch `[warp(ref,DVF), target]` | P1 leave-out | 5 & 9 | 100 | `weights/spare_mc_p1_scenario_warp_d_*.pth` |
-| **full-P1 warp-D** | same FiLM+SVF | warp-D | **all** P1 pairs | none | 100 | `weights/spare_mc_p1_full_warp_d_*.pth` |
-| **LOOCV warp-D** | same FiLM+SVF | warp-D | P1, 10 folds | one phase each | 100×10 | `weights/spare_mc_p1_loocv_warp_d_holdXX_*.pth` |
-| **Dan CRB** | UNetCRB, direct 3-ch DVF (no SVF) | warp-D | P1 leave-out | 5 & 9 | 100 | `Dan'sPaperGan/weights/dans_crb_warp_d_*.pth` |
-| **full-P1 Dan** | UNetCRB | warp-D | **all** P1 pairs | none | 100 | `Dan'sPaperGan/weights/dans_crb_p1_full_warp_d_*.pth` |
-| **LOOCV Dan** | UNetCRB | warp-D | P1, 10 folds | one phase each | 100×10 | `Dan'sPaperGan/weights/dans_crb_loocv_warp_d_holdXX_*.pth` |
-| **P2 FT Our Warp** | FiLM+SVF, init = full-P1 warp-D | warp-D | P2 leave-out split | 5 & 9 val | 30 | `weights/spare_mc_p2_warp_d_finetune_*.pth` |
-| **P2 FT Dan** | UNetCRB, init = full-P1 Dan | warp-D | P2 leave-out split | 5 & 9 val | 30 | `Dan'sPaperGan/weights/dans_crb_p2_warp_d_finetune_*.pth` |
+| **FiLM DVF** | UNetFiLM + SVF (`int_steps=6`), continuous phase MLP | 4-ch `[ref, DVF]` | P1 leave-out | phases 5 & 9 | 100 | `weights/spare_mc_p1_dvf_gan_phase_mlp_*.pth` |
+| **FiLM Warp** | same FiLM+SVF | 2-ch `[warp(ref,DVF), target]` | P1 leave-out | 5 & 9 | 100 | `weights/spare_mc_p1_scenario_warp_d_*.pth` |
+| **full-P1 FiLM Warp** | same FiLM+SVF | warp-D | **all** P1 pairs | none | 100 | `weights/spare_mc_p1_full_warp_d_*.pth` |
+| **LOOCV FiLM Warp** | same FiLM+SVF | warp-D | P1, 10 folds | one phase each | 100×10 | `weights/spare_mc_p1_loocv_warp_d_holdXX_*.pth` |
+| **Dan's V1.0 (Paper Gan)** | UNetCRB, direct 3-ch DVF (no SVF) | warp-D | P1 leave-out | 5 & 9 | 100 | `Dan'sPaperGan/weights/dans_crb_warp_d_*.pth` |
+| **full-P1 Dan V1.0** | UNetCRB | warp-D | **all** P1 pairs | none | 100 | `Dan'sPaperGan/weights/dans_crb_p1_full_warp_d_*.pth` |
+| **LOOCV Dan V1.0** | UNetCRB | warp-D | P1, 10 folds | one phase each | 100×10 | `Dan'sPaperGan/weights/dans_crb_loocv_warp_d_holdXX_*.pth` |
+| **P2 FT FiLM Warp** | FiLM+SVF, init = full-P1 FiLM Warp | warp-D | P2 leave-out split | 5 & 9 val | 30 | `weights/spare_mc_p2_warp_d_finetune_*.pth` |
+| **P2 FT Dan V1.0** | UNetCRB, init = full-P1 Dan V1.0 | warp-D | P2 leave-out split | 5 & 9 val | 30 | `Dan'sPaperGan/weights/dans_crb_p2_warp_d_finetune_*.pth` |
 
 **Scenarios (ablation, P1 leave-out 5/9; no full TEST table here):** weak_d, more_g, higher_adv — see `Diary.md` / `results/scenario_*`. Takeaway: 4-ch DVF-space D dies; warp-D keeps D alive (`λ_adv=0.05`).
 
@@ -32,22 +41,32 @@ QC view (all panels): View 1, axial slice 52 ⊥ LR, H→SI V→AP (`configs/dvf
 
 ---
 
-## 2. Patient 1 — same-patient leave-phase-out (phases 5 & 9)
+## 2. Dan 2.0 — MSE only, no discriminator (P1 leave-phase-out)
 
-Trained with held-out 5 & 9; full-volume QC on all 100 pairs. Directed = 90 non-identity pairs. Leave-out = pairs touching phase 5 or 9.
+All runs: lung-masked **MSE vs Elastix**, no PatchGAN. Full-volume QC L1 (same metric as V1.0). Hold-out L1 = pairs touching the left-out phase(s).
 
-| Model | Directed L1 ↓ | Directed cos ↑ | Leave-out 5/9 L1 ↓ | Leave-out cos ↑ | D alive? |
-|-------|---------------|----------------|--------------------|-----------------|----------|
-| phase-MLP (FiLM+SVF) | **0.172** | **0.975** | **0.192** | ~0.97 | No (~0) |
-| warp-D (FiLM+SVF) | 0.189 | 0.971 | 0.210 | ~0.97 | Yes (~0.06) |
-| Dan CRB warp-D | 0.199 | 0.968 | 0.219 | ~0.96 | Yes (~0.05) |
+| Model | Cond. | 5 & 9 ↓ | 3 & 6 ↓ | 3, 6, 8 ↓ | Directed L1 (5&9 run) |
+|-------|-------|---------|---------|-----------|------------------------|
+| **Decoder FiLM** | FiLM bot+dec + SVF | **0.196** | **0.219** | **0.249** | 0.187 |
+| Decoder CRB | CRB decoder | 0.204 | 0.241 | 0.282 | 0.185 |
+| Both CRB | CRB enc+dec | 0.217 | 0.228 | 0.260 | 0.203 |
+| Encoder CRB | CRB encoder | 0.230 | 0.255 | 0.310 | 0.219 |
 
-**Read:** Best supervised accuracy = phase-MLP. Warp-D trades a little L1 for a living GAN. Dan CRB is smaller / no diffeomorphism; slightly worse L1 than FiLM warp-D.
+**Best:** Decoder FiLM on every leave-out. **Worst:** Encoder CRB. Both CRB helps vs encoder-only on hard splits (3&6, 3,6,8).
 
-**QC folders**
-- phase-MLP: `plots/qc_test_phase_mlp/` (+ `metrics.tsv`)
-- warp-D: `plots/qc_test_warp_d/`
-- Dan CRB: `Dan'sPaperGan/plots/qc_test_crb/`
+QC: `Dan2.0/{EncoderCRB,DecoderCRB,BothCRB,DecoderFiLM}/LeaveOut_*/plots/qc_test_mse/`
+
+---
+
+## 2b. GAN baselines (P1 leave-out 5 & 9 only) — for context
+
+| Model | Directed L1 ↓ | Leave-out 5/9 L1 ↓ |
+|-------|---------------|--------------------|
+| FiLM DVF | **0.172** | **0.192** |
+| FiLM Warp | 0.189 | 0.210 |
+| Dan's V1.0 (Paper Gan) | 0.199 | 0.219 |
+
+QC: `plots/qc_test_phase_mlp/`, `plots/qc_test_warp_d/`, `Dan'sPaperGan/plots/qc_test_crb/`
 
 ---
 
@@ -55,7 +74,7 @@ Trained with held-out 5 & 9; full-volume QC on all 100 pairs. Directed = 90 non-
 
 Best **validation G loss** per fold (supervised terms; not full-volume DVF L1). Lower is better.
 
-### 3.1 Our Warp (FiLM warp-D)
+### 3.1 FiLM Warp
 
 | Hold-out phase | Best val G |
 |----------------|------------|
@@ -74,7 +93,7 @@ Best **validation G loss** per fold (supervised terms; not full-volume DVF L1). 
 Log: `plots/loocv_warp_d/summary.log`. Curves: `plots/spare_mc_p1_loocv_warp_d_holdXX.png`.  
 *(Aggregate full-vol TEST L1 across folds not yet tabulated.)*
 
-### 3.2 Dan CRB warp-D
+### 3.2 Dan's V1.0 (Paper Gan)
 
 | Hold-out phase | Best val G |
 |----------------|------------|
@@ -92,7 +111,7 @@ Log: `plots/loocv_warp_d/summary.log`. Curves: `plots/spare_mc_p1_loocv_warp_d_h
 
 Log: `Dan'sPaperGan/plots/loocv_crb/summary.log`.
 
-**Read:** Our Warp LOOCV val G is lower on average than Dan CRB (0.227 vs 0.266). Hardest folds tend to be extreme phases (1, 7, 10).
+**Read:** FiLM Warp LOOCV val G is lower on average than Dan's V1.0 (0.227 vs 0.266). Hardest folds tend to be extreme phases (1, 7, 10).
 
 ---
 
@@ -102,22 +121,22 @@ Fair transfer: init from models trained on **all** P1 pairs (`spare_mc_p1_full_w
 
 | Model | Setting | Directed L1 ↓ | Directed cos ↑ | Leave-out 5/9 L1 ↓ |
 |-------|---------|---------------|----------------|--------------------|
-| Our Warp | P1→P2 zero-shot | 0.614 | 0.547 | 0.612 |
-| Our Warp | P2 fine-tuned | **0.132** | **0.964** | **0.144** |
-| Dan CRB | P1→P2 zero-shot | 0.740 | 0.428 | 0.730 |
-| Dan CRB | P2 fine-tuned | 0.134 | 0.958 | 0.157 |
+| FiLM Warp | P1→P2 zero-shot | 0.614 | 0.547 | 0.612 |
+| FiLM Warp | P2 fine-tuned | **0.132** | **0.964** | **0.144** |
+| Dan's V1.0 (Paper Gan) | P1→P2 zero-shot | 0.740 | 0.428 | 0.730 |
+| Dan's V1.0 (Paper Gan) | P2 fine-tuned | 0.134 | 0.958 | 0.157 |
 
 **vs P1 same-patient leave-out (context)**
 
 | | P1 leave-out L1 | P2 zero-shot L1 | P2 tuned L1 |
 |--|-----------------|-----------------|-------------|
-| Our Warp | 0.210 (leave-out train) / ~0.19 directed | 0.614 | **0.132** |
-| Dan CRB | 0.219 leave-out | 0.740 | **0.134** |
+| FiLM Warp | 0.210 | 0.614 | **0.132** |
+| Dan's V1.0 | 0.219 | 0.740 | **0.134** |
 
 **Read**
 - Zero-shot P1→P2 fails (~0.6–0.7 L1): anatomy/motion do not transfer.
 - Patient-specific fine-tune recovers strongly (~0.13 L1), matching or beating P1 leave-out accuracy on this metric.
-- After tune, Our Warp slightly edges Dan (0.132 vs 0.134 directed).
+- After tune, FiLM Warp slightly edges Dan's V1.0 (0.132 vs 0.134 directed).
 
 **QC**
 - Zero-shot: `P2/our_warp/qc/`, `P2/dans_gan/qc/`
@@ -130,20 +149,20 @@ Fair transfer: init from models trained on **all** P1 pairs (`spare_mc_p1_full_w
 
 ### Same patient (P1)
 
-1. **Accuracy:** phase-MLP ≥ warp-D ≥ Dan CRB.  
-2. **Adversary health:** only warp-space D stays alive at `λ_adv=0.05`.  
-3. **LOOCV val G:** Our Warp better mean than Dan CRB.
+1. **Accuracy (leave-out 5/9):** FiLM DVF ≥ Decoder FiLM (MSE) ≥ Decoder CRB (MSE) ≥ FiLM Warp ≥ Both CRB (MSE) ≈ Dan's V1.0 ≥ Encoder CRB (MSE).  
+2. **Adversary health:** only warp-space D stays alive at `λ_adv=0.05` (FiLM Warp / Dan's V1.0).  
+3. **Dan 2.0:** MSE-only Decoder FiLM nearly matches FiLM DVF; Encoder-only CRB is weakest.
 
 ### Across patients (P1 → P2)
 
-1. **Zero-shot does not work** for either model.  
+1. **Zero-shot does not work** for FiLM Warp or Dan's V1.0.  
 2. **Fine-tune on P2 Elastix** is required and works for both.  
-3. Tuned P2 L1 ≈ **0.13** for both; Our Warp marginally better.
+3. Tuned P2 L1 ≈ **0.13** for both; FiLM Warp marginally better.
 
 ### Design choices that stuck
 
 - Continuous phase MLP (discrete embeddings failed leave-out).  
-- FiLM at bottleneck + decoder; SVF + scaling-and-squaring for Our Warp.  
+- FiLM at bottleneck + decoder; SVF + scaling-and-squaring for FiLM Warp / FiLM DVF.  
 - Warp-D PatchGAN over raw DVF-space D.  
 - Full-P1 pretrain before P2 tune (not leave-out 5/9 weights).
 

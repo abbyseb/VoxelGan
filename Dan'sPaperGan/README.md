@@ -1,4 +1,6 @@
-# Dan'sPaperGan — Sang & Ruan (2023) CRB generator experiment
+# Dan's V1.0 (Paper Gan) — Sang & Ruan (2023) CRB generator
+
+Folder on disk: `Dan'sPaperGan/`. Display name in results: **Dan's V1.0 (Paper Gan)**.
 
 Standalone replica of Sang & Ruan, *A conditional registration network for
 continuous 4D respiratory motion synthesis* (Med Phys 2023), Figures 2–3,
