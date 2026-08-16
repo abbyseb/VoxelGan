@@ -8,16 +8,34 @@ P1 leave-phase-out. Metric = lung-masked mean |pred − Elastix| L1 on 128³ (1 
 |-------|-------|-------|---------|
 | **Decoder FiLM** | **0.196** | **0.219** | **0.249** |
 | Decoder CRB | 0.204 | 0.241 | 0.282 |
+| Decoder CRB + Bot | 0.205 | 0.235 | — |
 | Both CRB | 0.217 | 0.228 | 0.260 |
 | Encoder CRB | 0.230 | 0.255 | 0.310 |
+
+Decoder CRB + Bot = plain encoder, **CRB bottleneck + decoder**. Leave-out **3,6,8** still training.
 
 ## Directed L1 (from the 5 & 9 run)
 
 | Model | Directed L1 |
 |-------|-------------|
+| Decoder CRB + Bot | 0.184 |
 | Decoder CRB | 0.185 |
 | Decoder FiLM | 0.187 |
 | Both CRB | 0.203 |
 | Encoder CRB | 0.219 |
 
-**Best:** Decoder FiLM. **Worst:** Encoder CRB.
+**Best hold-out:** Decoder FiLM. **Worst:** Encoder CRB. Adding bottleneck CRB to Decoder CRB does not beat Decoder FiLM (and is similar to Decoder CRB on 5&9).
+
+## Negative Jacobian % (folding)
+
+`det(I+∇u) < 0` via finite differences (same as `scripts/qc_leave_phase_out.py`). Mean over 90 directed pairs.
+
+| Model | Dir full % | Dir lung % | Leave-out lung % |
+|-------|------------|------------|------------------|
+| Encoder CRB (all splits) | ≤0.006 | **0.000** | **0.000** |
+| Decoder CRB (all splits) | ≤0.002 | **0.000** | **0.000** |
+| Both CRB (all splits) | ≤0.001 | **0.000** | **0.000** |
+| Decoder FiLM (all splits) | **0.000** | **0.000** | **0.000** |
+| Decoder CRB + Bot (5&9, 3&6) | ≤0.024 | **0.000** | **0.000** |
+
+Lung-masked folding is ~0% everywhere. Tiny full-volume % is outside the lung. Full table: [`jacobian_summary.md`](jacobian_summary.md).

@@ -46,4 +46,5 @@ Writes `plots/qc_test_mse/` (PNG per pair + `metrics.tsv`).
 1. **Encoder CRB** — CRB in encoder, plain decoder. **Done.** See [`EncoderCRB/`](EncoderCRB/).
 2. **Decoder FiLM** — UNetFiLM (FiLM decoder + SVF). **Done.** See [`DecoderFiLM/`](DecoderFiLM/).
 3. **Decoder CRB** — CRB in decoder, plain encoder. **Done.** See [`DecoderCRB/`](DecoderCRB/).
-4. **Both-side CRB** — CRB on encoder **and** decoder. **Running.** See [`BothCRB/`](BothCRB/).
+4. **Both-side CRB** — CRB on encoder **and** decoder. **Done.** See [`BothCRB/`](BothCRB/).
+5. **Decoder CRB + Bot** — plain encoder; CRB on **bottleneck + decoder**. Running in [`DecoderCRBBot/`](DecoderCRBBot/).

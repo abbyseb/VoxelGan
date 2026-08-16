@@ -49,12 +49,13 @@ All runs: lung-masked **MSE vs Elastix**, no PatchGAN. Full-volume QC L1 (same m
 |-------|-------|---------|---------|-----------|------------------------|
 | **Decoder FiLM** | FiLM bot+dec + SVF | **0.196** | **0.219** | **0.249** | 0.187 |
 | Decoder CRB | CRB decoder | 0.204 | 0.241 | 0.282 | 0.185 |
+| Decoder CRB + Bot | CRB bottleneck + decoder | 0.205 | 0.235 | — | 0.184 |
 | Both CRB | CRB enc+dec | 0.217 | 0.228 | 0.260 | 0.203 |
 | Encoder CRB | CRB encoder | 0.230 | 0.255 | 0.310 | 0.219 |
 
-**Best:** Decoder FiLM on every leave-out. **Worst:** Encoder CRB. Both CRB helps vs encoder-only on hard splits (3&6, 3,6,8).
+**Best:** Decoder FiLM on every leave-out. **Worst:** Encoder CRB. Decoder CRB + Bot ≈ Decoder CRB on 5&9; slightly better than Decoder CRB on 3&6. (3,6,8 for +Bot still training.)
 
-QC: `Dan2.0/{EncoderCRB,DecoderCRB,BothCRB,DecoderFiLM}/LeaveOut_*/plots/qc_test_mse/`
+QC: `Dan2.0/{EncoderCRB,DecoderCRB,DecoderCRBBot,BothCRB,DecoderFiLM}/LeaveOut_*/plots/qc_test_mse/`
 
 ---
 
