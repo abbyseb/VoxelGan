@@ -40,3 +40,10 @@ PYTHONPATH=. python scripts/qc_crb_pairs.py
 ```
 
 Writes `plots/qc_test_mse/` (PNG per pair + `metrics.tsv`).
+
+## Experiment order (MSE only, no D)
+
+1. **Encoder CRB** — CRB in encoder, plain decoder. **Done.** See [`EncoderCRB/`](EncoderCRB/).
+2. **Decoder FiLM** — UNetFiLM (FiLM decoder + SVF). **Done.** See [`DecoderFiLM/`](DecoderFiLM/).
+3. **Decoder CRB** — CRB in decoder, plain encoder. **Done.** See [`DecoderCRB/`](DecoderCRB/).
+4. **Both-side CRB** — CRB on encoder **and** decoder. **Running.** See [`BothCRB/`](BothCRB/).

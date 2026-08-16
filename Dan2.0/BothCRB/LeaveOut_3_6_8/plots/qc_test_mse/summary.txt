@@ -1,0 +1,6 @@
+QC complete: 100 pairs
+BothCRB MSE, hold-out phases 3, 6 & 8
+
+directed mean L1=0.2277 cos=0.9558
+leave-out 3/6/8 mean L1=0.2602 cos=0.9398 n=48
+best_val_mse=0.127269

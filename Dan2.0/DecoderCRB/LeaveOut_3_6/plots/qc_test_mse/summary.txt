@@ -1,0 +1,6 @@
+QC complete: 100 pairs
+DecoderCRB MSE, hold-out phases 3 & 6
+
+directed mean L1=0.1979  cos=0.9679
+leave-out 3/6 mean L1=0.2414  cos=0.9508  (n=34)
+best_val_mse=0.098176

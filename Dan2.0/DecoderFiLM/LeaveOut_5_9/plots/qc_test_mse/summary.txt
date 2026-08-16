@@ -1,0 +1,6 @@
+QC complete: 100 pairs
+DecoderFiLM MSE, hold-out phases 5 & 9
+
+directed mean L1=0.1871  cos=0.9737
+leave-out 5/9 mean L1=0.1956  cos=0.9676  (n=34)
+best_val_mse=0.053874
