@@ -6,13 +6,13 @@ P1 leave-phase-out. Metric = lung-masked mean |pred − Elastix| L1 on 128³ (1 
 
 | Model | 5 & 9 | 3 & 6 | 3, 6, 8 |
 |-------|-------|-------|---------|
-| **Decoder FiLM** | **0.196** | **0.219** | **0.249** |
+| **Decoder FiLM** | **0.196** | **0.219** | 0.249 |
 | Decoder CRB | 0.204 | 0.241 | 0.282 |
-| Decoder CRB + Bot | 0.203 | 0.226 | — |
+| Decoder CRB + Bot | 0.203 | 0.226 | **0.248** |
 | Both CRB | 0.217 | 0.228 | 0.260 |
 | Encoder CRB | 0.230 | 0.255 | 0.310 |
 
-Decoder CRB + Bot = plain encoder, **CRB bottleneck + decoder**. Leave-out **3,6,8** still training.
+Decoder CRB + Bot = plain encoder, **CRB bottleneck + decoder**.
 
 ## Directed L1 (from the 5 & 9 run)
 
@@ -24,7 +24,7 @@ Decoder CRB + Bot = plain encoder, **CRB bottleneck + decoder**. Leave-out **3,6
 | Both CRB | 0.203 |
 | Encoder CRB | 0.219 |
 
-**Best hold-out:** Decoder FiLM. **Worst:** Encoder CRB. Adding bottleneck CRB to Decoder CRB does not beat Decoder FiLM (and is similar to Decoder CRB on 5&9).
+**Best hold-out:** Decoder FiLM on 5&9 and 3&6; Decoder CRB + Bot edges FiLM on 3,6,8 (0.248 vs 0.249). **Worst:** Encoder CRB.
 
 ## Negative Jacobian % (folding)
 

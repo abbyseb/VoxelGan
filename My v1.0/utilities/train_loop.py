@@ -37,8 +37,8 @@ def run_training(
     adv_warmup_epochs=5,
     patches_per_pair_train=16,
     patches_per_pair_val=8,
-    train_dir='data/spare/train',
-    val_dir='data/spare/val',
+    train_dir=None,  # default: <repo>/data/spare/train
+    val_dir=None,
     # leave-phase-out: 0-indexed phase id(s). If set, train_dir/val_dir are
     # usually the same pool (e.g. data/spare/all); train excludes / val includes.
     held_out_phases=None,
@@ -46,6 +46,13 @@ def run_training(
 ):
     if d_input_mode not in ('dvf', 'warp'):
         raise ValueError(f"d_input_mode must be 'dvf' or 'warp', got {d_input_mode!r}")
+
+    from pathlib import Path
+    _repo = Path(__file__).resolve().parents[2]  # My v1.0/utilities → repo
+    if train_dir is None:
+        train_dir = str(_repo / 'data' / 'spare' / 'train')
+    if val_dir is None:
+        val_dir = str(_repo / 'data' / 'spare' / 'val')
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     d_in_channels = 4 if d_input_mode == 'dvf' else 2

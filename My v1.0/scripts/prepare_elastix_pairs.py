@@ -19,7 +19,9 @@ from pathlib import Path
 import numpy as np
 
 # Project root on sys.path
-ROOT = Path(__file__).resolve().parents[1]
+# My v1.0/scripts → repo root is parents[2]
+ROOT = Path(__file__).resolve().parents[2]
+MY_V1 = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 
@@ -186,7 +188,7 @@ def main():
     ap.add_argument(
         '--param_file',
         type=Path,
-        default=ROOT / 'configs/elastix_bspline_masked.txt',
+        default=MY_V1 / 'configs/elastix_bspline_masked.txt',
     )
     ap.add_argument('--held_out', type=int, nargs='+', default=[5, 9],
                     help='1-indexed phases held out for validation')

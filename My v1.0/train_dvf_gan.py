@@ -35,8 +35,11 @@ adv_warmup_epochs = 5      # supervised-only warm-up before enabling L_adv
 patches_per_pair_train = 16   # dense lung-biased crops per phase-pair
 patches_per_pair_val = 8      # fixed high-lung grid for stabler val
 
-train_dir = 'data/spare/train'
-val_dir = 'data/spare/val'
+# data pools live at repo root (sibling of My v1.0/)
+from pathlib import Path as _Path
+_REPO = _Path(__file__).resolve().parents[1]
+train_dir = str(_REPO / 'data' / 'spare' / 'train')
+val_dir = str(_REPO / 'data' / 'spare' / 'val')
 filename = 'spare_mc_p1_dvf_gan_phase_mlp'
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

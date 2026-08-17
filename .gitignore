@@ -1,6 +1,7 @@
 # Raw / prepared medical volumes (too large for git)
 Data/
 data/
+PopulationStudy/raw/
 *.mha
 *.npy
 

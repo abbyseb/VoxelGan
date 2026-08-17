@@ -91,3 +91,13 @@ Epoch: 88 | train MSE: 0.054645 | val MSE: 0.133350 | total time: 0 hours 28 min
 Epoch: 89 | train MSE: 0.041527 | val MSE: 0.146788 | total time: 0 hours 29 minutes
 Epoch: 90 | train MSE: 0.052666 | val MSE: 0.124913 | total time: 0 hours 29 minutes
 Epoch: 91 | train MSE: 0.048438 | val MSE: 0.126329 | total time: 0 hours 29 minutes
+Epoch: 92 | train MSE: 0.042491 | val MSE: 0.140846 | total time: 0 hours 30 minutes
+Epoch: 93 | train MSE: 0.058191 | val MSE: 0.121967 | total time: 0 hours 30 minutes
+Epoch: 94 | train MSE: 0.046974 | val MSE: 0.127242 | total time: 0 hours 30 minutes
+Epoch: 95 | train MSE: 0.040396 | val MSE: 0.136513 | total time: 0 hours 31 minutes
+Epoch: 96 | train MSE: 0.038632 | val MSE: 0.133146 | total time: 0 hours 31 minutes
+Epoch: 97 | train MSE: 0.047216 | val MSE: 0.133113 | total time: 0 hours 31 minutes
+Epoch: 98 | train MSE: 0.057412 | val MSE: 0.110517 | total time: 0 hours 32 minutes
+Epoch: 99 | train MSE: 0.030319 | val MSE: 0.130779 | total time: 0 hours 32 minutes
+Epoch: 100 | train MSE: 0.043607 | val MSE: 0.111169 | total time: 0 hours 32 minutes
+finished best_val_mse=0.110517

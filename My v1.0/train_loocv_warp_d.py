@@ -13,7 +13,8 @@ from utilities.train_loop import run_training
 
 
 def main():
-    data_dir = 'data/spare/all'
+    from pathlib import Path
+    data_dir = str(Path(__file__).resolve().parents[1] / 'data' / 'spare' / 'all')
     os.makedirs('plots/loocv_warp_d', exist_ok=True)
     summary_path = 'plots/loocv_warp_d/summary.log'
     with open(summary_path, 'a') as f:
