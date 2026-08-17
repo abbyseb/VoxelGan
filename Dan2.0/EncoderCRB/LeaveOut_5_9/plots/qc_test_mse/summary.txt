@@ -1,0 +1,3 @@
+directed mean L1=0.2188 cos=0.9625
+leave-out 5/9 mean L1=0.2299 cos=0.9504
+best_val_mse=0.081319
