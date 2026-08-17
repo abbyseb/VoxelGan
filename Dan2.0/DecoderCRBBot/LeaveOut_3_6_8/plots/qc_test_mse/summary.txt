@@ -1,0 +1,6 @@
+QC complete: 100 pairs DecoderCRBBot MSE, hold-out phases 3, 6 & 8
+(snapshot of current best at ~epoch 87; training still running)
+
+directed mean L1=0.2143  cos=0.9600
+leave-out 3/6/8 mean L1=0.2508  cos=0.9475  (n=48)
+best_val_mse≈0.113625 (at snapshot)
