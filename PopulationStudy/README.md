@@ -78,6 +78,10 @@ Drawn with seed `20260817` (`random.sample` of P1–P9).
 
 E1–E5 live under **[`InitialExperiments/`](InitialExperiments/)** (see that README). Next work: [`ChangesNeeded.md`](ChangesNeeded.md).
 
+**Amplitude CRB ablations:** [`CRBExperiments/`](CRBExperiments/) (Experiment 1 = oracle amplitude).
+
+**DVF motion library summary:** [`DVFCharacteristics/DVFCharacteristics.md`](DVFCharacteristics/DVFCharacteristics.md) (per-patient ranking + diaphragm trajectories).
+
 ## Experiment 1
 
 Self-contained leave-patient-out CRB MSE study (Encoder / Decoder / Both). See **`InitialExperiments/Experiment1/README.md`** and **`InitialExperiments/Experiment1/seed.json`**.
