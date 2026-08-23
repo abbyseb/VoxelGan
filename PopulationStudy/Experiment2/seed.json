@@ -1,0 +1,19 @@
+{
+  "description": "All RNGs for PopulationStudy Experiment 2. Fixed leave-patient-out split (user-specified). Val pair split and torch/numpy seeds reuse the same integer.",
+  "experiment": 2,
+  "patient_split_method": "fixed assignment (not random draw)",
+  "train_patients": ["P1", "P3", "P4", "P5"],
+  "holdout_patients": ["P7", "P9"],
+  "val_split_seed": 20260818,
+  "val_fraction": 0.1,
+  "val_split_method": "per train patient: Random(val_split_seed + patient_index).shuffle(100 pairs); take first 10% as val. Val is train-patients only; P7/P9 never enter train or val.",
+  "torch_seed": 20260818,
+  "numpy_seed": 20260818,
+  "python_random_seed": 20260818,
+  "cuda_seed": 20260818,
+  "n_phases": 10,
+  "identity_pairs_included": true,
+  "pairs_per_patient": 100,
+  "n_train_patient_pairs": 400,
+  "n_holdout_pairs": 200
+}

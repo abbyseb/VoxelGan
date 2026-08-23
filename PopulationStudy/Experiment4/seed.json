@@ -1,0 +1,38 @@
+{
+  "description": "PopulationStudy Experiment 4: pretrained anatomy encoder on LIDC-IDRI (masked CT autoencoder), then freeze and splice into CRB DVF nets on the Experiment 2/3 SPARE split.",
+  "experiment": 4,
+  "lidc_subset_seed": 20260819,
+  "lidc_n_patients": 40,
+  "lidc_val_fraction": 0.2,
+  "lidc_val_split_seed": 20260819,
+  "pack": {
+    "out_size": 128,
+    "bbox_pad": 8,
+    "note": "Crop R231 lung bbox + 8 vx, resample 128^3. Same geometry recipe as PopulationStudy SPARE DVF library. Intensities stored as HU; loaders min-max per volume like SPARE."
+  },
+  "spare_split": {
+    "source": "Experiment2/Experiment3",
+    "train_patients": ["P1", "P3", "P4", "P5"],
+    "holdout_patients": ["P7", "P9"]
+  },
+  "train_patients": ["P1", "P3", "P4", "P5"],
+  "holdout_patients": ["P7", "P9"],
+  "val_split_seed": 20260819,
+  "val_fraction": 0.1,
+  "identity_pairs_included": true,
+  "pairs_per_patient": 100,
+  "n_train_patient_pairs": 400,
+  "n_holdout_pairs": 200,
+  "run": {
+    "anatomy_ae": true,
+    "decoder_crb": true,
+    "encoder_crb": false,
+    "both_crb": false,
+    "note": "Encoder/Both side-branch code is in place; do not launch those trainings in E4."
+  },
+  "torch_seed": 20260819,
+  "numpy_seed": 20260819,
+  "python_random_seed": 20260819,
+  "cuda_seed": 20260819,
+  "n_phases": 10
+}

@@ -2,6 +2,9 @@
 Data/
 data/
 PopulationStudy/raw/
+PopulationStudy/data/
+PopulationStudy/PaddedLungMasks/
+PopulationStudy/AnatomyPretrain/data/
 *.mha
 *.npy
 
@@ -16,6 +19,13 @@ venv/
 
 # Keep plot images/logs small enough; ignore huge accidental dumps
 deformationField.mha
+# Per-pair QC panels (~100MB–150MB each run); keep metrics.tsv + logs
+PopulationStudy/**/plots/qc_holdout*/**/*.png
+PopulationStudy/**/plots/qc_holdout_interim/
+PopulationStudy/Experiment*/data/
+# Local GUI / raw dumps outside PopulationStudy study code
+My v1.0/P2/raw/
+My v1.0/plots/orientation_viewer.log
 
 # Secrets / env
 .env

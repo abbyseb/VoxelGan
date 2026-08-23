@@ -1,0 +1,25 @@
+{
+  "description": "PopulationStudy Experiment 5: same LIDC anatomy encoder as E4, SPARE split from Experiment 1.",
+  "experiment": 5,
+  "anatomy_encoder": "../Experiment4/AnatomyAE/weights/anatomy_encoder.pth",
+  "patient_split_method": "same as Experiment 1 (seed 20260817)",
+  "train_patients": ["P1", "P2", "P6", "P7", "P8", "P9"],
+  "holdout_patients": ["P3", "P4", "P5"],
+  "val_split_seed": 20260817,
+  "val_fraction": 0.1,
+  "torch_seed": 20260817,
+  "numpy_seed": 20260817,
+  "python_random_seed": 20260817,
+  "cuda_seed": 20260817,
+  "n_phases": 10,
+  "identity_pairs_included": true,
+  "pairs_per_patient": 100,
+  "n_train_patient_pairs": 600,
+  "n_holdout_pairs": 300,
+  "run": {
+    "decoder_crb": true,
+    "encoder_crb": false,
+    "both_crb": false,
+    "note": "Decoder first; Encoder/Both after Decoder finishes."
+  }
+}

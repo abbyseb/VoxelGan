@@ -1,0 +1,30 @@
+{
+  "description": "PopulationStudy Experiment 3: same leave-patient split as Experiment 2, but train episodically (leave-one-train-patient-out each cycle) so the optimizer sees a zero-shot patient during training.",
+  "experiment": 3,
+  "patient_split_method": "same fixed assignment as Experiment 2",
+  "train_patients": ["P1", "P3", "P4", "P5"],
+  "holdout_patients": ["P7", "P9"],
+  "inner_zero_shot_default": "P1",
+  "inner_zero_shot_note": "P1 is the default inner query (zero-out) patient among the train set. Rotation over P1/P3/P4/P5 is the alternative (see README). P7/P9 never enter train or val.",
+  "val_split_seed": 20260819,
+  "val_fraction": 0.1,
+  "val_split_method": "per train patient: Random(val_split_seed + patient_index).shuffle(100 pairs); take first 10% as val. Val is train-patients only.",
+  "torch_seed": 20260819,
+  "numpy_seed": 20260819,
+  "python_random_seed": 20260819,
+  "cuda_seed": 20260819,
+  "n_phases": 10,
+  "identity_pairs_included": true,
+  "pairs_per_patient": 100,
+  "n_train_patient_pairs": 400,
+  "n_holdout_pairs": 200,
+  "meta": {
+    "mode": "first_order_episodic",
+    "mode_options": ["first_order_episodic", "maml_inner_step"],
+    "query_schedule": "rotate",
+    "query_schedule_options": ["fixed_p1", "rotate"],
+    "lambda_query": 2.5,
+    "support_patches": 16,
+    "query_patches": 8
+  }
+}

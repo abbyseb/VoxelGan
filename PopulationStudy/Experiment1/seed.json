@@ -1,0 +1,19 @@
+{
+  "description": "All RNGs for PopulationStudy Experiment 1. Patient split was drawn once in PopulationStudy/README.md; val pair split and torch/numpy seeds reuse the same integer.",
+  "patient_split_seed": 20260817,
+  "patient_split_method": "random.Random(20260817).sample(P1..P9, k=6) for train; remainder hold-out",
+  "train_patients": ["P1", "P2", "P6", "P7", "P8", "P9"],
+  "holdout_patients": ["P3", "P4", "P5"],
+  "val_split_seed": 20260817,
+  "val_fraction": 0.1,
+  "val_split_method": "per train patient: Random(val_split_seed + patient_index).shuffle(100 pairs); take first 10% as val. Val is train-patients only; P3–P5 never enter train or val.",
+  "torch_seed": 20260817,
+  "numpy_seed": 20260817,
+  "python_random_seed": 20260817,
+  "cuda_seed": 20260817,
+  "n_phases": 10,
+  "identity_pairs_included": true,
+  "pairs_per_patient": 100,
+  "n_train_patient_pairs": 600,
+  "n_holdout_pairs": 300
+}
