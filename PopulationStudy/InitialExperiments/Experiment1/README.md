@@ -49,14 +49,14 @@ data/pooled/manifest.json
 ## Build pooled data
 
 ```bash
-cd PopulationStudy/Experiment1
+cd PopulationStudy/InitialExperiments/Experiment1
 python scripts/build_pooled_dataset.py
 ```
 
 ## Train
 
 ```bash
-cd PopulationStudy/Experiment1
+cd PopulationStudy/InitialExperiments/Experiment1
 # Encoder + Decoder in parallel on two GPUs
 PYTHONPATH=. PYTHONUNBUFFERED=1 python EncoderCRB/train_crb_enc_mse.py --gpu 0 \
   2>&1 | tee EncoderCRB/plots/train_crb_enc_mse.log
@@ -88,7 +88,7 @@ QC panel (2×4):
 ## Layout
 
 ```
-Experiment1/
+InitialExperiments/Experiment1/
   seed.json
   README.md
   networks/          # UNetCRB, UNetCRBDecoder, UNetCRBBoth (copies from Dan2.0)

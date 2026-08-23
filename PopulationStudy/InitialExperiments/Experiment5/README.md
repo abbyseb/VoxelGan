@@ -1,6 +1,6 @@
 # PopulationStudy — Experiment 5
 
-Same **LIDC anatomy encoder** as Experiment 4 (shared `Experiment4/AnatomyAE/weights/anatomy_encoder.pth`). **SPARE split from Experiment 1.**
+Same **LIDC anatomy encoder** as Experiment 4 (shared `InitialExperiments/Experiment4/AnatomyAE/weights/anatomy_encoder.pth`). **SPARE split from Experiment 1.**
 
 | Stage | Data |
 |-------|------|
@@ -14,7 +14,7 @@ Same **LIDC anatomy encoder** as Experiment 4 (shared `Experiment4/AnatomyAE/wei
 2. Encoder-CRB / Both-CRB — side-branch (after Decoder)
 
 ```bash
-cd PopulationStudy/Experiment5
+cd PopulationStudy/InitialExperiments/Experiment5
 python scripts/build_pooled_dataset.py
 PYTHONPATH=. PYTHONUNBUFFERED=1 python DecoderCRB/train_crb_dec_mse.py --gpu 0
 # then:

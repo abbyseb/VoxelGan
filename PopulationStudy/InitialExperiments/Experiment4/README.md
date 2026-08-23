@@ -17,10 +17,10 @@ No patient-ID embedding. LIDC has no DVF / no phases.
 
 ## 128³ pack (same recipe as SPARE DVF library)
 
-R231 mask bbox + 8 vx → resample **128³**. Intensities stay HU on disk; loaders **min-max per volume**, identical to `Experiment2/utilities/dataset.py`.
+R231 mask bbox + 8 vx → resample **128³**. Intensities stay HU on disk; loaders **min-max per volume**, identical to `InitialExperiments/Experiment2/utilities/dataset.py`.
 
 ```bash
-cd PopulationStudy/Experiment4
+cd PopulationStudy/InitialExperiments/Experiment4
 python scripts/pack_lidc_128.py
 ```
 
@@ -66,7 +66,7 @@ Those encoders are **phase-CRB** end-to-end. You cannot drop `AnatomyEncoder` on
 ## Train (Decoder-CRB only)
 
 ```bash
-cd PopulationStudy/Experiment4
+cd PopulationStudy/InitialExperiments/Experiment4
 python scripts/build_pooled_dataset.py
 PYTHONPATH=. PYTHONUNBUFFERED=1 python scripts/train_ae.py --gpu 0
 PYTHONPATH=. PYTHONUNBUFFERED=1 python DecoderCRB/train_crb_dec_mse.py --gpu 0

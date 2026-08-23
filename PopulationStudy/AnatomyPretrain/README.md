@@ -31,5 +31,5 @@ python PopulationStudy/AnatomyPretrain/prepare_lidc_masks.py
 python PopulationStudy/scripts/viz_mask_padding.py --lidc --gui
 ```
 
-Packed 128³ volumes for Experiment 4 live under `PopulationStudy/Experiment4/data/lidc128/` (see that README).
+Packed 128³ volumes for Experiment 4 live under `PopulationStudy/InitialExperiments/Experiment4/data/lidc128/` (see that README).
 

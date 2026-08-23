@@ -38,7 +38,7 @@ There is still **no patient-ID embedding**. “Exclude from the anatomy-conditio
 Self-contained copy of E2 (`networks/`, `losses/`, `utilities/`, `scripts/`). Joint E2-style loop still exists as `scripts/train_mse.py`. **E3 default is** `scripts/train_meta.py`.
 
 ```
-Experiment3/
+InitialExperiments/Experiment3/
   seed.json
   README.md
   scripts/train_meta.py     # episodic leave-one-train-patient-out
@@ -50,14 +50,14 @@ Experiment3/
 ## Build pooled data
 
 ```bash
-cd PopulationStudy/Experiment3
+cd PopulationStudy/InitialExperiments/Experiment3
 python scripts/build_pooled_dataset.py
 ```
 
 ## Train (not started — waiting on next-step calls)
 
 ```bash
-cd PopulationStudy/Experiment3
+cd PopulationStudy/InitialExperiments/Experiment3
 PYTHONPATH=. PYTHONUNBUFFERED=1 python scripts/train_meta.py \
   --arch encoder --gpu 0 --query_schedule rotate --lambda_query 2.5
 ```

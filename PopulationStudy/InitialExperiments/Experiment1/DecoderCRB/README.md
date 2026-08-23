@@ -3,7 +3,7 @@
 CRB on decoder only. MSE only. See `../README.md` and `../seed.json`.
 
 ```bash
-cd PopulationStudy/Experiment1
+cd PopulationStudy/InitialExperiments/Experiment1
 PYTHONPATH=. PYTHONUNBUFFERED=1 python DecoderCRB/train_crb_dec_mse.py --gpu 1
 ```
 

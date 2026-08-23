@@ -74,9 +74,13 @@ Drawn with seed `20260817` (`random.sample` of P1–P9).
 | **Train** | P1, P2, P6, P7, P8, P9 |
 | **Hold-out test** | P3, P4, P5 |
 
+## Initial experiments (E1–E5)
+
+E1–E5 live under **[`InitialExperiments/`](InitialExperiments/)** (see that README). Next work: [`ChangesNeeded.md`](ChangesNeeded.md).
+
 ## Experiment 1
 
-Self-contained leave-patient-out CRB MSE study (Encoder / Decoder / Both). See **`Experiment1/README.md`** and **`Experiment1/seed.json`**.
+Self-contained leave-patient-out CRB MSE study (Encoder / Decoder / Both). See **`InitialExperiments/Experiment1/README.md`** and **`InitialExperiments/Experiment1/seed.json`**.
 
 - Train: P1, P2, P6, P7, P8, P9 · Hold-out: P3, P4, P5
 
@@ -86,30 +90,30 @@ Leave-patient-out is **weaker than Dan 2.0 same-patient leave-phase-out**. E1 De
 
 ## Experiment 3
 
-Episodic / zero-shot **training** (leave-one-train-patient-out), same outer split as E2. See **`Experiment3/README.md`**.
+Episodic / zero-shot **training** (leave-one-train-patient-out), same outer split as E2. See **`InitialExperiments/Experiment3/README.md`**.
 
 - Train pool: P1, P3, P4, P5 · inner default zero-out: **P1** (or rotate)
 - True hold-out: P7, P9
 
 ## Experiment 4
 
-LIDC-IDRI anatomy autoencoder → freeze encoder → splice into CRB DVF nets. Same SPARE hold-out as E2/E3 (P7, P9). See **`Experiment4/README.md`**.
+LIDC-IDRI anatomy autoencoder → freeze encoder → splice into CRB DVF nets. Same SPARE hold-out as E2/E3 (P7, P9). See **`InitialExperiments/Experiment4/README.md`**.
 
 ```bash
-cd PopulationStudy/Experiment4
+cd PopulationStudy/InitialExperiments/Experiment4
 python scripts/pack_lidc_128.py
 ```
 
 
 ## Experiment 2
 
-Fixed split — see **`Experiment2/README.md`** and **`Experiment2/seed.json`**.
+Fixed split — see **`InitialExperiments/Experiment2/README.md`** and **`InitialExperiments/Experiment2/seed.json`**.
 
 - **Train:** P1, P3, P4, P5 (400 pairs)
 - **Hold-out test:** P7, P9 (200 pairs)
 
 ```bash
-cd PopulationStudy/Experiment2
+cd PopulationStudy/InitialExperiments/Experiment2
 python scripts/build_pooled_dataset.py
 PYTHONPATH=. python EncoderCRB/train_crb_enc_mse.py --gpu 0
 ```

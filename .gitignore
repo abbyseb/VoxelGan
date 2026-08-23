@@ -19,7 +19,7 @@ venv/
 
 # Keep plot images/logs small enough; ignore huge accidental dumps
 deformationField.mha
-PopulationStudy/Experiment*/data/
+PopulationStudy/InitialExperiments/Experiment*/data/
 # Local GUI / raw dumps outside PopulationStudy study code
 My v1.0/P2/raw/
 My v1.0/plots/orientation_viewer.log

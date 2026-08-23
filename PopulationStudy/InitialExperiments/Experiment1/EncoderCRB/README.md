@@ -3,7 +3,7 @@
 CRB on encoder + bottleneck, plain decoder. MSE only. See `../README.md` and `../seed.json`.
 
 ```bash
-cd PopulationStudy/Experiment1
+cd PopulationStudy/InitialExperiments/Experiment1
 PYTHONPATH=. PYTHONUNBUFFERED=1 python EncoderCRB/train_crb_enc_mse.py --gpu 0
 ```
 

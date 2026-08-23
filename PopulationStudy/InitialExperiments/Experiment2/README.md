@@ -24,14 +24,14 @@ Same pipeline as Experiment 1:
 ## Build pooled data
 
 ```bash
-cd PopulationStudy/Experiment2
+cd PopulationStudy/InitialExperiments/Experiment2
 python scripts/build_pooled_dataset.py
 ```
 
 ## Train
 
 ```bash
-cd PopulationStudy/Experiment2
+cd PopulationStudy/InitialExperiments/Experiment2
 PYTHONPATH=. PYTHONUNBUFFERED=1 python EncoderCRB/train_crb_enc_mse.py --gpu 0
 PYTHONPATH=. PYTHONUNBUFFERED=1 python DecoderCRB/train_crb_dec_mse.py --gpu 1
 PYTHONPATH=. PYTHONUNBUFFERED=1 python BothCRB/train_crb_both_mse.py --gpu 0

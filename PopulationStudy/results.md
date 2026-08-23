@@ -74,7 +74,7 @@ On E2, **BothCRB** had the **best val MSE (0.030)** vs Decoder 0.033 / Encoder 0
 
 Val is 40 pairs from the *same* four train patients. Best val can mean **overfit to train patients**, not better unseen-patient DVFs.
 
-E1 BothCRB finished (best val MSE **0.022**) but hold-out QC was not run; E1 Encoder/Decoder final QC is in `Experiment1/*/plots/qc_holdout_final/`.
+E1 BothCRB finished (best val MSE **0.022**) but hold-out QC was not run; E1 Encoder/Decoder final QC is in `InitialExperiments/Experiment1/*/plots/qc_holdout_final/`.
 
 ---
 
@@ -96,7 +96,7 @@ E1 BothCRB finished (best val MSE **0.022**) but hold-out QC was not run; E1 Enc
 
 | | Path |
 |--|------|
-| E1 Decoder/Encoder final QC | `Experiment1/{Decoder,Encoder}CRB/plots/qc_holdout_final/` |
-| E2 Encoder/Decoder/Both final QC | `Experiment2/{Encoder,Decoder,Both}CRB/plots/qc_holdout_final/` |
+| E1 Decoder/Encoder final QC | `InitialExperiments/Experiment1/{Decoder,Encoder}CRB/plots/qc_holdout_final/` |
+| E2 Encoder/Decoder/Both final QC | `InitialExperiments/Experiment2/{Encoder,Decoder,Both}CRB/plots/qc_holdout_final/` |
 | Train curves | `*/plots/crb_*_mse_pop_e{1,2}.png` |
 | Dan 2.0 table | `Dan2.0/results.md` |
