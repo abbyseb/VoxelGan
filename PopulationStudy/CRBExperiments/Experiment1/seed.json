@@ -1,0 +1,27 @@
+{
+  "description": "CRBExperiments Experiment 1 — first ablation: Decoder-CRB + oracle amplitude (λ·log r̂_p). Same SPARE split as InitialExperiments/E1.",
+  "experiment": "CRB-E1",
+  "ablation": {
+    "add": "oracle amplitude conditioning + shape-normalized DVF targets",
+    "keep": "linear phase encoding [θ_ref, θ_tgt] as in baseline",
+    "deferred": ["cyclic phase", "δ_tgt", "f in cond", "measured surrogate"]
+  },
+  "train_patients": ["P1", "P2", "P6", "P7", "P8", "P9"],
+  "holdout_patients": ["P3", "P4", "P5"],
+  "val_split_seed": 20260823,
+  "val_fraction": 0.1,
+  "torch_seed": 20260823,
+  "numpy_seed": 20260823,
+  "python_random_seed": 20260823,
+  "cuda_seed": 20260823,
+  "n_phases": 10,
+  "identity_pairs_included": true,
+  "amplitude": {
+    "statistic": "q90_lung_mag_extreme_pair",
+    "grid": "PopulationStudy/data_iso — 2.0 mm isotropic, 160³, lung-centroid FOV",
+    "units_A_p": "mm (also stored as iso voxels for DVF normalization)",
+    "normalize": "r_p = A_p_mm / mean(A_train_mm)",
+    "cond": "log(r_p)",
+    "target": "u_iso_vox / A_p_vox (shape space); infer u = shape * A_p_vox"
+  }
+}

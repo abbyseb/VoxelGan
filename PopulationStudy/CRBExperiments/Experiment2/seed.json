@@ -1,0 +1,28 @@
+{
+  "description": "CRBExperiments Experiment 2 — A1 normalize-only: shape targets û=u/A_p, conditioning log(r̂)=0 (pool-mean prior). Same split/grid as Experiment 1.",
+  "experiment": "CRB-E2",
+  "arm": "A1_normalize_only",
+  "ablation": {
+    "add": "shape-normalized DVF targets only",
+    "cond": "log(r̂_p)=0 always (r̂=1, pool-mean amplitude)",
+    "infer_scale": "A_train_mean_vox (not patient A_p)",
+    "vs_E1": "E1 feeds oracle log(r_p) and scales by A_p; E2 isolates shape-space loss from amp conditioning"
+  },
+  "train_patients": ["P1", "P2", "P6", "P7", "P8", "P9"],
+  "holdout_patients": ["P3", "P4", "P5"],
+  "val_split_seed": 20260823,
+  "val_fraction": 0.1,
+  "torch_seed": 20260823,
+  "numpy_seed": 20260823,
+  "python_random_seed": 20260823,
+  "cuda_seed": 20260823,
+  "n_phases": 10,
+  "identity_pairs_included": true,
+  "amplitude": {
+    "statistic": "q90_lung_mag_extreme_pair",
+    "grid": "PopulationStudy/data_iso — 2.0 mm isotropic, 160³",
+    "cond": "log(r̂)=0",
+    "target": "u_iso_vox / A_p_vox (shape space)",
+    "infer": "u = shape * A_train_mean_vox"
+  }
+}

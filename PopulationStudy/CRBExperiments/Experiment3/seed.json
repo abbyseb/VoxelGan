@@ -1,0 +1,28 @@
+{
+  "description": "CRBExperiments Experiment 3 — cyclic phase encoding + oracle amplitude. Same split/grid as Experiment 1.",
+  "experiment": "CRB-E3",
+  "arm": "cyclic_phase_oracle_amp",
+  "ablation": {
+    "add": "cyclic (cos,sin) phase codes replacing linear θ/9",
+    "cond_dim": 5,
+    "cond": "[cos 2πθ_ref, sin 2πθ_ref, cos 2πθ_tgt, sin 2πθ_tgt, log(r_p)]",
+    "keep": "oracle amplitude + shape targets (as E1)",
+    "deferred": ["δ_tgt", "f in cond", "measured surrogate"]
+  },
+  "train_patients": ["P1", "P2", "P6", "P7", "P8", "P9"],
+  "holdout_patients": ["P3", "P4", "P5"],
+  "val_split_seed": 20260823,
+  "val_fraction": 0.1,
+  "torch_seed": 20260823,
+  "numpy_seed": 20260823,
+  "python_random_seed": 20260823,
+  "cuda_seed": 20260823,
+  "n_phases": 10,
+  "identity_pairs_included": true,
+  "amplitude": {
+    "statistic": "q90_lung_mag_extreme_pair",
+    "grid": "PopulationStudy/data_iso — 2.0 mm isotropic, 160³",
+    "cond": "log(r_p) + cyclic phases",
+    "target": "u_iso_vox / A_p_vox (shape space); infer u = shape * A_p_vox"
+  }
+}

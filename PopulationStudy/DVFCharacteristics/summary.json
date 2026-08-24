@@ -1,0 +1,115 @@
+{
+  "farthest": "P4",
+  "lowest": "P7",
+  "cohort_mean_directed": 1.0061522048624152,
+  "patients": [
+    {
+      "patient": "P4",
+      "mag_mean_directed": 1.521609758535366,
+      "mag_01_to_06": 3.3310727368311364,
+      "diaphragm_zyx": [
+        121,
+        109,
+        42
+      ],
+      "traj_peak_mag": 1.3465463195499319,
+      "traj_peak_phase": 6
+    },
+    {
+      "patient": "P3",
+      "mag_mean_directed": 1.2761047011079503,
+      "mag_01_to_06": 2.7071150505462254,
+      "diaphragm_zyx": [
+        121,
+        74,
+        85
+      ],
+      "traj_peak_mag": 1.3797851185838403,
+      "traj_peak_phase": 7
+    },
+    {
+      "patient": "P1",
+      "mag_mean_directed": 1.192417910471193,
+      "mag_01_to_06": 2.2894951519036617,
+      "diaphragm_zyx": [
+        121,
+        86,
+        41
+      ],
+      "traj_peak_mag": 0.6169218873456349,
+      "traj_peak_phase": 8
+    },
+    {
+      "patient": "P8",
+      "mag_mean_directed": 1.1572439751254313,
+      "mag_01_to_06": 2.341673190106735,
+      "diaphragm_zyx": [
+        120,
+        109,
+        50
+      ],
+      "traj_peak_mag": 1.3764366484688388,
+      "traj_peak_phase": 7
+    },
+    {
+      "patient": "P2",
+      "mag_mean_directed": 0.856387665435144,
+      "mag_01_to_06": 1.4848715688261331,
+      "diaphragm_zyx": [
+        119,
+        106,
+        60
+      ],
+      "traj_peak_mag": 1.301341396034664,
+      "traj_peak_phase": 7
+    },
+    {
+      "patient": "P9",
+      "mag_mean_directed": 0.8193384378916488,
+      "mag_01_to_06": 1.6990010551843306,
+      "diaphragm_zyx": [
+        121,
+        113,
+        81
+      ],
+      "traj_peak_mag": 1.7511279781452522,
+      "traj_peak_phase": 7
+    },
+    {
+      "patient": "P5",
+      "mag_mean_directed": 0.8157064604824419,
+      "mag_01_to_06": 1.6844059070397361,
+      "diaphragm_zyx": [
+        121,
+        66,
+        56
+      ],
+      "traj_peak_mag": 0.35393260813967387,
+      "traj_peak_phase": 7
+    },
+    {
+      "patient": "P6",
+      "mag_mean_directed": 0.7394280529732807,
+      "mag_01_to_06": 1.5563233217657821,
+      "diaphragm_zyx": [
+        119,
+        109,
+        64
+      ],
+      "traj_peak_mag": 1.2308405693412396,
+      "traj_peak_phase": 7
+    },
+    {
+      "patient": "P7",
+      "mag_mean_directed": 0.677132881739281,
+      "mag_01_to_06": 1.2982869751694952,
+      "diaphragm_zyx": [
+        121,
+        110,
+        55
+      ],
+      "traj_peak_mag": 0.8277576842251226,
+      "traj_peak_phase": 8
+    }
+  ]
+}

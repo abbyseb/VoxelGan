@@ -1,0 +1,23 @@
+{
+  "description": "CRBExperiments Experiment 4 — cyclic phase + inhale/exhale δ_tgt + oracle amplitude.",
+  "experiment": "CRB-E4",
+  "arm": "delta_tgt_cyclic_oracle_amp",
+  "ablation": {
+    "add": "δ_tgt ∈ {+1 inhale, −1 exhale} at target phase (hysteresis descriptor)",
+    "cond_dim": 6,
+    "cond": "[cos 2πθ_ref, sin 2πθ_ref, cos 2πθ_tgt, sin 2πθ_tgt, δ_tgt, log(r_p)]",
+    "delta_rule": "EE=phase 01; +1 for phases 02..peak; −1 for peak+1..10 and 01. Peak = argmax mean lung ‖u‖ of 01→phase on data_iso.",
+    "keep": "cyclic phases + oracle amp + shape targets (as E3)",
+    "deferred": ["f in cond", "measured surrogate"]
+  },
+  "train_patients": ["P1", "P2", "P6", "P7", "P8", "P9"],
+  "holdout_patients": ["P3", "P4", "P5"],
+  "val_split_seed": 20260823,
+  "val_fraction": 0.1,
+  "torch_seed": 20260823,
+  "numpy_seed": 20260823,
+  "python_random_seed": 20260823,
+  "cuda_seed": 20260823,
+  "n_phases": 10,
+  "identity_pairs_included": true
+}

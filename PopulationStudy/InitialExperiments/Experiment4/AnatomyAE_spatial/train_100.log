@@ -1,0 +1,22 @@
+[spatial_ae] device=cuda:1 params=1.02M bn_ch=16 | train=32 val=8 | 64³ | seed=20260819 | cube-mask train
+Epoch: 1 | train MSE: 0.002333 | val MSE: 0.003392 | total time: 0 hours 0 minutes
+Epoch: 2 | train MSE: 0.002217 | val MSE: 0.003414 | total time: 0 hours 0 minutes
+Epoch: 3 | train MSE: 0.002111 | val MSE: 0.003372 | total time: 0 hours 0 minutes
+Epoch: 4 | train MSE: 0.002041 | val MSE: 0.003359 | total time: 0 hours 0 minutes
+Epoch: 5 | train MSE: 0.001987 | val MSE: 0.003304 | total time: 0 hours 0 minutes
+Epoch: 6 | train MSE: 0.001962 | val MSE: 0.003287 | total time: 0 hours 0 minutes
+Epoch: 7 | train MSE: 0.001943 | val MSE: 0.003312 | total time: 0 hours 0 minutes
+Epoch: 8 | train MSE: 0.001943 | val MSE: 0.003216 | total time: 0 hours 0 minutes
+Epoch: 9 | train MSE: 0.001926 | val MSE: 0.003255 | total time: 0 hours 0 minutes
+Epoch: 10 | train MSE: 0.001912 | val MSE: 0.003239 | total time: 0 hours 0 minutes
+Epoch: 11 | train MSE: 0.001926 | val MSE: 0.003211 | total time: 0 hours 0 minutes
+Epoch: 12 | train MSE: 0.001885 | val MSE: 0.003167 | total time: 0 hours 0 minutes
+Epoch: 13 | train MSE: 0.001864 | val MSE: 0.003175 | total time: 0 hours 0 minutes
+Epoch: 14 | train MSE: 0.001867 | val MSE: 0.003251 | total time: 0 hours 0 minutes
+Epoch: 15 | train MSE: 0.001879 | val MSE: 0.003226 | total time: 0 hours 1 minutes
+Epoch: 16 | train MSE: 0.001842 | val MSE: 0.003170 | total time: 0 hours 1 minutes
+Epoch: 17 | train MSE: 0.001845 | val MSE: 0.003161 | total time: 0 hours 1 minutes
+Epoch: 18 | train MSE: 0.001813 | val MSE: 0.003242 | total time: 0 hours 1 minutes
+Epoch: 19 | train MSE: 0.001842 | val MSE: 0.003183 | total time: 0 hours 1 minutes
+Epoch: 20 | train MSE: 0.001816 | val MSE: 0.003165 | total time: 0 hours 1 minutes
+Epoch: 21 | train MSE: 0.001818 | val MSE: 0.003137 | total time: 0 hours 1 minutes

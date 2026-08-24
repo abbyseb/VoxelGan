@@ -186,6 +186,8 @@ Four measurements, all pure post-processing on the E1–E5 predictions already o
 
 *Minimal design.* Decoder-CRB, regridded data, 3-fold LOPO, four arms: (i) baseline, (ii) normalised target + oracle amplitude, (iii) normalised target + measured amplitude, (iv) normalised target + training-pool-mean amplitude (isolates how much of the gain is conditioning versus normalisation).
 
+*Full design of the amplitude input* (definition, surrogate calibration, conditioning interface, continuous phase, arms, gates): **[`AmplitudeConditioning.md`](AmplitudeConditioning.md)**.
+
 #### P1-B. Amplitude augmentation
 
 *Mechanism.* Synthesise new training triplets by scaling: for a pair (ref, target, u) and a factor s ∈ [0.4, 2.0], form (ref, warp(ref, s·u), s·u). This creates a continuum of breathing amplitudes for every anatomy at essentially zero data cost. Add the standard DVF-aware geometric augmentations too — L-R flip with negation of the x-component, small rotations with the corresponding rotation applied to the vectors.

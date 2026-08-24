@@ -1,0 +1,12 @@
+[spatial_ae] device=cuda:1 params=1.02M bn_ch=16 | train=32 val=8 | 64³ | seed=20260819 | cube-mask train
+Epoch: 1 | train MSE: 0.002325 | val MSE: 0.003394 | total time: 0 hours 0 minutes
+Epoch: 2 | train MSE: 0.002218 | val MSE: 0.003437 | total time: 0 hours 0 minutes
+Epoch: 3 | train MSE: 0.002115 | val MSE: 0.003395 | total time: 0 hours 0 minutes
+Epoch: 4 | train MSE: 0.002037 | val MSE: 0.003329 | total time: 0 hours 0 minutes
+Epoch: 5 | train MSE: 0.001988 | val MSE: 0.003276 | total time: 0 hours 0 minutes
+Epoch: 6 | train MSE: 0.001959 | val MSE: 0.003300 | total time: 0 hours 0 minutes
+Epoch: 7 | train MSE: 0.001946 | val MSE: 0.003317 | total time: 0 hours 0 minutes
+Epoch: 8 | train MSE: 0.001937 | val MSE: 0.003226 | total time: 0 hours 0 minutes
+Epoch: 9 | train MSE: 0.001915 | val MSE: 0.003223 | total time: 0 hours 0 minutes
+Epoch: 10 | train MSE: 0.001899 | val MSE: 0.003231 | total time: 0 hours 0 minutes
+finished best_val_mse=0.003223 ckpt=/home/abhishek/Voxel_GAN/PopulationStudy/InitialExperiments/Experiment4/AnatomyAE_spatial/weights/anatomy_ae_spatial.pth

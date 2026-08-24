@@ -1,0 +1,5 @@
+[crb_dec_amp_oracle_e1] device=cuda:0 | params=1.07M trainable | shape-MSE + oracle log(r_p) | seed=20260823
+[crb_dec_amp_oracle_e1] A_train=3.953 | train 8640 val 480 | train=['P1', 'P2', 'P6', 'P7', 'P8', 'P9'] hold-out=['P3', 'P4', 'P5']
+Epoch: 1 | train MSE: 0.021525 | val MSE: 0.012389 | total time: 0 hours 2 minutes
+Epoch: 2 | train MSE: 0.011133 | val MSE: 0.008005 | total time: 0 hours 4 minutes
+Epoch: 3 | train MSE: 0.007955 | val MSE: 0.006356 | total time: 0 hours 7 minutes
