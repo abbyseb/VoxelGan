@@ -1,0 +1,24 @@
+{
+  "description": "ClinicalExperiments E3 BothCRB cyclic + FOV/CBCT aug (normal / half-FOV / CBCT / half+CBCT @ 1/4).",
+  "phase_encoding": "cyclic",
+  "cond_dim": 4,
+  "fov_aug": {
+    "train_modes": ["normal", "half_fov", "cbct_noise", "half_fov_cbct"],
+    "probs": [0.25, 0.25, 0.25, 0.25],
+    "val_mode": "normal"
+  },
+  "primary_arch": "both",
+  "patient_split_seed": 20260824,
+  "train_patients": ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9"],
+  "holdout_patients": [],
+  "val_split_seed": 20260824,
+  "val_fraction": 0.1,
+  "torch_seed": 20260824,
+  "numpy_seed": 20260824,
+  "python_random_seed": 20260824,
+  "cuda_seed": 20260824,
+  "aug_seed": 20260825,
+  "n_phases": 10,
+  "identity_pairs_included": true,
+  "reuses_experiment1_pooled_data": true
+}

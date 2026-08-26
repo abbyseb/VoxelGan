@@ -1,0 +1,18 @@
+[crb_dec_mse_linear_full128] network_module=/home/abhishek/Voxel_GAN/PopulationStudy/InitialExperiments/Experiment1/networks/generator_crb.py cond_dim=2 im_size=128
+[crb_dec_mse_linear_full128] device=cuda:1 | UNetCRBDecoder params=1.07M | loss=lung-masked MSE | no D | CRB=decoder | linear | train 128³ | seed=20260824
+[crb_dec_mse_linear_full128] train 810 (810 pairs × 1) | val 90 (90 pairs × 1) | train patients=['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9']
+Epoch: 1 | train MSE: 0.667663 | val MSE: 0.594518 | total time: 0 hours 4 minutes
+Epoch: 2 | train MSE: 0.596142 | val MSE: 0.487832 | total time: 0 hours 8 minutes
+Epoch: 3 | train MSE: 0.422998 | val MSE: 0.316477 | total time: 0 hours 12 minutes
+Epoch: 4 | train MSE: 0.311993 | val MSE: 0.282863 | total time: 0 hours 16 minutes
+Epoch: 5 | train MSE: 0.265963 | val MSE: 0.229955 | total time: 0 hours 20 minutes
+Epoch: 6 | train MSE: 0.226156 | val MSE: 0.190959 | total time: 0 hours 24 minutes
+Epoch: 7 | train MSE: 0.204573 | val MSE: 0.223573 | total time: 0 hours 28 minutes
+Epoch: 8 | train MSE: 0.196918 | val MSE: 0.167730 | total time: 0 hours 32 minutes
+Epoch: 9 | train MSE: 0.190377 | val MSE: 0.170761 | total time: 0 hours 36 minutes
+Epoch: 10 | train MSE: 0.175017 | val MSE: 0.185706 | total time: 0 hours 40 minutes
+Epoch: 11 | train MSE: 0.178941 | val MSE: 0.211469 | total time: 0 hours 44 minutes
+Epoch: 12 | train MSE: 0.161799 | val MSE: 0.150982 | total time: 0 hours 48 minutes
+Epoch: 13 | train MSE: 0.159076 | val MSE: 0.144716 | total time: 0 hours 52 minutes
+Epoch: 14 | train MSE: 0.144822 | val MSE: 0.153125 | total time: 0 hours 56 minutes
+Epoch: 15 | train MSE: 0.142092 | val MSE: 0.151041 | total time: 1 hours 0 minutes

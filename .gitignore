@@ -6,6 +6,8 @@ PopulationStudy/data/
 PopulationStudy/PaddedLungMasks/
 PopulationStudy/AnatomyPretrain/data/
 PopulationStudy/data_iso/
+PopulationStudy/varian/
+PopulationStudy/elekta/
 *.mha
 *.npy
 
@@ -30,3 +32,8 @@ My v1.0/plots/orientation_viewer.log
 *.pem
 
 PopulationStudy/CRBExperiments/Experiment*/data/
+PopulationStudy/ClinicalExperiments/Experiment*/data/
+
+# ClinicalExperiments QC / train curve images (too large for HTTPS/SSH push)
+PopulationStudy/ClinicalExperiments/**/*.png
+PopulationStudy/plots/**/*.png

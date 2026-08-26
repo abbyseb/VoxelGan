@@ -1,0 +1,70 @@
+E4 mm rescoring  ckpt=crb_both_mse_cyclic_fov_aug_generator.pth  device=cuda:1
+SPARE ref mm/vox zyx=[1.5243 1.7179 2.1519]
+
+=== CV_P1_V_01  pack_mm/vox_zyx=[1.6328125 1.71875   2.1015625] ===
+  voxel       L1/z=1.126  cos=0.384  k=0.975  beat=50%
+  mm          L1/z=1.122  cos=0.375  k=0.962  beat=48%
+  corrected   L1/z=1.121  cos=0.382  k=0.963  beat=49%
+
+=== CV_P2_V_01  pack_mm/vox_zyx=[1.734375  1.71875   2.3671875] ===
+  voxel       L1/z=0.836  cos=0.618  k=0.682  beat=98%
+  mm          L1/z=0.843  cos=0.599  k=0.659  beat=99%
+  corrected   L1/z=0.834  cos=0.617  k=0.666  beat=99%
+
+=== CV_P3_V_01  pack_mm/vox_zyx=[1.8125   1.71875  2.421875] ===
+  voxel       L1/z=0.848  cos=0.622  k=0.799  beat=80%
+  mm          L1/z=0.862  cos=0.590  k=0.766  beat=80%
+  corrected   L1/z=0.842  cos=0.621  k=0.777  beat=83%
+
+=== CV_P4_V_01  pack_mm/vox_zyx=[1.703125 1.71875  2.515625] ===
+  voxel       L1/z=0.752  cos=0.680  k=0.735  beat=96%
+  mm          L1/z=0.772  cos=0.656  k=0.723  beat=93%
+  corrected   L1/z=0.748  cos=0.681  k=0.720  beat=96%
+
+=== CV_P5_V_01  pack_mm/vox_zyx=[1.65625 1.71875 2.09375] ===
+  voxel       L1/z=0.885  cos=0.509  k=0.316  beat=98%
+  mm          L1/z=0.889  cos=0.494  k=0.312  beat=98%
+  corrected   L1/z=0.887  cos=0.507  k=0.313  beat=98%
+
+=== CE_P1_V_01  pack_mm/vox_zyx=[1.25      1.9921875 1.6640625] ===
+  voxel       L1/z=1.029  cos=0.136  k=0.332  beat=40%
+  mm          L1/z=1.026  cos=0.165  k=0.357  beat=42%
+  corrected   L1/z=1.041  cos=0.119  k=0.331  beat=38%
+
+=== CE_P2_V_01  pack_mm/vox_zyx=[1.7109375 2.        1.328125 ] ===
+  voxel       L1/z=1.018  cos=0.130  k=0.309  beat=47%
+  mm          L1/z=1.022  cos=0.141  k=0.333  beat=49%
+  corrected   L1/z=1.023  cos=0.123  k=0.301  beat=40%
+
+=== CE_P3_V_01  pack_mm/vox_zyx=[1.5546875 0.8515625 1.7421875] ===
+  voxel       L1/z=0.996  cos=0.056  k=0.102  beat=52%
+  mm          L1/z=1.000  cos=0.062  k=0.109  beat=54%
+  corrected   L1/z=1.008  cos=0.052  k=0.189  beat=47%
+
+=== CE_P4_V_01  pack_mm/vox_zyx=[1.65625 2.      1.65625] ===
+  voxel       L1/z=0.961  cos=0.346  k=0.465  beat=77%
+  mm          L1/z=0.957  cos=0.368  k=0.500  beat=74%
+  corrected   L1/z=0.958  cos=0.326  k=0.420  beat=82%
+
+=== CE_P5_V_01  pack_mm/vox_zyx=[1.2890625 2.        1.8046875] ===
+  voxel       L1/z=0.949  cos=0.315  k=0.262  beat=80%
+  mm          L1/z=0.944  cos=0.338  k=0.298  beat=79%
+  corrected   L1/z=0.948  cos=0.317  k=0.244  beat=80%
+
+======== COHORT MEANS ========
+
+-- varian (n=5) --
+  voxel       L1/z=0.890  cos=0.563  k=0.702  beat=84%
+  mm          L1/z=0.898  cos=0.543  k=0.684  beat=84%
+  corrected   L1/z=0.886  cos=0.561  k=0.688  beat=85%
+
+-- elekta (n=5) --
+  voxel       L1/z=0.990  cos=0.197  k=0.294  beat=59%
+  mm          L1/z=0.990  cos=0.215  k=0.319  beat=60%
+  corrected   L1/z=0.996  cos=0.187  k=0.297  beat=57%
+  (CE_P3–P5 only)
+  voxel       cos=0.239  beat=70%
+  mm          cos=0.256  beat=69%
+  corrected   cos=0.232  beat=70%
+
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/plots/e4_mm_rescoring/e4_summary.json

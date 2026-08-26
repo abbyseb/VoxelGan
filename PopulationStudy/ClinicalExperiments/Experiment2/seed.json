@@ -1,0 +1,23 @@
+{
+  "description": "ClinicalExperiments E2 cyclic-phase full-SPARE train (same split/seeds as E1).",
+  "phase_encoding": "cyclic",
+  "cond_dim": 4,
+  "cond_formula": "[cos 2πθ_ref, sin 2πθ_ref, cos 2πθ_tgt, sin 2πθ_tgt], θ = phase_index / n_phases",
+  "patient_split_seed": 20260824,
+  "patient_split_method": "Use all P1..P9 for training; no SPARE hold-out patients.",
+  "train_patients": ["P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9"],
+  "holdout_patients": [],
+  "val_split_seed": 20260824,
+  "val_fraction": 0.1,
+  "val_split_method": "Per train patient: Random(val_split_seed + patient_index).shuffle(100 pairs); take first 10% as val.",
+  "torch_seed": 20260824,
+  "numpy_seed": 20260824,
+  "python_random_seed": 20260824,
+  "cuda_seed": 20260824,
+  "n_phases": 10,
+  "identity_pairs_included": true,
+  "pairs_per_patient": 100,
+  "n_train_patient_pairs": 900,
+  "n_holdout_pairs": 0,
+  "reuses_experiment1_pooled_data": true
+}

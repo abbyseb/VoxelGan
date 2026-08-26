@@ -1,0 +1,9 @@
+[crb_dec_mse_cyclic_fov_aug] device=cuda:1 | UNetCRBDecoder params=1.07M | CRB=decoder | cyclic + FOV/CBCT aug | seed=20260824 aug_seed=20260825
+[crb_dec_mse_cyclic_fov_aug] train 12960 (FOV aug ¼×4) | val 720 (normal only) | patients=['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9']
+Epoch: 1 | train MSE: 0.422080 | val MSE: 0.259940 | aug counts [3279, 3186, 3281, 3214] | total time: 0 hours 14 minutes
+Epoch: 2 | train MSE: 0.274439 | val MSE: 0.198058 | aug counts [3279, 3186, 3281, 3214] | total time: 0 hours 30 minutes
+Epoch: 3 | train MSE: 0.207413 | val MSE: 0.152385 | aug counts [3279, 3186, 3281, 3214] | total time: 0 hours 46 minutes
+Epoch: 4 | train MSE: 0.162284 | val MSE: 0.144422 | aug counts [3279, 3186, 3281, 3214] | total time: 1 hours 0 minutes
+Epoch: 5 | train MSE: 0.133700 | val MSE: 0.117414 | aug counts [3279, 3186, 3281, 3214] | total time: 1 hours 14 minutes
+Epoch: 6 | train MSE: 0.111501 | val MSE: 0.093603 | aug counts [3279, 3186, 3281, 3214] | total time: 1 hours 31 minutes
+Epoch: 7 | train MSE: 0.095960 | val MSE: 0.094171 | aug counts [3279, 3186, 3281, 3214] | total time: 1 hours 57 minutes

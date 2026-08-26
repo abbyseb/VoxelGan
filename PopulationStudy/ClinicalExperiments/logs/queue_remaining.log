@@ -1,0 +1,1182 @@
+[2026-08-25 13:10:40] === queue_remaining START ===
+[2026-08-25 13:10:40] CE=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments
+[2026-08-25 13:10:41] detected E1_BOTH_PID=2341873 E2_ENC/chain=2525010/2525007 E3_BOTH_PID=2586908
+[2026-08-25 13:10:41] waiting for E2 enc→dec chain pid=2525007
+[2026-08-26 00:45:42] finished E2 enc→dec chain
+[2026-08-26 00:45:42] === E2 Both train on GPU 1 ===
+[crb_both_mse_cyclic_full_spare] device=cuda:1 | UNetCRBBoth params=1.08M | loss=lung-masked MSE | no D | CRB=encoder+decoder | cyclic(θ) cond_dim=4 | seed=20260824
+[crb_both_mse_cyclic_full_spare] train 12960 (810 pairs × 16) | val 720 (90 pairs × 8) | train patients=['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9']
+Epoch: 1 | train MSE: 0.483503 | val MSE: 0.296207 | total time: 0 hours 3 minutes
+Epoch: 2 | train MSE: 0.296333 | val MSE: 0.234306 | total time: 0 hours 7 minutes
+Epoch: 3 | train MSE: 0.217675 | val MSE: 0.183308 | total time: 0 hours 11 minutes
+Epoch: 4 | train MSE: 0.168161 | val MSE: 0.144909 | total time: 0 hours 14 minutes
+Epoch: 5 | train MSE: 0.137951 | val MSE: 0.117088 | total time: 0 hours 18 minutes
+Epoch: 6 | train MSE: 0.116120 | val MSE: 0.118758 | total time: 0 hours 21 minutes
+Epoch: 7 | train MSE: 0.100099 | val MSE: 0.099202 | total time: 0 hours 25 minutes
+Epoch: 8 | train MSE: 0.086705 | val MSE: 0.110370 | total time: 0 hours 29 minutes
+Epoch: 9 | train MSE: 0.077914 | val MSE: 0.080609 | total time: 0 hours 32 minutes
+Epoch: 10 | train MSE: 0.071252 | val MSE: 0.077755 | total time: 0 hours 36 minutes
+Epoch: 11 | train MSE: 0.065849 | val MSE: 0.083221 | total time: 0 hours 40 minutes
+Epoch: 12 | train MSE: 0.060581 | val MSE: 0.069171 | total time: 0 hours 43 minutes
+Epoch: 13 | train MSE: 0.056623 | val MSE: 0.061511 | total time: 0 hours 47 minutes
+Epoch: 14 | train MSE: 0.053192 | val MSE: 0.062524 | total time: 0 hours 51 minutes
+Epoch: 15 | train MSE: 0.050639 | val MSE: 0.057539 | total time: 0 hours 54 minutes
+Epoch: 16 | train MSE: 0.048292 | val MSE: 0.053211 | total time: 0 hours 58 minutes
+Epoch: 17 | train MSE: 0.045698 | val MSE: 0.067339 | total time: 1 hours 2 minutes
+Epoch: 18 | train MSE: 0.044259 | val MSE: 0.052260 | total time: 1 hours 5 minutes
+Epoch: 19 | train MSE: 0.042449 | val MSE: 0.050185 | total time: 1 hours 9 minutes
+Epoch: 20 | train MSE: 0.040703 | val MSE: 0.048589 | total time: 1 hours 13 minutes
+Epoch: 21 | train MSE: 0.039066 | val MSE: 0.051141 | total time: 1 hours 16 minutes
+Epoch: 22 | train MSE: 0.038069 | val MSE: 0.047094 | total time: 1 hours 20 minutes
+Epoch: 23 | train MSE: 0.037335 | val MSE: 0.049919 | total time: 1 hours 23 minutes
+Epoch: 24 | train MSE: 0.036628 | val MSE: 0.044681 | total time: 1 hours 27 minutes
+Epoch: 25 | train MSE: 0.035247 | val MSE: 0.045715 | total time: 1 hours 31 minutes
+Epoch: 26 | train MSE: 0.034382 | val MSE: 0.042890 | total time: 1 hours 34 minutes
+Epoch: 27 | train MSE: 0.034151 | val MSE: 0.042345 | total time: 1 hours 38 minutes
+Epoch: 28 | train MSE: 0.033407 | val MSE: 0.043085 | total time: 1 hours 41 minutes
+Epoch: 29 | train MSE: 0.032276 | val MSE: 0.041912 | total time: 1 hours 45 minutes
+Epoch: 30 | train MSE: 0.031205 | val MSE: 0.042449 | total time: 1 hours 49 minutes
+Epoch: 31 | train MSE: 0.031513 | val MSE: 0.041621 | total time: 1 hours 52 minutes
+Epoch: 32 | train MSE: 0.030572 | val MSE: 0.043187 | total time: 1 hours 56 minutes
+Epoch: 33 | train MSE: 0.030376 | val MSE: 0.041501 | total time: 1 hours 59 minutes
+Epoch: 34 | train MSE: 0.029500 | val MSE: 0.042645 | total time: 2 hours 3 minutes
+Epoch: 35 | train MSE: 0.028714 | val MSE: 0.039367 | total time: 2 hours 7 minutes
+Epoch: 36 | train MSE: 0.028683 | val MSE: 0.040652 | total time: 2 hours 10 minutes
+Epoch: 37 | train MSE: 0.028210 | val MSE: 0.039624 | total time: 2 hours 14 minutes
+Epoch: 38 | train MSE: 0.027953 | val MSE: 0.041852 | total time: 2 hours 17 minutes
+Epoch: 39 | train MSE: 0.027630 | val MSE: 0.040409 | total time: 2 hours 21 minutes
+Epoch: 40 | train MSE: 0.027368 | val MSE: 0.038575 | total time: 2 hours 24 minutes
+Epoch: 41 | train MSE: 0.026783 | val MSE: 0.042922 | total time: 2 hours 28 minutes
+Epoch: 42 | train MSE: 0.026558 | val MSE: 0.037350 | total time: 2 hours 32 minutes
+Epoch: 43 | train MSE: 0.025920 | val MSE: 0.036970 | total time: 2 hours 35 minutes
+Epoch: 44 | train MSE: 0.026084 | val MSE: 0.036639 | total time: 2 hours 39 minutes
+Epoch: 45 | train MSE: 0.025534 | val MSE: 0.036937 | total time: 2 hours 43 minutes
+Epoch: 46 | train MSE: 0.025113 | val MSE: 0.044208 | total time: 2 hours 46 minutes
+Epoch: 47 | train MSE: 0.025023 | val MSE: 0.034080 | total time: 2 hours 50 minutes
+Epoch: 48 | train MSE: 0.024523 | val MSE: 0.035482 | total time: 2 hours 53 minutes
+Epoch: 49 | train MSE: 0.023879 | val MSE: 0.042701 | total time: 2 hours 57 minutes
+Epoch: 50 | train MSE: 0.024020 | val MSE: 0.036660 | total time: 3 hours 1 minutes
+Epoch: 51 | train MSE: 0.023859 | val MSE: 0.034397 | total time: 3 hours 4 minutes
+Epoch: 52 | train MSE: 0.023571 | val MSE: 0.034312 | total time: 3 hours 8 minutes
+Epoch: 53 | train MSE: 0.023711 | val MSE: 0.033496 | total time: 3 hours 11 minutes
+Epoch: 54 | train MSE: 0.022852 | val MSE: 0.034444 | total time: 3 hours 15 minutes
+Epoch: 55 | train MSE: 0.022548 | val MSE: 0.034843 | total time: 3 hours 19 minutes
+Epoch: 56 | train MSE: 0.022667 | val MSE: 0.035480 | total time: 3 hours 22 minutes
+Epoch: 57 | train MSE: 0.022460 | val MSE: 0.032915 | total time: 3 hours 26 minutes
+Epoch: 58 | train MSE: 0.022315 | val MSE: 0.034471 | total time: 3 hours 29 minutes
+Epoch: 59 | train MSE: 0.021932 | val MSE: 0.032184 | total time: 3 hours 33 minutes
+Epoch: 60 | train MSE: 0.021696 | val MSE: 0.033224 | total time: 3 hours 37 minutes
+Epoch: 61 | train MSE: 0.021321 | val MSE: 0.032411 | total time: 3 hours 40 minutes
+Epoch: 62 | train MSE: 0.021457 | val MSE: 0.031819 | total time: 3 hours 44 minutes
+Epoch: 63 | train MSE: 0.021181 | val MSE: 0.031876 | total time: 3 hours 47 minutes
+Epoch: 64 | train MSE: 0.021117 | val MSE: 0.031345 | total time: 3 hours 51 minutes
+Epoch: 65 | train MSE: 0.021172 | val MSE: 0.032472 | total time: 3 hours 55 minutes
+Epoch: 66 | train MSE: 0.020425 | val MSE: 0.033291 | total time: 3 hours 58 minutes
+Epoch: 67 | train MSE: 0.020448 | val MSE: 0.032577 | total time: 4 hours 2 minutes
+Epoch: 68 | train MSE: 0.020628 | val MSE: 0.032153 | total time: 4 hours 5 minutes
+Epoch: 69 | train MSE: 0.020133 | val MSE: 0.034764 | total time: 4 hours 9 minutes
+Epoch: 70 | train MSE: 0.019873 | val MSE: 0.030034 | total time: 4 hours 13 minutes
+Epoch: 71 | train MSE: 0.019937 | val MSE: 0.029707 | total time: 4 hours 16 minutes
+Epoch: 72 | train MSE: 0.019691 | val MSE: 0.030942 | total time: 4 hours 20 minutes
+Epoch: 73 | train MSE: 0.019456 | val MSE: 0.030890 | total time: 4 hours 24 minutes
+Epoch: 74 | train MSE: 0.019331 | val MSE: 0.029557 | total time: 4 hours 27 minutes
+Epoch: 75 | train MSE: 0.019039 | val MSE: 0.029564 | total time: 4 hours 31 minutes
+Epoch: 76 | train MSE: 0.019039 | val MSE: 0.029859 | total time: 4 hours 34 minutes
+Epoch: 77 | train MSE: 0.019157 | val MSE: 0.029433 | total time: 4 hours 38 minutes
+Epoch: 78 | train MSE: 0.018737 | val MSE: 0.031558 | total time: 4 hours 42 minutes
+Epoch: 79 | train MSE: 0.018595 | val MSE: 0.030487 | total time: 4 hours 45 minutes
+Epoch: 80 | train MSE: 0.018584 | val MSE: 0.031444 | total time: 4 hours 49 minutes
+Epoch: 81 | train MSE: 0.018458 | val MSE: 0.032703 | total time: 4 hours 52 minutes
+Epoch: 82 | train MSE: 0.018244 | val MSE: 0.033911 | total time: 4 hours 56 minutes
+Epoch: 83 | train MSE: 0.018088 | val MSE: 0.028545 | total time: 5 hours 0 minutes
+Epoch: 84 | train MSE: 0.018187 | val MSE: 0.034699 | total time: 5 hours 3 minutes
+Epoch: 85 | train MSE: 0.018074 | val MSE: 0.028807 | total time: 5 hours 7 minutes
+Epoch: 86 | train MSE: 0.017810 | val MSE: 0.029374 | total time: 5 hours 10 minutes
+Epoch: 87 | train MSE: 0.017631 | val MSE: 0.032576 | total time: 5 hours 14 minutes
+Epoch: 88 | train MSE: 0.017759 | val MSE: 0.031095 | total time: 5 hours 18 minutes
+Epoch: 89 | train MSE: 0.017448 | val MSE: 0.029534 | total time: 5 hours 21 minutes
+Epoch: 90 | train MSE: 0.017461 | val MSE: 0.028379 | total time: 5 hours 25 minutes
+Epoch: 91 | train MSE: 0.017181 | val MSE: 0.029152 | total time: 5 hours 29 minutes
+Epoch: 92 | train MSE: 0.016912 | val MSE: 0.028194 | total time: 5 hours 32 minutes
+Epoch: 93 | train MSE: 0.017200 | val MSE: 0.029110 | total time: 5 hours 36 minutes
+Epoch: 94 | train MSE: 0.016858 | val MSE: 0.028459 | total time: 5 hours 39 minutes
+Epoch: 95 | train MSE: 0.016976 | val MSE: 0.027949 | total time: 5 hours 43 minutes
+Epoch: 96 | train MSE: 0.016590 | val MSE: 0.027899 | total time: 5 hours 47 minutes
+Epoch: 97 | train MSE: 0.016520 | val MSE: 0.028416 | total time: 5 hours 50 minutes
+Epoch: 98 | train MSE: 0.016798 | val MSE: 0.027202 | total time: 5 hours 54 minutes
+Epoch: 99 | train MSE: 0.016368 | val MSE: 0.026040 | total time: 5 hours 57 minutes
+Epoch: 100 | train MSE: 0.016427 | val MSE: 0.027328 | total time: 6 hours 1 minutes
+finished best_val_mse=0.026040
+[2026-08-26 06:47:18] waiting for E1 Both pid=2219548
+[2026-08-26 09:41:35] === queue_remaining START ===
+[2026-08-26 09:41:35] CE=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments
+[2026-08-26 09:41:35] detected E1_BOTH_PID=none E2_ENC/chain=none/none E3_BOTH_PID=none
+[2026-08-26 09:41:35] E2 enc/dec chain not running
+[2026-08-26 09:41:35] skip E2 Both train (weight exists)
+[2026-08-26 09:41:36] E1 Both already done
+[2026-08-26 09:41:36] E3 Both train idle
+[2026-08-26 09:41:36] QC using GPU 1
+[2026-08-26 09:41:36] QC qc_varian.py --arch both --scan CV_P1_V_01 gpu=1
+[both] scan=CV_P1_V_01 pairs=100 panels=100 ckpt=crb_both_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_varian/P1/CV_P1_V_01
+[001/100] 01_to_01  L1=0.006  L1/zero=560581.13  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.235  L1/zero=1.04  cos=0.25  k=0.58
+[003/100] 01_to_03  L1=0.568  L1/zero=1.10  cos=0.28  k=0.87
+[004/100] 01_to_04  L1=0.749  L1/zero=1.05  cos=0.46  k=1.01
+[005/100] 01_to_05  L1=0.870  L1/zero=1.15  cos=0.52  k=1.22
+[006/100] 01_to_06  L1=0.921  L1/zero=1.24  cos=0.55  k=1.41
+[007/100] 01_to_07  L1=0.988  L1/zero=1.56  cos=0.20  k=1.49
+[008/100] 01_to_08  L1=0.689  L1/zero=1.31  cos=0.26  k=1.24
+[009/100] 01_to_09  L1=0.440  L1/zero=1.26  cos=0.00  k=0.72
+[010/100] 01_to_10  L1=0.173  L1/zero=1.08  cos=-0.03  k=0.29
+[011/100] 02_to_01  L1=0.237  L1/zero=1.04  cos=0.31  k=0.68
+[012/100] 02_to_02  L1=0.005  L1/zero=524266.02  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.222  L1/zero=1.01  cos=0.49  k=1.01
+[014/100] 02_to_04  L1=0.490  L1/zero=0.91  cos=0.51  k=0.88
+[015/100] 02_to_05  L1=0.738  L1/zero=0.92  cos=0.53  k=0.88
+[016/100] 02_to_06  L1=0.735  L1/zero=1.07  cos=0.51  k=1.10
+[017/100] 02_to_07  L1=0.709  L1/zero=1.00  cos=0.47  k=0.89
+[018/100] 02_to_08  L1=0.594  L1/zero=0.95  cos=0.44  k=0.73
+[019/100] 02_to_09  L1=0.608  L1/zero=1.12  cos=-0.09  k=0.43
+[020/100] 02_to_10  L1=0.495  L1/zero=0.99  cos=0.13  k=0.24
+[021/100] 03_to_01  L1=0.531  L1/zero=1.04  cos=0.34  k=0.84
+[022/100] 03_to_02  L1=0.213  L1/zero=0.99  cos=0.45  k=0.81
+[023/100] 03_to_03  L1=0.006  L1/zero=600947.95  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.198  L1/zero=0.83  cos=0.54  k=0.55
+[025/100] 03_to_05  L1=0.475  L1/zero=0.82  cos=0.51  k=0.47
+[026/100] 03_to_06  L1=0.651  L1/zero=0.86  cos=0.47  k=0.52
+[027/100] 03_to_07  L1=0.614  L1/zero=0.96  cos=0.36  k=0.56
+[028/100] 03_to_08  L1=0.626  L1/zero=0.91  cos=0.38  k=0.35
+[029/100] 03_to_09  L1=0.671  L1/zero=0.98  cos=0.19  k=0.36
+[030/100] 03_to_10  L1=0.614  L1/zero=1.14  cos=0.20  k=0.84
+[031/100] 04_to_01  L1=0.759  L1/zero=0.97  cos=0.41  k=0.76
+[032/100] 04_to_02  L1=0.470  L1/zero=0.88  cos=0.55  k=0.87
+[033/100] 04_to_03  L1=0.206  L1/zero=0.87  cos=0.53  k=0.59
+[034/100] 04_to_04  L1=0.005  L1/zero=458224.26  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.176  L1/zero=0.79  cos=0.58  k=0.49
+[036/100] 04_to_06  L1=0.411  L1/zero=0.87  cos=0.44  k=0.43
+[037/100] 04_to_07  L1=0.649  L1/zero=0.92  cos=0.40  k=0.31
+[038/100] 04_to_08  L1=0.735  L1/zero=0.98  cos=0.26  k=0.31
+[039/100] 04_to_09  L1=0.810  L1/zero=1.10  cos=0.16  k=0.64
+[040/100] 04_to_10  L1=0.748  L1/zero=1.11  cos=0.36  k=0.92
+[041/100] 05_to_01  L1=0.752  L1/zero=1.00  cos=0.50  k=0.95
+[042/100] 05_to_02  L1=0.710  L1/zero=0.86  cos=0.54  k=0.70
+[043/100] 05_to_03  L1=0.494  L1/zero=0.84  cos=0.50  k=0.52
+[044/100] 05_to_04  L1=0.188  L1/zero=0.83  cos=0.53  k=0.55
+[045/100] 05_to_05  L1=0.003  L1/zero=295826.93  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.204  L1/zero=0.94  cos=0.34  k=0.39
+[047/100] 05_to_07  L1=0.441  L1/zero=0.93  cos=0.39  k=0.29
+[048/100] 05_to_08  L1=0.711  L1/zero=1.07  cos=0.13  k=0.52
+[049/100] 05_to_09  L1=0.978  L1/zero=1.21  cos=0.13  k=0.83
+[050/100] 05_to_10  L1=0.999  L1/zero=1.31  cos=0.20  k=1.08
+[051/100] 06_to_01  L1=0.763  L1/zero=0.99  cos=0.53  k=1.01
+[052/100] 06_to_02  L1=0.648  L1/zero=0.93  cos=0.49  k=0.81
+[053/100] 06_to_03  L1=0.648  L1/zero=0.86  cos=0.47  k=0.49
+[054/100] 06_to_04  L1=0.428  L1/zero=0.89  cos=0.40  k=0.39
+[055/100] 06_to_05  L1=0.207  L1/zero=0.96  cos=0.27  k=0.34
+[056/100] 06_to_06  L1=0.005  L1/zero=489134.20  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.219  L1/zero=0.97  cos=0.27  k=0.32
+[058/100] 06_to_08  L1=0.471  L1/zero=1.14  cos=0.17  k=0.78
+[059/100] 06_to_09  L1=0.788  L1/zero=1.28  cos=0.09  k=0.90
+[060/100] 06_to_10  L1=0.968  L1/zero=1.34  cos=0.11  k=1.08
+[061/100] 07_to_01  L1=0.872  L1/zero=1.38  cos=0.17  k=1.29
+[062/100] 07_to_02  L1=0.681  L1/zero=0.94  cos=0.49  k=0.82
+[063/100] 07_to_03  L1=0.592  L1/zero=0.90  cos=0.45  k=0.53
+[064/100] 07_to_04  L1=0.664  L1/zero=0.90  cos=0.46  k=0.26
+[065/100] 07_to_05  L1=0.444  L1/zero=0.92  cos=0.44  k=0.29
+[066/100] 07_to_06  L1=0.225  L1/zero=0.98  cos=0.27  k=0.30
+[067/100] 07_to_07  L1=0.006  L1/zero=626107.63  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.201  L1/zero=1.39  cos=0.20  k=1.17
+[069/100] 07_to_09  L1=0.479  L1/zero=1.40  cos=0.12  k=1.12
+[070/100] 07_to_10  L1=0.760  L1/zero=1.42  cos=0.16  k=1.22
+[071/100] 08_to_01  L1=0.658  L1/zero=1.26  cos=0.20  k=1.12
+[072/100] 08_to_02  L1=0.589  L1/zero=0.92  cos=0.46  k=0.66
+[073/100] 08_to_03  L1=0.627  L1/zero=0.89  cos=0.43  k=0.35
+[074/100] 08_to_04  L1=0.732  L1/zero=0.97  cos=0.28  k=0.26
+[075/100] 08_to_05  L1=0.704  L1/zero=1.03  cos=0.14  k=0.45
+[076/100] 08_to_06  L1=0.454  L1/zero=1.09  cos=0.15  k=0.69
+[077/100] 08_to_07  L1=0.188  L1/zero=1.26  cos=0.26  k=1.03
+[078/100] 08_to_08  L1=0.008  L1/zero=787984.21  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.250  L1/zero=1.63  cos=0.24  k=1.54
+[080/100] 08_to_10  L1=0.638  L1/zero=1.81  cos=0.13  k=1.64
+[081/100] 09_to_01  L1=0.468  L1/zero=1.32  cos=0.08  k=0.88
+[082/100] 09_to_02  L1=0.602  L1/zero=1.09  cos=-0.06  k=0.38
+[083/100] 09_to_03  L1=0.704  L1/zero=0.98  cos=0.13  k=0.36
+[084/100] 09_to_04  L1=0.790  L1/zero=1.08  cos=0.06  k=0.57
+[085/100] 09_to_05  L1=0.990  L1/zero=1.18  cos=0.02  k=0.68
+[086/100] 09_to_06  L1=0.804  L1/zero=1.24  cos=0.05  k=0.81
+[087/100] 09_to_07  L1=0.464  L1/zero=1.32  cos=0.14  k=1.00
+[088/100] 09_to_08  L1=0.196  L1/zero=1.32  cos=0.25  k=1.03
+[089/100] 09_to_09  L1=0.008  L1/zero=846518.86  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.341  L1/zero=2.23  cos=0.15  k=2.22
+[091/100] 10_to_01  L1=0.208  L1/zero=1.18  cos=-0.05  k=0.45
+[092/100] 10_to_02  L1=0.484  L1/zero=0.98  cos=0.17  k=0.25
+[093/100] 10_to_03  L1=0.642  L1/zero=1.05  cos=0.30  k=0.68
+[094/100] 10_to_04  L1=0.773  L1/zero=1.13  cos=0.40  k=1.00
+[095/100] 10_to_05  L1=1.039  L1/zero=1.32  cos=0.07  k=1.09
+[096/100] 10_to_06  L1=1.009  L1/zero=1.30  cos=0.05  k=0.95
+[097/100] 10_to_07  L1=0.786  L1/zero=1.43  cos=0.14  k=1.16
+[098/100] 10_to_08  L1=0.580  L1/zero=1.64  cos=0.16  k=1.38
+[099/100] 10_to_09  L1=0.260  L1/zero=1.68  cos=0.12  k=1.42
+[100/100] 10_to_10  L1=0.012  L1/zero=1160171.53  cos=nan  k=nan
+
+[both] Directed mean: L1=0.573  L1/zero=1.11  cos=0.29  k=0.77  beat_zero=43%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_varian/P1/CV_P1_V_01 (100 pngs)
+[2026-08-26 09:42:21] QC qc_varian.py --arch both --scan CV_P2_V_01 gpu=1
+[both] scan=CV_P2_V_01 pairs=100 panels=100 ckpt=crb_both_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_varian/P2/CV_P2_V_01
+[001/100] 01_to_01  L1=0.006  L1/zero=595960.44  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.310  L1/zero=0.93  cos=0.37  k=0.24
+[003/100] 01_to_03  L1=0.624  L1/zero=0.83  cos=0.65  k=0.40
+[004/100] 01_to_04  L1=0.794  L1/zero=0.81  cos=0.67  k=0.54
+[005/100] 01_to_05  L1=0.920  L1/zero=0.81  cos=0.67  k=0.62
+[006/100] 01_to_06  L1=0.929  L1/zero=0.81  cos=0.67  k=0.72
+[007/100] 01_to_07  L1=0.808  L1/zero=0.85  cos=0.67  k=0.77
+[008/100] 01_to_08  L1=0.752  L1/zero=0.94  cos=0.56  k=0.70
+[009/100] 01_to_09  L1=0.482  L1/zero=0.90  cos=0.58  k=0.60
+[010/100] 01_to_10  L1=0.208  L1/zero=0.90  cos=0.53  k=0.45
+[011/100] 02_to_01  L1=0.298  L1/zero=0.88  cos=0.52  k=0.38
+[012/100] 02_to_02  L1=0.005  L1/zero=487089.34  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.285  L1/zero=0.86  cos=0.64  k=0.70
+[014/100] 02_to_04  L1=0.572  L1/zero=0.83  cos=0.66  k=0.60
+[015/100] 02_to_05  L1=0.730  L1/zero=0.83  cos=0.65  k=0.64
+[016/100] 02_to_06  L1=0.830  L1/zero=0.84  cos=0.64  k=0.68
+[017/100] 02_to_07  L1=0.758  L1/zero=0.83  cos=0.64  k=0.66
+[018/100] 02_to_08  L1=0.636  L1/zero=0.84  cos=0.60  k=0.64
+[019/100] 02_to_09  L1=0.418  L1/zero=0.84  cos=0.59  k=0.60
+[020/100] 02_to_10  L1=0.364  L1/zero=0.93  cos=0.40  k=0.31
+[021/100] 03_to_01  L1=0.636  L1/zero=0.82  cos=0.64  k=0.44
+[022/100] 03_to_02  L1=0.286  L1/zero=0.84  cos=0.65  k=0.67
+[023/100] 03_to_03  L1=0.010  L1/zero=1017106.79  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.220  L1/zero=0.77  cos=0.73  k=0.70
+[025/100] 03_to_05  L1=0.497  L1/zero=0.83  cos=0.67  k=0.66
+[026/100] 03_to_06  L1=0.621  L1/zero=0.86  cos=0.61  k=0.69
+[027/100] 03_to_07  L1=0.612  L1/zero=0.86  cos=0.61  k=0.63
+[028/100] 03_to_08  L1=0.540  L1/zero=0.84  cos=0.60  k=0.52
+[029/100] 03_to_09  L1=0.462  L1/zero=0.81  cos=0.56  k=0.41
+[030/100] 03_to_10  L1=0.578  L1/zero=0.83  cos=0.50  k=0.47
+[031/100] 04_to_01  L1=0.851  L1/zero=0.82  cos=0.68  k=0.49
+[032/100] 04_to_02  L1=0.585  L1/zero=0.83  cos=0.70  k=0.63
+[033/100] 04_to_03  L1=0.225  L1/zero=0.80  cos=0.71  k=0.68
+[034/100] 04_to_04  L1=0.009  L1/zero=898855.65  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.178  L1/zero=0.82  cos=0.63  k=0.72
+[036/100] 04_to_06  L1=0.370  L1/zero=0.87  cos=0.54  k=0.63
+[037/100] 04_to_07  L1=0.432  L1/zero=0.85  cos=0.61  k=0.51
+[038/100] 04_to_08  L1=0.496  L1/zero=0.88  cos=0.54  k=0.40
+[039/100] 04_to_09  L1=0.605  L1/zero=0.89  cos=0.41  k=0.40
+[040/100] 04_to_10  L1=0.734  L1/zero=0.83  cos=0.63  k=0.50
+[041/100] 05_to_01  L1=1.080  L1/zero=0.88  cos=0.59  k=0.47
+[042/100] 05_to_02  L1=0.821  L1/zero=0.90  cos=0.60  k=0.51
+[043/100] 05_to_03  L1=0.519  L1/zero=0.88  cos=0.59  k=0.51
+[044/100] 05_to_04  L1=0.214  L1/zero=0.94  cos=0.46  k=0.68
+[045/100] 05_to_05  L1=0.005  L1/zero=545613.23  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.138  L1/zero=0.99  cos=0.36  k=0.72
+[047/100] 05_to_07  L1=0.262  L1/zero=0.92  cos=0.40  k=0.45
+[048/100] 05_to_08  L1=0.466  L1/zero=0.92  cos=0.44  k=0.48
+[049/100] 05_to_09  L1=0.688  L1/zero=0.96  cos=0.43  k=0.59
+[050/100] 05_to_10  L1=0.953  L1/zero=0.92  cos=0.57  k=0.54
+[051/100] 06_to_01  L1=1.108  L1/zero=0.88  cos=0.60  k=0.54
+[052/100] 06_to_02  L1=0.869  L1/zero=0.85  cos=0.62  k=0.57
+[053/100] 06_to_03  L1=0.606  L1/zero=0.85  cos=0.59  k=0.58
+[054/100] 06_to_04  L1=0.374  L1/zero=0.89  cos=0.47  k=0.51
+[055/100] 06_to_05  L1=0.145  L1/zero=0.96  cos=0.35  k=0.58
+[056/100] 06_to_06  L1=0.009  L1/zero=888354.80  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.159  L1/zero=0.95  cos=0.31  k=0.46
+[058/100] 06_to_08  L1=0.337  L1/zero=0.94  cos=0.52  k=0.71
+[059/100] 06_to_09  L1=0.633  L1/zero=1.01  cos=0.51  k=0.70
+[060/100] 06_to_10  L1=0.996  L1/zero=0.96  cos=0.52  k=0.56
+[061/100] 07_to_01  L1=0.999  L1/zero=0.93  cos=0.54  k=0.53
+[062/100] 07_to_02  L1=0.867  L1/zero=0.86  cos=0.59  k=0.56
+[063/100] 07_to_03  L1=0.641  L1/zero=0.87  cos=0.52  k=0.51
+[064/100] 07_to_04  L1=0.440  L1/zero=0.87  cos=0.50  k=0.35
+[065/100] 07_to_05  L1=0.265  L1/zero=0.88  cos=0.44  k=0.40
+[066/100] 07_to_06  L1=0.190  L1/zero=1.02  cos=0.06  k=0.30
+[067/100] 07_to_07  L1=0.009  L1/zero=907126.72  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.214  L1/zero=0.96  cos=0.46  k=0.65
+[069/100] 07_to_09  L1=0.470  L1/zero=1.04  cos=0.54  k=0.78
+[070/100] 07_to_10  L1=0.834  L1/zero=1.03  cos=0.52  k=0.65
+[071/100] 08_to_01  L1=0.851  L1/zero=0.93  cos=0.59  k=0.61
+[072/100] 08_to_02  L1=0.688  L1/zero=0.83  cos=0.65  k=0.67
+[073/100] 08_to_03  L1=0.572  L1/zero=0.86  cos=0.59  k=0.54
+[074/100] 08_to_04  L1=0.486  L1/zero=0.85  cos=0.55  k=0.45
+[075/100] 08_to_05  L1=0.424  L1/zero=0.86  cos=0.50  k=0.60
+[076/100] 08_to_06  L1=0.331  L1/zero=0.89  cos=0.49  k=0.72
+[077/100] 08_to_07  L1=0.221  L1/zero=0.87  cos=0.50  k=0.61
+[078/100] 08_to_08  L1=0.011  L1/zero=1087480.97  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.317  L1/zero=1.05  cos=0.54  k=0.91
+[080/100] 08_to_10  L1=0.678  L1/zero=1.05  cos=0.56  k=0.71
+[081/100] 09_to_01  L1=0.499  L1/zero=0.89  cos=0.56  k=0.40
+[082/100] 09_to_02  L1=0.431  L1/zero=0.84  cos=0.60  k=0.54
+[083/100] 09_to_03  L1=0.553  L1/zero=0.92  cos=0.33  k=0.31
+[084/100] 09_to_04  L1=0.597  L1/zero=0.92  cos=0.40  k=0.46
+[085/100] 09_to_05  L1=0.661  L1/zero=0.93  cos=0.43  k=0.55
+[086/100] 09_to_06  L1=0.592  L1/zero=0.96  cos=0.50  k=0.61
+[087/100] 09_to_07  L1=0.436  L1/zero=0.99  cos=0.54  k=0.68
+[088/100] 09_to_08  L1=0.259  L1/zero=0.97  cos=0.53  k=0.61
+[089/100] 09_to_09  L1=0.011  L1/zero=1081878.32  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.298  L1/zero=0.95  cos=0.57  k=0.68
+[091/100] 10_to_01  L1=0.228  L1/zero=0.89  cos=0.48  k=0.43
+[092/100] 10_to_02  L1=0.372  L1/zero=0.94  cos=0.35  k=0.31
+[093/100] 10_to_03  L1=0.642  L1/zero=0.88  cos=0.42  k=0.50
+[094/100] 10_to_04  L1=0.784  L1/zero=0.87  cos=0.56  k=0.55
+[095/100] 10_to_05  L1=0.804  L1/zero=0.86  cos=0.60  k=0.62
+[096/100] 10_to_06  L1=0.855  L1/zero=0.90  cos=0.55  k=0.65
+[097/100] 10_to_07  L1=0.740  L1/zero=0.97  cos=0.55  k=0.71
+[098/100] 10_to_08  L1=0.591  L1/zero=1.00  cos=0.49  k=0.64
+[099/100] 10_to_09  L1=0.294  L1/zero=0.92  cos=0.51  k=0.53
+[100/100] 10_to_10  L1=0.009  L1/zero=937289.47  cos=nan  k=nan
+
+[both] Directed mean: L1=0.546  L1/zero=0.89  cos=0.54  k=0.57  beat_zero=93%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_varian/P2/CV_P2_V_01 (100 pngs)
+[2026-08-26 09:43:07] QC qc_varian.py --arch both --scan CV_P3_V_01 gpu=1
+[both] scan=CV_P3_V_01 pairs=100 panels=100 ckpt=crb_both_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_varian/P3/CV_P3_V_01
+[001/100] 01_to_01  L1=0.005  L1/zero=520221.70  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.343  L1/zero=1.05  cos=0.24  k=0.49
+[003/100] 01_to_03  L1=0.640  L1/zero=0.95  cos=0.53  k=0.70
+[004/100] 01_to_04  L1=0.746  L1/zero=0.83  cos=0.63  k=0.81
+[005/100] 01_to_05  L1=0.913  L1/zero=0.76  cos=0.70  k=0.74
+[006/100] 01_to_06  L1=1.042  L1/zero=0.75  cos=0.71  k=0.72
+[007/100] 01_to_07  L1=0.940  L1/zero=0.83  cos=0.63  k=0.73
+[008/100] 01_to_08  L1=0.692  L1/zero=0.81  cos=0.66  k=0.69
+[009/100] 01_to_09  L1=0.490  L1/zero=0.80  cos=0.68  k=0.48
+[010/100] 01_to_10  L1=0.327  L1/zero=0.95  cos=0.48  k=0.20
+[011/100] 02_to_01  L1=0.337  L1/zero=1.05  cos=0.28  k=0.56
+[012/100] 02_to_02  L1=0.005  L1/zero=481008.09  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.266  L1/zero=0.79  cos=0.70  k=0.66
+[014/100] 02_to_04  L1=0.490  L1/zero=0.77  cos=0.69  k=0.83
+[015/100] 02_to_05  L1=0.677  L1/zero=0.70  cos=0.73  k=0.73
+[016/100] 02_to_06  L1=0.845  L1/zero=0.73  cos=0.72  k=0.70
+[017/100] 02_to_07  L1=0.876  L1/zero=0.88  cos=0.57  k=0.69
+[018/100] 02_to_08  L1=0.701  L1/zero=0.91  cos=0.51  k=0.65
+[019/100] 02_to_09  L1=0.609  L1/zero=0.97  cos=0.35  k=0.51
+[020/100] 02_to_10  L1=0.463  L1/zero=1.15  cos=-0.10  k=0.62
+[021/100] 03_to_01  L1=0.610  L1/zero=0.94  cos=0.56  k=0.77
+[022/100] 03_to_02  L1=0.283  L1/zero=0.83  cos=0.66  k=0.63
+[023/100] 03_to_03  L1=0.010  L1/zero=1024525.80  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.225  L1/zero=0.75  cos=0.68  k=0.65
+[025/100] 03_to_05  L1=0.455  L1/zero=0.72  cos=0.71  k=0.65
+[026/100] 03_to_06  L1=0.633  L1/zero=0.74  cos=0.70  k=0.64
+[027/100] 03_to_07  L1=0.670  L1/zero=0.92  cos=0.52  k=0.65
+[028/100] 03_to_08  L1=0.627  L1/zero=0.98  cos=0.34  k=0.62
+[029/100] 03_to_09  L1=0.583  L1/zero=1.13  cos=0.18  k=0.94
+[030/100] 03_to_10  L1=0.645  L1/zero=1.23  cos=0.26  k=1.18
+[031/100] 04_to_01  L1=0.717  L1/zero=0.87  cos=0.63  k=0.87
+[032/100] 04_to_02  L1=0.443  L1/zero=0.77  cos=0.74  k=0.86
+[033/100] 04_to_03  L1=0.216  L1/zero=0.77  cos=0.69  k=0.69
+[034/100] 04_to_04  L1=0.007  L1/zero=749248.03  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.252  L1/zero=0.72  cos=0.77  k=0.48
+[036/100] 04_to_06  L1=0.475  L1/zero=0.76  cos=0.69  k=0.53
+[037/100] 04_to_07  L1=0.547  L1/zero=0.94  cos=0.43  k=0.61
+[038/100] 04_to_08  L1=0.575  L1/zero=1.05  cos=0.33  k=0.83
+[039/100] 04_to_09  L1=0.651  L1/zero=1.28  cos=0.34  k=1.29
+[040/100] 04_to_10  L1=0.709  L1/zero=1.19  cos=0.47  k=1.32
+[041/100] 05_to_01  L1=0.754  L1/zero=0.70  cos=0.79  k=0.80
+[042/100] 05_to_02  L1=0.622  L1/zero=0.70  cos=0.77  k=0.78
+[043/100] 05_to_03  L1=0.431  L1/zero=0.72  cos=0.73  k=0.69
+[044/100] 05_to_04  L1=0.252  L1/zero=0.75  cos=0.74  k=0.51
+[045/100] 05_to_05  L1=0.004  L1/zero=419469.08  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.194  L1/zero=0.74  cos=0.68  k=0.61
+[047/100] 05_to_07  L1=0.387  L1/zero=0.97  cos=0.32  k=0.60
+[048/100] 05_to_08  L1=0.522  L1/zero=0.90  cos=0.58  k=0.91
+[049/100] 05_to_09  L1=0.683  L1/zero=0.99  cos=0.62  k=1.20
+[050/100] 05_to_10  L1=0.803  L1/zero=0.91  cos=0.65  k=1.08
+[051/100] 06_to_01  L1=0.912  L1/zero=0.70  cos=0.79  k=0.67
+[052/100] 06_to_02  L1=0.757  L1/zero=0.71  cos=0.75  k=0.75
+[053/100] 06_to_03  L1=0.606  L1/zero=0.75  cos=0.70  k=0.65
+[054/100] 06_to_04  L1=0.487  L1/zero=0.80  cos=0.65  k=0.46
+[055/100] 06_to_05  L1=0.214  L1/zero=0.81  cos=0.62  k=0.46
+[056/100] 06_to_06  L1=0.009  L1/zero=933078.86  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.277  L1/zero=0.82  cos=0.66  k=0.36
+[058/100] 06_to_08  L1=0.424  L1/zero=0.72  cos=0.74  k=0.72
+[059/100] 06_to_09  L1=0.592  L1/zero=0.81  cos=0.69  k=0.94
+[060/100] 06_to_10  L1=0.788  L1/zero=0.82  cos=0.69  k=0.89
+[061/100] 07_to_01  L1=0.819  L1/zero=0.80  cos=0.68  k=0.75
+[062/100] 07_to_02  L1=0.761  L1/zero=0.83  cos=0.60  k=0.68
+[063/100] 07_to_03  L1=0.644  L1/zero=0.90  cos=0.51  k=0.61
+[064/100] 07_to_04  L1=0.483  L1/zero=0.85  cos=0.49  k=0.52
+[065/100] 07_to_05  L1=0.383  L1/zero=0.93  cos=0.34  k=0.46
+[066/100] 07_to_06  L1=0.329  L1/zero=0.92  cos=0.38  k=0.28
+[067/100] 07_to_07  L1=0.007  L1/zero=670923.57  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.270  L1/zero=0.84  cos=0.63  k=0.80
+[069/100] 07_to_09  L1=0.457  L1/zero=1.01  cos=0.68  k=1.24
+[070/100] 07_to_10  L1=0.625  L1/zero=0.95  cos=0.71  k=1.18
+[071/100] 08_to_01  L1=0.650  L1/zero=0.81  cos=0.65  k=0.68
+[072/100] 08_to_02  L1=0.571  L1/zero=0.84  cos=0.56  k=0.68
+[073/100] 08_to_03  L1=0.545  L1/zero=0.96  cos=0.33  k=0.60
+[074/100] 08_to_04  L1=0.543  L1/zero=0.99  cos=0.22  k=0.52
+[075/100] 08_to_05  L1=0.560  L1/zero=0.90  cos=0.43  k=0.54
+[076/100] 08_to_06  L1=0.533  L1/zero=0.85  cos=0.53  k=0.51
+[077/100] 08_to_07  L1=0.309  L1/zero=0.86  cos=0.53  k=0.51
+[078/100] 08_to_08  L1=0.009  L1/zero=900540.78  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.315  L1/zero=1.02  cos=0.47  k=0.99
+[080/100] 08_to_10  L1=0.605  L1/zero=1.26  cos=0.58  k=1.41
+[081/100] 09_to_01  L1=0.475  L1/zero=0.82  cos=0.68  k=0.52
+[082/100] 09_to_02  L1=0.562  L1/zero=0.99  cos=0.24  k=0.53
+[083/100] 09_to_03  L1=0.594  L1/zero=1.15  cos=0.13  k=0.97
+[084/100] 09_to_04  L1=0.667  L1/zero=1.32  cos=0.32  k=1.35
+[085/100] 09_to_05  L1=0.659  L1/zero=0.92  cos=0.62  k=1.14
+[086/100] 09_to_06  L1=0.631  L1/zero=0.83  cos=0.70  k=1.03
+[087/100] 09_to_07  L1=0.427  L1/zero=0.95  cos=0.68  k=1.17
+[088/100] 09_to_08  L1=0.244  L1/zero=0.94  cos=0.54  k=0.89
+[089/100] 09_to_09  L1=0.010  L1/zero=977337.83  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.274  L1/zero=0.98  cos=0.68  k=1.15
+[091/100] 10_to_01  L1=0.342  L1/zero=0.93  cos=0.49  k=0.18
+[092/100] 10_to_02  L1=0.484  L1/zero=1.19  cos=-0.25  k=0.69
+[093/100] 10_to_03  L1=0.619  L1/zero=1.20  cos=0.37  k=1.30
+[094/100] 10_to_04  L1=0.755  L1/zero=1.27  cos=0.51  k=1.52
+[095/100] 10_to_05  L1=0.882  L1/zero=0.95  cos=0.63  k=1.15
+[096/100] 10_to_06  L1=0.840  L1/zero=0.82  cos=0.68  k=0.92
+[097/100] 10_to_07  L1=0.630  L1/zero=0.92  cos=0.66  k=1.04
+[098/100] 10_to_08  L1=0.480  L1/zero=0.98  cos=0.62  k=1.04
+[099/100] 10_to_09  L1=0.270  L1/zero=0.89  cos=0.62  k=0.77
+[100/100] 10_to_10  L1=0.017  L1/zero=1680915.24  cos=nan  k=nan
+
+[both] Directed mean: L1=0.552  L1/zero=0.90  cos=0.55  k=0.77  beat_zero=82%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_varian/P3/CV_P3_V_01 (100 pngs)
+[2026-08-26 09:43:53] QC qc_varian.py --arch both --scan CV_P4_V_01 gpu=1
+[both] scan=CV_P4_V_01 pairs=100 panels=100 ckpt=crb_both_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_varian/P4/CV_P4_V_01
+[001/100] 01_to_01  L1=0.006  L1/zero=590654.60  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.310  L1/zero=0.91  cos=0.48  k=0.39
+[003/100] 01_to_03  L1=0.686  L1/zero=0.79  cos=0.71  k=0.64
+[004/100] 01_to_04  L1=1.145  L1/zero=0.77  cos=0.70  k=0.60
+[005/100] 01_to_05  L1=1.277  L1/zero=0.72  cos=0.76  k=0.62
+[006/100] 01_to_06  L1=1.274  L1/zero=0.71  cos=0.78  k=0.66
+[007/100] 01_to_07  L1=1.091  L1/zero=0.69  cos=0.78  k=0.64
+[008/100] 01_to_08  L1=0.826  L1/zero=0.64  cos=0.79  k=0.55
+[009/100] 01_to_09  L1=0.533  L1/zero=0.64  cos=0.80  k=0.47
+[010/100] 01_to_10  L1=0.305  L1/zero=0.84  cos=0.59  k=0.26
+[011/100] 02_to_01  L1=0.283  L1/zero=0.84  cos=0.60  k=0.44
+[012/100] 02_to_02  L1=0.006  L1/zero=557451.74  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.390  L1/zero=0.86  cos=0.69  k=0.43
+[014/100] 02_to_04  L1=0.771  L1/zero=0.80  cos=0.69  k=0.59
+[015/100] 02_to_05  L1=1.167  L1/zero=0.75  cos=0.70  k=0.55
+[016/100] 02_to_06  L1=1.144  L1/zero=0.71  cos=0.75  k=0.61
+[017/100] 02_to_07  L1=1.108  L1/zero=0.73  cos=0.71  k=0.57
+[018/100] 02_to_08  L1=0.889  L1/zero=0.71  cos=0.72  k=0.47
+[019/100] 02_to_09  L1=0.664  L1/zero=0.76  cos=0.62  k=0.42
+[020/100] 02_to_10  L1=0.439  L1/zero=0.94  cos=0.41  k=0.61
+[021/100] 03_to_01  L1=0.659  L1/zero=0.78  cos=0.73  k=0.59
+[022/100] 03_to_02  L1=0.378  L1/zero=0.83  cos=0.71  k=0.46
+[023/100] 03_to_03  L1=0.007  L1/zero=716810.58  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.360  L1/zero=0.84  cos=0.68  k=0.50
+[025/100] 03_to_05  L1=0.719  L1/zero=0.79  cos=0.66  k=0.55
+[026/100] 03_to_06  L1=0.799  L1/zero=0.70  cos=0.70  k=0.59
+[027/100] 03_to_07  L1=0.834  L1/zero=0.74  cos=0.64  k=0.52
+[028/100] 03_to_08  L1=0.778  L1/zero=0.83  cos=0.55  k=0.43
+[029/100] 03_to_09  L1=0.743  L1/zero=0.91  cos=0.49  k=0.59
+[030/100] 03_to_10  L1=0.744  L1/zero=0.86  cos=0.58  k=0.78
+[031/100] 04_to_01  L1=1.083  L1/zero=0.77  cos=0.72  k=0.54
+[032/100] 04_to_02  L1=0.732  L1/zero=0.79  cos=0.72  k=0.58
+[033/100] 04_to_03  L1=0.335  L1/zero=0.81  cos=0.70  k=0.54
+[034/100] 04_to_04  L1=0.007  L1/zero=671466.11  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.294  L1/zero=0.82  cos=0.68  k=0.60
+[036/100] 04_to_06  L1=0.519  L1/zero=0.88  cos=0.57  k=0.70
+[037/100] 04_to_07  L1=0.486  L1/zero=0.92  cos=0.45  k=0.77
+[038/100] 04_to_08  L1=0.595  L1/zero=0.97  cos=0.43  k=0.79
+[039/100] 04_to_09  L1=0.710  L1/zero=0.84  cos=0.61  k=0.87
+[040/100] 04_to_10  L1=0.946  L1/zero=0.78  cos=0.68  k=0.72
+[041/100] 05_to_01  L1=1.199  L1/zero=0.72  cos=0.79  k=0.57
+[042/100] 05_to_02  L1=1.090  L1/zero=0.73  cos=0.75  k=0.53
+[043/100] 05_to_03  L1=0.726  L1/zero=0.81  cos=0.64  k=0.54
+[044/100] 05_to_04  L1=0.291  L1/zero=0.81  cos=0.68  k=0.60
+[045/100] 05_to_05  L1=0.004  L1/zero=390503.86  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.206  L1/zero=1.02  cos=0.41  k=0.87
+[047/100] 05_to_07  L1=0.445  L1/zero=1.14  cos=0.17  k=0.75
+[048/100] 05_to_08  L1=0.602  L1/zero=0.86  cos=0.62  k=0.87
+[049/100] 05_to_09  L1=0.738  L1/zero=0.71  cos=0.77  k=0.89
+[050/100] 05_to_10  L1=0.943  L1/zero=0.68  cos=0.80  k=0.77
+[051/100] 06_to_01  L1=1.147  L1/zero=0.67  cos=0.83  k=0.61
+[052/100] 06_to_02  L1=1.110  L1/zero=0.69  cos=0.78  k=0.55
+[053/100] 06_to_03  L1=0.776  L1/zero=0.71  cos=0.71  k=0.55
+[054/100] 06_to_04  L1=0.498  L1/zero=0.86  cos=0.57  k=0.65
+[055/100] 06_to_05  L1=0.198  L1/zero=0.97  cos=0.40  k=0.78
+[056/100] 06_to_06  L1=0.006  L1/zero=600709.39  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.254  L1/zero=0.87  cos=0.61  k=0.63
+[058/100] 06_to_08  L1=0.506  L1/zero=0.79  cos=0.74  k=0.86
+[059/100] 06_to_09  L1=0.684  L1/zero=0.68  cos=0.82  k=0.86
+[060/100] 06_to_10  L1=0.894  L1/zero=0.64  cos=0.84  k=0.77
+[061/100] 07_to_01  L1=1.030  L1/zero=0.65  cos=0.82  k=0.57
+[062/100] 07_to_02  L1=1.103  L1/zero=0.72  cos=0.73  k=0.52
+[063/100] 07_to_03  L1=0.775  L1/zero=0.74  cos=0.64  k=0.50
+[064/100] 07_to_04  L1=0.443  L1/zero=0.88  cos=0.45  k=0.66
+[065/100] 07_to_05  L1=0.416  L1/zero=1.03  cos=0.26  k=0.67
+[066/100] 07_to_06  L1=0.272  L1/zero=0.87  cos=0.59  k=0.51
+[067/100] 07_to_07  L1=0.007  L1/zero=698921.69  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.274  L1/zero=0.74  cos=0.74  k=0.69
+[069/100] 07_to_09  L1=0.448  L1/zero=0.64  cos=0.83  k=0.86
+[070/100] 07_to_10  L1=0.686  L1/zero=0.60  cos=0.84  k=0.74
+[071/100] 08_to_01  L1=0.829  L1/zero=0.66  cos=0.81  k=0.50
+[072/100] 08_to_02  L1=0.916  L1/zero=0.74  cos=0.68  k=0.43
+[073/100] 08_to_03  L1=0.734  L1/zero=0.84  cos=0.49  k=0.45
+[074/100] 08_to_04  L1=0.603  L1/zero=0.90  cos=0.44  k=0.70
+[075/100] 08_to_05  L1=0.608  L1/zero=0.79  cos=0.66  k=0.77
+[076/100] 08_to_06  L1=0.545  L1/zero=0.78  cos=0.71  k=0.72
+[077/100] 08_to_07  L1=0.338  L1/zero=0.80  cos=0.67  k=0.55
+[078/100] 08_to_08  L1=0.011  L1/zero=1074985.69  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.260  L1/zero=0.61  cos=0.83  k=0.65
+[080/100] 08_to_10  L1=0.464  L1/zero=0.56  cos=0.85  k=0.77
+[081/100] 09_to_01  L1=0.545  L1/zero=0.68  cos=0.78  k=0.44
+[082/100] 09_to_02  L1=0.695  L1/zero=0.79  cos=0.54  k=0.43
+[083/100] 09_to_03  L1=0.768  L1/zero=0.92  cos=0.47  k=0.64
+[084/100] 09_to_04  L1=0.709  L1/zero=0.82  cos=0.64  k=0.93
+[085/100] 09_to_05  L1=0.779  L1/zero=0.71  cos=0.77  k=0.88
+[086/100] 09_to_06  L1=0.765  L1/zero=0.73  cos=0.78  k=0.84
+[087/100] 09_to_07  L1=0.498  L1/zero=0.70  cos=0.79  k=0.81
+[088/100] 09_to_08  L1=0.271  L1/zero=0.68  cos=0.82  k=0.53
+[089/100] 09_to_09  L1=0.011  L1/zero=1069324.84  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.212  L1/zero=0.53  cos=0.86  k=0.70
+[091/100] 10_to_01  L1=0.316  L1/zero=0.85  cos=0.63  k=0.27
+[092/100] 10_to_02  L1=0.446  L1/zero=0.92  cos=0.38  k=0.60
+[093/100] 10_to_03  L1=0.693  L1/zero=0.81  cos=0.64  k=0.83
+[094/100] 10_to_04  L1=0.960  L1/zero=0.76  cos=0.69  k=0.75
+[095/100] 10_to_05  L1=0.974  L1/zero=0.68  cos=0.79  k=0.78
+[096/100] 10_to_06  L1=1.031  L1/zero=0.71  cos=0.78  k=0.70
+[097/100] 10_to_07  L1=0.764  L1/zero=0.67  cos=0.80  k=0.68
+[098/100] 10_to_08  L1=0.545  L1/zero=0.63  cos=0.82  k=0.58
+[099/100] 10_to_09  L1=0.282  L1/zero=0.67  cos=0.83  k=0.43
+[100/100] 10_to_10  L1=0.014  L1/zero=1418150.50  cos=nan  k=nan
+
+[both] Directed mean: L1=0.670  L1/zero=0.78  cos=0.67  k=0.63  beat_zero=97%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_varian/P4/CV_P4_V_01 (100 pngs)
+[2026-08-26 09:44:40] QC qc_varian.py --arch both --scan CV_P5_V_01 gpu=1
+[both] scan=CV_P5_V_01 pairs=100 panels=100 ckpt=crb_both_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_varian/P5/CV_P5_V_01
+[001/100] 01_to_01  L1=0.006  L1/zero=578277.84  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.272  L1/zero=0.96  cos=0.32  k=0.23
+[003/100] 01_to_03  L1=0.626  L1/zero=0.95  cos=0.47  k=0.42
+[004/100] 01_to_04  L1=1.009  L1/zero=0.93  cos=0.46  k=0.42
+[005/100] 01_to_05  L1=1.373  L1/zero=0.87  cos=0.54  k=0.38
+[006/100] 01_to_06  L1=1.507  L1/zero=0.87  cos=0.53  k=0.36
+[007/100] 01_to_07  L1=1.324  L1/zero=0.88  cos=0.53  k=0.32
+[008/100] 01_to_08  L1=1.015  L1/zero=0.86  cos=0.56  k=0.30
+[009/100] 01_to_09  L1=0.652  L1/zero=0.92  cos=0.48  k=0.17
+[010/100] 01_to_10  L1=0.273  L1/zero=0.95  cos=0.44  k=0.10
+[011/100] 02_to_01  L1=0.262  L1/zero=0.92  cos=0.36  k=0.31
+[012/100] 02_to_02  L1=0.006  L1/zero=627553.14  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.393  L1/zero=0.95  cos=0.45  k=0.26
+[014/100] 02_to_04  L1=0.878  L1/zero=0.94  cos=0.47  k=0.20
+[015/100] 02_to_05  L1=1.292  L1/zero=0.90  cos=0.53  k=0.25
+[016/100] 02_to_06  L1=1.483  L1/zero=0.90  cos=0.51  k=0.24
+[017/100] 02_to_07  L1=1.350  L1/zero=0.91  cos=0.47  k=0.22
+[018/100] 02_to_08  L1=1.057  L1/zero=0.90  cos=0.48  k=0.21
+[019/100] 02_to_09  L1=0.740  L1/zero=0.93  cos=0.42  k=0.16
+[020/100] 02_to_10  L1=0.471  L1/zero=0.98  cos=0.01  k=0.14
+[021/100] 03_to_01  L1=0.573  L1/zero=0.86  cos=0.58  k=0.40
+[022/100] 03_to_02  L1=0.403  L1/zero=0.98  cos=0.38  k=0.23
+[023/100] 03_to_03  L1=0.007  L1/zero=673288.06  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.470  L1/zero=0.98  cos=0.46  k=0.05
+[025/100] 03_to_05  L1=1.021  L1/zero=0.98  cos=0.20  k=0.07
+[026/100] 03_to_06  L1=1.225  L1/zero=0.96  cos=0.36  k=0.10
+[027/100] 03_to_07  L1=1.070  L1/zero=0.93  cos=0.47  k=0.14
+[028/100] 03_to_08  L1=0.787  L1/zero=0.94  cos=0.41  k=0.15
+[029/100] 03_to_09  L1=0.698  L1/zero=0.95  cos=0.35  k=0.16
+[030/100] 03_to_10  L1=0.629  L1/zero=0.89  cos=0.51  k=0.34
+[031/100] 04_to_01  L1=1.016  L1/zero=0.90  cos=0.50  k=0.37
+[032/100] 04_to_02  L1=0.872  L1/zero=0.94  cos=0.41  k=0.19
+[033/100] 04_to_03  L1=0.446  L1/zero=0.97  cos=0.25  k=0.11
+[034/100] 04_to_04  L1=0.004  L1/zero=410758.75  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.397  L1/zero=0.98  cos=0.36  k=0.04
+[036/100] 04_to_06  L1=0.650  L1/zero=0.98  cos=0.17  k=0.07
+[037/100] 04_to_07  L1=0.641  L1/zero=0.98  cos=0.25  k=0.13
+[038/100] 04_to_08  L1=0.660  L1/zero=1.01  cos=0.04  k=0.14
+[039/100] 04_to_09  L1=0.712  L1/zero=0.95  cos=0.38  k=0.35
+[040/100] 04_to_10  L1=0.857  L1/zero=0.90  cos=0.49  k=0.38
+[041/100] 05_to_01  L1=1.385  L1/zero=0.89  cos=0.55  k=0.26
+[042/100] 05_to_02  L1=1.213  L1/zero=0.90  cos=0.54  k=0.22
+[043/100] 05_to_03  L1=0.928  L1/zero=0.98  cos=0.21  k=0.10
+[044/100] 05_to_04  L1=0.374  L1/zero=0.98  cos=0.33  k=0.10
+[045/100] 05_to_05  L1=0.002  L1/zero=223800.91  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.231  L1/zero=0.98  cos=0.23  k=0.11
+[047/100] 05_to_07  L1=0.411  L1/zero=1.02  cos=-0.18  k=0.10
+[048/100] 05_to_08  L1=0.641  L1/zero=0.96  cos=0.38  k=0.18
+[049/100] 05_to_09  L1=0.882  L1/zero=0.88  cos=0.58  k=0.30
+[050/100] 05_to_10  L1=1.153  L1/zero=0.86  cos=0.61  k=0.33
+[051/100] 06_to_01  L1=1.475  L1/zero=0.89  cos=0.54  k=0.27
+[052/100] 06_to_02  L1=1.460  L1/zero=0.92  cos=0.47  k=0.21
+[053/100] 06_to_03  L1=1.110  L1/zero=0.95  cos=0.34  k=0.13
+[054/100] 06_to_04  L1=0.594  L1/zero=0.97  cos=0.25  k=0.10
+[055/100] 06_to_05  L1=0.262  L1/zero=0.99  cos=0.14  k=0.08
+[056/100] 06_to_06  L1=0.003  L1/zero=348952.55  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.328  L1/zero=0.98  cos=0.16  k=0.20
+[058/100] 06_to_08  L1=0.618  L1/zero=0.94  cos=0.39  k=0.27
+[059/100] 06_to_09  L1=0.932  L1/zero=0.88  cos=0.53  k=0.31
+[060/100] 06_to_10  L1=1.217  L1/zero=0.86  cos=0.61  k=0.35
+[061/100] 07_to_01  L1=1.299  L1/zero=0.88  cos=0.52  k=0.34
+[062/100] 07_to_02  L1=1.380  L1/zero=0.94  cos=0.37  k=0.21
+[063/100] 07_to_03  L1=1.010  L1/zero=0.95  cos=0.31  k=0.16
+[064/100] 07_to_04  L1=0.597  L1/zero=0.98  cos=0.22  k=0.15
+[065/100] 07_to_05  L1=0.372  L1/zero=0.92  cos=0.35  k=0.39
+[066/100] 07_to_06  L1=0.340  L1/zero=1.02  cos=0.26  k=0.58
+[067/100] 07_to_07  L1=0.010  L1/zero=985792.74  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.370  L1/zero=0.93  cos=0.33  k=0.26
+[069/100] 07_to_09  L1=0.700  L1/zero=0.89  cos=0.40  k=0.34
+[070/100] 07_to_10  L1=1.038  L1/zero=0.87  cos=0.49  k=0.37
+[071/100] 08_to_01  L1=1.092  L1/zero=0.92  cos=0.42  k=0.26
+[072/100] 08_to_02  L1=1.037  L1/zero=0.93  cos=0.38  k=0.18
+[073/100] 08_to_03  L1=0.769  L1/zero=0.98  cos=0.30  k=0.16
+[074/100] 08_to_04  L1=0.664  L1/zero=1.03  cos=0.02  k=0.20
+[075/100] 08_to_05  L1=0.702  L1/zero=0.97  cos=0.28  k=0.33
+[076/100] 08_to_06  L1=0.646  L1/zero=0.94  cos=0.34  k=0.40
+[077/100] 08_to_07  L1=0.386  L1/zero=0.93  cos=0.29  k=0.26
+[078/100] 08_to_08  L1=0.016  L1/zero=1562687.20  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.343  L1/zero=0.85  cos=0.58  k=0.34
+[080/100] 08_to_10  L1=0.681  L1/zero=0.85  cos=0.52  k=0.50
+[081/100] 09_to_01  L1=0.636  L1/zero=0.94  cos=0.33  k=0.25
+[082/100] 09_to_02  L1=0.669  L1/zero=0.91  cos=0.55  k=0.17
+[083/100] 09_to_03  L1=0.655  L1/zero=0.95  cos=0.30  k=0.25
+[084/100] 09_to_04  L1=0.716  L1/zero=0.91  cos=0.46  k=0.34
+[085/100] 09_to_05  L1=0.944  L1/zero=0.89  cos=0.51  k=0.33
+[086/100] 09_to_06  L1=0.977  L1/zero=0.88  cos=0.49  k=0.31
+[087/100] 09_to_07  L1=0.694  L1/zero=0.86  cos=0.58  k=0.28
+[088/100] 09_to_08  L1=0.339  L1/zero=0.84  cos=0.63  k=0.29
+[089/100] 09_to_09  L1=0.008  L1/zero=755840.35  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.303  L1/zero=0.84  cos=0.57  k=0.69
+[091/100] 10_to_01  L1=0.289  L1/zero=0.97  cos=0.20  k=0.16
+[092/100] 10_to_02  L1=0.438  L1/zero=0.98  cos=0.10  k=0.20
+[093/100] 10_to_03  L1=0.626  L1/zero=0.95  cos=0.40  k=0.51
+[094/100] 10_to_04  L1=0.828  L1/zero=0.87  cos=0.54  k=0.50
+[095/100] 10_to_05  L1=1.144  L1/zero=0.84  cos=0.55  k=0.50
+[096/100] 10_to_06  L1=1.271  L1/zero=0.86  cos=0.51  k=0.40
+[097/100] 10_to_07  L1=1.010  L1/zero=0.83  cos=0.58  k=0.56
+[098/100] 10_to_08  L1=0.684  L1/zero=0.84  cos=0.58  k=0.58
+[099/100] 10_to_09  L1=0.301  L1/zero=0.80  cos=0.64  k=0.42
+[100/100] 10_to_10  L1=0.009  L1/zero=938473.92  cos=nan  k=nan
+
+[both] Directed mean: L1=0.781  L1/zero=0.92  cos=0.40  k=0.27  beat_zero=96%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_varian/P5/CV_P5_V_01 (100 pngs)
+[2026-08-26 09:45:24] QC qc_elekta.py --arch both --scan CE_P1_V_01 gpu=1
+[both|elekta] scan=CE_P1_V_01 pairs=100 panels=100 ckpt=crb_both_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_elekta/P1/CE_P1_V_01
+[001/100] 01_to_01  L1=0.013  L1/zero=1330314.30  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.450  L1/zero=1.09  cos=-0.22  k=0.23
+[003/100] 01_to_03  L1=1.208  L1/zero=1.01  cos=0.11  k=0.26
+[004/100] 01_to_04  L1=1.627  L1/zero=1.12  cos=0.04  k=0.46
+[005/100] 01_to_05  L1=1.831  L1/zero=1.18  cos=0.03  k=0.55
+[006/100] 01_to_06  L1=1.802  L1/zero=1.20  cos=0.08  k=0.58
+[007/100] 01_to_07  L1=1.515  L1/zero=1.14  cos=0.07  k=0.47
+[008/100] 01_to_08  L1=1.133  L1/zero=1.06  cos=-0.02  k=0.29
+[009/100] 01_to_09  L1=0.757  L1/zero=1.04  cos=-0.21  k=0.14
+[010/100] 01_to_10  L1=0.357  L1/zero=1.00  cos=0.14  k=0.10
+[011/100] 02_to_01  L1=0.422  L1/zero=1.04  cos=-0.04  k=0.17
+[012/100] 02_to_02  L1=0.015  L1/zero=1548082.38  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.484  L1/zero=0.96  cos=0.40  k=0.25
+[014/100] 02_to_04  L1=0.858  L1/zero=1.08  cos=0.03  k=0.32
+[015/100] 02_to_05  L1=1.172  L1/zero=1.14  cos=-0.01  k=0.46
+[016/100] 02_to_06  L1=1.251  L1/zero=1.14  cos=-0.01  k=0.47
+[017/100] 02_to_07  L1=1.091  L1/zero=1.07  cos=0.00  k=0.38
+[018/100] 02_to_08  L1=0.911  L1/zero=1.01  cos=0.01  k=0.22
+[019/100] 02_to_09  L1=0.672  L1/zero=0.95  cos=0.29  k=0.17
+[020/100] 02_to_10  L1=0.466  L1/zero=1.06  cos=-0.04  k=0.24
+[021/100] 03_to_01  L1=1.281  L1/zero=1.08  cos=-0.09  k=0.30
+[022/100] 03_to_02  L1=0.496  L1/zero=0.99  cos=0.33  k=0.15
+[023/100] 03_to_03  L1=0.023  L1/zero=2283180.32  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.308  L1/zero=1.05  cos=-0.11  k=0.14
+[025/100] 03_to_05  L1=0.579  L1/zero=1.10  cos=-0.15  k=0.26
+[026/100] 03_to_06  L1=0.719  L1/zero=1.13  cos=-0.06  k=0.37
+[027/100] 03_to_07  L1=0.735  L1/zero=1.04  cos=0.09  k=0.21
+[028/100] 03_to_08  L1=0.798  L1/zero=1.03  cos=-0.03  k=0.18
+[029/100] 03_to_09  L1=0.927  L1/zero=1.06  cos=-0.11  k=0.25
+[030/100] 03_to_10  L1=1.151  L1/zero=1.08  cos=-0.15  k=0.30
+[031/100] 04_to_01  L1=1.591  L1/zero=1.13  cos=-0.01  k=0.45
+[032/100] 04_to_02  L1=0.866  L1/zero=1.10  cos=-0.07  k=0.31
+[033/100] 04_to_03  L1=0.294  L1/zero=1.03  cos=0.02  k=0.13
+[034/100] 04_to_04  L1=0.015  L1/zero=1511347.57  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.257  L1/zero=1.02  cos=-0.07  k=0.08
+[036/100] 04_to_06  L1=0.403  L1/zero=1.04  cos=0.10  k=0.29
+[037/100] 04_to_07  L1=0.553  L1/zero=1.07  cos=-0.04  k=0.24
+[038/100] 04_to_08  L1=0.752  L1/zero=1.05  cos=-0.07  k=0.27
+[039/100] 04_to_09  L1=1.043  L1/zero=1.11  cos=-0.07  k=0.43
+[040/100] 04_to_10  L1=1.312  L1/zero=1.09  cos=0.00  k=0.42
+[041/100] 05_to_01  L1=1.728  L1/zero=1.17  cos=0.00  k=0.50
+[042/100] 05_to_02  L1=1.202  L1/zero=1.15  cos=-0.07  k=0.43
+[043/100] 05_to_03  L1=0.557  L1/zero=1.09  cos=-0.17  k=0.24
+[044/100] 05_to_04  L1=0.257  L1/zero=1.00  cos=0.10  k=0.09
+[045/100] 05_to_05  L1=0.011  L1/zero=1124475.80  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.176  L1/zero=1.01  cos=0.15  k=0.11
+[047/100] 05_to_07  L1=0.404  L1/zero=1.10  cos=0.15  k=0.52
+[048/100] 05_to_08  L1=0.736  L1/zero=1.15  cos=-0.03  k=0.52
+[049/100] 05_to_09  L1=1.113  L1/zero=1.20  cos=0.01  k=0.66
+[050/100] 05_to_10  L1=1.514  L1/zero=1.24  cos=0.03  k=0.71
+[051/100] 06_to_01  L1=1.742  L1/zero=1.20  cos=0.07  k=0.58
+[052/100] 06_to_02  L1=1.260  L1/zero=1.19  cos=0.01  k=0.55
+[053/100] 06_to_03  L1=0.699  L1/zero=1.13  cos=-0.11  k=0.34
+[054/100] 06_to_04  L1=0.400  L1/zero=1.03  cos=0.15  k=0.33
+[055/100] 06_to_05  L1=0.176  L1/zero=0.98  cos=0.31  k=0.15
+[056/100] 06_to_06  L1=0.014  L1/zero=1402181.29  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.311  L1/zero=1.11  cos=0.03  k=0.56
+[058/100] 06_to_08  L1=0.715  L1/zero=1.26  cos=-0.15  k=0.62
+[059/100] 06_to_09  L1=1.102  L1/zero=1.28  cos=-0.01  k=0.77
+[060/100] 06_to_10  L1=1.516  L1/zero=1.30  cos=0.09  k=0.85
+[061/100] 07_to_01  L1=1.468  L1/zero=1.17  cos=0.12  k=0.54
+[062/100] 07_to_02  L1=1.027  L1/zero=1.07  cos=0.11  k=0.45
+[063/100] 07_to_03  L1=0.738  L1/zero=1.04  cos=0.09  k=0.23
+[064/100] 07_to_04  L1=0.551  L1/zero=1.06  cos=0.10  k=0.24
+[065/100] 07_to_05  L1=0.394  L1/zero=1.08  cos=0.23  k=0.59
+[066/100] 07_to_06  L1=0.340  L1/zero=1.24  cos=-0.23  k=0.55
+[067/100] 07_to_07  L1=0.020  L1/zero=1973736.29  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.372  L1/zero=1.30  cos=-0.20  k=0.68
+[069/100] 07_to_09  L1=0.740  L1/zero=1.24  cos=-0.18  k=0.59
+[070/100] 07_to_10  L1=1.236  L1/zero=1.31  cos=0.05  k=0.84
+[071/100] 08_to_01  L1=1.089  L1/zero=1.08  cos=0.10  k=0.34
+[072/100] 08_to_02  L1=0.851  L1/zero=0.96  cos=0.25  k=0.25
+[073/100] 08_to_03  L1=0.796  L1/zero=1.02  cos=0.12  k=0.23
+[074/100] 08_to_04  L1=0.806  L1/zero=1.11  cos=-0.11  k=0.38
+[075/100] 08_to_05  L1=0.818  L1/zero=1.28  cos=-0.13  k=0.70
+[076/100] 08_to_06  L1=0.803  L1/zero=1.41  cos=-0.19  k=0.86
+[077/100] 08_to_07  L1=0.382  L1/zero=1.28  cos=-0.36  k=0.50
+[078/100] 08_to_08  L1=0.020  L1/zero=1965866.05  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.356  L1/zero=1.09  cos=0.12  k=0.46
+[080/100] 08_to_10  L1=0.683  L1/zero=1.01  cos=0.31  k=0.50
+[081/100] 09_to_01  L1=0.713  L1/zero=1.02  cos=0.04  k=0.18
+[082/100] 09_to_02  L1=0.652  L1/zero=0.95  cos=0.37  k=0.28
+[083/100] 09_to_03  L1=0.994  L1/zero=1.13  cos=-0.06  k=0.41
+[084/100] 09_to_04  L1=1.154  L1/zero=1.21  cos=-0.08  k=0.62
+[085/100] 09_to_05  L1=1.178  L1/zero=1.28  cos=0.05  k=0.86
+[086/100] 09_to_06  L1=1.144  L1/zero=1.33  cos=0.00  k=0.84
+[087/100] 09_to_07  L1=0.721  L1/zero=1.19  cos=-0.04  k=0.54
+[088/100] 09_to_08  L1=0.340  L1/zero=1.10  cos=0.08  k=0.40
+[089/100] 09_to_09  L1=0.013  L1/zero=1289629.00  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.319  L1/zero=0.95  cos=0.44  k=0.19
+[091/100] 10_to_01  L1=0.346  L1/zero=0.98  cos=0.28  k=0.12
+[092/100] 10_to_02  L1=0.478  L1/zero=1.11  cos=0.05  k=0.50
+[093/100] 10_to_03  L1=1.274  L1/zero=1.18  cos=-0.08  k=0.54
+[094/100] 10_to_04  L1=1.498  L1/zero=1.21  cos=0.04  k=0.70
+[095/100] 10_to_05  L1=1.545  L1/zero=1.22  cos=0.17  k=0.82
+[096/100] 10_to_06  L1=1.442  L1/zero=1.21  cos=0.14  k=0.75
+[097/100] 10_to_07  L1=1.046  L1/zero=1.08  cos=0.18  k=0.53
+[098/100] 10_to_08  L1=0.677  L1/zero=1.01  cos=0.31  k=0.49
+[099/100] 10_to_09  L1=0.339  L1/zero=0.96  cos=0.40  k=0.12
+[100/100] 10_to_10  L1=0.020  L1/zero=1950711.01  cos=nan  k=nan
+
+[both|elekta] Directed mean: L1=0.855  L1/zero=1.11  cos=0.04  k=0.41  beat_zero=10%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_elekta/P1/CE_P1_V_01 (100 pngs)
+[2026-08-26 09:46:06] QC qc_elekta.py --arch both --scan CE_P2_V_01 gpu=1
+[both|elekta] scan=CE_P2_V_01 pairs=100 panels=100 ckpt=crb_both_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_elekta/P2/CE_P2_V_01
+[001/100] 01_to_01  L1=0.014  L1/zero=1375550.96  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.398  L1/zero=1.04  cos=-0.06  k=0.26
+[003/100] 01_to_03  L1=1.269  L1/zero=1.03  cos=-0.00  k=0.28
+[004/100] 01_to_04  L1=1.773  L1/zero=1.08  cos=0.04  k=0.39
+[005/100] 01_to_05  L1=2.000  L1/zero=1.11  cos=0.00  k=0.44
+[006/100] 01_to_06  L1=1.999  L1/zero=1.13  cos=-0.03  k=0.47
+[007/100] 01_to_07  L1=1.487  L1/zero=1.11  cos=0.06  k=0.49
+[008/100] 01_to_08  L1=0.794  L1/zero=1.04  cos=0.20  k=0.52
+[009/100] 01_to_09  L1=0.410  L1/zero=1.13  cos=0.04  k=0.60
+[010/100] 01_to_10  L1=0.247  L1/zero=1.07  cos=-0.23  k=0.22
+[011/100] 02_to_01  L1=0.394  L1/zero=1.06  cos=-0.22  k=0.17
+[012/100] 02_to_02  L1=0.017  L1/zero=1726799.09  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.511  L1/zero=1.01  cos=0.16  k=0.21
+[014/100] 02_to_04  L1=1.153  L1/zero=1.04  cos=0.00  k=0.23
+[015/100] 02_to_05  L1=1.553  L1/zero=1.11  cos=-0.09  k=0.36
+[016/100] 02_to_06  L1=1.515  L1/zero=1.12  cos=-0.04  k=0.43
+[017/100] 02_to_07  L1=1.110  L1/zero=1.10  cos=0.02  k=0.49
+[018/100] 02_to_08  L1=0.687  L1/zero=1.13  cos=-0.06  k=0.52
+[019/100] 02_to_09  L1=0.626  L1/zero=1.20  cos=-0.37  k=0.39
+[020/100] 02_to_10  L1=0.686  L1/zero=1.09  cos=-0.43  k=0.19
+[021/100] 03_to_01  L1=1.230  L1/zero=1.05  cos=-0.10  k=0.26
+[022/100] 03_to_02  L1=0.487  L1/zero=1.01  cos=0.05  k=0.15
+[023/100] 03_to_03  L1=0.028  L1/zero=2827152.61  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.375  L1/zero=1.05  cos=-0.11  k=0.15
+[025/100] 03_to_05  L1=0.658  L1/zero=1.12  cos=-0.12  k=0.31
+[026/100] 03_to_06  L1=0.894  L1/zero=1.19  cos=-0.24  k=0.45
+[027/100] 03_to_07  L1=0.626  L1/zero=1.00  cos=0.21  k=0.30
+[028/100] 03_to_08  L1=0.953  L1/zero=1.07  cos=-0.21  k=0.21
+[029/100] 03_to_09  L1=1.218  L1/zero=1.05  cos=-0.27  k=0.18
+[030/100] 03_to_10  L1=1.395  L1/zero=1.02  cos=-0.06  k=0.24
+[031/100] 04_to_01  L1=1.656  L1/zero=1.07  cos=-0.08  k=0.34
+[032/100] 04_to_02  L1=1.124  L1/zero=1.11  cos=-0.20  k=0.24
+[033/100] 04_to_03  L1=0.356  L1/zero=1.03  cos=-0.11  k=0.11
+[034/100] 04_to_04  L1=0.020  L1/zero=2029198.41  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.255  L1/zero=1.03  cos=-0.15  k=0.12
+[036/100] 04_to_06  L1=0.410  L1/zero=1.06  cos=-0.01  k=0.35
+[037/100] 04_to_07  L1=0.625  L1/zero=1.03  cos=0.00  k=0.21
+[038/100] 04_to_08  L1=1.137  L1/zero=1.06  cos=-0.27  k=0.18
+[039/100] 04_to_09  L1=1.498  L1/zero=1.04  cos=-0.08  k=0.24
+[040/100] 04_to_10  L1=1.702  L1/zero=1.03  cos=0.02  k=0.29
+[041/100] 05_to_01  L1=1.917  L1/zero=1.14  cos=-0.16  k=0.37
+[042/100] 05_to_02  L1=1.480  L1/zero=1.17  cos=-0.20  k=0.39
+[043/100] 05_to_03  L1=0.605  L1/zero=1.07  cos=0.04  k=0.35
+[044/100] 05_to_04  L1=0.249  L1/zero=1.01  cos=0.04  k=0.13
+[045/100] 05_to_05  L1=0.015  L1/zero=1542041.36  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.240  L1/zero=0.99  cos=0.19  k=0.07
+[047/100] 05_to_07  L1=0.598  L1/zero=1.00  cos=0.14  k=0.22
+[048/100] 05_to_08  L1=1.180  L1/zero=1.10  cos=-0.17  k=0.32
+[049/100] 05_to_09  L1=1.618  L1/zero=1.06  cos=-0.01  k=0.32
+[050/100] 05_to_10  L1=2.010  L1/zero=1.08  cos=-0.05  k=0.40
+[051/100] 06_to_01  L1=2.007  L1/zero=1.18  cos=-0.13  k=0.47
+[052/100] 06_to_02  L1=1.498  L1/zero=1.19  cos=-0.11  k=0.51
+[053/100] 06_to_03  L1=0.812  L1/zero=1.14  cos=-0.01  k=0.45
+[054/100] 06_to_04  L1=0.400  L1/zero=1.05  cos=0.09  k=0.45
+[055/100] 06_to_05  L1=0.251  L1/zero=1.03  cos=-0.10  k=0.10
+[056/100] 06_to_06  L1=0.018  L1/zero=1814439.52  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.401  L1/zero=0.99  cos=0.24  k=0.30
+[058/100] 06_to_08  L1=1.045  L1/zero=1.20  cos=-0.15  k=0.52
+[059/100] 06_to_09  L1=1.509  L1/zero=1.07  cos=0.02  k=0.39
+[060/100] 06_to_10  L1=2.003  L1/zero=1.10  cos=-0.05  k=0.46
+[061/100] 07_to_01  L1=1.511  L1/zero=1.21  cos=-0.05  k=0.55
+[062/100] 07_to_02  L1=1.155  L1/zero=1.20  cos=-0.10  k=0.53
+[063/100] 07_to_03  L1=0.638  L1/zero=1.03  cos=0.19  k=0.36
+[064/100] 07_to_04  L1=0.629  L1/zero=1.01  cos=0.09  k=0.18
+[065/100] 07_to_05  L1=0.647  L1/zero=1.05  cos=-0.12  k=0.24
+[066/100] 07_to_06  L1=0.454  L1/zero=1.09  cos=-0.10  k=0.29
+[067/100] 07_to_07  L1=0.024  L1/zero=2441141.75  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.473  L1/zero=1.01  cos=0.07  k=0.13
+[069/100] 07_to_09  L1=0.931  L1/zero=1.00  cos=0.20  k=0.30
+[070/100] 07_to_10  L1=1.478  L1/zero=1.06  cos=0.06  k=0.48
+[071/100] 08_to_01  L1=0.843  L1/zero=1.12  cos=0.03  k=0.44
+[072/100] 08_to_02  L1=0.690  L1/zero=1.17  cos=-0.15  k=0.49
+[073/100] 08_to_03  L1=0.947  L1/zero=1.04  cos=-0.03  k=0.21
+[074/100] 08_to_04  L1=1.168  L1/zero=1.06  cos=-0.19  k=0.22
+[075/100] 08_to_05  L1=1.273  L1/zero=1.13  cos=-0.15  k=0.37
+[076/100] 08_to_06  L1=1.164  L1/zero=1.22  cos=-0.16  k=0.49
+[077/100] 08_to_07  L1=0.512  L1/zero=1.06  cos=-0.14  k=0.19
+[078/100] 08_to_08  L1=0.020  L1/zero=1951349.53  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.402  L1/zero=0.99  cos=0.20  k=0.14
+[080/100] 08_to_10  L1=0.745  L1/zero=0.99  cos=0.23  k=0.45
+[081/100] 09_to_01  L1=0.397  L1/zero=1.08  cos=-0.11  k=0.35
+[082/100] 09_to_02  L1=0.645  L1/zero=1.17  cos=-0.26  k=0.36
+[083/100] 09_to_03  L1=1.295  L1/zero=1.08  cos=-0.24  k=0.25
+[084/100] 09_to_04  L1=1.642  L1/zero=1.09  cos=-0.12  k=0.33
+[085/100] 09_to_05  L1=1.794  L1/zero=1.10  cos=-0.03  k=0.39
+[086/100] 09_to_06  L1=1.661  L1/zero=1.10  cos=-0.01  k=0.40
+[087/100] 09_to_07  L1=1.017  L1/zero=1.02  cos=0.12  k=0.29
+[088/100] 09_to_08  L1=0.448  L1/zero=1.06  cos=-0.21  k=0.16
+[089/100] 09_to_09  L1=0.011  L1/zero=1100374.85  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.274  L1/zero=0.96  cos=0.29  k=0.15
+[091/100] 10_to_01  L1=0.262  L1/zero=1.09  cos=-0.27  k=0.25
+[092/100] 10_to_02  L1=0.731  L1/zero=1.13  cos=-0.28  k=0.29
+[093/100] 10_to_03  L1=1.528  L1/zero=1.08  cos=-0.17  k=0.30
+[094/100] 10_to_04  L1=1.926  L1/zero=1.09  cos=-0.04  k=0.40
+[095/100] 10_to_05  L1=2.205  L1/zero=1.10  cos=-0.00  k=0.47
+[096/100] 10_to_06  L1=2.164  L1/zero=1.11  cos=-0.06  k=0.45
+[097/100] 10_to_07  L1=1.507  L1/zero=1.00  cos=0.10  k=0.33
+[098/100] 10_to_08  L1=0.810  L1/zero=1.04  cos=0.11  k=0.35
+[099/100] 10_to_09  L1=0.291  L1/zero=0.98  cos=0.20  k=0.12
+[100/100] 10_to_10  L1=0.036  L1/zero=3573352.47  cos=nan  k=nan
+
+[both|elekta] Directed mean: L1=1.014  L1/zero=1.08  cos=-0.05  k=0.32  beat_zero=10%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_elekta/P2/CE_P2_V_01 (100 pngs)
+[2026-08-26 09:46:48] QC qc_elekta.py --arch both --scan CE_P3_V_01 gpu=1
+[both|elekta] scan=CE_P3_V_01 pairs=100 panels=100 ckpt=crb_both_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_elekta/P3/CE_P3_V_01
+[001/100] 01_to_01  L1=0.035  L1/zero=3491895.27  cos=nan  k=nan
+[002/100] 01_to_02  L1=1.654  L1/zero=1.04  cos=-0.72  k=0.05
+[003/100] 01_to_03  L1=2.639  L1/zero=0.97  cos=0.32  k=0.11
+[004/100] 01_to_04  L1=2.953  L1/zero=0.89  cos=0.52  k=0.20
+[005/100] 01_to_05  L1=3.381  L1/zero=0.87  cos=0.53  k=0.20
+[006/100] 01_to_06  L1=3.277  L1/zero=0.87  cos=0.55  k=0.20
+[007/100] 01_to_07  L1=1.974  L1/zero=0.84  cos=0.54  k=0.25
+[008/100] 01_to_08  L1=0.764  L1/zero=0.88  cos=0.51  k=0.42
+[009/100] 01_to_09  L1=1.011  L1/zero=1.00  cos=-0.02  k=0.16
+[010/100] 01_to_10  L1=1.282  L1/zero=1.01  cos=0.03  k=0.04
+[011/100] 02_to_01  L1=1.521  L1/zero=1.00  cos=-0.22  k=0.02
+[012/100] 02_to_02  L1=0.029  L1/zero=2914379.91  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.728  L1/zero=1.04  cos=-0.44  k=0.08
+[014/100] 02_to_04  L1=1.124  L1/zero=0.92  cos=0.37  k=0.23
+[015/100] 02_to_05  L1=1.401  L1/zero=0.85  cos=0.50  k=0.27
+[016/100] 02_to_06  L1=1.371  L1/zero=0.84  cos=0.55  k=0.29
+[017/100] 02_to_07  L1=1.012  L1/zero=1.01  cos=0.39  k=0.47
+[018/100] 02_to_08  L1=1.651  L1/zero=1.03  cos=-0.25  k=0.19
+[019/100] 02_to_09  L1=2.883  L1/zero=1.02  cos=-0.48  k=0.04
+[020/100] 02_to_10  L1=3.386  L1/zero=1.00  cos=-0.30  k=0.03
+[021/100] 03_to_01  L1=2.478  L1/zero=0.99  cos=0.28  k=0.03
+[022/100] 03_to_02  L1=0.680  L1/zero=0.98  cos=0.41  k=0.05
+[023/100] 03_to_03  L1=0.059  L1/zero=5893193.56  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.458  L1/zero=1.05  cos=-0.37  k=0.13
+[025/100] 03_to_05  L1=0.763  L1/zero=0.98  cos=0.23  k=0.23
+[026/100] 03_to_06  L1=0.957  L1/zero=1.00  cos=0.09  k=0.21
+[027/100] 03_to_07  L1=0.993  L1/zero=0.99  cos=0.26  k=0.25
+[028/100] 03_to_08  L1=2.236  L1/zero=1.01  cos=-0.18  k=0.06
+[029/100] 03_to_09  L1=4.092  L1/zero=0.99  cos=0.09  k=0.04
+[030/100] 03_to_10  L1=4.454  L1/zero=0.98  cos=0.24  k=0.06
+[031/100] 04_to_01  L1=2.940  L1/zero=0.94  cos=0.50  k=0.10
+[032/100] 04_to_02  L1=1.105  L1/zero=0.93  cos=0.45  k=0.12
+[033/100] 04_to_03  L1=0.396  L1/zero=0.93  cos=0.54  k=0.13
+[034/100] 04_to_04  L1=0.052  L1/zero=5245803.67  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.341  L1/zero=1.06  cos=-0.42  k=0.11
+[036/100] 04_to_06  L1=0.488  L1/zero=1.01  cos=0.08  k=0.21
+[037/100] 04_to_07  L1=1.069  L1/zero=1.02  cos=0.04  k=0.17
+[038/100] 04_to_08  L1=2.640  L1/zero=0.99  cos=0.07  k=0.06
+[039/100] 04_to_09  L1=4.516  L1/zero=0.97  cos=0.37  k=0.07
+[040/100] 04_to_10  L1=5.456  L1/zero=0.96  cos=0.42  k=0.08
+[041/100] 05_to_01  L1=3.212  L1/zero=0.91  cos=0.56  k=0.15
+[042/100] 05_to_02  L1=1.300  L1/zero=0.86  cos=0.59  k=0.30
+[043/100] 05_to_03  L1=0.662  L1/zero=0.89  cos=0.63  k=0.20
+[044/100] 05_to_04  L1=0.287  L1/zero=0.88  cos=0.60  k=0.26
+[045/100] 05_to_05  L1=0.038  L1/zero=3768661.62  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.244  L1/zero=1.03  cos=-0.18  k=0.11
+[047/100] 05_to_07  L1=1.040  L1/zero=1.00  cos=0.17  k=0.13
+[048/100] 05_to_08  L1=2.894  L1/zero=0.98  cos=0.18  k=0.08
+[049/100] 05_to_09  L1=5.031  L1/zero=0.96  cos=0.48  k=0.09
+[050/100] 05_to_10  L1=5.674  L1/zero=0.94  cos=0.52  k=0.11
+[051/100] 06_to_01  L1=2.950  L1/zero=0.84  cos=0.64  k=0.23
+[052/100] 06_to_02  L1=1.292  L1/zero=0.83  cos=0.63  k=0.37
+[053/100] 06_to_03  L1=0.760  L1/zero=0.86  cos=0.64  k=0.31
+[054/100] 06_to_04  L1=0.438  L1/zero=0.90  cos=0.47  k=0.24
+[055/100] 06_to_05  L1=0.254  L1/zero=1.02  cos=0.08  k=0.39
+[056/100] 06_to_06  L1=0.045  L1/zero=4480739.68  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.873  L1/zero=0.98  cos=0.34  k=0.07
+[058/100] 06_to_08  L1=2.785  L1/zero=0.98  cos=0.13  k=0.08
+[059/100] 06_to_09  L1=5.008  L1/zero=0.98  cos=0.31  k=0.07
+[060/100] 06_to_10  L1=5.724  L1/zero=0.95  cos=0.42  k=0.10
+[061/100] 07_to_01  L1=1.869  L1/zero=0.83  cos=0.66  k=0.28
+[062/100] 07_to_02  L1=0.917  L1/zero=0.93  cos=0.54  k=0.43
+[063/100] 07_to_03  L1=1.058  L1/zero=1.05  cos=0.04  k=0.28
+[064/100] 07_to_04  L1=1.182  L1/zero=1.08  cos=-0.38  k=0.17
+[065/100] 07_to_05  L1=1.197  L1/zero=1.04  cos=-0.27  k=0.13
+[066/100] 07_to_06  L1=0.949  L1/zero=1.01  cos=-0.37  k=0.05
+[067/100] 07_to_07  L1=0.031  L1/zero=3145048.39  cos=nan  k=nan
+[068/100] 07_to_08  L1=1.502  L1/zero=1.00  cos=0.19  k=0.01
+[069/100] 07_to_09  L1=3.252  L1/zero=0.97  cos=0.28  k=0.08
+[070/100] 07_to_10  L1=3.779  L1/zero=0.94  cos=0.33  k=0.11
+[071/100] 08_to_01  L1=0.823  L1/zero=0.93  cos=0.51  k=0.25
+[072/100] 08_to_02  L1=1.728  L1/zero=1.04  cos=-0.25  k=0.18
+[073/100] 08_to_03  L1=2.463  L1/zero=1.04  cos=-0.37  k=0.08
+[074/100] 08_to_04  L1=2.910  L1/zero=0.99  cos=0.23  k=0.08
+[075/100] 08_to_05  L1=3.101  L1/zero=0.96  cos=0.53  k=0.12
+[076/100] 08_to_06  L1=2.841  L1/zero=0.94  cos=0.60  k=0.13
+[077/100] 08_to_07  L1=1.588  L1/zero=1.01  cos=-0.59  k=0.03
+[078/100] 08_to_08  L1=0.017  L1/zero=1744332.54  cos=nan  k=nan
+[079/100] 08_to_09  L1=1.384  L1/zero=1.00  cos=0.01  k=0.01
+[080/100] 08_to_10  L1=1.910  L1/zero=0.92  cos=0.51  k=0.13
+[081/100] 09_to_01  L1=1.054  L1/zero=1.02  cos=-0.41  k=0.06
+[082/100] 09_to_02  L1=3.178  L1/zero=1.02  cos=-0.37  k=0.05
+[083/100] 09_to_03  L1=4.390  L1/zero=1.00  cos=0.12  k=0.06
+[084/100] 09_to_04  L1=4.838  L1/zero=0.96  cos=0.49  k=0.10
+[085/100] 09_to_05  L1=5.055  L1/zero=0.93  cos=0.59  k=0.12
+[086/100] 09_to_06  L1=5.019  L1/zero=0.93  cos=0.60  k=0.12
+[087/100] 09_to_07  L1=3.460  L1/zero=0.97  cos=0.43  k=0.07
+[088/100] 09_to_08  L1=1.440  L1/zero=1.02  cos=-0.64  k=0.03
+[089/100] 09_to_09  L1=0.029  L1/zero=2948229.57  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.536  L1/zero=1.01  cos=-0.02  k=0.04
+[091/100] 10_to_01  L1=1.397  L1/zero=1.02  cos=-0.50  k=0.03
+[092/100] 10_to_02  L1=3.761  L1/zero=1.01  cos=-0.25  k=0.04
+[093/100] 10_to_03  L1=4.937  L1/zero=0.97  cos=0.23  k=0.09
+[094/100] 10_to_04  L1=5.332  L1/zero=0.92  cos=0.59  k=0.13
+[095/100] 10_to_05  L1=5.750  L1/zero=0.93  cos=0.50  k=0.12
+[096/100] 10_to_06  L1=5.755  L1/zero=0.94  cos=0.48  k=0.12
+[097/100] 10_to_07  L1=4.199  L1/zero=0.96  cos=0.45  k=0.08
+[098/100] 10_to_08  L1=2.054  L1/zero=0.94  cos=0.46  k=0.10
+[099/100] 10_to_09  L1=0.523  L1/zero=0.99  cos=0.12  k=0.06
+[100/100] 10_to_10  L1=0.068  L1/zero=6818595.53  cos=nan  k=nan
+
+[both|elekta] Directed mean: L1=2.307  L1/zero=0.96  cos=0.20  k=0.14  beat_zero=64%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_elekta/P3/CE_P3_V_01 (100 pngs)
+[2026-08-26 09:47:29] QC qc_elekta.py --arch both --scan CE_P4_V_01 gpu=1
+[both|elekta] scan=CE_P4_V_01 pairs=100 panels=100 ckpt=crb_both_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_elekta/P4/CE_P4_V_01
+[001/100] 01_to_01  L1=0.011  L1/zero=1115930.36  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.472  L1/zero=1.05  cos=0.03  k=0.16
+[003/100] 01_to_03  L1=0.807  L1/zero=0.97  cos=0.37  k=0.42
+[004/100] 01_to_04  L1=1.059  L1/zero=0.93  cos=0.44  k=0.53
+[005/100] 01_to_05  L1=1.257  L1/zero=0.91  cos=0.50  k=0.52
+[006/100] 01_to_06  L1=1.389  L1/zero=0.94  cos=0.48  k=0.57
+[007/100] 01_to_07  L1=0.901  L1/zero=0.88  cos=0.52  k=0.74
+[008/100] 01_to_08  L1=0.635  L1/zero=1.10  cos=0.32  k=0.84
+[009/100] 01_to_09  L1=0.506  L1/zero=1.12  cos=0.00  k=0.47
+[010/100] 01_to_10  L1=0.340  L1/zero=1.04  cos=-0.16  k=0.14
+[011/100] 02_to_01  L1=0.451  L1/zero=1.04  cos=-0.02  k=0.14
+[012/100] 02_to_02  L1=0.012  L1/zero=1173057.13  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.331  L1/zero=0.97  cos=0.24  k=0.38
+[014/100] 02_to_04  L1=0.668  L1/zero=1.00  cos=0.26  k=0.42
+[015/100] 02_to_05  L1=0.882  L1/zero=0.92  cos=0.46  k=0.56
+[016/100] 02_to_06  L1=1.009  L1/zero=0.90  cos=0.48  k=0.55
+[017/100] 02_to_07  L1=0.850  L1/zero=0.95  cos=0.40  k=0.55
+[018/100] 02_to_08  L1=0.857  L1/zero=1.05  cos=0.09  k=0.36
+[019/100] 02_to_09  L1=0.993  L1/zero=1.03  cos=-0.05  k=0.15
+[020/100] 02_to_10  L1=0.873  L1/zero=1.01  cos=0.09  k=0.11
+[021/100] 03_to_01  L1=0.740  L1/zero=0.96  cos=0.36  k=0.41
+[022/100] 03_to_02  L1=0.354  L1/zero=1.05  cos=0.01  k=0.33
+[023/100] 03_to_03  L1=0.015  L1/zero=1460414.38  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.263  L1/zero=0.95  cos=0.33  k=0.30
+[025/100] 03_to_05  L1=0.600  L1/zero=0.95  cos=0.30  k=0.27
+[026/100] 03_to_06  L1=0.790  L1/zero=0.94  cos=0.35  k=0.45
+[027/100] 03_to_07  L1=0.826  L1/zero=0.93  cos=0.35  k=0.31
+[028/100] 03_to_08  L1=1.024  L1/zero=0.99  cos=0.11  k=0.17
+[029/100] 03_to_09  L1=1.224  L1/zero=1.00  cos=0.12  k=0.20
+[030/100] 03_to_10  L1=1.042  L1/zero=0.92  cos=0.50  k=0.32
+[031/100] 04_to_01  L1=1.010  L1/zero=0.98  cos=0.37  k=0.54
+[032/100] 04_to_02  L1=0.661  L1/zero=1.05  cos=0.20  k=0.49
+[033/100] 04_to_03  L1=0.270  L1/zero=1.00  cos=0.17  k=0.30
+[034/100] 04_to_04  L1=0.011  L1/zero=1064121.07  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.350  L1/zero=0.98  cos=0.21  k=0.17
+[036/100] 04_to_06  L1=0.566  L1/zero=0.97  cos=0.27  k=0.36
+[037/100] 04_to_07  L1=0.704  L1/zero=0.99  cos=0.18  k=0.26
+[038/100] 04_to_08  L1=1.036  L1/zero=1.00  cos=0.15  k=0.23
+[039/100] 04_to_09  L1=1.411  L1/zero=0.99  cos=0.23  k=0.31
+[040/100] 04_to_10  L1=1.214  L1/zero=0.91  cos=0.46  k=0.41
+[041/100] 05_to_01  L1=1.171  L1/zero=0.90  cos=0.51  k=0.55
+[042/100] 05_to_02  L1=0.827  L1/zero=0.92  cos=0.47  k=0.63
+[043/100] 05_to_03  L1=0.579  L1/zero=0.96  cos=0.32  k=0.35
+[044/100] 05_to_04  L1=0.324  L1/zero=0.99  cos=0.23  k=0.19
+[045/100] 05_to_05  L1=0.008  L1/zero=828103.16  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.273  L1/zero=0.97  cos=0.23  k=0.24
+[047/100] 05_to_07  L1=0.666  L1/zero=1.00  cos=0.24  k=0.32
+[048/100] 05_to_08  L1=1.165  L1/zero=1.00  cos=0.23  k=0.32
+[049/100] 05_to_09  L1=1.500  L1/zero=0.97  cos=0.35  k=0.41
+[050/100] 05_to_10  L1=1.556  L1/zero=0.96  cos=0.37  k=0.49
+[051/100] 06_to_01  L1=1.190  L1/zero=0.87  cos=0.56  k=0.61
+[052/100] 06_to_02  L1=0.949  L1/zero=0.90  cos=0.47  k=0.62
+[053/100] 06_to_03  L1=0.743  L1/zero=0.93  cos=0.36  k=0.43
+[054/100] 06_to_04  L1=0.543  L1/zero=0.97  cos=0.29  k=0.36
+[055/100] 06_to_05  L1=0.278  L1/zero=0.99  cos=0.16  k=0.21
+[056/100] 06_to_06  L1=0.010  L1/zero=955217.61  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.532  L1/zero=1.06  cos=0.16  k=0.32
+[058/100] 06_to_08  L1=1.068  L1/zero=1.02  cos=0.23  k=0.36
+[059/100] 06_to_09  L1=1.407  L1/zero=0.97  cos=0.35  k=0.41
+[060/100] 06_to_10  L1=1.540  L1/zero=0.94  cos=0.41  k=0.49
+[061/100] 07_to_01  L1=0.919  L1/zero=0.95  cos=0.45  k=0.82
+[062/100] 07_to_02  L1=0.902  L1/zero=1.01  cos=0.36  k=0.59
+[063/100] 07_to_03  L1=0.816  L1/zero=0.94  cos=0.32  k=0.35
+[064/100] 07_to_04  L1=0.709  L1/zero=0.99  cos=0.22  k=0.28
+[065/100] 07_to_05  L1=0.660  L1/zero=0.97  cos=0.33  k=0.27
+[066/100] 07_to_06  L1=0.549  L1/zero=1.07  cos=0.14  k=0.30
+[067/100] 07_to_07  L1=0.014  L1/zero=1372659.58  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.477  L1/zero=1.00  cos=0.20  k=0.34
+[069/100] 07_to_09  L1=0.927  L1/zero=1.00  cos=0.31  k=0.43
+[070/100] 07_to_10  L1=1.008  L1/zero=0.89  cos=0.50  k=0.60
+[071/100] 08_to_01  L1=0.665  L1/zero=1.17  cos=0.27  k=0.92
+[072/100] 08_to_02  L1=0.933  L1/zero=1.08  cos=0.06  k=0.38
+[073/100] 08_to_03  L1=1.084  L1/zero=1.00  cos=0.10  k=0.20
+[074/100] 08_to_04  L1=1.082  L1/zero=1.00  cos=0.14  k=0.24
+[075/100] 08_to_05  L1=1.225  L1/zero=0.99  cos=0.28  k=0.29
+[076/100] 08_to_06  L1=1.107  L1/zero=1.00  cos=0.31  k=0.36
+[077/100] 08_to_07  L1=0.503  L1/zero=1.00  cos=0.18  k=0.25
+[078/100] 08_to_08  L1=0.016  L1/zero=1635421.07  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.391  L1/zero=0.97  cos=0.35  k=0.38
+[080/100] 08_to_10  L1=0.609  L1/zero=0.94  cos=0.53  k=0.81
+[081/100] 09_to_01  L1=0.522  L1/zero=1.12  cos=0.05  k=0.48
+[082/100] 09_to_02  L1=1.036  L1/zero=1.01  cos=0.09  k=0.16
+[083/100] 09_to_03  L1=1.287  L1/zero=1.00  cos=0.20  k=0.24
+[084/100] 09_to_04  L1=1.457  L1/zero=0.96  cos=0.35  k=0.35
+[085/100] 09_to_05  L1=1.562  L1/zero=0.93  cos=0.46  k=0.37
+[086/100] 09_to_06  L1=1.517  L1/zero=0.97  cos=0.42  k=0.38
+[087/100] 09_to_07  L1=0.986  L1/zero=1.00  cos=0.28  k=0.30
+[088/100] 09_to_08  L1=0.410  L1/zero=0.98  cos=0.24  k=0.22
+[089/100] 09_to_09  L1=0.010  L1/zero=1010264.64  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.219  L1/zero=1.01  cos=0.21  k=0.44
+[091/100] 10_to_01  L1=0.345  L1/zero=1.01  cos=0.06  k=0.16
+[092/100] 10_to_02  L1=0.910  L1/zero=0.99  cos=0.33  k=0.18
+[093/100] 10_to_03  L1=1.157  L1/zero=0.94  cos=0.43  k=0.35
+[094/100] 10_to_04  L1=1.251  L1/zero=0.86  cos=0.57  k=0.46
+[095/100] 10_to_05  L1=1.584  L1/zero=0.89  cos=0.53  k=0.45
+[096/100] 10_to_06  L1=1.659  L1/zero=0.94  cos=0.46  k=0.39
+[097/100] 10_to_07  L1=1.070  L1/zero=0.87  cos=0.56  k=0.46
+[098/100] 10_to_08  L1=0.590  L1/zero=0.90  cos=0.55  k=0.70
+[099/100] 10_to_09  L1=0.226  L1/zero=0.99  cos=0.21  k=0.24
+[100/100] 10_to_10  L1=0.018  L1/zero=1824911.31  cos=nan  k=nan
+
+[both|elekta] Directed mean: L1=0.856  L1/zero=0.98  cos=0.29  k=0.39  beat_zero=71%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_elekta/P4/CE_P4_V_01 (100 pngs)
+[2026-08-26 09:48:14] QC qc_elekta.py --arch both --scan CE_P5_V_01 gpu=1
+[both|elekta] scan=CE_P5_V_01 pairs=100 panels=100 ckpt=crb_both_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_elekta/P5/CE_P5_V_01
+[001/100] 01_to_01  L1=0.007  L1/zero=688032.43  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.615  L1/zero=0.99  cos=0.13  k=0.18
+[003/100] 01_to_03  L1=1.327  L1/zero=0.91  cos=0.49  k=0.22
+[004/100] 01_to_04  L1=2.035  L1/zero=0.96  cos=0.25  k=0.13
+[005/100] 01_to_05  L1=2.415  L1/zero=0.99  cos=0.06  k=0.11
+[006/100] 01_to_06  L1=2.409  L1/zero=0.98  cos=0.16  k=0.14
+[007/100] 01_to_07  L1=1.909  L1/zero=0.97  cos=0.30  k=0.15
+[008/100] 01_to_08  L1=1.193  L1/zero=0.90  cos=0.44  k=0.28
+[009/100] 01_to_09  L1=0.395  L1/zero=1.03  cos=0.27  k=0.51
+[010/100] 01_to_10  L1=0.218  L1/zero=1.09  cos=-0.06  k=0.21
+[011/100] 02_to_01  L1=0.506  L1/zero=0.98  cos=0.26  k=0.25
+[012/100] 02_to_02  L1=0.004  L1/zero=424046.77  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.669  L1/zero=0.97  cos=0.19  k=0.13
+[014/100] 02_to_04  L1=1.252  L1/zero=0.97  cos=0.22  k=0.09
+[015/100] 02_to_05  L1=1.646  L1/zero=1.00  cos=0.00  k=0.09
+[016/100] 02_to_06  L1=1.738  L1/zero=1.01  cos=-0.05  k=0.09
+[017/100] 02_to_07  L1=1.407  L1/zero=1.01  cos=0.02  k=0.09
+[018/100] 02_to_08  L1=0.930  L1/zero=0.98  cos=0.24  k=0.12
+[019/100] 02_to_09  L1=0.709  L1/zero=1.08  cos=-0.15  k=0.21
+[020/100] 02_to_10  L1=0.751  L1/zero=1.00  cos=0.03  k=0.07
+[021/100] 03_to_01  L1=1.214  L1/zero=0.97  cos=0.28  k=0.23
+[022/100] 03_to_02  L1=0.547  L1/zero=0.98  cos=0.15  k=0.18
+[023/100] 03_to_03  L1=0.005  L1/zero=460430.23  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.494  L1/zero=1.01  cos=0.01  k=0.09
+[025/100] 03_to_05  L1=0.853  L1/zero=1.00  cos=0.07  k=0.12
+[026/100] 03_to_06  L1=0.990  L1/zero=1.00  cos=0.10  k=0.13
+[027/100] 03_to_07  L1=0.963  L1/zero=1.00  cos=0.12  k=0.13
+[028/100] 03_to_08  L1=1.153  L1/zero=1.00  cos=0.20  k=0.08
+[029/100] 03_to_09  L1=1.342  L1/zero=1.04  cos=-0.26  k=0.10
+[030/100] 03_to_10  L1=1.460  L1/zero=1.00  cos=0.09  k=0.16
+[031/100] 04_to_01  L1=1.639  L1/zero=0.91  cos=0.47  k=0.28
+[032/100] 04_to_02  L1=1.069  L1/zero=0.96  cos=0.20  k=0.19
+[033/100] 04_to_03  L1=0.420  L1/zero=0.99  cos=0.16  k=0.19
+[034/100] 04_to_04  L1=0.004  L1/zero=442470.47  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.301  L1/zero=0.95  cos=0.35  k=0.26
+[036/100] 04_to_06  L1=0.533  L1/zero=1.00  cos=0.35  k=0.34
+[037/100] 04_to_07  L1=0.881  L1/zero=1.00  cos=0.30  k=0.12
+[038/100] 04_to_08  L1=1.404  L1/zero=0.99  cos=0.21  k=0.08
+[039/100] 04_to_09  L1=1.811  L1/zero=1.00  cos=0.01  k=0.12
+[040/100] 04_to_10  L1=1.925  L1/zero=0.98  cos=0.21  k=0.17
+[041/100] 05_to_01  L1=2.031  L1/zero=0.96  cos=0.28  k=0.24
+[042/100] 05_to_02  L1=1.425  L1/zero=1.00  cos=0.09  k=0.17
+[043/100] 05_to_03  L1=0.728  L1/zero=1.00  cos=0.11  k=0.19
+[044/100] 05_to_04  L1=0.284  L1/zero=0.99  cos=0.22  k=0.24
+[045/100] 05_to_05  L1=0.004  L1/zero=413751.56  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.267  L1/zero=0.99  cos=0.36  k=0.26
+[047/100] 05_to_07  L1=0.787  L1/zero=0.98  cos=0.36  k=0.11
+[048/100] 05_to_08  L1=1.476  L1/zero=0.99  cos=0.12  k=0.09
+[049/100] 05_to_09  L1=2.022  L1/zero=1.01  cos=-0.03  k=0.13
+[050/100] 05_to_10  L1=2.274  L1/zero=1.00  cos=0.13  k=0.16
+[051/100] 06_to_01  L1=2.029  L1/zero=0.96  cos=0.27  k=0.28
+[052/100] 06_to_02  L1=1.423  L1/zero=0.97  cos=0.21  k=0.26
+[053/100] 06_to_03  L1=0.802  L1/zero=0.96  cos=0.28  k=0.24
+[054/100] 06_to_04  L1=0.445  L1/zero=0.97  cos=0.37  k=0.31
+[055/100] 06_to_05  L1=0.272  L1/zero=1.02  cos=0.08  k=0.15
+[056/100] 06_to_06  L1=0.006  L1/zero=588345.20  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.486  L1/zero=0.96  cos=0.34  k=0.15
+[058/100] 06_to_08  L1=1.232  L1/zero=0.98  cos=0.16  k=0.12
+[059/100] 06_to_09  L1=1.820  L1/zero=0.99  cos=0.10  k=0.15
+[060/100] 06_to_10  L1=2.166  L1/zero=0.98  cos=0.18  k=0.15
+[061/100] 07_to_01  L1=1.496  L1/zero=0.90  cos=0.46  k=0.42
+[062/100] 07_to_02  L1=1.136  L1/zero=0.98  cos=0.29  k=0.47
+[063/100] 07_to_03  L1=0.816  L1/zero=1.03  cos=0.20  k=0.36
+[064/100] 07_to_04  L1=0.825  L1/zero=1.00  cos=0.18  k=0.20
+[065/100] 07_to_05  L1=0.743  L1/zero=0.97  cos=0.21  k=0.16
+[066/100] 07_to_06  L1=0.509  L1/zero=0.99  cos=0.10  k=0.10
+[067/100] 07_to_07  L1=0.007  L1/zero=741865.11  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.547  L1/zero=0.95  cos=0.32  k=0.19
+[069/100] 07_to_09  L1=1.226  L1/zero=0.97  cos=0.25  k=0.24
+[070/100] 07_to_10  L1=1.657  L1/zero=0.95  cos=0.31  k=0.25
+[071/100] 08_to_01  L1=1.060  L1/zero=1.06  cos=0.24  k=0.55
+[072/100] 08_to_02  L1=0.816  L1/zero=1.13  cos=-0.05  k=0.33
+[073/100] 08_to_03  L1=1.085  L1/zero=0.98  cos=0.13  k=0.10
+[074/100] 08_to_04  L1=1.395  L1/zero=0.99  cos=0.13  k=0.06
+[075/100] 08_to_05  L1=1.538  L1/zero=1.01  cos=-0.11  k=0.05
+[076/100] 08_to_06  L1=1.301  L1/zero=1.01  cos=-0.22  k=0.05
+[077/100] 08_to_07  L1=0.629  L1/zero=1.02  cos=-0.26  k=0.06
+[078/100] 08_to_08  L1=0.008  L1/zero=757086.28  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.496  L1/zero=1.05  cos=-0.02  k=0.30
+[080/100] 08_to_10  L1=0.944  L1/zero=0.99  cos=0.41  k=0.63
+[081/100] 09_to_01  L1=0.481  L1/zero=1.30  cos=0.14  k=0.76
+[082/100] 09_to_02  L1=0.880  L1/zero=1.17  cos=-0.33  k=0.29
+[083/100] 09_to_03  L1=1.416  L1/zero=0.99  cos=0.11  k=0.15
+[084/100] 09_to_04  L1=1.900  L1/zero=0.99  cos=0.13  k=0.11
+[085/100] 09_to_05  L1=2.133  L1/zero=0.99  cos=0.17  k=0.11
+[086/100] 09_to_06  L1=2.099  L1/zero=0.99  cos=0.17  k=0.12
+[087/100] 09_to_07  L1=1.543  L1/zero=1.01  cos=-0.01  k=0.13
+[088/100] 09_to_08  L1=0.503  L1/zero=0.92  cos=0.41  k=0.25
+[089/100] 09_to_09  L1=0.006  L1/zero=630674.37  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.377  L1/zero=1.19  cos=0.44  k=1.06
+[091/100] 10_to_01  L1=0.258  L1/zero=1.17  cos=-0.07  k=0.37
+[092/100] 10_to_02  L1=0.867  L1/zero=0.98  cos=0.15  k=0.16
+[093/100] 10_to_03  L1=1.627  L1/zero=0.95  cos=0.32  k=0.24
+[094/100] 10_to_04  L1=2.186  L1/zero=0.97  cos=0.27  k=0.17
+[095/100] 10_to_05  L1=2.578  L1/zero=0.98  cos=0.22  k=0.15
+[096/100] 10_to_06  L1=2.514  L1/zero=0.96  cos=0.28  k=0.18
+[097/100] 10_to_07  L1=1.921  L1/zero=0.93  cos=0.36  k=0.22
+[098/100] 10_to_08  L1=1.091  L1/zero=0.91  cos=0.43  k=0.40
+[099/100] 10_to_09  L1=0.376  L1/zero=1.03  cos=0.37  k=0.69
+[100/100] 10_to_10  L1=0.007  L1/zero=674764.72  cos=nan  k=nan
+
+[both|elekta] Directed mean: L1=1.178  L1/zero=1.00  cos=0.17  k=0.22  beat_zero=70%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/BothCRB/plots/qc_elekta/P5/CE_P5_V_01 (100 pngs)
+[2026-08-26 09:48:56] QC qc_varian.py --arch encoder --scan CV_P1_V_01 gpu=1
+Traceback (most recent call last):
+  File "/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment2/scripts/qc_varian.py", line 251, in <module>
+    main()
+  File "/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment2/scripts/qc_varian.py", line 157, in main
+    g.load_state_dict(torch.load(ckpt, map_location=device))
+  File "/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py", line 2581, in load_state_dict
+    raise RuntimeError(
+RuntimeError: Error(s) in loading state_dict for UNetCRB:
+	size mismatch for enc1.fc.0.weight: copying a param with shape torch.Size([32, 2]) from checkpoint, the shape in current model is torch.Size([32, 4]).
+	size mismatch for down2.crb.fc.0.weight: copying a param with shape torch.Size([32, 2]) from checkpoint, the shape in current model is torch.Size([32, 4]).
+	size mismatch for down3.crb.fc.0.weight: copying a param with shape torch.Size([32, 2]) from checkpoint, the shape in current model is torch.Size([32, 4]).
+	size mismatch for down4.crb.fc.0.weight: copying a param with shape torch.Size([32, 2]) from checkpoint, the shape in current model is torch.Size([32, 4]).
+	size mismatch for down5.crb.fc.0.weight: copying a param with shape torch.Size([32, 2]) from checkpoint, the shape in current model is torch.Size([32, 4]).

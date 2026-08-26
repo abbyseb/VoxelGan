@@ -80,6 +80,8 @@ E1–E5 live under **[`InitialExperiments/`](InitialExperiments/)** (see that RE
 
 **Amplitude CRB ablations:** [`CRBExperiments/`](CRBExperiments/) (Experiment 1 = oracle amplitude).
 
+**Sim → clinical (full SPARE train, Varian test):** [`ClinicalExperiments/`](ClinicalExperiments/) — no amplitude; E1/E2 CRB recipe.
+
 **DVF motion library summary:** [`DVFCharacteristics/DVFCharacteristics.md`](DVFCharacteristics/DVFCharacteristics.md) (per-patient ranking + diaphragm trajectories).
 
 ## Experiment 1

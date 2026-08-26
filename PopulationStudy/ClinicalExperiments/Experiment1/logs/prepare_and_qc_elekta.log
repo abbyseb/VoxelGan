@@ -1,0 +1,2096 @@
+=== PREP CE_P1_V_01 (have 1 pairs) Tue Aug 25 11:07:41 AM AEST 2026 ===
+=== Elastix CE_P1_V_01 ===
+Clinical DVF scans=['CE_P1_V_01']  param=/home/abhishek/Voxel_GAN/My v1.0/configs/elastix_bspline_masked.txt
+Output: /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/data
+[CE_P1_V_01] vendor=elekta mask pad=+8  voxels=2732314
+[CE_P1_V_01] lung bbox (zyx): [110:270, 0:255, 57:270]
+[CE_P1_V_01]   CT_01: (270, 256, 270) → (160, 255, 213) → (128, 128, 128)
+[CE_P1_V_01]   CT_02: (270, 256, 270) → (160, 255, 213) → (128, 128, 128)
+[CE_P1_V_01]   CT_03: (270, 256, 270) → (160, 255, 213) → (128, 128, 128)
+[CE_P1_V_01]   CT_04: (270, 256, 270) → (160, 255, 213) → (128, 128, 128)
+[CE_P1_V_01]   CT_05: (270, 256, 270) → (160, 255, 213) → (128, 128, 128)
+[CE_P1_V_01]   CT_06: (270, 256, 270) → (160, 255, 213) → (128, 128, 128)
+[CE_P1_V_01]   CT_07: (270, 256, 270) → (160, 255, 213) → (128, 128, 128)
+[CE_P1_V_01]   CT_08: (270, 256, 270) → (160, 255, 213) → (128, 128, 128)
+[CE_P1_V_01]   CT_09: (270, 256, 270) → (160, 255, 213) → (128, 128, 128)
+[CE_P1_V_01]   CT_10: (270, 256, 270) → (160, 255, 213) → (128, 128, 128)
+[CE_P1_V_01]   Mask_Lung → (128, 128, 128), voxels=661247
+[CE_P1_V_01] [1/100] skip 01_to_01_pair.npy
+[CE_P1_V_01] [2/100] Elastix 01_to_02_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-0.81,1.17] y[-1.03,2.32] z[-1.82,1.99]
+[CE_P1_V_01] [3/100] Elastix 01_to_03_pair.npy …
+[CE_P1_V_01]     7.7s  DVF mm-ish range x[-1.77,2.51] y[-3.67,5.58] z[-5.03,3.11]
+[CE_P1_V_01] [4/100] Elastix 01_to_04_pair.npy …
+[CE_P1_V_01]     7.7s  DVF mm-ish range x[-1.94,2.44] y[-4.49,7.17] z[-4.73,3.50]
+[CE_P1_V_01] [5/100] Elastix 01_to_05_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-2.77,2.32] y[-4.64,8.54] z[-4.25,3.66]
+[CE_P1_V_01] [6/100] Elastix 01_to_06_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-2.57,2.20] y[-4.89,9.19] z[-3.88,3.84]
+[CE_P1_V_01] [7/100] Elastix 01_to_07_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-3.05,2.24] y[-4.31,8.67] z[-2.95,3.90]
+[CE_P1_V_01] [8/100] Elastix 01_to_08_pair.npy …
+[CE_P1_V_01]     7.8s  DVF mm-ish range x[-2.79,1.84] y[-3.38,7.18] z[-2.21,3.40]
+[CE_P1_V_01] [9/100] Elastix 01_to_09_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-1.73,0.96] y[-2.23,5.75] z[-1.85,2.60]
+[CE_P1_V_01] [10/100] Elastix 01_to_10_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-1.10,0.46] y[-0.93,3.09] z[-0.88,1.84]
+[CE_P1_V_01] [11/100] Elastix 02_to_01_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-0.97,0.72] y[-2.11,1.19] z[-1.64,1.74]
+[CE_P1_V_01] [12/100] identity 02_to_02_pair.npy
+[CE_P1_V_01] [13/100] Elastix 02_to_03_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-0.90,1.30] y[-1.46,4.11] z[-1.01,2.13]
+[CE_P1_V_01] [14/100] Elastix 02_to_04_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-1.50,2.11] y[-2.13,5.82] z[-2.06,3.01]
+[CE_P1_V_01] [15/100] Elastix 02_to_05_pair.npy …
+[CE_P1_V_01]     8.5s  DVF mm-ish range x[-2.59,2.08] y[-2.81,6.75] z[-3.71,3.35]
+[CE_P1_V_01] [16/100] Elastix 02_to_06_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-2.55,2.27] y[-2.91,7.65] z[-3.64,3.69]
+[CE_P1_V_01] [17/100] Elastix 02_to_07_pair.npy …
+[CE_P1_V_01]     8.2s  DVF mm-ish range x[-3.29,2.18] y[-2.41,7.22] z[-3.03,3.53]
+[CE_P1_V_01] [18/100] Elastix 02_to_08_pair.npy …
+[CE_P1_V_01]     8.5s  DVF mm-ish range x[-3.24,1.50] y[-1.39,5.96] z[-3.34,4.46]
+[CE_P1_V_01] [19/100] Elastix 02_to_09_pair.npy …
+[CE_P1_V_01]     8.3s  DVF mm-ish range x[-3.00,1.08] y[-1.07,4.38] z[-3.31,4.33]
+[CE_P1_V_01] [20/100] Elastix 02_to_10_pair.npy …
+[CE_P1_V_01]     7.7s  DVF mm-ish range x[-1.34,1.54] y[-1.27,1.64] z[-2.46,3.02]
+[CE_P1_V_01] [21/100] Elastix 03_to_01_pair.npy …
+[CE_P1_V_01]     8.2s  DVF mm-ish range x[-2.77,1.81] y[-5.03,3.38] z[-3.19,5.28]
+[CE_P1_V_01] [22/100] Elastix 03_to_02_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-1.10,0.95] y[-3.27,1.50] z[-1.93,0.99]
+[CE_P1_V_01] [23/100] identity 03_to_03_pair.npy
+[CE_P1_V_01] [24/100] Elastix 03_to_04_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-0.87,1.10] y[-0.78,1.94] z[-0.65,0.79]
+[CE_P1_V_01] [25/100] Elastix 03_to_05_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-2.08,1.29] y[-0.93,2.83] z[-1.00,1.78]
+[CE_P1_V_01] [26/100] Elastix 03_to_06_pair.npy …
+[CE_P1_V_01]     8.4s  DVF mm-ish range x[-2.32,1.55] y[-1.28,4.04] z[-1.63,2.42]
+[CE_P1_V_01] [27/100] Elastix 03_to_07_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-2.59,1.44] y[-1.47,3.68] z[-1.72,3.05]
+[CE_P1_V_01] [28/100] Elastix 03_to_08_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-2.65,1.49] y[-1.57,2.80] z[-2.98,3.96]
+[CE_P1_V_01] [29/100] Elastix 03_to_09_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-2.58,1.93] y[-2.67,2.42] z[-3.07,4.79]
+[CE_P1_V_01] [30/100] Elastix 03_to_10_pair.npy …
+[CE_P1_V_01]     7.7s  DVF mm-ish range x[-3.26,1.87] y[-3.92,3.06] z[-2.89,5.11]
+[CE_P1_V_01] [31/100] Elastix 04_to_01_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-2.59,1.90] y[-6.26,3.89] z[-3.50,4.95]
+[CE_P1_V_01] [32/100] Elastix 04_to_02_pair.npy …
+[CE_P1_V_01]     8.2s  DVF mm-ish range x[-1.81,1.21] y[-4.79,2.14] z[-2.93,2.16]
+[CE_P1_V_01] [33/100] Elastix 04_to_03_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-0.94,0.84] y[-1.78,0.87] z[-1.29,0.56]
+[CE_P1_V_01] [34/100] identity 04_to_04_pair.npy
+[CE_P1_V_01] [35/100] Elastix 04_to_05_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-1.01,0.81] y[-0.51,1.04] z[-0.75,0.88]
+[CE_P1_V_01] [36/100] Elastix 04_to_06_pair.npy …
+[CE_P1_V_01]     7.8s  DVF mm-ish range x[-1.48,1.27] y[-0.81,1.67] z[-0.84,1.60]
+[CE_P1_V_01] [37/100] Elastix 04_to_07_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-1.76,1.12] y[-0.91,1.62] z[-1.37,2.60]
+[CE_P1_V_01] [38/100] Elastix 04_to_08_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-2.11,1.50] y[-1.99,2.01] z[-3.08,3.60]
+[CE_P1_V_01] [39/100] Elastix 04_to_09_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-2.35,1.75] y[-3.50,2.91] z[-3.12,4.35]
+[CE_P1_V_01] [40/100] Elastix 04_to_10_pair.npy …
+[CE_P1_V_01]     8.2s  DVF mm-ish range x[-2.85,1.86] y[-4.78,3.56] z[-2.95,4.68]
+[CE_P1_V_01] [41/100] Elastix 05_to_01_pair.npy …
+[CE_P1_V_01]     7.7s  DVF mm-ish range x[-2.49,2.42] y[-7.19,4.32] z[-3.43,4.52]
+[CE_P1_V_01] [42/100] Elastix 05_to_02_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-1.91,2.11] y[-5.99,2.98] z[-3.11,4.35]
+[CE_P1_V_01] [43/100] Elastix 05_to_03_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-1.31,1.58] y[-2.84,1.16] z[-1.98,0.66]
+[CE_P1_V_01] [44/100] Elastix 05_to_04_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-0.77,0.86] y[-0.95,0.51] z[-1.12,0.43]
+[CE_P1_V_01] [45/100] identity 05_to_05_pair.npy
+[CE_P1_V_01] [46/100] Elastix 05_to_06_pair.npy …
+[CE_P1_V_01]     7.8s  DVF mm-ish range x[-0.60,0.72] y[-0.60,0.83] z[-0.82,0.77]
+[CE_P1_V_01] [47/100] Elastix 05_to_07_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-0.82,0.96] y[-0.96,0.85] z[-0.93,1.66]
+[CE_P1_V_01] [48/100] Elastix 05_to_08_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-1.92,1.27] y[-2.51,1.95] z[-2.48,2.64]
+[CE_P1_V_01] [49/100] Elastix 05_to_09_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-2.09,1.68] y[-3.87,3.07] z[-3.01,3.67]
+[CE_P1_V_01] [50/100] Elastix 05_to_10_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-2.14,1.95] y[-5.05,3.81] z[-2.76,4.02]
+[CE_P1_V_01] [51/100] Elastix 06_to_01_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-2.15,2.61] y[-7.71,4.45] z[-3.48,4.22]
+[CE_P1_V_01] [52/100] Elastix 06_to_02_pair.npy …
+[CE_P1_V_01]     7.5s  DVF mm-ish range x[-1.84,2.14] y[-6.65,3.28] z[-3.42,3.95]
+[CE_P1_V_01] [53/100] Elastix 06_to_03_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-1.37,2.03] y[-3.61,1.27] z[-2.40,1.18]
+[CE_P1_V_01] [54/100] Elastix 06_to_04_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-1.31,1.49] y[-1.64,0.66] z[-1.66,0.67]
+[CE_P1_V_01] [55/100] Elastix 06_to_05_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-0.74,0.68] y[-0.55,0.62] z[-0.92,0.71]
+[CE_P1_V_01] [56/100] identity 06_to_06_pair.npy
+[CE_P1_V_01] [57/100] Elastix 06_to_07_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-0.81,0.48] y[-0.86,0.94] z[-0.78,1.05]
+[CE_P1_V_01] [58/100] Elastix 06_to_08_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-1.10,1.00] y[-2.41,1.92] z[-1.45,2.00]
+[CE_P1_V_01] [59/100] Elastix 06_to_09_pair.npy …
+[CE_P1_V_01]     7.7s  DVF mm-ish range x[-1.71,1.35] y[-3.85,3.02] z[-1.72,2.92]
+[CE_P1_V_01] [60/100] Elastix 06_to_10_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-1.96,2.35] y[-5.79,3.89] z[-2.58,3.80]
+[CE_P1_V_01] [61/100] Elastix 07_to_01_pair.npy …
+[CE_P1_V_01]     8.2s  DVF mm-ish range x[-1.85,2.71] y[-7.18,3.93] z[-3.65,3.35]
+[CE_P1_V_01] [62/100] Elastix 07_to_02_pair.npy …
+[CE_P1_V_01]     7.8s  DVF mm-ish range x[-1.57,2.66] y[-5.88,2.32] z[-3.20,3.43]
+[CE_P1_V_01] [63/100] Elastix 07_to_03_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-1.03,2.15] y[-3.24,0.70] z[-2.91,1.13]
+[CE_P1_V_01] [64/100] Elastix 07_to_04_pair.npy …
+[CE_P1_V_01]     8.2s  DVF mm-ish range x[-1.29,1.66] y[-1.59,0.75] z[-2.47,0.87]
+[CE_P1_V_01] [65/100] Elastix 07_to_05_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-0.91,0.80] y[-0.68,0.98] z[-1.57,0.63]
+[CE_P1_V_01] [66/100] Elastix 07_to_06_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-0.44,0.66] y[-0.76,0.97] z[-1.08,0.50]
+[CE_P1_V_01] [67/100] identity 07_to_07_pair.npy
+[CE_P1_V_01] [68/100] Elastix 07_to_08_pair.npy …
+[CE_P1_V_01]     7.8s  DVF mm-ish range x[-0.54,0.59] y[-1.38,1.06] z[-0.85,0.94]
+[CE_P1_V_01] [69/100] Elastix 07_to_09_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-1.06,0.98] y[-2.89,2.20] z[-1.31,1.83]
+[CE_P1_V_01] [70/100] Elastix 07_to_10_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-1.54,2.06] y[-4.85,3.36] z[-2.50,2.82]
+[CE_P1_V_01] [71/100] Elastix 08_to_01_pair.npy …
+[CE_P1_V_01]     8.5s  DVF mm-ish range x[-1.57,2.68] y[-6.14,3.18] z[-3.47,2.51]
+[CE_P1_V_01] [72/100] Elastix 08_to_02_pair.npy …
+[CE_P1_V_01]     8.4s  DVF mm-ish range x[-1.21,2.68] y[-4.97,1.62] z[-3.70,1.59]
+[CE_P1_V_01] [73/100] Elastix 08_to_03_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-1.40,2.33] y[-2.64,1.02] z[-3.82,1.57]
+[CE_P1_V_01] [74/100] Elastix 08_to_04_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-1.28,1.87] y[-1.97,1.99] z[-3.40,1.35]
+[CE_P1_V_01] [75/100] Elastix 08_to_05_pair.npy …
+[CE_P1_V_01]     8.4s  DVF mm-ish range x[-1.04,1.45] y[-1.80,2.37] z[-2.60,1.51]
+[CE_P1_V_01] [76/100] Elastix 08_to_06_pair.npy …
+[CE_P1_V_01]     8.5s  DVF mm-ish range x[-1.03,1.09] y[-1.94,2.65] z[-1.96,1.01]
+[CE_P1_V_01] [77/100] Elastix 08_to_07_pair.npy …
+[CE_P1_V_01]     8.2s  DVF mm-ish range x[-0.57,0.57] y[-0.99,1.92] z[-0.86,0.78]
+[CE_P1_V_01] [78/100] identity 08_to_08_pair.npy
+[CE_P1_V_01] [79/100] Elastix 08_to_09_pair.npy …
+[CE_P1_V_01]     7.7s  DVF mm-ish range x[-0.84,0.81] y[-1.66,1.22] z[-0.81,0.84]
+[CE_P1_V_01] [80/100] Elastix 08_to_10_pair.npy …
+[CE_P1_V_01]     8.3s  DVF mm-ish range x[-1.14,1.41] y[-3.90,2.45] z[-1.83,1.83]
+[CE_P1_V_01] [81/100] Elastix 09_to_01_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-1.10,1.55] y[-4.74,2.35] z[-2.81,1.67]
+[CE_P1_V_01] [82/100] Elastix 09_to_02_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-1.01,2.45] y[-3.58,1.00] z[-3.86,2.32]
+[CE_P1_V_01] [83/100] Elastix 09_to_03_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-1.81,1.99] y[-2.27,2.62] z[-4.71,1.53]
+[CE_P1_V_01] [84/100] Elastix 09_to_04_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-1.57,2.05] y[-3.00,3.38] z[-4.10,1.43]
+[CE_P1_V_01] [85/100] Elastix 09_to_05_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-1.43,1.72] y[-3.08,3.76] z[-3.56,1.53]
+[CE_P1_V_01] [86/100] Elastix 09_to_06_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-1.30,1.58] y[-3.18,4.25] z[-2.89,1.49]
+[CE_P1_V_01] [87/100] Elastix 09_to_07_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-1.17,0.97] y[-2.18,3.48] z[-1.83,1.67]
+[CE_P1_V_01] [88/100] Elastix 09_to_08_pair.npy …
+[CE_P1_V_01]     8.0s  DVF mm-ish range x[-0.90,0.45] y[-1.13,2.21] z[-0.84,0.87]
+[CE_P1_V_01] [89/100] identity 09_to_09_pair.npy
+[CE_P1_V_01] [90/100] Elastix 09_to_10_pair.npy …
+[CE_P1_V_01]     8.4s  DVF mm-ish range x[-0.64,0.89] y[-1.94,1.24] z[-0.90,0.86]
+[CE_P1_V_01] [91/100] Elastix 10_to_01_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-0.78,1.03] y[-2.47,1.13] z[-1.90,0.75]
+[CE_P1_V_01] [92/100] Elastix 10_to_02_pair.npy …
+[CE_P1_V_01]     7.9s  DVF mm-ish range x[-1.08,1.18] y[-1.68,1.06] z[-2.87,2.24]
+[CE_P1_V_01] [93/100] Elastix 10_to_03_pair.npy …
+[CE_P1_V_01]     8.1s  DVF mm-ish range x[-1.77,2.45] y[-3.32,3.93] z[-5.01,2.81]
+[CE_P1_V_01] [94/100] Elastix 10_to_04_pair.npy …
+[CE_P1_V_01]     8.2s  DVF mm-ish range x[-1.78,2.20] y[-3.84,4.73] z[-4.41,2.77]
+[CE_P1_V_01] [95/100] Elastix 10_to_05_pair.npy …
+[CE_P1_V_01]     8.4s  DVF mm-ish range x[-1.75,2.19] y[-4.03,5.55] z[-3.89,3.31]
+[CE_P1_V_01] [96/100] Elastix 10_to_06_pair.npy …
+[CE_P1_V_01]     8.6s  DVF mm-ish range x[-1.78,2.03] y[-4.04,6.10] z[-3.73,3.40]
+[CE_P1_V_01] [97/100] Elastix 10_to_07_pair.npy …
+[CE_P1_V_01]     8.3s  DVF mm-ish range x[-2.02,1.61] y[-3.42,5.36] z[-2.76,3.08]
+[CE_P1_V_01] [98/100] Elastix 10_to_08_pair.npy …
+[CE_P1_V_01]     8.2s  DVF mm-ish range x[-1.83,1.00] y[-2.37,4.82] z[-1.78,2.00]
+[CE_P1_V_01] [99/100] Elastix 10_to_09_pair.npy …
+[CE_P1_V_01]     8.2s  DVF mm-ish range x[-0.97,0.65] y[-1.12,2.75] z[-1.16,1.10]
+[CE_P1_V_01] [100/100] identity 10_to_10_pair.npy
+[CE_P1_V_01] DONE in 12.3 min  registered=90 identity=9 skipped=1  → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/data/CE_P1_V_01/all
+All requested scans finished.
+=== QC encoder CE_P1_V_01 Tue Aug 25 11:19:59 AM AEST 2026 ===
+[encoder|elekta] scan=CE_P1_V_01 pairs=100 panels=100 ckpt=crb_enc_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/EncoderCRB/plots/qc_elekta/P1/CE_P1_V_01
+[001/100] 01_to_01  L1=0.039  L1/zero=3937230.63  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.420  L1/zero=1.02  cos=0.02  k=0.18
+[003/100] 01_to_03  L1=1.187  L1/zero=1.00  cos=0.11  k=0.08
+[004/100] 01_to_04  L1=1.446  L1/zero=1.00  cos=0.04  k=0.10
+[005/100] 01_to_05  L1=1.563  L1/zero=1.01  cos=-0.07  k=0.11
+[006/100] 01_to_06  L1=1.502  L1/zero=1.00  cos=0.11  k=0.12
+[007/100] 01_to_07  L1=1.340  L1/zero=1.01  cos=0.10  k=0.14
+[008/100] 01_to_08  L1=1.089  L1/zero=1.02  cos=0.01  k=0.16
+[009/100] 01_to_09  L1=0.736  L1/zero=1.02  cos=0.09  k=0.17
+[010/100] 01_to_10  L1=0.383  L1/zero=1.08  cos=-0.15  k=0.20
+[011/100] 02_to_01  L1=0.402  L1/zero=0.99  cos=0.12  k=0.14
+[012/100] 02_to_02  L1=0.023  L1/zero=2317590.83  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.498  L1/zero=0.99  cos=0.22  k=0.09
+[014/100] 02_to_04  L1=0.789  L1/zero=0.99  cos=0.18  k=0.07
+[015/100] 02_to_05  L1=1.022  L1/zero=0.99  cos=0.12  k=0.12
+[016/100] 02_to_06  L1=1.110  L1/zero=1.01  cos=0.01  k=0.12
+[017/100] 02_to_07  L1=1.049  L1/zero=1.03  cos=-0.20  k=0.11
+[018/100] 02_to_08  L1=0.918  L1/zero=1.02  cos=-0.07  k=0.10
+[019/100] 02_to_09  L1=0.724  L1/zero=1.03  cos=-0.13  k=0.09
+[020/100] 02_to_10  L1=0.452  L1/zero=1.03  cos=-0.01  k=0.22
+[021/100] 03_to_01  L1=1.188  L1/zero=1.00  cos=0.10  k=0.13
+[022/100] 03_to_02  L1=0.498  L1/zero=0.99  cos=0.11  k=0.11
+[023/100] 03_to_03  L1=0.010  L1/zero=1010978.69  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.287  L1/zero=0.98  cos=0.27  k=0.12
+[025/100] 03_to_05  L1=0.511  L1/zero=0.97  cos=0.24  k=0.18
+[026/100] 03_to_06  L1=0.634  L1/zero=1.00  cos=0.09  k=0.15
+[027/100] 03_to_07  L1=0.726  L1/zero=1.03  cos=0.01  k=0.13
+[028/100] 03_to_08  L1=0.791  L1/zero=1.02  cos=0.05  k=0.13
+[029/100] 03_to_09  L1=0.897  L1/zero=1.02  cos=0.00  k=0.19
+[030/100] 03_to_10  L1=1.043  L1/zero=0.97  cos=0.24  k=0.14
+[031/100] 04_to_01  L1=1.404  L1/zero=0.99  cos=0.17  k=0.13
+[032/100] 04_to_02  L1=0.780  L1/zero=0.99  cos=0.17  k=0.15
+[033/100] 04_to_03  L1=0.278  L1/zero=0.97  cos=0.21  k=0.19
+[034/100] 04_to_04  L1=0.009  L1/zero=943867.68  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.248  L1/zero=0.99  cos=0.20  k=0.17
+[036/100] 04_to_06  L1=0.383  L1/zero=0.99  cos=0.16  k=0.15
+[037/100] 04_to_07  L1=0.554  L1/zero=1.07  cos=-0.11  k=0.22
+[038/100] 04_to_08  L1=0.748  L1/zero=1.05  cos=-0.03  k=0.20
+[039/100] 04_to_09  L1=0.931  L1/zero=0.99  cos=0.17  k=0.22
+[040/100] 04_to_10  L1=1.172  L1/zero=0.97  cos=0.30  k=0.19
+[041/100] 05_to_01  L1=1.469  L1/zero=0.99  cos=0.20  k=0.18
+[042/100] 05_to_02  L1=1.013  L1/zero=0.97  cos=0.27  k=0.21
+[043/100] 05_to_03  L1=0.483  L1/zero=0.94  cos=0.31  k=0.26
+[044/100] 05_to_04  L1=0.241  L1/zero=0.94  cos=0.33  k=0.29
+[045/100] 05_to_05  L1=0.011  L1/zero=1115804.44  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.179  L1/zero=1.02  cos=-0.06  k=0.25
+[047/100] 05_to_07  L1=0.427  L1/zero=1.17  cos=-0.10  k=0.50
+[048/100] 05_to_08  L1=0.664  L1/zero=1.04  cos=0.11  k=0.34
+[049/100] 05_to_09  L1=0.893  L1/zero=0.96  cos=0.31  k=0.32
+[050/100] 05_to_10  L1=1.190  L1/zero=0.97  cos=0.28  k=0.30
+[051/100] 06_to_01  L1=1.441  L1/zero=1.00  cos=0.23  k=0.20
+[052/100] 06_to_02  L1=1.030  L1/zero=0.97  cos=0.27  k=0.22
+[053/100] 06_to_03  L1=0.594  L1/zero=0.96  cos=0.28  k=0.25
+[054/100] 06_to_04  L1=0.373  L1/zero=0.96  cos=0.27  k=0.23
+[055/100] 06_to_05  L1=0.184  L1/zero=1.02  cos=0.02  k=0.26
+[056/100] 06_to_06  L1=0.008  L1/zero=784925.46  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.291  L1/zero=1.04  cos=0.09  k=0.46
+[058/100] 06_to_08  L1=0.590  L1/zero=1.04  cos=0.14  k=0.37
+[059/100] 06_to_09  L1=0.861  L1/zero=1.00  cos=0.16  k=0.20
+[060/100] 06_to_10  L1=1.184  L1/zero=1.01  cos=0.10  k=0.29
+[061/100] 07_to_01  L1=1.230  L1/zero=0.98  cos=0.25  k=0.19
+[062/100] 07_to_02  L1=0.944  L1/zero=0.99  cos=0.16  k=0.18
+[063/100] 07_to_03  L1=0.706  L1/zero=1.00  cos=0.14  k=0.14
+[064/100] 07_to_04  L1=0.527  L1/zero=1.01  cos=-0.09  k=0.13
+[065/100] 07_to_05  L1=0.397  L1/zero=1.09  cos=-0.36  k=0.23
+[066/100] 07_to_06  L1=0.294  L1/zero=1.07  cos=-0.18  k=0.26
+[067/100] 07_to_07  L1=0.009  L1/zero=930365.92  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.293  L1/zero=1.02  cos=0.02  k=0.22
+[069/100] 07_to_09  L1=0.648  L1/zero=1.08  cos=-0.44  k=0.15
+[070/100] 07_to_10  L1=1.014  L1/zero=1.08  cos=-0.39  k=0.18
+[071/100] 08_to_01  L1=1.020  L1/zero=1.01  cos=0.05  k=0.16
+[072/100] 08_to_02  L1=0.878  L1/zero=0.99  cos=0.10  k=0.13
+[073/100] 08_to_03  L1=0.791  L1/zero=1.01  cos=-0.04  k=0.10
+[074/100] 08_to_04  L1=0.756  L1/zero=1.04  cos=-0.21  k=0.13
+[075/100] 08_to_05  L1=0.687  L1/zero=1.08  cos=-0.30  k=0.19
+[076/100] 08_to_06  L1=0.595  L1/zero=1.05  cos=-0.16  k=0.21
+[077/100] 08_to_07  L1=0.314  L1/zero=1.05  cos=-0.13  k=0.23
+[078/100] 08_to_08  L1=0.012  L1/zero=1224417.52  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.344  L1/zero=1.06  cos=-0.37  k=0.14
+[080/100] 08_to_10  L1=0.721  L1/zero=1.06  cos=-0.42  k=0.13
+[081/100] 09_to_01  L1=0.714  L1/zero=1.03  cos=-0.13  k=0.13
+[082/100] 09_to_02  L1=0.695  L1/zero=1.01  cos=-0.03  k=0.10
+[083/100] 09_to_03  L1=0.910  L1/zero=1.04  cos=-0.19  k=0.13
+[084/100] 09_to_04  L1=0.972  L1/zero=1.02  cos=-0.15  k=0.13
+[085/100] 09_to_05  L1=0.952  L1/zero=1.03  cos=-0.08  k=0.19
+[086/100] 09_to_06  L1=0.881  L1/zero=1.02  cos=0.02  k=0.24
+[087/100] 09_to_07  L1=0.630  L1/zero=1.04  cos=-0.16  k=0.17
+[088/100] 09_to_08  L1=0.332  L1/zero=1.07  cos=-0.26  k=0.19
+[089/100] 09_to_09  L1=0.016  L1/zero=1552189.61  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.344  L1/zero=1.02  cos=-0.18  k=0.10
+[091/100] 10_to_01  L1=0.370  L1/zero=1.05  cos=-0.09  k=0.21
+[092/100] 10_to_02  L1=0.478  L1/zero=1.11  cos=-0.08  k=0.42
+[093/100] 10_to_03  L1=1.109  L1/zero=1.03  cos=-0.11  k=0.17
+[094/100] 10_to_04  L1=1.276  L1/zero=1.03  cos=-0.05  k=0.18
+[095/100] 10_to_05  L1=1.302  L1/zero=1.03  cos=0.05  k=0.25
+[096/100] 10_to_06  L1=1.197  L1/zero=1.01  cos=0.17  k=0.25
+[097/100] 10_to_07  L1=0.987  L1/zero=1.02  cos=0.02  k=0.18
+[098/100] 10_to_08  L1=0.729  L1/zero=1.09  cos=-0.12  k=0.26
+[099/100] 10_to_09  L1=0.406  L1/zero=1.15  cos=-0.25  k=0.31
+[100/100] 10_to_10  L1=0.078  L1/zero=7767726.48  cos=nan  k=nan
+
+[encoder|elekta] Directed mean: L1=0.769  L1/zero=1.02  cos=0.02  k=0.19  beat_zero=38%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/EncoderCRB/plots/qc_elekta/P1/CE_P1_V_01 (100 pngs)
+=== QC decoder CE_P1_V_01 Tue Aug 25 11:20:45 AM AEST 2026 ===
+[decoder|elekta] scan=CE_P1_V_01 pairs=100 panels=100 ckpt=crb_dec_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/DecoderCRB/plots/qc_elekta/P1/CE_P1_V_01
+[001/100] 01_to_01  L1=0.016  L1/zero=1552056.15  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.424  L1/zero=1.03  cos=-0.08  k=0.11
+[003/100] 01_to_03  L1=1.254  L1/zero=1.05  cos=-0.21  k=0.11
+[004/100] 01_to_04  L1=1.565  L1/zero=1.08  cos=-0.27  k=0.14
+[005/100] 01_to_05  L1=1.674  L1/zero=1.08  cos=-0.25  k=0.15
+[006/100] 01_to_06  L1=1.617  L1/zero=1.08  cos=-0.17  k=0.16
+[007/100] 01_to_07  L1=1.420  L1/zero=1.07  cos=-0.16  k=0.15
+[008/100] 01_to_08  L1=1.120  L1/zero=1.05  cos=-0.18  k=0.14
+[009/100] 01_to_09  L1=0.758  L1/zero=1.05  cos=-0.23  k=0.13
+[010/100] 01_to_10  L1=0.366  L1/zero=1.03  cos=-0.20  k=0.12
+[011/100] 02_to_01  L1=0.417  L1/zero=1.03  cos=-0.05  k=0.13
+[012/100] 02_to_02  L1=0.008  L1/zero=826798.29  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.533  L1/zero=1.06  cos=-0.15  k=0.13
+[014/100] 02_to_04  L1=0.883  L1/zero=1.11  cos=-0.24  k=0.19
+[015/100] 02_to_05  L1=1.133  L1/zero=1.10  cos=-0.23  k=0.18
+[016/100] 02_to_06  L1=1.191  L1/zero=1.08  cos=-0.18  k=0.18
+[017/100] 02_to_07  L1=1.074  L1/zero=1.05  cos=-0.12  k=0.17
+[018/100] 02_to_08  L1=0.918  L1/zero=1.02  cos=-0.05  k=0.13
+[019/100] 02_to_09  L1=0.725  L1/zero=1.03  cos=-0.10  k=0.11
+[020/100] 02_to_10  L1=0.448  L1/zero=1.02  cos=0.02  k=0.15
+[021/100] 03_to_01  L1=1.220  L1/zero=1.03  cos=-0.07  k=0.10
+[022/100] 03_to_02  L1=0.540  L1/zero=1.07  cos=-0.29  k=0.14
+[023/100] 03_to_03  L1=0.012  L1/zero=1191839.58  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.315  L1/zero=1.07  cos=-0.33  k=0.15
+[025/100] 03_to_05  L1=0.568  L1/zero=1.08  cos=-0.29  k=0.17
+[026/100] 03_to_06  L1=0.670  L1/zero=1.05  cos=-0.16  k=0.16
+[027/100] 03_to_07  L1=0.728  L1/zero=1.03  cos=-0.05  k=0.14
+[028/100] 03_to_08  L1=0.785  L1/zero=1.01  cos=-0.09  k=0.11
+[029/100] 03_to_09  L1=0.899  L1/zero=1.02  cos=-0.11  k=0.12
+[030/100] 03_to_10  L1=1.106  L1/zero=1.03  cos=-0.04  k=0.15
+[031/100] 04_to_01  L1=1.447  L1/zero=1.02  cos=0.07  k=0.16
+[032/100] 04_to_02  L1=0.829  L1/zero=1.05  cos=-0.05  k=0.17
+[033/100] 04_to_03  L1=0.314  L1/zero=1.10  cos=-0.26  k=0.20
+[034/100] 04_to_04  L1=0.008  L1/zero=762155.19  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.258  L1/zero=1.02  cos=-0.08  k=0.12
+[036/100] 04_to_06  L1=0.390  L1/zero=1.01  cos=0.07  k=0.12
+[037/100] 04_to_07  L1=0.514  L1/zero=0.99  cos=0.07  k=0.13
+[038/100] 04_to_08  L1=0.719  L1/zero=1.01  cos=-0.01  k=0.13
+[039/100] 04_to_09  L1=0.964  L1/zero=1.02  cos=0.01  k=0.18
+[040/100] 04_to_10  L1=1.242  L1/zero=1.03  cos=0.08  k=0.19
+[041/100] 05_to_01  L1=1.504  L1/zero=1.02  cos=0.14  k=0.20
+[042/100] 05_to_02  L1=1.095  L1/zero=1.04  cos=-0.01  k=0.19
+[043/100] 05_to_03  L1=0.542  L1/zero=1.06  cos=-0.10  k=0.19
+[044/100] 05_to_04  L1=0.261  L1/zero=1.02  cos=0.01  k=0.17
+[045/100] 05_to_05  L1=0.007  L1/zero=716411.23  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.176  L1/zero=1.01  cos=0.06  k=0.09
+[047/100] 05_to_07  L1=0.369  L1/zero=1.01  cos=0.01  k=0.13
+[048/100] 05_to_08  L1=0.651  L1/zero=1.02  cos=0.02  k=0.18
+[049/100] 05_to_09  L1=0.943  L1/zero=1.02  cos=0.11  k=0.23
+[050/100] 05_to_10  L1=1.249  L1/zero=1.02  cos=0.15  k=0.23
+[051/100] 06_to_01  L1=1.487  L1/zero=1.03  cos=0.09  k=0.20
+[052/100] 06_to_02  L1=1.116  L1/zero=1.05  cos=-0.05  k=0.21
+[053/100] 06_to_03  L1=0.657  L1/zero=1.06  cos=-0.07  k=0.21
+[054/100] 06_to_04  L1=0.402  L1/zero=1.04  cos=0.03  k=0.21
+[055/100] 06_to_05  L1=0.183  L1/zero=1.02  cos=0.04  k=0.16
+[056/100] 06_to_06  L1=0.006  L1/zero=629338.76  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.287  L1/zero=1.03  cos=-0.14  k=0.13
+[058/100] 06_to_08  L1=0.596  L1/zero=1.05  cos=-0.03  k=0.23
+[059/100] 06_to_09  L1=0.896  L1/zero=1.04  cos=0.11  k=0.26
+[060/100] 06_to_10  L1=1.208  L1/zero=1.03  cos=0.11  k=0.24
+[061/100] 07_to_01  L1=1.303  L1/zero=1.04  cos=0.03  k=0.19
+[062/100] 07_to_02  L1=0.999  L1/zero=1.04  cos=-0.07  k=0.18
+[063/100] 07_to_03  L1=0.729  L1/zero=1.03  cos=-0.01  k=0.15
+[064/100] 07_to_04  L1=0.525  L1/zero=1.01  cos=0.04  k=0.13
+[065/100] 07_to_05  L1=0.369  L1/zero=1.01  cos=0.01  k=0.14
+[066/100] 07_to_06  L1=0.289  L1/zero=1.05  cos=-0.20  k=0.17
+[067/100] 07_to_07  L1=0.006  L1/zero=605185.98  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.317  L1/zero=1.11  cos=-0.40  k=0.20
+[069/100] 07_to_09  L1=0.650  L1/zero=1.09  cos=-0.13  k=0.25
+[070/100] 07_to_10  L1=1.000  L1/zero=1.06  cos=-0.01  k=0.23
+[071/100] 08_to_01  L1=1.053  L1/zero=1.04  cos=-0.17  k=0.12
+[072/100] 08_to_02  L1=0.925  L1/zero=1.04  cos=-0.22  k=0.12
+[073/100] 08_to_03  L1=0.793  L1/zero=1.02  cos=-0.08  k=0.10
+[074/100] 08_to_04  L1=0.747  L1/zero=1.03  cos=-0.13  k=0.12
+[075/100] 08_to_05  L1=0.688  L1/zero=1.08  cos=-0.21  k=0.19
+[076/100] 08_to_06  L1=0.634  L1/zero=1.12  cos=-0.25  k=0.26
+[077/100] 08_to_07  L1=0.340  L1/zero=1.14  cos=-0.41  k=0.26
+[078/100] 08_to_08  L1=0.007  L1/zero=698081.50  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.356  L1/zero=1.09  cos=-0.36  k=0.19
+[080/100] 08_to_10  L1=0.748  L1/zero=1.10  cos=-0.29  k=0.20
+[081/100] 09_to_01  L1=0.701  L1/zero=1.01  cos=-0.01  k=0.09
+[082/100] 09_to_02  L1=0.706  L1/zero=1.03  cos=-0.18  k=0.09
+[083/100] 09_to_03  L1=0.917  L1/zero=1.04  cos=-0.18  k=0.12
+[084/100] 09_to_04  L1=1.023  L1/zero=1.08  cos=-0.21  k=0.18
+[085/100] 09_to_05  L1=1.012  L1/zero=1.10  cos=-0.17  k=0.24
+[086/100] 09_to_06  L1=0.967  L1/zero=1.12  cos=-0.14  k=0.28
+[087/100] 09_to_07  L1=0.689  L1/zero=1.13  cos=-0.31  k=0.25
+[088/100] 09_to_08  L1=0.345  L1/zero=1.11  cos=-0.41  k=0.20
+[089/100] 09_to_09  L1=0.009  L1/zero=948472.23  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.360  L1/zero=1.07  cos=-0.29  k=0.15
+[091/100] 10_to_01  L1=0.350  L1/zero=0.99  cos=0.09  k=0.07
+[092/100] 10_to_02  L1=0.454  L1/zero=1.06  cos=-0.16  k=0.16
+[093/100] 10_to_03  L1=1.142  L1/zero=1.06  cos=-0.21  k=0.14
+[094/100] 10_to_04  L1=1.319  L1/zero=1.07  cos=-0.18  k=0.18
+[095/100] 10_to_05  L1=1.364  L1/zero=1.08  cos=-0.14  k=0.21
+[096/100] 10_to_06  L1=1.311  L1/zero=1.10  cos=-0.08  k=0.26
+[097/100] 10_to_07  L1=1.074  L1/zero=1.11  cos=-0.24  k=0.23
+[098/100] 10_to_08  L1=0.746  L1/zero=1.11  cos=-0.35  k=0.21
+[099/100] 10_to_09  L1=0.384  L1/zero=1.09  cos=-0.46  k=0.15
+[100/100] 10_to_10  L1=0.014  L1/zero=1379838.03  cos=nan  k=nan
+
+[decoder|elekta] Directed mean: L1=0.800  L1/zero=1.05  cos=-0.12  k=0.17  beat_zero=2%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/DecoderCRB/plots/qc_elekta/P1/CE_P1_V_01 (100 pngs)
+=== PREP CE_P2_V_01 (have 0 pairs) Tue Aug 25 11:21:34 AM AEST 2026 ===
+=== Elastix CE_P2_V_01 ===
+Clinical DVF scans=['CE_P2_V_01']  param=/home/abhishek/Voxel_GAN/My v1.0/configs/elastix_bspline_masked.txt
+Output: /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/data
+[CE_P2_V_01] vendor=elekta mask pad=+8  voxels=2830782
+[CE_P2_V_01] lung bbox (zyx): [51:270, 0:256, 100:270]
+[CE_P2_V_01]   CT_01: (270, 256, 270) → (219, 256, 170) → (128, 128, 128)
+[CE_P2_V_01]   CT_02: (270, 256, 270) → (219, 256, 170) → (128, 128, 128)
+[CE_P2_V_01]   CT_03: (270, 256, 270) → (219, 256, 170) → (128, 128, 128)
+[CE_P2_V_01]   CT_04: (270, 256, 270) → (219, 256, 170) → (128, 128, 128)
+[CE_P2_V_01]   CT_05: (270, 256, 270) → (219, 256, 170) → (128, 128, 128)
+[CE_P2_V_01]   CT_06: (270, 256, 270) → (219, 256, 170) → (128, 128, 128)
+[CE_P2_V_01]   CT_07: (270, 256, 270) → (219, 256, 170) → (128, 128, 128)
+[CE_P2_V_01]   CT_08: (270, 256, 270) → (219, 256, 170) → (128, 128, 128)
+[CE_P2_V_01]   CT_09: (270, 256, 270) → (219, 256, 170) → (128, 128, 128)
+[CE_P2_V_01]   CT_10: (270, 256, 270) → (219, 256, 170) → (128, 128, 128)
+[CE_P2_V_01]   Mask_Lung → (128, 128, 128), voxels=621983
+[CE_P2_V_01] [1/100] identity 01_to_01_pair.npy
+[CE_P2_V_01] [2/100] Elastix 01_to_02_pair.npy …
+[CE_P2_V_01]     7.9s  DVF mm-ish range x[-0.93,1.05] y[-1.33,4.26] z[-1.65,2.37]
+[CE_P2_V_01] [3/100] Elastix 01_to_03_pair.npy …
+[CE_P2_V_01]     7.6s  DVF mm-ish range x[-2.87,4.02] y[-2.89,8.79] z[-5.65,7.25]
+[CE_P2_V_01] [4/100] Elastix 01_to_04_pair.npy …
+[CE_P2_V_01]     7.6s  DVF mm-ish range x[-4.61,5.20] y[-4.56,11.73] z[-6.32,9.91]
+[CE_P2_V_01] [5/100] Elastix 01_to_05_pair.npy …
+[CE_P2_V_01]     7.7s  DVF mm-ish range x[-4.98,4.46] y[-5.45,13.14] z[-6.17,11.12]
+[CE_P2_V_01] [6/100] Elastix 01_to_06_pair.npy …
+[CE_P2_V_01]     8.1s  DVF mm-ish range x[-4.81,4.75] y[-5.53,13.38] z[-6.36,10.19]
+[CE_P2_V_01] [7/100] Elastix 01_to_07_pair.npy …
+[CE_P2_V_01]     8.2s  DVF mm-ish range x[-3.30,3.88] y[-3.94,10.56] z[-4.67,6.97]
+[CE_P2_V_01] [8/100] Elastix 01_to_08_pair.npy …
+[CE_P2_V_01]     7.7s  DVF mm-ish range x[-2.69,1.94] y[-2.12,6.56] z[-2.75,4.72]
+[CE_P2_V_01] [9/100] Elastix 01_to_09_pair.npy …
+[CE_P2_V_01]     7.9s  DVF mm-ish range x[-2.09,0.89] y[-0.92,3.22] z[-1.72,2.65]
+[CE_P2_V_01] [10/100] Elastix 01_to_10_pair.npy …
+[CE_P2_V_01]     7.9s  DVF mm-ish range x[-0.91,0.67] y[-1.21,0.44] z[-1.01,0.79]
+[CE_P2_V_01] [11/100] Elastix 02_to_01_pair.npy …
+[CE_P2_V_01]     8.0s  DVF mm-ish range x[-1.01,0.95] y[-3.70,0.97] z[-2.22,1.85]
+[CE_P2_V_01] [12/100] identity 02_to_02_pair.npy
+[CE_P2_V_01] [13/100] Elastix 02_to_03_pair.npy …
+[CE_P2_V_01]     7.8s  DVF mm-ish range x[-1.20,1.51] y[-1.74,5.79] z[-1.81,4.00]
+[CE_P2_V_01] [14/100] Elastix 02_to_04_pair.npy …
+[CE_P2_V_01]     7.9s  DVF mm-ish range x[-3.00,3.20] y[-3.05,8.66] z[-4.11,7.08]
+[CE_P2_V_01] [15/100] Elastix 02_to_05_pair.npy …
+[CE_P2_V_01]     8.1s  DVF mm-ish range x[-4.28,3.70] y[-4.79,10.45] z[-4.66,8.44]
+[CE_P2_V_01] [16/100] Elastix 02_to_06_pair.npy …
+[CE_P2_V_01]     8.5s  DVF mm-ish range x[-4.08,3.69] y[-4.51,10.38] z[-4.24,7.58]
+[CE_P2_V_01] [17/100] Elastix 02_to_07_pair.npy …
+[CE_P2_V_01]     8.4s  DVF mm-ish range x[-3.41,2.84] y[-3.28,7.59] z[-2.98,5.56]
+[CE_P2_V_01] [18/100] Elastix 02_to_08_pair.npy …
+[CE_P2_V_01]     7.9s  DVF mm-ish range x[-2.92,1.89] y[-1.43,3.89] z[-2.63,2.78]
+[CE_P2_V_01] [19/100] Elastix 02_to_09_pair.npy …
+[CE_P2_V_01]     8.0s  DVF mm-ish range x[-2.24,1.78] y[-2.91,1.45] z[-2.24,2.81]
+[CE_P2_V_01] [20/100] Elastix 02_to_10_pair.npy …
+[CE_P2_V_01]     8.3s  DVF mm-ish range x[-3.18,1.38] y[-4.27,1.46] z[-2.64,2.96]
+[CE_P2_V_01] [21/100] Elastix 03_to_01_pair.npy …
+[CE_P2_V_01]     7.9s  DVF mm-ish range x[-4.00,2.94] y[-7.70,2.70] z[-5.82,5.82]
+[CE_P2_V_01] [22/100] Elastix 03_to_02_pair.npy …
+[CE_P2_V_01]     8.4s  DVF mm-ish range x[-1.31,1.30] y[-4.41,1.30] z[-3.15,1.66]
+[CE_P2_V_01] [23/100] identity 03_to_03_pair.npy
+[CE_P2_V_01] [24/100] Elastix 03_to_04_pair.npy …
+[CE_P2_V_01]     8.2s  DVF mm-ish range x[-1.08,1.37] y[-1.51,4.30] z[-0.84,2.88]
+[CE_P2_V_01] [25/100] Elastix 03_to_05_pair.npy …
+[CE_P2_V_01]     7.9s  DVF mm-ish range x[-2.02,2.25] y[-2.47,6.05] z[-1.91,4.43]
+[CE_P2_V_01] [26/100] Elastix 03_to_06_pair.npy …
+[CE_P2_V_01]     8.0s  DVF mm-ish range x[-2.03,2.99] y[-2.46,6.30] z[-3.10,3.76]
+[CE_P2_V_01] [27/100] Elastix 03_to_07_pair.npy …
+[CE_P2_V_01]     8.3s  DVF mm-ish range x[-2.00,3.19] y[-1.36,3.47] z[-2.14,2.76]
+[CE_P2_V_01] [28/100] Elastix 03_to_08_pair.npy …
+[CE_P2_V_01]     8.3s  DVF mm-ish range x[-3.10,3.11] y[-3.09,1.99] z[-2.69,3.98]
+[CE_P2_V_01] [29/100] Elastix 03_to_09_pair.npy …
+[CE_P2_V_01]     8.4s  DVF mm-ish range x[-3.25,3.13] y[-6.29,2.65] z[-4.70,5.03]
+[CE_P2_V_01] [30/100] Elastix 03_to_10_pair.npy …
+[CE_P2_V_01]     8.4s  DVF mm-ish range x[-4.05,3.31] y[-8.02,3.38] z[-6.14,6.11]
+[CE_P2_V_01] [31/100] Elastix 04_to_01_pair.npy …
+[CE_P2_V_01]     8.0s  DVF mm-ish range x[-5.08,4.64] y[-10.71,3.96] z[-7.76,6.63]
+[CE_P2_V_01] [32/100] Elastix 04_to_02_pair.npy …
+[CE_P2_V_01]     7.9s  DVF mm-ish range x[-2.82,2.99] y[-8.05,2.91] z[-5.55,4.58]
+[CE_P2_V_01] [33/100] Elastix 04_to_03_pair.npy …
+[CE_P2_V_01]     8.4s  DVF mm-ish range x[-1.49,0.85] y[-3.10,1.07] z[-2.39,0.94]
+[CE_P2_V_01] [34/100] identity 04_to_04_pair.npy
+[CE_P2_V_01] [35/100] Elastix 04_to_05_pair.npy …
+[CE_P2_V_01]     8.2s  DVF mm-ish range x[-0.97,1.11] y[-0.99,2.28] z[-0.72,1.98]
+[CE_P2_V_01] [36/100] Elastix 04_to_06_pair.npy …
+[CE_P2_V_01]     8.3s  DVF mm-ish range x[-1.57,1.39] y[-1.16,2.47] z[-1.04,2.31]
+[CE_P2_V_01] [37/100] Elastix 04_to_07_pair.npy …
+[CE_P2_V_01]     8.1s  DVF mm-ish range x[-1.88,2.43] y[-2.42,1.36] z[-2.51,1.81]
+[CE_P2_V_01] [38/100] Elastix 04_to_08_pair.npy …
+[CE_P2_V_01]     8.0s  DVF mm-ish range x[-2.95,3.89] y[-5.84,2.60] z[-5.27,3.29]
+[CE_P2_V_01] [39/100] Elastix 04_to_09_pair.npy …
+[CE_P2_V_01]     7.8s  DVF mm-ish range x[-4.51,4.50] y[-8.47,3.69] z[-7.63,6.37]
+[CE_P2_V_01] [40/100] Elastix 04_to_10_pair.npy …
+[CE_P2_V_01]     8.0s  DVF mm-ish range x[-5.21,4.74] y[-11.03,4.29] z[-8.31,7.28]
+[CE_P2_V_01] [41/100] Elastix 05_to_01_pair.npy …
+[CE_P2_V_01]     8.3s  DVF mm-ish range x[-4.17,5.01] y[-11.86,4.42] z[-9.13,6.86]
+[CE_P2_V_01] [42/100] Elastix 05_to_02_pair.npy …
+[CE_P2_V_01]     8.3s  DVF mm-ish range x[-3.20,4.23] y[-9.35,3.36] z[-6.20,4.90]
+[CE_P2_V_01] [43/100] Elastix 05_to_03_pair.npy …
+[CE_P2_V_01]     8.2s  DVF mm-ish range x[-1.94,1.89] y[-5.01,1.87] z[-3.13,1.91]
+[CE_P2_V_01] [44/100] Elastix 05_to_04_pair.npy …
+[CE_P2_V_01]     8.1s  DVF mm-ish range x[-1.06,0.87] y[-1.03,0.75] z[-0.99,0.77]
+[CE_P2_V_01] [45/100] identity 05_to_05_pair.npy
+[CE_P2_V_01] [46/100] Elastix 05_to_06_pair.npy …
+[CE_P2_V_01]     8.1s  DVF mm-ish range x[-1.01,0.89] y[-0.70,0.80] z[-0.60,0.82]
+[CE_P2_V_01] [47/100] Elastix 05_to_07_pair.npy …
+[CE_P2_V_01]     8.1s  DVF mm-ish range x[-1.80,2.27] y[-3.36,1.43] z[-3.80,1.68]
+[CE_P2_V_01] [48/100] Elastix 05_to_08_pair.npy …
+[CE_P2_V_01]     8.6s  DVF mm-ish range x[-3.08,3.62] y[-7.13,2.82] z[-6.25,3.77]
+[CE_P2_V_01] [49/100] Elastix 05_to_09_pair.npy …
+[CE_P2_V_01]     9.5s  DVF mm-ish range x[-4.94,5.02] y[-10.03,3.92] z[-7.87,6.52]
+[CE_P2_V_01] [50/100] Elastix 05_to_10_pair.npy …
+[CE_P2_V_01]     9.8s  DVF mm-ish range x[-4.88,5.50] y[-12.27,4.70] z[-8.94,7.99]
+[CE_P2_V_01] [51/100] Elastix 06_to_01_pair.npy …
+[CE_P2_V_01]     9.6s  DVF mm-ish range x[-5.08,4.80] y[-11.52,4.69] z[-8.34,7.06]
+[CE_P2_V_01] [52/100] Elastix 06_to_02_pair.npy …
+[CE_P2_V_01]     9.0s  DVF mm-ish range x[-3.09,4.14] y[-9.03,3.88] z[-6.14,4.60]
+[CE_P2_V_01] [53/100] Elastix 06_to_03_pair.npy …
+[CE_P2_V_01]     8.9s  DVF mm-ish range x[-2.99,1.78] y[-4.96,1.97] z[-2.96,3.11]
+[CE_P2_V_01] [54/100] Elastix 06_to_04_pair.npy …
+[CE_P2_V_01]     9.5s  DVF mm-ish range x[-1.73,1.36] y[-1.36,0.91] z[-1.81,0.96]
+[CE_P2_V_01] [55/100] Elastix 06_to_05_pair.npy …
+[CE_P2_V_01]     9.0s  DVF mm-ish range x[-1.26,1.12] y[-0.41,1.07] z[-0.79,0.92]
+[CE_P2_V_01] [56/100] identity 06_to_06_pair.npy
+[CE_P2_V_01] [57/100] Elastix 06_to_07_pair.npy …
+[CE_P2_V_01]     8.9s  DVF mm-ish range x[-1.07,1.59] y[-3.30,1.31] z[-2.39,1.02]
+[CE_P2_V_01] [58/100] Elastix 06_to_08_pair.npy …
+[CE_P2_V_01]     9.1s  DVF mm-ish range x[-2.41,3.01] y[-6.71,2.63] z[-5.56,2.98]
+[CE_P2_V_01] [59/100] Elastix 06_to_09_pair.npy …
+[CE_P2_V_01]     8.9s  DVF mm-ish range x[-5.11,4.45] y[-9.86,3.83] z[-7.55,6.34]
+[CE_P2_V_01] [60/100] Elastix 06_to_10_pair.npy …
+[CE_P2_V_01]     9.2s  DVF mm-ish range x[-5.98,4.92] y[-12.11,4.54] z[-8.34,8.76]
+[CE_P2_V_01] [61/100] Elastix 07_to_01_pair.npy …
+[CE_P2_V_01]     9.0s  DVF mm-ish range x[-3.83,2.91] y[-9.20,3.52] z[-6.37,4.99]
+[CE_P2_V_01] [62/100] Elastix 07_to_02_pair.npy …
+[CE_P2_V_01]     8.9s  DVF mm-ish range x[-2.00,3.02] y[-6.13,2.94] z[-4.73,2.97]
+[CE_P2_V_01] [63/100] Elastix 07_to_03_pair.npy …
+[CE_P2_V_01]     9.0s  DVF mm-ish range x[-3.11,1.25] y[-2.35,1.20] z[-3.00,2.42]
+[CE_P2_V_01] [64/100] Elastix 07_to_04_pair.npy …
+[CE_P2_V_01]     8.9s  DVF mm-ish range x[-2.34,1.84] y[-1.13,2.30] z[-2.12,3.97]
+[CE_P2_V_01] [65/100] Elastix 07_to_05_pair.npy …
+[CE_P2_V_01]     9.1s  DVF mm-ish range x[-2.14,2.05] y[-1.52,3.95] z[-1.77,4.66]
+[CE_P2_V_01] [66/100] Elastix 07_to_06_pair.npy …
+[CE_P2_V_01]     9.1s  DVF mm-ish range x[-1.50,1.06] y[-1.37,3.71] z[-1.20,3.48]
+[CE_P2_V_01] [67/100] identity 07_to_07_pair.npy
+[CE_P2_V_01] [68/100] Elastix 07_to_08_pair.npy …
+[CE_P2_V_01]     9.1s  DVF mm-ish range x[-1.88,1.49] y[-4.27,1.40] z[-2.46,1.71]
+[CE_P2_V_01] [69/100] Elastix 07_to_09_pair.npy …
+[CE_P2_V_01]     9.0s  DVF mm-ish range x[-3.40,2.31] y[-7.16,2.42] z[-5.17,4.61]
+[CE_P2_V_01] [70/100] Elastix 07_to_10_pair.npy …
+[CE_P2_V_01]     8.9s  DVF mm-ish range x[-4.80,2.88] y[-9.56,3.46] z[-6.28,5.94]
+[CE_P2_V_01] [71/100] Elastix 08_to_01_pair.npy …
+[CE_P2_V_01]     8.9s  DVF mm-ish range x[-3.50,2.67] y[-5.67,1.90] z[-4.70,2.79]
+[CE_P2_V_01] [72/100] Elastix 08_to_02_pair.npy …
+[CE_P2_V_01]     9.2s  DVF mm-ish range x[-2.35,2.24] y[-2.81,1.28] z[-3.10,2.72]
+[CE_P2_V_01] [73/100] Elastix 08_to_03_pair.npy …
+[CE_P2_V_01]     9.3s  DVF mm-ish range x[-3.65,2.88] y[-1.70,3.69] z[-3.93,4.07]
+[CE_P2_V_01] [74/100] Elastix 08_to_04_pair.npy …
+[CE_P2_V_01]     9.2s  DVF mm-ish range x[-3.74,2.82] y[-2.85,6.66] z[-3.04,6.75]
+[CE_P2_V_01] [75/100] Elastix 08_to_05_pair.npy …
+[CE_P2_V_01]     9.3s  DVF mm-ish range x[-3.69,3.39] y[-3.71,8.01] z[-3.36,8.00]
+[CE_P2_V_01] [76/100] Elastix 08_to_06_pair.npy …
+[CE_P2_V_01]     9.1s  DVF mm-ish range x[-2.98,3.00] y[-3.39,7.92] z[-2.77,7.02]
+[CE_P2_V_01] [77/100] Elastix 08_to_07_pair.npy …
+[CE_P2_V_01]     9.1s  DVF mm-ish range x[-1.88,2.02] y[-2.03,5.55] z[-1.43,3.33]
+[CE_P2_V_01] [78/100] identity 08_to_08_pair.npy
+[CE_P2_V_01] [79/100] Elastix 08_to_09_pair.npy …
+[CE_P2_V_01]     9.0s  DVF mm-ish range x[-1.80,0.91] y[-3.72,1.20] z[-2.13,1.31]
+[CE_P2_V_01] [80/100] Elastix 08_to_10_pair.npy …
+[CE_P2_V_01]     9.3s  DVF mm-ish range x[-3.30,2.32] y[-5.88,1.79] z[-4.14,3.69]
+[CE_P2_V_01] [81/100] Elastix 09_to_01_pair.npy …
+[CE_P2_V_01]     9.1s  DVF mm-ish range x[-1.66,1.99] y[-2.45,0.82] z[-2.80,1.63]
+[CE_P2_V_01] [82/100] Elastix 09_to_02_pair.npy …
+[CE_P2_V_01]     9.1s  DVF mm-ish range x[-1.85,3.66] y[-1.59,3.40] z[-2.85,3.02]
+[CE_P2_V_01] [83/100] Elastix 09_to_03_pair.npy …
+[CE_P2_V_01]     9.1s  DVF mm-ish range x[-3.04,2.94] y[-2.78,7.15] z[-4.88,6.43]
+[CE_P2_V_01] [84/100] Elastix 09_to_04_pair.npy …
+[CE_P2_V_01]     9.4s  DVF mm-ish range x[-4.28,3.78] y[-4.44,10.00] z[-5.57,9.00]
+[CE_P2_V_01] [85/100] Elastix 09_to_05_pair.npy …
+[CE_P2_V_01]     9.6s  DVF mm-ish range x[-4.72,4.77] y[-5.28,11.48] z[-5.73,9.92]
+[CE_P2_V_01] [86/100] Elastix 09_to_06_pair.npy …
+[CE_P2_V_01]     8.9s  DVF mm-ish range x[-3.90,4.47] y[-5.03,11.34] z[-5.65,9.27]
+[CE_P2_V_01] [87/100] Elastix 09_to_07_pair.npy …
+[CE_P2_V_01]     9.1s  DVF mm-ish range x[-2.45,3.53] y[-3.33,8.56] z[-4.09,6.32]
+[CE_P2_V_01] [88/100] Elastix 09_to_08_pair.npy …
+[CE_P2_V_01]     9.2s  DVF mm-ish range x[-1.54,1.33] y[-1.64,4.62] z[-1.17,2.52]
+[CE_P2_V_01] [89/100] identity 09_to_09_pair.npy
+[CE_P2_V_01] [90/100] Elastix 09_to_10_pair.npy …
+[CE_P2_V_01]     9.1s  DVF mm-ish range x[-1.58,1.63] y[-2.51,0.88] z[-2.02,1.75]
+[CE_P2_V_01] [91/100] Elastix 10_to_01_pair.npy …
+[CE_P2_V_01]     9.5s  DVF mm-ish range x[-0.73,0.85] y[-0.46,1.49] z[-1.11,0.95]
+[CE_P2_V_01] [92/100] Elastix 10_to_02_pair.npy …
+[CE_P2_V_01]     9.2s  DVF mm-ish range x[-1.63,3.19] y[-1.40,5.09] z[-2.89,3.00]
+[CE_P2_V_01] [93/100] Elastix 10_to_03_pair.npy …
+[CE_P2_V_01]     9.2s  DVF mm-ish range x[-3.39,4.43] y[-3.57,9.36] z[-5.96,7.54]
+[CE_P2_V_01] [94/100] Elastix 10_to_04_pair.npy …
+[CE_P2_V_01]     9.3s  DVF mm-ish range x[-4.77,4.95] y[-4.78,12.10] z[-6.73,10.25]
+[CE_P2_V_01] [95/100] Elastix 10_to_05_pair.npy …
+[CE_P2_V_01]     9.1s  DVF mm-ish range x[-5.16,4.86] y[-5.53,13.72] z[-7.81,11.31]
+[CE_P2_V_01] [96/100] Elastix 10_to_06_pair.npy …
+[CE_P2_V_01]     8.9s  DVF mm-ish range x[-4.81,4.76] y[-5.55,13.82] z[-7.08,10.47]
+[CE_P2_V_01] [97/100] Elastix 10_to_07_pair.npy …
+[CE_P2_V_01]     8.9s  DVF mm-ish range x[-2.97,4.73] y[-4.24,10.99] z[-6.12,7.12]
+[CE_P2_V_01] [98/100] Elastix 10_to_08_pair.npy …
+[CE_P2_V_01]     9.2s  DVF mm-ish range x[-2.92,2.31] y[-2.15,6.84] z[-3.28,4.34]
+[CE_P2_V_01] [99/100] Elastix 10_to_09_pair.npy …
+[CE_P2_V_01]     9.2s  DVF mm-ish range x[-1.92,0.74] y[-0.99,3.16] z[-1.78,2.02]
+[CE_P2_V_01] [100/100] identity 10_to_10_pair.npy
+[CE_P2_V_01] DONE in 13.2 min  registered=90 identity=10 skipped=0  → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/data/CE_P2_V_01/all
+All requested scans finished.
+=== QC encoder CE_P2_V_01 Tue Aug 25 11:34:45 AM AEST 2026 ===
+[encoder|elekta] scan=CE_P2_V_01 pairs=100 panels=100 ckpt=crb_enc_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/EncoderCRB/plots/qc_elekta/P2/CE_P2_V_01
+[001/100] 01_to_01  L1=0.060  L1/zero=6030314.04  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.384  L1/zero=1.00  cos=0.12  k=0.22
+[003/100] 01_to_03  L1=1.241  L1/zero=1.01  cos=-0.03  k=0.08
+[004/100] 01_to_04  L1=1.655  L1/zero=1.01  cos=-0.00  k=0.06
+[005/100] 01_to_05  L1=1.814  L1/zero=1.01  cos=-0.08  k=0.06
+[006/100] 01_to_06  L1=1.768  L1/zero=1.00  cos=0.05  k=0.09
+[007/100] 01_to_07  L1=1.354  L1/zero=1.01  cos=0.06  k=0.16
+[008/100] 01_to_08  L1=0.785  L1/zero=1.03  cos=0.01  k=0.26
+[009/100] 01_to_09  L1=0.421  L1/zero=1.16  cos=-0.09  k=0.60
+[010/100] 01_to_10  L1=0.229  L1/zero=0.99  cos=0.13  k=0.21
+[011/100] 02_to_01  L1=0.379  L1/zero=1.02  cos=-0.04  k=0.12
+[012/100] 02_to_02  L1=0.031  L1/zero=3125888.11  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.500  L1/zero=0.99  cos=0.21  k=0.11
+[014/100] 02_to_04  L1=1.103  L1/zero=1.00  cos=0.03  k=0.05
+[015/100] 02_to_05  L1=1.405  L1/zero=1.00  cos=-0.08  k=0.05
+[016/100] 02_to_06  L1=1.375  L1/zero=1.01  cos=-0.09  k=0.08
+[017/100] 02_to_07  L1=1.042  L1/zero=1.03  cos=-0.16  k=0.12
+[018/100] 02_to_08  L1=0.609  L1/zero=1.00  cos=-0.03  k=0.11
+[019/100] 02_to_09  L1=0.521  L1/zero=1.00  cos=0.05  k=0.14
+[020/100] 02_to_10  L1=0.639  L1/zero=1.01  cos=0.03  k=0.16
+[021/100] 03_to_01  L1=1.190  L1/zero=1.02  cos=-0.08  k=0.12
+[022/100] 03_to_02  L1=0.482  L1/zero=1.00  cos=0.12  k=0.16
+[023/100] 03_to_03  L1=0.016  L1/zero=1558518.13  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.355  L1/zero=0.99  cos=0.11  k=0.06
+[025/100] 03_to_05  L1=0.588  L1/zero=1.00  cos=0.05  k=0.06
+[026/100] 03_to_06  L1=0.763  L1/zero=1.01  cos=-0.10  k=0.07
+[027/100] 03_to_07  L1=0.622  L1/zero=0.99  cos=0.05  k=0.09
+[028/100] 03_to_08  L1=0.903  L1/zero=1.01  cos=0.01  k=0.12
+[029/100] 03_to_09  L1=1.165  L1/zero=1.00  cos=0.16  k=0.22
+[030/100] 03_to_10  L1=1.368  L1/zero=1.00  cos=0.12  k=0.16
+[031/100] 04_to_01  L1=1.578  L1/zero=1.02  cos=-0.08  k=0.14
+[032/100] 04_to_02  L1=1.017  L1/zero=1.00  cos=0.07  k=0.15
+[033/100] 04_to_03  L1=0.335  L1/zero=0.97  cos=0.19  k=0.19
+[034/100] 04_to_04  L1=0.013  L1/zero=1268365.05  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.249  L1/zero=1.01  cos=-0.04  k=0.06
+[036/100] 04_to_06  L1=0.387  L1/zero=1.00  cos=0.04  k=0.05
+[037/100] 04_to_07  L1=0.636  L1/zero=1.04  cos=-0.15  k=0.21
+[038/100] 04_to_08  L1=1.116  L1/zero=1.04  cos=-0.02  k=0.20
+[039/100] 04_to_09  L1=1.419  L1/zero=0.99  cos=0.22  k=0.22
+[040/100] 04_to_10  L1=1.631  L1/zero=0.98  cos=0.18  k=0.16
+[041/100] 05_to_01  L1=1.723  L1/zero=1.02  cos=-0.01  k=0.16
+[042/100] 05_to_02  L1=1.287  L1/zero=1.02  cos=0.03  k=0.17
+[043/100] 05_to_03  L1=0.556  L1/zero=0.98  cos=0.16  k=0.18
+[044/100] 05_to_04  L1=0.235  L1/zero=0.95  cos=0.30  k=0.20
+[045/100] 05_to_05  L1=0.013  L1/zero=1328710.00  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.254  L1/zero=1.04  cos=-0.31  k=0.12
+[047/100] 05_to_07  L1=0.639  L1/zero=1.06  cos=0.01  k=0.38
+[048/100] 05_to_08  L1=1.115  L1/zero=1.04  cos=0.11  k=0.25
+[049/100] 05_to_09  L1=1.514  L1/zero=0.99  cos=0.19  k=0.19
+[050/100] 05_to_10  L1=1.878  L1/zero=1.01  cos=-0.01  k=0.09
+[051/100] 06_to_01  L1=1.741  L1/zero=1.03  cos=0.01  k=0.20
+[052/100] 06_to_02  L1=1.281  L1/zero=1.02  cos=0.01  k=0.18
+[053/100] 06_to_03  L1=0.713  L1/zero=1.00  cos=0.02  k=0.17
+[054/100] 06_to_04  L1=0.359  L1/zero=0.94  cos=0.40  k=0.17
+[055/100] 06_to_05  L1=0.236  L1/zero=0.96  cos=0.26  k=0.16
+[056/100] 06_to_06  L1=0.013  L1/zero=1263652.09  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.429  L1/zero=1.06  cos=0.02  k=0.32
+[058/100] 06_to_08  L1=0.889  L1/zero=1.02  cos=0.26  k=0.33
+[059/100] 06_to_09  L1=1.415  L1/zero=1.01  cos=0.04  k=0.10
+[060/100] 06_to_10  L1=1.865  L1/zero=1.02  cos=-0.24  k=0.08
+[061/100] 07_to_01  L1=1.300  L1/zero=1.04  cos=-0.07  k=0.21
+[062/100] 07_to_02  L1=1.000  L1/zero=1.04  cos=-0.14  k=0.20
+[063/100] 07_to_03  L1=0.596  L1/zero=0.96  cos=0.19  k=0.16
+[064/100] 07_to_04  L1=0.604  L1/zero=0.97  cos=0.29  k=0.10
+[065/100] 07_to_05  L1=0.625  L1/zero=1.02  cos=-0.05  k=0.12
+[066/100] 07_to_06  L1=0.430  L1/zero=1.03  cos=0.02  k=0.22
+[067/100] 07_to_07  L1=0.013  L1/zero=1264375.73  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.489  L1/zero=1.04  cos=-0.15  k=0.17
+[069/100] 07_to_09  L1=0.946  L1/zero=1.01  cos=-0.29  k=0.05
+[070/100] 07_to_10  L1=1.413  L1/zero=1.01  cos=-0.25  k=0.06
+[071/100] 08_to_01  L1=0.785  L1/zero=1.04  cos=-0.07  k=0.23
+[072/100] 08_to_02  L1=0.593  L1/zero=1.01  cos=-0.05  k=0.21
+[073/100] 08_to_03  L1=0.894  L1/zero=0.98  cos=0.17  k=0.08
+[074/100] 08_to_04  L1=1.115  L1/zero=1.01  cos=-0.02  k=0.08
+[075/100] 08_to_05  L1=1.152  L1/zero=1.02  cos=-0.06  k=0.11
+[076/100] 08_to_06  L1=0.970  L1/zero=1.01  cos=0.01  k=0.12
+[077/100] 08_to_07  L1=0.484  L1/zero=1.00  cos=0.19  k=0.21
+[078/100] 08_to_08  L1=0.013  L1/zero=1279106.55  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.414  L1/zero=1.02  cos=-0.34  k=0.09
+[080/100] 08_to_10  L1=0.766  L1/zero=1.02  cos=-0.29  k=0.08
+[081/100] 09_to_01  L1=0.396  L1/zero=1.08  cos=-0.20  k=0.28
+[082/100] 09_to_02  L1=0.548  L1/zero=0.99  cos=0.06  k=0.18
+[083/100] 09_to_03  L1=1.206  L1/zero=1.00  cos=0.04  k=0.09
+[084/100] 09_to_04  L1=1.519  L1/zero=1.01  cos=-0.02  k=0.08
+[085/100] 09_to_05  L1=1.648  L1/zero=1.01  cos=-0.05  k=0.09
+[086/100] 09_to_06  L1=1.527  L1/zero=1.01  cos=-0.10  k=0.07
+[087/100] 09_to_07  L1=1.004  L1/zero=1.01  cos=-0.08  k=0.09
+[088/100] 09_to_08  L1=0.423  L1/zero=1.00  cos=0.10  k=0.17
+[089/100] 09_to_09  L1=0.017  L1/zero=1732817.48  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.293  L1/zero=1.02  cos=-0.27  k=0.10
+[091/100] 10_to_01  L1=0.238  L1/zero=0.99  cos=0.25  k=0.55
+[092/100] 10_to_02  L1=0.664  L1/zero=1.03  cos=0.12  k=0.36
+[093/100] 10_to_03  L1=1.433  L1/zero=1.01  cos=0.05  k=0.14
+[094/100] 10_to_04  L1=1.766  L1/zero=1.00  cos=0.07  k=0.10
+[095/100] 10_to_05  L1=2.024  L1/zero=1.01  cos=0.04  k=0.10
+[096/100] 10_to_06  L1=1.966  L1/zero=1.01  cos=0.02  k=0.10
+[097/100] 10_to_07  L1=1.511  L1/zero=1.00  cos=0.06  k=0.12
+[098/100] 10_to_08  L1=0.784  L1/zero=1.00  cos=0.10  k=0.24
+[099/100] 10_to_09  L1=0.329  L1/zero=1.10  cos=-0.22  k=0.36
+[100/100] 10_to_10  L1=0.098  L1/zero=9775992.48  cos=nan  k=nan
+
+[encoder|elekta] Directed mean: L1=0.945  L1/zero=1.01  cos=0.01  k=0.16  beat_zero=24%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/EncoderCRB/plots/qc_elekta/P2/CE_P2_V_01 (100 pngs)
+=== QC decoder CE_P2_V_01 Tue Aug 25 11:35:38 AM AEST 2026 ===
+[decoder|elekta] scan=CE_P2_V_01 pairs=100 panels=100 ckpt=crb_dec_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/DecoderCRB/plots/qc_elekta/P2/CE_P2_V_01
+[001/100] 01_to_01  L1=0.016  L1/zero=1563076.86  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.398  L1/zero=1.04  cos=-0.15  k=0.17
+[003/100] 01_to_03  L1=1.283  L1/zero=1.04  cos=-0.22  k=0.13
+[004/100] 01_to_04  L1=1.720  L1/zero=1.05  cos=-0.20  k=0.14
+[005/100] 01_to_05  L1=1.861  L1/zero=1.04  cos=-0.11  k=0.15
+[006/100] 01_to_06  L1=1.795  L1/zero=1.02  cos=0.05  k=0.17
+[007/100] 01_to_07  L1=1.353  L1/zero=1.01  cos=0.09  k=0.20
+[008/100] 01_to_08  L1=0.769  L1/zero=1.00  cos=0.12  k=0.24
+[009/100] 01_to_09  L1=0.389  L1/zero=1.07  cos=0.01  k=0.35
+[010/100] 01_to_10  L1=0.244  L1/zero=1.05  cos=-0.05  k=0.34
+[011/100] 02_to_01  L1=0.375  L1/zero=1.00  cos=0.10  k=0.16
+[012/100] 02_to_02  L1=0.009  L1/zero=942971.74  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.522  L1/zero=1.03  cos=-0.01  k=0.15
+[014/100] 02_to_04  L1=1.157  L1/zero=1.05  cos=-0.14  k=0.16
+[015/100] 02_to_05  L1=1.448  L1/zero=1.04  cos=-0.08  k=0.16
+[016/100] 02_to_06  L1=1.377  L1/zero=1.02  cos=0.05  k=0.19
+[017/100] 02_to_07  L1=1.018  L1/zero=1.01  cos=0.05  k=0.21
+[018/100] 02_to_08  L1=0.615  L1/zero=1.01  cos=0.02  k=0.21
+[019/100] 02_to_09  L1=0.548  L1/zero=1.05  cos=-0.18  k=0.19
+[020/100] 02_to_10  L1=0.653  L1/zero=1.04  cos=-0.23  k=0.13
+[021/100] 03_to_01  L1=1.188  L1/zero=1.01  cos=-0.01  k=0.16
+[022/100] 03_to_02  L1=0.501  L1/zero=1.04  cos=-0.12  k=0.17
+[023/100] 03_to_03  L1=0.010  L1/zero=1006856.47  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.377  L1/zero=1.05  cos=-0.22  k=0.15
+[025/100] 03_to_05  L1=0.605  L1/zero=1.03  cos=-0.06  k=0.17
+[026/100] 03_to_06  L1=0.753  L1/zero=1.00  cos=0.07  k=0.18
+[027/100] 03_to_07  L1=0.640  L1/zero=1.02  cos=-0.00  k=0.17
+[028/100] 03_to_08  L1=0.908  L1/zero=1.02  cos=-0.19  k=0.10
+[029/100] 03_to_09  L1=1.184  L1/zero=1.02  cos=-0.11  k=0.12
+[030/100] 03_to_10  L1=1.388  L1/zero=1.02  cos=-0.05  k=0.15
+[031/100] 04_to_01  L1=1.548  L1/zero=1.00  cos=0.08  k=0.20
+[032/100] 04_to_02  L1=1.030  L1/zero=1.02  cos=-0.01  k=0.16
+[033/100] 04_to_03  L1=0.363  L1/zero=1.05  cos=-0.17  k=0.21
+[034/100] 04_to_04  L1=0.012  L1/zero=1169799.36  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.246  L1/zero=0.99  cos=0.11  k=0.13
+[036/100] 04_to_06  L1=0.380  L1/zero=0.98  cos=0.18  k=0.16
+[037/100] 04_to_07  L1=0.615  L1/zero=1.01  cos=-0.12  k=0.10
+[038/100] 04_to_08  L1=1.083  L1/zero=1.01  cos=0.00  k=0.12
+[039/100] 04_to_09  L1=1.447  L1/zero=1.01  cos=0.06  k=0.15
+[040/100] 04_to_10  L1=1.658  L1/zero=1.00  cos=0.08  k=0.17
+[041/100] 05_to_01  L1=1.695  L1/zero=1.01  cos=0.08  k=0.22
+[042/100] 05_to_02  L1=1.293  L1/zero=1.02  cos=-0.03  k=0.18
+[043/100] 05_to_03  L1=0.582  L1/zero=1.03  cos=-0.08  k=0.19
+[044/100] 05_to_04  L1=0.250  L1/zero=1.01  cos=0.01  k=0.19
+[045/100] 05_to_05  L1=0.013  L1/zero=1268445.23  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.248  L1/zero=1.02  cos=-0.09  k=0.11
+[047/100] 05_to_07  L1=0.620  L1/zero=1.03  cos=-0.32  k=0.10
+[048/100] 05_to_08  L1=1.084  L1/zero=1.01  cos=0.04  k=0.15
+[049/100] 05_to_09  L1=1.527  L1/zero=1.00  cos=0.11  k=0.17
+[050/100] 05_to_10  L1=1.858  L1/zero=1.00  cos=0.09  k=0.17
+[051/100] 06_to_01  L1=1.716  L1/zero=1.01  cos=0.04  k=0.22
+[052/100] 06_to_02  L1=1.292  L1/zero=1.03  cos=-0.08  k=0.18
+[053/100] 06_to_03  L1=0.730  L1/zero=1.02  cos=-0.04  k=0.17
+[054/100] 06_to_04  L1=0.390  L1/zero=1.02  cos=-0.02  k=0.19
+[055/100] 06_to_05  L1=0.250  L1/zero=1.02  cos=-0.09  k=0.12
+[056/100] 06_to_06  L1=0.011  L1/zero=1108642.57  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.419  L1/zero=1.03  cos=-0.19  k=0.16
+[058/100] 06_to_08  L1=0.891  L1/zero=1.02  cos=0.05  k=0.20
+[059/100] 06_to_09  L1=1.411  L1/zero=1.00  cos=0.12  k=0.19
+[060/100] 06_to_10  L1=1.818  L1/zero=1.00  cos=0.10  k=0.18
+[061/100] 07_to_01  L1=1.261  L1/zero=1.01  cos=0.03  k=0.23
+[062/100] 07_to_02  L1=0.971  L1/zero=1.01  cos=-0.03  k=0.17
+[063/100] 07_to_03  L1=0.618  L1/zero=0.99  cos=0.03  k=0.15
+[064/100] 07_to_04  L1=0.641  L1/zero=1.03  cos=-0.23  k=0.12
+[065/100] 07_to_05  L1=0.653  L1/zero=1.06  cos=-0.39  k=0.14
+[066/100] 07_to_06  L1=0.452  L1/zero=1.08  cos=-0.35  k=0.19
+[067/100] 07_to_07  L1=0.010  L1/zero=1035449.75  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.486  L1/zero=1.04  cos=-0.17  k=0.14
+[069/100] 07_to_09  L1=0.951  L1/zero=1.02  cos=0.04  k=0.20
+[070/100] 07_to_10  L1=1.388  L1/zero=1.00  cos=0.10  k=0.20
+[071/100] 08_to_01  L1=0.754  L1/zero=1.00  cos=0.07  k=0.15
+[072/100] 08_to_02  L1=0.594  L1/zero=1.01  cos=0.02  k=0.16
+[073/100] 08_to_03  L1=0.936  L1/zero=1.03  cos=-0.23  k=0.11
+[074/100] 08_to_04  L1=1.159  L1/zero=1.05  cos=-0.37  k=0.13
+[075/100] 08_to_05  L1=1.194  L1/zero=1.06  cos=-0.31  k=0.15
+[076/100] 08_to_06  L1=1.012  L1/zero=1.06  cos=-0.16  k=0.17
+[077/100] 08_to_07  L1=0.505  L1/zero=1.04  cos=-0.22  k=0.15
+[078/100] 08_to_08  L1=0.010  L1/zero=1047961.23  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.410  L1/zero=1.01  cos=-0.06  k=0.14
+[080/100] 08_to_10  L1=0.763  L1/zero=1.01  cos=0.05  k=0.20
+[081/100] 09_to_01  L1=0.372  L1/zero=1.01  cos=0.08  k=0.17
+[082/100] 09_to_02  L1=0.586  L1/zero=1.06  cos=-0.28  k=0.17
+[083/100] 09_to_03  L1=1.264  L1/zero=1.05  cos=-0.33  k=0.14
+[084/100] 09_to_04  L1=1.585  L1/zero=1.05  cos=-0.24  k=0.15
+[085/100] 09_to_05  L1=1.690  L1/zero=1.04  cos=-0.07  k=0.17
+[086/100] 09_to_06  L1=1.547  L1/zero=1.03  cos=0.06  k=0.19
+[087/100] 09_to_07  L1=1.016  L1/zero=1.02  cos=-0.07  k=0.14
+[088/100] 09_to_08  L1=0.431  L1/zero=1.02  cos=-0.18  k=0.12
+[089/100] 09_to_09  L1=0.015  L1/zero=1457960.72  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.294  L1/zero=1.03  cos=0.00  k=0.20
+[091/100] 10_to_01  L1=0.255  L1/zero=1.07  cos=-0.36  k=0.15
+[092/100] 10_to_02  L1=0.688  L1/zero=1.06  cos=-0.35  k=0.15
+[093/100] 10_to_03  L1=1.488  L1/zero=1.05  cos=-0.25  k=0.14
+[094/100] 10_to_04  L1=1.826  L1/zero=1.03  cos=-0.10  k=0.15
+[095/100] 10_to_05  L1=2.058  L1/zero=1.02  cos=0.00  k=0.17
+[096/100] 10_to_06  L1=1.993  L1/zero=1.02  cos=0.07  k=0.21
+[097/100] 10_to_07  L1=1.532  L1/zero=1.02  cos=-0.03  k=0.16
+[098/100] 10_to_08  L1=0.803  L1/zero=1.03  cos=-0.08  k=0.17
+[099/100] 10_to_09  L1=0.306  L1/zero=1.03  cos=-0.16  k=0.15
+[100/100] 10_to_10  L1=0.017  L1/zero=1708358.90  cos=nan  k=nan
+
+[decoder|elekta] Directed mean: L1=0.955  L1/zero=1.03  cos=-0.07  k=0.17  beat_zero=9%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/DecoderCRB/plots/qc_elekta/P2/CE_P2_V_01 (100 pngs)
+=== PREP CE_P3_V_01 (have 0 pairs) Tue Aug 25 11:36:31 AM AEST 2026 ===
+=== Elastix CE_P3_V_01 ===
+Clinical DVF scans=['CE_P3_V_01']  param=/home/abhishek/Voxel_GAN/My v1.0/configs/elastix_bspline_masked.txt
+Output: /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/data
+[CE_P3_V_01] vendor=elekta mask pad=+8  voxels=1071517
+[CE_P3_V_01] lung bbox (zyx): [39:238, 0:109, 0:223]
+[CE_P3_V_01]   CT_01: (270, 256, 270) → (199, 109, 223) → (128, 128, 128)
+[CE_P3_V_01]   CT_02: (270, 256, 270) → (199, 109, 223) → (128, 128, 128)
+[CE_P3_V_01]   CT_03: (270, 256, 270) → (199, 109, 223) → (128, 128, 128)
+[CE_P3_V_01]   CT_04: (270, 256, 270) → (199, 109, 223) → (128, 128, 128)
+[CE_P3_V_01]   CT_05: (270, 256, 270) → (199, 109, 223) → (128, 128, 128)
+[CE_P3_V_01]   CT_06: (270, 256, 270) → (199, 109, 223) → (128, 128, 128)
+[CE_P3_V_01]   CT_07: (270, 256, 270) → (199, 109, 223) → (128, 128, 128)
+[CE_P3_V_01]   CT_08: (270, 256, 270) → (199, 109, 223) → (128, 128, 128)
+[CE_P3_V_01]   CT_09: (270, 256, 270) → (199, 109, 223) → (128, 128, 128)
+[CE_P3_V_01]   CT_10: (270, 256, 270) → (199, 109, 223) → (128, 128, 128)
+[CE_P3_V_01]   Mask_Lung → (128, 128, 128), voxels=465585
+[CE_P3_V_01] [1/100] identity 01_to_01_pair.npy
+[CE_P3_V_01] [2/100] Elastix 01_to_02_pair.npy …
+[CE_P3_V_01]     9.5s  DVF mm-ish range x[-1.22,3.01] y[-4.57,10.32] z[-1.92,3.63]
+[CE_P3_V_01] [3/100] Elastix 01_to_03_pair.npy …
+[CE_P3_V_01]     8.9s  DVF mm-ish range x[-2.36,4.82] y[-6.50,18.13] z[-2.73,5.31]
+[CE_P3_V_01] [4/100] Elastix 01_to_04_pair.npy …
+[CE_P3_V_01]     9.9s  DVF mm-ish range x[-2.00,4.97] y[-6.97,22.12] z[-3.04,6.12]
+[CE_P3_V_01] [5/100] Elastix 01_to_05_pair.npy …
+[CE_P3_V_01]     9.0s  DVF mm-ish range x[-2.31,6.04] y[-8.92,23.05] z[-4.01,7.32]
+[CE_P3_V_01] [6/100] Elastix 01_to_06_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-2.79,5.70] y[-7.80,22.88] z[-3.90,7.42]
+[CE_P3_V_01] [7/100] Elastix 01_to_07_pair.npy …
+[CE_P3_V_01]     8.9s  DVF mm-ish range x[-2.75,3.61] y[-8.32,18.90] z[-2.26,4.55]
+[CE_P3_V_01] [8/100] Elastix 01_to_08_pair.npy …
+[CE_P3_V_01]     9.4s  DVF mm-ish range x[-3.02,1.89] y[-5.19,8.63] z[-1.44,2.92]
+[CE_P3_V_01] [9/100] Elastix 01_to_09_pair.npy …
+[CE_P3_V_01]     9.4s  DVF mm-ish range x[-2.81,1.67] y[-6.77,3.15] z[-4.07,2.79]
+[CE_P3_V_01] [10/100] Elastix 01_to_10_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-2.66,1.58] y[-8.05,3.44] z[-4.98,1.92]
+[CE_P3_V_01] [11/100] Elastix 02_to_01_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-2.63,1.51] y[-10.67,2.92] z[-3.71,2.29]
+[CE_P3_V_01] [12/100] identity 02_to_02_pair.npy
+[CE_P3_V_01] [13/100] Elastix 02_to_03_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-1.02,0.83] y[-2.29,5.72] z[-0.83,0.99]
+[CE_P3_V_01] [14/100] Elastix 02_to_04_pair.npy …
+[CE_P3_V_01]     9.5s  DVF mm-ish range x[-1.50,1.32] y[-3.61,10.19] z[-1.44,2.08]
+[CE_P3_V_01] [15/100] Elastix 02_to_05_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-1.90,1.80] y[-5.21,13.22] z[-1.89,3.22]
+[CE_P3_V_01] [16/100] Elastix 02_to_06_pair.npy …
+[CE_P3_V_01]     9.5s  DVF mm-ish range x[-1.66,1.85] y[-5.24,14.28] z[-1.60,3.84]
+[CE_P3_V_01] [17/100] Elastix 02_to_07_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-2.65,2.21] y[-4.94,9.95] z[-3.69,3.26]
+[CE_P3_V_01] [18/100] Elastix 02_to_08_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-3.84,2.18] y[-8.88,3.71] z[-5.28,4.99]
+[CE_P3_V_01] [19/100] Elastix 02_to_09_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-6.52,2.62] y[-15.19,4.64] z[-9.73,5.08]
+[CE_P3_V_01] [20/100] Elastix 02_to_10_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-6.36,2.72] y[-19.45,4.95] z[-10.01,4.53]
+[CE_P3_V_01] [21/100] Elastix 03_to_01_pair.npy …
+[CE_P3_V_01]     9.4s  DVF mm-ish range x[-4.47,2.03] y[-16.07,3.18] z[-5.64,2.59]
+[CE_P3_V_01] [22/100] Elastix 03_to_02_pair.npy …
+[CE_P3_V_01]     9.5s  DVF mm-ish range x[-0.80,1.20] y[-5.83,1.60] z[-0.93,0.93]
+[CE_P3_V_01] [23/100] identity 03_to_03_pair.npy
+[CE_P3_V_01] [24/100] Elastix 03_to_04_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-1.02,0.61] y[-1.61,2.64] z[-0.77,1.39]
+[CE_P3_V_01] [25/100] Elastix 03_to_05_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-1.87,1.10] y[-2.91,4.55] z[-1.88,2.17]
+[CE_P3_V_01] [26/100] Elastix 03_to_06_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-1.89,1.69] y[-3.26,6.95] z[-3.01,3.08]
+[CE_P3_V_01] [27/100] Elastix 03_to_07_pair.npy …
+[CE_P3_V_01]     9.5s  DVF mm-ish range x[-2.02,2.07] y[-4.90,5.14] z[-4.15,3.92]
+[CE_P3_V_01] [28/100] Elastix 03_to_08_pair.npy …
+[CE_P3_V_01]     9.5s  DVF mm-ish range x[-4.70,2.07] y[-13.47,4.36] z[-6.38,4.43]
+[CE_P3_V_01] [29/100] Elastix 03_to_09_pair.npy …
+[CE_P3_V_01]     9.6s  DVF mm-ish range x[-7.35,1.86] y[-24.74,5.06] z[-10.22,4.99]
+[CE_P3_V_01] [30/100] Elastix 03_to_10_pair.npy …
+[CE_P3_V_01]     9.7s  DVF mm-ish range x[-4.12,1.85] y[-28.74,4.61] z[-4.94,4.52]
+[CE_P3_V_01] [31/100] Elastix 04_to_01_pair.npy …
+[CE_P3_V_01]     9.0s  DVF mm-ish range x[-4.72,2.61] y[-19.10,3.71] z[-6.86,3.64]
+[CE_P3_V_01] [32/100] Elastix 04_to_02_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-1.03,1.97] y[-9.73,2.65] z[-2.26,1.53]
+[CE_P3_V_01] [33/100] Elastix 04_to_03_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-0.44,1.01] y[-2.71,1.40] z[-1.09,0.89]
+[CE_P3_V_01] [34/100] identity 04_to_04_pair.npy
+[CE_P3_V_01] [35/100] Elastix 04_to_05_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-1.25,0.50] y[-1.29,1.53] z[-0.82,1.29]
+[CE_P3_V_01] [36/100] Elastix 04_to_06_pair.npy …
+[CE_P3_V_01]     9.0s  DVF mm-ish range x[-1.99,0.93] y[-1.77,2.51] z[-1.87,2.03]
+[CE_P3_V_01] [37/100] Elastix 04_to_07_pair.npy …
+[CE_P3_V_01]     9.9s  DVF mm-ish range x[-2.06,1.99] y[-7.13,2.69] z[-3.88,4.01]
+[CE_P3_V_01] [38/100] Elastix 04_to_08_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-5.41,2.13] y[-15.25,4.61] z[-7.02,4.06]
+[CE_P3_V_01] [39/100] Elastix 04_to_09_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-7.19,2.37] y[-26.26,4.98] z[-9.43,5.06]
+[CE_P3_V_01] [40/100] Elastix 04_to_10_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-4.21,3.88] y[-32.18,4.13] z[-5.61,6.12]
+[CE_P3_V_01] [41/100] Elastix 05_to_01_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-5.54,3.18] y[-19.58,3.63] z[-7.16,4.79]
+[CE_P3_V_01] [42/100] Elastix 05_to_02_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-1.86,2.75] y[-11.60,3.50] z[-2.84,1.60]
+[CE_P3_V_01] [43/100] Elastix 05_to_03_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-0.83,2.11] y[-4.61,2.31] z[-2.32,1.89]
+[CE_P3_V_01] [44/100] Elastix 05_to_04_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-0.54,1.46] y[-1.68,0.95] z[-0.91,0.88]
+[CE_P3_V_01] [45/100] identity 05_to_05_pair.npy
+[CE_P3_V_01] [46/100] Elastix 05_to_06_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-1.01,0.51] y[-0.85,1.44] z[-1.02,1.14]
+[CE_P3_V_01] [47/100] Elastix 05_to_07_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-1.87,1.40] y[-8.11,2.85] z[-2.96,2.48]
+[CE_P3_V_01] [48/100] Elastix 05_to_08_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-5.63,2.29] y[-17.07,4.74] z[-7.55,3.91]
+[CE_P3_V_01] [49/100] Elastix 05_to_09_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-4.08,2.70] y[-27.20,4.12] z[-4.91,4.20]
+[CE_P3_V_01] [50/100] Elastix 05_to_10_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-4.17,4.14] y[-32.28,4.50] z[-5.30,5.40]
+[CE_P3_V_01] [51/100] Elastix 06_to_01_pair.npy …
+[CE_P3_V_01]     9.0s  DVF mm-ish range x[-5.05,2.59] y[-18.93,3.76] z[-7.10,4.65]
+[CE_P3_V_01] [52/100] Elastix 06_to_02_pair.npy …
+[CE_P3_V_01]     9.4s  DVF mm-ish range x[-3.16,2.37] y[-11.62,3.63] z[-3.25,1.97]
+[CE_P3_V_01] [53/100] Elastix 06_to_03_pair.npy …
+[CE_P3_V_01]     9.4s  DVF mm-ish range x[-2.12,1.97] y[-7.13,2.67] z[-3.39,1.16]
+[CE_P3_V_01] [54/100] Elastix 06_to_04_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-1.29,2.05] y[-2.64,1.27] z[-2.02,2.00]
+[CE_P3_V_01] [55/100] Elastix 06_to_05_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-0.58,1.19] y[-1.48,0.79] z[-0.97,0.91]
+[CE_P3_V_01] [56/100] identity 06_to_06_pair.npy
+[CE_P3_V_01] [57/100] Elastix 06_to_07_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-1.49,0.99] y[-6.90,3.11] z[-1.85,1.45]
+[CE_P3_V_01] [58/100] Elastix 06_to_08_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-5.36,1.64] y[-16.13,4.43] z[-7.60,3.93]
+[CE_P3_V_01] [59/100] Elastix 06_to_09_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-4.18,2.74] y[-29.21,3.78] z[-4.94,4.54]
+[CE_P3_V_01] [60/100] Elastix 06_to_10_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-5.10,3.70] y[-31.73,3.91] z[-5.78,4.90]
+[CE_P3_V_01] [61/100] Elastix 07_to_01_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-3.19,2.76] y[-14.15,3.79] z[-5.81,3.45]
+[CE_P3_V_01] [62/100] Elastix 07_to_02_pair.npy …
+[CE_P3_V_01]     10.0s  DVF mm-ish range x[-2.56,2.80] y[-9.05,2.54] z[-3.91,1.33]
+[CE_P3_V_01] [63/100] Elastix 07_to_03_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-2.71,2.17] y[-5.04,4.74] z[-3.85,4.24]
+[CE_P3_V_01] [64/100] Elastix 07_to_04_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-2.82,2.06] y[-3.31,7.01] z[-4.12,3.86]
+[CE_P3_V_01] [65/100] Elastix 07_to_05_pair.npy …
+[CE_P3_V_01]     9.4s  DVF mm-ish range x[-1.10,3.00] y[-2.60,7.98] z[-2.17,3.69]
+[CE_P3_V_01] [66/100] Elastix 07_to_06_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-0.90,1.59] y[-2.57,6.56] z[-1.46,2.09]
+[CE_P3_V_01] [67/100] identity 07_to_07_pair.npy
+[CE_P3_V_01] [68/100] Elastix 07_to_08_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-3.15,1.14] y[-8.94,3.33] z[-4.00,2.13]
+[CE_P3_V_01] [69/100] Elastix 07_to_09_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-5.64,1.83] y[-16.82,4.10] z[-8.89,4.26]
+[CE_P3_V_01] [70/100] Elastix 07_to_10_pair.npy …
+[CE_P3_V_01]     10.1s  DVF mm-ish range x[-6.02,2.99] y[-19.08,4.06] z[-9.35,4.66]
+[CE_P3_V_01] [71/100] Elastix 08_to_01_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-1.97,2.93] y[-7.60,2.70] z[-3.87,1.30]
+[CE_P3_V_01] [72/100] Elastix 08_to_02_pair.npy …
+[CE_P3_V_01]     9.5s  DVF mm-ish range x[-2.27,4.04] y[-3.99,8.58] z[-5.41,4.38]
+[CE_P3_V_01] [73/100] Elastix 08_to_03_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-2.41,5.16] y[-4.45,13.54] z[-4.78,5.07]
+[CE_P3_V_01] [74/100] Elastix 08_to_04_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-2.14,6.03] y[-4.69,15.45] z[-4.50,6.26]
+[CE_P3_V_01] [75/100] Elastix 08_to_05_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-2.61,6.66] y[-4.74,16.93] z[-4.67,7.47]
+[CE_P3_V_01] [76/100] Elastix 08_to_06_pair.npy …
+[CE_P3_V_01]     9.4s  DVF mm-ish range x[-2.08,5.95] y[-5.27,16.32] z[-4.24,7.29]
+[CE_P3_V_01] [77/100] Elastix 08_to_07_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-0.99,2.88] y[-4.07,8.74] z[-2.09,3.83]
+[CE_P3_V_01] [78/100] identity 08_to_08_pair.npy
+[CE_P3_V_01] [79/100] Elastix 08_to_09_pair.npy …
+[CE_P3_V_01]     9.4s  DVF mm-ish range x[-2.37,0.90] y[-7.84,3.07] z[-3.97,1.50]
+[CE_P3_V_01] [80/100] Elastix 08_to_10_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-2.76,2.67] y[-10.89,4.48] z[-7.11,2.55]
+[CE_P3_V_01] [81/100] Elastix 09_to_01_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-1.43,3.12] y[-2.63,6.50] z[-3.09,3.82]
+[CE_P3_V_01] [82/100] Elastix 09_to_02_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-2.65,6.82] y[-5.58,15.80] z[-5.47,9.59]
+[CE_P3_V_01] [83/100] Elastix 09_to_03_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-3.73,7.19] y[-6.37,21.72] z[-5.04,10.01]
+[CE_P3_V_01] [84/100] Elastix 09_to_04_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-4.09,7.68] y[-7.42,24.55] z[-4.95,11.33]
+[CE_P3_V_01] [85/100] Elastix 09_to_05_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-4.57,8.28] y[-8.50,26.32] z[-3.75,12.00]
+[CE_P3_V_01] [86/100] Elastix 09_to_06_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-3.99,8.27] y[-8.10,25.82] z[-3.94,12.06]
+[CE_P3_V_01] [87/100] Elastix 09_to_07_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-2.00,5.96] y[-8.39,19.60] z[-4.26,8.66]
+[CE_P3_V_01] [88/100] Elastix 09_to_08_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-1.10,2.19] y[-4.69,7.81] z[-1.64,3.98]
+[CE_P3_V_01] [89/100] identity 09_to_09_pair.npy
+[CE_P3_V_01] [90/100] Elastix 09_to_10_pair.npy …
+[CE_P3_V_01]     9.5s  DVF mm-ish range x[-0.86,1.46] y[-3.61,1.52] z[-1.39,1.31]
+[CE_P3_V_01] [91/100] Elastix 10_to_01_pair.npy …
+[CE_P3_V_01]     9.1s  DVF mm-ish range x[-1.42,3.36] y[-2.69,7.85] z[-1.94,5.45]
+[CE_P3_V_01] [92/100] Elastix 10_to_02_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-3.01,7.01] y[-7.14,17.61] z[-4.24,10.85]
+[CE_P3_V_01] [93/100] Elastix 10_to_03_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-4.15,7.52] y[-8.20,24.16] z[-4.15,11.67]
+[CE_P3_V_01] [94/100] Elastix 10_to_04_pair.npy …
+[CE_P3_V_01]     9.7s  DVF mm-ish range x[-4.32,8.36] y[-9.14,28.36] z[-3.53,12.58]
+[CE_P3_V_01] [95/100] Elastix 10_to_05_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-5.11,8.59] y[-10.13,29.71] z[-3.33,12.98]
+[CE_P3_V_01] [96/100] Elastix 10_to_06_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-4.95,8.16] y[-9.67,29.65] z[-3.27,12.25]
+[CE_P3_V_01] [97/100] Elastix 10_to_07_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-2.70,5.95] y[-10.11,23.90] z[-3.87,10.38]
+[CE_P3_V_01] [98/100] Elastix 10_to_08_pair.npy …
+[CE_P3_V_01]     9.2s  DVF mm-ish range x[-2.79,2.91] y[-7.17,12.83] z[-2.03,6.78]
+[CE_P3_V_01] [99/100] Elastix 10_to_09_pair.npy …
+[CE_P3_V_01]     9.3s  DVF mm-ish range x[-1.27,0.99] y[-2.15,3.48] z[-0.66,1.16]
+[CE_P3_V_01] [100/100] identity 10_to_10_pair.npy
+[CE_P3_V_01] DONE in 14.1 min  registered=90 identity=10 skipped=0  → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/data/CE_P3_V_01/all
+All requested scans finished.
+=== QC encoder CE_P3_V_01 Tue Aug 25 11:50:40 AM AEST 2026 ===
+[encoder|elekta] scan=CE_P3_V_01 pairs=100 panels=100 ckpt=crb_enc_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/EncoderCRB/plots/qc_elekta/P3/CE_P3_V_01
+[001/100] 01_to_01  L1=0.171  L1/zero=17135277.39  cos=nan  k=nan
+[002/100] 01_to_02  L1=1.590  L1/zero=1.00  cos=0.06  k=0.10
+[003/100] 01_to_03  L1=2.745  L1/zero=1.01  cos=0.02  k=0.11
+[004/100] 01_to_04  L1=3.229  L1/zero=0.97  cos=0.09  k=0.08
+[005/100] 01_to_05  L1=3.632  L1/zero=0.94  cos=0.23  k=0.11
+[006/100] 01_to_06  L1=3.338  L1/zero=0.89  cos=0.41  k=0.16
+[007/100] 01_to_07  L1=2.104  L1/zero=0.89  cos=0.44  k=0.36
+[008/100] 01_to_08  L1=0.910  L1/zero=1.04  cos=0.38  k=0.61
+[009/100] 01_to_09  L1=0.919  L1/zero=0.91  cos=0.63  k=0.28
+[010/100] 01_to_10  L1=1.078  L1/zero=0.85  cos=0.71  k=0.26
+[011/100] 02_to_01  L1=1.561  L1/zero=1.03  cos=-0.17  k=0.06
+[012/100] 02_to_02  L1=0.098  L1/zero=9770155.70  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.703  L1/zero=1.00  cos=0.06  k=0.13
+[014/100] 02_to_04  L1=1.196  L1/zero=0.98  cos=0.16  k=0.12
+[015/100] 02_to_05  L1=1.527  L1/zero=0.92  cos=0.32  k=0.24
+[016/100] 02_to_06  L1=1.493  L1/zero=0.92  cos=0.41  k=0.38
+[017/100] 02_to_07  L1=1.119  L1/zero=1.12  cos=0.36  k=0.65
+[018/100] 02_to_08  L1=1.618  L1/zero=1.01  cos=-0.03  k=0.13
+[019/100] 02_to_09  L1=2.724  L1/zero=0.96  cos=0.59  k=0.08
+[020/100] 02_to_10  L1=3.187  L1/zero=0.94  cos=0.60  k=0.09
+[021/100] 03_to_01  L1=2.468  L1/zero=0.99  cos=0.19  k=0.03
+[022/100] 03_to_02  L1=0.684  L1/zero=0.98  cos=0.02  k=0.08
+[023/100] 03_to_03  L1=0.036  L1/zero=3623581.68  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.425  L1/zero=0.98  cos=0.30  k=0.29
+[025/100] 03_to_05  L1=0.774  L1/zero=0.99  cos=0.31  k=0.36
+[026/100] 03_to_06  L1=0.902  L1/zero=0.94  cos=0.40  k=0.53
+[027/100] 03_to_07  L1=1.085  L1/zero=1.08  cos=-0.01  k=0.40
+[028/100] 03_to_08  L1=2.210  L1/zero=1.00  cos=0.08  k=0.07
+[029/100] 03_to_09  L1=4.112  L1/zero=1.00  cos=0.05  k=0.03
+[030/100] 03_to_10  L1=4.496  L1/zero=0.99  cos=0.17  k=0.04
+[031/100] 04_to_01  L1=3.081  L1/zero=0.99  cos=0.08  k=0.05
+[032/100] 04_to_02  L1=1.157  L1/zero=0.98  cos=0.06  k=0.09
+[033/100] 04_to_03  L1=0.427  L1/zero=1.01  cos=-0.06  k=0.18
+[034/100] 04_to_04  L1=0.108  L1/zero=10812655.09  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.335  L1/zero=1.04  cos=0.30  k=0.67
+[036/100] 04_to_06  L1=0.501  L1/zero=1.04  cos=0.27  k=0.67
+[037/100] 04_to_07  L1=1.076  L1/zero=1.03  cos=0.09  k=0.27
+[038/100] 04_to_08  L1=2.641  L1/zero=0.99  cos=0.16  k=0.10
+[039/100] 04_to_09  L1=4.711  L1/zero=1.01  cos=-0.38  k=0.03
+[040/100] 04_to_10  L1=5.693  L1/zero=1.00  cos=-0.16  k=0.02
+[041/100] 05_to_01  L1=3.418  L1/zero=0.97  cos=0.15  k=0.06
+[042/100] 05_to_02  L1=1.459  L1/zero=0.97  cos=0.11  k=0.10
+[043/100] 05_to_03  L1=0.734  L1/zero=0.98  cos=-0.07  k=0.14
+[044/100] 05_to_04  L1=0.378  L1/zero=1.16  cos=-0.23  k=0.38
+[045/100] 05_to_05  L1=0.122  L1/zero=12210108.34  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.277  L1/zero=1.17  cos=0.09  k=0.74
+[047/100] 05_to_07  L1=1.084  L1/zero=1.04  cos=0.16  k=0.30
+[048/100] 05_to_08  L1=2.948  L1/zero=1.00  cos=0.09  k=0.08
+[049/100] 05_to_09  L1=5.302  L1/zero=1.01  cos=-0.51  k=0.02
+[050/100] 05_to_10  L1=6.131  L1/zero=1.01  cos=-0.73  k=0.02
+[051/100] 06_to_01  L1=3.362  L1/zero=0.96  cos=0.16  k=0.08
+[052/100] 06_to_02  L1=1.516  L1/zero=0.97  cos=0.03  k=0.11
+[053/100] 06_to_03  L1=0.908  L1/zero=1.02  cos=-0.18  k=0.17
+[054/100] 06_to_04  L1=0.567  L1/zero=1.17  cos=-0.28  k=0.36
+[055/100] 06_to_05  L1=0.311  L1/zero=1.24  cos=-0.10  k=0.74
+[056/100] 06_to_06  L1=0.169  L1/zero=16928866.51  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.941  L1/zero=1.06  cos=-0.21  k=0.16
+[058/100] 06_to_08  L1=2.851  L1/zero=1.01  cos=-0.24  k=0.03
+[059/100] 06_to_09  L1=5.193  L1/zero=1.01  cos=-0.74  k=0.02
+[060/100] 06_to_10  L1=6.119  L1/zero=1.02  cos=-0.86  k=0.02
+[061/100] 07_to_01  L1=2.189  L1/zero=0.97  cos=-0.03  k=0.10
+[062/100] 07_to_02  L1=1.041  L1/zero=1.05  cos=-0.14  k=0.22
+[063/100] 07_to_03  L1=1.037  L1/zero=1.03  cos=-0.00  k=0.23
+[064/100] 07_to_04  L1=1.120  L1/zero=1.03  cos=0.10  k=0.22
+[065/100] 07_to_05  L1=1.177  L1/zero=1.02  cos=0.14  k=0.20
+[066/100] 07_to_06  L1=0.972  L1/zero=1.04  cos=0.18  k=0.32
+[067/100] 07_to_07  L1=0.128  L1/zero=12763608.99  cos=nan  k=nan
+[068/100] 07_to_08  L1=1.504  L1/zero=1.00  cos=-0.02  k=0.03
+[069/100] 07_to_09  L1=3.381  L1/zero=1.01  cos=-0.47  k=0.02
+[070/100] 07_to_10  L1=4.095  L1/zero=1.02  cos=-0.82  k=0.03
+[071/100] 08_to_01  L1=0.905  L1/zero=1.02  cos=-0.12  k=0.22
+[072/100] 08_to_02  L1=1.643  L1/zero=0.99  cos=0.24  k=0.17
+[073/100] 08_to_03  L1=2.344  L1/zero=0.99  cos=0.25  k=0.10
+[074/100] 08_to_04  L1=2.886  L1/zero=0.99  cos=0.21  k=0.10
+[075/100] 08_to_05  L1=3.198  L1/zero=0.99  cos=0.13  k=0.11
+[076/100] 08_to_06  L1=2.976  L1/zero=0.98  cos=0.16  k=0.12
+[077/100] 08_to_07  L1=1.518  L1/zero=0.97  cos=0.20  k=0.23
+[078/100] 08_to_08  L1=0.126  L1/zero=12568399.31  cos=nan  k=nan
+[079/100] 08_to_09  L1=1.341  L1/zero=0.97  cos=0.42  k=0.06
+[080/100] 08_to_10  L1=2.138  L1/zero=1.03  cos=-0.74  k=0.05
+[081/100] 09_to_01  L1=1.034  L1/zero=1.00  cos=0.17  k=0.20
+[082/100] 09_to_02  L1=3.088  L1/zero=0.99  cos=0.21  k=0.11
+[083/100] 09_to_03  L1=4.353  L1/zero=0.99  cos=0.09  k=0.07
+[084/100] 09_to_04  L1=4.981  L1/zero=0.98  cos=0.09  k=0.07
+[085/100] 09_to_05  L1=5.331  L1/zero=0.98  cos=0.02  k=0.05
+[086/100] 09_to_06  L1=5.310  L1/zero=0.98  cos=0.09  k=0.05
+[087/100] 09_to_07  L1=3.426  L1/zero=0.96  cos=0.24  k=0.10
+[088/100] 09_to_08  L1=1.426  L1/zero=1.01  cos=-0.05  k=0.17
+[089/100] 09_to_09  L1=0.169  L1/zero=16902564.47  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.480  L1/zero=0.90  cos=0.45  k=0.25
+[091/100] 10_to_01  L1=1.429  L1/zero=1.04  cos=0.44  k=0.55
+[092/100] 10_to_02  L1=3.538  L1/zero=0.95  cos=0.40  k=0.19
+[093/100] 10_to_03  L1=4.817  L1/zero=0.95  cos=0.27  k=0.12
+[094/100] 10_to_04  L1=5.507  L1/zero=0.95  cos=0.20  k=0.10
+[095/100] 10_to_05  L1=5.918  L1/zero=0.95  cos=0.18  k=0.09
+[096/100] 10_to_06  L1=5.680  L1/zero=0.93  cos=0.41  k=0.11
+[097/100] 10_to_07  L1=3.982  L1/zero=0.91  cos=0.49  k=0.14
+[098/100] 10_to_08  L1=2.081  L1/zero=0.95  cos=0.22  k=0.18
+[099/100] 10_to_09  L1=0.762  L1/zero=1.44  cos=-0.58  k=0.59
+[100/100] 10_to_10  L1=0.395  L1/zero=39483845.23  cos=nan  k=nan
+
+[encoder|elekta] Directed mean: L1=2.373  L1/zero=1.00  cos=0.08  k=0.19  beat_zero=58%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/EncoderCRB/plots/qc_elekta/P3/CE_P3_V_01 (100 pngs)
+=== QC decoder CE_P3_V_01 Tue Aug 25 11:51:29 AM AEST 2026 ===
+[decoder|elekta] scan=CE_P3_V_01 pairs=100 panels=100 ckpt=crb_dec_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/DecoderCRB/plots/qc_elekta/P3/CE_P3_V_01
+[001/100] 01_to_01  L1=0.020  L1/zero=2045965.75  cos=nan  k=nan
+[002/100] 01_to_02  L1=1.613  L1/zero=1.01  cos=-0.40  k=0.02
+[003/100] 01_to_03  L1=2.793  L1/zero=1.02  cos=-0.31  k=0.04
+[004/100] 01_to_04  L1=3.407  L1/zero=1.03  cos=-0.20  k=0.06
+[005/100] 01_to_05  L1=3.958  L1/zero=1.02  cos=-0.16  k=0.06
+[006/100] 01_to_06  L1=3.750  L1/zero=1.00  cos=0.01  k=0.06
+[007/100] 01_to_07  L1=2.261  L1/zero=0.96  cos=0.24  k=0.09
+[008/100] 01_to_08  L1=0.805  L1/zero=0.92  cos=0.42  k=0.24
+[009/100] 01_to_09  L1=1.074  L1/zero=1.06  cos=-0.31  k=0.18
+[010/100] 01_to_10  L1=1.355  L1/zero=1.06  cos=-0.56  k=0.09
+[011/100] 02_to_01  L1=1.547  L1/zero=1.02  cos=-0.52  k=0.03
+[012/100] 02_to_02  L1=0.014  L1/zero=1442823.93  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.722  L1/zero=1.03  cos=-0.34  k=0.07
+[014/100] 02_to_04  L1=1.292  L1/zero=1.06  cos=-0.37  k=0.09
+[015/100] 02_to_05  L1=1.742  L1/zero=1.06  cos=-0.30  k=0.10
+[016/100] 02_to_06  L1=1.644  L1/zero=1.01  cos=-0.07  k=0.10
+[017/100] 02_to_07  L1=0.967  L1/zero=0.97  cos=0.22  k=0.17
+[018/100] 02_to_08  L1=1.627  L1/zero=1.02  cos=-0.13  k=0.12
+[019/100] 02_to_09  L1=2.911  L1/zero=1.03  cos=-0.46  k=0.05
+[020/100] 02_to_10  L1=3.443  L1/zero=1.02  cos=-0.53  k=0.03
+[021/100] 03_to_01  L1=2.527  L1/zero=1.01  cos=-0.30  k=0.03
+[022/100] 03_to_02  L1=0.737  L1/zero=1.06  cos=-0.43  k=0.08
+[023/100] 03_to_03  L1=0.026  L1/zero=2629968.34  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.446  L1/zero=1.03  cos=-0.31  k=0.11
+[025/100] 03_to_05  L1=0.796  L1/zero=1.02  cos=-0.25  k=0.08
+[026/100] 03_to_06  L1=0.951  L1/zero=0.99  cos=0.07  k=0.09
+[027/100] 03_to_07  L1=1.017  L1/zero=1.01  cos=-0.01  k=0.13
+[028/100] 03_to_08  L1=2.250  L1/zero=1.02  cos=-0.26  k=0.05
+[029/100] 03_to_09  L1=4.171  L1/zero=1.01  cos=-0.30  k=0.02
+[030/100] 03_to_10  L1=4.597  L1/zero=1.01  cos=-0.30  k=0.02
+[031/100] 04_to_01  L1=3.168  L1/zero=1.01  cos=-0.28  k=0.04
+[032/100] 04_to_02  L1=1.233  L1/zero=1.04  cos=-0.35  k=0.08
+[033/100] 04_to_03  L1=0.471  L1/zero=1.11  cos=-0.48  k=0.20
+[034/100] 04_to_04  L1=0.033  L1/zero=3250205.52  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.315  L1/zero=0.98  cos=0.17  k=0.14
+[036/100] 04_to_06  L1=0.467  L1/zero=0.97  cos=0.21  k=0.15
+[037/100] 04_to_07  L1=1.087  L1/zero=1.04  cos=-0.41  k=0.09
+[038/100] 04_to_08  L1=2.690  L1/zero=1.01  cos=-0.35  k=0.03
+[039/100] 04_to_09  L1=4.707  L1/zero=1.01  cos=-0.32  k=0.02
+[040/100] 04_to_10  L1=5.697  L1/zero=1.00  cos=-0.11  k=0.02
+[041/100] 05_to_01  L1=3.590  L1/zero=1.02  cos=-0.34  k=0.05
+[042/100] 05_to_02  L1=1.590  L1/zero=1.05  cos=-0.37  k=0.10
+[043/100] 05_to_03  L1=0.819  L1/zero=1.09  cos=-0.46  k=0.17
+[044/100] 05_to_04  L1=0.358  L1/zero=1.09  cos=-0.38  k=0.22
+[045/100] 05_to_05  L1=0.020  L1/zero=2038629.35  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.236  L1/zero=1.00  cos=0.10  k=0.20
+[047/100] 05_to_07  L1=1.074  L1/zero=1.04  cos=-0.60  k=0.06
+[048/100] 05_to_08  L1=2.987  L1/zero=1.01  cos=-0.50  k=0.02
+[049/100] 05_to_09  L1=5.259  L1/zero=1.00  cos=-0.13  k=0.02
+[050/100] 05_to_10  L1=6.051  L1/zero=1.00  cos=-0.00  k=0.03
+[051/100] 06_to_01  L1=3.566  L1/zero=1.02  cos=-0.39  k=0.05
+[052/100] 06_to_02  L1=1.652  L1/zero=1.06  cos=-0.38  k=0.11
+[053/100] 06_to_03  L1=0.962  L1/zero=1.09  cos=-0.39  k=0.16
+[054/100] 06_to_04  L1=0.519  L1/zero=1.07  cos=-0.29  k=0.21
+[055/100] 06_to_05  L1=0.259  L1/zero=1.04  cos=-0.12  k=0.19
+[056/100] 06_to_06  L1=0.018  L1/zero=1799760.01  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.924  L1/zero=1.04  cos=-0.62  k=0.06
+[058/100] 06_to_08  L1=2.862  L1/zero=1.01  cos=-0.48  k=0.03
+[059/100] 06_to_09  L1=5.123  L1/zero=1.00  cos=-0.11  k=0.02
+[060/100] 06_to_10  L1=5.989  L1/zero=0.99  cos=0.07  k=0.03
+[061/100] 07_to_01  L1=2.334  L1/zero=1.03  cos=-0.41  k=0.08
+[062/100] 07_to_02  L1=0.994  L1/zero=1.00  cos=-0.05  k=0.15
+[063/100] 07_to_03  L1=0.996  L1/zero=0.99  cos=0.07  k=0.11
+[064/100] 07_to_04  L1=1.111  L1/zero=1.02  cos=-0.31  k=0.07
+[065/100] 07_to_05  L1=1.191  L1/zero=1.03  cos=-0.54  k=0.07
+[066/100] 07_to_06  L1=0.978  L1/zero=1.05  cos=-0.63  k=0.08
+[067/100] 07_to_07  L1=0.015  L1/zero=1459292.88  cos=nan  k=nan
+[068/100] 07_to_08  L1=1.521  L1/zero=1.01  cos=-0.47  k=0.03
+[069/100] 07_to_09  L1=3.352  L1/zero=1.00  cos=-0.27  k=0.03
+[070/100] 07_to_10  L1=3.979  L1/zero=0.99  cos=-0.05  k=0.04
+[071/100] 08_to_01  L1=0.884  L1/zero=1.00  cos=0.01  k=0.12
+[072/100] 08_to_02  L1=1.664  L1/zero=1.00  cos=-0.11  k=0.06
+[073/100] 08_to_03  L1=2.441  L1/zero=1.03  cos=-0.59  k=0.05
+[074/100] 08_to_04  L1=3.012  L1/zero=1.03  cos=-0.59  k=0.05
+[075/100] 08_to_05  L1=3.315  L1/zero=1.02  cos=-0.53  k=0.05
+[076/100] 08_to_06  L1=3.118  L1/zero=1.03  cos=-0.54  k=0.06
+[077/100] 08_to_07  L1=1.615  L1/zero=1.03  cos=-0.65  k=0.05
+[078/100] 08_to_08  L1=0.010  L1/zero=961664.04  cos=nan  k=nan
+[079/100] 08_to_09  L1=1.385  L1/zero=1.00  cos=-0.28  k=0.04
+[080/100] 08_to_10  L1=2.052  L1/zero=0.99  cos=-0.06  k=0.06
+[081/100] 09_to_01  L1=1.038  L1/zero=1.00  cos=-0.14  k=0.06
+[082/100] 09_to_02  L1=3.196  L1/zero=1.02  cos=-0.67  k=0.03
+[083/100] 09_to_03  L1=4.518  L1/zero=1.03  cos=-0.68  k=0.04
+[084/100] 09_to_04  L1=5.147  L1/zero=1.02  cos=-0.50  k=0.04
+[085/100] 09_to_05  L1=5.450  L1/zero=1.01  cos=-0.33  k=0.04
+[086/100] 09_to_06  L1=5.399  L1/zero=1.00  cos=-0.24  k=0.04
+[087/100] 09_to_07  L1=3.625  L1/zero=1.01  cos=-0.48  k=0.04
+[088/100] 09_to_08  L1=1.443  L1/zero=1.02  cos=-0.60  k=0.03
+[089/100] 09_to_09  L1=0.012  L1/zero=1240917.67  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.526  L1/zero=0.99  cos=0.06  k=0.09
+[091/100] 10_to_01  L1=1.397  L1/zero=1.02  cos=-0.41  k=0.04
+[092/100] 10_to_02  L1=3.845  L1/zero=1.03  cos=-0.68  k=0.04
+[093/100] 10_to_03  L1=5.179  L1/zero=1.02  cos=-0.53  k=0.04
+[094/100] 10_to_04  L1=5.825  L1/zero=1.00  cos=-0.26  k=0.04
+[095/100] 10_to_05  L1=6.182  L1/zero=1.00  cos=-0.12  k=0.04
+[096/100] 10_to_06  L1=6.044  L1/zero=0.99  cos=-0.01  k=0.05
+[097/100] 10_to_07  L1=4.393  L1/zero=1.00  cos=-0.24  k=0.05
+[098/100] 10_to_08  L1=2.199  L1/zero=1.00  cos=-0.24  k=0.06
+[099/100] 10_to_09  L1=0.534  L1/zero=1.01  cos=-0.17  k=0.09
+[100/100] 10_to_10  L1=0.015  L1/zero=1540202.93  cos=nan  k=nan
+
+[decoder|elekta] Directed mean: L1=2.444  L1/zero=1.02  cos=-0.28  k=0.08  beat_zero=20%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/DecoderCRB/plots/qc_elekta/P3/CE_P3_V_01 (100 pngs)
+=== PREP CE_P4_V_01 (have 0 pairs) Tue Aug 25 11:52:19 AM AEST 2026 ===
+=== Elastix CE_P4_V_01 ===
+Clinical DVF scans=['CE_P4_V_01']  param=/home/abhishek/Voxel_GAN/My v1.0/configs/elastix_bspline_masked.txt
+Output: /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/data
+[CE_P4_V_01] vendor=elekta mask pad=+8  voxels=5377044
+[CE_P4_V_01] lung bbox (zyx): [0:212, 0:256, 0:212]
+[CE_P4_V_01]   CT_01: (270, 256, 270) → (212, 256, 212) → (128, 128, 128)
+[CE_P4_V_01]   CT_02: (270, 256, 270) → (212, 256, 212) → (128, 128, 128)
+[CE_P4_V_01]   CT_03: (270, 256, 270) → (212, 256, 212) → (128, 128, 128)
+[CE_P4_V_01]   CT_04: (270, 256, 270) → (212, 256, 212) → (128, 128, 128)
+[CE_P4_V_01]   CT_05: (270, 256, 270) → (212, 256, 212) → (128, 128, 128)
+[CE_P4_V_01]   CT_06: (270, 256, 270) → (212, 256, 212) → (128, 128, 128)
+[CE_P4_V_01]   CT_07: (270, 256, 270) → (212, 256, 212) → (128, 128, 128)
+[CE_P4_V_01]   CT_08: (270, 256, 270) → (212, 256, 212) → (128, 128, 128)
+[CE_P4_V_01]   CT_09: (270, 256, 270) → (212, 256, 212) → (128, 128, 128)
+[CE_P4_V_01]   CT_10: (270, 256, 270) → (212, 256, 212) → (128, 128, 128)
+[CE_P4_V_01]   Mask_Lung → (128, 128, 128), voxels=982529
+[CE_P4_V_01] [1/100] identity 01_to_01_pair.npy
+[CE_P4_V_01] [2/100] Elastix 01_to_02_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-1.48,2.23] y[-1.30,6.15] z[-1.17,2.55]
+[CE_P4_V_01] [3/100] Elastix 01_to_03_pair.npy …
+[CE_P4_V_01]     8.6s  DVF mm-ish range x[-2.35,2.20] y[-1.69,5.76] z[-2.11,4.46]
+[CE_P4_V_01] [4/100] Elastix 01_to_04_pair.npy …
+[CE_P4_V_01]     8.6s  DVF mm-ish range x[-3.00,3.25] y[-2.05,5.29] z[-2.51,6.25]
+[CE_P4_V_01] [5/100] Elastix 01_to_05_pair.npy …
+[CE_P4_V_01]     8.6s  DVF mm-ish range x[-4.02,3.91] y[-2.63,9.14] z[-2.41,6.89]
+[CE_P4_V_01] [6/100] Elastix 01_to_06_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-3.29,4.14] y[-2.99,7.34] z[-4.39,7.44]
+[CE_P4_V_01] [7/100] Elastix 01_to_07_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-2.95,2.37] y[-1.98,5.08] z[-3.10,4.95]
+[CE_P4_V_01] [8/100] Elastix 01_to_08_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-1.56,2.26] y[-1.48,2.08] z[-1.93,3.21]
+[CE_P4_V_01] [9/100] Elastix 01_to_09_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-2.12,2.23] y[-4.80,1.22] z[-2.27,1.85]
+[CE_P4_V_01] [10/100] Elastix 01_to_10_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-1.31,1.47] y[-3.39,0.94] z[-1.10,1.22]
+[CE_P4_V_01] [11/100] Elastix 02_to_01_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-2.78,1.61] y[-4.46,1.06] z[-2.48,1.41]
+[CE_P4_V_01] [12/100] identity 02_to_02_pair.npy
+[CE_P4_V_01] [13/100] Elastix 02_to_03_pair.npy …
+[CE_P4_V_01]     9.1s  DVF mm-ish range x[-1.45,0.88] y[-1.72,1.77] z[-1.00,2.41]
+[CE_P4_V_01] [14/100] Elastix 02_to_04_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-1.80,1.68] y[-1.59,2.69] z[-1.73,3.14]
+[CE_P4_V_01] [15/100] Elastix 02_to_05_pair.npy …
+[CE_P4_V_01]     8.7s  DVF mm-ish range x[-2.15,2.62] y[-1.86,4.09] z[-2.09,4.37]
+[CE_P4_V_01] [16/100] Elastix 02_to_06_pair.npy …
+[CE_P4_V_01]     8.6s  DVF mm-ish range x[-3.23,3.11] y[-2.00,4.31] z[-2.43,5.04]
+[CE_P4_V_01] [17/100] Elastix 02_to_07_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-2.67,2.99] y[-2.70,2.83] z[-2.49,4.91]
+[CE_P4_V_01] [18/100] Elastix 02_to_08_pair.npy …
+[CE_P4_V_01]     8.5s  DVF mm-ish range x[-2.59,3.48] y[-5.45,2.63] z[-3.25,4.45]
+[CE_P4_V_01] [19/100] Elastix 02_to_09_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-3.33,4.17] y[-7.25,2.43] z[-4.42,2.89]
+[CE_P4_V_01] [20/100] Elastix 02_to_10_pair.npy …
+[CE_P4_V_01]     8.6s  DVF mm-ish range x[-2.93,3.52] y[-7.88,1.91] z[-4.94,2.49]
+[CE_P4_V_01] [21/100] Elastix 03_to_01_pair.npy …
+[CE_P4_V_01]     8.7s  DVF mm-ish range x[-2.25,2.88] y[-4.79,1.59] z[-4.19,2.05]
+[CE_P4_V_01] [22/100] Elastix 03_to_02_pair.npy …
+[CE_P4_V_01]     9.4s  DVF mm-ish range x[-0.83,1.84] y[-1.45,2.37] z[-2.17,1.56]
+[CE_P4_V_01] [23/100] identity 03_to_03_pair.npy
+[CE_P4_V_01] [24/100] Elastix 03_to_04_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-0.96,1.06] y[-0.66,1.35] z[-0.96,1.28]
+[CE_P4_V_01] [25/100] Elastix 03_to_05_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-1.70,2.15] y[-0.84,5.16] z[-1.74,2.62]
+[CE_P4_V_01] [26/100] Elastix 03_to_06_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-2.14,2.54] y[-1.21,4.20] z[-1.60,3.14]
+[CE_P4_V_01] [27/100] Elastix 03_to_07_pair.npy …
+[CE_P4_V_01]     8.7s  DVF mm-ish range x[-2.21,3.01] y[-1.97,2.48] z[-2.33,4.04]
+[CE_P4_V_01] [28/100] Elastix 03_to_08_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-2.77,3.09] y[-4.82,2.63] z[-4.38,4.87]
+[CE_P4_V_01] [29/100] Elastix 03_to_09_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-3.05,3.57] y[-6.63,2.90] z[-5.93,4.79]
+[CE_P4_V_01] [30/100] Elastix 03_to_10_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-2.81,3.95] y[-6.77,2.20] z[-5.15,3.10]
+[CE_P4_V_01] [31/100] Elastix 04_to_01_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-2.72,3.20] y[-4.58,2.12] z[-4.97,2.51]
+[CE_P4_V_01] [32/100] Elastix 04_to_02_pair.npy …
+[CE_P4_V_01]     8.7s  DVF mm-ish range x[-1.45,2.96] y[-2.42,1.61] z[-2.88,1.85]
+[CE_P4_V_01] [33/100] Elastix 04_to_03_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-1.00,1.16] y[-1.09,1.17] z[-1.27,0.90]
+[CE_P4_V_01] [34/100] identity 04_to_04_pair.npy
+[CE_P4_V_01] [35/100] Elastix 04_to_05_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-0.96,1.67] y[-0.66,5.03] z[-1.07,2.06]
+[CE_P4_V_01] [36/100] Elastix 04_to_06_pair.npy …
+[CE_P4_V_01]     8.5s  DVF mm-ish range x[-1.48,2.05] y[-1.00,3.07] z[-1.25,2.04]
+[CE_P4_V_01] [37/100] Elastix 04_to_07_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-1.89,2.32] y[-2.71,1.99] z[-2.63,2.88]
+[CE_P4_V_01] [38/100] Elastix 04_to_08_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-2.41,2.60] y[-4.96,2.89] z[-4.11,4.96]
+[CE_P4_V_01] [39/100] Elastix 04_to_09_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-3.05,3.55] y[-6.95,3.56] z[-6.24,6.98]
+[CE_P4_V_01] [40/100] Elastix 04_to_10_pair.npy …
+[CE_P4_V_01]     9.8s  DVF mm-ish range x[-3.17,3.70] y[-7.23,2.10] z[-6.39,3.26]
+[CE_P4_V_01] [41/100] Elastix 05_to_01_pair.npy …
+[CE_P4_V_01]     11.2s  DVF mm-ish range x[-3.14,3.58] y[-7.34,2.39] z[-6.48,2.64]
+[CE_P4_V_01] [42/100] Elastix 05_to_02_pair.npy …
+[CE_P4_V_01]     9.2s  DVF mm-ish range x[-2.22,3.04] y[-3.34,2.00] z[-4.03,2.30]
+[CE_P4_V_01] [43/100] Elastix 05_to_03_pair.npy …
+[CE_P4_V_01]     9.9s  DVF mm-ish range x[-1.79,1.72] y[-3.85,1.07] z[-2.16,1.88]
+[CE_P4_V_01] [44/100] Elastix 05_to_04_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-1.62,1.08] y[-4.43,0.85] z[-1.44,1.25]
+[CE_P4_V_01] [45/100] identity 05_to_05_pair.npy
+[CE_P4_V_01] [46/100] Elastix 05_to_06_pair.npy …
+[CE_P4_V_01]     9.1s  DVF mm-ish range x[-1.06,1.42] y[-2.64,0.89] z[-1.57,0.98]
+[CE_P4_V_01] [47/100] Elastix 05_to_07_pair.npy …
+[CE_P4_V_01]     9.3s  DVF mm-ish range x[-2.06,2.03] y[-5.39,2.07] z[-3.14,2.12]
+[CE_P4_V_01] [48/100] Elastix 05_to_08_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-2.58,2.97] y[-7.82,3.38] z[-4.68,4.03]
+[CE_P4_V_01] [49/100] Elastix 05_to_09_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-3.12,3.56] y[-10.00,4.45] z[-6.40,5.34]
+[CE_P4_V_01] [50/100] Elastix 05_to_10_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-3.51,3.28] y[-9.30,4.24] z[-7.02,5.96]
+[CE_P4_V_01] [51/100] Elastix 06_to_01_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-2.97,2.85] y[-6.26,2.50] z[-7.90,2.71]
+[CE_P4_V_01] [52/100] Elastix 06_to_02_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-3.15,2.95] y[-4.15,2.13] z[-4.87,2.77]
+[CE_P4_V_01] [53/100] Elastix 06_to_03_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-2.36,2.16] y[-2.83,1.15] z[-3.09,2.21]
+[CE_P4_V_01] [54/100] Elastix 06_to_04_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-1.76,1.86] y[-1.86,0.92] z[-1.99,1.97]
+[CE_P4_V_01] [55/100] Elastix 06_to_05_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-1.17,0.95] y[-1.26,3.30] z[-1.03,1.82]
+[CE_P4_V_01] [56/100] identity 06_to_06_pair.npy
+[CE_P4_V_01] [57/100] Elastix 06_to_07_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-2.02,1.73] y[-3.81,1.91] z[-2.71,1.70]
+[CE_P4_V_01] [58/100] Elastix 06_to_08_pair.npy …
+[CE_P4_V_01]     9.5s  DVF mm-ish range x[-2.50,3.28] y[-6.90,2.97] z[-5.23,2.94]
+[CE_P4_V_01] [59/100] Elastix 06_to_09_pair.npy …
+[CE_P4_V_01]     9.3s  DVF mm-ish range x[-3.06,3.83] y[-9.08,4.58] z[-6.56,3.83]
+[CE_P4_V_01] [60/100] Elastix 06_to_10_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-3.70,3.67] y[-8.72,4.60] z[-7.67,4.57]
+[CE_P4_V_01] [61/100] Elastix 07_to_01_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-2.20,2.88] y[-4.71,1.76] z[-4.79,3.89]
+[CE_P4_V_01] [62/100] Elastix 07_to_02_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-2.39,2.08] y[-3.35,2.89] z[-5.07,1.98]
+[CE_P4_V_01] [63/100] Elastix 07_to_03_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-3.05,2.46] y[-2.41,2.85] z[-4.49,3.18]
+[CE_P4_V_01] [64/100] Elastix 07_to_04_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-2.02,1.81] y[-1.70,3.29] z[-3.00,2.69]
+[CE_P4_V_01] [65/100] Elastix 07_to_05_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-1.81,1.97] y[-1.98,6.57] z[-2.75,3.10]
+[CE_P4_V_01] [66/100] Elastix 07_to_06_pair.npy …
+[CE_P4_V_01]     8.7s  DVF mm-ish range x[-1.47,1.87] y[-1.99,4.39] z[-1.78,2.70]
+[CE_P4_V_01] [67/100] identity 07_to_07_pair.npy
+[CE_P4_V_01] [68/100] Elastix 07_to_08_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-1.41,0.99] y[-3.75,1.57] z[-2.72,1.20]
+[CE_P4_V_01] [69/100] Elastix 07_to_09_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-2.44,3.09] y[-6.52,2.45] z[-4.38,1.95]
+[CE_P4_V_01] [70/100] Elastix 07_to_10_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-2.64,3.85] y[-6.67,2.49] z[-5.22,2.88]
+[CE_P4_V_01] [71/100] Elastix 08_to_01_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-2.03,1.64] y[-2.60,1.72] z[-3.05,2.40]
+[CE_P4_V_01] [72/100] Elastix 08_to_02_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-3.03,3.23] y[-2.22,5.89] z[-4.26,4.22]
+[CE_P4_V_01] [73/100] Elastix 08_to_03_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-3.50,2.80] y[-2.65,5.00] z[-5.05,5.32]
+[CE_P4_V_01] [74/100] Elastix 08_to_04_pair.npy …
+[CE_P4_V_01]     9.1s  DVF mm-ish range x[-2.24,2.61] y[-2.67,5.12] z[-4.96,4.25]
+[CE_P4_V_01] [75/100] Elastix 08_to_05_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-3.09,4.09] y[-3.26,8.89] z[-4.21,5.12]
+[CE_P4_V_01] [76/100] Elastix 08_to_06_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-3.17,3.34] y[-2.92,7.25] z[-3.05,5.97]
+[CE_P4_V_01] [77/100] Elastix 08_to_07_pair.npy …
+[CE_P4_V_01]     9.1s  DVF mm-ish range x[-1.13,1.65] y[-1.42,4.51] z[-1.12,2.93]
+[CE_P4_V_01] [78/100] identity 08_to_08_pair.npy
+[CE_P4_V_01] [79/100] Elastix 08_to_09_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-0.87,1.01] y[-3.02,1.22] z[-1.87,0.84]
+[CE_P4_V_01] [80/100] Elastix 08_to_10_pair.npy …
+[CE_P4_V_01]     9.4s  DVF mm-ish range x[-1.45,1.70] y[-3.53,1.57] z[-2.87,1.50]
+[CE_P4_V_01] [81/100] Elastix 09_to_01_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-2.17,2.55] y[-1.13,5.66] z[-1.97,3.03]
+[CE_P4_V_01] [82/100] Elastix 09_to_02_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-3.22,4.20] y[-1.96,9.45] z[-3.09,5.26]
+[CE_P4_V_01] [83/100] Elastix 09_to_03_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-3.72,3.32] y[-2.49,7.64] z[-5.16,6.85]
+[CE_P4_V_01] [84/100] Elastix 09_to_04_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-4.00,3.77] y[-3.67,8.75] z[-6.55,6.40]
+[CE_P4_V_01] [85/100] Elastix 09_to_05_pair.npy …
+[CE_P4_V_01]     8.7s  DVF mm-ish range x[-4.19,4.94] y[-4.58,11.13] z[-4.91,7.13]
+[CE_P4_V_01] [86/100] Elastix 09_to_06_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-4.73,4.08] y[-4.14,10.75] z[-3.50,7.35]
+[CE_P4_V_01] [87/100] Elastix 09_to_07_pair.npy …
+[CE_P4_V_01]     9.1s  DVF mm-ish range x[-3.20,3.39] y[-2.44,7.52] z[-1.95,4.40]
+[CE_P4_V_01] [88/100] Elastix 09_to_08_pair.npy …
+[CE_P4_V_01]     8.7s  DVF mm-ish range x[-1.20,1.36] y[-1.14,3.63] z[-0.70,1.85]
+[CE_P4_V_01] [89/100] identity 09_to_09_pair.npy
+[CE_P4_V_01] [90/100] Elastix 09_to_10_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-1.15,1.13] y[-1.07,0.75] z[-1.37,1.16]
+[CE_P4_V_01] [91/100] Elastix 10_to_01_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-1.68,2.10] y[-0.85,4.34] z[-1.03,1.63]
+[CE_P4_V_01] [92/100] Elastix 10_to_02_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-3.20,3.45] y[-2.05,10.20] z[-2.33,5.26]
+[CE_P4_V_01] [93/100] Elastix 10_to_03_pair.npy …
+[CE_P4_V_01]     9.3s  DVF mm-ish range x[-3.36,3.07] y[-2.08,8.18] z[-2.92,5.88]
+[CE_P4_V_01] [94/100] Elastix 10_to_04_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-3.99,3.48] y[-2.21,9.17] z[-3.34,7.05]
+[CE_P4_V_01] [95/100] Elastix 10_to_05_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-4.25,4.48] y[-4.07,11.89] z[-6.14,8.16]
+[CE_P4_V_01] [96/100] Elastix 10_to_06_pair.npy …
+[CE_P4_V_01]     9.0s  DVF mm-ish range x[-4.45,4.58] y[-4.21,11.52] z[-4.41,8.96]
+[CE_P4_V_01] [97/100] Elastix 10_to_07_pair.npy …
+[CE_P4_V_01]     8.9s  DVF mm-ish range x[-4.25,3.59] y[-2.38,7.60] z[-2.90,5.70]
+[CE_P4_V_01] [98/100] Elastix 10_to_08_pair.npy …
+[CE_P4_V_01]     8.8s  DVF mm-ish range x[-1.93,1.83] y[-1.40,3.81] z[-1.17,2.92]
+[CE_P4_V_01] [99/100] Elastix 10_to_09_pair.npy …
+[CE_P4_V_01]     8.7s  DVF mm-ish range x[-1.52,1.16] y[-0.73,0.99] z[-0.88,1.28]
+[CE_P4_V_01] [100/100] identity 10_to_10_pair.npy
+[CE_P4_V_01] DONE in 13.6 min  registered=90 identity=10 skipped=0  → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/data/CE_P4_V_01/all
+All requested scans finished.
+=== QC encoder CE_P4_V_01 Tue Aug 25 12:05:58 PM AEST 2026 ===
+[encoder|elekta] scan=CE_P4_V_01 pairs=100 panels=100 ckpt=crb_enc_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/EncoderCRB/plots/qc_elekta/P4/CE_P4_V_01
+[001/100] 01_to_01  L1=0.038  L1/zero=3806212.17  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.449  L1/zero=1.00  cos=0.09  k=0.16
+[003/100] 01_to_03  L1=0.808  L1/zero=0.97  cos=0.27  k=0.15
+[004/100] 01_to_04  L1=1.075  L1/zero=0.95  cos=0.38  k=0.18
+[005/100] 01_to_05  L1=1.310  L1/zero=0.95  cos=0.40  k=0.19
+[006/100] 01_to_06  L1=1.467  L1/zero=0.99  cos=0.27  k=0.21
+[007/100] 01_to_07  L1=0.978  L1/zero=0.95  cos=0.32  k=0.30
+[008/100] 01_to_08  L1=0.589  L1/zero=1.02  cos=0.21  k=0.45
+[009/100] 01_to_09  L1=0.504  L1/zero=1.12  cos=0.04  k=0.47
+[010/100] 01_to_10  L1=0.339  L1/zero=1.03  cos=0.15  k=0.39
+[011/100] 02_to_01  L1=0.424  L1/zero=0.98  cos=0.14  k=0.14
+[012/100] 02_to_02  L1=0.026  L1/zero=2611730.81  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.331  L1/zero=0.97  cos=0.24  k=0.24
+[014/100] 02_to_04  L1=0.639  L1/zero=0.96  cos=0.33  k=0.18
+[015/100] 02_to_05  L1=0.928  L1/zero=0.96  cos=0.31  k=0.17
+[016/100] 02_to_06  L1=1.088  L1/zero=0.97  cos=0.26  k=0.18
+[017/100] 02_to_07  L1=0.862  L1/zero=0.97  cos=0.26  k=0.17
+[018/100] 02_to_08  L1=0.813  L1/zero=0.99  cos=0.14  k=0.15
+[019/100] 02_to_09  L1=0.955  L1/zero=0.99  cos=0.23  k=0.13
+[020/100] 02_to_10  L1=0.835  L1/zero=0.97  cos=0.37  k=0.20
+[021/100] 03_to_01  L1=0.737  L1/zero=0.96  cos=0.34  k=0.19
+[022/100] 03_to_02  L1=0.333  L1/zero=0.99  cos=0.15  k=0.22
+[023/100] 03_to_03  L1=0.012  L1/zero=1235087.59  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.279  L1/zero=1.01  cos=0.09  k=0.20
+[025/100] 03_to_05  L1=0.633  L1/zero=1.00  cos=0.13  k=0.13
+[026/100] 03_to_06  L1=0.845  L1/zero=1.00  cos=0.08  k=0.14
+[027/100] 03_to_07  L1=0.891  L1/zero=1.00  cos=0.11  k=0.12
+[028/100] 03_to_08  L1=1.011  L1/zero=0.98  cos=0.23  k=0.09
+[029/100] 03_to_09  L1=1.204  L1/zero=0.98  cos=0.29  k=0.15
+[030/100] 03_to_10  L1=1.097  L1/zero=0.96  cos=0.42  k=0.22
+[031/100] 04_to_01  L1=0.971  L1/zero=0.94  cos=0.39  k=0.23
+[032/100] 04_to_02  L1=0.626  L1/zero=0.99  cos=0.20  k=0.24
+[033/100] 04_to_03  L1=0.274  L1/zero=1.02  cos=0.09  k=0.29
+[034/100] 04_to_04  L1=0.013  L1/zero=1262940.75  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.361  L1/zero=1.01  cos=-0.06  k=0.10
+[036/100] 04_to_06  L1=0.586  L1/zero=1.01  cos=0.02  k=0.11
+[037/100] 04_to_07  L1=0.703  L1/zero=0.99  cos=0.10  k=0.15
+[038/100] 04_to_08  L1=1.022  L1/zero=0.98  cos=0.16  k=0.13
+[039/100] 04_to_09  L1=1.374  L1/zero=0.97  cos=0.35  k=0.18
+[040/100] 04_to_10  L1=1.274  L1/zero=0.96  cos=0.43  k=0.24
+[041/100] 05_to_01  L1=1.232  L1/zero=0.95  cos=0.40  k=0.22
+[042/100] 05_to_02  L1=0.865  L1/zero=0.96  cos=0.31  k=0.24
+[043/100] 05_to_03  L1=0.591  L1/zero=0.98  cos=0.30  k=0.21
+[044/100] 05_to_04  L1=0.328  L1/zero=1.00  cos=0.21  k=0.17
+[045/100] 05_to_05  L1=0.014  L1/zero=1353780.18  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.287  L1/zero=1.02  cos=-0.02  k=0.15
+[047/100] 05_to_07  L1=0.660  L1/zero=0.99  cos=0.15  k=0.18
+[048/100] 05_to_08  L1=1.151  L1/zero=0.99  cos=0.19  k=0.14
+[049/100] 05_to_09  L1=1.502  L1/zero=0.97  cos=0.41  k=0.17
+[050/100] 05_to_10  L1=1.584  L1/zero=0.97  cos=0.40  k=0.21
+[051/100] 06_to_01  L1=1.299  L1/zero=0.95  cos=0.37  k=0.25
+[052/100] 06_to_02  L1=1.006  L1/zero=0.96  cos=0.31  k=0.24
+[053/100] 06_to_03  L1=0.773  L1/zero=0.97  cos=0.28  k=0.19
+[054/100] 06_to_04  L1=0.557  L1/zero=0.99  cos=0.14  k=0.13
+[055/100] 06_to_05  L1=0.285  L1/zero=1.01  cos=-0.01  k=0.15
+[056/100] 06_to_06  L1=0.008  L1/zero=766261.15  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.499  L1/zero=0.99  cos=0.25  k=0.18
+[058/100] 06_to_08  L1=1.029  L1/zero=0.98  cos=0.32  k=0.14
+[059/100] 06_to_09  L1=1.415  L1/zero=0.98  cos=0.38  k=0.17
+[060/100] 06_to_10  L1=1.626  L1/zero=0.99  cos=0.27  k=0.18
+[061/100] 07_to_01  L1=0.934  L1/zero=0.96  cos=0.27  k=0.31
+[062/100] 07_to_02  L1=0.856  L1/zero=0.96  cos=0.27  k=0.22
+[063/100] 07_to_03  L1=0.847  L1/zero=0.97  cos=0.27  k=0.12
+[064/100] 07_to_04  L1=0.717  L1/zero=1.00  cos=0.02  k=0.09
+[065/100] 07_to_05  L1=0.693  L1/zero=1.01  cos=-0.04  k=0.10
+[066/100] 07_to_06  L1=0.527  L1/zero=1.03  cos=0.01  k=0.13
+[067/100] 07_to_07  L1=0.008  L1/zero=827404.30  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.470  L1/zero=0.99  cos=0.25  k=0.13
+[069/100] 07_to_09  L1=0.930  L1/zero=1.00  cos=0.16  k=0.16
+[070/100] 07_to_10  L1=1.138  L1/zero=1.00  cos=0.17  k=0.21
+[071/100] 08_to_01  L1=0.601  L1/zero=1.06  cos=0.07  k=0.39
+[072/100] 08_to_02  L1=0.870  L1/zero=1.00  cos=-0.03  k=0.15
+[073/100] 08_to_03  L1=1.081  L1/zero=1.00  cos=0.01  k=0.06
+[074/100] 08_to_04  L1=1.084  L1/zero=1.00  cos=0.01  k=0.09
+[075/100] 08_to_05  L1=1.248  L1/zero=1.00  cos=0.05  k=0.08
+[076/100] 08_to_06  L1=1.100  L1/zero=0.99  cos=0.29  k=0.09
+[077/100] 08_to_07  L1=0.506  L1/zero=1.01  cos=0.20  k=0.14
+[078/100] 08_to_08  L1=0.014  L1/zero=1378281.23  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.402  L1/zero=1.00  cos=0.15  k=0.17
+[080/100] 08_to_10  L1=0.647  L1/zero=1.00  cos=0.16  k=0.23
+[081/100] 09_to_01  L1=0.480  L1/zero=1.04  cos=0.05  k=0.24
+[082/100] 09_to_02  L1=1.032  L1/zero=1.01  cos=-0.01  k=0.08
+[083/100] 09_to_03  L1=1.289  L1/zero=1.00  cos=0.14  k=0.07
+[084/100] 09_to_04  L1=1.503  L1/zero=0.99  cos=0.23  k=0.09
+[085/100] 09_to_05  L1=1.643  L1/zero=0.98  cos=0.35  k=0.10
+[086/100] 09_to_06  L1=1.541  L1/zero=0.98  cos=0.37  k=0.12
+[087/100] 09_to_07  L1=0.985  L1/zero=0.99  cos=0.27  k=0.11
+[088/100] 09_to_08  L1=0.424  L1/zero=1.02  cos=0.07  k=0.12
+[089/100] 09_to_09  L1=0.013  L1/zero=1330124.77  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.212  L1/zero=0.98  cos=0.21  k=0.33
+[091/100] 10_to_01  L1=0.365  L1/zero=1.07  cos=0.05  k=0.40
+[092/100] 10_to_02  L1=0.941  L1/zero=1.02  cos=0.12  k=0.19
+[093/100] 10_to_03  L1=1.220  L1/zero=0.99  cos=0.26  k=0.16
+[094/100] 10_to_04  L1=1.408  L1/zero=0.97  cos=0.39  k=0.15
+[095/100] 10_to_05  L1=1.749  L1/zero=0.98  cos=0.36  k=0.15
+[096/100] 10_to_06  L1=1.751  L1/zero=0.99  cos=0.34  k=0.17
+[097/100] 10_to_07  L1=1.231  L1/zero=1.00  cos=0.25  k=0.19
+[098/100] 10_to_08  L1=0.662  L1/zero=1.01  cos=0.21  k=0.34
+[099/100] 10_to_09  L1=0.268  L1/zero=1.17  cos=0.11  k=0.83
+[100/100] 10_to_10  L1=0.054  L1/zero=5423874.41  cos=nan  k=nan
+
+[encoder|elekta] Directed mean: L1=0.874  L1/zero=0.99  cos=0.21  k=0.19  beat_zero=66%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/EncoderCRB/plots/qc_elekta/P4/CE_P4_V_01 (100 pngs)
+=== QC decoder CE_P4_V_01 Tue Aug 25 12:06:52 PM AEST 2026 ===
+[decoder|elekta] scan=CE_P4_V_01 pairs=100 panels=100 ckpt=crb_dec_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/DecoderCRB/plots/qc_elekta/P4/CE_P4_V_01
+[001/100] 01_to_01  L1=0.015  L1/zero=1478633.75  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.449  L1/zero=1.00  cos=0.37  k=0.14
+[003/100] 01_to_03  L1=0.821  L1/zero=0.99  cos=0.23  k=0.20
+[004/100] 01_to_04  L1=1.117  L1/zero=0.98  cos=0.21  k=0.21
+[005/100] 01_to_05  L1=1.364  L1/zero=0.99  cos=0.25  k=0.20
+[006/100] 01_to_06  L1=1.456  L1/zero=0.98  cos=0.28  k=0.22
+[007/100] 01_to_07  L1=0.999  L1/zero=0.97  cos=0.26  k=0.28
+[008/100] 01_to_08  L1=0.588  L1/zero=1.02  cos=0.17  k=0.37
+[009/100] 01_to_09  L1=0.464  L1/zero=1.03  cos=0.02  k=0.31
+[010/100] 01_to_10  L1=0.336  L1/zero=1.02  cos=-0.03  k=0.18
+[011/100] 02_to_01  L1=0.428  L1/zero=0.99  cos=0.33  k=0.12
+[012/100] 02_to_02  L1=0.010  L1/zero=957870.20  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.337  L1/zero=0.99  cos=0.12  k=0.27
+[014/100] 02_to_04  L1=0.658  L1/zero=0.99  cos=0.17  k=0.26
+[015/100] 02_to_05  L1=0.936  L1/zero=0.97  cos=0.22  k=0.23
+[016/100] 02_to_06  L1=1.088  L1/zero=0.97  cos=0.22  k=0.22
+[017/100] 02_to_07  L1=0.886  L1/zero=0.99  cos=0.17  k=0.23
+[018/100] 02_to_08  L1=0.812  L1/zero=0.99  cos=0.08  k=0.18
+[019/100] 02_to_09  L1=0.953  L1/zero=0.99  cos=0.14  k=0.11
+[020/100] 02_to_10  L1=0.848  L1/zero=0.98  cos=0.31  k=0.09
+[021/100] 03_to_01  L1=0.737  L1/zero=0.96  cos=0.34  k=0.19
+[022/100] 03_to_02  L1=0.341  L1/zero=1.02  cos=-0.01  k=0.21
+[023/100] 03_to_03  L1=0.008  L1/zero=801247.92  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.274  L1/zero=0.98  cos=0.19  k=0.17
+[025/100] 03_to_05  L1=0.633  L1/zero=1.00  cos=0.17  k=0.14
+[026/100] 03_to_06  L1=0.837  L1/zero=0.99  cos=0.17  k=0.15
+[027/100] 03_to_07  L1=0.888  L1/zero=0.99  cos=0.15  k=0.13
+[028/100] 03_to_08  L1=1.012  L1/zero=0.98  cos=0.21  k=0.11
+[029/100] 03_to_09  L1=1.198  L1/zero=0.98  cos=0.31  k=0.12
+[030/100] 03_to_10  L1=1.095  L1/zero=0.96  cos=0.42  k=0.16
+[031/100] 04_to_01  L1=1.005  L1/zero=0.97  cos=0.25  k=0.23
+[032/100] 04_to_02  L1=0.635  L1/zero=1.01  cos=0.08  k=0.21
+[033/100] 04_to_03  L1=0.274  L1/zero=1.02  cos=0.02  k=0.20
+[034/100] 04_to_04  L1=0.007  L1/zero=684971.69  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.357  L1/zero=1.00  cos=0.03  k=0.08
+[036/100] 04_to_06  L1=0.579  L1/zero=1.00  cos=0.17  k=0.10
+[037/100] 04_to_07  L1=0.703  L1/zero=0.99  cos=0.20  k=0.11
+[038/100] 04_to_08  L1=1.011  L1/zero=0.97  cos=0.35  k=0.12
+[039/100] 04_to_09  L1=1.376  L1/zero=0.97  cos=0.42  k=0.13
+[040/100] 04_to_10  L1=1.292  L1/zero=0.97  cos=0.36  k=0.17
+[041/100] 05_to_01  L1=1.247  L1/zero=0.96  cos=0.35  k=0.25
+[042/100] 05_to_02  L1=0.889  L1/zero=0.99  cos=0.18  k=0.23
+[043/100] 05_to_03  L1=0.605  L1/zero=1.00  cos=0.17  k=0.16
+[044/100] 05_to_04  L1=0.324  L1/zero=0.99  cos=0.25  k=0.12
+[045/100] 05_to_05  L1=0.007  L1/zero=702157.38  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.282  L1/zero=1.00  cos=0.09  k=0.07
+[047/100] 05_to_07  L1=0.658  L1/zero=0.99  cos=0.20  k=0.09
+[048/100] 05_to_08  L1=1.128  L1/zero=0.97  cos=0.48  k=0.13
+[049/100] 05_to_09  L1=1.484  L1/zero=0.96  cos=0.53  k=0.15
+[050/100] 05_to_10  L1=1.566  L1/zero=0.96  cos=0.50  k=0.19
+[051/100] 06_to_01  L1=1.318  L1/zero=0.97  cos=0.30  k=0.22
+[052/100] 06_to_02  L1=1.054  L1/zero=1.00  cos=0.08  k=0.20
+[053/100] 06_to_03  L1=0.805  L1/zero=1.01  cos=0.06  k=0.17
+[054/100] 06_to_04  L1=0.560  L1/zero=1.00  cos=0.10  k=0.14
+[055/100] 06_to_05  L1=0.284  L1/zero=1.01  cos=-0.05  k=0.09
+[056/100] 06_to_06  L1=0.007  L1/zero=716437.26  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.502  L1/zero=1.00  cos=0.18  k=0.08
+[058/100] 06_to_08  L1=1.024  L1/zero=0.98  cos=0.40  k=0.13
+[059/100] 06_to_09  L1=1.400  L1/zero=0.97  cos=0.48  k=0.15
+[060/100] 06_to_10  L1=1.592  L1/zero=0.97  cos=0.43  k=0.18
+[061/100] 07_to_01  L1=0.970  L1/zero=1.00  cos=0.18  k=0.28
+[062/100] 07_to_02  L1=0.917  L1/zero=1.03  cos=0.07  k=0.20
+[063/100] 07_to_03  L1=0.869  L1/zero=1.00  cos=0.13  k=0.14
+[064/100] 07_to_04  L1=0.706  L1/zero=0.98  cos=0.17  k=0.11
+[065/100] 07_to_05  L1=0.684  L1/zero=1.00  cos=0.12  k=0.07
+[066/100] 07_to_06  L1=0.520  L1/zero=1.01  cos=-0.01  k=0.07
+[067/100] 07_to_07  L1=0.008  L1/zero=784213.28  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.473  L1/zero=0.99  cos=0.24  k=0.14
+[069/100] 07_to_09  L1=0.912  L1/zero=0.98  cos=0.34  k=0.17
+[070/100] 07_to_10  L1=1.110  L1/zero=0.98  cos=0.36  k=0.21
+[071/100] 08_to_01  L1=0.582  L1/zero=1.03  cos=0.11  k=0.30
+[072/100] 08_to_02  L1=0.853  L1/zero=0.98  cos=0.13  k=0.14
+[073/100] 08_to_03  L1=1.069  L1/zero=0.99  cos=0.18  k=0.09
+[074/100] 08_to_04  L1=1.080  L1/zero=1.00  cos=0.18  k=0.11
+[075/100] 08_to_05  L1=1.239  L1/zero=1.00  cos=0.29  k=0.11
+[076/100] 08_to_06  L1=1.105  L1/zero=1.00  cos=0.27  k=0.13
+[077/100] 08_to_07  L1=0.524  L1/zero=1.04  cos=-0.01  k=0.14
+[078/100] 08_to_08  L1=0.008  L1/zero=815155.54  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.404  L1/zero=1.01  cos=0.22  k=0.16
+[080/100] 08_to_10  L1=0.644  L1/zero=1.00  cos=0.25  k=0.24
+[081/100] 09_to_01  L1=0.476  L1/zero=1.03  cos=-0.10  k=0.19
+[082/100] 09_to_02  L1=1.011  L1/zero=0.99  cos=0.17  k=0.08
+[083/100] 09_to_03  L1=1.295  L1/zero=1.00  cos=0.11  k=0.10
+[084/100] 09_to_04  L1=1.506  L1/zero=0.99  cos=0.27  k=0.13
+[085/100] 09_to_05  L1=1.643  L1/zero=0.98  cos=0.40  k=0.15
+[086/100] 09_to_06  L1=1.524  L1/zero=0.97  cos=0.42  k=0.17
+[087/100] 09_to_07  L1=0.995  L1/zero=1.00  cos=0.23  k=0.16
+[088/100] 09_to_08  L1=0.430  L1/zero=1.03  cos=0.01  k=0.15
+[089/100] 09_to_09  L1=0.009  L1/zero=852245.56  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.223  L1/zero=1.03  cos=0.08  k=0.29
+[091/100] 10_to_01  L1=0.349  L1/zero=1.03  cos=-0.16  k=0.10
+[092/100] 10_to_02  L1=0.912  L1/zero=0.99  cos=0.32  k=0.08
+[093/100] 10_to_03  L1=1.216  L1/zero=0.98  cos=0.30  k=0.13
+[094/100] 10_to_04  L1=1.416  L1/zero=0.97  cos=0.36  k=0.17
+[095/100] 10_to_05  L1=1.735  L1/zero=0.97  cos=0.43  k=0.18
+[096/100] 10_to_06  L1=1.694  L1/zero=0.96  cos=0.47  k=0.22
+[097/100] 10_to_07  L1=1.216  L1/zero=0.98  cos=0.30  k=0.21
+[098/100] 10_to_08  L1=0.652  L1/zero=1.00  cos=0.22  k=0.23
+[099/100] 10_to_09  L1=0.238  L1/zero=1.04  cos=0.06  k=0.29
+[100/100] 10_to_10  L1=0.009  L1/zero=880706.78  cos=nan  k=nan
+
+[decoder|elekta] Directed mean: L1=0.874  L1/zero=0.99  cos=0.21  k=0.17  beat_zero=71%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/DecoderCRB/plots/qc_elekta/P4/CE_P4_V_01 (100 pngs)
+=== PREP CE_P5_V_01 (have 0 pairs) Tue Aug 25 12:07:47 PM AEST 2026 ===
+=== Elastix CE_P5_V_01 ===
+Clinical DVF scans=['CE_P5_V_01']  param=/home/abhishek/Voxel_GAN/My v1.0/configs/elastix_bspline_masked.txt
+Output: /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/data
+[CE_P5_V_01] vendor=elekta mask pad=+8  voxels=2981979
+[CE_P5_V_01] lung bbox (zyx): [105:270, 0:256, 0:231]
+[CE_P5_V_01]   CT_01: (270, 256, 270) → (165, 256, 231) → (128, 128, 128)
+[CE_P5_V_01]   CT_02: (270, 256, 270) → (165, 256, 231) → (128, 128, 128)
+[CE_P5_V_01]   CT_03: (270, 256, 270) → (165, 256, 231) → (128, 128, 128)
+[CE_P5_V_01]   CT_04: (270, 256, 270) → (165, 256, 231) → (128, 128, 128)
+[CE_P5_V_01]   CT_05: (270, 256, 270) → (165, 256, 231) → (128, 128, 128)
+[CE_P5_V_01]   CT_06: (270, 256, 270) → (165, 256, 231) → (128, 128, 128)
+[CE_P5_V_01]   CT_07: (270, 256, 270) → (165, 256, 231) → (128, 128, 128)
+[CE_P5_V_01]   CT_08: (270, 256, 270) → (165, 256, 231) → (128, 128, 128)
+[CE_P5_V_01]   CT_09: (270, 256, 270) → (165, 256, 231) → (128, 128, 128)
+[CE_P5_V_01]   CT_10: (270, 256, 270) → (165, 256, 231) → (128, 128, 128)
+[CE_P5_V_01]   Mask_Lung → (128, 128, 128), voxels=641018
+[CE_P5_V_01] [1/100] identity 01_to_01_pair.npy
+[CE_P5_V_01] [2/100] Elastix 01_to_02_pair.npy …
+[CE_P5_V_01]     8.9s  DVF mm-ish range x[-1.20,2.24] y[-2.61,6.30] z[-2.12,3.72]
+[CE_P5_V_01] [3/100] Elastix 01_to_03_pair.npy …
+[CE_P5_V_01]     8.8s  DVF mm-ish range x[-2.61,4.33] y[-4.64,11.20] z[-3.14,7.52]
+[CE_P5_V_01] [4/100] Elastix 01_to_04_pair.npy …
+[CE_P5_V_01]     8.9s  DVF mm-ish range x[-4.33,5.43] y[-5.44,13.43] z[-4.12,10.51]
+[CE_P5_V_01] [5/100] Elastix 01_to_05_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-5.50,5.90] y[-5.72,13.77] z[-4.48,11.02]
+[CE_P5_V_01] [6/100] Elastix 01_to_06_pair.npy …
+[CE_P5_V_01]     8.8s  DVF mm-ish range x[-5.85,6.12] y[-5.42,13.35] z[-5.63,11.46]
+[CE_P5_V_01] [7/100] Elastix 01_to_07_pair.npy …
+[CE_P5_V_01]     9.0s  DVF mm-ish range x[-4.24,5.00] y[-4.28,10.95] z[-6.57,10.41]
+[CE_P5_V_01] [8/100] Elastix 01_to_08_pair.npy …
+[CE_P5_V_01]     8.9s  DVF mm-ish range x[-2.79,3.06] y[-2.76,6.66] z[-5.20,9.53]
+[CE_P5_V_01] [9/100] Elastix 01_to_09_pair.npy …
+[CE_P5_V_01]     9.0s  DVF mm-ish range x[-1.03,1.11] y[-1.51,4.16] z[-2.92,2.71]
+[CE_P5_V_01] [10/100] Elastix 01_to_10_pair.npy …
+[CE_P5_V_01]     8.9s  DVF mm-ish range x[-0.75,0.69] y[-0.96,0.69] z[-1.71,1.52]
+[CE_P5_V_01] [11/100] Elastix 02_to_01_pair.npy …
+[CE_P5_V_01]     9.6s  DVF mm-ish range x[-1.58,1.20] y[-3.61,2.75] z[-2.93,2.48]
+[CE_P5_V_01] [12/100] identity 02_to_02_pair.npy
+[CE_P5_V_01] [13/100] Elastix 02_to_03_pair.npy …
+[CE_P5_V_01]     9.3s  DVF mm-ish range x[-1.43,3.13] y[-2.32,5.61] z[-2.52,4.23]
+[CE_P5_V_01] [14/100] Elastix 02_to_04_pair.npy …
+[CE_P5_V_01]     8.8s  DVF mm-ish range x[-2.57,4.00] y[-3.44,7.59] z[-3.66,7.30]
+[CE_P5_V_01] [15/100] Elastix 02_to_05_pair.npy …
+[CE_P5_V_01]     9.0s  DVF mm-ish range x[-3.68,4.86] y[-4.09,8.62] z[-4.25,8.41]
+[CE_P5_V_01] [16/100] Elastix 02_to_06_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-3.93,5.13] y[-4.21,8.02] z[-5.10,9.24]
+[CE_P5_V_01] [17/100] Elastix 02_to_07_pair.npy …
+[CE_P5_V_01]     8.9s  DVF mm-ish range x[-3.08,4.06] y[-3.26,5.08] z[-6.28,10.37]
+[CE_P5_V_01] [18/100] Elastix 02_to_08_pair.npy …
+[CE_P5_V_01]     9.0s  DVF mm-ish range x[-2.58,3.25] y[-2.09,2.93] z[-6.23,11.31]
+[CE_P5_V_01] [19/100] Elastix 02_to_09_pair.npy …
+[CE_P5_V_01]     9.3s  DVF mm-ish range x[-1.58,1.78] y[-2.97,2.00] z[-4.46,5.34]
+[CE_P5_V_01] [20/100] Elastix 02_to_10_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-1.88,1.53] y[-4.51,3.32] z[-3.34,3.49]
+[CE_P5_V_01] [21/100] Elastix 03_to_01_pair.npy …
+[CE_P5_V_01]     8.9s  DVF mm-ish range x[-3.83,1.84] y[-7.45,4.65] z[-8.48,4.99]
+[CE_P5_V_01] [22/100] Elastix 03_to_02_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-1.53,1.30] y[-3.70,2.56] z[-3.37,2.53]
+[CE_P5_V_01] [23/100] identity 03_to_03_pair.npy
+[CE_P5_V_01] [24/100] Elastix 03_to_04_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-1.26,2.02] y[-1.62,3.29] z[-2.40,3.11]
+[CE_P5_V_01] [25/100] Elastix 03_to_05_pair.npy …
+[CE_P5_V_01]     9.3s  DVF mm-ish range x[-1.55,2.91] y[-2.76,4.09] z[-3.46,4.55]
+[CE_P5_V_01] [26/100] Elastix 03_to_06_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-2.08,2.67] y[-2.95,4.08] z[-4.11,6.87]
+[CE_P5_V_01] [27/100] Elastix 03_to_07_pair.npy …
+[CE_P5_V_01]     9.3s  DVF mm-ish range x[-2.40,2.71] y[-2.01,1.90] z[-6.01,9.75]
+[CE_P5_V_01] [28/100] Elastix 03_to_08_pair.npy …
+[CE_P5_V_01]     8.9s  DVF mm-ish range x[-2.78,3.66] y[-3.86,2.72] z[-6.92,11.36]
+[CE_P5_V_01] [29/100] Elastix 03_to_09_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-3.42,2.81] y[-5.97,3.99] z[-6.72,8.78]
+[CE_P5_V_01] [30/100] Elastix 03_to_10_pair.npy …
+[CE_P5_V_01]     9.4s  DVF mm-ish range x[-4.15,2.27] y[-7.99,4.64] z[-8.70,7.24]
+[CE_P5_V_01] [31/100] Elastix 04_to_01_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-4.93,2.77] y[-8.77,5.48] z[-10.85,8.81]
+[CE_P5_V_01] [32/100] Elastix 04_to_02_pair.npy …
+[CE_P5_V_01]     9.3s  DVF mm-ish range x[-3.04,1.87] y[-5.62,3.56] z[-6.65,4.95]
+[CE_P5_V_01] [33/100] Elastix 04_to_03_pair.npy …
+[CE_P5_V_01]     8.9s  DVF mm-ish range x[-0.87,1.03] y[-2.20,1.56] z[-2.75,2.62]
+[CE_P5_V_01] [34/100] identity 04_to_04_pair.npy
+[CE_P5_V_01] [35/100] Elastix 04_to_05_pair.npy …
+[CE_P5_V_01]     9.0s  DVF mm-ish range x[-0.83,1.71] y[-0.93,2.08] z[-1.94,2.91]
+[CE_P5_V_01] [36/100] Elastix 04_to_06_pair.npy …
+[CE_P5_V_01]     8.9s  DVF mm-ish range x[-1.47,1.84] y[-1.45,1.92] z[-3.22,5.31]
+[CE_P5_V_01] [37/100] Elastix 04_to_07_pair.npy …
+[CE_P5_V_01]     9.4s  DVF mm-ish range x[-2.11,2.12] y[-2.51,2.06] z[-6.13,8.89]
+[CE_P5_V_01] [38/100] Elastix 04_to_08_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-2.68,3.41] y[-5.25,4.18] z[-7.21,11.56]
+[CE_P5_V_01] [39/100] Elastix 04_to_09_pair.npy …
+[CE_P5_V_01]     9.3s  DVF mm-ish range x[-4.41,3.66] y[-8.01,5.20] z[-9.23,11.53]
+[CE_P5_V_01] [40/100] Elastix 04_to_10_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-4.91,3.06] y[-9.85,5.73] z[-10.42,9.29]
+[CE_P5_V_01] [41/100] Elastix 05_to_01_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-5.65,3.27] y[-9.87,5.91] z[-11.47,11.45]
+[CE_P5_V_01] [42/100] Elastix 05_to_02_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-4.06,2.57] y[-6.52,4.19] z[-8.41,7.68]
+[CE_P5_V_01] [43/100] Elastix 05_to_03_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-1.41,1.76] y[-3.35,2.45] z[-4.39,4.27]
+[CE_P5_V_01] [44/100] Elastix 05_to_04_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-0.96,1.27] y[-1.43,0.99] z[-2.40,1.85]
+[CE_P5_V_01] [45/100] identity 05_to_05_pair.npy
+[CE_P5_V_01] [46/100] Elastix 05_to_06_pair.npy …
+[CE_P5_V_01]     9.7s  DVF mm-ish range x[-1.03,1.36] y[-0.62,1.04] z[-2.31,3.15]
+[CE_P5_V_01] [47/100] Elastix 05_to_07_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-1.84,2.16] y[-2.96,1.88] z[-5.02,7.15]
+[CE_P5_V_01] [48/100] Elastix 05_to_08_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-3.13,3.66] y[-5.93,4.73] z[-7.09,11.29]
+[CE_P5_V_01] [49/100] Elastix 05_to_09_pair.npy …
+[CE_P5_V_01]     9.0s  DVF mm-ish range x[-4.82,4.09] y[-8.60,5.80] z[-10.00,13.40]
+[CE_P5_V_01] [50/100] Elastix 05_to_10_pair.npy …
+[CE_P5_V_01]     8.9s  DVF mm-ish range x[-5.55,5.02] y[-10.55,6.20] z[-11.64,12.28]
+[CE_P5_V_01] [51/100] Elastix 06_to_01_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-6.06,5.18] y[-9.40,5.54] z[-12.45,12.29]
+[CE_P5_V_01] [52/100] Elastix 06_to_02_pair.npy …
+[CE_P5_V_01]     9.3s  DVF mm-ish range x[-4.24,2.95] y[-6.17,3.99] z[-8.94,6.37]
+[CE_P5_V_01] [53/100] Elastix 06_to_03_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-1.62,2.19] y[-3.07,2.35] z[-4.84,4.41]
+[CE_P5_V_01] [54/100] Elastix 06_to_04_pair.npy …
+[CE_P5_V_01]     9.5s  DVF mm-ish range x[-1.05,1.81] y[-1.49,1.70] z[-3.36,2.09]
+[CE_P5_V_01] [55/100] Elastix 06_to_05_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-0.69,1.92] y[-0.76,2.04] z[-2.31,1.26]
+[CE_P5_V_01] [56/100] identity 06_to_06_pair.npy
+[CE_P5_V_01] [57/100] Elastix 06_to_07_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-1.05,1.59] y[-2.77,1.71] z[-3.81,3.99]
+[CE_P5_V_01] [58/100] Elastix 06_to_08_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-2.87,3.85] y[-6.33,4.50] z[-5.74,9.26]
+[CE_P5_V_01] [59/100] Elastix 06_to_09_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-4.50,3.94] y[-8.26,5.64] z[-9.52,11.79]
+[CE_P5_V_01] [60/100] Elastix 06_to_10_pair.npy …
+[CE_P5_V_01]     9.0s  DVF mm-ish range x[-5.33,4.96] y[-10.47,5.92] z[-11.00,11.50]
+[CE_P5_V_01] [61/100] Elastix 07_to_01_pair.npy …
+[CE_P5_V_01]     9.0s  DVF mm-ish range x[-5.14,4.05] y[-7.60,4.64] z[-10.71,9.83]
+[CE_P5_V_01] [62/100] Elastix 07_to_02_pair.npy …
+[CE_P5_V_01]     9.0s  DVF mm-ish range x[-2.36,4.16] y[-4.06,2.73] z[-5.99,7.52]
+[CE_P5_V_01] [63/100] Elastix 07_to_03_pair.npy …
+[CE_P5_V_01]     9.3s  DVF mm-ish range x[-1.75,2.96] y[-1.89,3.03] z[-4.44,4.57]
+[CE_P5_V_01] [64/100] Elastix 07_to_04_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-1.62,3.12] y[-1.68,4.69] z[-4.11,3.56]
+[CE_P5_V_01] [65/100] Elastix 07_to_05_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-1.50,3.38] y[-2.27,5.29] z[-3.06,3.08]
+[CE_P5_V_01] [66/100] Elastix 07_to_06_pair.npy …
+[CE_P5_V_01]     9.0s  DVF mm-ish range x[-0.97,2.38] y[-2.04,4.65] z[-2.48,2.69]
+[CE_P5_V_01] [67/100] identity 07_to_07_pair.npy
+[CE_P5_V_01] [68/100] Elastix 07_to_08_pair.npy …
+[CE_P5_V_01]     8.9s  DVF mm-ish range x[-1.63,1.79] y[-4.14,2.50] z[-3.10,4.60]
+[CE_P5_V_01] [69/100] Elastix 07_to_09_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-3.55,3.91] y[-6.10,4.34] z[-7.52,8.55]
+[CE_P5_V_01] [70/100] Elastix 07_to_10_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-4.56,3.79] y[-7.88,4.68] z[-10.29,10.76]
+[CE_P5_V_01] [71/100] Elastix 08_to_01_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-2.41,2.97] y[-5.71,2.77] z[-6.22,7.60]
+[CE_P5_V_01] [72/100] Elastix 08_to_02_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-2.26,3.23] y[-3.00,2.09] z[-4.89,9.60]
+[CE_P5_V_01] [73/100] Elastix 08_to_03_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-3.09,3.35] y[-2.48,5.28] z[-5.58,9.32]
+[CE_P5_V_01] [74/100] Elastix 08_to_04_pair.npy …
+[CE_P5_V_01]     9.3s  DVF mm-ish range x[-4.34,4.15] y[-3.62,6.95] z[-4.87,8.20]
+[CE_P5_V_01] [75/100] Elastix 08_to_05_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-4.97,4.53] y[-4.27,8.03] z[-4.81,8.29]
+[CE_P5_V_01] [76/100] Elastix 08_to_06_pair.npy …
+[CE_P5_V_01]     9.4s  DVF mm-ish range x[-4.94,4.18] y[-4.35,8.49] z[-4.66,7.21]
+[CE_P5_V_01] [77/100] Elastix 08_to_07_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-1.09,2.69] y[-2.55,5.34] z[-3.12,3.98]
+[CE_P5_V_01] [78/100] identity 08_to_08_pair.npy
+[CE_P5_V_01] [79/100] Elastix 08_to_09_pair.npy …
+[CE_P5_V_01]     9.6s  DVF mm-ish range x[-1.74,1.68] y[-3.49,2.22] z[-2.96,3.91]
+[CE_P5_V_01] [80/100] Elastix 08_to_10_pair.npy …
+[CE_P5_V_01]     9.5s  DVF mm-ish range x[-2.62,2.78] y[-6.00,3.03] z[-5.98,6.37]
+[CE_P5_V_01] [81/100] Elastix 09_to_01_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-1.55,1.73] y[-2.88,1.27] z[-2.39,4.10]
+[CE_P5_V_01] [82/100] Elastix 09_to_02_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-2.41,2.15] y[-1.92,4.16] z[-3.71,6.41]
+[CE_P5_V_01] [83/100] Elastix 09_to_03_pair.npy …
+[CE_P5_V_01]     9.3s  DVF mm-ish range x[-3.19,4.13] y[-3.78,8.95] z[-4.23,7.33]
+[CE_P5_V_01] [84/100] Elastix 09_to_04_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-4.28,4.93] y[-5.12,11.17] z[-4.74,8.99]
+[CE_P5_V_01] [85/100] Elastix 09_to_05_pair.npy …
+[CE_P5_V_01]     8.7s  DVF mm-ish range x[-5.20,5.29] y[-5.66,12.25] z[-5.35,10.10]
+[CE_P5_V_01] [86/100] Elastix 09_to_06_pair.npy …
+[CE_P5_V_01]     8.8s  DVF mm-ish range x[-5.70,4.86] y[-5.59,12.12] z[-6.46,10.53]
+[CE_P5_V_01] [87/100] Elastix 09_to_07_pair.npy …
+[CE_P5_V_01]     8.9s  DVF mm-ish range x[-4.44,4.56] y[-3.99,8.23] z[-5.24,9.52]
+[CE_P5_V_01] [88/100] Elastix 09_to_08_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-1.87,2.13] y[-2.45,5.13] z[-3.00,4.00]
+[CE_P5_V_01] [89/100] identity 09_to_09_pair.npy
+[CE_P5_V_01] [90/100] Elastix 09_to_10_pair.npy …
+[CE_P5_V_01]     9.0s  DVF mm-ish range x[-1.56,1.26] y[-2.95,1.74] z[-2.07,2.86]
+[CE_P5_V_01] [91/100] Elastix 10_to_01_pair.npy …
+[CE_P5_V_01]     9.0s  DVF mm-ish range x[-1.36,1.02] y[-0.77,1.88] z[-1.80,2.29]
+[CE_P5_V_01] [92/100] Elastix 10_to_02_pair.npy …
+[CE_P5_V_01]     9.3s  DVF mm-ish range x[-1.77,2.62] y[-2.97,7.68] z[-3.06,4.77]
+[CE_P5_V_01] [93/100] Elastix 10_to_03_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-3.17,5.06] y[-4.99,12.48] z[-4.39,7.99]
+[CE_P5_V_01] [94/100] Elastix 10_to_04_pair.npy …
+[CE_P5_V_01]     9.5s  DVF mm-ish range x[-4.75,5.68] y[-6.07,13.96] z[-4.30,10.70]
+[CE_P5_V_01] [95/100] Elastix 10_to_05_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-5.61,6.27] y[-6.44,14.69] z[-4.86,11.68]
+[CE_P5_V_01] [96/100] Elastix 10_to_06_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-5.85,6.10] y[-6.39,14.69] z[-6.63,12.44]
+[CE_P5_V_01] [97/100] Elastix 10_to_07_pair.npy …
+[CE_P5_V_01]     9.2s  DVF mm-ish range x[-4.63,5.29] y[-4.92,12.25] z[-6.95,11.08]
+[CE_P5_V_01] [98/100] Elastix 10_to_08_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-2.23,3.36] y[-2.95,7.92] z[-4.50,7.92]
+[CE_P5_V_01] [99/100] Elastix 10_to_09_pair.npy …
+[CE_P5_V_01]     9.1s  DVF mm-ish range x[-0.69,1.12] y[-1.75,4.68] z[-2.55,2.86]
+[CE_P5_V_01] [100/100] identity 10_to_10_pair.npy
+[CE_P5_V_01] DONE in 13.9 min  registered=90 identity=10 skipped=0  → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/data/CE_P5_V_01/all
+All requested scans finished.
+=== QC encoder CE_P5_V_01 Tue Aug 25 12:21:43 PM AEST 2026 ===
+[encoder|elekta] scan=CE_P5_V_01 pairs=100 panels=100 ckpt=crb_enc_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/EncoderCRB/plots/qc_elekta/P5/CE_P5_V_01
+[001/100] 01_to_01  L1=0.006  L1/zero=621757.00  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.627  L1/zero=1.01  cos=0.18  k=0.12
+[003/100] 01_to_03  L1=1.412  L1/zero=0.97  cos=0.34  k=0.19
+[004/100] 01_to_04  L1=1.929  L1/zero=0.91  cos=0.43  k=0.24
+[005/100] 01_to_05  L1=2.154  L1/zero=0.89  cos=0.49  k=0.25
+[006/100] 01_to_06  L1=2.178  L1/zero=0.89  cos=0.47  k=0.23
+[007/100] 01_to_07  L1=1.824  L1/zero=0.92  cos=0.36  k=0.23
+[008/100] 01_to_08  L1=1.241  L1/zero=0.93  cos=0.35  k=0.26
+[009/100] 01_to_09  L1=0.396  L1/zero=1.03  cos=0.29  k=0.53
+[010/100] 01_to_10  L1=0.217  L1/zero=1.09  cos=-0.11  k=0.24
+[011/100] 02_to_01  L1=0.513  L1/zero=1.00  cos=0.28  k=0.14
+[012/100] 02_to_02  L1=0.014  L1/zero=1364358.51  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.690  L1/zero=1.00  cos=0.09  k=0.19
+[014/100] 02_to_04  L1=1.189  L1/zero=0.92  cos=0.38  k=0.32
+[015/100] 02_to_05  L1=1.492  L1/zero=0.90  cos=0.41  k=0.31
+[016/100] 02_to_06  L1=1.609  L1/zero=0.93  cos=0.31  k=0.24
+[017/100] 02_to_07  L1=1.370  L1/zero=0.98  cos=0.21  k=0.23
+[018/100] 02_to_08  L1=0.977  L1/zero=1.03  cos=0.28  k=0.24
+[019/100] 02_to_09  L1=0.674  L1/zero=1.03  cos=0.06  k=0.24
+[020/100] 02_to_10  L1=0.725  L1/zero=0.97  cos=0.40  k=0.17
+[021/100] 03_to_01  L1=1.118  L1/zero=0.89  cos=0.55  k=0.25
+[022/100] 03_to_02  L1=0.530  L1/zero=0.95  cos=0.35  k=0.26
+[023/100] 03_to_03  L1=0.003  L1/zero=271604.65  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.478  L1/zero=0.98  cos=0.17  k=0.26
+[025/100] 03_to_05  L1=0.776  L1/zero=0.91  cos=0.34  k=0.31
+[026/100] 03_to_06  L1=0.942  L1/zero=0.95  cos=0.27  k=0.25
+[027/100] 03_to_07  L1=0.994  L1/zero=1.03  cos=0.22  k=0.20
+[028/100] 03_to_08  L1=1.160  L1/zero=1.01  cos=0.30  k=0.15
+[029/100] 03_to_09  L1=1.234  L1/zero=0.95  cos=0.43  k=0.18
+[030/100] 03_to_10  L1=1.316  L1/zero=0.90  cos=0.56  k=0.24
+[031/100] 04_to_01  L1=1.524  L1/zero=0.84  cos=0.60  k=0.32
+[032/100] 04_to_02  L1=0.963  L1/zero=0.87  cos=0.52  k=0.39
+[033/100] 04_to_03  L1=0.376  L1/zero=0.88  cos=0.48  k=0.39
+[034/100] 04_to_04  L1=0.002  L1/zero=179509.13  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.286  L1/zero=0.90  cos=0.44  k=0.32
+[036/100] 04_to_06  L1=0.510  L1/zero=0.95  cos=0.39  k=0.31
+[037/100] 04_to_07  L1=0.889  L1/zero=1.01  cos=0.31  k=0.18
+[038/100] 04_to_08  L1=1.336  L1/zero=0.95  cos=0.54  k=0.16
+[039/100] 04_to_09  L1=1.625  L1/zero=0.90  cos=0.58  k=0.23
+[040/100] 04_to_10  L1=1.709  L1/zero=0.87  cos=0.59  k=0.29
+[041/100] 05_to_01  L1=1.839  L1/zero=0.87  cos=0.53  k=0.30
+[042/100] 05_to_02  L1=1.237  L1/zero=0.86  cos=0.50  k=0.41
+[043/100] 05_to_03  L1=0.618  L1/zero=0.84  cos=0.47  k=0.44
+[044/100] 05_to_04  L1=0.270  L1/zero=0.94  cos=0.32  k=0.43
+[045/100] 05_to_05  L1=0.002  L1/zero=174494.48  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.278  L1/zero=1.03  cos=0.27  k=0.23
+[047/100] 05_to_07  L1=0.738  L1/zero=0.92  cos=0.55  k=0.21
+[048/100] 05_to_08  L1=1.383  L1/zero=0.93  cos=0.54  k=0.18
+[049/100] 05_to_09  L1=1.802  L1/zero=0.90  cos=0.54  k=0.22
+[050/100] 05_to_10  L1=2.013  L1/zero=0.88  cos=0.53  k=0.28
+[051/100] 06_to_01  L1=1.852  L1/zero=0.87  cos=0.47  k=0.33
+[052/100] 06_to_02  L1=1.253  L1/zero=0.86  cos=0.48  k=0.42
+[053/100] 06_to_03  L1=0.735  L1/zero=0.88  cos=0.40  k=0.45
+[054/100] 06_to_04  L1=0.466  L1/zero=1.01  cos=0.27  k=0.43
+[055/100] 06_to_05  L1=0.291  L1/zero=1.10  cos=-0.11  k=0.24
+[056/100] 06_to_06  L1=0.002  L1/zero=183196.18  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.447  L1/zero=0.88  cos=0.62  k=0.24
+[058/100] 06_to_08  L1=1.143  L1/zero=0.91  cos=0.52  k=0.23
+[059/100] 06_to_09  L1=1.639  L1/zero=0.89  cos=0.49  k=0.26
+[060/100] 06_to_10  L1=1.911  L1/zero=0.87  cos=0.51  k=0.31
+[061/100] 07_to_01  L1=1.370  L1/zero=0.82  cos=0.51  k=0.47
+[062/100] 07_to_02  L1=1.027  L1/zero=0.89  cos=0.40  k=0.51
+[063/100] 07_to_03  L1=0.839  L1/zero=1.06  cos=0.24  k=0.46
+[064/100] 07_to_04  L1=0.865  L1/zero=1.04  cos=0.04  k=0.27
+[065/100] 07_to_05  L1=0.758  L1/zero=0.99  cos=0.13  k=0.16
+[066/100] 07_to_06  L1=0.499  L1/zero=0.97  cos=0.36  k=0.15
+[067/100] 07_to_07  L1=0.002  L1/zero=179573.63  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.509  L1/zero=0.88  cos=0.56  k=0.36
+[069/100] 07_to_09  L1=1.083  L1/zero=0.85  cos=0.51  k=0.36
+[070/100] 07_to_10  L1=1.434  L1/zero=0.82  cos=0.54  k=0.42
+[071/100] 08_to_01  L1=1.025  L1/zero=1.02  cos=0.16  k=0.37
+[072/100] 08_to_02  L1=0.775  L1/zero=1.08  cos=-0.16  k=0.27
+[073/100] 08_to_03  L1=1.164  L1/zero=1.05  cos=-0.28  k=0.14
+[074/100] 08_to_04  L1=1.407  L1/zero=1.00  cos=0.05  k=0.10
+[075/100] 08_to_05  L1=1.466  L1/zero=0.96  cos=0.35  k=0.17
+[076/100] 08_to_06  L1=1.212  L1/zero=0.94  cos=0.40  k=0.20
+[077/100] 08_to_07  L1=0.599  L1/zero=0.97  cos=0.23  k=0.19
+[078/100] 08_to_08  L1=0.002  L1/zero=238524.17  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.473  L1/zero=1.00  cos=0.18  k=0.24
+[080/100] 08_to_10  L1=0.932  L1/zero=0.98  cos=0.22  k=0.28
+[081/100] 09_to_01  L1=0.448  L1/zero=1.20  cos=0.14  k=0.73
+[082/100] 09_to_02  L1=0.841  L1/zero=1.12  cos=-0.39  k=0.26
+[083/100] 09_to_03  L1=1.438  L1/zero=1.01  cos=0.06  k=0.13
+[084/100] 09_to_04  L1=1.817  L1/zero=0.95  cos=0.44  k=0.16
+[085/100] 09_to_05  L1=2.025  L1/zero=0.94  cos=0.43  k=0.17
+[086/100] 09_to_06  L1=1.972  L1/zero=0.93  cos=0.40  k=0.18
+[087/100] 09_to_07  L1=1.410  L1/zero=0.93  cos=0.38  k=0.20
+[088/100] 09_to_08  L1=0.499  L1/zero=0.91  cos=0.44  k=0.23
+[089/100] 09_to_09  L1=0.003  L1/zero=338597.67  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.293  L1/zero=0.92  cos=0.46  k=0.72
+[091/100] 10_to_01  L1=0.240  L1/zero=1.08  cos=-0.16  k=0.29
+[092/100] 10_to_02  L1=0.912  L1/zero=1.03  cos=-0.13  k=0.10
+[093/100] 10_to_03  L1=1.696  L1/zero=0.99  cos=0.22  k=0.11
+[094/100] 10_to_04  L1=2.175  L1/zero=0.96  cos=0.35  k=0.13
+[095/100] 10_to_05  L1=2.466  L1/zero=0.94  cos=0.47  k=0.15
+[096/100] 10_to_06  L1=2.403  L1/zero=0.92  cos=0.52  k=0.18
+[097/100] 10_to_07  L1=2.039  L1/zero=0.99  cos=0.18  k=0.12
+[098/100] 10_to_08  L1=1.198  L1/zero=1.00  cos=0.16  k=0.16
+[099/100] 10_to_09  L1=0.378  L1/zero=1.04  cos=0.04  k=0.21
+[100/100] 10_to_10  L1=0.002  L1/zero=164067.57  cos=nan  k=nan
+
+[encoder|elekta] Directed mean: L1=1.118  L1/zero=0.95  cos=0.32  k=0.27  beat_zero=74%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/EncoderCRB/plots/qc_elekta/P5/CE_P5_V_01 (100 pngs)
+=== QC decoder CE_P5_V_01 Tue Aug 25 12:22:34 PM AEST 2026 ===
+[decoder|elekta] scan=CE_P5_V_01 pairs=100 panels=100 ckpt=crb_dec_mse_full_spare_generator.pth out=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/DecoderCRB/plots/qc_elekta/P5/CE_P5_V_01
+[001/100] 01_to_01  L1=0.008  L1/zero=759672.61  cos=nan  k=nan
+[002/100] 01_to_02  L1=0.616  L1/zero=0.99  cos=0.18  k=0.08
+[003/100] 01_to_03  L1=1.444  L1/zero=0.99  cos=0.26  k=0.10
+[004/100] 01_to_04  L1=2.075  L1/zero=0.98  cos=0.29  k=0.11
+[005/100] 01_to_05  L1=2.359  L1/zero=0.97  cos=0.33  k=0.12
+[006/100] 01_to_06  L1=2.354  L1/zero=0.96  cos=0.35  k=0.14
+[007/100] 01_to_07  L1=1.880  L1/zero=0.95  cos=0.35  k=0.15
+[008/100] 01_to_08  L1=1.270  L1/zero=0.95  cos=0.30  k=0.15
+[009/100] 01_to_09  L1=0.383  L1/zero=1.00  cos=0.21  k=0.37
+[010/100] 01_to_10  L1=0.207  L1/zero=1.03  cos=0.02  k=0.23
+[011/100] 02_to_01  L1=0.509  L1/zero=0.99  cos=0.19  k=0.08
+[012/100] 02_to_02  L1=0.007  L1/zero=653816.81  cos=nan  k=nan
+[013/100] 02_to_03  L1=0.680  L1/zero=0.98  cos=0.24  k=0.08
+[014/100] 02_to_04  L1=1.277  L1/zero=0.99  cos=0.16  k=0.10
+[015/100] 02_to_05  L1=1.618  L1/zero=0.98  cos=0.21  k=0.12
+[016/100] 02_to_06  L1=1.699  L1/zero=0.99  cos=0.16  k=0.13
+[017/100] 02_to_07  L1=1.386  L1/zero=0.99  cos=0.16  k=0.13
+[018/100] 02_to_08  L1=0.943  L1/zero=1.00  cos=0.17  k=0.12
+[019/100] 02_to_09  L1=0.643  L1/zero=0.98  cos=0.23  k=0.14
+[020/100] 02_to_10  L1=0.727  L1/zero=0.97  cos=0.44  k=0.09
+[021/100] 03_to_01  L1=1.214  L1/zero=0.97  cos=0.32  k=0.11
+[022/100] 03_to_02  L1=0.549  L1/zero=0.98  cos=0.28  k=0.12
+[023/100] 03_to_03  L1=0.006  L1/zero=617332.57  cos=nan  k=nan
+[024/100] 03_to_04  L1=0.489  L1/zero=1.00  cos=-0.02  k=0.08
+[025/100] 03_to_05  L1=0.857  L1/zero=1.01  cos=-0.03  k=0.11
+[026/100] 03_to_06  L1=1.009  L1/zero=1.02  cos=-0.03  k=0.13
+[027/100] 03_to_07  L1=0.970  L1/zero=1.01  cos=0.09  k=0.10
+[028/100] 03_to_08  L1=1.143  L1/zero=0.99  cos=0.21  k=0.07
+[029/100] 03_to_09  L1=1.261  L1/zero=0.97  cos=0.37  k=0.10
+[030/100] 03_to_10  L1=1.398  L1/zero=0.96  cos=0.44  k=0.12
+[031/100] 04_to_01  L1=1.731  L1/zero=0.96  cos=0.32  k=0.16
+[032/100] 04_to_02  L1=1.067  L1/zero=0.96  cos=0.30  k=0.18
+[033/100] 04_to_03  L1=0.417  L1/zero=0.98  cos=0.20  k=0.18
+[034/100] 04_to_04  L1=0.006  L1/zero=583797.74  cos=nan  k=nan
+[035/100] 04_to_05  L1=0.318  L1/zero=1.00  cos=0.12  k=0.10
+[036/100] 04_to_06  L1=0.535  L1/zero=1.00  cos=0.20  k=0.10
+[037/100] 04_to_07  L1=0.865  L1/zero=0.98  cos=0.42  k=0.09
+[038/100] 04_to_08  L1=1.378  L1/zero=0.98  cos=0.36  k=0.10
+[039/100] 04_to_09  L1=1.736  L1/zero=0.96  cos=0.41  k=0.12
+[040/100] 04_to_10  L1=1.864  L1/zero=0.95  cos=0.43  k=0.14
+[041/100] 05_to_01  L1=2.042  L1/zero=0.97  cos=0.28  k=0.15
+[042/100] 05_to_02  L1=1.399  L1/zero=0.98  cos=0.21  k=0.17
+[043/100] 05_to_03  L1=0.717  L1/zero=0.98  cos=0.17  k=0.16
+[044/100] 05_to_04  L1=0.280  L1/zero=0.98  cos=0.19  k=0.14
+[045/100] 05_to_05  L1=0.006  L1/zero=577992.90  cos=nan  k=nan
+[046/100] 05_to_06  L1=0.268  L1/zero=0.99  cos=0.32  k=0.05
+[047/100] 05_to_07  L1=0.784  L1/zero=0.97  cos=0.44  k=0.09
+[048/100] 05_to_08  L1=1.442  L1/zero=0.97  cos=0.36  k=0.10
+[049/100] 05_to_09  L1=1.921  L1/zero=0.96  cos=0.41  k=0.12
+[050/100] 05_to_10  L1=2.180  L1/zero=0.96  cos=0.42  k=0.13
+[051/100] 06_to_01  L1=2.030  L1/zero=0.96  cos=0.31  k=0.19
+[052/100] 06_to_02  L1=1.420  L1/zero=0.97  cos=0.24  k=0.22
+[053/100] 06_to_03  L1=0.818  L1/zero=0.98  cos=0.16  k=0.22
+[054/100] 06_to_04  L1=0.463  L1/zero=1.01  cos=0.08  k=0.21
+[055/100] 06_to_05  L1=0.269  L1/zero=1.01  cos=0.06  k=0.13
+[056/100] 06_to_06  L1=0.008  L1/zero=820783.43  cos=nan  k=nan
+[057/100] 06_to_07  L1=0.484  L1/zero=0.95  cos=0.48  k=0.14
+[058/100] 06_to_08  L1=1.186  L1/zero=0.94  cos=0.47  k=0.15
+[059/100] 06_to_09  L1=1.722  L1/zero=0.94  cos=0.46  k=0.16
+[060/100] 06_to_10  L1=2.084  L1/zero=0.94  cos=0.42  k=0.16
+[061/100] 07_to_01  L1=1.519  L1/zero=0.91  cos=0.40  k=0.31
+[062/100] 07_to_02  L1=1.101  L1/zero=0.95  cos=0.26  k=0.34
+[063/100] 07_to_03  L1=0.816  L1/zero=1.03  cos=0.10  k=0.28
+[064/100] 07_to_04  L1=0.839  L1/zero=1.01  cos=0.07  k=0.17
+[065/100] 07_to_05  L1=0.752  L1/zero=0.98  cos=0.22  k=0.12
+[066/100] 07_to_06  L1=0.505  L1/zero=0.98  cos=0.25  k=0.10
+[067/100] 07_to_07  L1=0.009  L1/zero=940127.39  cos=nan  k=nan
+[068/100] 07_to_08  L1=0.523  L1/zero=0.91  cos=0.56  k=0.21
+[069/100] 07_to_09  L1=1.143  L1/zero=0.90  cos=0.50  k=0.23
+[070/100] 07_to_10  L1=1.602  L1/zero=0.91  cos=0.45  k=0.23
+[071/100] 08_to_01  L1=1.004  L1/zero=1.00  cos=0.04  k=0.11
+[072/100] 08_to_02  L1=0.712  L1/zero=0.99  cos=0.09  k=0.11
+[073/100] 08_to_03  L1=1.092  L1/zero=0.99  cos=0.24  k=0.06
+[074/100] 08_to_04  L1=1.399  L1/zero=1.00  cos=0.17  k=0.04
+[075/100] 08_to_05  L1=1.524  L1/zero=1.00  cos=0.06  k=0.04
+[076/100] 08_to_06  L1=1.287  L1/zero=1.00  cos=0.01  k=0.05
+[077/100] 08_to_07  L1=0.625  L1/zero=1.01  cos=-0.12  k=0.06
+[078/100] 08_to_08  L1=0.006  L1/zero=646015.07  cos=nan  k=nan
+[079/100] 08_to_09  L1=0.474  L1/zero=1.00  cos=0.08  k=0.10
+[080/100] 08_to_10  L1=0.959  L1/zero=1.01  cos=0.00  k=0.11
+[081/100] 09_to_01  L1=0.399  L1/zero=1.07  cos=0.05  k=0.39
+[082/100] 09_to_02  L1=0.772  L1/zero=1.02  cos=-0.19  k=0.14
+[083/100] 09_to_03  L1=1.440  L1/zero=1.01  cos=-0.02  k=0.07
+[084/100] 09_to_04  L1=1.914  L1/zero=1.00  cos=0.17  k=0.09
+[085/100] 09_to_05  L1=2.120  L1/zero=0.98  cos=0.27  k=0.11
+[086/100] 09_to_06  L1=2.071  L1/zero=0.98  cos=0.30  k=0.12
+[087/100] 09_to_07  L1=1.493  L1/zero=0.98  cos=0.23  k=0.11
+[088/100] 09_to_08  L1=0.538  L1/zero=0.98  cos=0.21  k=0.13
+[089/100] 09_to_09  L1=0.007  L1/zero=665939.55  cos=nan  k=nan
+[090/100] 09_to_10  L1=0.312  L1/zero=0.98  cos=0.29  k=0.23
+[091/100] 10_to_01  L1=0.227  L1/zero=1.03  cos=-0.12  k=0.14
+[092/100] 10_to_02  L1=0.882  L1/zero=0.99  cos=0.20  k=0.06
+[093/100] 10_to_03  L1=1.697  L1/zero=0.99  cos=0.21  k=0.06
+[094/100] 10_to_04  L1=2.248  L1/zero=0.99  cos=0.16  k=0.07
+[095/100] 10_to_05  L1=2.621  L1/zero=1.00  cos=0.12  k=0.07
+[096/100] 10_to_06  L1=2.604  L1/zero=1.00  cos=0.11  k=0.08
+[097/100] 10_to_07  L1=2.074  L1/zero=1.00  cos=0.06  k=0.09
+[098/100] 10_to_08  L1=1.208  L1/zero=1.01  cos=0.05  k=0.10
+[099/100] 10_to_09  L1=0.379  L1/zero=1.04  cos=-0.15  k=0.14
+[100/100] 10_to_10  L1=0.008  L1/zero=797692.03  cos=nan  k=nan
+
+[decoder|elekta] Directed mean: L1=1.170  L1/zero=0.98  cos=0.22  k=0.13  beat_zero=76%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/DecoderCRB/plots/qc_elekta/P5/CE_P5_V_01 (100 pngs)
+=== DONE Tue Aug 25 12:23:26 PM AEST 2026 ===

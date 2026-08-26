@@ -1,0 +1,30 @@
+{
+  "description": "ClinicalExperiments E6/Cyclic \u2014 same split as E1; train im_size=128\u00b3",
+  "patient_split_seed": 20260824,
+  "patient_split_method": "Use all P1..P9 for training; no SPARE hold-out patients.",
+  "train_patients": [
+    "P1",
+    "P2",
+    "P3",
+    "P4",
+    "P5",
+    "P6",
+    "P7",
+    "P8",
+    "P9"
+  ],
+  "holdout_patients": [],
+  "val_split_seed": 20260824,
+  "val_fraction": 0.1,
+  "val_split_method": "Per train patient: Random(val_split_seed + patient_index).shuffle(100 pairs); take first 10% as val.",
+  "torch_seed": 20260824,
+  "numpy_seed": 20260824,
+  "python_random_seed": 20260824,
+  "cuda_seed": 20260824,
+  "n_phases": 10,
+  "identity_pairs_included": true,
+  "pairs_per_patient": 100,
+  "n_train_patient_pairs": 900,
+  "n_holdout_pairs": 0,
+  "im_size_train": 128
+}

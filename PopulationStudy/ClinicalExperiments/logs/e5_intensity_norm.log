@@ -1,0 +1,118 @@
+E5 intensity-norm QC  ckpt=crb_both_mse_cyclic_fov_aug_generator.pth  device=cuda:1
+norms=['minmax', 'p0.5_p99.5', 'p1_p99', 'p2_p98', 'p5_p95', 'mu_air_water']
+
+=== CV_P1_V_01 ===
+  minmax          L1/z=1.126  cos=0.384  k=0.975  beat=50%  dist=0.161
+  p0.5_p99.5      L1/z=1.119  cos=0.385  k=0.954  beat=51%  dist=0.029
+  p1_p99          L1/z=1.115  cos=0.384  k=0.940  beat=51%  dist=0.023
+  p2_p98          L1/z=1.108  cos=0.385  k=0.926  beat=52%  dist=0.021
+  p5_p95          L1/z=1.095  cos=0.391  k=0.899  beat=53%  dist=0.021
+  mu_air_water    L1/z=1.044  cos=0.386  k=0.835  beat=62%  dist=0.066
+
+=== CV_P2_V_01 ===
+  minmax          L1/z=0.836  cos=0.618  k=0.682  beat=98%  dist=0.420
+  p0.5_p99.5      L1/z=0.891  cos=0.600  k=0.808  beat=93%  dist=0.059
+  p1_p99          L1/z=0.890  cos=0.598  k=0.796  beat=93%  dist=0.053
+  p2_p98          L1/z=0.888  cos=0.598  k=0.787  beat=93%  dist=0.050
+  p5_p95          L1/z=0.886  cos=0.597  k=0.778  beat=93%  dist=0.055
+  mu_air_water    L1/z=0.871  cos=0.616  k=0.821  beat=94%  dist=0.105
+
+=== CV_P3_V_01 ===
+  minmax          L1/z=0.848  cos=0.622  k=0.799  beat=80%  dist=0.106
+  p0.5_p99.5      L1/z=0.823  cos=0.655  k=0.792  beat=86%  dist=0.083
+  p1_p99          L1/z=0.820  cos=0.655  k=0.772  beat=87%  dist=0.085
+  p2_p98          L1/z=0.818  cos=0.653  k=0.754  beat=87%  dist=0.087
+  p5_p95          L1/z=0.816  cos=0.649  k=0.727  beat=88%  dist=0.097
+  mu_air_water    L1/z=0.842  cos=0.619  k=0.737  beat=83%  dist=0.086
+
+=== CV_P4_V_01 ===
+  minmax          L1/z=0.752  cos=0.680  k=0.735  beat=96%  dist=0.096
+  p0.5_p99.5      L1/z=0.747  cos=0.684  k=0.706  beat=94%  dist=0.118
+  p1_p99          L1/z=0.746  cos=0.684  k=0.699  beat=94%  dist=0.124
+  p2_p98          L1/z=0.745  cos=0.684  k=0.690  beat=94%  dist=0.132
+  p5_p95          L1/z=0.745  cos=0.684  k=0.678  beat=94%  dist=0.133
+  mu_air_water    L1/z=0.757  cos=0.670  k=0.724  beat=94%  dist=0.092
+
+=== CV_P5_V_01 ===
+  minmax          L1/z=0.885  cos=0.509  k=0.316  beat=98%  dist=0.172
+  p0.5_p99.5      L1/z=0.778  cos=0.653  k=0.462  beat=96%  dist=0.070
+  p1_p99          L1/z=0.778  cos=0.653  k=0.462  beat=97%  dist=0.063
+  p2_p98          L1/z=0.782  cos=0.648  k=0.454  beat=97%  dist=0.064
+  p5_p95          L1/z=0.791  cos=0.637  k=0.434  beat=97%  dist=0.079
+  mu_air_water    L1/z=0.815  cos=0.595  k=0.397  beat=93%  dist=0.095
+
+=== CE_P1_V_01 ===
+  minmax          L1/z=1.029  cos=0.136  k=0.332  beat=40%  dist=0.581
+  p0.5_p99.5      L1/z=0.861  cos=0.519  k=0.569  beat=91%  dist=0.279
+  p1_p99          L1/z=0.856  cos=0.522  k=0.553  beat=92%  dist=0.262
+  p2_p98          L1/z=0.860  cos=0.515  k=0.530  beat=94%  dist=0.267
+  p5_p95          L1/z=0.863  cos=0.522  k=0.525  beat=98%  dist=0.270
+  mu_air_water    L1/z=0.840  cos=0.589  k=0.673  beat=93%  dist=0.267
+
+=== CE_P2_V_01 ===
+  minmax          L1/z=1.018  cos=0.130  k=0.309  beat=47%  dist=0.671
+  p0.5_p99.5      L1/z=0.979  cos=0.241  k=0.343  beat=64%  dist=0.405
+  p1_p99          L1/z=0.962  cos=0.311  k=0.393  beat=66%  dist=0.365
+  p2_p98          L1/z=0.936  cos=0.398  k=0.490  beat=73%  dist=0.256
+  p5_p95          L1/z=0.939  cos=0.416  k=0.489  beat=76%  dist=0.159
+  mu_air_water    L1/z=0.914  cos=0.477  k=0.566  beat=81%  dist=0.330
+
+=== CE_P3_V_01 ===
+  minmax          L1/z=0.996  cos=0.056  k=0.102  beat=52%  dist=0.979
+  p0.5_p99.5      L1/z=0.906  cos=0.443  k=0.257  beat=83%  dist=0.516
+  p1_p99          L1/z=0.894  cos=0.470  k=0.281  beat=83%  dist=0.433
+  p2_p98          L1/z=0.896  cos=0.465  k=0.276  beat=80%  dist=0.398
+  p5_p95          L1/z=0.909  cos=0.441  k=0.254  beat=79%  dist=0.394
+  mu_air_water    L1/z=0.898  cos=0.452  k=0.243  beat=86%  dist=0.373
+
+=== CE_P4_V_01 ===
+  minmax          L1/z=0.961  cos=0.346  k=0.465  beat=77%  dist=0.482
+  p0.5_p99.5      L1/z=0.932  cos=0.438  k=0.586  beat=80%  dist=0.108
+  p1_p99          L1/z=0.935  cos=0.440  k=0.598  beat=78%  dist=0.085
+  p2_p98          L1/z=0.937  cos=0.438  k=0.600  beat=77%  dist=0.081
+  p5_p95          L1/z=0.939  cos=0.429  k=0.590  beat=78%  dist=0.087
+  mu_air_water    L1/z=0.968  cos=0.455  k=0.734  beat=68%  dist=0.063
+
+=== CE_P5_V_01 ===
+  minmax          L1/z=0.949  cos=0.315  k=0.262  beat=80%  dist=0.400
+  p0.5_p99.5      L1/z=0.874  cos=0.473  k=0.386  beat=81%  dist=0.271
+  p1_p99          L1/z=0.868  cos=0.486  k=0.403  beat=82%  dist=0.224
+  p2_p98          L1/z=0.869  cos=0.486  k=0.404  beat=82%  dist=0.196
+  p5_p95          L1/z=0.873  cos=0.483  k=0.390  beat=81%  dist=0.183
+  mu_air_water    L1/z=0.842  cos=0.551  k=0.517  beat=82%  dist=0.182
+
+======== COHORT MEANS ========
+
+-- varian (n=5) --
+  minmax          L1/z=0.890  cos=0.563  beat=84%  dist=0.191
+  p0.5_p99.5      L1/z=0.872  cos=0.595  beat=84%  dist=0.072
+  p1_p99          L1/z=0.870  cos=0.595  beat=84%  dist=0.070
+  p2_p98          L1/z=0.868  cos=0.594  beat=85%  dist=0.071
+  p5_p95          L1/z=0.867  cos=0.592  beat=85%  dist=0.077
+  mu_air_water    L1/z=0.866  cos=0.577  beat=86%  dist=0.089
+
+-- elekta (n=5) --
+  minmax          L1/z=0.990  cos=0.197  beat=59%  dist=0.623
+  p0.5_p99.5      L1/z=0.911  cos=0.423  beat=80%  dist=0.316
+  p1_p99          L1/z=0.903  cos=0.446  beat=80%  dist=0.274
+  p2_p98          L1/z=0.899  cos=0.460  beat=81%  dist=0.239
+  p5_p95          L1/z=0.904  cos=0.458  beat=82%  dist=0.218
+  mu_air_water    L1/z=0.892  cos=0.505  beat=82%  dist=0.243
+  hard CE_P1–P3 / easy CE_P4–P5 cos:
+  minmax          hard=0.108  easy=0.330
+  p0.5_p99.5      hard=0.401  easy=0.456
+  p1_p99          hard=0.434  easy=0.463
+  p2_p98          hard=0.459  easy=0.462
+  p5_p95          hard=0.460  easy=0.456
+  mu_air_water    hard=0.506  easy=0.503
+
+======== VERDICT vs success (Elekta cos≥0.28) ========
+  minmax          elekta_cos=0.197  dist=0.623  [fail]
+  p0.5_p99.5      elekta_cos=0.423  dist=0.316  [PASS]
+  p1_p99          elekta_cos=0.446  dist=0.274  [PASS]
+  p2_p98          elekta_cos=0.460  dist=0.239  [PASS]
+  p5_p95          elekta_cos=0.458  dist=0.218  [PASS]
+  mu_air_water    elekta_cos=0.505  dist=0.243  [PASS]
+SUCCESS: mu_air_water Elekta cos=0.505
+
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/plots/e5_intensity_norm/e5_summary.json

@@ -1,0 +1,25 @@
+[crb_both_mse_cyclic_full_spare] network_module=/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment2/networks/generator_crb.py cond_dim=4
+[crb_both_mse_cyclic_full_spare] device=cuda:0 | UNetCRBBoth params=1.08M | loss=lung-masked MSE | no D | CRB=encoder+decoder | cyclic(θ) cond_dim=4 | seed=20260824
+[crb_both_mse_cyclic_full_spare] train 12960 (810 pairs × 16) | val 720 (90 pairs × 8) | train patients=['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9']
+Epoch: 1 | train MSE: 0.439646 | val MSE: 0.274034 | total time: 0 hours 6 minutes
+Epoch: 2 | train MSE: 0.257401 | val MSE: 0.240067 | total time: 0 hours 13 minutes
+Epoch: 3 | train MSE: 0.181149 | val MSE: 0.157721 | total time: 0 hours 19 minutes
+Epoch: 4 | train MSE: 0.135377 | val MSE: 0.134122 | total time: 0 hours 26 minutes
+Epoch: 5 | train MSE: 0.107152 | val MSE: 0.105529 | total time: 0 hours 33 minutes
+Epoch: 6 | train MSE: 0.083395 | val MSE: 0.090091 | total time: 0 hours 40 minutes
+Epoch: 7 | train MSE: 0.069175 | val MSE: 0.076133 | total time: 0 hours 47 minutes
+Epoch: 8 | train MSE: 0.059443 | val MSE: 0.069503 | total time: 0 hours 54 minutes
+Epoch: 9 | train MSE: 0.051531 | val MSE: 0.060047 | total time: 1 hours 0 minutes
+Epoch: 10 | train MSE: 0.047734 | val MSE: 0.063658 | total time: 1 hours 7 minutes
+Epoch: 11 | train MSE: 0.044088 | val MSE: 0.054172 | total time: 1 hours 13 minutes
+Epoch: 12 | train MSE: 0.039920 | val MSE: 0.053439 | total time: 1 hours 19 minutes
+Epoch: 13 | train MSE: 0.037961 | val MSE: 0.052819 | total time: 1 hours 29 minutes
+Epoch: 14 | train MSE: 0.035652 | val MSE: 0.051566 | total time: 1 hours 45 minutes
+Epoch: 15 | train MSE: 0.033788 | val MSE: 0.051470 | total time: 2 hours 0 minutes
+Epoch: 16 | train MSE: 0.032584 | val MSE: 0.043756 | total time: 2 hours 14 minutes
+Epoch: 17 | train MSE: 0.030807 | val MSE: 0.047001 | total time: 2 hours 28 minutes
+Epoch: 18 | train MSE: 0.029789 | val MSE: 0.043452 | total time: 2 hours 41 minutes
+Epoch: 19 | train MSE: 0.028326 | val MSE: 0.045223 | total time: 2 hours 56 minutes
+Epoch: 20 | train MSE: 0.027445 | val MSE: 0.045390 | total time: 3 hours 11 minutes
+Epoch: 21 | train MSE: 0.026694 | val MSE: 0.045799 | total time: 3 hours 28 minutes
+Epoch: 22 | train MSE: 0.025761 | val MSE: 0.040501 | total time: 3 hours 45 minutes

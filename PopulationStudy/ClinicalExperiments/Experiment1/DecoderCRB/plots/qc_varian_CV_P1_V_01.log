@@ -1,0 +1,10 @@
+01_to_02  L1=0.245  L1/zero=1.08  cos=0.31  k=0.78
+01_to_06  L1=0.783  L1/zero=1.05  cos=0.50  k=1.09
+01_to_10  L1=0.176  L1/zero=1.10  cos=-0.04  k=0.30
+06_to_01  L1=0.845  L1/zero=1.10  cos=0.47  k=1.12
+06_to_06  L1=0.043  L1/zero=4302335.90  cos=nan  k=nan
+03_to_07  L1=0.626  L1/zero=0.98  cos=0.28  k=0.42
+05_to_08  L1=0.684  L1/zero=1.03  cos=0.26  k=0.65
+
+Directed mean: L1=0.560  L1/zero=1.06  cos=0.30  k=0.73
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment1/DecoderCRB/plots/qc_varian_CV_P1_V_01

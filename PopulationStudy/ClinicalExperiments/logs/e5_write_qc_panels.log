@@ -1,0 +1,62 @@
+E5 panels  norm=mu_air_water  device=cuda:1
+  [CV_P1_V_01] 20/100
+  [CV_P1_V_01] 40/100
+  [CV_P1_V_01] 60/100
+  [CV_P1_V_01] 80/100
+  [CV_P1_V_01] 100/100
+[CV_P1_V_01] cos=0.386 beat=62% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/plots/e5_intensity_norm/qc_varian/mu_air_water/P1/CV_P1_V_01
+  [CV_P2_V_01] 20/100
+  [CV_P2_V_01] 40/100
+  [CV_P2_V_01] 60/100
+  [CV_P2_V_01] 80/100
+  [CV_P2_V_01] 100/100
+[CV_P2_V_01] cos=0.616 beat=94% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/plots/e5_intensity_norm/qc_varian/mu_air_water/P2/CV_P2_V_01
+  [CV_P3_V_01] 20/100
+  [CV_P3_V_01] 40/100
+  [CV_P3_V_01] 60/100
+  [CV_P3_V_01] 80/100
+  [CV_P3_V_01] 100/100
+[CV_P3_V_01] cos=0.619 beat=83% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/plots/e5_intensity_norm/qc_varian/mu_air_water/P3/CV_P3_V_01
+  [CV_P4_V_01] 20/100
+  [CV_P4_V_01] 40/100
+  [CV_P4_V_01] 60/100
+  [CV_P4_V_01] 80/100
+  [CV_P4_V_01] 100/100
+[CV_P4_V_01] cos=0.670 beat=94% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/plots/e5_intensity_norm/qc_varian/mu_air_water/P4/CV_P4_V_01
+  [CV_P5_V_01] 20/100
+  [CV_P5_V_01] 40/100
+  [CV_P5_V_01] 60/100
+  [CV_P5_V_01] 80/100
+  [CV_P5_V_01] 100/100
+[CV_P5_V_01] cos=0.595 beat=93% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/plots/e5_intensity_norm/qc_varian/mu_air_water/P5/CV_P5_V_01
+  [CE_P1_V_01] 20/100
+  [CE_P1_V_01] 40/100
+  [CE_P1_V_01] 60/100
+  [CE_P1_V_01] 80/100
+  [CE_P1_V_01] 100/100
+[CE_P1_V_01] cos=0.589 beat=93% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/plots/e5_intensity_norm/qc_elekta/mu_air_water/P1/CE_P1_V_01
+  [CE_P2_V_01] 20/100
+  [CE_P2_V_01] 40/100
+  [CE_P2_V_01] 60/100
+  [CE_P2_V_01] 80/100
+  [CE_P2_V_01] 100/100
+[CE_P2_V_01] cos=0.477 beat=81% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/plots/e5_intensity_norm/qc_elekta/mu_air_water/P2/CE_P2_V_01
+  [CE_P3_V_01] 20/100
+  [CE_P3_V_01] 40/100
+  [CE_P3_V_01] 60/100
+  [CE_P3_V_01] 80/100
+  [CE_P3_V_01] 100/100
+[CE_P3_V_01] cos=0.452 beat=86% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/plots/e5_intensity_norm/qc_elekta/mu_air_water/P3/CE_P3_V_01
+  [CE_P4_V_01] 20/100
+  [CE_P4_V_01] 40/100
+  [CE_P4_V_01] 60/100
+  [CE_P4_V_01] 80/100
+  [CE_P4_V_01] 100/100
+[CE_P4_V_01] cos=0.455 beat=68% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/plots/e5_intensity_norm/qc_elekta/mu_air_water/P4/CE_P4_V_01
+  [CE_P5_V_01] 20/100
+  [CE_P5_V_01] 40/100
+  [CE_P5_V_01] 60/100
+  [CE_P5_V_01] 80/100
+  [CE_P5_V_01] 100/100
+[CE_P5_V_01] cos=0.551 beat=82% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/plots/e5_intensity_norm/qc_elekta/mu_air_water/P5/CE_P5_V_01
+DONE

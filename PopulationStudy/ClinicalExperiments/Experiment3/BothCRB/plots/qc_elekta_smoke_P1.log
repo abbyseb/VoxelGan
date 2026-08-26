@@ -1,0 +1,11 @@
+[both|elekta] scan=CE_P1_V_01 pairs=7 panels=7 ckpt=crb_both_mse_cyclic_fov_aug_generator.pth out=BothCRB/plots/qc_elekta_smoke/P1/CE_P1_V_01
+[001/7] 01_to_02  L1=0.404  L1/zero=0.98  cos=0.26  k=0.17
+[002/7] 01_to_06  L1=1.234  L1/zero=0.82  cos=0.69  k=0.55
+[003/7] 01_to_10  L1=0.348  L1/zero=0.98  cos=0.35  k=0.08
+[004/7] 06_to_01  L1=1.214  L1/zero=0.84  cos=0.63  k=0.54
+[005/7] 06_to_06  L1=0.025  L1/zero=2453797.31  cos=nan  k=nan
+[006/7] 03_to_07  L1=0.655  L1/zero=0.93  cos=0.43  k=0.34
+[007/7] 05_to_08  L1=0.581  L1/zero=0.91  cos=0.45  k=0.54
+
+[both|elekta] Directed mean: L1=0.739  L1/zero=0.91  cos=0.47  k=0.37  beat_zero=100%
+wrote BothCRB/plots/qc_elekta_smoke/P1/CE_P1_V_01 (7 pngs)
