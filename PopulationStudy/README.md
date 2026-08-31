@@ -92,7 +92,7 @@ Self-contained leave-patient-out CRB MSE study (Encoder / Decoder / Both). See *
 
 ## Results / limitations
 
-Leave-patient-out is **weaker than Dan 2.0 same-patient leave-phase-out**. E1 Decoder is useful on large-motion P3/P4; E2 mostly ties a zero DVF because P7/P9 barely move. Full write-up: **[`results.md`](results.md)**.
+Leave-patient-out is **weaker than Dan 2.0 same-patient leave-phase-out**. E1 Decoder is useful on large-motion P3/P4; E2 mostly ties a zero DVF because P7/P9 barely move. Full write-up: **[`results.md`](results.md)**. Mechanism + evidence for phase/CRB: **[`HowCRBUnderstandsBreathing.md`](HowCRBUnderstandsBreathing.md)**.
 
 ## Experiment 3
 
