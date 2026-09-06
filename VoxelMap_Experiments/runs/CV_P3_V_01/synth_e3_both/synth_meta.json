@@ -1,0 +1,52 @@
+{
+  "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment3/BothCRB/weights/crb_both_mse_cyclic_fov_aug_generator.pth",
+  "norm": "p1_p99",
+  "infer_size": 128,
+  "native_shape": [
+    450,
+    220,
+    450
+  ],
+  "phases": {
+    "01": {
+      "dvf_l2_mean_128": 1.2985100746154785,
+      "ct": "CT_01.mha"
+    },
+    "02": {
+      "dvf_l2_mean_128": 1.0584663152694702,
+      "ct": "CT_02.mha"
+    },
+    "03": {
+      "dvf_l2_mean_128": 0.43963831663131714,
+      "ct": "CT_03.mha"
+    },
+    "04": {
+      "dvf_l2_mean_128": 0.2347933053970337,
+      "ct": "CT_04.mha"
+    },
+    "05": {
+      "dvf_l2_mean_128": 0.11993522197008133,
+      "ct": "CT_05.mha"
+    },
+    "06": {
+      "dvf_l2_mean_128": 0.0,
+      "ct": "CT_06.mha"
+    },
+    "07": {
+      "dvf_l2_mean_128": 0.20198297500610352,
+      "ct": "CT_07.mha"
+    },
+    "08": {
+      "dvf_l2_mean_128": 0.5071650743484497,
+      "ct": "CT_08.mha"
+    },
+    "09": {
+      "dvf_l2_mean_128": 0.8234885931015015,
+      "ct": "CT_09.mha"
+    },
+    "10": {
+      "dvf_l2_mean_128": 1.067848563194275,
+      "ct": "CT_10.mha"
+    }
+  }
+}

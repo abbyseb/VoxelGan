@@ -1,0 +1,35 @@
+Iso-E2 DIR QC  device=cuda:0  packed=/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment2/packed_iso  arches=['encoder', 'decoder', 'both']  panels_only=True
+loaded encoder crb_enc_mse_iso_e2_full_generator.pth
+[encoder|P1_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P1_DIR
+[encoder|P2_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P2_DIR
+[encoder|P3_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P3_DIR
+[encoder|P4_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P4_DIR
+[encoder|P5_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P5_DIR
+[encoder|P6_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P6_DIR
+[encoder|P7_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P7_DIR
+[encoder|P8_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P8_DIR
+[encoder|P9_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P9_DIR
+[encoder|P10_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P10_DIR
+loaded decoder crb_dec_mse_iso_e2_full_generator.pth
+[decoder|P1_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P1_DIR
+[decoder|P2_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P2_DIR
+[decoder|P3_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P3_DIR
+[decoder|P4_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P4_DIR
+[decoder|P5_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P5_DIR
+[decoder|P6_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P6_DIR
+[decoder|P7_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P7_DIR
+[decoder|P8_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P8_DIR
+[decoder|P9_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P9_DIR
+[decoder|P10_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P10_DIR
+loaded both crb_both_mse_iso_e2_full_generator.pth
+[both|P1_DIR|minmax] panels saved=0 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P1_DIR
+[both|P2_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P2_DIR
+[both|P3_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P3_DIR
+[both|P4_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P4_DIR
+[both|P5_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P5_DIR
+[both|P6_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P6_DIR
+[both|P7_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P7_DIR
+[both|P8_DIR|minmax] panels saved=0 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P8_DIR
+[both|P9_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P9_DIR
+[both|P10_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P10_DIR
+DONE (panels only)

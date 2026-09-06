@@ -10,11 +10,35 @@ PopulationStudy/varian/
 PopulationStudy/elekta/
 *.mha
 *.npy
+*.bin
+*.nii
+*.nii.gz
+*.dcm
 
-# Training artifacts
+# Model weights / checkpoints
 weights/
-results/
+**/weights/
+**/checkpoints*/
+**/Models/
 *.pth
+*.pt
+*.ckpt
+*.onnx
+*.safetensors
+
+# Training / run bulk artifacts
+results/
+**/ModelTraining/
+**/epochs/
+VoxelMap_Experiments/data/
+VoxelMap_Experiments/runs/**/CV_*/train/
+VoxelMap_Experiments/runs/**/MC_*/train/
+**/plots_nofilm/*.png
+**/eval_train/
+**/eval_sweep/*.mp4
+**/Test_Breathing_Sweep.mp4
+
+# Python / venv
 __pycache__/
 *.pyc
 .venv/
@@ -23,17 +47,26 @@ venv/
 # Keep plot images/logs small enough; ignore huge accidental dumps
 deformationField.mha
 PopulationStudy/InitialExperiments/Experiment*/data/
-# Local GUI / raw dumps outside PopulationStudy study code
-My v1.0/P2/raw/
-My v1.0/plots/orientation_viewer.log
-
-# Secrets / env
-.env
-*.pem
-
 PopulationStudy/CRBExperiments/Experiment*/data/
 PopulationStudy/ClinicalExperiments/Experiment*/data/
+PopulationStudy/ClinicalExperiments/Grid*/**/data/
+PopulationStudy/IsoExperiments/**/data/
+PopulationStudy/DIR-Experiments/data/
+My v1.0/P2/raw/
+My v1.0/plots/orientation_viewer.log
 
 # ClinicalExperiments QC / train curve images (too large for HTTPS/SSH push)
 PopulationStudy/ClinicalExperiments/**/*.png
 PopulationStudy/plots/**/*.png
+PopulationStudy/IsoExperiments/**/*.png
+PopulationStudy/DIR-Experiments/**/*.png
+PopulationStudy/CRBExperiments/**/*.png
+
+# Secrets / env
+.env
+*.pem
+**/github KEY
+**/githubKEY
+**/github_key*
+
+*.mp4

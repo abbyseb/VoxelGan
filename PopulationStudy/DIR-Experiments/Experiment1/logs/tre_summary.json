@@ -1,0 +1,1460 @@
+{
+  "encoder": {
+    "mu": {
+      "P1_DIR": {
+        "patient": "P1_DIR",
+        "arch": "encoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 6.126248254704468,
+          "std": 3.7620503323997614,
+          "median": 5.8349556908474876,
+          "p95": 12.94300539846967,
+          "max": 16.045717781231268
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 3.8924062198159763,
+          "std": 2.7792938827343483,
+          "median": 2.851631112188251,
+          "p95": 10.046934855964778,
+          "max": 10.900366966299805
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P2_DIR": {
+        "patient": "P2_DIR",
+        "arch": "encoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 7.687596016400607,
+          "std": 4.397448195613669,
+          "median": 7.139117866157954,
+          "p95": 14.933674579794648,
+          "max": 23.783074667307126
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 4.33784245401475,
+          "std": 3.895111488881153,
+          "median": 2.8730977759182084,
+          "p95": 12.553708615385336,
+          "max": 17.691184245267472
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P3_DIR": {
+        "patient": "P3_DIR",
+        "arch": "encoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 7.18932228783448,
+          "std": 3.9607416877544317,
+          "median": 6.762178651994936,
+          "p95": 14.53570121512597,
+          "max": 18.160485416394593
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 6.942992820787408,
+          "std": 4.045189615311974,
+          "median": 5.380743217236056,
+          "p95": 13.390986274784336,
+          "max": 16.550906319594706
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P4_DIR": {
+        "patient": "P4_DIR",
+        "arch": "encoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 9.192065006532408,
+          "std": 5.085762575426752,
+          "median": 8.333502652953054,
+          "p95": 17.331669587486175,
+          "max": 21.508456992862502
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 9.830147256419307,
+          "std": 4.852253694636336,
+          "median": 10.126885009715474,
+          "p95": 17.57281423107864,
+          "max": 20.25377001943095
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P5_DIR": {
+        "patient": "P5_DIR",
+        "arch": "encoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.553544006825195,
+          "std": 5.224708338980703,
+          "median": 7.6345658768286935,
+          "p95": 18.199904035567922,
+          "max": 25.052687749776297
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.476853258560301,
+          "std": 5.502066158873672,
+          "median": 5.462600113499065,
+          "p95": 17.67201177002777,
+          "max": 24.777812655680485
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P6_DIR": {
+        "patient": "P6_DIR",
+        "arch": "encoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 10.80063974929738,
+          "std": 7.275793768635089,
+          "median": 8.601609612689398,
+          "p95": 25.102317174182097,
+          "max": 30.924014670830832
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 10.89102421124554,
+          "std": 6.9554335568242465,
+          "median": 8.581951327552115,
+          "p95": 23.74120679325295,
+          "max": 27.59403015146573
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P7_DIR": {
+        "patient": "P7_DIR",
+        "arch": "encoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 11.660981878633661,
+          "std": 7.171220058319055,
+          "median": 10.153856430177683,
+          "p95": 25.145569685279334,
+          "max": 33.69740977666952
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 11.026219932523533,
+          "std": 7.415334247329699,
+          "median": 8.103024126830674,
+          "p95": 25.093913604697057,
+          "max": 30.636202440903148
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P8_DIR": {
+        "patient": "P8_DIR",
+        "arch": "encoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 14.747751671566512,
+          "std": 7.861007351808359,
+          "median": 12.91759048518469,
+          "p95": 27.780790369414706,
+          "max": 30.60540027715429
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 14.994680761939078,
+          "std": 8.995996175014051,
+          "median": 12.98790591280981,
+          "p95": 28.022454431425,
+          "max": 30.574716678981673
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P9_DIR": {
+        "patient": "P9_DIR",
+        "arch": "encoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.473386673764269,
+          "std": 3.77927511555256,
+          "median": 8.287650530250879,
+          "p95": 14.680666964056067,
+          "max": 15.721561429777342
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.918263838803335,
+          "std": 3.9734508653183935,
+          "median": 8.073890091398287,
+          "p95": 14.092214162437356,
+          "max": 15.764596410945636
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P10_DIR": {
+        "patient": "P10_DIR",
+        "arch": "encoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.753900292497002,
+          "std": 5.902622666596392,
+          "median": 8.063352722314153,
+          "p95": 20.68348630671615,
+          "max": 29.78526333543754
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.301381916369588,
+          "std": 6.341426977527312,
+          "median": 5.093220984799305,
+          "p95": 20.922032970942848,
+          "max": 27.789301898392484
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      }
+    },
+    "minmax": {
+      "P1_DIR": {
+        "patient": "P1_DIR",
+        "arch": "encoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 4.361410924422245,
+          "std": 2.639940563354157,
+          "median": 3.649499042549392,
+          "p95": 9.276452099947035,
+          "max": 12.116381993373453
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 3.8924062198159763,
+          "std": 2.7792938827343483,
+          "median": 2.851631112188251,
+          "p95": 10.046934855964778,
+          "max": 10.900366966299805
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P2_DIR": {
+        "patient": "P2_DIR",
+        "arch": "encoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 7.842846505371728,
+          "std": 4.404391057333688,
+          "median": 7.57361848793615,
+          "p95": 15.090905698564761,
+          "max": 22.349016586244804
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 4.33784245401475,
+          "std": 3.895111488881153,
+          "median": 2.8730977759182084,
+          "p95": 12.553708615385336,
+          "max": 17.691184245267472
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P3_DIR": {
+        "patient": "P3_DIR",
+        "arch": "encoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 6.749793517713239,
+          "std": 4.396059667287544,
+          "median": 5.194556445460346,
+          "p95": 15.15034158084281,
+          "max": 18.131078731583703
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 6.942992820787408,
+          "std": 4.045189615311974,
+          "median": 5.380743217236056,
+          "p95": 13.390986274784336,
+          "max": 16.550906319594706
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P4_DIR": {
+        "patient": "P4_DIR",
+        "arch": "encoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.908172679338737,
+          "std": 4.420571167819343,
+          "median": 8.027928683119777,
+          "p95": 16.346041245134135,
+          "max": 20.517606054032786
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 9.830147256419307,
+          "std": 4.852253694636336,
+          "median": 10.126885009715474,
+          "p95": 17.57281423107864,
+          "max": 20.25377001943095
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P5_DIR": {
+        "patient": "P5_DIR",
+        "arch": "encoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.704521671765352,
+          "std": 5.254443545482128,
+          "median": 7.904430789547851,
+          "p95": 18.20797541823334,
+          "max": 25.078069732378538
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.476853258560301,
+          "std": 5.502066158873672,
+          "median": 5.462600113499065,
+          "p95": 17.67201177002777,
+          "max": 24.777812655680485
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P6_DIR": {
+        "patient": "P6_DIR",
+        "arch": "encoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 11.415842374164203,
+          "std": 6.83223956137303,
+          "median": 10.751270465438203,
+          "p95": 24.411972172113956,
+          "max": 32.32558312243763
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 10.89102421124554,
+          "std": 6.9554335568242465,
+          "median": 8.581951327552115,
+          "p95": 23.74120679325295,
+          "max": 27.59403015146573
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P7_DIR": {
+        "patient": "P7_DIR",
+        "arch": "encoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 11.81605079384786,
+          "std": 6.961804081809325,
+          "median": 10.918785839953749,
+          "p95": 24.14490061411636,
+          "max": 34.6187826792273
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 11.026219932523533,
+          "std": 7.415334247329699,
+          "median": 8.103024126830674,
+          "p95": 25.093913604697057,
+          "max": 30.636202440903148
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P8_DIR": {
+        "patient": "P8_DIR",
+        "arch": "encoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 15.222347539677534,
+          "std": 7.286504279852681,
+          "median": 14.290084805509059,
+          "p95": 27.55684514419629,
+          "max": 31.654674583271255
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 14.994680761939078,
+          "std": 8.995996175014051,
+          "median": 12.98790591280981,
+          "p95": 28.022454431425,
+          "max": 30.574716678981673
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P9_DIR": {
+        "patient": "P9_DIR",
+        "arch": "encoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.559868714866981,
+          "std": 3.5779240402969874,
+          "median": 8.427003987311956,
+          "p95": 14.269883839274014,
+          "max": 16.441476827084742
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.918263838803335,
+          "std": 3.9734508653183935,
+          "median": 8.073890091398287,
+          "p95": 14.092214162437356,
+          "max": 15.764596410945636
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      },
+      "P10_DIR": {
+        "patient": "P10_DIR",
+        "arch": "encoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 9.16975222216896,
+          "std": 5.67819247185596,
+          "median": 8.630673317599667,
+          "p95": 20.369877138099135,
+          "max": 29.552474059162915
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.301381916369588,
+          "std": 6.341426977527312,
+          "median": 5.093220984799305,
+          "p95": 20.922032970942848,
+          "max": 27.789301898392484
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/encoder_e6_normal.pth"
+      }
+    }
+  },
+  "decoder": {
+    "mu": {
+      "P1_DIR": {
+        "patient": "P1_DIR",
+        "arch": "decoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 5.476006440000418,
+          "std": 3.078772410385139,
+          "median": 5.04057397010626,
+          "p95": 11.111697600300648,
+          "max": 13.22539401094442
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 3.8924062198159763,
+          "std": 2.7792938827343483,
+          "median": 2.851631112188251,
+          "p95": 10.046934855964778,
+          "max": 10.900366966299805
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P2_DIR": {
+        "patient": "P2_DIR",
+        "arch": "decoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 7.033172139046188,
+          "std": 3.954123784271717,
+          "median": 6.292727835096983,
+          "p95": 13.150042582847554,
+          "max": 20.442634979360616
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 4.33784245401475,
+          "std": 3.895111488881153,
+          "median": 2.8730977759182084,
+          "p95": 12.553708615385336,
+          "max": 17.691184245267472
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P3_DIR": {
+        "patient": "P3_DIR",
+        "arch": "decoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 7.008467596626368,
+          "std": 3.88898314519162,
+          "median": 6.302661909689485,
+          "p95": 14.321087817318666,
+          "max": 17.318015982130852
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 6.942992820787408,
+          "std": 4.045189615311974,
+          "median": 5.380743217236056,
+          "p95": 13.390986274784336,
+          "max": 16.550906319594706
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P4_DIR": {
+        "patient": "P4_DIR",
+        "arch": "decoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.862085844808334,
+          "std": 4.626907034428868,
+          "median": 8.312573895163057,
+          "p95": 16.555535944727115,
+          "max": 21.08230610331289
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 9.830147256419307,
+          "std": 4.852253694636336,
+          "median": 10.126885009715474,
+          "p95": 17.57281423107864,
+          "max": 20.25377001943095
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P5_DIR": {
+        "patient": "P5_DIR",
+        "arch": "decoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 7.8380020595628075,
+          "std": 5.189649054153585,
+          "median": 7.020588715709026,
+          "p95": 17.722479758902608,
+          "max": 25.88536472947561
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.476853258560301,
+          "std": 5.502066158873672,
+          "median": 5.462600113499065,
+          "p95": 17.67201177002777,
+          "max": 24.777812655680485
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P6_DIR": {
+        "patient": "P6_DIR",
+        "arch": "decoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 10.86804041958063,
+          "std": 7.001904590696008,
+          "median": 9.111735600733851,
+          "p95": 25.138505650271416,
+          "max": 30.103554512584786
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 10.89102421124554,
+          "std": 6.9554335568242465,
+          "median": 8.581951327552115,
+          "p95": 23.74120679325295,
+          "max": 27.59403015146573
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P7_DIR": {
+        "patient": "P7_DIR",
+        "arch": "decoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 10.62174887742132,
+          "std": 6.473036365044973,
+          "median": 8.754866978215182,
+          "p95": 23.17392189213239,
+          "max": 31.931225182321874
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 11.026219932523533,
+          "std": 7.415334247329699,
+          "median": 8.103024126830674,
+          "p95": 25.093913604697057,
+          "max": 30.636202440903148
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P8_DIR": {
+        "patient": "P8_DIR",
+        "arch": "decoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 14.218749952002538,
+          "std": 8.177340141007676,
+          "median": 12.291543383027562,
+          "p95": 27.308898230923514,
+          "max": 30.21568400954694
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 14.994680761939078,
+          "std": 8.995996175014051,
+          "median": 12.98790591280981,
+          "p95": 28.022454431425,
+          "max": 30.574716678981673
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P9_DIR": {
+        "patient": "P9_DIR",
+        "arch": "decoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.032848731091619,
+          "std": 3.3379832431342455,
+          "median": 8.187693915725273,
+          "p95": 13.274343518210117,
+          "max": 16.244425144115738
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.918263838803335,
+          "std": 3.9734508653183935,
+          "median": 8.073890091398287,
+          "p95": 14.092214162437356,
+          "max": 15.764596410945636
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P10_DIR": {
+        "patient": "P10_DIR",
+        "arch": "decoder",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.867573924839537,
+          "std": 5.776660831946323,
+          "median": 7.788218002486464,
+          "p95": 21.22904436664056,
+          "max": 30.050816511273027
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.301381916369588,
+          "std": 6.341426977527312,
+          "median": 5.093220984799305,
+          "p95": 20.922032970942848,
+          "max": 27.789301898392484
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      }
+    },
+    "minmax": {
+      "P1_DIR": {
+        "patient": "P1_DIR",
+        "arch": "decoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 4.460631675240111,
+          "std": 2.861274563598366,
+          "median": 3.7827620060441953,
+          "p95": 10.079056511907284,
+          "max": 12.657359763898459
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 3.8924062198159763,
+          "std": 2.7792938827343483,
+          "median": 2.851631112188251,
+          "p95": 10.046934855964778,
+          "max": 10.900366966299805
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P2_DIR": {
+        "patient": "P2_DIR",
+        "arch": "decoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 6.526275717673759,
+          "std": 3.64089243136315,
+          "median": 6.052989568105387,
+          "p95": 11.923721957782398,
+          "max": 19.995299420171953
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 4.33784245401475,
+          "std": 3.895111488881153,
+          "median": 2.8730977759182084,
+          "p95": 12.553708615385336,
+          "max": 17.691184245267472
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P3_DIR": {
+        "patient": "P3_DIR",
+        "arch": "decoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 6.851851532399816,
+          "std": 4.200935190805696,
+          "median": 5.663366780436755,
+          "p95": 15.418680639339842,
+          "max": 17.68583228864806
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 6.942992820787408,
+          "std": 4.045189615311974,
+          "median": 5.380743217236056,
+          "p95": 13.390986274784336,
+          "max": 16.550906319594706
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P4_DIR": {
+        "patient": "P4_DIR",
+        "arch": "decoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.676343621594919,
+          "std": 5.034652439468842,
+          "median": 7.9795274858865115,
+          "p95": 16.590194154421084,
+          "max": 19.841530357923656
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 9.830147256419307,
+          "std": 4.852253694636336,
+          "median": 10.126885009715474,
+          "p95": 17.57281423107864,
+          "max": 20.25377001943095
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P5_DIR": {
+        "patient": "P5_DIR",
+        "arch": "decoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.138628957705324,
+          "std": 4.679876383025295,
+          "median": 7.0179754221560815,
+          "p95": 17.13667663371727,
+          "max": 24.705722160243987
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.476853258560301,
+          "std": 5.502066158873672,
+          "median": 5.462600113499065,
+          "p95": 17.67201177002777,
+          "max": 24.777812655680485
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P6_DIR": {
+        "patient": "P6_DIR",
+        "arch": "decoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 9.626581665592395,
+          "std": 6.251191558933636,
+          "median": 8.066680688018316,
+          "p95": 21.779768031105917,
+          "max": 28.783397285813564
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 10.89102421124554,
+          "std": 6.9554335568242465,
+          "median": 8.581951327552115,
+          "p95": 23.74120679325295,
+          "max": 27.59403015146573
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P7_DIR": {
+        "patient": "P7_DIR",
+        "arch": "decoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 10.866982018277042,
+          "std": 5.942383795956739,
+          "median": 10.052733400968835,
+          "p95": 21.117657049172998,
+          "max": 29.51726437387149
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 11.026219932523533,
+          "std": 7.415334247329699,
+          "median": 8.103024126830674,
+          "p95": 25.093913604697057,
+          "max": 30.636202440903148
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P8_DIR": {
+        "patient": "P8_DIR",
+        "arch": "decoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 14.126806204673345,
+          "std": 7.8988195098600995,
+          "median": 12.681537152304896,
+          "p95": 26.811887913348347,
+          "max": 29.745508593053167
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 14.994680761939078,
+          "std": 8.995996175014051,
+          "median": 12.98790591280981,
+          "p95": 28.022454431425,
+          "max": 30.574716678981673
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P9_DIR": {
+        "patient": "P9_DIR",
+        "arch": "decoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 7.465902066749464,
+          "std": 2.980236884733413,
+          "median": 7.255556755197697,
+          "p95": 12.27985343996909,
+          "max": 15.163581066297425
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.918263838803335,
+          "std": 3.9734508653183935,
+          "median": 8.073890091398287,
+          "p95": 14.092214162437356,
+          "max": 15.764596410945636
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      },
+      "P10_DIR": {
+        "patient": "P10_DIR",
+        "arch": "decoder",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 9.241510027881468,
+          "std": 5.567950052212893,
+          "median": 8.542231961405387,
+          "p95": 19.644965940455943,
+          "max": 28.237719880974172
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.301381916369588,
+          "std": 6.341426977527312,
+          "median": 5.093220984799305,
+          "p95": 20.922032970942848,
+          "max": 27.789301898392484
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/decoder_e6_normal.pth"
+      }
+    }
+  },
+  "both": {
+    "mu": {
+      "P1_DIR": {
+        "patient": "P1_DIR",
+        "arch": "both",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 5.672256916844503,
+          "std": 3.178971938373674,
+          "median": 5.050978319013877,
+          "p95": 11.123952622819388,
+          "max": 15.340514250455788
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 3.8924062198159763,
+          "std": 2.7792938827343483,
+          "median": 2.851631112188251,
+          "p95": 10.046934855964778,
+          "max": 10.900366966299805
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P2_DIR": {
+        "patient": "P2_DIR",
+        "arch": "both",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 7.847516663394393,
+          "std": 4.040532625584442,
+          "median": 7.1263571107072,
+          "p95": 14.227337537349682,
+          "max": 22.213567507120903
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 4.33784245401475,
+          "std": 3.895111488881153,
+          "median": 2.8730977759182084,
+          "p95": 12.553708615385336,
+          "max": 17.691184245267472
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P3_DIR": {
+        "patient": "P3_DIR",
+        "arch": "both",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 7.578980743337085,
+          "std": 3.5146119304169736,
+          "median": 7.031835282950437,
+          "p95": 13.838691668473583,
+          "max": 16.629413833113947
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 6.942992820787408,
+          "std": 4.045189615311974,
+          "median": 5.380743217236056,
+          "p95": 13.390986274784336,
+          "max": 16.550906319594706
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P4_DIR": {
+        "patient": "P4_DIR",
+        "arch": "both",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 9.209843173309176,
+          "std": 4.637954051107871,
+          "median": 8.573390928494725,
+          "p95": 17.076001449031924,
+          "max": 24.295312014052506
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 9.830147256419307,
+          "std": 4.852253694636336,
+          "median": 10.126885009715474,
+          "p95": 17.57281423107864,
+          "max": 20.25377001943095
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P5_DIR": {
+        "patient": "P5_DIR",
+        "arch": "both",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.186817075384088,
+          "std": 4.959947132166785,
+          "median": 7.330001472082234,
+          "p95": 17.651858484104267,
+          "max": 25.208067344733816
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.476853258560301,
+          "std": 5.502066158873672,
+          "median": 5.462600113499065,
+          "p95": 17.67201177002777,
+          "max": 24.777812655680485
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P6_DIR": {
+        "patient": "P6_DIR",
+        "arch": "both",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 10.610286895059419,
+          "std": 6.296137066084312,
+          "median": 8.892784122894913,
+          "p95": 23.449385402123387,
+          "max": 29.67700320563042
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 10.89102421124554,
+          "std": 6.9554335568242465,
+          "median": 8.581951327552115,
+          "p95": 23.74120679325295,
+          "max": 27.59403015146573
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P7_DIR": {
+        "patient": "P7_DIR",
+        "arch": "both",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 10.807924724094777,
+          "std": 6.195126242296725,
+          "median": 9.336488329645453,
+          "p95": 22.54322848029039,
+          "max": 30.617537407755893
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 11.026219932523533,
+          "std": 7.415334247329699,
+          "median": 8.103024126830674,
+          "p95": 25.093913604697057,
+          "max": 30.636202440903148
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P8_DIR": {
+        "patient": "P8_DIR",
+        "arch": "both",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 14.713165258444182,
+          "std": 7.827039688569656,
+          "median": 13.279839324693327,
+          "p95": 27.46682734697286,
+          "max": 30.376489367077713
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 14.994680761939078,
+          "std": 8.995996175014051,
+          "median": 12.98790591280981,
+          "p95": 28.022454431425,
+          "max": 30.574716678981673
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P9_DIR": {
+        "patient": "P9_DIR",
+        "arch": "both",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 7.897465486385202,
+          "std": 3.112951938375539,
+          "median": 7.98330662270241,
+          "p95": 12.373211217750084,
+          "max": 15.14524964746582
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.918263838803335,
+          "std": 3.9734508653183935,
+          "median": 8.073890091398287,
+          "p95": 14.092214162437356,
+          "max": 15.764596410945636
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P10_DIR": {
+        "patient": "P10_DIR",
+        "arch": "both",
+        "norm": "mu",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.895602086137048,
+          "std": 5.460925693610463,
+          "median": 7.953758886928426,
+          "p95": 20.641604987358782,
+          "max": 29.881199938867923
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.301381916369588,
+          "std": 6.341426977527312,
+          "median": 5.093220984799305,
+          "p95": 20.922032970942848,
+          "max": 27.789301898392484
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      }
+    },
+    "minmax": {
+      "P1_DIR": {
+        "patient": "P1_DIR",
+        "arch": "both",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 4.599054021334767,
+          "std": 2.777445431256032,
+          "median": 4.044630737944423,
+          "p95": 10.039716117831077,
+          "max": 14.3705192861191
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 3.8924062198159763,
+          "std": 2.7792938827343483,
+          "median": 2.851631112188251,
+          "p95": 10.046934855964778,
+          "max": 10.900366966299805
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P2_DIR": {
+        "patient": "P2_DIR",
+        "arch": "both",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 6.989445050182173,
+          "std": 3.7822633817167275,
+          "median": 6.450404501686053,
+          "p95": 13.06420159024731,
+          "max": 20.808335275213352
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 4.33784245401475,
+          "std": 3.895111488881153,
+          "median": 2.8730977759182084,
+          "p95": 12.553708615385336,
+          "max": 17.691184245267472
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P3_DIR": {
+        "patient": "P3_DIR",
+        "arch": "both",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 6.538219659538194,
+          "std": 4.492668814874961,
+          "median": 4.712184682948376,
+          "p95": 14.858907889468513,
+          "max": 18.59523650308897
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 6.942992820787408,
+          "std": 4.045189615311974,
+          "median": 5.380743217236056,
+          "p95": 13.390986274784336,
+          "max": 16.550906319594706
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P4_DIR": {
+        "patient": "P4_DIR",
+        "arch": "both",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 9.116671456291497,
+          "std": 5.324681389670677,
+          "median": 8.452169586009461,
+          "p95": 17.18169408494261,
+          "max": 20.961362981414727
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 9.830147256419307,
+          "std": 4.852253694636336,
+          "median": 10.126885009715474,
+          "p95": 17.57281423107864,
+          "max": 20.25377001943095
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P5_DIR": {
+        "patient": "P5_DIR",
+        "arch": "both",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.419483822345757,
+          "std": 5.28228342195818,
+          "median": 7.6999142518947306,
+          "p95": 18.225170707910934,
+          "max": 25.06260446779026
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.476853258560301,
+          "std": 5.502066158873672,
+          "median": 5.462600113499065,
+          "p95": 17.67201177002777,
+          "max": 24.777812655680485
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P6_DIR": {
+        "patient": "P6_DIR",
+        "arch": "both",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 11.251713220222646,
+          "std": 6.902468043764893,
+          "median": 10.041559087297408,
+          "p95": 24.30720891923256,
+          "max": 29.74413121289631
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 10.89102421124554,
+          "std": 6.9554335568242465,
+          "median": 8.581951327552115,
+          "p95": 23.74120679325295,
+          "max": 27.59403015146573
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P7_DIR": {
+        "patient": "P7_DIR",
+        "arch": "both",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 11.323808898703744,
+          "std": 6.724478811225313,
+          "median": 9.647762180686929,
+          "p95": 23.553300292415578,
+          "max": 31.787684246912818
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 11.026219932523533,
+          "std": 7.415334247329699,
+          "median": 8.103024126830674,
+          "p95": 25.093913604697057,
+          "max": 30.636202440903148
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P8_DIR": {
+        "patient": "P8_DIR",
+        "arch": "both",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 15.26092092574586,
+          "std": 7.9532308865819195,
+          "median": 13.836873364609659,
+          "p95": 27.766498814249168,
+          "max": 30.30591388446929
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 14.994680761939078,
+          "std": 8.995996175014051,
+          "median": 12.98790591280981,
+          "p95": 28.022454431425,
+          "max": 30.574716678981673
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P9_DIR": {
+        "patient": "P9_DIR",
+        "arch": "both",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 8.548791505124637,
+          "std": 3.1888886879166343,
+          "median": 8.662320668377763,
+          "p95": 13.261809944045542,
+          "max": 15.76195649148049
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.918263838803335,
+          "std": 3.9734508653183935,
+          "median": 8.073890091398287,
+          "p95": 14.092214162437356,
+          "max": 15.764596410945636
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      },
+      "P10_DIR": {
+        "patient": "P10_DIR",
+        "arch": "both",
+        "norm": "minmax",
+        "pair": "01_to_06",
+        "landmarks": "300_T00_to_T50",
+        "tre_mm": {
+          "n": 300,
+          "mean": 9.267976935139037,
+          "std": 5.589234728124334,
+          "median": 8.208711210988175,
+          "p95": 20.227918506122332,
+          "max": 28.25598444574714
+        },
+        "tre_identity_mm": {
+          "n": 300,
+          "mean": 7.301381916369588,
+          "std": 6.341426977527312,
+          "median": 5.093220984799305,
+          "p95": 20.922032970942848,
+          "max": 27.789301898392484
+        },
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/weights/both_e6_normal.pth"
+      }
+    }
+  }
+}

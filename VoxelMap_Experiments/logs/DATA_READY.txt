@@ -1,0 +1,11 @@
+READY Wed Aug 26 03:37:02 PM AEST 2026
+ELASTIX:
+  SourceProjections 680
+  TargetProjections 6120
+  DVFs 9
+  Angles.csv ok
+SYNTH:
+  SourceProjections 680
+  TargetProjections 6120
+  DVFs 9
+  Angles.csv ok

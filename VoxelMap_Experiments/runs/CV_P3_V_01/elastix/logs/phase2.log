@@ -1,0 +1,62 @@
+15:17:34 | INFO | SPARE Normalize: Scanning /home/abhishek/Voxel_GAN/VoxelMap_Experiments/data/staged/P3/CV_P3_V_01
+15:17:34 | INFO | SPARE Normalize: GTVol_03.mha -> CT_03.mha
+15:17:34 | INFO | SPARE Normalize: GTVol_01.mha -> CT_01.mha
+15:17:34 | INFO | SPARE Normalize: GTVol_06.mha -> CT_06.mha
+15:17:34 | INFO | SPARE Normalize: GTVol_10.mha -> CT_10.mha
+15:17:34 | INFO | SPARE Normalize: GTVol_08.mha -> CT_08.mha
+15:17:34 | INFO | SPARE Normalize: GTVol_05.mha -> CT_05.mha
+15:17:34 | INFO | SPARE Normalize: GTVol_09.mha -> CT_09.mha
+15:17:34 | INFO | SPARE Normalize: GTVol_02.mha -> CT_02.mha
+15:17:34 | INFO | SPARE Normalize: GTVol_07.mha -> CT_07.mha
+15:17:34 | INFO | SPARE Normalize: GTVol_04.mha -> CT_04.mha
+15:17:34 | INFO | === DOWNSAMPLE ===
+15:17:47 | INFO | sub_CT count: 10
+15:17:47 | INFO | === DRR (Varian (1008, 752), Geometry.xml) ===
+15:17:47 | INFO | DRR CT_01.mha (1/10) detector=(1008, 752)
+15:18:32 | INFO | DRR CT_02.mha (2/10) detector=(1008, 752)
+15:19:15 | INFO | DRR CT_03.mha (3/10) detector=(1008, 752)
+15:19:59 | INFO | DRR CT_04.mha (4/10) detector=(1008, 752)
+15:20:41 | INFO | DRR CT_05.mha (5/10) detector=(1008, 752)
+15:21:24 | INFO | DRR CT_06.mha (6/10) detector=(1008, 752)
+15:22:08 | INFO | DRR CT_07.mha (7/10) detector=(1008, 752)
+15:22:51 | INFO | DRR CT_08.mha (8/10) detector=(1008, 752)
+15:23:36 | INFO | DRR CT_09.mha (9/10) detector=(1008, 752)
+15:24:21 | INFO | DRR CT_10.mha (10/10) detector=(1008, 752)
+15:25:08 | INFO | === COMPRESS ===
+15:25:08 | INFO | projection bins: 6800
+15:25:08 | INFO | === DVF3D_LOW ===
+15:26:06 | INFO | DVF 1/9 sub_CT_02.mha
+15:26:54 | INFO | DVF 2/9 sub_CT_01.mha
+15:26:55 | INFO | DVF 3/9 sub_CT_04.mha
+15:27:21 | INFO | DVF 4/9 sub_CT_03.mha
+15:27:21 | INFO | DVF 5/9 sub_CT_05.mha
+15:29:05 | INFO | DVF 6/9 sub_CT_07.mha
+15:29:05 | INFO | DVF 7/9 sub_CT_08.mha
+15:29:05 | INFO | DVF 8/9 sub_CT_09.mha
+15:29:05 | INFO | DVF 9/9 sub_CT_10.mha
+15:29:05 | INFO | === PREP_TRAIN (Train+Test) ===
+15:29:05 | INFO | --- Processing Job 1/2: CV_P3_V_01 (TRAIN) ---
+15:29:05 | INFO |   > Categorizing and converting 6800 projections...
+15:29:06 | INFO |   > Converting and downsampling 10 CT volumes to SourceVolumes/...
+15:29:06 | INFO |   > Converting and downsampling 9 displacement fields to DVFs/...
+15:29:07 | INFO |   > Converting and downsampling 4 masks to Masks/...
+15:29:07 | INFO |   > Extracting angles from: Geometry.xml
+15:29:08 | INFO |   > Saved Angles.csv (680 entries)
+15:29:08 | INFO | --- Processing Job 2/2: CV_P3_V_01 (TEST) ---
+15:29:08 | INFO |   > Categorizing and converting 6800 projections...
+15:29:08 | INFO |   > Detected 680 projections. Synthesizing full breath cycle (01->06->10)...
+15:29:08 | INFO |   > Written RespBin.csv (680 entries) for DVF mapping
+15:29:08 | INFO |   > Compiling MP4 video sweep from 680 projections...
+15:29:10 | INFO |   > MP4 verification generated: Test_Breathing_Sweep.mp4
+15:29:10 | INFO |   > Converting and downsampling 10 CT volumes to SourceVolumes/...
+15:29:10 | INFO |   > Converting and downsampling 9 displacement fields to DVFs/...
+15:29:11 | INFO |   > Converting and downsampling 4 masks to Masks/...
+15:29:11 | INFO |   > Extracting angles from: Geometry.xml
+15:29:11 | INFO |   > Saved Angles.csv (680 entries)
+15:29:11 | INFO | Done in 11.6 min
+15:29:11 | INFO | ModelTraining: /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/elastix_CV_P3_V_01/ModelTraining/train/CV_P3_V_01
+15:29:11 | INFO |   SourceProjections: 680
+15:29:11 | INFO |   TargetProjections: 6120
+15:29:11 | INFO |   DVFs: 9
+15:29:11 | INFO |   Angles.csv: 1
+15:29:11 | INFO |   TestProjections: 680

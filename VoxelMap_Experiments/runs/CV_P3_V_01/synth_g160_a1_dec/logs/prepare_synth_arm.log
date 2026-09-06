@@ -1,0 +1,62 @@
+14:14:10 | INFO | === SYNTHESIZE from CT_06 (G160-A1 Decoder · µ air/water · linear) ===
+14:14:10 | INFO | run_root=/home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/CV_P3_V_01/synth_g160_a1_dec
+14:14:10 | INFO | Synthesizing from CT_06 | G160-A1 Decoder · µ air/water · linear | native=(450, 220, 450) | infer=160 | norm=mu
+14:14:11 | INFO |   wrote CT_01.mha | mean|u|_infer=1.2749
+14:14:12 | INFO |   wrote CT_02.mha | mean|u|_infer=1.0838
+14:14:13 | INFO |   wrote CT_03.mha | mean|u|_infer=0.6941
+14:14:14 | INFO |   wrote CT_04.mha | mean|u|_infer=0.3571
+14:14:16 | INFO |   wrote CT_05.mha | mean|u|_infer=0.1376
+14:14:17 | INFO |   wrote CT_06.mha | mean|u|_infer=0.0000
+14:14:18 | INFO |   wrote CT_07.mha | mean|u|_infer=0.1175
+14:14:19 | INFO |   wrote CT_08.mha | mean|u|_infer=0.4024
+14:14:20 | INFO |   wrote CT_09.mha | mean|u|_infer=0.7755
+14:14:22 | INFO |   wrote CT_10.mha | mean|u|_infer=1.0740
+14:14:22 | INFO | === DOWNSAMPLE ===
+14:14:31 | INFO | sub_CT count: 10
+14:14:31 | INFO | === WRITE SYNTH DVFs ===
+14:14:31 | INFO |   DVF DVF_sub_01.mha
+14:14:31 | INFO |   DVF DVF_sub_02.mha
+14:14:31 | INFO |   DVF DVF_sub_03.mha
+14:14:31 | INFO |   DVF DVF_sub_04.mha
+14:14:31 | INFO |   DVF DVF_sub_05.mha
+14:14:31 | INFO |   DVF DVF_sub_07.mha
+14:14:31 | INFO |   DVF DVF_sub_08.mha
+14:14:31 | INFO |   DVF DVF_sub_09.mha
+14:14:31 | INFO |   DVF DVF_sub_10.mha
+14:14:31 | INFO | DVFs: 9
+14:14:31 | INFO | === DRR ===
+14:14:31 | INFO | DRR CT_01.mha (1/10)
+14:15:04 | INFO | DRR CT_02.mha (2/10)
+14:15:32 | INFO | DRR CT_03.mha (3/10)
+14:16:01 | INFO | DRR CT_04.mha (4/10)
+14:16:29 | INFO | DRR CT_05.mha (5/10)
+14:16:58 | INFO | DRR CT_06.mha (6/10)
+14:17:26 | INFO | DRR CT_07.mha (7/10)
+14:17:55 | INFO | DRR CT_08.mha (8/10)
+14:18:23 | INFO | DRR CT_09.mha (9/10)
+14:18:52 | INFO | DRR CT_10.mha (10/10)
+14:19:20 | INFO | === COMPRESS ===
+14:19:20 | INFO | bins: 6800
+14:19:20 | INFO | === PREP_TRAIN ===
+14:19:21 | INFO | --- Processing Job 1/2: CV_P3_V_01 (TRAIN) ---
+14:19:21 | INFO |   > Categorizing and converting 6800 projections...
+14:19:21 | INFO |   > Converting and downsampling 10 CT volumes to SourceVolumes/...
+14:19:21 | INFO |   > Converting and downsampling 9 displacement fields to DVFs/...
+14:19:22 | INFO |   > Converting and downsampling 4 masks to Masks/...
+14:19:22 | INFO |   > Extracting angles from: Geometry.xml
+14:19:22 | INFO |   > Saved Angles.csv (680 entries)
+14:19:22 | INFO | --- Processing Job 2/2: CV_P3_V_01 (TEST) ---
+14:19:22 | INFO |   > Categorizing and converting 6800 projections...
+14:19:23 | INFO |   > Detected 680 projections. Synthesizing full breath cycle (01->06->10)...
+14:19:23 | INFO |   > Written RespBin.csv (680 entries) for DVF mapping
+14:19:23 | INFO |   > Compiling MP4 video sweep from 680 projections...
+14:19:23 | INFO |   > MP4 verification generated: Test_Breathing_Sweep.mp4
+14:19:23 | INFO |   > Converting and downsampling 10 CT volumes to SourceVolumes/...
+14:19:24 | INFO |   > Converting and downsampling 9 displacement fields to DVFs/...
+14:19:24 | INFO |   > Converting and downsampling 4 masks to Masks/...
+14:19:25 | INFO |   > Extracting angles from: Geometry.xml
+14:19:25 | INFO |   > Saved Angles.csv (680 entries)
+14:19:25 | INFO | Done in 5.3 min | ModelTraining=/home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/CV_P3_V_01/synth_g160_a1_dec/ModelTraining/train/CV_P3_V_01
+14:19:25 | INFO |   SourceProjections: 680
+14:19:25 | INFO |   TargetProjections: 6120
+14:19:25 | INFO |   DVFs: 9

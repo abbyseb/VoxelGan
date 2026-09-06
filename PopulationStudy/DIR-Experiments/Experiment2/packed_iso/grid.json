@@ -1,0 +1,18 @@
+{
+  "spacing_mm": 2.0,
+  "size": 160,
+  "fov_mm": 320.0,
+  "patients": [
+    "P1_DIR",
+    "P2_DIR",
+    "P3_DIR",
+    "P4_DIR",
+    "P5_DIR",
+    "P6_DIR",
+    "P7_DIR",
+    "P8_DIR",
+    "P9_DIR",
+    "P10_DIR"
+  ],
+  "matches": "PopulationStudy/data_iso grid.json (P0-A)"
+}

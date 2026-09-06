@@ -1,0 +1,53 @@
+{
+  "elastix": {
+    "arm": "elastix",
+    "run_root": "/home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/CV_P3_V_01/elastix",
+    "train": {
+      "n_samples": 6120,
+      "mean_dice": 0.8664090929370301,
+      "mean_3d_error_mm": 0.5398822971448909,
+      "mean_mse": 1.5879729485121453e-05,
+      "mean_psnr_db": 48.92283140482024,
+      "mean_ssim": 0.9000859319399329,
+      "mean_neg_det_j_fraction": 0.0
+    },
+    "sweep": {
+      "n_samples": 680,
+      "mean_dice": 0.868986071295598,
+      "mean_3d_error_mm": 0.65133727815532,
+      "mean_psnr_db": 48.30938035166777,
+      "mean_ssim": 0.8989551559572593
+    }
+  },
+  "synth_g160_a1_dec": {
+    "arm": "synth_g160_a1_dec",
+    "run_root": "/home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/CV_P3_V_01/synth_g160_a1_dec",
+    "sweep": {
+      "n_samples": 680,
+      "mean_dice": 0.9013874209979001,
+      "mean_3d_error_mm": 1.3762192327244132,
+      "mean_psnr_db": 49.68105817348816,
+      "mean_ssim": 0.8151919648247314
+    }
+  },
+  "synth_e3_both": {
+    "arm": "synth_e3_both",
+    "run_root": "/home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/CV_P3_V_01/synth_e3_both",
+    "train": {
+      "n_samples": 6120,
+      "mean_dice": 0.8920823211373846,
+      "mean_3d_error_mm": 0.9040438969281767,
+      "mean_mse": 1.4331060898180142e-05,
+      "mean_psnr_db": 48.9823388330872,
+      "mean_ssim": 0.8201921874177804,
+      "mean_neg_det_j_fraction": 0.0
+    },
+    "sweep": {
+      "n_samples": 680,
+      "mean_dice": 0.898790707570665,
+      "mean_3d_error_mm": 1.0443535265257957,
+      "mean_psnr_db": 48.44614474447976,
+      "mean_ssim": 0.8183382794278821
+    }
+  }
+}

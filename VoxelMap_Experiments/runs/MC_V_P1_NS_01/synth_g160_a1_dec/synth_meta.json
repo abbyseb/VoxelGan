@@ -1,0 +1,56 @@
+{
+  "synth_id": "synth_g160_a1_dec",
+  "label": "G160-A1 Decoder \u00b7 \u00b5 air/water \u00b7 linear",
+  "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/weights/crb_dec_mse_iso_g160_fov_full_generator.pth",
+  "norm": "mu",
+  "infer_size": 160,
+  "im_size": 64,
+  "arch": "decoder",
+  "native_shape": [
+    450,
+    220,
+    450
+  ],
+  "phases": {
+    "01": {
+      "dvf_l2_mean_infer": 1.0440523624420166,
+      "ct": "CT_01.mha"
+    },
+    "02": {
+      "dvf_l2_mean_infer": 0.8991780281066895,
+      "ct": "CT_02.mha"
+    },
+    "03": {
+      "dvf_l2_mean_infer": 0.5874730348587036,
+      "ct": "CT_03.mha"
+    },
+    "04": {
+      "dvf_l2_mean_infer": 0.30881381034851074,
+      "ct": "CT_04.mha"
+    },
+    "05": {
+      "dvf_l2_mean_infer": 0.10948675870895386,
+      "ct": "CT_05.mha"
+    },
+    "06": {
+      "dvf_l2_mean_infer": 0.0,
+      "ct": "CT_06.mha"
+    },
+    "07": {
+      "dvf_l2_mean_infer": 0.0850578173995018,
+      "ct": "CT_07.mha"
+    },
+    "08": {
+      "dvf_l2_mean_infer": 0.33250099420547485,
+      "ct": "CT_08.mha"
+    },
+    "09": {
+      "dvf_l2_mean_infer": 0.6319378614425659,
+      "ct": "CT_09.mha"
+    },
+    "10": {
+      "dvf_l2_mean_infer": 0.9000886082649231,
+      "ct": "CT_10.mha"
+    }
+  }
+}

@@ -1,0 +1,322 @@
+[2026-09-03T09:50:34+10:00] A1 clinical QC (metrics + 100-pair panels) ...
+Grid160-A1 QC  device=cuda:1  arms=['a1_full']  arches=['encoder', 'decoder', 'both']  norms=['minmax', 'mu']  panels_only=False  panel_pairs=all (100)
+loaded a1_full encoder crb_enc_mse_iso_g160_fov_full_generator.pth
+  [a1_full|encoder|CV_P1_V_01|minmax] 25/100
+  [a1_full|encoder|CV_P1_V_01|minmax] 50/100
+  [a1_full|encoder|CV_P1_V_01|minmax] 75/100
+  [a1_full|encoder|CV_P1_V_01|minmax] 100/100
+[a1_full|encoder|CV_P1_V_01|minmax] cos=0.382 beat=51% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_varian/a1_full/minmax/P1/CV_P1_V_01
+  [a1_full|encoder|CV_P2_V_01|minmax] 25/100
+  [a1_full|encoder|CV_P2_V_01|minmax] 50/100
+  [a1_full|encoder|CV_P2_V_01|minmax] 75/100
+  [a1_full|encoder|CV_P2_V_01|minmax] 100/100
+[a1_full|encoder|CV_P2_V_01|minmax] cos=0.597 beat=97% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_varian/a1_full/minmax/P2/CV_P2_V_01
+  [a1_full|encoder|CV_P3_V_01|minmax] 25/100
+  [a1_full|encoder|CV_P3_V_01|minmax] 50/100
+  [a1_full|encoder|CV_P3_V_01|minmax] 75/100
+  [a1_full|encoder|CV_P3_V_01|minmax] 100/100
+[a1_full|encoder|CV_P3_V_01|minmax] cos=0.597 beat=83% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_varian/a1_full/minmax/P3/CV_P3_V_01
+  [a1_full|encoder|CV_P4_V_01|minmax] 25/100
+  [a1_full|encoder|CV_P4_V_01|minmax] 50/100
+  [a1_full|encoder|CV_P4_V_01|minmax] 75/100
+  [a1_full|encoder|CV_P4_V_01|minmax] 100/100
+[a1_full|encoder|CV_P4_V_01|minmax] cos=0.694 beat=94% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_varian/a1_full/minmax/P4/CV_P4_V_01
+  [a1_full|encoder|CV_P5_V_01|minmax] 25/100
+  [a1_full|encoder|CV_P5_V_01|minmax] 50/100
+  [a1_full|encoder|CV_P5_V_01|minmax] 75/100
+  [a1_full|encoder|CV_P5_V_01|minmax] 100/100
+[a1_full|encoder|CV_P5_V_01|minmax] cos=0.544 beat=98% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_varian/a1_full/minmax/P5/CV_P5_V_01
+  [a1_full|encoder|CE_P1_V_01|minmax] 25/100
+  [a1_full|encoder|CE_P1_V_01|minmax] 50/100
+  [a1_full|encoder|CE_P1_V_01|minmax] 75/100
+  [a1_full|encoder|CE_P1_V_01|minmax] 100/100
+[a1_full|encoder|CE_P1_V_01|minmax] cos=0.253 beat=62% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_elekta/a1_full/minmax/P1/CE_P1_V_01
+  [a1_full|encoder|CE_P2_V_01|minmax] 25/100
+  [a1_full|encoder|CE_P2_V_01|minmax] 50/100
+  [a1_full|encoder|CE_P2_V_01|minmax] 75/100
+  [a1_full|encoder|CE_P2_V_01|minmax] 100/100
+[a1_full|encoder|CE_P2_V_01|minmax] cos=0.188 beat=50% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_elekta/a1_full/minmax/P2/CE_P2_V_01
+  [a1_full|encoder|CE_P3_V_01|minmax] 25/100
+  [a1_full|encoder|CE_P3_V_01|minmax] 50/100
+  [a1_full|encoder|CE_P3_V_01|minmax] 75/100
+  [a1_full|encoder|CE_P3_V_01|minmax] 100/100
+[a1_full|encoder|CE_P3_V_01|minmax] cos=0.354 beat=87% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_elekta/a1_full/minmax/P3/CE_P3_V_01
+  [a1_full|encoder|CE_P4_V_01|minmax] 25/100
+  [a1_full|encoder|CE_P4_V_01|minmax] 50/100
+  [a1_full|encoder|CE_P4_V_01|minmax] 75/100
+  [a1_full|encoder|CE_P4_V_01|minmax] 100/100
+[a1_full|encoder|CE_P4_V_01|minmax] cos=0.406 beat=86% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_elekta/a1_full/minmax/P4/CE_P4_V_01
+  [a1_full|encoder|CE_P5_V_01|minmax] 25/100
+  [a1_full|encoder|CE_P5_V_01|minmax] 50/100
+  [a1_full|encoder|CE_P5_V_01|minmax] 75/100
+  [a1_full|encoder|CE_P5_V_01|minmax] 100/100
+[a1_full|encoder|CE_P5_V_01|minmax] cos=0.417 beat=79% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_elekta/a1_full/minmax/P5/CE_P5_V_01
+  [a1_full|encoder|CV_P1_V_01|mu] 25/100
+  [a1_full|encoder|CV_P1_V_01|mu] 50/100
+  [a1_full|encoder|CV_P1_V_01|mu] 75/100
+  [a1_full|encoder|CV_P1_V_01|mu] 100/100
+[a1_full|encoder|CV_P1_V_01|mu] cos=0.367 beat=59% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_varian/a1_full/mu/P1/CV_P1_V_01
+  [a1_full|encoder|CV_P2_V_01|mu] 25/100
+  [a1_full|encoder|CV_P2_V_01|mu] 50/100
+  [a1_full|encoder|CV_P2_V_01|mu] 75/100
+  [a1_full|encoder|CV_P2_V_01|mu] 100/100
+[a1_full|encoder|CV_P2_V_01|mu] cos=0.628 beat=94% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_varian/a1_full/mu/P2/CV_P2_V_01
+  [a1_full|encoder|CV_P3_V_01|mu] 25/100
+  [a1_full|encoder|CV_P3_V_01|mu] 50/100
+  [a1_full|encoder|CV_P3_V_01|mu] 75/100
+  [a1_full|encoder|CV_P3_V_01|mu] 100/100
+[a1_full|encoder|CV_P3_V_01|mu] cos=0.647 beat=84% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_varian/a1_full/mu/P3/CV_P3_V_01
+  [a1_full|encoder|CV_P4_V_01|mu] 25/100
+  [a1_full|encoder|CV_P4_V_01|mu] 50/100
+  [a1_full|encoder|CV_P4_V_01|mu] 75/100
+  [a1_full|encoder|CV_P4_V_01|mu] 100/100
+[a1_full|encoder|CV_P4_V_01|mu] cos=0.691 beat=96% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_varian/a1_full/mu/P4/CV_P4_V_01
+  [a1_full|encoder|CV_P5_V_01|mu] 25/100
+  [a1_full|encoder|CV_P5_V_01|mu] 50/100
+  [a1_full|encoder|CV_P5_V_01|mu] 75/100
+  [a1_full|encoder|CV_P5_V_01|mu] 100/100
+[a1_full|encoder|CV_P5_V_01|mu] cos=0.672 beat=99% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_varian/a1_full/mu/P5/CV_P5_V_01
+  [a1_full|encoder|CE_P1_V_01|mu] 25/100
+  [a1_full|encoder|CE_P1_V_01|mu] 50/100
+  [a1_full|encoder|CE_P1_V_01|mu] 75/100
+  [a1_full|encoder|CE_P1_V_01|mu] 100/100
+[a1_full|encoder|CE_P1_V_01|mu] cos=0.592 beat=99% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_elekta/a1_full/mu/P1/CE_P1_V_01
+  [a1_full|encoder|CE_P2_V_01|mu] 25/100
+  [a1_full|encoder|CE_P2_V_01|mu] 50/100
+  [a1_full|encoder|CE_P2_V_01|mu] 75/100
+  [a1_full|encoder|CE_P2_V_01|mu] 100/100
+[a1_full|encoder|CE_P2_V_01|mu] cos=0.355 beat=78% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_elekta/a1_full/mu/P2/CE_P2_V_01
+  [a1_full|encoder|CE_P3_V_01|mu] 25/100
+  [a1_full|encoder|CE_P3_V_01|mu] 50/100
+  [a1_full|encoder|CE_P3_V_01|mu] 75/100
+  [a1_full|encoder|CE_P3_V_01|mu] 100/100
+[a1_full|encoder|CE_P3_V_01|mu] cos=0.465 beat=88% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_elekta/a1_full/mu/P3/CE_P3_V_01
+  [a1_full|encoder|CE_P4_V_01|mu] 25/100
+  [a1_full|encoder|CE_P4_V_01|mu] 50/100
+  [a1_full|encoder|CE_P4_V_01|mu] 75/100
+  [a1_full|encoder|CE_P4_V_01|mu] 100/100
+[a1_full|encoder|CE_P4_V_01|mu] cos=0.445 beat=81% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_elekta/a1_full/mu/P4/CE_P4_V_01
+  [a1_full|encoder|CE_P5_V_01|mu] 25/100
+  [a1_full|encoder|CE_P5_V_01|mu] 50/100
+  [a1_full|encoder|CE_P5_V_01|mu] 75/100
+  [a1_full|encoder|CE_P5_V_01|mu] 100/100
+[a1_full|encoder|CE_P5_V_01|mu] cos=0.604 beat=89% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/plots/qc_elekta/a1_full/mu/P5/CE_P5_V_01
+loaded a1_full decoder crb_dec_mse_iso_g160_fov_full_generator.pth
+  [a1_full|decoder|CV_P1_V_01|minmax] 25/100
+  [a1_full|decoder|CV_P1_V_01|minmax] 50/100
+  [a1_full|decoder|CV_P1_V_01|minmax] 75/100
+  [a1_full|decoder|CV_P1_V_01|minmax] 100/100
+[a1_full|decoder|CV_P1_V_01|minmax] cos=0.405 beat=53% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_varian/a1_full/minmax/P1/CV_P1_V_01
+  [a1_full|decoder|CV_P2_V_01|minmax] 25/100
+  [a1_full|decoder|CV_P2_V_01|minmax] 50/100
+  [a1_full|decoder|CV_P2_V_01|minmax] 75/100
+  [a1_full|decoder|CV_P2_V_01|minmax] 100/100
+[a1_full|decoder|CV_P2_V_01|minmax] cos=0.619 beat=100% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_varian/a1_full/minmax/P2/CV_P2_V_01
+  [a1_full|decoder|CV_P3_V_01|minmax] 25/100
+  [a1_full|decoder|CV_P3_V_01|minmax] 50/100
+  [a1_full|decoder|CV_P3_V_01|minmax] 75/100
+  [a1_full|decoder|CV_P3_V_01|minmax] 100/100
+[a1_full|decoder|CV_P3_V_01|minmax] cos=0.605 beat=83% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_varian/a1_full/minmax/P3/CV_P3_V_01
+  [a1_full|decoder|CV_P4_V_01|minmax] 25/100
+  [a1_full|decoder|CV_P4_V_01|minmax] 50/100
+  [a1_full|decoder|CV_P4_V_01|minmax] 75/100
+  [a1_full|decoder|CV_P4_V_01|minmax] 100/100
+[a1_full|decoder|CV_P4_V_01|minmax] cos=0.634 beat=98% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_varian/a1_full/minmax/P4/CV_P4_V_01
+  [a1_full|decoder|CV_P5_V_01|minmax] 25/100
+  [a1_full|decoder|CV_P5_V_01|minmax] 50/100
+  [a1_full|decoder|CV_P5_V_01|minmax] 75/100
+  [a1_full|decoder|CV_P5_V_01|minmax] 100/100
+[a1_full|decoder|CV_P5_V_01|minmax] cos=0.558 beat=98% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_varian/a1_full/minmax/P5/CV_P5_V_01
+  [a1_full|decoder|CE_P1_V_01|minmax] 25/100
+  [a1_full|decoder|CE_P1_V_01|minmax] 50/100
+  [a1_full|decoder|CE_P1_V_01|minmax] 75/100
+  [a1_full|decoder|CE_P1_V_01|minmax] 100/100
+[a1_full|decoder|CE_P1_V_01|minmax] cos=-0.103 beat=13% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_elekta/a1_full/minmax/P1/CE_P1_V_01
+  [a1_full|decoder|CE_P2_V_01|minmax] 25/100
+  [a1_full|decoder|CE_P2_V_01|minmax] 50/100
+  [a1_full|decoder|CE_P2_V_01|minmax] 75/100
+  [a1_full|decoder|CE_P2_V_01|minmax] 100/100
+[a1_full|decoder|CE_P2_V_01|minmax] cos=0.185 beat=74% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_elekta/a1_full/minmax/P2/CE_P2_V_01
+  [a1_full|decoder|CE_P3_V_01|minmax] 25/100
+  [a1_full|decoder|CE_P3_V_01|minmax] 50/100
+  [a1_full|decoder|CE_P3_V_01|minmax] 75/100
+  [a1_full|decoder|CE_P3_V_01|minmax] 100/100
+[a1_full|decoder|CE_P3_V_01|minmax] cos=0.246 beat=83% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_elekta/a1_full/minmax/P3/CE_P3_V_01
+  [a1_full|decoder|CE_P4_V_01|minmax] 25/100
+  [a1_full|decoder|CE_P4_V_01|minmax] 50/100
+  [a1_full|decoder|CE_P4_V_01|minmax] 75/100
+  [a1_full|decoder|CE_P4_V_01|minmax] 100/100
+[a1_full|decoder|CE_P4_V_01|minmax] cos=0.453 beat=87% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_elekta/a1_full/minmax/P4/CE_P4_V_01
+  [a1_full|decoder|CE_P5_V_01|minmax] 25/100
+  [a1_full|decoder|CE_P5_V_01|minmax] 50/100
+  [a1_full|decoder|CE_P5_V_01|minmax] 75/100
+  [a1_full|decoder|CE_P5_V_01|minmax] 100/100
+[a1_full|decoder|CE_P5_V_01|minmax] cos=0.188 beat=73% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_elekta/a1_full/minmax/P5/CE_P5_V_01
+  [a1_full|decoder|CV_P1_V_01|mu] 25/100
+  [a1_full|decoder|CV_P1_V_01|mu] 50/100
+  [a1_full|decoder|CV_P1_V_01|mu] 75/100
+  [a1_full|decoder|CV_P1_V_01|mu] 100/100
+[a1_full|decoder|CV_P1_V_01|mu] cos=0.394 beat=53% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_varian/a1_full/mu/P1/CV_P1_V_01
+  [a1_full|decoder|CV_P2_V_01|mu] 25/100
+  [a1_full|decoder|CV_P2_V_01|mu] 50/100
+  [a1_full|decoder|CV_P2_V_01|mu] 75/100
+  [a1_full|decoder|CV_P2_V_01|mu] 100/100
+[a1_full|decoder|CV_P2_V_01|mu] cos=0.617 beat=98% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_varian/a1_full/mu/P2/CV_P2_V_01
+  [a1_full|decoder|CV_P3_V_01|mu] 25/100
+  [a1_full|decoder|CV_P3_V_01|mu] 50/100
+  [a1_full|decoder|CV_P3_V_01|mu] 75/100
+  [a1_full|decoder|CV_P3_V_01|mu] 100/100
+[a1_full|decoder|CV_P3_V_01|mu] cos=0.647 beat=87% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_varian/a1_full/mu/P3/CV_P3_V_01
+  [a1_full|decoder|CV_P4_V_01|mu] 25/100
+  [a1_full|decoder|CV_P4_V_01|mu] 50/100
+  [a1_full|decoder|CV_P4_V_01|mu] 75/100
+  [a1_full|decoder|CV_P4_V_01|mu] 100/100
+[a1_full|decoder|CV_P4_V_01|mu] cos=0.658 beat=96% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_varian/a1_full/mu/P4/CV_P4_V_01
+  [a1_full|decoder|CV_P5_V_01|mu] 25/100
+  [a1_full|decoder|CV_P5_V_01|mu] 50/100
+  [a1_full|decoder|CV_P5_V_01|mu] 75/100
+  [a1_full|decoder|CV_P5_V_01|mu] 100/100
+[a1_full|decoder|CV_P5_V_01|mu] cos=0.688 beat=99% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_varian/a1_full/mu/P5/CV_P5_V_01
+  [a1_full|decoder|CE_P1_V_01|mu] 25/100
+  [a1_full|decoder|CE_P1_V_01|mu] 50/100
+  [a1_full|decoder|CE_P1_V_01|mu] 75/100
+  [a1_full|decoder|CE_P1_V_01|mu] 100/100
+[a1_full|decoder|CE_P1_V_01|mu] cos=0.628 beat=100% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_elekta/a1_full/mu/P1/CE_P1_V_01
+  [a1_full|decoder|CE_P2_V_01|mu] 25/100
+  [a1_full|decoder|CE_P2_V_01|mu] 50/100
+  [a1_full|decoder|CE_P2_V_01|mu] 75/100
+  [a1_full|decoder|CE_P2_V_01|mu] 100/100
+[a1_full|decoder|CE_P2_V_01|mu] cos=0.430 beat=77% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_elekta/a1_full/mu/P2/CE_P2_V_01
+  [a1_full|decoder|CE_P3_V_01|mu] 25/100
+  [a1_full|decoder|CE_P3_V_01|mu] 50/100
+  [a1_full|decoder|CE_P3_V_01|mu] 75/100
+  [a1_full|decoder|CE_P3_V_01|mu] 100/100
+[a1_full|decoder|CE_P3_V_01|mu] cos=0.527 beat=90% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_elekta/a1_full/mu/P3/CE_P3_V_01
+  [a1_full|decoder|CE_P4_V_01|mu] 25/100
+  [a1_full|decoder|CE_P4_V_01|mu] 50/100
+  [a1_full|decoder|CE_P4_V_01|mu] 75/100
+  [a1_full|decoder|CE_P4_V_01|mu] 100/100
+[a1_full|decoder|CE_P4_V_01|mu] cos=0.469 beat=78% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_elekta/a1_full/mu/P4/CE_P4_V_01
+  [a1_full|decoder|CE_P5_V_01|mu] 25/100
+  [a1_full|decoder|CE_P5_V_01|mu] 50/100
+  [a1_full|decoder|CE_P5_V_01|mu] 75/100
+  [a1_full|decoder|CE_P5_V_01|mu] 100/100
+[a1_full|decoder|CE_P5_V_01|mu] cos=0.556 beat=86% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/plots/qc_elekta/a1_full/mu/P5/CE_P5_V_01
+loaded a1_full both crb_both_mse_iso_g160_fov_full_generator.pth
+  [a1_full|both|CV_P1_V_01|minmax] 25/100
+  [a1_full|both|CV_P1_V_01|minmax] 50/100
+  [a1_full|both|CV_P1_V_01|minmax] 75/100
+  [a1_full|both|CV_P1_V_01|minmax] 100/100
+[a1_full|both|CV_P1_V_01|minmax] cos=0.402 beat=59% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_varian/a1_full/minmax/P1/CV_P1_V_01
+  [a1_full|both|CV_P2_V_01|minmax] 25/100
+  [a1_full|both|CV_P2_V_01|minmax] 50/100
+  [a1_full|both|CV_P2_V_01|minmax] 75/100
+  [a1_full|both|CV_P2_V_01|minmax] 100/100
+[a1_full|both|CV_P2_V_01|minmax] cos=0.599 beat=98% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_varian/a1_full/minmax/P2/CV_P2_V_01
+  [a1_full|both|CV_P3_V_01|minmax] 25/100
+  [a1_full|both|CV_P3_V_01|minmax] 50/100
+  [a1_full|both|CV_P3_V_01|minmax] 75/100
+  [a1_full|both|CV_P3_V_01|minmax] 100/100
+[a1_full|both|CV_P3_V_01|minmax] cos=0.592 beat=77% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_varian/a1_full/minmax/P3/CV_P3_V_01
+  [a1_full|both|CV_P4_V_01|minmax] 25/100
+  [a1_full|both|CV_P4_V_01|minmax] 50/100
+  [a1_full|both|CV_P4_V_01|minmax] 75/100
+  [a1_full|both|CV_P4_V_01|minmax] 100/100
+[a1_full|both|CV_P4_V_01|minmax] cos=0.693 beat=98% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_varian/a1_full/minmax/P4/CV_P4_V_01
+  [a1_full|both|CV_P5_V_01|minmax] 25/100
+  [a1_full|both|CV_P5_V_01|minmax] 50/100
+  [a1_full|both|CV_P5_V_01|minmax] 75/100
+  [a1_full|both|CV_P5_V_01|minmax] 100/100
+[a1_full|both|CV_P5_V_01|minmax] cos=0.607 beat=100% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_varian/a1_full/minmax/P5/CV_P5_V_01
+  [a1_full|both|CE_P1_V_01|minmax] 25/100
+  [a1_full|both|CE_P1_V_01|minmax] 50/100
+  [a1_full|both|CE_P1_V_01|minmax] 75/100
+  [a1_full|both|CE_P1_V_01|minmax] 100/100
+[a1_full|both|CE_P1_V_01|minmax] cos=0.273 beat=69% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_elekta/a1_full/minmax/P1/CE_P1_V_01
+  [a1_full|both|CE_P2_V_01|minmax] 25/100
+  [a1_full|both|CE_P2_V_01|minmax] 50/100
+  [a1_full|both|CE_P2_V_01|minmax] 75/100
+  [a1_full|both|CE_P2_V_01|minmax] 100/100
+[a1_full|both|CE_P2_V_01|minmax] cos=0.224 beat=59% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_elekta/a1_full/minmax/P2/CE_P2_V_01
+  [a1_full|both|CE_P3_V_01|minmax] 25/100
+  [a1_full|both|CE_P3_V_01|minmax] 50/100
+  [a1_full|both|CE_P3_V_01|minmax] 75/100
+  [a1_full|both|CE_P3_V_01|minmax] 100/100
+[a1_full|both|CE_P3_V_01|minmax] cos=0.471 beat=79% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_elekta/a1_full/minmax/P3/CE_P3_V_01
+  [a1_full|both|CE_P4_V_01|minmax] 25/100
+  [a1_full|both|CE_P4_V_01|minmax] 50/100
+  [a1_full|both|CE_P4_V_01|minmax] 75/100
+  [a1_full|both|CE_P4_V_01|minmax] 100/100
+[a1_full|both|CE_P4_V_01|minmax] cos=0.512 beat=83% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_elekta/a1_full/minmax/P4/CE_P4_V_01
+  [a1_full|both|CE_P5_V_01|minmax] 25/100
+  [a1_full|both|CE_P5_V_01|minmax] 50/100
+  [a1_full|both|CE_P5_V_01|minmax] 75/100
+  [a1_full|both|CE_P5_V_01|minmax] 100/100
+[a1_full|both|CE_P5_V_01|minmax] cos=0.446 beat=92% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_elekta/a1_full/minmax/P5/CE_P5_V_01
+  [a1_full|both|CV_P1_V_01|mu] 25/100
+  [a1_full|both|CV_P1_V_01|mu] 50/100
+  [a1_full|both|CV_P1_V_01|mu] 75/100
+  [a1_full|both|CV_P1_V_01|mu] 100/100
+[a1_full|both|CV_P1_V_01|mu] cos=0.395 beat=44% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_varian/a1_full/mu/P1/CV_P1_V_01
+  [a1_full|both|CV_P2_V_01|mu] 25/100
+  [a1_full|both|CV_P2_V_01|mu] 50/100
+  [a1_full|both|CV_P2_V_01|mu] 75/100
+  [a1_full|both|CV_P2_V_01|mu] 100/100
+[a1_full|both|CV_P2_V_01|mu] cos=0.596 beat=84% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_varian/a1_full/mu/P2/CV_P2_V_01
+  [a1_full|both|CV_P3_V_01|mu] 25/100
+  [a1_full|both|CV_P3_V_01|mu] 50/100
+  [a1_full|both|CV_P3_V_01|mu] 75/100
+  [a1_full|both|CV_P3_V_01|mu] 100/100
+[a1_full|both|CV_P3_V_01|mu] cos=0.642 beat=80% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_varian/a1_full/mu/P3/CV_P3_V_01
+  [a1_full|both|CV_P4_V_01|mu] 25/100
+  [a1_full|both|CV_P4_V_01|mu] 50/100
+  [a1_full|both|CV_P4_V_01|mu] 75/100
+  [a1_full|both|CV_P4_V_01|mu] 100/100
+[a1_full|both|CV_P4_V_01|mu] cos=0.659 beat=91% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_varian/a1_full/mu/P4/CV_P4_V_01
+  [a1_full|both|CV_P5_V_01|mu] 25/100
+  [a1_full|both|CV_P5_V_01|mu] 50/100
+  [a1_full|both|CV_P5_V_01|mu] 75/100
+  [a1_full|both|CV_P5_V_01|mu] 100/100
+[a1_full|both|CV_P5_V_01|mu] cos=0.705 beat=100% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_varian/a1_full/mu/P5/CV_P5_V_01
+  [a1_full|both|CE_P1_V_01|mu] 25/100
+  [a1_full|both|CE_P1_V_01|mu] 50/100
+  [a1_full|both|CE_P1_V_01|mu] 75/100
+  [a1_full|both|CE_P1_V_01|mu] 100/100
+[a1_full|both|CE_P1_V_01|mu] cos=0.634 beat=99% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_elekta/a1_full/mu/P1/CE_P1_V_01
+  [a1_full|both|CE_P2_V_01|mu] 25/100
+  [a1_full|both|CE_P2_V_01|mu] 50/100
+  [a1_full|both|CE_P2_V_01|mu] 75/100
+  [a1_full|both|CE_P2_V_01|mu] 100/100
+[a1_full|both|CE_P2_V_01|mu] cos=0.375 beat=77% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_elekta/a1_full/mu/P2/CE_P2_V_01
+  [a1_full|both|CE_P3_V_01|mu] 25/100
+  [a1_full|both|CE_P3_V_01|mu] 50/100
+  [a1_full|both|CE_P3_V_01|mu] 75/100
+  [a1_full|both|CE_P3_V_01|mu] 100/100
+[a1_full|both|CE_P3_V_01|mu] cos=0.417 beat=87% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_elekta/a1_full/mu/P3/CE_P3_V_01
+  [a1_full|both|CE_P4_V_01|mu] 25/100
+  [a1_full|both|CE_P4_V_01|mu] 50/100
+  [a1_full|both|CE_P4_V_01|mu] 75/100
+  [a1_full|both|CE_P4_V_01|mu] 100/100
+[a1_full|both|CE_P4_V_01|mu] cos=0.494 beat=78% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_elekta/a1_full/mu/P4/CE_P4_V_01
+  [a1_full|both|CE_P5_V_01|mu] 25/100
+  [a1_full|both|CE_P5_V_01|mu] 50/100
+  [a1_full|both|CE_P5_V_01|mu] 75/100
+  [a1_full|both|CE_P5_V_01|mu] 100/100
+[a1_full|both|CE_P5_V_01|mu] cos=0.590 beat=89% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/plots/qc_elekta/a1_full/mu/P5/CE_P5_V_01
+
+======== GRID160 A1 CLINICAL SUMMARY ========
+a1_full  encoder  minmax varian   cos=0.563  L1/z=0.877  beat=85%
+a1_full  encoder  minmax elekta   cos=0.324  L1/z=0.964  beat=73%
+a1_full  encoder  mu     varian   cos=0.601  L1/z=0.850  beat=86%
+a1_full  encoder  mu     elekta   cos=0.492  L1/z=0.887  beat=87%
+a1_full  decoder  minmax varian   cos=0.564  L1/z=0.873  beat=86%
+a1_full  decoder  minmax elekta   cos=0.194  L1/z=0.981  beat=66%
+a1_full  decoder  mu     varian   cos=0.601  L1/z=0.849  beat=86%
+a1_full  decoder  mu     elekta   cos=0.522  L1/z=0.878  beat=86%
+a1_full  both     minmax varian   cos=0.579  L1/z=0.875  beat=86%
+a1_full  both     minmax elekta   cos=0.385  L1/z=0.950  beat=76%
+a1_full  both     mu     varian   cos=0.599  L1/z=0.882  beat=80%
+a1_full  both     mu     elekta   cos=0.502  L1/z=0.890  beat=86%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/plots/qc_summary/summary_encoder_decoder_both_a1_full_clinical_minmax_mu.json
+DONE
+[2026-09-03T10:31:58+10:00] DONE

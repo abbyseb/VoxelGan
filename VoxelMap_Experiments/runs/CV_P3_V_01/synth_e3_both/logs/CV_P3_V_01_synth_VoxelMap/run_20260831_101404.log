@@ -1,0 +1,4 @@
+VoxelMap_Experiments synth arm — LEARN-GUI compatible run
+scan=CV_P3_V_01
+checkpoint=/home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/checkpoints_nofilm/best.pt
+test_patient=/home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/ModelTraining/test/CV_P3_V_01

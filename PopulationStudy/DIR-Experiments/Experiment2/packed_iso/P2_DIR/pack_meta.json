@@ -1,0 +1,74 @@
+{
+  "patient_id": "P2_DIR",
+  "grid": "iso 2.0mm 160\u00b3",
+  "spacing_mm": 2.0,
+  "size": 160,
+  "fov_mm": 320.0,
+  "origin_iso_zyx_mm": [
+    -21.8783414717019,
+    -22.14463482878537,
+    -11.815857643330958
+  ],
+  "lung_centroid_zyx_mm": [
+    138.1216585282981,
+    137.85536517121463,
+    148.18414235666904
+  ],
+  "native_spacing_xyz_mm": [
+    1.16,
+    1.16,
+    2.5
+  ],
+  "native_origin_xyz_mm": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "mask_pad_vox": 8,
+  "intensity": "HU (same as data_iso SPARE)",
+  "dvf_units": "iso_grid_voxels",
+  "dvf_mm_per_voxel": 2.0,
+  "landmarks": {
+    "P2_DIR_300_T00_xyz.txt": {
+      "n": 300,
+      "native_npy": "landmarks/P2_DIR_300_T00_xyz_native_xyz.npy",
+      "iso_npy": "landmarks/P2_DIR_300_T00_xyz_iso_xyz.npy"
+    },
+    "P2_DIR_300_T50_xyz.txt": {
+      "n": 300,
+      "native_npy": "landmarks/P2_DIR_300_T50_xyz_native_xyz.npy",
+      "iso_npy": "landmarks/P2_DIR_300_T50_xyz_iso_xyz.npy"
+    },
+    "P2_DIR_4D-75_T00.txt": {
+      "n": 75,
+      "native_npy": "landmarks/P2_DIR_4D-75_T00_native_xyz.npy",
+      "iso_npy": "landmarks/P2_DIR_4D-75_T00_iso_xyz.npy"
+    },
+    "P2_DIR_4D-75_T10.txt": {
+      "n": 75,
+      "native_npy": "landmarks/P2_DIR_4D-75_T10_native_xyz.npy",
+      "iso_npy": "landmarks/P2_DIR_4D-75_T10_iso_xyz.npy"
+    },
+    "P2_DIR_4D-75_T20.txt": {
+      "n": 75,
+      "native_npy": "landmarks/P2_DIR_4D-75_T20_native_xyz.npy",
+      "iso_npy": "landmarks/P2_DIR_4D-75_T20_iso_xyz.npy"
+    },
+    "P2_DIR_4D-75_T30.txt": {
+      "n": 75,
+      "native_npy": "landmarks/P2_DIR_4D-75_T30_native_xyz.npy",
+      "iso_npy": "landmarks/P2_DIR_4D-75_T30_iso_xyz.npy"
+    },
+    "P2_DIR_4D-75_T40.txt": {
+      "n": 75,
+      "native_npy": "landmarks/P2_DIR_4D-75_T40_native_xyz.npy",
+      "iso_npy": "landmarks/P2_DIR_4D-75_T40_iso_xyz.npy"
+    },
+    "P2_DIR_4D-75_T50.txt": {
+      "n": 75,
+      "native_npy": "landmarks/P2_DIR_4D-75_T50_native_xyz.npy",
+      "iso_npy": "landmarks/P2_DIR_4D-75_T50_iso_xyz.npy"
+    }
+  },
+  "mask_voxels_packed": 1101696
+}
