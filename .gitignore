@@ -35,8 +35,6 @@ VoxelMap_Experiments/runs/**/CV_*/train/
 VoxelMap_Experiments/runs/**/MC_*/train/
 **/plots_nofilm/*.png
 **/eval_train/
-**/eval_sweep/*.mp4
-**/Test_Breathing_Sweep.mp4
 
 # Python / venv
 __pycache__/
@@ -55,12 +53,13 @@ PopulationStudy/DIR-Experiments/data/
 My v1.0/P2/raw/
 My v1.0/plots/orientation_viewer.log
 
-# ClinicalExperiments QC / train curve images (too large for HTTPS/SSH push)
-PopulationStudy/ClinicalExperiments/**/*.png
-PopulationStudy/plots/**/*.png
-PopulationStudy/IsoExperiments/**/*.png
-PopulationStudy/DIR-Experiments/**/*.png
-PopulationStudy/CRBExperiments/**/*.png
+# Per-pair QC panel dumps (~14GB) — keep metrics.tsv/summary.json; allow surveys + loss curves
+PopulationStudy/ClinicalExperiments/**/qc_*/**/[0-9][0-9]_to_[0-9][0-9].png
+PopulationStudy/ClinicalExperiments/**/qc_*/**/[0-9][0-9]_to_[0-9][0-9]_*.png
+PopulationStudy/IsoExperiments/**/qc_*/**/*.png
+PopulationStudy/DIR-Experiments/**/qc_*/**/*.png
+PopulationStudy/CRBExperiments/**/qc_*/**/*.png
+PopulationStudy/plots/**/qc_*/**/*.png
 
 # Secrets / env
 .env
@@ -69,4 +68,6 @@ PopulationStudy/CRBExperiments/**/*.png
 **/githubKEY
 **/github_key*
 
-*.mp4
+# Videos: allow report plots; skip test-set sweeps under ModelTraining (already ignored)
+**/Test_Breathing_Sweep.mp4
+**/eval_sweep/*.mp4
