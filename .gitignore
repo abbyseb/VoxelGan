@@ -53,9 +53,8 @@ PopulationStudy/DIR-Experiments/data/
 My v1.0/P2/raw/
 My v1.0/plots/orientation_viewer.log
 
-# Per-pair QC panel dumps (~14GB) — keep metrics.tsv/summary.json; allow surveys + loss curves
-PopulationStudy/ClinicalExperiments/**/qc_*/**/[0-9][0-9]_to_[0-9][0-9].png
-PopulationStudy/ClinicalExperiments/**/qc_*/**/[0-9][0-9]_to_[0-9][0-9]_*.png
+# Per-pair QC panel dumps — tracked for ClinicalExperiments (large; ~14GB)
+# Still ignore other study areas' pair dumps unless explicitly requested:
 PopulationStudy/IsoExperiments/**/qc_*/**/*.png
 PopulationStudy/DIR-Experiments/**/qc_*/**/*.png
 PopulationStudy/CRBExperiments/**/qc_*/**/*.png
