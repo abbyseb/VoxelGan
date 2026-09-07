@@ -24,16 +24,15 @@ invert before calling (see script docstring) — wrong sign looks like mediocre 
 |----|-----|------------|------|
 | **A0** | [`arms/A0_identity/`](arms/A0_identity/) | Static phase, **no motion** (identity DVF) | Lower bound |
 | **A1** | [`arms/A1_oracle_dirlab/`](arms/A1_oracle_dirlab/) | VoxelMap trained on the **patient’s own** DIR-Lab 4D-CT | Best possible, clinically unrealistic |
-| **A2** | [`arms/A2_population_dirlab/`](arms/A2_population_dirlab/) | VoxelMap trained on **DIR-Lab population** (LOO / other cases) | Same-domain population prior |
+| **A2** | [`arms/A2_generic_spare/`](arms/A2_generic_spare/) | VoxelMap trained on **SPARE population** motion (no patient-specific synth) | Does conditioning add anything? |
 | **A3** | [`arms/A3_synth_conditioned/`](arms/A3_synth_conditioned/) | VoxelMap trained on **conditioned synthesizer** 4D-CT (e.g. G160-A1 Dec + µ from on-table CT) | **Main arm** |
 
 ### Optional
 
 | ID | Arm | What it is |
 |----|-----|------------|
-| **A4** | [`arms/A4_mismatched_conditioning/`](arms/A4_mismatched_conditioning/) | Synth conditioned on a **different** patient’s static CT — specificity control for A3 |
+| **A4** | [`arms/A4_mismatched_conditioning/`](arms/A4_mismatched_conditioning/) | Synth conditioned on a **different** patient’s static CT — specificity control |
 | **A5** | [`arms/A5_synth_cbct_finetune/`](arms/A5_synth_cbct_finetune/) | A3 + fine-tune on CBCTs simulated from synthetic 4D-CTs — domain adaptation |
-| **A6** | [`arms/A6_generic_spare/`](arms/A6_generic_spare/) | VoxelMap from **SPARE population** on DIR — cross-cohort control vs A2 |
 
 ---
 
@@ -41,12 +40,12 @@ invert before calling (see script docstring) — wrong sign looks like mediocre 
 
 1. **Harness** — `dirlab_tre.py --check` (must match published identity TRE).  
 2. **A0** — report identity TRE on 300-pt T00→T50 (and 75-pt if used).  
-3. **A1 oracle** — stage patient DIR 4D-CT → VoxelMap → TRE.  
-4. **A2 population** — LOO DIR VoxelMap on held-out case → TRE.  
+3. **A1 oracle** — stage DIR 4D-CT → VoxelMap train per case (or leave-one-in) → TRE.  
+4. **A2 generic** — SPARE-trained VoxelMap (or SPARE Elastix DVFs as motion prior) on DIR → TRE.  
 5. **A3 synth** — G160-A1 (or chosen synthesizer) from mid-phase CT → synth 4D → VoxelMap → TRE.  
-6. **A4 / A5 / A6** if A3 is competitive (mismatch, CBCT FT, SPARE prior).
+6. **A4 / A5** if A3 is competitive.
 
-Fix leave-one-out vs train-on-all-but-test-case for **A2** (and any shared A1 protocol) before claiming cohort numbers.
+Leave-one-out vs train-on-all-but-test-case for A1/A2 should be fixed before claiming cohort numbers.
 
 ---
 
