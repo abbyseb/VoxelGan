@@ -1,0 +1,13 @@
+# TRE Viewer — dedicated venv (do not install into LEARN-GUI)
+#
+# Phase 0 needs: numpy, SimpleITK
+# Phase 1+: napari, magicgui, matplotlib, PyQt6
+
+numpy>=1.24
+SimpleITK>=2.2
+napari[all]>=0.4.19
+magicgui>=0.8
+matplotlib>=3.7
+PyQt6>=6.5
+# Phase 2+
+# torch  # install matching CUDA build separately if needed
