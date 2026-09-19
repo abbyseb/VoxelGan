@@ -153,9 +153,22 @@ def phase_to_idx(phase: str) -> int:
     }[phase]
 
 
-def proj_path(mt_dir: Path, phase: str, view_1based: int, *, source: bool = False) -> Path:
-    idx = 6 if source else phase_to_idx(phase)
-    folder = "SourceProjections" if source else "TargetProjections"
+def proj_path(
+    mt_dir: Path, phase: str, view_1based: int, *, source: bool = False
+) -> Path:
+    """Compressed 128² projection path for a respiratory phase.
+
+    VoxelMap ``ModelTraining`` layout: phase **06 (T50)** lives only under
+    ``SourceProjections/``; phases 01–05 and 07–10 are under ``TargetProjections/``.
+    ``source=True`` always selects the ref (06) folder — legacy VoxelMap pair
+    convention. Prefer ``source=False`` with the actual phase string.
+    """
+    if source:
+        idx = 6
+        folder = "SourceProjections"
+    else:
+        idx = phase_to_idx(phase)
+        folder = "SourceProjections" if idx == 6 else "TargetProjections"
     return mt_dir / folder / f"{idx:02d}_Proj_{view_1based:03d}_bin.npy"
 
 

@@ -50,7 +50,7 @@ cd "DIR EXPERIMENTS/tools"
 - **Case / patient** dropdown — switch C01–C10 without restarting; shows TRE75 from `tre_summary.json`
 - Then field / pair / 75·300 / overlays as before
 
-Keys: `W` jump worst TRE · `Shift+W` worst identity · `A`/`C`/`S` orient · Controls dock Reload.
+Keys: `W` jump worst TRE · `Shift+W` worst identity · `A`/`C`/`S` orient · **Reload overlays** in Controls.
 
 ### Success criteria
 
@@ -75,10 +75,12 @@ Overlays (Controls dock / layer list):
 
 ## Window / panels
 
-Designed as a **multipane** layout (napari docks, LEARN-GUI spirit):
-- **Center:** CT + TRE overlays
-- **Right:** TRE summary + Controls (drag edges to resize; float by dragging title)
-- **Bottom:** DRR + RTK landmarks (large pane)
+Multipane layout (napari docks, overridden for a usable default):
+- **Center:** CT + TRE overlays (primary canvas)
+- **Right tabs:** **TRE** (summary / worst list) ↔ **Controls** (cases + overlays) — tabified so they don’t fight for height; Controls scrolls if needed
+- **Bottom:** clickable **DRR** / **RTK** launchers → separate maximized full-page windows (Shift+D / Shift+T)
+- Soft size hints only (no hard min widths that clip). Drag edges / float titles as usual.
+- Close (X) hides a panel; **P** or Window→TRE Panels restores.
 
 | Key / menu | Action |
 |---|---|
@@ -88,8 +90,15 @@ Designed as a **multipane** layout (napari docks, LEARN-GUI spirit):
 | **Window → TRE Panels → Show DRR/TRE/Controls** | Reopen one panel |
 | **Window → TRE Panels → Hide …** | Hide one panel |
 | `F11` | Toggle fullscreen ↔ maximized |
+| **Window → TRE Panels → Open DRR full page** (`Shift+D`) | Maximized DRR scrub window |
+| **Window → TRE Panels → Open RTK landmarks full page** (`Shift+T`) | Maximized RTK overlay window |
+| **Window → Export PNG → CT canvas** (`Ctrl+E`) | Save main CT view as PNG |
+| **Window → Export PNG → Full main window** (`Ctrl+Shift+E`) | Save whole main window as PNG |
+| DRR / RTK page **Export PNG…** (`Ctrl+S`) | Save that page’s figure as PNG |
 
-Starts **maximized** (not tiny). If DRR vanished, press **`P`**.
+PNG defaults go under ``<run>/tre/exports/``.
+
+Starts **maximized** (not tiny). Bottom dock has clickable **DRR** / **RTK** buttons for the same pages. If the launcher vanished, press **`P`**.
 Panels are rebuilt from scratch if their dock was destroyed, so `P` always works:
 
 ```bash

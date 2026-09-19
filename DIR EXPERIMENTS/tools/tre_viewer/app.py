@@ -198,6 +198,61 @@ class TreViewerApp:
             opacity=1.0,
             **_pt,
         )
+        # User marker styles (napari left panel) — survive reload / case switch.
+        self._applying_marker_style = False
+        self._marker_style_cache: dict[str, dict] = {
+            "truth": {
+                "size": 12.0,
+                "symbol": "o",
+                "border_width": 0.15,
+                "opacity": 1.0,
+                "blending": "translucent",
+                "shading": "spherical",
+                "border_color": "white",
+                "face_color": "lime",
+                "color_by_tre": True,
+            },
+            "pred": {
+                "size": 10.0,
+                "symbol": "disc",
+                "border_width": 0.15,
+                "opacity": 1.0,
+                "blending": "translucent",
+                "shading": "none",
+                "border_color": "white",
+                "face_color": "magenta",
+                "color_by_tre": False,
+            },
+            "src": {
+                "size": 8.0,
+                "symbol": "o",
+                "border_width": 0.15,
+                "opacity": 0.5,
+                "blending": "translucent",
+                "shading": "none",
+                "border_color": "white",
+                "face_color": "cyan",
+                "color_by_tre": False,
+            },
+            "rings": {
+                "size": None,  # always ∝ TRE unless user locks uniform size
+                "symbol": "o",
+                "border_width": 0.35,
+                "opacity": 1.0,
+                "blending": "translucent",
+                "shading": "none",
+                "border_color": None,  # TRE colors when color_by_tre
+                "face_color": (0.0, 0.0, 0.0, 0.0),
+                "color_by_tre": True,
+                "size_by_tre": True,
+            },
+            "err": {
+                "edge_width": 1.5,
+                "opacity": 1.0,
+                "color_by_tre": True,
+                "edge_color": "yellow",
+            },
+        }
         self.layer_err = self.viewer.add_vectors(
             np.zeros((0, 2, 3)),
             name="error vectors",
@@ -207,6 +262,7 @@ class TreViewerApp:
             vector_style="triangle",
             opacity=0.95,
         )
+        self._wire_marker_style_persistence()
 
         # --- Phase 2: DVF / warp overlays (pack-shaped upsamples; off by default) ---
         self._blink_warped = False
@@ -281,21 +337,20 @@ class TreViewerApp:
         self._dvf_component = "off"
         self._arrow_step = 6
         self._arrow_gain = 2.0
+        self._drr_view = 0
+        self._drr_mode = "target"
+        self._proj_pages: dict[str, object] = {}
 
-        # --- docks (LEARN-like multipane: CT center, panels right, DRR bottom) ---
-        # Every panel is registered with a *builder*, not just a widget: any
-        # napari destroy path (title-bar X, remove_dock_widget) can delete the
-        # QtViewerDockWidget, so show_panel must be able to rebuild from scratch.
+        # --- docks: CT primary; right column tabbed (Cases+TRE / Overlays); DRR bottom ---
         self._docks: dict[str, object] = {}
         self._panel_specs: dict[str, dict] = {}
         self._register_dock(
-            name="TRE", builder=self._build_tre_panel, area="right", min_w=280
+            name="TRE", builder=self._build_tre_panel, area="right"
         )
         self._register_dock(
             name="Controls",
             builder=self._build_controls_panel,
             area="right",
-            min_w=260,
         )
 
         # Keybindings
@@ -328,8 +383,8 @@ class TreViewerApp:
             self.rotate_inplane(90)
 
         @self.viewer.bind_key("Shift-R")
-        def _rot180(viewer):  # noqa: ARG001
-            self.rotate_inplane(180)
+        def _rot_ccw(viewer):  # noqa: ARG001
+            self.rotate_inplane(-90)
 
         @self.viewer.bind_key("f")
         def _flip_lr(viewer):  # noqa: ARG001
@@ -345,17 +400,85 @@ class TreViewerApp:
 
         self._build_drr_dock()
         self._setup_window_chrome(show=show)
+        self._hijack_napari_rotate_button()
+        self._finalize_layout()
         self._set_orient("axial")
         self._refresh_landmarks()
         self._refresh_dvf_overlays()
-        self._refresh_drr_panel()
+        self._refresh_projection_views()
         # Land on the worst landmark so points are immediately visible.
         if len(self.pl.tre_mm):
             self.jump_to_landmark(int(np.argmax(self.pl.tre_mm)))
         self._add_handedness_overlay()
         self._apply_inplane_ornament()
+        self._sync_rot_widgets()
 
     # ------------------------------------------------------------------
+    def _as_scroll(self, widget):
+        """Scrollable dock content — never force the window taller than the screen."""
+        from qtpy.QtCore import Qt
+        from qtpy.QtWidgets import QScrollArea
+
+        sa = QScrollArea()
+        sa.setWidgetResizable(True)
+        sa.setFrameShape(QScrollArea.Shape.NoFrame)
+        sa.setHorizontalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        sa.setVerticalScrollBarPolicy(Qt.ScrollBarPolicy.ScrollBarAsNeeded)
+        sa.setWidget(widget)
+        return sa
+
+    def _finalize_layout(self) -> None:
+        """Corners, tabify right panels, sensible sizes — override napari defaults."""
+        from qtpy.QtCore import Qt
+
+        qw = getattr(self.viewer.window, "_qt_window", None)
+        if qw is None:
+            return
+        try:
+            # Keep the right column full-height; DRR only under the canvas.
+            qw.setCorner(
+                Qt.Corner.BottomRightCorner, Qt.DockWidgetArea.RightDockWidgetArea
+            )
+            qw.setCorner(
+                Qt.Corner.BottomLeftCorner, Qt.DockWidgetArea.BottomDockWidgetArea
+            )
+        except Exception:
+            pass
+
+        tre = self._docks.get("TRE")
+        ctrl = self._docks.get("Controls")
+        if self._qt_alive(tre) and self._qt_alive(ctrl):
+            try:
+                qw.tabifyDockWidget(tre, ctrl)
+                tre.raise_()
+            except Exception:
+                pass
+            try:
+                # Prefer a usable TRE list over a giant overlays form.
+                qw.resizeDocks([tre, ctrl], [3, 2], Qt.Orientation.Vertical)
+            except Exception:
+                pass
+
+        drr = self._docks.get("DRR")
+        if self._qt_alive(drr):
+            try:
+                qw.resizeDocks([drr], [220], Qt.Orientation.Horizontal)
+            except Exception:
+                pass
+            try:
+                drr.setMaximumHeight(320)
+            except Exception:
+                pass
+
+        # Soft preferred width for the right column (not a hard minimum).
+        for name in ("TRE", "Controls"):
+            dock = self._docks.get(name)
+            if self._qt_alive(dock):
+                try:
+                    dock.resize(320, dock.height())
+                except Exception:
+                    pass
+
     def _qt_alive(self, obj) -> bool:
         """True if obj is usable. Never attribute-access a possibly-deleted wrapper first."""
         if obj is None:
@@ -389,134 +512,277 @@ class TreViewerApp:
     # ---- panel builders (each one re-creatable from scratch) ----------
     def _build_tre_panel(self):
         """Summary / selection / worst-landmark list (right dock)."""
-        from qtpy.QtWidgets import QLabel, QListWidget, QVBoxLayout, QWidget
+        from qtpy.QtCore import Qt
+        from qtpy.QtWidgets import QLabel, QListWidget, QSizePolicy, QVBoxLayout, QWidget
 
         self.summary_label = QLabel("")
         self.summary_label.setWordWrap(True)
-        self.summary_label.setStyleSheet("font-family: monospace; padding: 6px;")
+        self.summary_label.setTextInteractionFlags(
+            Qt.TextInteractionFlag.TextSelectableByMouse
+        )
+        self.summary_label.setStyleSheet(
+            "font-family: monospace; font-size: 11px; padding: 4px;"
+        )
         self.selected_label = QLabel("selected: —")
-        self.selected_label.setStyleSheet("font-family: monospace; padding: 4px;")
+        self.selected_label.setWordWrap(True)
+        self.selected_label.setTextInteractionFlags(
+            Qt.TextInteractionFlag.TextSelectableByMouse
+        )
+        self.selected_label.setStyleSheet(
+            "font-family: monospace; font-size: 11px; padding: 4px;"
+        )
         self.worst_list = QListWidget()
+        self.worst_list.setUniformItemSizes(True)
+        self.worst_list.setSizePolicy(
+            QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding
+        )
         self.worst_list.itemClicked.connect(self._on_worst_clicked)
 
         side = QWidget()
-        side.setMinimumWidth(280)
         lay = QVBoxLayout(side)
-        lay.addWidget(QLabel("Summary"))
+        lay.setContentsMargins(8, 8, 8, 8)
+        lay.setSpacing(4)
+        hdr = QLabel("TRE")
+        hdr.setStyleSheet("font-weight: 600; font-size: 12px;")
+        lay.addWidget(hdr)
         lay.addWidget(self.summary_label)
         lay.addWidget(self.selected_label)
-        lay.addWidget(QLabel("Worst landmarks (click / press W)"))
-        lay.addWidget(self.worst_list)
+        lay.addWidget(QLabel("Worst landmarks  ·  click or W"))
+        lay.addWidget(self.worst_list, stretch=1)
         self._tre_panel = side
+        # List scrolls itself — do not wrap in QScrollArea (that expands the list).
         return side
 
     def _build_controls_panel(self):
-        """Folder browse + case dropdown + magicgui overlay controls."""
-        from magicgui import magicgui
+        """Cases browser + compact overlay controls (pure Qt — no magicgui bloat)."""
         from qtpy.QtWidgets import (
+            QCheckBox,
             QComboBox,
-            QFileDialog,
+            QDoubleSpinBox,
+            QFormLayout,
+            QGridLayout,
+            QGroupBox,
             QHBoxLayout,
             QLabel,
             QLineEdit,
             QPushButton,
+            QSpinBox,
             QVBoxLayout,
             QWidget,
         )
 
-        fields = list(self.run.fields_available) or ["identity"]
-
-        @magicgui(
-            call_button="Reload",
-            field={"choices": fields},
-            pair={"choices": ["T00_T50", "T50_T00"]},
-            which={"choices": ["75", "300"]},
-            orient={"choices": list(_ORIENT.keys())},
-            dvf_component={"choices": ["off", "mag", "SI", "AP", "LR"]},
-            auto_call=False,
-        )
-        def controls(
-            field: str = self.field,
-            pair: str = self.pair,
-            which: str = self.which,
-            orient: str = self._orient_name,
-            show_src_pts: bool = self.layer_src_pts.visible,
-            show_rings: bool = self.layer_rings.visible,
-            show_vectors: bool = self.layer_err.visible,
-            show_dvf_arrows: bool = self.layer_dvf_arrows.visible,
-            show_warped: bool = self.layer_warped.visible,
-            show_diff: bool = self.layer_diff.visible,
-            show_ident_diff: bool = self.layer_ident_diff.visible,
-            dvf_component: str = self._dvf_component,
-            arrow_step: int = self._arrow_step,
-            arrow_gain: float = self._arrow_gain,
-        ):
-            self.field = field
-            self.pair = pair  # type: ignore[assignment]
-            self.which = which
-            self.layer_src_pts.visible = show_src_pts
-            self.layer_rings.visible = show_rings
-            self.layer_err.visible = show_vectors
-            self.layer_dvf_arrows.visible = show_dvf_arrows
-            self.layer_warped.visible = show_warped
-            self.layer_diff.visible = show_diff
-            self.layer_ident_diff.visible = show_ident_diff
-            self._dvf_component = dvf_component
-            self._arrow_step = int(arrow_step)
-            self._arrow_gain = float(arrow_gain)
-            self._set_orient(orient)
-            self._reload_volumes_if_needed()
-            self._refresh_landmarks()
-            self._refresh_dvf_overlays()
-            self._refresh_drr_panel()
-            self._apply_inplane_ornament()
-
-        self.controls = controls
-        try:
-            controls.native.setMinimumWidth(260)
-        except Exception:
-            pass
-
         root = QWidget()
-        root.setMinimumWidth(280)
         lay = QVBoxLayout(root)
-        lay.setContentsMargins(6, 6, 6, 6)
-        lay.setSpacing(4)
+        lay.setContentsMargins(8, 8, 8, 8)
+        lay.setSpacing(8)
 
-        lay.addWidget(QLabel("Runs folder"))
+        # --- Cases ---
+        cases = QGroupBox("Cases")
+        cases_lay = QVBoxLayout(cases)
+        cases_lay.setSpacing(4)
+        cases_lay.addWidget(QLabel("Runs folder"))
         path_row = QHBoxLayout()
         self._runs_dir_edit = QLineEdit(str(self._runs_dir))
-        self._runs_dir_edit.setPlaceholderText("…/arms/A3_synth_conditioned/runs")
+        self._runs_dir_edit.setPlaceholderText("…/arms/…/runs")
         browse = QPushButton("Browse…")
+        browse.setFixedWidth(72)
         browse.clicked.connect(self._browse_runs_dir)
         path_row.addWidget(self._runs_dir_edit, stretch=1)
         path_row.addWidget(browse)
-        lay.addLayout(path_row)
+        cases_lay.addLayout(path_row)
 
         scan_btn = QPushButton("Scan folder")
         scan_btn.clicked.connect(self._scan_runs_dir_from_edit)
-        lay.addWidget(scan_btn)
+        cases_lay.addWidget(scan_btn)
 
-        lay.addWidget(QLabel("Case / patient"))
+        cases_lay.addWidget(QLabel("Case / patient"))
         self._case_combo = QComboBox()
-        self._case_combo.setMinimumWidth(240)
+        self._case_combo.setSizeAdjustPolicy(
+            QComboBox.SizeAdjustPolicy.AdjustToMinimumContentsLengthWithIcon
+        )
+        self._case_combo.setMinimumContentsLength(12)
         self._case_combo.currentIndexChanged.connect(self._on_case_combo_changed)
-        lay.addWidget(self._case_combo)
+        cases_lay.addWidget(self._case_combo)
         self._case_tre_label = QLabel("TRE: —")
-        self._case_tre_label.setStyleSheet("font-family: monospace; padding: 2px;")
         self._case_tre_label.setWordWrap(True)
-        lay.addWidget(self._case_tre_label)
+        self._case_tre_label.setStyleSheet(
+            "font-family: monospace; font-size: 11px; padding: 2px;"
+        )
+        cases_lay.addWidget(self._case_tre_label)
+        lay.addWidget(cases)
 
-        lay.addWidget(QLabel("Overlays"))
-        try:
-            lay.addWidget(controls.native)
-        except Exception:
-            lay.addWidget(controls)
+        # --- Data selectors ---
+        data = QGroupBox("Data")
+        form = QFormLayout(data)
+        form.setContentsMargins(8, 8, 8, 8)
+        form.setSpacing(4)
+        form.setFieldGrowthPolicy(QFormLayout.FieldGrowthPolicy.AllNonFixedFieldsGrow)
 
+        fields = list(self.run.fields_available) or ["identity"]
+        self._ctrl_field = QComboBox()
+        self._ctrl_field.addItems(fields)
+        if self.field in fields:
+            self._ctrl_field.setCurrentText(self.field)
+        form.addRow("Field", self._ctrl_field)
+
+        self._ctrl_pair = QComboBox()
+        self._ctrl_pair.addItems(["T00_T50", "T50_T00"])
+        self._ctrl_pair.setCurrentText(self.pair)
+        form.addRow("Pair", self._ctrl_pair)
+
+        self._ctrl_which = QComboBox()
+        self._ctrl_which.addItems(["75", "300"])
+        self._ctrl_which.setCurrentText(self.which)
+        form.addRow("Landmarks", self._ctrl_which)
+
+        self._ctrl_orient = QComboBox()
+        self._ctrl_orient.addItems(list(_ORIENT.keys()))
+        self._ctrl_orient.setCurrentText(self._orient_name)
+        form.addRow("Orient", self._ctrl_orient)
+
+        self._ctrl_dvf = QComboBox()
+        self._ctrl_dvf.addItems(["off", "mag", "SI", "AP", "LR"])
+        self._ctrl_dvf.setCurrentText(self._dvf_component)
+        form.addRow("DVF", self._ctrl_dvf)
+        lay.addWidget(data)
+
+        # --- Visibility grid ---
+        vis = QGroupBox("Overlays")
+        grid = QGridLayout(vis)
+        grid.setContentsMargins(8, 8, 8, 8)
+        grid.setSpacing(4)
+
+        def _cb(text: str, checked: bool) -> QCheckBox:
+            box = QCheckBox(text)
+            box.setChecked(checked)
+            return box
+
+        self._cb_src_pts = _cb("Src pts", self.layer_src_pts.visible)
+        self._cb_rings = _cb("Rings", self.layer_rings.visible)
+        self._cb_vectors = _cb("Vectors", self.layer_err.visible)
+        self._cb_arrows = _cb("DVF arrows", self.layer_dvf_arrows.visible)
+        self._cb_warped = _cb("Warped", self.layer_warped.visible)
+        self._cb_diff = _cb("Diff", self.layer_diff.visible)
+        self._cb_ident = _cb("Ident diff", self.layer_ident_diff.visible)
+        self._cb_truth_tre = _cb(
+            "Truth color by TRE",
+            bool(self._marker_style_cache["truth"].get("color_by_tre", True)),
+        )
+        self._cb_truth_tre.toggled.connect(self._on_truth_tre_toggled)
+        checks = [
+            self._cb_src_pts,
+            self._cb_rings,
+            self._cb_vectors,
+            self._cb_arrows,
+            self._cb_warped,
+            self._cb_diff,
+            self._cb_ident,
+            self._cb_truth_tre,
+        ]
+        for i, box in enumerate(checks):
+            grid.addWidget(box, i // 2, i % 2)
+        lay.addWidget(vis)
+
+        # --- Arrow params ---
+        arrows = QGroupBox("Arrow sampling")
+        aform = QFormLayout(arrows)
+        aform.setContentsMargins(8, 8, 8, 8)
+        self._spin_arrow_step = QSpinBox()
+        self._spin_arrow_step.setRange(1, 32)
+        self._spin_arrow_step.setValue(int(self._arrow_step))
+        aform.addRow("Step", self._spin_arrow_step)
+        self._spin_arrow_gain = QDoubleSpinBox()
+        self._spin_arrow_gain.setRange(0.1, 20.0)
+        self._spin_arrow_gain.setSingleStep(0.5)
+        self._spin_arrow_gain.setValue(float(self._arrow_gain))
+        aform.addRow("Gain", self._spin_arrow_gain)
+        lay.addWidget(arrows)
+
+        # --- In-plane rotation (full 0→90→180→270 clockwise) ---
+        rot = QGroupBox("In-plane rotation")
+        rot_lay = QVBoxLayout(rot)
+        rot_lay.setContentsMargins(8, 8, 8, 8)
+        rot_lay.setSpacing(4)
+        self._rot_deg_label = QLabel("0°")
+        self._rot_deg_label.setStyleSheet(
+            "font-family: monospace; font-size: 13px; font-weight: 600;"
+        )
+        rot_lay.addWidget(self._rot_deg_label)
+        row = QHBoxLayout()
+        btn_ccw = QPushButton("↺ 90°")
+        btn_ccw.setToolTip("Counter-clockwise 90° (Shift+R)")
+        btn_ccw.clicked.connect(lambda: self.rotate_inplane(-90))
+        btn_cw = QPushButton("↻ 90°")
+        btn_cw.setToolTip("Clockwise 90° — full cycle (R / left transpose button)")
+        btn_cw.clicked.connect(lambda: self.rotate_inplane(90))
+        btn_reset = QPushButton("Reset")
+        btn_reset.setToolTip("Reset rotation + flips (0)")
+        btn_reset.clicked.connect(self.reset_inplane)
+        row.addWidget(btn_ccw)
+        row.addWidget(btn_cw)
+        row.addWidget(btn_reset)
+        rot_lay.addLayout(row)
+        hint = QLabel("Left toolbar ⟳ = CW each click (0→90→180→270→0)")
+        hint.setWordWrap(True)
+        hint.setStyleSheet("font-size: 10px; color: #888;")
+        rot_lay.addWidget(hint)
+        lay.addWidget(rot)
+
+        reload_btn = QPushButton("Reload overlays")
+        reload_btn.setDefault(True)
+        reload_btn.clicked.connect(self._apply_overlay_controls)
+        lay.addWidget(reload_btn)
+        lay.addStretch(1)
+
+        # Callable for smoke / programmatic reload (replaces magicgui FunctionGui).
+        self.controls = self._apply_overlay_controls
         self._controls_panel = root
         self._refill_case_combo(select_case=self.run.case)
         self._update_case_tre_label()
-        return root
+        self._sync_rot_widgets()
+        return self._as_scroll(root)
+
+    def _apply_overlay_controls(self) -> None:
+        """Read compact Controls widgets and refresh overlays / volumes."""
+        field_w = getattr(self, "_ctrl_field", None)
+        if field_w is not None and self._qt_alive(field_w):
+            self.field = field_w.currentText() or self.field
+            self.pair = self._ctrl_pair.currentText()  # type: ignore[assignment]
+            self.which = self._ctrl_which.currentText()
+            self.layer_src_pts.visible = self._cb_src_pts.isChecked()
+            self.layer_rings.visible = self._cb_rings.isChecked()
+            self.layer_err.visible = self._cb_vectors.isChecked()
+            self.layer_dvf_arrows.visible = self._cb_arrows.isChecked()
+            self.layer_warped.visible = self._cb_warped.isChecked()
+            self.layer_diff.visible = self._cb_diff.isChecked()
+            self.layer_ident_diff.visible = self._cb_ident.isChecked()
+            if self._qt_alive(getattr(self, "_cb_truth_tre", None)):
+                self._marker_style_cache["truth"]["color_by_tre"] = (
+                    self._cb_truth_tre.isChecked()
+                )
+            self._dvf_component = self._ctrl_dvf.currentText()
+            self._arrow_step = int(self._spin_arrow_step.value())
+            self._arrow_gain = float(self._spin_arrow_gain.value())
+            orient = self._ctrl_orient.currentText()
+            self._set_orient(orient)
+        self._reload_volumes_if_needed()
+        self._refresh_landmarks()
+        self._refresh_dvf_overlays()
+        self._refresh_drr_panel()
+        self._apply_inplane_ornament()
+
+    def _on_truth_tre_toggled(self, checked: bool) -> None:
+        self._marker_style_cache.setdefault("truth", {})["color_by_tre"] = bool(
+            checked
+        )
+        if hasattr(self, "pl"):
+            colors = tre_to_rgba(self.pl.tre_mm)
+            self._apply_marker_style(
+                "truth",
+                self.layer_truth,
+                n=len(self.pl.tre_mm),
+                tre_colors=colors,
+            )
 
     def _case_combo_label(self, run: RunRef) -> str:
         fields = ",".join(run.fields_available[:3]) or "—"
@@ -628,19 +894,44 @@ class TreViewerApp:
             lab.setText(f"C{self.run.case:02d}: tre_summary present")
 
     def _sync_field_choices(self) -> None:
-        controls = getattr(self, "controls", None)
-        if controls is None:
+        field_w = getattr(self, "_ctrl_field", None)
+        if field_w is None or not self._qt_alive(field_w):
             return
         fields = list(self.run.fields_available) or ["identity"]
         try:
-            controls.field.choices = fields
+            cur = field_w.currentText()
+            field_w.blockSignals(True)
+            field_w.clear()
+            field_w.addItems(fields)
             if self.field in fields:
-                controls.field.value = self.field
+                field_w.setCurrentText(self.field)
+            elif cur in fields:
+                field_w.setCurrentText(cur)
+                self.field = cur
             else:
                 self.field = default_field(self.run)
-                controls.field.value = self.field
+                field_w.setCurrentText(self.field)
+            field_w.blockSignals(False)
         except Exception:
             pass
+
+        # Keep other selectors in sync with live app state after case switch.
+        for attr, value in (
+            ("_ctrl_pair", self.pair),
+            ("_ctrl_which", self.which),
+            ("_ctrl_orient", self._orient_name),
+            ("_ctrl_dvf", self._dvf_component),
+        ):
+            w = getattr(self, attr, None)
+            if w is not None and self._qt_alive(w):
+                try:
+                    w.setCurrentText(str(value))
+                except Exception:
+                    pass
+        if self._qt_alive(getattr(self, "_spin_arrow_step", None)):
+            self._spin_arrow_step.setValue(int(self._arrow_step))
+        if self._qt_alive(getattr(self, "_spin_arrow_gain", None)):
+            self._spin_arrow_gain.setValue(float(self._arrow_gain))
 
     def _switch_to_run(self, run: RunRef) -> None:
         """Hot-swap patient/case without restarting napari."""
@@ -698,7 +989,20 @@ class TreViewerApp:
         self._apply_thick_slices()
         self._refresh_landmarks()
         self._refresh_dvf_overlays()
-        self._refresh_drr_panel()
+        # Re-resolve projection geometry for the new case.
+        try:
+            from tre_viewer.data import model_training_dir
+            from tre_viewer.drr import resolve_geometry
+
+            self._geom = resolve_geometry(self.run)
+            self._mt = model_training_dir(self.run.run_root, self.run.scan_id)
+            self._drr_view = min(
+                int(self._drr_view), max(0, self._geom.n_views - 1)
+            )
+        except Exception:
+            self._geom = None
+            self._mt = None
+        self._refresh_projection_views()
         self._apply_inplane_ornament()
         self.viewer.status = (
             f"Switched → {run.arm} C{run.case:02d}  field={self.field}"
@@ -746,12 +1050,13 @@ class TreViewerApp:
 
         if min_w:
             try:
-                dock_widget.setMinimumWidth(min_w)
+                # Soft hint only — hard mins clip small screens / narrow columns.
+                dock_widget.setMinimumWidth(min(min_w, 160))
             except Exception:
                 pass
         if min_h:
             try:
-                dock_widget.setMinimumHeight(min_h)
+                dock_widget.setMinimumHeight(min(min_h, 120))
             except Exception:
                 pass
         try:
@@ -789,12 +1094,12 @@ class TreViewerApp:
             pass
         if min_w:
             try:
-                dock.setMinimumWidth(min_w)
+                dock.setMinimumWidth(min(min_w, 160))
             except Exception:
                 pass
         if min_h:
             try:
-                dock.setMinimumHeight(min_h)
+                dock.setMinimumHeight(min(min_h, 120))
             except Exception:
                 pass
         # remove_dock_widget() re-parents the content to None, which marks it
@@ -808,6 +1113,11 @@ class TreViewerApp:
         spec["dock_widget"] = dock_widget
         if rebuilt:
             self._repopulate_panel(name)
+        if name in ("TRE", "Controls", "DRR"):
+            try:
+                self._finalize_layout()
+            except Exception:
+                pass
         return dock
 
     def _panel_widget(self, name: str):
@@ -867,8 +1177,12 @@ class TreViewerApp:
         if name == "TRE":
             self._refresh_landmarks()
             self._append_warp_summary()
+        elif name == "Controls":
+            self._refill_case_combo(select_case=self.run.case)
+            self._update_case_tre_label()
+            self._sync_field_choices()
         elif name == "DRR":
-            self._refresh_drr_panel()
+            self._refresh_projection_views(skip_pages=True)
 
     def show_panel(self, name: str) -> None:
         if name not in self._panel_specs:
@@ -896,6 +1210,10 @@ class TreViewerApp:
             f"Panel '{name}' shown — P = show all panels, "
             f"Window→TRE Panels to hide/show, drag title/edges to move & resize"
         )
+        try:
+            self._finalize_layout()
+        except Exception:
+            pass
 
     def _dock_usable(self, dock, name: str) -> bool:
         """A dock is usable only if it *and* its content widget are alive."""
@@ -1016,17 +1334,78 @@ class TreViewerApp:
 
                 act_h.triggered.connect(_make_hide())
                 panels.addAction(act_h)
+            panels.addSeparator()
+            act_drr = QAction("Open DRR full page", qt)
+            act_drr.setShortcut(QKeySequence("Shift+D"))
+            act_drr.setShortcutContext(Qt.ShortcutContext.ApplicationShortcut)
+            act_drr.triggered.connect(lambda *_a: self.open_drr_page())
+            panels.addAction(act_drr)
+            act_rtk = QAction("Open RTK landmarks full page", qt)
+            act_rtk.setShortcut(QKeySequence("Shift+T"))
+            act_rtk.setShortcutContext(Qt.ShortcutContext.ApplicationShortcut)
+            act_rtk.triggered.connect(lambda *_a: self.open_rtk_page())
+            panels.addAction(act_rtk)
             self._panels_menu = panels
+
             act_fs = QAction("Toggle Fullscreen", qt)
             act_fs.setShortcut(QKeySequence("F11"))
             act_fs.setShortcutContext(Qt.ShortcutContext.ApplicationShortcut)
             act_fs.triggered.connect(lambda *_a: self.toggle_fullscreen())
             win_menu.addAction(act_fs)
+
+            # Export PNGs from the main TRE window
+            export_menu = win_menu.addMenu("Export PNG")
+            act_canvas = QAction("CT canvas…", qt)
+            act_canvas.setShortcut(QKeySequence("Ctrl+E"))
+            act_canvas.setShortcutContext(Qt.ShortcutContext.ApplicationShortcut)
+            act_canvas.triggered.connect(
+                lambda *_a: self.export_main_png(canvas_only=True)
+            )
+            export_menu.addAction(act_canvas)
+            act_win = QAction("Full main window…", qt)
+            act_win.setShortcut(QKeySequence("Ctrl+Shift+E"))
+            act_win.setShortcutContext(Qt.ShortcutContext.ApplicationShortcut)
+            act_win.triggered.connect(
+                lambda *_a: self.export_main_png(canvas_only=False)
+            )
+            export_menu.addAction(act_win)
         except Exception as exc:  # noqa: BLE001
             self.viewer.status = f"menu setup: {exc}"
 
         # Do NOT also bind_key("F11") / bind_key("P"): QAction shortcuts already
         # own those keys. A second handler toggles fullscreen twice → no-op.
+
+    def export_main_png(self, *, canvas_only: bool = True) -> None:
+        """Save the main napari CT canvas or the whole main window as PNG."""
+        from pathlib import Path
+
+        from qtpy.QtWidgets import QFileDialog
+
+        from tre_viewer.proj_pages import suggest_export_png
+
+        kind = "canvas" if canvas_only else "window"
+        default = str(suggest_export_png(self, kind))
+        path, _ = QFileDialog.getSaveFileName(
+            self.viewer.window._qt_window,
+            "Export CT canvas PNG" if canvas_only else "Export main window PNG",
+            default,
+            "PNG image (*.png)",
+        )
+        if not path:
+            return
+        if not str(path).lower().endswith(".png"):
+            path = f"{path}.png"
+        try:
+            if canvas_only:
+                # napari canvas (CT + overlays), no Qt chrome
+                self.viewer.screenshot(path, canvas_only=True, flash=False)
+            else:
+                pix = self.viewer.window._qt_window.grab()
+                if not pix.save(str(path), "PNG"):
+                    raise RuntimeError("QPixmap.save returned False")
+            self.viewer.status = f"Saved {kind} PNG → {path}"
+        except Exception as exc:  # noqa: BLE001
+            self.viewer.status = f"PNG export failed: {exc}"
 
     def _apply_inplane_ornament(self) -> None:
         """Apply 0/90/180/270° in-plane rotation for *any* orientation.
@@ -1092,12 +1471,61 @@ class TreViewerApp:
             f"{self._orient_name}  in-plane {deg}°  "
             f"flipLR={self._flip_lr} flipUD={self._flip_ud}  "
             f"view=({vert},{horiz})  "
-            f"| R=+90° Shift+R=+180° F/Shift+F=flip 0=reset  "
+            f"| R=CW90° Shift+R=CCW90° F/Shift+F=flip 0=reset  "
             f"P=panels F11=fullscreen"
+        )
+        self._sync_rot_widgets()
+
+    def _sync_rot_widgets(self) -> None:
+        lab = getattr(self, "_rot_deg_label", None)
+        if lab is None or not self._qt_alive(lab):
+            return
+        deg = (int(self._rot90_k) * 90) % 360
+        lab.setText(f"{deg}°  ({self._orient_name})")
+
+    def _hijack_napari_rotate_button(self) -> None:
+        """Left-toolbar transpose ⟳ → full clockwise 90° cycle (not 2-state swap).
+
+        Stock napari: click = transpose (only 2 poses); Alt-click = layer affine
+        rotate. That feels broken for CT diagnosis. We rebind to our ornament
+        state so each click advances 0→90→180→270→0 on every plane.
+        """
+        from qtpy.QtCore import Qt
+        from qtpy.QtWidgets import QApplication
+
+        try:
+            vb = self.viewer.window._qt_viewer.viewerButtons
+            btn = vb.transposeDimsButton
+        except Exception:
+            return
+
+        # Drop napari's Alt→rotate_layers filter and transpose action binding.
+        try:
+            btn.removeEventFilter(vb)
+        except Exception:
+            pass
+        try:
+            btn.clicked.disconnect()
+        except Exception:
+            pass
+
+        def _on_click(*_args) -> None:
+            mods = QApplication.keyboardModifiers()
+            if mods & Qt.KeyboardModifier.AltModifier:
+                self.rotate_inplane(-90)
+            else:
+                self.rotate_inplane(90)
+
+        btn.clicked.connect(_on_click)
+        btn.setToolTip(
+            "Rotate view 90° clockwise (full cycle: 0° → 90° → 180° → 270° → 0°).\n"
+            "Alt/Option-click: 90° counter-clockwise.\n"
+            "Keys: R = CW, Shift+R = CCW, 0 = reset"
         )
 
     def rotate_inplane(self, degrees: int) -> None:
         steps = int(round(degrees / 90.0)) % 4
+        # Python % on negative: (-1)%4 == 3 → one step CCW. Good.
         self._rot90_k = (self._rot90_k + steps) % 4
         self._apply_inplane_ornament()
 
@@ -1115,18 +1543,15 @@ class TreViewerApp:
         self._apply_inplane_ornament()
 
     def _build_drr_panel(self):
-        """Matplotlib DRR scrub + RTK-projected truth/pred landmarks."""
-        from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
-        from matplotlib.figure import Figure
+        """Bottom launcher: open full-page DRR / RTK windows from the main viewer."""
         from qtpy.QtCore import Qt
-        from qtpy.QtWidgets import QLabel, QSlider, QVBoxLayout, QWidget
+        from qtpy.QtWidgets import QHBoxLayout, QLabel, QPushButton, QVBoxLayout, QWidget
 
         from tre_viewer.data import model_training_dir
         from tre_viewer.drr import resolve_geometry
 
-        # Keep the current view/mode across a rebuild
         self._drr_view = int(getattr(self, "_drr_view", 0))
-        self._drr_mode = getattr(self, "_drr_mode", "target")  # target|source|diff
+        self._drr_mode = getattr(self, "_drr_mode", "target")
         try:
             self._geom = resolve_geometry(self.run)
             self._mt = model_training_dir(self.run.run_root, self.run.scan_id)
@@ -1136,69 +1561,118 @@ class TreViewerApp:
             self.viewer.status = f"DRR panel unavailable: {exc}"
             return None
 
-        fig = Figure(figsize=(5.5, 5.0), tight_layout=True)
-        self._drr_ax = fig.add_subplot(111)
-        self._drr_canvas = FigureCanvasQTAgg(fig)
-        self._drr_canvas.setMinimumHeight(320)
-        self._drr_im = None
-        self._drr_sc_truth = None
-        self._drr_sc_pred = None
+        wrap = QWidget()
+        lay = QVBoxLayout(wrap)
+        lay.setContentsMargins(10, 8, 10, 8)
+        lay.setSpacing(8)
 
-        slider = QSlider(Qt.Orientation.Horizontal)
-        slider.setMinimum(0)
-        slider.setMaximum(max(0, self._geom.n_views - 1))
-        slider.setValue(min(self._drr_view, max(0, self._geom.n_views - 1)))
-        slider.valueChanged.connect(self._on_drr_slider)
-        self._drr_slider = slider
+        hdr = QLabel("Projection pages")
+        hdr.setStyleSheet("font-weight: 600; font-size: 13px;")
+        lay.addWidget(hdr)
+        sub = QLabel(
+            "Open a full-page window for DRR image scrub or RTK landmark overlay. "
+            "Shift+D / Shift+T from the main window."
+        )
+        sub.setWordWrap(True)
+        sub.setStyleSheet("font-size: 11px;")
+        lay.addWidget(sub)
+
+        row = QHBoxLayout()
+        btn_drr = QPushButton("DRR — full page")
+        btn_drr.setMinimumHeight(44)
+        btn_drr.setCursor(Qt.CursorShape.PointingHandCursor)
+        btn_drr.setStyleSheet(
+            "QPushButton { font-size: 14px; font-weight: 600; padding: 8px 16px; }"
+        )
+        btn_drr.clicked.connect(self.open_drr_page)
+        btn_rtk = QPushButton("RTK landmarks — full page")
+        btn_rtk.setMinimumHeight(44)
+        btn_rtk.setCursor(Qt.CursorShape.PointingHandCursor)
+        btn_rtk.setStyleSheet(
+            "QPushButton { font-size: 14px; font-weight: 600; padding: 8px 16px; }"
+        )
+        btn_rtk.clicked.connect(self.open_rtk_page)
+        row.addWidget(btn_drr, stretch=1)
+        row.addWidget(btn_rtk, stretch=1)
+        lay.addLayout(row)
+
         self._drr_meta = QLabel("")
         self._drr_meta.setWordWrap(True)
         self._drr_meta.setStyleSheet("font-family: monospace; font-size: 11px;")
-
-        wrap = QWidget()
-        wrap.setMinimumHeight(380)
-        lay = QVBoxLayout(wrap)
-        lay.addWidget(
-            QLabel("DRR + RTK landmarks  │  D=cycle tgt/src/diff  │  drag splitter to resize")
-        )
-        lay.addWidget(self._drr_canvas, stretch=1)
-        lay.addWidget(slider)
         lay.addWidget(self._drr_meta)
-        # Bottom pane = LEARN-style multipane (CT above, DRR below)
+        self._drr_canvas = None
+        self._drr_ax = None
+        self._drr_slider = None
         self._drr_panel = wrap
         return wrap
 
     def _build_drr_dock(self) -> None:
-        """Register the bottom DRR pane + its keybinding (skipped if no geometry)."""
+        """Register the bottom projection launcher + mode keybinding."""
         dock = self._register_dock(
             name="DRR",
             builder=self._build_drr_panel,
             area="bottom",
-            min_h=380,
-            min_w=420,
+            min_h=120,
+            min_w=280,
         )
         if dock is None:
             self._panel_specs.pop("DRR", None)
             return
+        try:
+            dock.setMaximumHeight(200)
+        except Exception:
+            pass
 
         @self.viewer.bind_key("d")
         def _cycle_drr(viewer):  # noqa: ARG001
             modes = ["target", "source", "diff"]
             i = modes.index(self._drr_mode)
             self._drr_mode = modes[(i + 1) % len(modes)]
-            self._refresh_drr_panel()
+            self._refresh_projection_views()
+            self.viewer.status = f"DRR mode → {self._drr_mode}"
 
-    def _on_drr_slider(self, value: int) -> None:
-        self._drr_view = int(value)
-        self._refresh_drr_panel()
+    def open_drr_page(self) -> None:
+        self._open_proj_page("drr")
 
-    def _refresh_drr_panel(self) -> None:
+    def open_rtk_page(self) -> None:
+        self._open_proj_page("rtk")
+
+    def _open_proj_page(self, kind: str) -> None:
         if getattr(self, "_geom", None) is None or getattr(self, "_mt", None) is None:
+            self.viewer.status = (
+                "No geometry / ModelTraining — cannot open projection page"
+            )
             return
+        existing = self._proj_pages.get(kind)
+        if existing is not None and self._qt_alive(getattr(existing, "win", None)):
+            existing.raise_window()
+            self.viewer.status = f"Focused {kind.upper()} full page"
+            return
+        from tre_viewer.proj_pages import ProjectionPageWindow
+
+        self._proj_pages[kind] = ProjectionPageWindow(
+            self, kind=kind, on_closed=self._on_proj_page_closed
+        )
+        self.viewer.status = f"Opened {kind.upper()} full page (Esc to close)"
+
+    def _on_proj_page_closed(self, kind: str) -> None:
+        self._proj_pages.pop(kind, None)
+
+    def _sync_drr_sliders(self, *, except_slider=None) -> None:
+        for page in list(self._proj_pages.values()):
+            try:
+                if except_slider is not None and page.slider is except_slider:
+                    continue
+                page.sync_slider()
+            except Exception:
+                pass
+
+    def _drr_frame_data(self) -> dict | None:
+        """Shared projection frame for dock meta + full-page windows."""
+        if getattr(self, "_geom", None) is None or getattr(self, "_mt", None) is None:
+            return None
         if not hasattr(self, "pl"):
-            return
-        # Panel widgets die with the dock; skip until show_panel('DRR') rebuilds
-        if not self._qt_alive(getattr(self, "_drr_canvas", None)):
-            return
+            return None
         from tre_viewer.drr import (
             load_proj_128,
             proj_path,
@@ -1211,77 +1685,74 @@ class TreViewerApp:
         src_ph, dst_ph = pair_phases(self.pair)
         try:
             tgt = load_proj_128(proj_path(self._mt, dst_ph, view_1, source=False))
-            src = load_proj_128(proj_path(self._mt, dst_ph, view_1, source=True))
+            src = load_proj_128(proj_path(self._mt, src_ph, view_1, source=False))
         except Exception as exc:  # noqa: BLE001
-            self._drr_meta.setText(f"proj load failed: {exc}")
-            return
+            tp = proj_path(self._mt, dst_ph, view_1, source=False)
+            sp = proj_path(self._mt, src_ph, view_1, source=False)
+            return {
+                "error": (
+                    f"proj load failed: {exc}\n"
+                    f"  dst {dst_ph}: {tp}\n  src {src_ph}: {sp}"
+                )
+            }
 
-        if self._drr_mode == "source":
+        mode = getattr(self, "_drr_mode", "target")
+        if mode == "source":
             img = src
-            title = f"source T50  view {view_1}"
-        elif self._drr_mode == "diff":
+            title = f"source {src_ph}  view {view_1}"
+        elif mode == "diff":
             img = tgt - src
-            title = f"tgt−src  view {view_1}"
+            title = f"{dst_ph}−{src_ph}  view {view_1}"
         else:
             img = tgt
             title = f"target {dst_ph}  view {view_1}"
 
-        # Project truth (dst) and pred in pack → R3 physical → RTK → 128
         truth_mm, _ = r3_ct_physical_landmarks(self.run, self.pl.truth_pack)
         pred_mm, _ = r3_ct_physical_landmarks(self.run, self.pl.pred_pack)
         M = self._geom.matrices[vi]
         truth_uv = project_landmarks_to_128(truth_mm, M)
         pred_uv = project_landmarks_to_128(pred_mm, M)
-        # 2D residual on detector (pixels)
         d2 = np.linalg.norm(pred_uv - truth_uv, axis=1)
         angle = float(self._geom.gantry_deg[vi])
+        return {
+            "img": img,
+            "title": title,
+            "mode": mode,
+            "truth_uv": truth_uv,
+            "pred_uv": pred_uv,
+            "d2": d2,
+            "angle": angle,
+            "view_1": view_1,
+            "geom_name": self._geom.path.name,
+        }
 
-        ax = self._drr_ax
-        ax.clear()
-        if self._drr_mode == "diff":
-            lim = float(np.percentile(np.abs(img), 99)) or 1.0
-            ax.imshow(img, cmap="coolwarm", vmin=-lim, vmax=lim, origin="upper")
-        else:
-            ax.imshow(img, cmap="gray", origin="upper")
-        ax.scatter(
-            truth_uv[:, 0],
-            truth_uv[:, 1],
-            s=18,
-            c="lime",
-            marker="o",
-            label="truth",
-            linewidths=0.3,
-            edgecolors="k",
-        )
-        ax.scatter(
-            pred_uv[:, 0],
-            pred_uv[:, 1],
-            s=18,
-            c="magenta",
-            marker="x",
-            label="pred",
-        )
-        # error ticks
-        for t, p in zip(truth_uv, pred_uv):
-            ax.plot([t[0], p[0]], [t[1], p[1]], color="yellow", lw=0.4, alpha=0.7)
-        ax.set_xlim(0, 127)
-        ax.set_ylim(127, 0)
-        ax.set_title(title, fontsize=9)
-        ax.legend(loc="upper right", fontsize=7)
-        self._drr_canvas.draw_idle()
+    def _refresh_drr_panel(self) -> None:
+        """Back-compat alias — refresh launcher meta + any open full pages."""
+        self._refresh_projection_views()
 
-        inside = (
-            (truth_uv[:, 0] >= 0)
-            & (truth_uv[:, 0] < 128)
-            & (truth_uv[:, 1] >= 0)
-            & (truth_uv[:, 1] < 128)
-        ).mean()
-        self._drr_meta.setText(
-            f"angle {angle:.2f}°  geom OffsetY={self._geom.offset_y:g}  "
-            f"2D TRE mean {float(d2.mean()):.2f} px  "
-            f"max {float(d2.max()):.2f}  insideFOV {inside:.0%}\n"
-            f"{self._geom.path.name}"
-        )
+    def _refresh_projection_views(self, *, skip_pages: bool = False) -> None:
+        frame = self._drr_frame_data()
+        if self._qt_alive(getattr(self, "_drr_meta", None)):
+            if frame is None:
+                self._drr_meta.setText("Projection data unavailable")
+            elif frame.get("error"):
+                self._drr_meta.setText(str(frame["error"]))
+            else:
+                d2 = frame["d2"]
+                self._drr_meta.setText(
+                    f"mode={frame['mode']}  view {frame['view_1']:03d}  "
+                    f"angle {frame['angle']:.1f}°  "
+                    f"2D TRE {float(d2.mean()):.2f}±{float(d2.std()):.2f} px  "
+                    f"·  click DRR / RTK above for full page"
+                )
+        if skip_pages:
+            return
+        for page in list(self._proj_pages.values()):
+            try:
+                if self._qt_alive(getattr(page, "win", None)):
+                    page.refresh()
+            except Exception:
+                pass
 
     def _apply_thick_slices(self) -> None:
         """±N mm margin on every axis so nearby landmarks stay visible."""
@@ -1327,6 +1798,252 @@ class TreViewerApp:
         # Lightweight text via status; full canvas burn-in deferred to Phase 4
         pass
 
+    def _marker_layers(self) -> dict[str, object]:
+        return {
+            "truth": self.layer_truth,
+            "pred": self.layer_pred,
+            "src": self.layer_src_pts,
+            "rings": self.layer_rings,
+            "err": self.layer_err,
+        }
+
+    def _wire_marker_style_persistence(self) -> None:
+        """Keep napari left-panel face/size/symbol edits across landmark reloads."""
+
+        def _capture(key: str):
+            def _handler(*_args, **_kwargs) -> None:
+                if self._applying_marker_style:
+                    return
+                lyr = self._marker_layers().get(key)
+                if lyr is None:
+                    return
+                try:
+                    self._marker_style_cache[key] = self._snapshot_marker_style(
+                        key, lyr, from_user_edit=True
+                    )
+                    if key == "truth":
+                        cb = getattr(self, "_cb_truth_tre", None)
+                        if self._qt_alive(cb):
+                            cb.blockSignals(True)
+                            cb.setChecked(
+                                bool(
+                                    self._marker_style_cache["truth"].get(
+                                        "color_by_tre", True
+                                    )
+                                )
+                            )
+                            cb.blockSignals(False)
+                except Exception:
+                    pass
+
+            return _handler
+
+        for key, lyr in self._marker_layers().items():
+            for evt_name in (
+                "size",
+                "face_color",
+                "border_color",
+                "border_width",
+                "symbol",
+                "opacity",
+                "blending",
+                "shading",
+                "edge_color",
+                "edge_width",
+            ):
+                ev = getattr(getattr(lyr, "events", None), evt_name, None)
+                if ev is None:
+                    continue
+                try:
+                    ev.connect(_capture(key))
+                except Exception:
+                    pass
+
+    @staticmethod
+    def _as_rgba_row(color) -> np.ndarray | None:
+        try:
+            arr = np.asarray(color, dtype=float)
+        except Exception:
+            return None
+        if arr.size == 0:
+            return None
+        if arr.ndim == 1 and arr.size in (3, 4):
+            if arr.size == 3:
+                arr = np.concatenate([arr, [1.0]])
+            return arr.reshape(4)
+        if arr.ndim == 2 and arr.shape[1] in (3, 4):
+            row = arr[0]
+            if row.size == 3:
+                row = np.concatenate([row, [1.0]])
+            return np.asarray(row, dtype=float).reshape(4)
+        return None
+
+    def _snapshot_marker_style(
+        self, key: str, layer, *, from_user_edit: bool = False
+    ) -> dict:
+        prev = dict(self._marker_style_cache.get(key, {}))
+        out = dict(prev)
+        if key == "err":
+            try:
+                out["edge_width"] = float(layer.edge_width)
+            except Exception:
+                pass
+            try:
+                out["opacity"] = float(layer.opacity)
+            except Exception:
+                pass
+            ec = getattr(layer, "edge_color", None)
+            row = self._as_rgba_row(ec)
+            if row is not None:
+                arr = np.asarray(ec, dtype=float)
+                uniform = arr.ndim == 1 or (
+                    arr.ndim == 2 and np.allclose(arr, arr[0:1], atol=1e-3)
+                )
+                if not uniform:
+                    out["color_by_tre"] = True
+                elif from_user_edit:
+                    out["color_by_tre"] = False
+                    out["edge_color"] = tuple(float(x) for x in row)
+                else:
+                    out["edge_color"] = tuple(float(x) for x in row)
+            return out
+
+        for attr in ("opacity", "blending", "symbol", "shading"):
+            if hasattr(layer, attr):
+                try:
+                    out[attr] = getattr(layer, attr)
+                except Exception:
+                    pass
+        try:
+            bw = layer.border_width
+            out["border_width"] = float(np.mean(np.asarray(bw, dtype=float)))
+        except Exception:
+            pass
+        try:
+            sz = np.asarray(layer.size, dtype=float).reshape(-1)
+            if sz.size:
+                med = float(np.median(sz))
+                out["size"] = med
+                if key == "rings":
+                    if from_user_edit:
+                        out["size_by_tre"] = bool(np.std(sz) > 0.5)
+                    elif np.std(sz) > 0.5:
+                        out["size_by_tre"] = True
+        except Exception:
+            pass
+
+        fc = getattr(layer, "face_color", None)
+        row = self._as_rgba_row(fc)
+        if row is not None:
+            arr = np.asarray(fc, dtype=float)
+            uniform = arr.ndim == 1 or (
+                arr.ndim == 2
+                and (len(arr) <= 1 or np.allclose(arr, arr[0:1], atol=1e-3))
+            )
+            if key == "truth":
+                if not uniform:
+                    out["color_by_tre"] = True
+                elif from_user_edit:
+                    out["color_by_tre"] = False
+                    out["face_color"] = tuple(float(x) for x in row)
+                else:
+                    # Keep prior TRE/solid choice; still remember solid colour.
+                    out["face_color"] = tuple(float(x) for x in row)
+            elif key == "rings":
+                out["face_color"] = (0.0, 0.0, 0.0, 0.0)
+            else:
+                if uniform:
+                    out["face_color"] = tuple(float(x) for x in row)
+                    if from_user_edit:
+                        out["color_by_tre"] = False
+
+        bc = getattr(layer, "border_color", None)
+        brow = self._as_rgba_row(bc)
+        if brow is not None:
+            arr = np.asarray(bc, dtype=float)
+            uniform = arr.ndim == 1 or (
+                arr.ndim == 2
+                and (len(arr) <= 1 or np.allclose(arr, arr[0:1], atol=1e-3))
+            )
+            if key == "rings":
+                if not uniform:
+                    out["color_by_tre"] = True
+                elif from_user_edit:
+                    out["color_by_tre"] = False
+                    out["border_color"] = tuple(float(x) for x in brow)
+                else:
+                    out["border_color"] = tuple(float(x) for x in brow)
+            elif uniform:
+                out["border_color"] = tuple(float(x) for x in brow)
+        return out
+
+    def _apply_marker_style(
+        self,
+        key: str,
+        layer,
+        *,
+        n: int,
+        tre_colors: np.ndarray | None = None,
+        tre_sizes: np.ndarray | None = None,
+    ) -> None:
+        style = self._marker_style_cache.get(key, {})
+        self._applying_marker_style = True
+        try:
+            if key == "err":
+                if style.get("color_by_tre") and tre_colors is not None:
+                    layer.edge_color = tre_colors
+                elif style.get("edge_color") is not None:
+                    layer.edge_color = self._broadcast_color(style["edge_color"], n)
+                if style.get("edge_width") is not None:
+                    layer.edge_width = float(style["edge_width"])
+                if style.get("opacity") is not None:
+                    layer.opacity = float(style["opacity"])
+                return
+
+            if key == "rings" and style.get("size_by_tre", True) and tre_sizes is not None:
+                layer.size = tre_sizes
+            elif style.get("size") is not None:
+                layer.size = float(style["size"])
+
+            if style.get("color_by_tre") and tre_colors is not None:
+                if key == "rings":
+                    layer.border_color = tre_colors
+                    layer.face_color = np.zeros((n, 4), dtype=float)
+                else:
+                    layer.face_color = tre_colors
+            else:
+                if style.get("face_color") is not None:
+                    layer.face_color = self._broadcast_color(style["face_color"], n)
+                if style.get("border_color") is not None:
+                    layer.border_color = self._broadcast_color(
+                        style["border_color"], n
+                    )
+                elif key == "rings" and tre_colors is not None:
+                    layer.border_color = tre_colors
+
+            for attr in ("border_width", "opacity", "blending", "symbol", "shading"):
+                if attr in style and style[attr] is not None and hasattr(layer, attr):
+                    try:
+                        setattr(layer, attr, style[attr])
+                    except Exception:
+                        pass
+        finally:
+            self._applying_marker_style = False
+
+    @staticmethod
+    def _broadcast_color(color, n: int):
+        """Napari Points wants a color name, or an (N,4) array — not a bare RGBA tuple."""
+        if isinstance(color, str):
+            return color
+        row = np.asarray(color, dtype=float).reshape(-1)
+        if row.size == 3:
+            row = np.concatenate([row, [1.0]])
+        if row.size != 4:
+            return color
+        if n <= 0:
+            return row
+        return np.repeat(row.reshape(1, 4), n, axis=0)
+
     def _refresh_landmarks(self) -> None:
         pl = per_landmark(
             self.run,
@@ -1337,42 +2054,65 @@ class TreViewerApp:
         self.pl = pl
         (nx, ny, nz), spacing = CASE_INFO[self.run.case]
 
+        # Capture any in-panel edits before data assignment resets napari state.
+        for key, lyr in self._marker_layers().items():
+            try:
+                if key == "err":
+                    if len(getattr(lyr, "data", [])) > 0:
+                        self._marker_style_cache[key] = self._snapshot_marker_style(
+                            key, lyr
+                        )
+                elif len(lyr.data) > 0:
+                    self._marker_style_cache[key] = self._snapshot_marker_style(
+                        key, lyr
+                    )
+            except Exception:
+                pass
+
         truth_zyx = xyz_to_zyx(pl.truth_pack)
         pred_zyx = xyz_to_zyx(pl.pred_pack)
         src_zyx = xyz_to_zyx(pl.src_pack)
         colors = tre_to_rgba(pl.tre_mm)
+        n = len(pl.tre_mm)
 
-        self.layer_truth.data = truth_zyx
-        self.layer_truth.face_color = colors
-        self.layer_truth.size = 12.0
-        self.layer_truth.features = {"tre_mm": pl.tre_mm, "id": np.arange(len(pl.tre_mm))}
-
-        self.layer_pred.data = pred_zyx
-        self.layer_pred.face_color = "magenta"
-        self.layer_pred.size = 10.0
-
-        self.layer_src_pts.data = src_zyx
-        self.layer_src_pts.size = 8.0
-
-        self.layer_rings.data = truth_zyx
-        # Rings in data voxels ≈ TRE_mm / mean in-plane spacing, floored for visibility
         mean_inplane = 0.5 * (spacing[0] + spacing[1])
         ring_vox = np.maximum(pl.tre_mm / max(mean_inplane, 1e-6) * 1.5, 10.0)
-        self.layer_rings.size = ring_vox
-        self.layer_rings.border_color = colors
-        self.layer_rings.face_color = np.zeros((len(pl.tre_mm), 4), dtype=float)
+
+        self.layer_truth.data = truth_zyx
+        self.layer_truth.features = {
+            "tre_mm": pl.tre_mm,
+            "id": np.arange(n),
+        }
+        self._apply_marker_style(
+            "truth", self.layer_truth, n=n, tre_colors=colors
+        )
+
+        self.layer_pred.data = pred_zyx
+        self._apply_marker_style("pred", self.layer_pred, n=n)
+
+        self.layer_src_pts.data = src_zyx
+        self._apply_marker_style("src", self.layer_src_pts, n=n)
+
+        self.layer_rings.data = truth_zyx
+        self._apply_marker_style(
+            "rings",
+            self.layer_rings,
+            n=n,
+            tre_colors=colors,
+            tre_sizes=ring_vox,
+        )
 
         vecs = error_vectors_zyx(pl.truth_pack, pl.pred_pack, spacing)
         self.layer_err.data = vecs
-        self.layer_err.edge_color = colors
-        self.layer_err.edge_width = 1.5
+        self._apply_marker_style("err", self.layer_err, n=n, tre_colors=colors)
 
         self._set_label(
             "summary_label",
             summary_line(pl)
             + f"\nfield={self.field}  oob={int(pl.oob_mask.sum())}  "
             f"display=pack-mm  DVF_frame={pl.frame}\n"
-            f"lime=truth  magenta=pred  rings∝TRE  |  W=worst  Space=blink",
+            f"truth/pred markers keep your face colour & size  |  "
+            f"W=worst  Space=blink",
         )
         self.viewer.title = (
             f"TRE Viewer │ {self.run.arm} C{self.run.case:02d} │ "
@@ -1677,18 +2417,20 @@ def panel_smoke_test(arm: str = "A1", case: int = 1) -> dict:
     assert app.worst_list.count() > 0, "rebuilt worst-landmark list is empty"
     out["dead_content_rebuilt"] = True
 
-    # 4) Same for the magicgui Controls panel, and its callback must still run.
+    # 4) Same for the Controls panel; Reload must still run after rebuild.
     dock = app._docks["Controls"]
     old_controls = app.controls
+    old_widget = app._panel_specs["Controls"]["widget"]
     app.viewer.window.remove_dock_widget(dock)
-    old_controls.native.setParent(None)
-    old_controls.native.deleteLater()
+    old_widget.setParent(None)
+    old_widget.deleteLater()
     flush()
-    assert not app._qt_alive(old_controls), "_qt_alive missed a dead FunctionGui"
+    assert not app._qt_alive(old_widget), "Controls content survived deleteLater"
     app.show_panel("Controls")
     alive_and_shown("Controls")
-    assert app.controls is not old_controls, "Controls panel was not rebuilt"
-    app.controls()  # the "Reload" button path, on freshly built widgets
+    assert app.controls is not old_controls, "Controls callback was not rebound"
+    assert app._qt_alive(app._case_combo), "case combo missing after Controls rebuild"
+    app.controls()  # Reload overlays path on freshly built widgets
     out["controls_rebuilt_and_callable"] = True
 
     if "DRR" in app._panel_specs:
