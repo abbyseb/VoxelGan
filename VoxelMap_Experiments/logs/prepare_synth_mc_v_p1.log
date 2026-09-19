@@ -1,0 +1,82 @@
+16:43:04 | INFO | === SYNTHESIZE from CT_06 (G160-A1 Decoder · µ air/water · linear) ===
+16:43:04 | INFO | run_root=/home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/MC_V_P1_NS_01/synth_g160_a1_dec
+16:43:05 | INFO | Synthesizing from CT_06 | G160-A1 Decoder · µ air/water · linear | native=(450, 220, 450) | infer=160 | norm=mu
+16:43:06 | INFO |   wrote CT_01.mha | mean|u|_infer=1.0441
+16:43:07 | INFO |   wrote CT_02.mha | mean|u|_infer=0.8992
+16:43:08 | INFO |   wrote CT_03.mha | mean|u|_infer=0.5875
+16:43:11 | INFO |   wrote CT_04.mha | mean|u|_infer=0.3088
+16:43:12 | INFO |   wrote CT_05.mha | mean|u|_infer=0.1095
+16:43:14 | INFO |   wrote CT_06.mha | mean|u|_infer=0.0000
+16:43:15 | INFO |   wrote CT_07.mha | mean|u|_infer=0.0851
+16:43:17 | INFO |   wrote CT_08.mha | mean|u|_infer=0.3325
+16:43:18 | INFO |   wrote CT_09.mha | mean|u|_infer=0.6319
+16:43:20 | INFO |   wrote CT_10.mha | mean|u|_infer=0.9001
+16:43:20 | INFO | === DOWNSAMPLE ===
+16:43:28 | INFO | sub_CT count: 10
+16:43:28 | INFO | === WRITE SYNTH DVFs ===
+16:43:28 | INFO |   DVF DVF_sub_01.mha
+16:43:28 | INFO |   DVF DVF_sub_02.mha
+16:43:28 | INFO |   DVF DVF_sub_03.mha
+16:43:28 | INFO |   DVF DVF_sub_04.mha
+16:43:28 | INFO |   DVF DVF_sub_05.mha
+16:43:29 | INFO |   DVF DVF_sub_07.mha
+16:43:29 | INFO |   DVF DVF_sub_08.mha
+16:43:29 | INFO |   DVF DVF_sub_09.mha
+16:43:29 | INFO |   DVF DVF_sub_10.mha
+16:43:29 | INFO | DVFs: 9
+16:43:29 | INFO | === DRR ===
+16:43:29 | INFO | DRR CT_01.mha (1/10)
+16:44:22 | INFO | DRR CT_02.mha (2/10)
+16:44:51 | INFO | DRR CT_03.mha (3/10)
+16:45:19 | INFO | DRR CT_04.mha (4/10)
+16:45:48 | INFO | DRR CT_05.mha (5/10)
+16:46:16 | INFO | DRR CT_06.mha (6/10)
+16:46:45 | INFO | DRR CT_07.mha (7/10)
+16:47:13 | INFO | DRR CT_08.mha (8/10)
+16:47:42 | INFO | DRR CT_09.mha (9/10)
+16:48:10 | INFO | DRR CT_10.mha (10/10)
+16:48:39 | INFO | === COMPRESS ===
+16:48:39 | INFO | bins: 6800
+16:48:39 | INFO | === PREP_TRAIN ===
+16:48:39 | INFO | --- Processing Job 1/2: MC_V_P1_NS_01 (TRAIN) ---
+16:48:39 | INFO |   > Categorizing and converting 6800 projections...
+16:48:39 | INFO |   > Converting and downsampling 10 CT volumes to SourceVolumes/...
+16:48:40 | INFO |   > Converting and downsampling 9 displacement fields to DVFs/...
+16:48:41 | INFO |   > Converting and downsampling 5 masks to Masks/...
+16:48:41 | INFO |   > Extracting angles from: Geometry.xml
+16:48:41 | INFO |   > Saved Angles.csv (680 entries)
+16:48:41 | INFO | --- Processing Job 2/2: MC_V_P1_NS_01 (TEST) ---
+16:48:41 | INFO |   > Categorizing and converting 6800 projections...
+16:48:41 | INFO |   > Detected 680 projections. Synthesizing full breath cycle (01->06->10)...
+16:48:42 | INFO |   > Written RespBin.csv (680 entries) for DVF mapping
+16:48:42 | INFO |   > Compiling MP4 video sweep from 680 projections...
+16:48:42 | INFO |   > MP4 verification generated: Test_Breathing_Sweep.mp4
+16:48:42 | INFO |   > Converting and downsampling 10 CT volumes to SourceVolumes/...
+16:48:42 | INFO |   > Converting and downsampling 9 displacement fields to DVFs/...
+16:48:43 | INFO |   > Converting and downsampling 5 masks to Masks/...
+16:48:43 | INFO |   > Extracting angles from: Geometry.xml
+16:48:43 | INFO |   > Saved Angles.csv (680 entries)
+16:48:43 | INFO | Done in 5.7 min | ModelTraining=/home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/MC_V_P1_NS_01/synth_g160_a1_dec/ModelTraining/train/MC_V_P1_NS_01
+16:48:43 | INFO |   SourceProjections: 680
+16:48:43 | INFO |   TargetProjections: 6120
+16:48:43 | INFO |   DVFs: 9
+Saved downsampled volume to /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/MC_V_P1_NS_01/synth_g160_a1_dec/MC_V_P1_NS_01/train/sub_CT_01.mha
+Saved downsampled volume to /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/MC_V_P1_NS_01/synth_g160_a1_dec/MC_V_P1_NS_01/train/sub_CT_02.mha
+Saved downsampled volume to /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/MC_V_P1_NS_01/synth_g160_a1_dec/MC_V_P1_NS_01/train/sub_CT_03.mha
+Saved downsampled volume to /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/MC_V_P1_NS_01/synth_g160_a1_dec/MC_V_P1_NS_01/train/sub_CT_04.mha
+Saved downsampled volume to /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/MC_V_P1_NS_01/synth_g160_a1_dec/MC_V_P1_NS_01/train/sub_CT_05.mha
+Saved downsampled volume to /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/MC_V_P1_NS_01/synth_g160_a1_dec/MC_V_P1_NS_01/train/sub_CT_06.mha
+Saved downsampled volume to /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/MC_V_P1_NS_01/synth_g160_a1_dec/MC_V_P1_NS_01/train/sub_CT_07.mha
+Saved downsampled volume to /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/MC_V_P1_NS_01/synth_g160_a1_dec/MC_V_P1_NS_01/train/sub_CT_08.mha
+Saved downsampled volume to /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/MC_V_P1_NS_01/synth_g160_a1_dec/MC_V_P1_NS_01/train/sub_CT_09.mha
+Saved downsampled volume to /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/MC_V_P1_NS_01/synth_g160_a1_dec/MC_V_P1_NS_01/train/sub_CT_10.mha
+Resizing Mask_Lung.mha: (220, 450, 450) -> (128, 128, 128)
+Resizing Mask_Rib.mha: (220, 450, 450) -> (128, 128, 128)
+Resizing Mask_PTV.mha: (220, 450, 450) -> (128, 128, 128)
+Resizing Mask_CNR.mha: (220, 450, 450) -> (128, 128, 128)
+Resizing Mask_Body.mha: (220, 450, 450) -> (128, 128, 128)
+Resizing Mask_Lung.mha: (220, 450, 450) -> (128, 128, 128)
+Resizing Mask_Rib.mha: (220, 450, 450) -> (128, 128, 128)
+Resizing Mask_PTV.mha: (220, 450, 450) -> (128, 128, 128)
+Resizing Mask_CNR.mha: (220, 450, 450) -> (128, 128, 128)
+Resizing Mask_Body.mha: (220, 450, 450) -> (128, 128, 128)

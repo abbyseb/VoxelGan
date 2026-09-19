@@ -10,11 +10,33 @@ PopulationStudy/varian/
 PopulationStudy/elekta/
 *.mha
 *.npy
+*.bin
+*.nii
+*.nii.gz
+*.dcm
 
-# Training artifacts
+# Model weights / checkpoints
 weights/
-results/
+**/weights/
+**/checkpoints*/
+**/Models/
 *.pth
+*.pt
+*.ckpt
+*.onnx
+*.safetensors
+
+# Training / run bulk artifacts
+results/
+**/ModelTraining/
+**/epochs/
+VoxelMap_Experiments/data/
+VoxelMap_Experiments/runs/**/CV_*/train/
+VoxelMap_Experiments/runs/**/MC_*/train/
+**/plots_nofilm/*.png
+**/eval_train/
+
+# Python / venv
 __pycache__/
 *.pyc
 .venv/
@@ -23,17 +45,28 @@ venv/
 # Keep plot images/logs small enough; ignore huge accidental dumps
 deformationField.mha
 PopulationStudy/InitialExperiments/Experiment*/data/
-# Local GUI / raw dumps outside PopulationStudy study code
+PopulationStudy/CRBExperiments/Experiment*/data/
+PopulationStudy/ClinicalExperiments/Experiment*/data/
+PopulationStudy/ClinicalExperiments/Grid*/**/data/
+PopulationStudy/IsoExperiments/**/data/
+PopulationStudy/DIR-Experiments/data/
 My v1.0/P2/raw/
 My v1.0/plots/orientation_viewer.log
+
+# Per-pair QC panel dumps — tracked for ClinicalExperiments (large; ~14GB)
+# Still ignore other study areas' pair dumps unless explicitly requested:
+PopulationStudy/IsoExperiments/**/qc_*/**/*.png
+PopulationStudy/DIR-Experiments/**/qc_*/**/*.png
+PopulationStudy/CRBExperiments/**/qc_*/**/*.png
+PopulationStudy/plots/**/qc_*/**/*.png
 
 # Secrets / env
 .env
 *.pem
+**/github KEY
+**/githubKEY
+**/github_key*
 
-PopulationStudy/CRBExperiments/Experiment*/data/
-PopulationStudy/ClinicalExperiments/Experiment*/data/
-
-# ClinicalExperiments QC / train curve images (too large for HTTPS/SSH push)
-PopulationStudy/ClinicalExperiments/**/*.png
-PopulationStudy/plots/**/*.png
+# Videos: allow report plots; skip test-set sweeps under ModelTraining (already ignored)
+**/Test_Breathing_Sweep.mp4
+**/eval_sweep/*.mp4

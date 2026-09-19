@@ -1,0 +1,7 @@
+Using checkpoint: /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/CV_P3_V_01/elastix/checkpoints_nofilm/elastix_CV_P3_V_01_concat_nofilm.pt
+Sweep eval: /home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/bin/python /home/abhishek/Documents/VoxelMap_Clinical/ml/sweep_evaluator.py --checkpoint /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/CV_P3_V_01/elastix/checkpoints_nofilm/elastix_CV_P3_V_01_concat_nofilm.pt --data_dir /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/CV_P3_V_01/elastix/ModelTraining/test/CV_P3_V_01 --output_dir /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/CV_P3_V_01/elastix/eval_sweep --scan-id elastix_CV_P3_V_01 --device cuda
+Wrote /home/abhishek/Voxel_GAN/VoxelMap_Experiments/logs/eval_comparison_CV_P3_V_01.json
+
+======== SWEEP COMPARISON ========
+elastix                 dice=0.8690  3d_err=0.651 mm  psnr=48.31 dB  ssim=0.8990
+synth_e3_both           dice=0.8988  3d_err=1.044 mm  psnr=48.45 dB  ssim=0.8183

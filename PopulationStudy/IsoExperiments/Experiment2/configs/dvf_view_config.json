@@ -1,0 +1,15 @@
+{
+  "scan_id": "MC_T_P1_NS",
+  "volume_relpath": "data/spare/train/CT_01.npy",
+  "plane": "axial",
+  "slice_index": 52,
+  "flip_h": false,
+  "flip_v": false,
+  "frame": "RAI",
+  "coordinate_system": "IEC 61217",
+  "slice_axis": 0,
+  "h_axis": 1,
+  "v_axis": 2,
+  "flow_u": 1,
+  "flow_v": 2
+}

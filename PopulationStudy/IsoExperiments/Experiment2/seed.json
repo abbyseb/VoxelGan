@@ -1,0 +1,23 @@
+{
+  "description": "IsoExperiments Experiment 2 — physically comparable Enc/Dec/Both CRB on P0-A common isotropic grid (Run 0). Same split as Experiment 1.",
+  "experiment": "Iso-E2",
+  "arm": "A0_baseline_raw_dvf_iso",
+  "grid": "PopulationStudy/data_iso — 2.0 mm isotropic, 160³, lung-centroid FOV",
+  "patient_split_seed": 20260817,
+  "patient_split_method": "same as Experiment 1: train P1,P2,P6–P9 · hold-out P3–P5",
+  "train_patients": ["P1", "P2", "P6", "P7", "P8", "P9"],
+  "holdout_patients": ["P3", "P4", "P5"],
+  "val_split_seed": 20260823,
+  "val_fraction": 0.1,
+  "val_split_method": "per train patient: Random(val_split_seed + patient_index).shuffle(100 pairs); take first 10% as val.",
+  "torch_seed": 20260823,
+  "numpy_seed": 20260823,
+  "python_random_seed": 20260823,
+  "cuda_seed": 20260823,
+  "n_phases": 10,
+  "identity_pairs_included": true,
+  "pairs_per_patient": 100,
+  "n_train_patient_pairs": 600,
+  "n_holdout_pairs": 300,
+  "target": "raw DVF in iso-voxels (1 vx = 2 mm); lung-masked MSE; metrics reported in mm"
+}

@@ -1,0 +1,3 @@
+Cleaning /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/elastix_CV_P3_V_01
+CMD: /home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/bin/python /home/abhishek/Documents/VoxelMap_Clinical/scripts/run_varian_phase2.py --scan-id CV_P3_V_01 --run-root /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/elastix_CV_P3_V_01 --staged /home/abhishek/Voxel_GAN/VoxelMap_Experiments/data/staged/P3/CV_P3_V_01 --with-test
+LOG: /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/elastix_CV_P3_V_01/logs/prepare_elastix_arm.log

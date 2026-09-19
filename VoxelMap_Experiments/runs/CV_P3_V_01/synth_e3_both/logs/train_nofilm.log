@@ -1,0 +1,111 @@
+CMD: /home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/bin/python /home/abhishek/Documents/VoxelMap_Clinical/ml/trainer.py --data_dirs /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/ModelTraining/train/CV_P3_V_01 --architecture concatenated --epochs 50 --batch_size 8 --lr 1e-5 --val_split 0.1 --device cuda --num_workers 4 --checkpoint_dir /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/checkpoints_nofilm --plots_dir /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm --save_path /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/checkpoints_nofilm/synth_CV_P3_V_01_concat_nofilm.pt
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+--- VoxelMap Clinical Trainer ---
+Device: cuda | AMP: False | FiLM: False
+Checkpoints: /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/checkpoints_nofilm
+Loss plots: /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm
+Discovered 6120 projection pairs.
+Split: train=5508 | val=612
+Epoch 1/50 | Train: 0.2967 | Val: 0.2799 | 1314.8s *best*
+  saved epoch_001.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 2/50 | Train: 0.2711 | Val: 0.2654 | 1311.1s *best*
+  saved epoch_002.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 3/50 | Train: 0.2544 | Val: 0.2170 | 1318.6s *best*
+  saved epoch_003.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 4/50 | Train: 0.1399 | Val: 0.0914 | 1327.5s *best*
+  saved epoch_004.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 5/50 | Train: 0.0881 | Val: 0.0700 | 1334.7s *best*
+  saved epoch_005.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 6/50 | Train: 0.0764 | Val: 0.0644 | 1331.1s *best*
+  saved epoch_006.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 7/50 | Train: 0.0693 | Val: 0.0603 | 1327.2s *best*
+  saved epoch_007.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 8/50 | Train: 0.0656 | Val: 0.0601 | 1319.7s *best*
+  saved epoch_008.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 9/50 | Train: 0.0616 | Val: 0.0563 | 1320.8s *best*
+  saved epoch_009.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 10/50 | Train: 0.0579 | Val: 0.0526 | 1334.4s *best*
+  saved epoch_010.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 11/50 | Train: 0.0566 | Val: 0.0506 | 1324.0s *best*
+  saved epoch_011.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 12/50 | Train: 0.0541 | Val: 0.0525 | 1328.8s
+  saved epoch_012.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 13/50 | Train: 0.0523 | Val: 0.0577 | 1324.0s
+  saved epoch_013.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 14/50 | Train: 0.0496 | Val: 0.0484 | 1319.3s *best*
+  saved epoch_014.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 15/50 | Train: 0.0492 | Val: 0.0443 | 1333.6s *best*
+  saved epoch_015.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 16/50 | Train: 0.0470 | Val: 0.0435 | 1322.4s *best*
+  saved epoch_016.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 17/50 | Train: 0.0445 | Val: 0.0421 | 1177.9s *best*
+  saved epoch_017.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 18/50 | Train: 0.0441 | Val: 0.0414 | 730.9s *best*
+  saved epoch_018.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 19/50 | Train: 0.0432 | Val: 0.0464 | 504.1s
+  saved epoch_019.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 20/50 | Train: 0.0417 | Val: 0.0393 | 494.9s *best*
+  saved epoch_020.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 21/50 | Train: 0.0413 | Val: 0.0447 | 511.4s
+  saved epoch_021.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 22/50 | Train: 0.0405 | Val: 0.0385 | 496.6s *best*
+  saved epoch_022.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 23/50 | Train: 0.0395 | Val: 0.0372 | 488.0s *best*
+  saved epoch_023.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 24/50 | Train: 0.0402 | Val: 0.0397 | 509.2s
+  saved epoch_024.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 25/50 | Train: 0.0377 | Val: 0.0355 | 496.3s *best*
+  saved epoch_025.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 26/50 | Train: 0.0374 | Val: 0.0348 | 498.4s *best*
+  saved epoch_026.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 27/50 | Train: 0.0366 | Val: 0.0365 | 496.3s
+  saved epoch_027.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 28/50 | Train: 0.0359 | Val: 0.0410 | 510.3s
+  saved epoch_028.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 29/50 | Train: 0.0349 | Val: 0.0341 | 488.7s *best*
+  saved epoch_029.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 30/50 | Train: 0.0348 | Val: 0.0341 | 502.2s
+  saved epoch_030.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 31/50 | Train: 0.0339 | Val: 0.0433 | 499.7s
+  saved epoch_031.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 32/50 | Train: 0.0329 | Val: 0.0334 | 491.9s *best*
+  saved epoch_032.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 33/50 | Train: 0.0319 | Val: 0.0340 | 437.2s
+  saved epoch_033.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 34/50 | Train: 0.0312 | Val: 0.0307 | 427.4s *best*
+  saved epoch_034.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 35/50 | Train: 0.0300 | Val: 0.0337 | 422.1s
+  saved epoch_035.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 36/50 | Train: 0.0299 | Val: 0.0300 | 422.0s *best*
+  saved epoch_036.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 37/50 | Train: 0.0277 | Val: 0.0314 | 424.6s
+  saved epoch_037.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 38/50 | Train: 0.0274 | Val: 0.0266 | 419.7s *best*
+  saved epoch_038.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 39/50 | Train: 0.0260 | Val: 0.0250 | 427.5s *best*
+  saved epoch_039.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 40/50 | Train: 0.0254 | Val: 0.0249 | 418.3s *best*
+  saved epoch_040.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 41/50 | Train: 0.0242 | Val: 0.0249 | 422.2s
+  saved epoch_041.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 42/50 | Train: 0.0233 | Val: 0.0271 | 423.9s
+  saved epoch_042.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 43/50 | Train: 0.0232 | Val: 0.0227 | 419.9s *best*
+  saved epoch_043.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 44/50 | Train: 0.0218 | Val: 0.0222 | 428.1s *best*
+  saved epoch_044.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 45/50 | Train: 0.0205 | Val: 0.0214 | 420.6s *best*
+  saved epoch_045.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 46/50 | Train: 0.0191 | Val: 0.0258 | 424.1s
+  saved epoch_046.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 47/50 | Train: 0.0167 | Val: 0.0165 | 430.4s *best*
+  saved epoch_047.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 48/50 | Train: 0.0142 | Val: 0.0147 | 420.2s *best*
+  saved epoch_048.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 49/50 | Train: 0.0129 | Val: 0.0143 | 424.8s *best*
+  saved epoch_049.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Epoch 50/50 | Train: 0.0125 | Val: 0.0111 | 423.0s *best*
+  saved epoch_050.pt | plot -> /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/plots_nofilm/loss_curves.png
+Best model copied to /home/abhishek/Voxel_GAN/VoxelMap_Experiments/runs/synth_CV_P3_V_01/checkpoints_nofilm/synth_CV_P3_V_01_concat_nofilm.pt
+--- Done | best val/train loss: 0.0111 ---

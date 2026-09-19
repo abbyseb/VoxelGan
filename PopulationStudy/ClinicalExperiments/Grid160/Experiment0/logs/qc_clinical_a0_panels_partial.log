@@ -1,0 +1,8 @@
+Grid160-A0 QC  device=cuda:0  arms=['a0_full']  arches=['encoder']  norms=['minmax']  panels_only=True  panel_pairs=all (100)
+loaded a0_full encoder crb_enc_mse_iso_g160_a0_full_generator.pth
+[a0_full|encoder|CV_P1_V_01|minmax] panels saved=100 → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/EncoderCRB/plots/qc_varian/a0_full/minmax/P1/CV_P1_V_01
+[a0_full|encoder|CV_P2_V_01|minmax] panels saved=100 → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/EncoderCRB/plots/qc_varian/a0_full/minmax/P2/CV_P2_V_01
+[a0_full|encoder|CV_P3_V_01|minmax] panels saved=100 → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/EncoderCRB/plots/qc_varian/a0_full/minmax/P3/CV_P3_V_01
+[a0_full|encoder|CV_P4_V_01|minmax] panels saved=100 → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/EncoderCRB/plots/qc_varian/a0_full/minmax/P4/CV_P4_V_01
+[a0_full|encoder|CV_P5_V_01|minmax] panels saved=100 → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/EncoderCRB/plots/qc_varian/a0_full/minmax/P5/CV_P5_V_01
+DONE (panels only)

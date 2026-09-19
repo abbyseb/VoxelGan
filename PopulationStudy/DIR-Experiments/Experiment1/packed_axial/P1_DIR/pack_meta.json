@@ -1,0 +1,72 @@
+{
+  "patient_id": "P1_DIR",
+  "source": "/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/data/P1_DIR",
+  "layout": "axial",
+  "out_size": 128,
+  "axis_remap": "native axial DIR (no axis permute)",
+  "bbox_zyx": [
+    0,
+    94,
+    27,
+    214,
+    0,
+    256
+  ],
+  "mask_pad_vox": 8,
+  "bbox_pad": 8,
+  "native_spacing_xyz_mm": [
+    0.97,
+    0.97,
+    2.5
+  ],
+  "hu_to_mu": "mu = 0.02 * (1 + HU/1000)",
+  "mu_water": 0.02,
+  "mask_voxels_packed": 826179,
+  "landmarks": {
+    "P1_DIR_300_T00_xyz.txt": {
+      "n": 300,
+      "native_npy": "landmarks/P1_DIR_300_T00_xyz_native_xyz.npy",
+      "packed_npy": "landmarks/P1_DIR_300_T00_xyz_packed_xyz.npy"
+    },
+    "P1_DIR_300_T50_xyz.txt": {
+      "n": 300,
+      "native_npy": "landmarks/P1_DIR_300_T50_xyz_native_xyz.npy",
+      "packed_npy": "landmarks/P1_DIR_300_T50_xyz_packed_xyz.npy"
+    },
+    "P1_DIR_4D-75_T00.txt": {
+      "n": 75,
+      "native_npy": "landmarks/P1_DIR_4D-75_T00_native_xyz.npy",
+      "packed_npy": "landmarks/P1_DIR_4D-75_T00_packed_xyz.npy"
+    },
+    "P1_DIR_4D-75_T10.txt": {
+      "n": 75,
+      "native_npy": "landmarks/P1_DIR_4D-75_T10_native_xyz.npy",
+      "packed_npy": "landmarks/P1_DIR_4D-75_T10_packed_xyz.npy"
+    },
+    "P1_DIR_4D-75_T20.txt": {
+      "n": 75,
+      "native_npy": "landmarks/P1_DIR_4D-75_T20_native_xyz.npy",
+      "packed_npy": "landmarks/P1_DIR_4D-75_T20_packed_xyz.npy"
+    },
+    "P1_DIR_4D-75_T30.txt": {
+      "n": 75,
+      "native_npy": "landmarks/P1_DIR_4D-75_T30_native_xyz.npy",
+      "packed_npy": "landmarks/P1_DIR_4D-75_T30_packed_xyz.npy"
+    },
+    "P1_DIR_4D-75_T40.txt": {
+      "n": 75,
+      "native_npy": "landmarks/P1_DIR_4D-75_T40_native_xyz.npy",
+      "packed_npy": "landmarks/P1_DIR_4D-75_T40_packed_xyz.npy"
+    },
+    "P1_DIR_4D-75_T50.txt": {
+      "n": 75,
+      "native_npy": "landmarks/P1_DIR_4D-75_T50_native_xyz.npy",
+      "packed_npy": "landmarks/P1_DIR_4D-75_T50_packed_xyz.npy"
+    }
+  },
+  "crop_size_zyx": [
+    94,
+    187,
+    256
+  ]
+}

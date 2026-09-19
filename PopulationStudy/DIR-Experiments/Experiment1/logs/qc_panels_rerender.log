@@ -1,0 +1,66 @@
+DIR clinical QC  device=cuda:0  arches=['encoder', 'decoder', 'both']  norms=['minmax', 'mu']
+panels-only mode (metrics unchanged)
+loaded encoder encoder_e6_normal.pth
+[encoder|P1_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/minmax/P1_DIR
+[encoder|P2_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/minmax/P2_DIR
+[encoder|P3_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/minmax/P3_DIR
+[encoder|P4_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/minmax/P4_DIR
+[encoder|P5_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/minmax/P5_DIR
+[encoder|P6_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/minmax/P6_DIR
+[encoder|P7_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/minmax/P7_DIR
+[encoder|P8_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/minmax/P8_DIR
+[encoder|P9_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/minmax/P9_DIR
+[encoder|P10_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/minmax/P10_DIR
+[encoder|P1_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/mu/P1_DIR
+[encoder|P2_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/mu/P2_DIR
+[encoder|P3_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/mu/P3_DIR
+[encoder|P4_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/mu/P4_DIR
+[encoder|P5_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/mu/P5_DIR
+[encoder|P6_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/mu/P6_DIR
+[encoder|P7_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/mu/P7_DIR
+[encoder|P8_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/mu/P8_DIR
+[encoder|P9_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/mu/P9_DIR
+[encoder|P10_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_encoder/mu/P10_DIR
+loaded decoder decoder_e6_normal.pth
+[decoder|P1_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/minmax/P1_DIR
+[decoder|P2_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/minmax/P2_DIR
+[decoder|P3_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/minmax/P3_DIR
+[decoder|P4_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/minmax/P4_DIR
+[decoder|P5_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/minmax/P5_DIR
+[decoder|P6_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/minmax/P6_DIR
+[decoder|P7_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/minmax/P7_DIR
+[decoder|P8_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/minmax/P8_DIR
+[decoder|P9_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/minmax/P9_DIR
+[decoder|P10_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/minmax/P10_DIR
+[decoder|P1_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/mu/P1_DIR
+[decoder|P2_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/mu/P2_DIR
+[decoder|P3_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/mu/P3_DIR
+[decoder|P4_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/mu/P4_DIR
+[decoder|P5_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/mu/P5_DIR
+[decoder|P6_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/mu/P6_DIR
+[decoder|P7_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/mu/P7_DIR
+[decoder|P8_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/mu/P8_DIR
+[decoder|P9_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/mu/P9_DIR
+[decoder|P10_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_decoder/mu/P10_DIR
+loaded both both_e6_normal.pth
+[both|P1_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/minmax/P1_DIR
+[both|P2_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/minmax/P2_DIR
+[both|P3_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/minmax/P3_DIR
+[both|P4_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/minmax/P4_DIR
+[both|P5_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/minmax/P5_DIR
+[both|P6_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/minmax/P6_DIR
+[both|P7_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/minmax/P7_DIR
+[both|P8_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/minmax/P8_DIR
+[both|P9_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/minmax/P9_DIR
+[both|P10_DIR|minmax] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/minmax/P10_DIR
+[both|P1_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/mu/P1_DIR
+[both|P2_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/mu/P2_DIR
+[both|P3_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/mu/P3_DIR
+[both|P4_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/mu/P4_DIR
+[both|P5_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/mu/P5_DIR
+[both|P6_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/mu/P6_DIR
+[both|P7_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/mu/P7_DIR
+[both|P8_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/mu/P8_DIR
+[both|P9_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/mu/P9_DIR
+[both|P10_DIR|mu] panels saved=7 → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/plots/qc_both/mu/P10_DIR
+DONE (panels only)

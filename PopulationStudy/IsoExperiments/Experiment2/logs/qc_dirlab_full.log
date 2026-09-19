@@ -1,0 +1,47 @@
+Iso-E2 DIR QC  device=cuda:0  packed=/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment2/packed_iso  arches=['encoder', 'decoder', 'both']
+loaded encoder crb_enc_mse_iso_e2_full_generator.pth
+  [encoder|P1_DIR|minmax] 25/100
+  [encoder|P1_DIR|minmax] 50/100
+  [encoder|P1_DIR|minmax] 75/100
+  [encoder|P1_DIR|minmax] 100/100
+[encoder|P1_DIR|minmax] L1=1.162mm cos=-0.171 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P1_DIR
+  [encoder|P2_DIR|minmax] 25/100
+  [encoder|P2_DIR|minmax] 50/100
+  [encoder|P2_DIR|minmax] 75/100
+  [encoder|P2_DIR|minmax] 100/100
+[encoder|P2_DIR|minmax] L1=1.352mm cos=-0.047 beat=2% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P2_DIR
+  [encoder|P3_DIR|minmax] 25/100
+  [encoder|P3_DIR|minmax] 50/100
+  [encoder|P3_DIR|minmax] 75/100
+  [encoder|P3_DIR|minmax] 100/100
+[encoder|P3_DIR|minmax] L1=1.548mm cos=-0.189 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P3_DIR
+  [encoder|P4_DIR|minmax] 25/100
+  [encoder|P4_DIR|minmax] 50/100
+  [encoder|P4_DIR|minmax] 75/100
+  [encoder|P4_DIR|minmax] 100/100
+[encoder|P4_DIR|minmax] L1=1.985mm cos=-0.236 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P4_DIR
+  [encoder|P5_DIR|minmax] 25/100
+  [encoder|P5_DIR|minmax] 50/100
+  [encoder|P5_DIR|minmax] 75/100
+  [encoder|P5_DIR|minmax] 100/100
+[encoder|P5_DIR|minmax] L1=1.639mm cos=-0.147 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P5_DIR
+  [encoder|P6_DIR|minmax] 25/100
+  [encoder|P6_DIR|minmax] 50/100
+  [encoder|P6_DIR|minmax] 75/100
+  [encoder|P6_DIR|minmax] 100/100
+[encoder|P6_DIR|minmax] L1=3.042mm cos=-0.358 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P6_DIR
+Traceback (most recent call last):
+  File "/home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/scripts/qc_dirlab.py", line 278, in <module>
+    main()
+  File "/home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/scripts/qc_dirlab.py", line 241, in main
+    s = run_one(
+        ^^^^^^^^
+  File "/home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/scripts/qc_dirlab.py", line 147, in run_one
+    gt = to_cdhw(np.load(data_dir / f"{stem}_pair.npy").astype(np.float32))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/numpy/lib/_npyio_impl.py", line 483, in load
+    return format.read_array(fid, allow_pickle=allow_pickle,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/numpy/lib/_format_impl.py", line 874, in read_array
+    raise ValueError(
+ValueError: Failed to read all data for array. Expected (160, 160, 160, 3) = 12288000 elements, could only read 0 elements. (file seems not fully written?)

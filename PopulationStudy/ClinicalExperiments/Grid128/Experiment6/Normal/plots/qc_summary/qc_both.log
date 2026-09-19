@@ -1,0 +1,110 @@
+E6 clinical QC  device=cuda:0  arches=['both']  norms=['minmax', 'mu']
+loaded both crb_both_mse_linear_full128_generator.pth
+  [both|CV_P1_V_01|minmax] 25/100
+  [both|CV_P1_V_01|minmax] 50/100
+  [both|CV_P1_V_01|minmax] 75/100
+  [both|CV_P1_V_01|minmax] 100/100
+[both|CV_P1_V_01|minmax] cos=0.352 beat=27% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_varian/minmax/P1/CV_P1_V_01
+  [both|CV_P2_V_01|minmax] 25/100
+  [both|CV_P2_V_01|minmax] 50/100
+  [both|CV_P2_V_01|minmax] 75/100
+  [both|CV_P2_V_01|minmax] 100/100
+[both|CV_P2_V_01|minmax] cos=0.598 beat=98% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_varian/minmax/P2/CV_P2_V_01
+  [both|CV_P3_V_01|minmax] 25/100
+  [both|CV_P3_V_01|minmax] 50/100
+  [both|CV_P3_V_01|minmax] 75/100
+  [both|CV_P3_V_01|minmax] 100/100
+[both|CV_P3_V_01|minmax] cos=0.579 beat=79% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_varian/minmax/P3/CV_P3_V_01
+  [both|CV_P4_V_01|minmax] 25/100
+  [both|CV_P4_V_01|minmax] 50/100
+  [both|CV_P4_V_01|minmax] 75/100
+  [both|CV_P4_V_01|minmax] 100/100
+[both|CV_P4_V_01|minmax] cos=0.656 beat=91% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_varian/minmax/P4/CV_P4_V_01
+  [both|CV_P5_V_01|minmax] 25/100
+  [both|CV_P5_V_01|minmax] 50/100
+  [both|CV_P5_V_01|minmax] 75/100
+  [both|CV_P5_V_01|minmax] 100/100
+[both|CV_P5_V_01|minmax] cos=0.549 beat=88% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_varian/minmax/P5/CV_P5_V_01
+  [both|CE_P1_V_01|minmax] 25/100
+  [both|CE_P1_V_01|minmax] 50/100
+  [both|CE_P1_V_01|minmax] 75/100
+  [both|CE_P1_V_01|minmax] 100/100
+[both|CE_P1_V_01|minmax] cos=0.505 beat=72% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_elekta/minmax/P1/CE_P1_V_01
+  [both|CE_P2_V_01|minmax] 25/100
+  [both|CE_P2_V_01|minmax] 50/100
+  [both|CE_P2_V_01|minmax] 75/100
+  [both|CE_P2_V_01|minmax] 100/100
+[both|CE_P2_V_01|minmax] cos=0.335 beat=61% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_elekta/minmax/P2/CE_P2_V_01
+  [both|CE_P3_V_01|minmax] 25/100
+  [both|CE_P3_V_01|minmax] 50/100
+  [both|CE_P3_V_01|minmax] 75/100
+  [both|CE_P3_V_01|minmax] 100/100
+[both|CE_P3_V_01|minmax] cos=0.030 beat=32% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_elekta/minmax/P3/CE_P3_V_01
+  [both|CE_P4_V_01|minmax] 25/100
+  [both|CE_P4_V_01|minmax] 50/100
+  [both|CE_P4_V_01|minmax] 75/100
+  [both|CE_P4_V_01|minmax] 100/100
+[both|CE_P4_V_01|minmax] cos=0.412 beat=64% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_elekta/minmax/P4/CE_P4_V_01
+  [both|CE_P5_V_01|minmax] 25/100
+  [both|CE_P5_V_01|minmax] 50/100
+  [both|CE_P5_V_01|minmax] 75/100
+  [both|CE_P5_V_01|minmax] 100/100
+[both|CE_P5_V_01|minmax] cos=0.438 beat=87% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_elekta/minmax/P5/CE_P5_V_01
+  [both|CV_P1_V_01|mu] 25/100
+  [both|CV_P1_V_01|mu] 50/100
+  [both|CV_P1_V_01|mu] 75/100
+  [both|CV_P1_V_01|mu] 100/100
+[both|CV_P1_V_01|mu] cos=0.397 beat=60% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_varian/mu/P1/CV_P1_V_01
+  [both|CV_P2_V_01|mu] 25/100
+  [both|CV_P2_V_01|mu] 50/100
+  [both|CV_P2_V_01|mu] 75/100
+  [both|CV_P2_V_01|mu] 100/100
+[both|CV_P2_V_01|mu] cos=0.585 beat=87% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_varian/mu/P2/CV_P2_V_01
+  [both|CV_P3_V_01|mu] 25/100
+  [both|CV_P3_V_01|mu] 50/100
+  [both|CV_P3_V_01|mu] 75/100
+  [both|CV_P3_V_01|mu] 100/100
+[both|CV_P3_V_01|mu] cos=0.671 beat=88% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_varian/mu/P3/CV_P3_V_01
+  [both|CV_P4_V_01|mu] 25/100
+  [both|CV_P4_V_01|mu] 50/100
+  [both|CV_P4_V_01|mu] 75/100
+  [both|CV_P4_V_01|mu] 100/100
+[both|CV_P4_V_01|mu] cos=0.693 beat=97% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_varian/mu/P4/CV_P4_V_01
+  [both|CV_P5_V_01|mu] 25/100
+  [both|CV_P5_V_01|mu] 50/100
+  [both|CV_P5_V_01|mu] 75/100
+  [both|CV_P5_V_01|mu] 100/100
+[both|CV_P5_V_01|mu] cos=0.576 beat=97% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_varian/mu/P5/CV_P5_V_01
+  [both|CE_P1_V_01|mu] 25/100
+  [both|CE_P1_V_01|mu] 50/100
+  [both|CE_P1_V_01|mu] 75/100
+  [both|CE_P1_V_01|mu] 100/100
+[both|CE_P1_V_01|mu] cos=0.577 beat=93% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_elekta/mu/P1/CE_P1_V_01
+  [both|CE_P2_V_01|mu] 25/100
+  [both|CE_P2_V_01|mu] 50/100
+  [both|CE_P2_V_01|mu] 75/100
+  [both|CE_P2_V_01|mu] 100/100
+[both|CE_P2_V_01|mu] cos=0.437 beat=79% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_elekta/mu/P2/CE_P2_V_01
+  [both|CE_P3_V_01|mu] 25/100
+  [both|CE_P3_V_01|mu] 50/100
+  [both|CE_P3_V_01|mu] 75/100
+  [both|CE_P3_V_01|mu] 100/100
+[both|CE_P3_V_01|mu] cos=0.390 beat=93% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_elekta/mu/P3/CE_P3_V_01
+  [both|CE_P4_V_01|mu] 25/100
+  [both|CE_P4_V_01|mu] 50/100
+  [both|CE_P4_V_01|mu] 75/100
+  [both|CE_P4_V_01|mu] 100/100
+[both|CE_P4_V_01|mu] cos=0.470 beat=71% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_elekta/mu/P4/CE_P4_V_01
+  [both|CE_P5_V_01|mu] 25/100
+  [both|CE_P5_V_01|mu] 50/100
+  [both|CE_P5_V_01|mu] 75/100
+  [both|CE_P5_V_01|mu] 100/100
+[both|CE_P5_V_01|mu] cos=0.517 beat=81% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/BothCRB/plots/qc_elekta/mu/P5/CE_P5_V_01
+
+======== E6 SUMMARY ========
+both     minmax varian   cos=0.547  L1/z=0.916  beat=76%
+both     minmax elekta   cos=0.344  L1/z=0.986  beat=63%
+both     mu     varian   cos=0.584  L1/z=0.866  beat=86%
+both     mu     elekta   cos=0.478  L1/z=0.905  beat=84%
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Experiment6/Normal/plots/qc_summary/summary_both_minmax_mu.json
+DONE

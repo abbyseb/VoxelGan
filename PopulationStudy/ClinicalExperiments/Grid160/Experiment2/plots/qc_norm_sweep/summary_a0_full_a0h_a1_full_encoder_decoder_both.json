@@ -1,0 +1,4551 @@
+{
+  "experiment": "G160-E2",
+  "norms": [
+    "minmax",
+    "p0.5_p99.5",
+    "p1_p99",
+    "p2_p98",
+    "p5_p95",
+    "mu_air_water"
+  ],
+  "scans": [
+    "CV_P1_V_01",
+    "CV_P2_V_01",
+    "CV_P3_V_01",
+    "CV_P4_V_01",
+    "CV_P5_V_01",
+    "CE_P1_V_01",
+    "CE_P2_V_01",
+    "CE_P3_V_01",
+    "CE_P4_V_01",
+    "CE_P5_V_01"
+  ],
+  "arms": {
+    "a0_full": {
+      "encoder": {
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/EncoderCRB/weights/crb_enc_mse_iso_g160_a0_full_generator.pth",
+        "scans": {
+          "CV_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5575105408827464,
+              "mean_L1_over_zero": 1.0864478694192314,
+              "mean_cos": 0.39041865768635436,
+              "mean_k": 0.8823826203743617,
+              "beat_zero_pct": 43.333333333333336,
+              "intensity_dist_to_varian_ref": 0.16100047399681042
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5326118873225318,
+              "mean_L1_over_zero": 1.029860665590597,
+              "mean_cos": 0.3668242078171008,
+              "mean_k": 0.7380902737379074,
+              "beat_zero_pct": 52.22222222222222,
+              "intensity_dist_to_varian_ref": 0.02877224255768812
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5316110930509037,
+              "mean_L1_over_zero": 1.0283923731437428,
+              "mean_cos": 0.36131024978434045,
+              "mean_k": 0.723278284072876,
+              "beat_zero_pct": 50.0,
+              "intensity_dist_to_varian_ref": 0.023164133762407273
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5346463720003763,
+              "mean_L1_over_zero": 1.0356392286534697,
+              "mean_cos": 0.35324774854299096,
+              "mean_k": 0.7201110766993628,
+              "beat_zero_pct": 47.77777777777778,
+              "intensity_dist_to_varian_ref": 0.02053840194705702
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.553393744925658,
+              "mean_L1_over_zero": 1.068269388779099,
+              "mean_cos": 0.3495387290319842,
+              "mean_k": 0.7619115944537852,
+              "beat_zero_pct": 41.111111111111114,
+              "intensity_dist_to_varian_ref": 0.02128515155669144
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5214319666226704,
+              "mean_L1_over_zero": 1.0215223973377277,
+              "mean_cos": 0.25291270840292174,
+              "mean_k": 0.46949430422650446,
+              "beat_zero_pct": 58.888888888888886,
+              "intensity_dist_to_varian_ref": 0.06589532886206131
+            }
+          },
+          "CV_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5104149828354517,
+              "mean_L1_over_zero": 0.8434855887233141,
+              "mean_cos": 0.6108693116241031,
+              "mean_k": 0.5949171854390038,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.42045344325753936
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5732904608050983,
+              "mean_L1_over_zero": 0.9333637907742335,
+              "mean_cos": 0.5072578883833355,
+              "mean_k": 0.5851869399348895,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.05936948774475686
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5760635561413235,
+              "mean_L1_over_zero": 0.9380144679603564,
+              "mean_cos": 0.49192909830146364,
+              "mean_k": 0.5632150765922335,
+              "beat_zero_pct": 88.88888888888889,
+              "intensity_dist_to_varian_ref": 0.052917787242300895
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5778284081154399,
+              "mean_L1_over_zero": 0.9417479050859334,
+              "mean_cos": 0.47275299463007187,
+              "mean_k": 0.530423852801323,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.05037871458848248
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5786766822139422,
+              "mean_L1_over_zero": 0.9449183320505982,
+              "mean_cos": 0.43978042114112115,
+              "mean_k": 0.46812171704239314,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.054956235226567694
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5744114125768344,
+              "mean_L1_over_zero": 0.940834581876728,
+              "mean_cos": 0.40982308983802795,
+              "mean_k": 0.44491062031851875,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.10539875685403369
+            }
+          },
+          "CV_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5344444745116763,
+              "mean_L1_over_zero": 0.8730608271663945,
+              "mean_cos": 0.6124753072030015,
+              "mean_k": 0.8336742808421452,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.10629434786315951
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5122564501232572,
+              "mean_L1_over_zero": 0.838111656874221,
+              "mean_cos": 0.5988554867605368,
+              "mean_k": 0.6466642781264252,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.0832009808871327
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5199426957302623,
+              "mean_L1_over_zero": 0.849449907314411,
+              "mean_cos": 0.593959970275561,
+              "mean_k": 0.6517653566267755,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.08527579930816033
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5250012394454744,
+              "mean_L1_over_zero": 0.8562143445923647,
+              "mean_cos": 0.5886865598460038,
+              "mean_k": 0.6450820740726259,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.08703942496010816
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5282356060213513,
+              "mean_L1_over_zero": 0.8609959768532366,
+              "mean_cos": 0.5762786142967848,
+              "mean_k": 0.6100670365823639,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.09668632693959084
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.529517292810811,
+              "mean_L1_over_zero": 0.8655962813757302,
+              "mean_cos": 0.5678245084877643,
+              "mean_k": 0.6181394048862987,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.08579953501154142
+            }
+          },
+          "CV_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.6575706539882554,
+              "mean_L1_over_zero": 0.7658894062967025,
+              "mean_cos": 0.6661274148358239,
+              "mean_k": 0.5861401905616125,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.09635490904475162
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6698775624235471,
+              "mean_L1_over_zero": 0.7804074380846631,
+              "mean_cos": 0.6582555390480492,
+              "mean_k": 0.5450554680493143,
+              "beat_zero_pct": 95.55555555555556,
+              "intensity_dist_to_varian_ref": 0.11846849747808676
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6754596104224523,
+              "mean_L1_over_zero": 0.7861497850884086,
+              "mean_cos": 0.6539497235582934,
+              "mean_k": 0.5375425340400801,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.12448968322011732
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6820389277405209,
+              "mean_L1_over_zero": 0.7929764486969617,
+              "mean_cos": 0.6484499643142853,
+              "mean_k": 0.5224902648892668,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.1315343880722406
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6944919968644778,
+              "mean_L1_over_zero": 0.806017883042502,
+              "mean_cos": 0.6369220613088045,
+              "mean_k": 0.4820545201500257,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.132855478263588
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.7256017176641358,
+              "mean_L1_over_zero": 0.8408932005039946,
+              "mean_cos": 0.5844555733725428,
+              "mean_k": 0.39546947363350127,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.09162185455308221
+            }
+          },
+          "CV_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.718070389661524,
+              "mean_L1_over_zero": 0.8496999995874746,
+              "mean_cos": 0.5571030021451103,
+              "mean_k": 0.4117430143886142,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.171898815281094
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6842308224903213,
+              "mean_L1_over_zero": 0.8244800984095194,
+              "mean_cos": 0.6150994966349875,
+              "mean_k": 0.4569660166899363,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.0698141182107829
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6881439409322209,
+              "mean_L1_over_zero": 0.8331920636673253,
+              "mean_cos": 0.6069837506446574,
+              "mean_k": 0.4654621465338601,
+              "beat_zero_pct": 93.33333333333333,
+              "intensity_dist_to_varian_ref": 0.06311121853083064
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6943743195798662,
+              "mean_L1_over_zero": 0.8419678298407854,
+              "mean_cos": 0.5948131161651367,
+              "mean_k": 0.4681523010134697,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.06361871802043131
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.7057768616411421,
+              "mean_L1_over_zero": 0.8557914669952548,
+              "mean_cos": 0.5707478966977861,
+              "mean_k": 0.4596475112769339,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.07862138811268564
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6767226164539655,
+              "mean_L1_over_zero": 0.8119652933243567,
+              "mean_cos": 0.6092220024102264,
+              "mean_k": 0.4040759507152769,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.09495496788416904
+            }
+          },
+          "CE_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7289299597342809,
+              "mean_L1_over_zero": 0.9823220902007684,
+              "mean_cos": 0.42730427526144515,
+              "mean_k": 0.6278104983270169,
+              "beat_zero_pct": 63.333333333333336,
+              "intensity_dist_to_varian_ref": 0.5805298672401855
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6519837381111251,
+              "mean_L1_over_zero": 0.8717662938148489,
+              "mean_cos": 0.5623725534313255,
+              "mean_k": 0.5913689333531592,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.2785188245791183
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.65270606511169,
+              "mean_L1_over_zero": 0.8734527177494303,
+              "mean_cos": 0.5556249319886167,
+              "mean_k": 0.5886232540011406,
+              "beat_zero_pct": 88.88888888888889,
+              "intensity_dist_to_varian_ref": 0.26198855030421897
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6535365386141672,
+              "mean_L1_over_zero": 0.8751307278521336,
+              "mean_cos": 0.5505499138186375,
+              "mean_k": 0.581343545847469,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.2670351738527381
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6488090291619301,
+              "mean_L1_over_zero": 0.8718776476169889,
+              "mean_cos": 0.542725516607364,
+              "mean_k": 0.5551034793257713,
+              "beat_zero_pct": 93.33333333333333,
+              "intensity_dist_to_varian_ref": 0.26985068546498236
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6272321532169978,
+              "mean_L1_over_zero": 0.8279524655554276,
+              "mean_cos": 0.6102764030297597,
+              "mean_k": 0.5658506605360243,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.26721205068235926
+            }
+          },
+          "CE_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.9860263938705126,
+              "mean_L1_over_zero": 1.0909453655841412,
+              "mean_cos": 0.25372453520281446,
+              "mean_k": 0.5943888812429375,
+              "beat_zero_pct": 32.22222222222222,
+              "intensity_dist_to_varian_ref": 0.6714213081589794
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.9175520930025313,
+              "mean_L1_over_zero": 1.0263741894904752,
+              "mean_cos": 0.3106480957008898,
+              "mean_k": 0.5461921904649999,
+              "beat_zero_pct": 50.0,
+              "intensity_dist_to_varian_ref": 0.4051470718565534
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.9020499681433042,
+              "mean_L1_over_zero": 1.008499339968279,
+              "mean_cos": 0.32040539318566313,
+              "mean_k": 0.5237260327570968,
+              "beat_zero_pct": 54.44444444444444,
+              "intensity_dist_to_varian_ref": 0.36549928375453444
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.8663133472204209,
+              "mean_L1_over_zero": 0.9660736086866526,
+              "mean_cos": 0.370876922360104,
+              "mean_k": 0.48430773102574876,
+              "beat_zero_pct": 68.88888888888889,
+              "intensity_dist_to_varian_ref": 0.2563729811143488
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.8544730964634154,
+              "mean_L1_over_zero": 0.9480906465817032,
+              "mean_cos": 0.3889902495675617,
+              "mean_k": 0.4530197283460034,
+              "beat_zero_pct": 73.33333333333333,
+              "intensity_dist_to_varian_ref": 0.158582551857544
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.8730994587143263,
+              "mean_L1_over_zero": 0.9618105622694422,
+              "mean_cos": 0.3865574624906811,
+              "mean_k": 0.4379583921697405,
+              "beat_zero_pct": 76.66666666666667,
+              "intensity_dist_to_varian_ref": 0.32983440121670393
+            }
+          },
+          "CE_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 2.3051980336507163,
+              "mean_L1_over_zero": 0.9755428127573167,
+              "mean_cos": 0.35784517379684583,
+              "mean_k": 0.26239332642613183,
+              "beat_zero_pct": 70.0,
+              "intensity_dist_to_varian_ref": 0.9794256358047544
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 2.2500856379667917,
+              "mean_L1_over_zero": 0.9395711200705498,
+              "mean_cos": 0.44064527818053545,
+              "mean_k": 0.26558535294607283,
+              "beat_zero_pct": 74.44444444444444,
+              "intensity_dist_to_varian_ref": 0.516117337001346
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 2.229512164162265,
+              "mean_L1_over_zero": 0.9261041869290103,
+              "mean_cos": 0.46113073226685325,
+              "mean_k": 0.2571584436421593,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.4334149400751406
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 2.219366643329461,
+              "mean_L1_over_zero": 0.9190663277370108,
+              "mean_cos": 0.46784938048157426,
+              "mean_k": 0.24411706635728478,
+              "beat_zero_pct": 80.0,
+              "intensity_dist_to_varian_ref": 0.39757963439870186
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 2.238012699948417,
+              "mean_L1_over_zero": 0.9259537315816592,
+              "mean_cos": 0.44180395915690396,
+              "mean_k": 0.22295287433597777,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.39382222062768163
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 2.182351610561212,
+              "mean_L1_over_zero": 0.9006152743627573,
+              "mean_cos": 0.4691142540011141,
+              "mean_k": 0.23902955980350574,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.37263486923392286
+            }
+          },
+          "CE_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.8155770243869888,
+              "mean_L1_over_zero": 0.9343342715764723,
+              "mean_cos": 0.42256543569059835,
+              "mean_k": 0.4735678946806325,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.48182446597580836
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.7769413635134697,
+              "mean_L1_over_zero": 0.8959403385920347,
+              "mean_cos": 0.47304703985444374,
+              "mean_k": 0.4651986186703046,
+              "beat_zero_pct": 88.88888888888889,
+              "intensity_dist_to_varian_ref": 0.1079006275628767
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.7747703032361136,
+              "mean_L1_over_zero": 0.8939520358403398,
+              "mean_cos": 0.47370549652518495,
+              "mean_k": 0.46420740348597367,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.08504789093873533
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.7757925492193963,
+              "mean_L1_over_zero": 0.8955993309188233,
+              "mean_cos": 0.4683909585595959,
+              "mean_k": 0.46088070049881935,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.08081433484793929
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.7817233231332567,
+              "mean_L1_over_zero": 0.9030385385497693,
+              "mean_cos": 0.45201851684186195,
+              "mean_k": 0.4532498055862056,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.08667015932407302
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.7972356783019172,
+              "mean_L1_over_zero": 0.9240463435000025,
+              "mean_cos": 0.44416845473978256,
+              "mean_k": 0.546269364323881,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.06282469215900556
+            }
+          },
+          "CE_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 1.0601567089557649,
+              "mean_L1_over_zero": 0.9085785855196978,
+              "mean_cos": 0.4890904950702356,
+              "mean_k": 0.3355338408715195,
+              "beat_zero_pct": 88.88888888888889,
+              "intensity_dist_to_varian_ref": 0.39978891263111505
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 1.0407415767510733,
+              "mean_L1_over_zero": 0.9016985470128512,
+              "mean_cos": 0.47616976828107405,
+              "mean_k": 0.38204460649026767,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.2711726587806985
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 1.0271109912130567,
+              "mean_L1_over_zero": 0.8900525891311928,
+              "mean_cos": 0.4926508068314029,
+              "mean_k": 0.3879681471321318,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.22407570855986914
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 1.0168753663698833,
+              "mean_L1_over_zero": 0.882204064058775,
+              "mean_cos": 0.500333893731133,
+              "mean_k": 0.3899789014624225,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.19556884061061447
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 1.011477558149232,
+              "mean_L1_over_zero": 0.8783649234824893,
+              "mean_cos": 0.5042554521933198,
+              "mean_k": 0.380248229785098,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.18336104608057158
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.9462160272730722,
+              "mean_L1_over_zero": 0.8327552416661763,
+              "mean_cos": 0.5826350720392333,
+              "mean_k": 0.44115675571892,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.18196281515436935
+            }
+          }
+        }
+      },
+      "decoder": {
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/DecoderCRB/weights/crb_dec_mse_iso_g160_a0_full_generator.pth",
+        "scans": {
+          "CV_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5620210342937045,
+              "mean_L1_over_zero": 1.0918831050939228,
+              "mean_cos": 0.3660105205089268,
+              "mean_k": 0.8765057421392864,
+              "beat_zero_pct": 40.0,
+              "intensity_dist_to_varian_ref": 0.16100047399681042
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5907743147677845,
+              "mean_L1_over_zero": 1.157081034241062,
+              "mean_cos": 0.3737166780926701,
+              "mean_k": 1.0144324024518332,
+              "beat_zero_pct": 37.77777777777778,
+              "intensity_dist_to_varian_ref": 0.02877224255768812
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5674546610977914,
+              "mean_L1_over_zero": 1.1095422983601468,
+              "mean_cos": 0.36525024615435137,
+              "mean_k": 0.9327135251628028,
+              "beat_zero_pct": 42.22222222222222,
+              "intensity_dist_to_varian_ref": 0.023164133762407273
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5422084086471134,
+              "mean_L1_over_zero": 1.059896739696193,
+              "mean_cos": 0.371576476842165,
+              "mean_k": 0.8462012168433931,
+              "beat_zero_pct": 55.55555555555556,
+              "intensity_dist_to_varian_ref": 0.02053840194705702
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6178631183173922,
+              "mean_L1_over_zero": 1.2082604478950143,
+              "mean_cos": 0.36469389444424044,
+              "mean_k": 1.051582584447331,
+              "beat_zero_pct": 31.11111111111111,
+              "intensity_dist_to_varian_ref": 0.02128515155669144
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.7240826482574145,
+              "mean_L1_over_zero": 1.358839216649368,
+              "mean_cos": 0.24601394595948578,
+              "mean_k": 0.9834548378156291,
+              "beat_zero_pct": 24.444444444444443,
+              "intensity_dist_to_varian_ref": 0.06589532886206131
+            }
+          },
+          "CV_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5191898074414995,
+              "mean_L1_over_zero": 0.8511738649192852,
+              "mean_cos": 0.6031838079293569,
+              "mean_k": 0.6214550986886025,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.42045344325753936
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6946933446658983,
+              "mean_L1_over_zero": 1.1035184055635376,
+              "mean_cos": 0.45656960722472933,
+              "mean_k": 0.8135419618752268,
+              "beat_zero_pct": 40.0,
+              "intensity_dist_to_varian_ref": 0.05936948774475686
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.7083510342571471,
+              "mean_L1_over_zero": 1.1225653517916032,
+              "mean_cos": 0.44400598448183803,
+              "mean_k": 0.8215873683492343,
+              "beat_zero_pct": 40.0,
+              "intensity_dist_to_varian_ref": 0.052917787242300895
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.741456164419651,
+              "mean_L1_over_zero": 1.1677825681276865,
+              "mean_cos": 0.4460343769027127,
+              "mean_k": 0.87873994194799,
+              "beat_zero_pct": 32.22222222222222,
+              "intensity_dist_to_varian_ref": 0.05037871458848248
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.7666620444920328,
+              "mean_L1_over_zero": 1.2057203236767564,
+              "mean_cos": 0.4503668812000089,
+              "mean_k": 0.9303827496038543,
+              "beat_zero_pct": 30.0,
+              "intensity_dist_to_varian_ref": 0.054956235226567694
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.749523602757189,
+              "mean_L1_over_zero": 1.1750054944801482,
+              "mean_cos": 0.25706589673128394,
+              "mean_k": 0.6394001613060634,
+              "beat_zero_pct": 21.11111111111111,
+              "intensity_dist_to_varian_ref": 0.10539875685403369
+            }
+          },
+          "CV_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5617015042238765,
+              "mean_L1_over_zero": 0.9145192165399922,
+              "mean_cos": 0.581126971460051,
+              "mean_k": 0.8732911517222722,
+              "beat_zero_pct": 72.22222222222223,
+              "intensity_dist_to_varian_ref": 0.10629434786315951
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5743792740835084,
+              "mean_L1_over_zero": 0.934160211846605,
+              "mean_cos": 0.6268616197837724,
+              "mean_k": 0.9636691474252277,
+              "beat_zero_pct": 70.0,
+              "intensity_dist_to_varian_ref": 0.0832009808871327
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5654912448591656,
+              "mean_L1_over_zero": 0.9205237329089417,
+              "mean_cos": 0.6287845649653011,
+              "mean_k": 0.94355591452784,
+              "beat_zero_pct": 71.11111111111111,
+              "intensity_dist_to_varian_ref": 0.08527579930816033
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5638028951154814,
+              "mean_L1_over_zero": 0.9172414769326735,
+              "mean_cos": 0.6293292086985376,
+              "mean_k": 0.945486268070009,
+              "beat_zero_pct": 73.33333333333333,
+              "intensity_dist_to_varian_ref": 0.08703942496010816
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5678213205602434,
+              "mean_L1_over_zero": 0.9223303449185413,
+              "mean_cos": 0.61798848832647,
+              "mean_k": 0.9206719287567668,
+              "beat_zero_pct": 72.22222222222223,
+              "intensity_dist_to_varian_ref": 0.09668632693959084
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5564401654733552,
+              "mean_L1_over_zero": 0.9003877305478034,
+              "mean_cos": 0.5825991912848419,
+              "mean_k": 0.7707225387295087,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.08579953501154142
+            }
+          },
+          "CV_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.6792796247535282,
+              "mean_L1_over_zero": 0.7855932517087068,
+              "mean_cos": 0.6459907742010222,
+              "mean_k": 0.51956291678879,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.09635490904475162
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6643836985031764,
+              "mean_L1_over_zero": 0.7749048637776115,
+              "mean_cos": 0.669089844988452,
+              "mean_k": 0.688092610405551,
+              "beat_zero_pct": 88.88888888888889,
+              "intensity_dist_to_varian_ref": 0.11846849747808676
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6763343019617929,
+              "mean_L1_over_zero": 0.7858759425360529,
+              "mean_cos": 0.6631654055582152,
+              "mean_k": 0.6936239330304994,
+              "beat_zero_pct": 88.88888888888889,
+              "intensity_dist_to_varian_ref": 0.12448968322011732
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.689514939321412,
+              "mean_L1_over_zero": 0.7975779636096454,
+              "mean_cos": 0.6542904137737221,
+              "mean_k": 0.6847815555002954,
+              "beat_zero_pct": 88.88888888888889,
+              "intensity_dist_to_varian_ref": 0.1315343880722406
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.7108109662930171,
+              "mean_L1_over_zero": 0.8175150930020747,
+              "mean_cos": 0.6354038230660889,
+              "mean_k": 0.6520976558327675,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.132855478263588
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.7402779557638698,
+              "mean_L1_over_zero": 0.8517363836140981,
+              "mean_cos": 0.5665528655466107,
+              "mean_k": 0.46288130026724605,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.09162185455308221
+            }
+          },
+          "CV_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7148154232237074,
+              "mean_L1_over_zero": 0.8544943813771269,
+              "mean_cos": 0.5582507216268116,
+              "mean_k": 0.41997958885298836,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.171898815281094
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6261047485801908,
+              "mean_L1_over_zero": 0.7454103056413672,
+              "mean_cos": 0.693831228547626,
+              "mean_k": 0.6742236183749305,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.0698141182107829
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6248810650573836,
+              "mean_L1_over_zero": 0.7453974093673589,
+              "mean_cos": 0.6932318266895082,
+              "mean_k": 0.6833035505480236,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.06311121853083064
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6297396235995822,
+              "mean_L1_over_zero": 0.7498949936302802,
+              "mean_cos": 0.6859267155329386,
+              "mean_k": 0.6712074789736006,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.06361871802043131
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6431989959544606,
+              "mean_L1_over_zero": 0.764759739324008,
+              "mean_cos": 0.6654386934306886,
+              "mean_k": 0.6413008380267355,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.07862138811268564
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6638588037755754,
+              "mean_L1_over_zero": 0.7921221044985962,
+              "mean_cos": 0.6454857617616654,
+              "mean_k": 0.493981354104148,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.09495496788416904
+            }
+          },
+          "CE_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7914924696087837,
+              "mean_L1_over_zero": 1.0314258387854462,
+              "mean_cos": 0.004230719220100178,
+              "mean_k": 0.2357332833111286,
+              "beat_zero_pct": 35.55555555555556,
+              "intensity_dist_to_varian_ref": 0.5805298672401855
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.7497291079825825,
+              "mean_L1_over_zero": 0.9663546322380919,
+              "mean_cos": 0.4515101833475961,
+              "mean_k": 0.613469449016783,
+              "beat_zero_pct": 65.55555555555556,
+              "intensity_dist_to_varian_ref": 0.2785188245791183
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.7689675665564008,
+              "mean_L1_over_zero": 0.9878912877650621,
+              "mean_cos": 0.4563304842346244,
+              "mean_k": 0.6626393804947536,
+              "beat_zero_pct": 55.55555555555556,
+              "intensity_dist_to_varian_ref": 0.26198855030421897
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.752549202574624,
+              "mean_L1_over_zero": 0.9737670973609838,
+              "mean_cos": 0.47785739429139845,
+              "mean_k": 0.6670912930534946,
+              "beat_zero_pct": 62.22222222222222,
+              "intensity_dist_to_varian_ref": 0.2670351738527381
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.7014928915434413,
+              "mean_L1_over_zero": 0.9201165502330337,
+              "mean_cos": 0.533520528094636,
+              "mean_k": 0.6743742348419295,
+              "beat_zero_pct": 81.11111111111111,
+              "intensity_dist_to_varian_ref": 0.26985068546498236
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6651397617326842,
+              "mean_L1_over_zero": 0.8714950431655493,
+              "mean_cos": 0.5693411848611302,
+              "mean_k": 0.6205926110347112,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.26721205068235926
+            }
+          },
+          "CE_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.9715991213917732,
+              "mean_L1_over_zero": 1.0394499439498142,
+              "mean_cos": -0.06767663785980807,
+              "mean_k": 0.211393029242754,
+              "beat_zero_pct": 18.88888888888889,
+              "intensity_dist_to_varian_ref": 0.6714213081589794
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.9485434624883864,
+              "mean_L1_over_zero": 1.0232025300215724,
+              "mean_cos": 0.13009553872204074,
+              "mean_k": 0.3333507960041364,
+              "beat_zero_pct": 40.0,
+              "intensity_dist_to_varian_ref": 0.4051470718565534
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.9093839221530491,
+              "mean_L1_over_zero": 0.9867484711467074,
+              "mean_cos": 0.2308073996459522,
+              "mean_k": 0.36798190706306033,
+              "beat_zero_pct": 72.22222222222223,
+              "intensity_dist_to_varian_ref": 0.36549928375453444
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.8186969253751967,
+              "mean_L1_over_zero": 0.9138048574913988,
+              "mean_cos": 0.4362966286018491,
+              "mean_k": 0.536440975467364,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.2563729811143488
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.8209222788612048,
+              "mean_L1_over_zero": 0.9128286512439527,
+              "mean_cos": 0.47029468645859096,
+              "mean_k": 0.5923616288436784,
+              "beat_zero_pct": 74.44444444444444,
+              "intensity_dist_to_varian_ref": 0.158582551857544
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.8453668475151062,
+              "mean_L1_over_zero": 0.9434273105908675,
+              "mean_cos": 0.40550652477476334,
+              "mean_k": 0.45174028939670985,
+              "beat_zero_pct": 76.66666666666667,
+              "intensity_dist_to_varian_ref": 0.32983440121670393
+            }
+          },
+          "CE_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 2.3958836216065618,
+              "mean_L1_over_zero": 0.9895068095365962,
+              "mean_cos": 0.12304559093382623,
+              "mean_k": 0.1882142497640517,
+              "beat_zero_pct": 53.333333333333336,
+              "intensity_dist_to_varian_ref": 0.9794256358047544
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 2.3728829009665384,
+              "mean_L1_over_zero": 0.9654037664551307,
+              "mean_cos": 0.2775738392620244,
+              "mean_k": 0.17870578029089504,
+              "beat_zero_pct": 61.111111111111114,
+              "intensity_dist_to_varian_ref": 0.516117337001346
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 2.258688071535693,
+              "mean_L1_over_zero": 0.9250850674425786,
+              "mean_cos": 0.375155164880885,
+              "mean_k": 0.2506206415593624,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.4334149400751406
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 2.185301692949401,
+              "mean_L1_over_zero": 0.8992892333483647,
+              "mean_cos": 0.44228733459280595,
+              "mean_k": 0.27479936699900365,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.39757963439870186
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 2.1853925259576905,
+              "mean_L1_over_zero": 0.906675180013904,
+              "mean_cos": 0.4288189877083318,
+              "mean_k": 0.24361358429822658,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.39382222062768163
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 2.228592599266105,
+              "mean_L1_over_zero": 0.9171749294529783,
+              "mean_cos": 0.3718980268575251,
+              "mean_k": 0.21467182392047512,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.37263486923392286
+            }
+          },
+          "CE_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.8748652019434505,
+              "mean_L1_over_zero": 0.9943542302324748,
+              "mean_cos": 0.20985566140152515,
+              "mean_k": 0.31519216828876073,
+              "beat_zero_pct": 57.77777777777778,
+              "intensity_dist_to_varian_ref": 0.48182446597580836
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.794090052942435,
+              "mean_L1_over_zero": 0.9237152484629021,
+              "mean_cos": 0.47193704512384205,
+              "mean_k": 0.6009391122394138,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.1079006275628767
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.7743706145220333,
+              "mean_L1_over_zero": 0.9040640373156975,
+              "mean_cos": 0.5007090765568946,
+              "mean_k": 0.5986613073282772,
+              "beat_zero_pct": 80.0,
+              "intensity_dist_to_varian_ref": 0.08504789093873533
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.7743328332901,
+              "mean_L1_over_zero": 0.9059084199151626,
+              "mean_cos": 0.5097250033997827,
+              "mean_k": 0.6197212696075439,
+              "beat_zero_pct": 80.0,
+              "intensity_dist_to_varian_ref": 0.08081433484793929
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.7909776979022556,
+              "mean_L1_over_zero": 0.9269478105151866,
+              "mean_cos": 0.49968500402756033,
+              "mean_k": 0.6601644451419513,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.08667015932407302
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.7962852898571227,
+              "mean_L1_over_zero": 0.9358373212465698,
+              "mean_cos": 0.4755208245582051,
+              "mean_k": 0.6630370156632529,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.06282469215900556
+            }
+          },
+          "CE_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 1.0548322313361698,
+              "mean_L1_over_zero": 0.9045481425825613,
+              "mean_cos": 0.4884807370603085,
+              "mean_k": 0.3015156239271164,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.39978891263111505
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 1.0965487976868948,
+              "mean_L1_over_zero": 0.9411643361509292,
+              "mean_cos": 0.36328924579752814,
+              "mean_k": 0.31075050350692535,
+              "beat_zero_pct": 76.66666666666667,
+              "intensity_dist_to_varian_ref": 0.2711726587806985
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 1.0146028546823396,
+              "mean_L1_over_zero": 0.8835699848394599,
+              "mean_cos": 0.48907322534877395,
+              "mean_k": 0.3609122057755788,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.22407570855986914
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.953016009595659,
+              "mean_L1_over_zero": 0.8418047341398316,
+              "mean_cos": 0.5469280888999088,
+              "mean_k": 0.4225302817093001,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.19556884061061447
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.9273865241143439,
+              "mean_L1_over_zero": 0.821624446129828,
+              "mean_cos": 0.571522009662456,
+              "mean_k": 0.48501828412214915,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.18336104608057158
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.9453158544169532,
+              "mean_L1_over_zero": 0.8303073206763666,
+              "mean_cos": 0.5733995425618357,
+              "mean_k": 0.4609902113676071,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.18196281515436935
+            }
+          }
+        }
+      },
+      "both": {
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/BothCRB/weights/crb_both_mse_iso_g160_a0_full_generator.pth",
+        "scans": {
+          "CV_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5681560796168116,
+              "mean_L1_over_zero": 1.109939142048442,
+              "mean_cos": 0.37387639083382157,
+              "mean_k": 0.9194470740026898,
+              "beat_zero_pct": 37.77777777777778,
+              "intensity_dist_to_varian_ref": 0.16100047399681042
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5746857037146886,
+              "mean_L1_over_zero": 1.138597495869631,
+              "mean_cos": 0.3745241146741642,
+              "mean_k": 0.9278505980968476,
+              "beat_zero_pct": 47.77777777777778,
+              "intensity_dist_to_varian_ref": 0.02877224255768812
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5701807416147656,
+              "mean_L1_over_zero": 1.1272300229646826,
+              "mean_cos": 0.36403346268667114,
+              "mean_k": 0.8970719112290276,
+              "beat_zero_pct": 46.666666666666664,
+              "intensity_dist_to_varian_ref": 0.023164133762407273
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5581599106391271,
+              "mean_L1_over_zero": 1.103829943573741,
+              "mean_cos": 0.35398554944743715,
+              "mean_k": 0.8598146355814404,
+              "beat_zero_pct": 48.888888888888886,
+              "intensity_dist_to_varian_ref": 0.02053840194705702
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5593102150493198,
+              "mean_L1_over_zero": 1.1062922003981444,
+              "mean_cos": 0.35803488681299817,
+              "mean_k": 0.888902356227239,
+              "beat_zero_pct": 43.333333333333336,
+              "intensity_dist_to_varian_ref": 0.02128515155669144
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5492739074760014,
+              "mean_L1_over_zero": 1.087905037981438,
+              "mean_cos": 0.38521680151008897,
+              "mean_k": 0.8417696653140916,
+              "beat_zero_pct": 51.111111111111114,
+              "intensity_dist_to_varian_ref": 0.06589532886206131
+            }
+          },
+          "CV_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5342469148337841,
+              "mean_L1_over_zero": 0.8666750157043412,
+              "mean_cos": 0.5693199886216058,
+              "mean_k": 0.48454256372319326,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.42045344325753936
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5748038503858778,
+              "mean_L1_over_zero": 0.9603056079323058,
+              "mean_cos": 0.5402980557746357,
+              "mean_k": 0.7245946177177959,
+              "beat_zero_pct": 74.44444444444444,
+              "intensity_dist_to_varian_ref": 0.05936948774475686
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5701879403657384,
+              "mean_L1_over_zero": 0.9534681095964341,
+              "mean_cos": 0.5478663550482856,
+              "mean_k": 0.7202480266491572,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.052917787242300895
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5649927319751845,
+              "mean_L1_over_zero": 0.9454641581917232,
+              "mean_cos": 0.5553884521126747,
+              "mean_k": 0.7153095132774777,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.05037871458848248
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5556406738029586,
+              "mean_L1_over_zero": 0.9301716306584128,
+              "mean_cos": 0.5657600555155012,
+              "mean_k": 0.7048615627818637,
+              "beat_zero_pct": 81.11111111111111,
+              "intensity_dist_to_varian_ref": 0.054956235226567694
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.573080666611592,
+              "mean_L1_over_zero": 0.9225820804168416,
+              "mean_cos": 0.5295750581555896,
+              "mean_k": 0.6192055288288328,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.10539875685403369
+            }
+          },
+          "CV_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5499944415357377,
+              "mean_L1_over_zero": 0.9022666115235116,
+              "mean_cos": 0.5923133716401127,
+              "mean_k": 0.8673804874221483,
+              "beat_zero_pct": 76.66666666666667,
+              "intensity_dist_to_varian_ref": 0.10629434786315951
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5246870319048563,
+              "mean_L1_over_zero": 0.861954553046448,
+              "mean_cos": 0.6129219321327077,
+              "mean_k": 0.8117974965108765,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.0832009808871327
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5202563183175193,
+              "mean_L1_over_zero": 0.8547605427423192,
+              "mean_cos": 0.610013755162557,
+              "mean_k": 0.7852151898874177,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.08527579930816033
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5189860353867213,
+              "mean_L1_over_zero": 0.8525727834438183,
+              "mean_cos": 0.6073922511190176,
+              "mean_k": 0.7746601232224041,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.08703942496010816
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5195137504074309,
+              "mean_L1_over_zero": 0.8523797890923935,
+              "mean_cos": 0.606071168794814,
+              "mean_k": 0.7736514121294021,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.09668632693959084
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5132386189368036,
+              "mean_L1_over_zero": 0.8369135951315283,
+              "mean_cos": 0.6450857280443112,
+              "mean_k": 0.7762835787402259,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.08579953501154142
+            }
+          },
+          "CV_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.6615657766660055,
+              "mean_L1_over_zero": 0.769684875306556,
+              "mean_cos": 0.6847325469056765,
+              "mean_k": 0.581974924604098,
+              "beat_zero_pct": 95.55555555555556,
+              "intensity_dist_to_varian_ref": 0.09635490904475162
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6360101870364613,
+              "mean_L1_over_zero": 0.7388230661639811,
+              "mean_cos": 0.7085340377357271,
+              "mean_k": 0.6104161582059331,
+              "beat_zero_pct": 95.55555555555556,
+              "intensity_dist_to_varian_ref": 0.11846849747808676
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6408823023239771,
+              "mean_L1_over_zero": 0.7437383914504523,
+              "mean_cos": 0.7049736670321889,
+              "mean_k": 0.612513659397761,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.12448968322011732
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6468179533878963,
+              "mean_L1_over_zero": 0.750139368552303,
+              "mean_cos": 0.699735260837608,
+              "mean_k": 0.6146367836329673,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.1315343880722406
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6551280283265644,
+              "mean_L1_over_zero": 0.7582967820233236,
+              "mean_cos": 0.6932192862033844,
+              "mean_k": 0.6090814744432768,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.132855478263588
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6414161518216133,
+              "mean_L1_over_zero": 0.7414285460177118,
+              "mean_cos": 0.6994797973169221,
+              "mean_k": 0.6001954115099377,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.09162185455308221
+            }
+          },
+          "CV_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7181905122266875,
+              "mean_L1_over_zero": 0.8520864207806316,
+              "mean_cos": 0.567553139064047,
+              "mean_k": 0.5601998272869322,
+              "beat_zero_pct": 95.55555555555556,
+              "intensity_dist_to_varian_ref": 0.171898815281094
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6568875541289647,
+              "mean_L1_over_zero": 0.7758419915960543,
+              "mean_cos": 0.6515891452630361,
+              "mean_k": 0.5444674005111059,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.0698141182107829
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.670799178381761,
+              "mean_L1_over_zero": 0.7911581973273396,
+              "mean_cos": 0.6332140228814549,
+              "mean_k": 0.5281267609861162,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.06311121853083064
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6849140056305462,
+              "mean_L1_over_zero": 0.8055712267260338,
+              "mean_cos": 0.6176237660977576,
+              "mean_k": 0.5132677972316741,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.06361871802043131
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6978065146340264,
+              "mean_L1_over_zero": 0.818668272254983,
+              "mean_cos": 0.6076615259051323,
+              "mean_k": 0.5017301297850079,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.07862138811268564
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6032657158043649,
+              "mean_L1_over_zero": 0.720721569638448,
+              "mean_cos": 0.7016105085611344,
+              "mean_k": 0.5473659680949317,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.09495496788416904
+            }
+          },
+          "CE_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7432612592975298,
+              "mean_L1_over_zero": 1.0179530361489584,
+              "mean_cos": 0.41094902580241777,
+              "mean_k": 0.6490682410697143,
+              "beat_zero_pct": 60.0,
+              "intensity_dist_to_varian_ref": 0.5805298672401855
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6115230184462336,
+              "mean_L1_over_zero": 0.8339571451928509,
+              "mean_cos": 0.6254156998462147,
+              "mean_k": 0.690040532582336,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.2785188245791183
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6192667714423603,
+              "mean_L1_over_zero": 0.8448846196377998,
+              "mean_cos": 0.6221278574731615,
+              "mean_k": 0.7321633613771863,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.26198855030421897
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6185161903500557,
+              "mean_L1_over_zero": 0.8443999671373643,
+              "mean_cos": 0.6231778966055976,
+              "mean_k": 0.7342656024628216,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.2670351738527381
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6084175902936194,
+              "mean_L1_over_zero": 0.8335485519269448,
+              "mean_cos": 0.6319591335124439,
+              "mean_k": 0.7232654107941522,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.26985068546498236
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6642594625552495,
+              "mean_L1_over_zero": 0.8737434328685465,
+              "mean_cos": 0.539355034298367,
+              "mean_k": 0.4290325033167998,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.26721205068235926
+            }
+          },
+          "CE_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.9232256263494492,
+              "mean_L1_over_zero": 1.0254077469697525,
+              "mean_cos": 0.2453934077380432,
+              "mean_k": 0.4704216024114026,
+              "beat_zero_pct": 63.333333333333336,
+              "intensity_dist_to_varian_ref": 0.6714213081589794
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.8917010731167263,
+              "mean_L1_over_zero": 0.9923901813531159,
+              "mean_cos": 0.3155070079283582,
+              "mean_k": 0.476009196953641,
+              "beat_zero_pct": 71.11111111111111,
+              "intensity_dist_to_varian_ref": 0.4051470718565534
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.8699866327974531,
+              "mean_L1_over_zero": 0.9748449658088788,
+              "mean_cos": 0.35881096668955353,
+              "mean_k": 0.4995619669556618,
+              "beat_zero_pct": 73.33333333333333,
+              "intensity_dist_to_varian_ref": 0.36549928375453444
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.8147864239083396,
+              "mean_L1_over_zero": 0.9263137656596295,
+              "mean_cos": 0.44761781630416714,
+              "mean_k": 0.5598263131247626,
+              "beat_zero_pct": 74.44444444444444,
+              "intensity_dist_to_varian_ref": 0.2563729811143488
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.8115071013569832,
+              "mean_L1_over_zero": 0.9157005594198998,
+              "mean_cos": 0.46046225939644503,
+              "mean_k": 0.5049478444788191,
+              "beat_zero_pct": 75.55555555555556,
+              "intensity_dist_to_varian_ref": 0.158582551857544
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.8654060650202963,
+              "mean_L1_over_zero": 0.9574641583965067,
+              "mean_cos": 0.3635953552607033,
+              "mean_k": 0.3984813822640313,
+              "beat_zero_pct": 74.44444444444444,
+              "intensity_dist_to_varian_ref": 0.32983440121670393
+            }
+          },
+          "CE_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 2.440755230519507,
+              "mean_L1_over_zero": 1.0203043053597123,
+              "mean_cos": -0.12643710141516445,
+              "mean_k": 0.12449681780611475,
+              "beat_zero_pct": 17.77777777777778,
+              "intensity_dist_to_varian_ref": 0.9794256358047544
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 2.259509431819121,
+              "mean_L1_over_zero": 0.9309099597253441,
+              "mean_cos": 0.4444061261291305,
+              "mean_k": 0.22139613721519708,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.516117337001346
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 2.2069454507695303,
+              "mean_L1_over_zero": 0.9033844406737914,
+              "mean_cos": 0.5056499290176564,
+              "mean_k": 0.27569300083236564,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.4334149400751406
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 2.181879505680667,
+              "mean_L1_over_zero": 0.8950012819444725,
+              "mean_cos": 0.5250549132211341,
+              "mean_k": 0.3114468885792626,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.39757963439870186
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 2.166626464823882,
+              "mean_L1_over_zero": 0.8922310925287144,
+              "mean_cos": 0.5362912264652551,
+              "mean_k": 0.3332043644454744,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.39382222062768163
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 2.2280487111873097,
+              "mean_L1_over_zero": 0.9139215516701233,
+              "mean_cos": 0.4426803934070954,
+              "mean_k": 0.18450723042090733,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.37263486923392286
+            }
+          },
+          "CE_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.8350299384858874,
+              "mean_L1_over_zero": 0.9587116628206562,
+              "mean_cos": 0.3860046935371227,
+              "mean_k": 0.47797260698344973,
+              "beat_zero_pct": 72.22222222222223,
+              "intensity_dist_to_varian_ref": 0.48182446597580836
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.7682141216264831,
+              "mean_L1_over_zero": 0.8923413278124805,
+              "mean_cos": 0.499266072942151,
+              "mean_k": 0.5420504126283857,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.1079006275628767
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.7640612135330836,
+              "mean_L1_over_zero": 0.8896148565452702,
+              "mean_cos": 0.5020705645343646,
+              "mean_k": 0.550026157995065,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.08504789093873533
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.7646312826209598,
+              "mean_L1_over_zero": 0.8912528765602311,
+              "mean_cos": 0.49775487184524536,
+              "mean_k": 0.5531328552299075,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.08081433484793929
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.7684821532832251,
+              "mean_L1_over_zero": 0.8961552371518698,
+              "mean_cos": 0.48366017216402624,
+              "mean_k": 0.547644933561484,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.08667015932407302
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.782842322687308,
+              "mean_L1_over_zero": 0.9163415042716382,
+              "mean_cos": 0.47153852770311966,
+              "mean_k": 0.5913899822367562,
+              "beat_zero_pct": 81.11111111111111,
+              "intensity_dist_to_varian_ref": 0.06282469215900556
+            }
+          },
+          "CE_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 1.1416203575001822,
+              "mean_L1_over_zero": 0.9687480244639407,
+              "mean_cos": 0.26254745052687617,
+              "mean_k": 0.1986042828195625,
+              "beat_zero_pct": 68.88888888888889,
+              "intensity_dist_to_varian_ref": 0.39978891263111505
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.9911260974076059,
+              "mean_L1_over_zero": 0.8677820776617438,
+              "mean_cos": 0.5229649726715353,
+              "mean_k": 0.44242501457532246,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.2711726587806985
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.9621616840362549,
+              "mean_L1_over_zero": 0.8508626395002346,
+              "mean_cos": 0.5471875921719604,
+              "mean_k": 0.4871540890799628,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.22407570855986914
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.9568631779816416,
+              "mean_L1_over_zero": 0.8491966551790805,
+              "mean_cos": 0.5470074447854939,
+              "mean_k": 0.49967507852448356,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.19556884061061447
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.97271841880348,
+              "mean_L1_over_zero": 0.8575467112446915,
+              "mean_cos": 0.529886693171122,
+              "mean_k": 0.49105112817552354,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.18336104608057158
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.9200250511368115,
+              "mean_L1_over_zero": 0.8175488299646926,
+              "mean_cos": 0.602066571622466,
+              "mean_k": 0.5019216035803159,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.18196281515436935
+            }
+          }
+        }
+      }
+    },
+    "a0h": {
+      "encoder": {
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/EncoderCRB/weights/crb_enc_mse_iso_g160_a0h_generator.pth",
+        "scans": {
+          "CV_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5800803838504686,
+              "mean_L1_over_zero": 1.1259084944396722,
+              "mean_cos": 0.3503802041057497,
+              "mean_k": 0.9105158375369178,
+              "beat_zero_pct": 38.888888888888886,
+              "intensity_dist_to_varian_ref": 0.16100047399681042
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5463796468244658,
+              "mean_L1_over_zero": 1.0694695126439058,
+              "mean_cos": 0.3688157345064812,
+              "mean_k": 0.8334126955933041,
+              "beat_zero_pct": 50.0,
+              "intensity_dist_to_varian_ref": 0.02877224255768812
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5424985655479961,
+              "mean_L1_over_zero": 1.0631244623820901,
+              "mean_cos": 0.3656955502513382,
+              "mean_k": 0.8094801021946801,
+              "beat_zero_pct": 56.666666666666664,
+              "intensity_dist_to_varian_ref": 0.023164133762407273
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5373136545221011,
+              "mean_L1_over_zero": 1.0547940950323909,
+              "mean_cos": 0.360619250115835,
+              "mean_k": 0.7759602377812068,
+              "beat_zero_pct": 57.77777777777778,
+              "intensity_dist_to_varian_ref": 0.02053840194705702
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5230776897735065,
+              "mean_L1_over_zero": 1.0297028838353075,
+              "mean_cos": 0.3515729523600183,
+              "mean_k": 0.7038980220754941,
+              "beat_zero_pct": 60.0,
+              "intensity_dist_to_varian_ref": 0.02128515155669144
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5630032549301783,
+              "mean_L1_over_zero": 1.0859559280548758,
+              "mean_cos": 0.05380700457220276,
+              "mean_k": 0.39555879847870934,
+              "beat_zero_pct": 20.0,
+              "intensity_dist_to_varian_ref": 0.06589532886206131
+            }
+          },
+          "CV_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.578428807357947,
+              "mean_L1_over_zero": 0.9403459512951815,
+              "mean_cos": 0.5290717813703749,
+              "mean_k": 0.6756620046165255,
+              "beat_zero_pct": 80.0,
+              "intensity_dist_to_varian_ref": 0.42045344325753936
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6074661845962207,
+              "mean_L1_over_zero": 0.9870181615685142,
+              "mean_cos": 0.42860375626219643,
+              "mean_k": 0.5796903411547343,
+              "beat_zero_pct": 68.88888888888889,
+              "intensity_dist_to_varian_ref": 0.05936948774475686
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.611137007508013,
+              "mean_L1_over_zero": 0.9943243155354038,
+              "mean_cos": 0.40081524418459996,
+              "mean_k": 0.5503544569015503,
+              "beat_zero_pct": 68.88888888888889,
+              "intensity_dist_to_varian_ref": 0.052917787242300895
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6154691406422191,
+              "mean_L1_over_zero": 1.0031608329783432,
+              "mean_cos": 0.36318964776065615,
+              "mean_k": 0.5166254290276103,
+              "beat_zero_pct": 65.55555555555556,
+              "intensity_dist_to_varian_ref": 0.05037871458848248
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.61846917172273,
+              "mean_L1_over_zero": 1.0100202936062412,
+              "mean_cos": 0.3075352198547787,
+              "mean_k": 0.4696837946772575,
+              "beat_zero_pct": 58.888888888888886,
+              "intensity_dist_to_varian_ref": 0.054956235226567694
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6490790494614177,
+              "mean_L1_over_zero": 1.048967810077713,
+              "mean_cos": 0.14226818983701783,
+              "mean_k": 0.37979617565870283,
+              "beat_zero_pct": 23.333333333333332,
+              "intensity_dist_to_varian_ref": 0.10539875685403369
+            }
+          },
+          "CV_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5434383279747433,
+              "mean_L1_over_zero": 0.8861080175941235,
+              "mean_cos": 0.57621880620718,
+              "mean_k": 0.7841575947072771,
+              "beat_zero_pct": 80.0,
+              "intensity_dist_to_varian_ref": 0.10629434786315951
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.507578158709738,
+              "mean_L1_over_zero": 0.8293797527178992,
+              "mean_cos": 0.6017148635815829,
+              "mean_k": 0.6080830959810151,
+              "beat_zero_pct": 95.55555555555556,
+              "intensity_dist_to_varian_ref": 0.0832009808871327
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5054090241591136,
+              "mean_L1_over_zero": 0.8269364951382542,
+              "mean_cos": 0.6005995840455095,
+              "mean_k": 0.5862765207886695,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.08527579930816033
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5057692916856872,
+              "mean_L1_over_zero": 0.8278793652775204,
+              "mean_cos": 0.5960275920314921,
+              "mean_k": 0.5595988834897677,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.08703942496010816
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5167761284444067,
+              "mean_L1_over_zero": 0.8441800117188748,
+              "mean_cos": 0.5670715226067438,
+              "mean_k": 0.5011364516284731,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.09668632693959084
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5764685933788617,
+              "mean_L1_over_zero": 0.9347784455901753,
+              "mean_cos": 0.40400623553949927,
+              "mean_k": 0.4480973286761178,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.08579953501154142
+            }
+          },
+          "CV_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.6844266555375523,
+              "mean_L1_over_zero": 0.7859381752043976,
+              "mean_cos": 0.6615463187297185,
+              "mean_k": 0.6001321461465624,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.09635490904475162
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6964465671115452,
+              "mean_L1_over_zero": 0.8023153760414773,
+              "mean_cos": 0.6231233249935839,
+              "mean_k": 0.4549337041046884,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.11846849747808676
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.7034753796127108,
+              "mean_L1_over_zero": 0.8109808663967297,
+              "mean_cos": 0.6149997242208984,
+              "mean_k": 0.43307537684837977,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.12448968322011732
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.7159724440839556,
+              "mean_L1_over_zero": 0.8263528702528947,
+              "mean_cos": 0.6023669112887647,
+              "mean_k": 0.4023665087090598,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.1315343880722406
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.7483666625287798,
+              "mean_L1_over_zero": 0.8623520237575049,
+              "mean_cos": 0.559618391820954,
+              "mean_k": 0.34724744558334353,
+              "beat_zero_pct": 95.55555555555556,
+              "intensity_dist_to_varian_ref": 0.132855478263588
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.8501359272334311,
+              "mean_L1_over_zero": 0.9667382918003503,
+              "mean_cos": 0.25785961056438583,
+              "mean_k": 0.2621695136030515,
+              "beat_zero_pct": 67.77777777777777,
+              "intensity_dist_to_varian_ref": 0.09162185455308221
+            }
+          },
+          "CV_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7219132444924778,
+              "mean_L1_over_zero": 0.8625137038870299,
+              "mean_cos": 0.549951620068815,
+              "mean_k": 0.5412579759127564,
+              "beat_zero_pct": 91.11111111111111,
+              "intensity_dist_to_varian_ref": 0.171898815281094
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6777249900831117,
+              "mean_L1_over_zero": 0.8045287918776418,
+              "mean_cos": 0.621557649390565,
+              "mean_k": 0.43826634287834165,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.0698141182107829
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6802410072750515,
+              "mean_L1_over_zero": 0.8080574517617299,
+              "mean_cos": 0.6190276660439041,
+              "mean_k": 0.4249361084567176,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.06311121853083064
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6827687939008077,
+              "mean_L1_over_zero": 0.811276616185817,
+              "mean_cos": 0.6191498258306335,
+              "mean_k": 0.4098030269145966,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.06361871802043131
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6869165279799038,
+              "mean_L1_over_zero": 0.817036030196054,
+              "mean_cos": 0.6211414074525237,
+              "mean_k": 0.3816449117329386,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.07862138811268564
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.7069052734308773,
+              "mean_L1_over_zero": 0.8469306686704985,
+              "mean_cos": 0.5285470477408833,
+              "mean_k": 0.32491268532143697,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.09495496788416904
+            }
+          },
+          "CE_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7659534297055668,
+              "mean_L1_over_zero": 1.0100329032204058,
+              "mean_cos": 0.39008732058314816,
+              "mean_k": 0.6163607257935736,
+              "beat_zero_pct": 50.0,
+              "intensity_dist_to_varian_ref": 0.5805298672401855
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6127177849411964,
+              "mean_L1_over_zero": 0.8396530183855846,
+              "mean_cos": 0.5850937435196506,
+              "mean_k": 0.6270008072257042,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.2785188245791183
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6148536413908005,
+              "mean_L1_over_zero": 0.8405828158920954,
+              "mean_cos": 0.5833451930019591,
+              "mean_k": 0.6241573616862297,
+              "beat_zero_pct": 93.33333333333333,
+              "intensity_dist_to_varian_ref": 0.26198855030421897
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6180068564083842,
+              "mean_L1_over_zero": 0.8431245000397843,
+              "mean_cos": 0.5785931002762582,
+              "mean_k": 0.6129526282350223,
+              "beat_zero_pct": 93.33333333333333,
+              "intensity_dist_to_varian_ref": 0.2670351738527381
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6306812547975116,
+              "mean_L1_over_zero": 0.857916489790855,
+              "mean_cos": 0.5462206791672441,
+              "mean_k": 0.5759004122681088,
+              "beat_zero_pct": 91.11111111111111,
+              "intensity_dist_to_varian_ref": 0.26985068546498236
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.637744169930617,
+              "mean_L1_over_zero": 0.848563974240696,
+              "mean_cos": 0.5717178334792455,
+              "mean_k": 0.6123660198516316,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.26721205068235926
+            }
+          },
+          "CE_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 1.0074389757381546,
+              "mean_L1_over_zero": 1.0663629053358077,
+              "mean_cos": 0.2424910051230755,
+              "mean_k": 0.53517638473875,
+              "beat_zero_pct": 36.666666666666664,
+              "intensity_dist_to_varian_ref": 0.6714213081589794
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.9365289588769277,
+              "mean_L1_over_zero": 1.006826407694477,
+              "mean_cos": 0.30524196073205934,
+              "mean_k": 0.5212738499045372,
+              "beat_zero_pct": 56.666666666666664,
+              "intensity_dist_to_varian_ref": 0.4051470718565534
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.8940972550047769,
+              "mean_L1_over_zero": 0.9781202282999394,
+              "mean_cos": 0.34938983839626114,
+              "mean_k": 0.5240313543213738,
+              "beat_zero_pct": 66.66666666666667,
+              "intensity_dist_to_varian_ref": 0.36549928375453444
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.8220934937397639,
+              "mean_L1_over_zero": 0.9223790565262756,
+              "mean_cos": 0.4386138948870616,
+              "mean_k": 0.5297439250681135,
+              "beat_zero_pct": 75.55555555555556,
+              "intensity_dist_to_varian_ref": 0.2563729811143488
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.8456744439072079,
+              "mean_L1_over_zero": 0.9425145811894434,
+              "mean_cos": 0.4057515935558412,
+              "mean_k": 0.4510861317316691,
+              "beat_zero_pct": 75.55555555555556,
+              "intensity_dist_to_varian_ref": 0.158582551857544
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.8298677919639481,
+              "mean_L1_over_zero": 0.9414173898702174,
+              "mean_cos": 0.45455651165814037,
+              "mean_k": 0.6314613325728311,
+              "beat_zero_pct": 73.33333333333333,
+              "intensity_dist_to_varian_ref": 0.32983440121670393
+            }
+          },
+          "CE_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 2.244154003924794,
+              "mean_L1_over_zero": 0.9529015115404851,
+              "mean_cos": 0.4172898523716463,
+              "mean_k": 0.1917477243476444,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.9794256358047544
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 2.1830975088808273,
+              "mean_L1_over_zero": 0.9146181616966405,
+              "mean_cos": 0.5234222859558132,
+              "mean_k": 0.24107345793810156,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.516117337001346
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 2.1740669020348125,
+              "mean_L1_over_zero": 0.9069904173836352,
+              "mean_cos": 0.5354863922836052,
+              "mean_k": 0.2647554004357921,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.4334149400751406
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 2.18117396450705,
+              "mean_L1_over_zero": 0.9107951451075623,
+              "mean_cos": 0.5197489584071768,
+              "mean_k": 0.2559069865279727,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.39757963439870186
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 2.221268843114376,
+              "mean_L1_over_zero": 0.9278005951647791,
+              "mean_cos": 0.4651327391879426,
+              "mean_k": 0.22097773738205434,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.39382222062768163
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 2.1623729636271793,
+              "mean_L1_over_zero": 0.902762563366388,
+              "mean_cos": 0.48465790517317753,
+              "mean_k": 0.2957975161158376,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.37263486923392286
+            }
+          },
+          "CE_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.8289319689075152,
+              "mean_L1_over_zero": 0.9477414055729412,
+              "mean_cos": 0.4244625521461583,
+              "mean_k": 0.4919982961482472,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.48182446597580836
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.77239501459731,
+              "mean_L1_over_zero": 0.901369097121555,
+              "mean_cos": 0.490328564039535,
+              "mean_k": 0.5251590467161602,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.1079006275628767
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.7696072113182809,
+              "mean_L1_over_zero": 0.8995587728361275,
+              "mean_cos": 0.49279432378243654,
+              "mean_k": 0.5331847149464819,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.08504789093873533
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.7697940539982584,
+              "mean_L1_over_zero": 0.8998871688632789,
+              "mean_cos": 0.49102801804741225,
+              "mean_k": 0.531476227607992,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.08081433484793929
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.7750493665536244,
+              "mean_L1_over_zero": 0.9048124839109478,
+              "mean_cos": 0.4770612844783399,
+              "mean_k": 0.5166077363822196,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.08667015932407302
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.8385906275775697,
+              "mean_L1_over_zero": 0.9719187051009348,
+              "mean_cos": 0.3824206300907665,
+              "mean_k": 0.4851113136443827,
+              "beat_zero_pct": 76.66666666666667,
+              "intensity_dist_to_varian_ref": 0.06282469215900556
+            }
+          },
+          "CE_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 1.0932931908302836,
+              "mean_L1_over_zero": 0.9358999212823652,
+              "mean_cos": 0.38332791461402344,
+              "mean_k": 0.31459671987427607,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.39978891263111505
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 1.0016305610537528,
+              "mean_L1_over_zero": 0.8745068780472915,
+              "mean_cos": 0.5132988782806529,
+              "mean_k": 0.3860159533719222,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.2711726587806985
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.9888822293943829,
+              "mean_L1_over_zero": 0.8653421094947924,
+              "mean_cos": 0.5286787619607316,
+              "mean_k": 0.406619366341167,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.22407570855986914
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.9858280582560434,
+              "mean_L1_over_zero": 0.8645766024796913,
+              "mean_cos": 0.5317681383962433,
+              "mean_k": 0.4148727653755082,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.19556884061061447
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.989840825067626,
+              "mean_L1_over_zero": 0.8681006443300029,
+              "mean_cos": 0.5276406278212865,
+              "mean_k": 0.40241438564327026,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.18336104608057158
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.9575657293200492,
+              "mean_L1_over_zero": 0.8471082740829372,
+              "mean_cos": 0.5525029513674478,
+              "mean_k": 0.4597756743431091,
+              "beat_zero_pct": 81.11111111111111,
+              "intensity_dist_to_varian_ref": 0.18196281515436935
+            }
+          }
+        }
+      },
+      "decoder": {
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/DecoderCRB/weights/crb_dec_mse_iso_g160_a0h_generator.pth",
+        "scans": {
+          "CV_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5869237629903687,
+              "mean_L1_over_zero": 1.1408684257981239,
+              "mean_cos": 0.36856623557913637,
+              "mean_k": 0.974581194586224,
+              "beat_zero_pct": 32.22222222222222,
+              "intensity_dist_to_varian_ref": 0.16100047399681042
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.557210013601515,
+              "mean_L1_over_zero": 1.1014797823005023,
+              "mean_cos": 0.3521234868094325,
+              "mean_k": 0.8667748401562373,
+              "beat_zero_pct": 51.111111111111114,
+              "intensity_dist_to_varian_ref": 0.02877224255768812
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5582217865520054,
+              "mean_L1_over_zero": 1.1050800452987657,
+              "mean_cos": 0.3421630527410242,
+              "mean_k": 0.8525340378284454,
+              "beat_zero_pct": 53.333333333333336,
+              "intensity_dist_to_varian_ref": 0.023164133762407273
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5556556112236447,
+              "mean_L1_over_zero": 1.1013573883404426,
+              "mean_cos": 0.32748708222061396,
+              "mean_k": 0.823763785759608,
+              "beat_zero_pct": 53.333333333333336,
+              "intensity_dist_to_varian_ref": 0.02053840194705702
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5485586959454748,
+              "mean_L1_over_zero": 1.0851867494401057,
+              "mean_cos": 0.2713302552907003,
+              "mean_k": 0.6965973077548875,
+              "beat_zero_pct": 56.666666666666664,
+              "intensity_dist_to_varian_ref": 0.02128515155669144
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5593225879801644,
+              "mean_L1_over_zero": 1.0840614295624473,
+              "mean_cos": 0.000763071607798338,
+              "mean_k": 0.32266464448637433,
+              "beat_zero_pct": 36.666666666666664,
+              "intensity_dist_to_varian_ref": 0.06589532886206131
+            }
+          },
+          "CV_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5607176522413889,
+              "mean_L1_over_zero": 0.9114478734486171,
+              "mean_cos": 0.5304043551286062,
+              "mean_k": 0.5706383600831032,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.42045344325753936
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6007516750031048,
+              "mean_L1_over_zero": 0.9776693861753297,
+              "mean_cos": 0.37519565899338986,
+              "mean_k": 0.46124208437071906,
+              "beat_zero_pct": 73.33333333333333,
+              "intensity_dist_to_varian_ref": 0.05936948774475686
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6102260288265017,
+              "mean_L1_over_zero": 0.9924240616229676,
+              "mean_cos": 0.33065330998765097,
+              "mean_k": 0.4136334603031476,
+              "beat_zero_pct": 70.0,
+              "intensity_dist_to_varian_ref": 0.052917787242300895
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6235887461238437,
+              "mean_L1_over_zero": 1.012099529628951,
+              "mean_cos": 0.27599509321153165,
+              "mean_k": 0.3784595411684778,
+              "beat_zero_pct": 61.111111111111114,
+              "intensity_dist_to_varian_ref": 0.05037871458848248
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6143040978246265,
+              "mean_L1_over_zero": 1.0011861406102585,
+              "mean_cos": 0.299558579052488,
+              "mean_k": 0.38361540569199454,
+              "beat_zero_pct": 64.44444444444444,
+              "intensity_dist_to_varian_ref": 0.054956235226567694
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6104870173666213,
+              "mean_L1_over_zero": 0.998641569250322,
+              "mean_cos": 0.322856641602185,
+              "mean_k": 0.3605136656926738,
+              "beat_zero_pct": 68.88888888888889,
+              "intensity_dist_to_varian_ref": 0.10539875685403369
+            }
+          },
+          "CV_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5515394328369034,
+              "mean_L1_over_zero": 0.9048340703866439,
+              "mean_cos": 0.5623653141367767,
+              "mean_k": 0.8120629284116957,
+              "beat_zero_pct": 73.33333333333333,
+              "intensity_dist_to_varian_ref": 0.10629434786315951
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5084236699673864,
+              "mean_L1_over_zero": 0.8355974365450076,
+              "mean_cos": 0.6110354256712728,
+              "mean_k": 0.679391279982196,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.0832009808871327
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.512228704823388,
+              "mean_L1_over_zero": 0.8408690314906838,
+              "mean_cos": 0.5974899335453908,
+              "mean_k": 0.646536268459426,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.08527579930816033
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5192224279046058,
+              "mean_L1_over_zero": 0.8514258640549937,
+              "mean_cos": 0.5738868203841978,
+              "mean_k": 0.5812090141905679,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.08703942496010816
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5384163522058063,
+              "mean_L1_over_zero": 0.8794742787594648,
+              "mean_cos": 0.5211089114348094,
+              "mean_k": 0.48859567799501946,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.09668632693959084
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.595742243859503,
+              "mean_L1_over_zero": 0.9595029441173417,
+              "mean_cos": 0.36011637369584704,
+              "mean_k": 0.33110761526558136,
+              "beat_zero_pct": 67.77777777777777,
+              "intensity_dist_to_varian_ref": 0.08579953501154142
+            }
+          },
+          "CV_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.6646425811780824,
+              "mean_L1_over_zero": 0.771860215380909,
+              "mean_cos": 0.6653838609655698,
+              "mean_k": 0.6262973209222158,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.09635490904475162
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6848410139481227,
+              "mean_L1_over_zero": 0.7920077983763837,
+              "mean_cos": 0.6484891471763452,
+              "mean_k": 0.41158633215559853,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.11846849747808676
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.7034318675597508,
+              "mean_L1_over_zero": 0.8113168285967695,
+              "mean_cos": 0.6313732727534241,
+              "mean_k": 0.3715977329346869,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.12448968322011732
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.7264190536406305,
+              "mean_L1_over_zero": 0.8350450155555698,
+              "mean_cos": 0.6112643376846487,
+              "mean_k": 0.32922152760956025,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.1315343880722406
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.7667065840628412,
+              "mean_L1_over_zero": 0.8763075287616393,
+              "mean_cos": 0.5516464837930268,
+              "mean_k": 0.27357001453638075,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.132855478263588
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.8062480342057016,
+              "mean_L1_over_zero": 0.9158831612169283,
+              "mean_cos": 0.44846344305616287,
+              "mean_k": 0.21381201354993715,
+              "beat_zero_pct": 88.88888888888889,
+              "intensity_dist_to_varian_ref": 0.09162185455308221
+            }
+          },
+          "CV_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7845166410009067,
+              "mean_L1_over_zero": 0.9250770927865247,
+              "mean_cos": 0.3863290317977468,
+              "mean_k": 0.33827842647830647,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.171898815281094
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6540048100882107,
+              "mean_L1_over_zero": 0.7811246440081616,
+              "mean_cos": 0.6529633880489403,
+              "mean_k": 0.4803840519653426,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.0698141182107829
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6530682482653194,
+              "mean_L1_over_zero": 0.7802289607500089,
+              "mean_cos": 0.6570668653481536,
+              "mean_k": 0.46658273968431685,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.06311121853083064
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6519223761227396,
+              "mean_L1_over_zero": 0.7799224618197584,
+              "mean_cos": 0.6635804838604398,
+              "mean_k": 0.44504501968622207,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.06361871802043131
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.66354711121983,
+              "mean_L1_over_zero": 0.7951151721925889,
+              "mean_cos": 0.6549486855665843,
+              "mean_k": 0.39476105405224693,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.07862138811268564
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.715319164428446,
+              "mean_L1_over_zero": 0.8518842032821223,
+              "mean_cos": 0.5732244637277392,
+              "mean_k": 0.27615854864319167,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.09495496788416904
+            }
+          },
+          "CE_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7780829808778233,
+              "mean_L1_over_zero": 1.02423451568112,
+              "mean_cos": -0.2270969499575181,
+              "mean_k": 0.09398736229373349,
+              "beat_zero_pct": 7.777777777777778,
+              "intensity_dist_to_varian_ref": 0.5805298672401855
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6748576737112469,
+              "mean_L1_over_zero": 0.898734371041665,
+              "mean_cos": 0.4589454557332728,
+              "mean_k": 0.4164287724428707,
+              "beat_zero_pct": 91.11111111111111,
+              "intensity_dist_to_varian_ref": 0.2785188245791183
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6688471153378487,
+              "mean_L1_over_zero": 0.8933585366439236,
+              "mean_cos": 0.47538164506355923,
+              "mean_k": 0.4419159909089406,
+              "beat_zero_pct": 91.11111111111111,
+              "intensity_dist_to_varian_ref": 0.26198855030421897
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6754472502403789,
+              "mean_L1_over_zero": 0.9035405552612061,
+              "mean_cos": 0.4525537790523635,
+              "mean_k": 0.4340550473994679,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.2670351738527381
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6967186361551285,
+              "mean_L1_over_zero": 0.9293185487455093,
+              "mean_cos": 0.3914150730603271,
+              "mean_k": 0.38597241913278896,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.26985068546498236
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.680687605506844,
+              "mean_L1_over_zero": 0.9072585318646211,
+              "mean_cos": 0.46640705085462997,
+              "mean_k": 0.5197917126946979,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.26721205068235926
+            }
+          },
+          "CE_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.9535225664575895,
+              "mean_L1_over_zero": 1.0200353529378927,
+              "mean_cos": -0.16333061872671048,
+              "mean_k": 0.10024366945856147,
+              "beat_zero_pct": 14.444444444444445,
+              "intensity_dist_to_varian_ref": 0.6714213081589794
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.9216785528593593,
+              "mean_L1_over_zero": 0.9937493265815301,
+              "mean_cos": 0.11538851912547317,
+              "mean_k": 0.212869800047742,
+              "beat_zero_pct": 67.77777777777777,
+              "intensity_dist_to_varian_ref": 0.4051470718565534
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.8693876340985298,
+              "mean_L1_over_zero": 0.9554973751154351,
+              "mean_cos": 0.32405300240756735,
+              "mean_k": 0.37583216047949264,
+              "beat_zero_pct": 75.55555555555556,
+              "intensity_dist_to_varian_ref": 0.36549928375453444
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.812408599919743,
+              "mean_L1_over_zero": 0.9132829510830806,
+              "mean_cos": 0.4359361537421743,
+              "mean_k": 0.5196511578228739,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.2563729811143488
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.8693425276213222,
+              "mean_L1_over_zero": 0.9563634291095097,
+              "mean_cos": 0.3554409810814023,
+              "mean_k": 0.39211608436372547,
+              "beat_zero_pct": 74.44444444444444,
+              "intensity_dist_to_varian_ref": 0.158582551857544
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.8070505072673162,
+              "mean_L1_over_zero": 0.9124512699384001,
+              "mean_cos": 0.4436683262284431,
+              "mean_k": 0.5471981793642045,
+              "beat_zero_pct": 80.0,
+              "intensity_dist_to_varian_ref": 0.32983440121670393
+            }
+          },
+          "CE_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 2.414469248553117,
+              "mean_L1_over_zero": 0.9992408332684486,
+              "mean_cos": 0.09304168267279035,
+              "mean_k": 0.07770293224602938,
+              "beat_zero_pct": 53.333333333333336,
+              "intensity_dist_to_varian_ref": 0.9794256358047544
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 2.335061565041542,
+              "mean_L1_over_zero": 0.9572157502098679,
+              "mean_cos": 0.3838984017363853,
+              "mean_k": 0.16528363196800153,
+              "beat_zero_pct": 81.11111111111111,
+              "intensity_dist_to_varian_ref": 0.516117337001346
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 2.224017337958018,
+              "mean_L1_over_zero": 0.9149031909142411,
+              "mean_cos": 0.4633986393610636,
+              "mean_k": 0.23199902073376708,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.4334149400751406
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 2.2256300459305445,
+              "mean_L1_over_zero": 0.9190889932215447,
+              "mean_cos": 0.44456550289566316,
+              "mean_k": 0.23534034598204825,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.39757963439870186
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 2.233691568010383,
+              "mean_L1_over_zero": 0.9228854229073353,
+              "mean_cos": 0.4190213210673796,
+              "mean_k": 0.21815727945003244,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.39382222062768163
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 2.1875120302041373,
+              "mean_L1_over_zero": 0.9025875712756728,
+              "mean_cos": 0.46300039381409686,
+              "mean_k": 0.25720259323716166,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.37263486923392286
+            }
+          },
+          "CE_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.8762190212806066,
+              "mean_L1_over_zero": 0.990883140069496,
+              "mean_cos": 0.17950070941199858,
+              "mean_k": 0.1909563281883796,
+              "beat_zero_pct": 67.77777777777777,
+              "intensity_dist_to_varian_ref": 0.48182446597580836
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.8326294400625759,
+              "mean_L1_over_zero": 0.945027010395838,
+              "mean_cos": 0.37682731875942815,
+              "mean_k": 0.3429390641550223,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.1079006275628767
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.8158926626046499,
+              "mean_L1_over_zero": 0.9293091805020542,
+              "mean_cos": 0.4174985015557872,
+              "mean_k": 0.3775200111998452,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.08504789093873533
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.8073583038316833,
+              "mean_L1_over_zero": 0.9215435565812149,
+              "mean_cos": 0.4321561855264008,
+              "mean_k": 0.39504586996303664,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.08081433484793929
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.8096454819043477,
+              "mean_L1_over_zero": 0.9261893032710071,
+              "mean_cos": 0.4171980581142836,
+              "mean_k": 0.4009466081029839,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.08667015932407302
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.8216943252417777,
+              "mean_L1_over_zero": 0.9468865993911145,
+              "mean_cos": 0.38199490768214067,
+              "mean_k": 0.4232399685515298,
+              "beat_zero_pct": 74.44444444444444,
+              "intensity_dist_to_varian_ref": 0.06282469215900556
+            }
+          },
+          "CE_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 1.1377985472480456,
+              "mean_L1_over_zero": 0.9652530375101285,
+              "mean_cos": 0.28546624099835755,
+              "mean_k": 0.2156788876487149,
+              "beat_zero_pct": 81.11111111111111,
+              "intensity_dist_to_varian_ref": 0.39978891263111505
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 1.0579181672798263,
+              "mean_L1_over_zero": 0.9063906137366203,
+              "mean_cos": 0.44204828813672065,
+              "mean_k": 0.2996010114749273,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.2711726587806985
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.9975061100390222,
+              "mean_L1_over_zero": 0.8623270696231091,
+              "mean_cos": 0.5267765361401769,
+              "mean_k": 0.3616668605142169,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.22407570855986914
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.9888806015253067,
+              "mean_L1_over_zero": 0.855183944587788,
+              "mean_cos": 0.5332537790294737,
+              "mean_k": 0.3683788013127115,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.19556884061061447
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.9903761151764128,
+              "mean_L1_over_zero": 0.8567890595982018,
+              "mean_cos": 0.522657631094464,
+              "mean_k": 0.3501955732703209,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.18336104608057158
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.9994476323326429,
+              "mean_L1_over_zero": 0.8647715355231376,
+              "mean_cos": 0.5161317003269991,
+              "mean_k": 0.40618584901094434,
+              "beat_zero_pct": 80.0,
+              "intensity_dist_to_varian_ref": 0.18196281515436935
+            }
+          }
+        }
+      }
+    },
+    "a1_full": {
+      "encoder": {
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/EncoderCRB/weights/crb_enc_mse_iso_g160_fov_full_generator.pth",
+        "scans": {
+          "CV_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5419872966077592,
+              "mean_L1_over_zero": 1.0650373132761786,
+              "mean_cos": 0.38225857824501064,
+              "mean_k": 0.8233856959475412,
+              "beat_zero_pct": 51.111111111111114,
+              "intensity_dist_to_varian_ref": 0.16100047399681042
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5228615838620397,
+              "mean_L1_over_zero": 1.0249811651882845,
+              "mean_cos": 0.3784739500946469,
+              "mean_k": 0.72877849108643,
+              "beat_zero_pct": 61.111111111111114,
+              "intensity_dist_to_varian_ref": 0.02877224255768812
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5222817376255989,
+              "mean_L1_over_zero": 1.0235033877385762,
+              "mean_cos": 0.3758441624024676,
+              "mean_k": 0.7274903358684646,
+              "beat_zero_pct": 61.111111111111114,
+              "intensity_dist_to_varian_ref": 0.023164133762407273
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5245640873908997,
+              "mean_L1_over_zero": 1.0274635896140432,
+              "mean_cos": 0.370071643528839,
+              "mean_k": 0.73687551120917,
+              "beat_zero_pct": 58.888888888888886,
+              "intensity_dist_to_varian_ref": 0.02053840194705702
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.531008137928115,
+              "mean_L1_over_zero": 1.0378528056081353,
+              "mean_cos": 0.36384951867965154,
+              "mean_k": 0.7574871685769823,
+              "beat_zero_pct": 56.666666666666664,
+              "intensity_dist_to_varian_ref": 0.02128515155669144
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5357324229346381,
+              "mean_L1_over_zero": 1.0552449906572785,
+              "mean_cos": 0.3673885582221879,
+              "mean_k": 0.8057255587644048,
+              "beat_zero_pct": 58.888888888888886,
+              "intensity_dist_to_varian_ref": 0.06589532886206131
+            }
+          },
+          "CV_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.51780190732744,
+              "mean_L1_over_zero": 0.8575765137268379,
+              "mean_cos": 0.5974682693680128,
+              "mean_k": 0.5567516846789254,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.42045344325753936
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5408390795191129,
+              "mean_L1_over_zero": 0.8880028003549774,
+              "mean_cos": 0.5727898097700543,
+              "mean_k": 0.5922582177652254,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.05936948774475686
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5384904629654355,
+              "mean_L1_over_zero": 0.8849741404786856,
+              "mean_cos": 0.5782517088784112,
+              "mean_k": 0.5942597594526079,
+              "beat_zero_pct": 93.33333333333333,
+              "intensity_dist_to_varian_ref": 0.052917787242300895
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5375498066345851,
+              "mean_L1_over_zero": 0.884089145911193,
+              "mean_cos": 0.5820647799306445,
+              "mean_k": 0.5994651705026627,
+              "beat_zero_pct": 93.33333333333333,
+              "intensity_dist_to_varian_ref": 0.05037871458848248
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5397760856482717,
+              "mean_L1_over_zero": 0.8880503070271533,
+              "mean_cos": 0.580315163731575,
+              "mean_k": 0.6111257503430049,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.054956235226567694
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5188877864016427,
+              "mean_L1_over_zero": 0.8553165794253802,
+              "mean_cos": 0.6277664290534125,
+              "mean_k": 0.6886995315551758,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.10539875685403369
+            }
+          },
+          "CV_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5298619399468104,
+              "mean_L1_over_zero": 0.8660143147159103,
+              "mean_cos": 0.5968027778538979,
+              "mean_k": 0.7652675024337239,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.10629434786315951
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.502610081103113,
+              "mean_L1_over_zero": 0.8243690572235353,
+              "mean_cos": 0.6263897810545233,
+              "mean_k": 0.7217547077271673,
+              "beat_zero_pct": 88.88888888888889,
+              "intensity_dist_to_varian_ref": 0.0832009808871327
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.502212655875418,
+              "mean_L1_over_zero": 0.82385731587478,
+              "mean_cos": 0.6241460757950942,
+              "mean_k": 0.7061649567551083,
+              "beat_zero_pct": 91.11111111111111,
+              "intensity_dist_to_varian_ref": 0.08527579930816033
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5035438751180966,
+              "mean_L1_over_zero": 0.8258876784831687,
+              "mean_cos": 0.6202223028573725,
+              "mean_k": 0.6955907245477041,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.08703942496010816
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5069514231549369,
+              "mean_L1_over_zero": 0.8308971637996246,
+              "mean_cos": 0.6130095141629378,
+              "mean_k": 0.6823995012376044,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.09668632693959084
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5082878501878845,
+              "mean_L1_over_zero": 0.8282898460755018,
+              "mean_cos": 0.6466125336786112,
+              "mean_k": 0.7782364113463296,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.08579953501154142
+            }
+          },
+          "CV_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.6372521438532406,
+              "mean_L1_over_zero": 0.7417339689431593,
+              "mean_cos": 0.6935768171317047,
+              "mean_k": 0.5668492353624768,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.09635490904475162
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.659315158923467,
+              "mean_L1_over_zero": 0.7648319958430694,
+              "mean_cos": 0.6809187790585889,
+              "mean_k": 0.5865383765763706,
+              "beat_zero_pct": 95.55555555555556,
+              "intensity_dist_to_varian_ref": 0.11846849747808676
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6638103226820627,
+              "mean_L1_over_zero": 0.7695161833504154,
+              "mean_cos": 0.6771854981780052,
+              "mean_k": 0.5853944689035415,
+              "beat_zero_pct": 95.55555555555556,
+              "intensity_dist_to_varian_ref": 0.12448968322011732
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.668133805029922,
+              "mean_L1_over_zero": 0.7741342338799326,
+              "mean_cos": 0.6732689512272676,
+              "mean_k": 0.5848250092731582,
+              "beat_zero_pct": 94.44444444444444,
+              "intensity_dist_to_varian_ref": 0.1315343880722406
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6743535487188234,
+              "mean_L1_over_zero": 0.7809519735274593,
+              "mean_cos": 0.667058468858401,
+              "mean_k": 0.5837640798754162,
+              "beat_zero_pct": 93.33333333333333,
+              "intensity_dist_to_varian_ref": 0.132855478263588
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6447569984528754,
+              "mean_L1_over_zero": 0.7488266392295759,
+              "mean_cos": 0.6911536215907997,
+              "mean_k": 0.564653249250518,
+              "beat_zero_pct": 95.55555555555556,
+              "intensity_dist_to_varian_ref": 0.09162185455308221
+            }
+          },
+          "CV_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7135015231039789,
+              "mean_L1_over_zero": 0.8528903322175156,
+              "mean_cos": 0.5437152840714488,
+              "mean_k": 0.3696012487014135,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.171898815281094
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.674680336813132,
+              "mean_L1_over_zero": 0.8035168628505329,
+              "mean_cos": 0.6448716271254752,
+              "mean_k": 0.40701693180534576,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.0698141182107829
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6824302072326343,
+              "mean_L1_over_zero": 0.8111509016047552,
+              "mean_cos": 0.6371729382210307,
+              "mean_k": 0.40092260042826333,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.06311121853083064
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6893897861242294,
+              "mean_L1_over_zero": 0.8179387875125909,
+              "mean_cos": 0.6283848356869486,
+              "mean_k": 0.39712813099225364,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.06361871802043131
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6975071968303787,
+              "mean_L1_over_zero": 0.8264894883966268,
+              "mean_cos": 0.6141063496470451,
+              "mean_k": 0.3954313087794516,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.07862138811268564
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6343713167640898,
+              "mean_L1_over_zero": 0.7640690400007257,
+              "mean_cos": 0.6716505145861043,
+              "mean_k": 0.48334918055269455,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.09495496788416904
+            }
+          },
+          "CE_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7547654138671027,
+              "mean_L1_over_zero": 0.9827261693621516,
+              "mean_cos": 0.25312540558063323,
+              "mean_k": 0.3561881956954797,
+              "beat_zero_pct": 62.22222222222222,
+              "intensity_dist_to_varian_ref": 0.5805298672401855
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6463792896933026,
+              "mean_L1_over_zero": 0.8643393631271978,
+              "mean_cos": 0.5516821453554763,
+              "mean_k": 0.5263632000320487,
+              "beat_zero_pct": 95.55555555555556,
+              "intensity_dist_to_varian_ref": 0.2785188245791183
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6485401433375146,
+              "mean_L1_over_zero": 0.8687559962351256,
+              "mean_cos": 0.556843569000355,
+              "mean_k": 0.5449902113940981,
+              "beat_zero_pct": 93.33333333333333,
+              "intensity_dist_to_varian_ref": 0.26198855030421897
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6504997493492233,
+              "mean_L1_over_zero": 0.8724038042348768,
+              "mean_cos": 0.5576815374609497,
+              "mean_k": 0.552347157895565,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.2670351738527381
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6447711846894688,
+              "mean_L1_over_zero": 0.8662907468804163,
+              "mean_cos": 0.5708953003088634,
+              "mean_k": 0.5524337299995952,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.26985068546498236
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6226192855172688,
+              "mean_L1_over_zero": 0.8346487051929374,
+              "mean_cos": 0.5915479812357161,
+              "mean_k": 0.5273475069138739,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.26721205068235926
+            }
+          },
+          "CE_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.9400860961940554,
+              "mean_L1_over_zero": 1.012194401621418,
+              "mean_cos": 0.18788738893215648,
+              "mean_k": 0.32999465275141926,
+              "beat_zero_pct": 50.0,
+              "intensity_dist_to_varian_ref": 0.6714213081589794
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.8751100472278065,
+              "mean_L1_over_zero": 0.9661041317208502,
+              "mean_cos": 0.3337970327068534,
+              "mean_k": 0.4155731697877248,
+              "beat_zero_pct": 70.0,
+              "intensity_dist_to_varian_ref": 0.4051470718565534
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.8530321988794539,
+              "mean_L1_over_zero": 0.9512488436292106,
+              "mean_cos": 0.3731163644257726,
+              "mean_k": 0.4466371022992664,
+              "beat_zero_pct": 72.22222222222223,
+              "intensity_dist_to_varian_ref": 0.36549928375453444
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.8373488215936555,
+              "mean_L1_over_zero": 0.9396749217271645,
+              "mean_cos": 0.4015538965144919,
+              "mean_k": 0.4618606775999069,
+              "beat_zero_pct": 76.66666666666667,
+              "intensity_dist_to_varian_ref": 0.2563729811143488
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.8631121602323321,
+              "mean_L1_over_zero": 0.9545584677693433,
+              "mean_cos": 0.3805925943578283,
+              "mean_k": 0.373323013054,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.158582551857544
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.8746346606148614,
+              "mean_L1_over_zero": 0.9597892416451419,
+              "mean_cos": 0.35528869655811124,
+              "mean_k": 0.38161378105481464,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.32983440121670393
+            }
+          },
+          "CE_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 2.30205074797074,
+              "mean_L1_over_zero": 0.9537854518176045,
+              "mean_cos": 0.354345342134022,
+              "mean_k": 0.1339644842988087,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.9794256358047544
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 2.22116027838654,
+              "mean_L1_over_zero": 0.9106338517982571,
+              "mean_cos": 0.4699057633186587,
+              "mean_k": 0.19826107383188274,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.516117337001346
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 2.1957732278439734,
+              "mean_L1_over_zero": 0.9016164654316117,
+              "mean_cos": 0.48940241078121793,
+              "mean_k": 0.22100680855413277,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.4334149400751406
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 2.192310318681929,
+              "mean_L1_over_zero": 0.900718732606878,
+              "mean_cos": 0.4873176199901435,
+              "mean_k": 0.22478925813403394,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.39757963439870186
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 2.199592352906863,
+              "mean_L1_over_zero": 0.9039894356462926,
+              "mean_cos": 0.48418456659548814,
+              "mean_k": 0.21965259615745808,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.39382222062768163
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 2.200792268415292,
+              "mean_L1_over_zero": 0.9019553327101602,
+              "mean_cos": 0.46504198318968215,
+              "mean_k": 0.2003923521687587,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.37263486923392286
+            }
+          },
+          "CE_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.8175293592943086,
+              "mean_L1_over_zero": 0.9355365859887973,
+              "mean_cos": 0.4058512201325761,
+              "mean_k": 0.42886214007933937,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.48182446597580836
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.792206799156136,
+              "mean_L1_over_zero": 0.9143601641200989,
+              "mean_cos": 0.43598134997818205,
+              "mean_k": 0.48408063583903843,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.1079006275628767
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.7976202251182662,
+              "mean_L1_over_zero": 0.9196729254559826,
+              "mean_cos": 0.420891504900323,
+              "mean_k": 0.47672792424758276,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.08504789093873533
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.804046266939905,
+              "mean_L1_over_zero": 0.9258683029378432,
+              "mean_cos": 0.40428727153274746,
+              "mean_k": 0.46200716462400226,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.08081433484793929
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.8109515708353784,
+              "mean_L1_over_zero": 0.9319156184300864,
+              "mean_cos": 0.38804659495751065,
+              "mean_k": 0.4418117952843507,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.08667015932407302
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.7923787895176145,
+              "mean_L1_over_zero": 0.9214707565482313,
+              "mean_cos": 0.4449497918287913,
+              "mean_k": 0.5474730274743504,
+              "beat_zero_pct": 81.11111111111111,
+              "intensity_dist_to_varian_ref": 0.06282469215900556
+            }
+          },
+          "CE_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 1.0951832600765758,
+              "mean_L1_over_zero": 0.9363646274362782,
+              "mean_cos": 0.41714771046924093,
+              "mean_k": 0.25821570605039595,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.39978891263111505
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.9877244412899018,
+              "mean_L1_over_zero": 0.8608161101352955,
+              "mean_cos": 0.5250069385187494,
+              "mean_k": 0.37528645545244216,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.2711726587806985
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.9761263733108838,
+              "mean_L1_over_zero": 0.8523330167020321,
+              "mean_cos": 0.5397488647451003,
+              "mean_k": 0.3823093444108963,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.22407570855986914
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.9748772799968719,
+              "mean_L1_over_zero": 0.8505568454313748,
+              "mean_cos": 0.5451660875024067,
+              "mean_k": 0.3817723938160472,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.19556884061061447
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.9827372345659467,
+              "mean_L1_over_zero": 0.8549816398957019,
+              "mean_cos": 0.5465535110897488,
+              "mean_k": 0.3768053554826313,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.18336104608057158
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.9270971902542644,
+              "mean_L1_over_zero": 0.8184701550245324,
+              "mean_cos": 0.6044403691310436,
+              "mean_k": 0.4354739603069093,
+              "beat_zero_pct": 88.88888888888889,
+              "intensity_dist_to_varian_ref": 0.18196281515436935
+            }
+          }
+        }
+      },
+      "decoder": {
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/DecoderCRB/weights/crb_dec_mse_iso_g160_fov_full_generator.pth",
+        "scans": {
+          "CV_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5360678894652261,
+              "mean_L1_over_zero": 1.0556488879850687,
+              "mean_cos": 0.4046029662506448,
+              "mean_k": 0.8379578977823258,
+              "beat_zero_pct": 53.333333333333336,
+              "intensity_dist_to_varian_ref": 0.16100047399681042
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5281828237904442,
+              "mean_L1_over_zero": 1.0406655656323809,
+              "mean_cos": 0.39568805525907214,
+              "mean_k": 0.7877877795033985,
+              "beat_zero_pct": 57.77777777777778,
+              "intensity_dist_to_varian_ref": 0.02877224255768812
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5256709875331984,
+              "mean_L1_over_zero": 1.0360157728262052,
+              "mean_cos": 0.39552886835816836,
+              "mean_k": 0.7844954046938154,
+              "beat_zero_pct": 57.77777777777778,
+              "intensity_dist_to_varian_ref": 0.023164133762407273
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5250403381056256,
+              "mean_L1_over_zero": 1.0352596422100124,
+              "mean_cos": 0.3963877499310507,
+              "mean_k": 0.7877853910128275,
+              "beat_zero_pct": 57.77777777777778,
+              "intensity_dist_to_varian_ref": 0.02053840194705702
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5225432535012563,
+              "mean_L1_over_zero": 1.0301600171357184,
+              "mean_cos": 0.3942959477090173,
+              "mean_k": 0.7751118775871065,
+              "beat_zero_pct": 56.666666666666664,
+              "intensity_dist_to_varian_ref": 0.02128515155669144
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5392119495405091,
+              "mean_L1_over_zero": 1.0626302303180455,
+              "mean_cos": 0.3943630890713798,
+              "mean_k": 0.8581642323070102,
+              "beat_zero_pct": 53.333333333333336,
+              "intensity_dist_to_varian_ref": 0.06589532886206131
+            }
+          },
+          "CV_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5130667850375176,
+              "mean_L1_over_zero": 0.8395856649286579,
+              "mean_cos": 0.618590263194508,
+              "mean_k": 0.5886591795417998,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.42045344325753936
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5660768074293931,
+              "mean_L1_over_zero": 0.9124397308262439,
+              "mean_cos": 0.5338975071907044,
+              "mean_k": 0.6423335836993324,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.05936948774475686
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5609892149766286,
+              "mean_L1_over_zero": 0.9050330290960262,
+              "mean_cos": 0.5416087961859173,
+              "mean_k": 0.6424329532517328,
+              "beat_zero_pct": 96.66666666666667,
+              "intensity_dist_to_varian_ref": 0.052917787242300895
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.547033682713906,
+              "mean_L1_over_zero": 0.8852361178248188,
+              "mean_cos": 0.5625469383266237,
+              "mean_k": 0.6318543169233534,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.05037871458848248
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5223917974366082,
+              "mean_L1_over_zero": 0.8526152499646488,
+              "mean_cos": 0.5978754215770298,
+              "mean_k": 0.6252775765127606,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.054956235226567694
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.530032259805335,
+              "mean_L1_over_zero": 0.8562282006875784,
+              "mean_cos": 0.6171219279368718,
+              "mean_k": 0.7014305104811986,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.10539875685403369
+            }
+          },
+          "CV_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5160567783647113,
+              "mean_L1_over_zero": 0.8457692016515668,
+              "mean_cos": 0.6049046383963691,
+              "mean_k": 0.7367848002248341,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.10629434786315951
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.49404999713102976,
+              "mean_L1_over_zero": 0.8120790370075904,
+              "mean_cos": 0.629037647942702,
+              "mean_k": 0.6905506711867121,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.0832009808871327
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.49328651312324734,
+              "mean_L1_over_zero": 0.8099181733336225,
+              "mean_cos": 0.6259653140066399,
+              "mean_k": 0.6650963784919844,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.08527579930816033
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.49369962761799496,
+              "mean_L1_over_zero": 0.8097027789794653,
+              "mean_cos": 0.6230420733698541,
+              "mean_k": 0.6526332711180051,
+              "beat_zero_pct": 93.33333333333333,
+              "intensity_dist_to_varian_ref": 0.08703942496010816
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.49488655494319067,
+              "mean_L1_over_zero": 0.8107489082711135,
+              "mean_cos": 0.6206846744856901,
+              "mean_k": 0.6482783206635051,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.09668632693959084
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.49446958667702146,
+              "mean_L1_over_zero": 0.8110577572501272,
+              "mean_cos": 0.6465531294958459,
+              "mean_k": 0.7538681768708759,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.08579953501154142
+            }
+          },
+          "CV_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.6761691876583629,
+              "mean_L1_over_zero": 0.7809785348173222,
+              "mean_cos": 0.6338511658211549,
+              "mean_k": 0.5021603994899326,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.09635490904475162
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.679438843495316,
+              "mean_L1_over_zero": 0.7883813649626153,
+              "mean_cos": 0.6408054870863755,
+              "mean_k": 0.5992137369182374,
+              "beat_zero_pct": 93.33333333333333,
+              "intensity_dist_to_varian_ref": 0.11846849747808676
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6830465778708458,
+              "mean_L1_over_zero": 0.7925090484266571,
+              "mean_cos": 0.6371280069980356,
+              "mean_k": 0.6023350020249685,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.12448968322011732
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6871463901466793,
+              "mean_L1_over_zero": 0.7970120191237761,
+              "mean_cos": 0.6327980833748976,
+              "mean_k": 0.6047518458631304,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.1315343880722406
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6929026340444883,
+              "mean_L1_over_zero": 0.803372931231872,
+              "mean_cos": 0.6258398830062814,
+              "mean_k": 0.6075514455636343,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.132855478263588
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6604510860310661,
+              "mean_L1_over_zero": 0.7679966425928955,
+              "mean_cos": 0.6577721877023578,
+              "mean_k": 0.6027333832449383,
+              "beat_zero_pct": 95.55555555555556,
+              "intensity_dist_to_varian_ref": 0.09162185455308221
+            }
+          },
+          "CV_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7114064675238397,
+              "mean_L1_over_zero": 0.8441672137115623,
+              "mean_cos": 0.5578450124296878,
+              "mean_k": 0.35684298161003325,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.171898815281094
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6575942009687423,
+              "mean_L1_over_zero": 0.7804214698720352,
+              "mean_cos": 0.6502489984035492,
+              "mean_k": 0.48192895385954115,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.0698141182107829
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6705809488892556,
+              "mean_L1_over_zero": 0.7938182619697465,
+              "mean_cos": 0.6385029207087225,
+              "mean_k": 0.4639113532172309,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.06311121853083064
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6775269501739078,
+              "mean_L1_over_zero": 0.8008145136206565,
+              "mean_cos": 0.6338189239717192,
+              "mean_k": 0.45368964340951706,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.06361871802043131
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6862078118655417,
+              "mean_L1_over_zero": 0.810041646570848,
+              "mean_cos": 0.6268692509995566,
+              "mean_k": 0.4376702974239985,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.07862138811268564
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6271063925491439,
+              "mean_L1_over_zero": 0.7493712597369306,
+              "mean_cos": 0.6875542033049795,
+              "mean_k": 0.4978242360883289,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.09495496788416904
+            }
+          },
+          "CE_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7954065629177623,
+              "mean_L1_over_zero": 1.0453793837671743,
+              "mean_cos": -0.10266441128009723,
+              "mean_k": 0.19006204687886769,
+              "beat_zero_pct": 13.333333333333334,
+              "intensity_dist_to_varian_ref": 0.5805298672401855
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.563971154557334,
+              "mean_L1_over_zero": 0.7638859677037615,
+              "mean_cos": 0.6770539644691679,
+              "mean_k": 0.6743574231863022,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.2785188245791183
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5612459373142984,
+              "mean_L1_over_zero": 0.7595479086244674,
+              "mean_cos": 0.6843954193095366,
+              "mean_k": 0.6777178522613313,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.26198855030421897
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5662111052208476,
+              "mean_L1_over_zero": 0.7649898734099778,
+              "mean_cos": 0.6819924715078539,
+              "mean_k": 0.671098790731695,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.2670351738527381
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5809490185644891,
+              "mean_L1_over_zero": 0.7829213100563268,
+              "mean_cos": 0.659769193496969,
+              "mean_k": 0.657850379579597,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.26985068546498236
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5973336357209418,
+              "mean_L1_over_zero": 0.8011773210570452,
+              "mean_cos": 0.6279602242840661,
+              "mean_k": 0.645222114192115,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.26721205068235926
+            }
+          },
+          "CE_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.9224966713123851,
+              "mean_L1_over_zero": 0.9888873345490298,
+              "mean_cos": 0.1851731881706251,
+              "mean_k": 0.17627855497929784,
+              "beat_zero_pct": 74.44444444444444,
+              "intensity_dist_to_varian_ref": 0.6714213081589794
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.8279769495129585,
+              "mean_L1_over_zero": 0.9282715625559845,
+              "mean_cos": 0.41299358239630235,
+              "mean_k": 0.5193161904811859,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.4051470718565534
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.8084697668751081,
+              "mean_L1_over_zero": 0.9154898689979226,
+              "mean_cos": 0.4431281781858868,
+              "mean_k": 0.5755162954330444,
+              "beat_zero_pct": 75.55555555555556,
+              "intensity_dist_to_varian_ref": 0.36549928375453444
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.7948668069309659,
+              "mean_L1_over_zero": 0.9043955650560823,
+              "mean_cos": 0.46242289872219167,
+              "mean_k": 0.5777095860905117,
+              "beat_zero_pct": 76.66666666666667,
+              "intensity_dist_to_varian_ref": 0.2563729811143488
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.8201530529393091,
+              "mean_L1_over_zero": 0.9190253101825819,
+              "mean_cos": 0.45573628849573045,
+              "mean_k": 0.4507812900675668,
+              "beat_zero_pct": 76.66666666666667,
+              "intensity_dist_to_varian_ref": 0.158582551857544
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.8341731778449483,
+              "mean_L1_over_zero": 0.9299569088157226,
+              "mean_cos": 0.42993783134087504,
+              "mean_k": 0.4377238892846637,
+              "beat_zero_pct": 76.66666666666667,
+              "intensity_dist_to_varian_ref": 0.32983440121670393
+            }
+          },
+          "CE_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 2.353436514404085,
+              "mean_L1_over_zero": 0.9672911447051683,
+              "mean_cos": 0.24591535752018293,
+              "mean_k": 0.10481528606679705,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.9794256358047544
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 2.190568598277039,
+              "mean_L1_over_zero": 0.8941535942031071,
+              "mean_cos": 0.5183602355213629,
+              "mean_k": 0.23903877714441882,
+              "beat_zero_pct": 88.88888888888889,
+              "intensity_dist_to_varian_ref": 0.516117337001346
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 2.1465217891666626,
+              "mean_L1_over_zero": 0.8789561087246026,
+              "mean_cos": 0.5577437532444794,
+              "mean_k": 0.2994434218439791,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.4334149400751406
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 2.148951070672936,
+              "mean_L1_over_zero": 0.8802036607252466,
+              "mean_cos": 0.5545084001470564,
+              "mean_k": 0.29760722799433603,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.39757963439870186
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 2.156573284169038,
+              "mean_L1_over_zero": 0.8856014271001901,
+              "mean_cos": 0.5527794774647595,
+              "mean_k": 0.3145474237286382,
+              "beat_zero_pct": 81.11111111111111,
+              "intensity_dist_to_varian_ref": 0.39382222062768163
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 2.2070420700642797,
+              "mean_L1_over_zero": 0.8983271772393482,
+              "mean_cos": 0.5270515081783136,
+              "mean_k": 0.21047745992739994,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.37263486923392286
+            }
+          },
+          "CE_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7959532221158345,
+              "mean_L1_over_zero": 0.9174695333751438,
+              "mean_cos": 0.45329849504762226,
+              "mean_k": 0.3758911516931322,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.48182446597580836
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.7597633851899042,
+              "mean_L1_over_zero": 0.8902767532698418,
+              "mean_cos": 0.51680331889333,
+              "mean_k": 0.5312467939323849,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.1079006275628767
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.7670828393763967,
+              "mean_L1_over_zero": 0.8962925402347199,
+              "mean_cos": 0.5048587722212283,
+              "mean_k": 0.513579493926631,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.08504789093873533
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.774022047387229,
+              "mean_L1_over_zero": 0.9020522963397787,
+              "mean_cos": 0.49258395563811064,
+              "mean_k": 0.49670156505372787,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.08081433484793929
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.7843175389700465,
+              "mean_L1_over_zero": 0.9111525099799421,
+              "mean_cos": 0.4739189534551568,
+              "mean_k": 0.48937465416060555,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.08667015932407302
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.7879430019193225,
+              "mean_L1_over_zero": 0.9279407789667692,
+              "mean_cos": 0.46935675160752405,
+              "mean_k": 0.619676986667845,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.06282469215900556
+            }
+          },
+          "CE_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 1.1749937896927198,
+              "mean_L1_over_zero": 0.9853874534649868,
+              "mean_cos": 0.18783029307507806,
+              "mean_k": 0.17392329515682325,
+              "beat_zero_pct": 73.33333333333333,
+              "intensity_dist_to_varian_ref": 0.39978891263111505
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.9550158477491802,
+              "mean_L1_over_zero": 0.8363636285343417,
+              "mean_cos": 0.5587732854350987,
+              "mean_k": 0.48766468829578824,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.2711726587806985
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.9377706709835264,
+              "mean_L1_over_zero": 0.8223546585827438,
+              "mean_cos": 0.571232367058595,
+              "mean_k": 0.5040041877163781,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.22407570855986914
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.9332951337099076,
+              "mean_L1_over_zero": 0.8189019625918031,
+              "mean_cos": 0.5734283835937579,
+              "mean_k": 0.500678825378418,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.19556884061061447
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.9369817942380905,
+              "mean_L1_over_zero": 0.8220409371308794,
+              "mean_cos": 0.5703679230064154,
+              "mean_k": 0.48440753320852914,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.18336104608057158
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.9489062607288361,
+              "mean_L1_over_zero": 0.8327215273140777,
+              "mean_cos": 0.5555374720237322,
+              "mean_k": 0.5112864825460646,
+              "beat_zero_pct": 85.55555555555556,
+              "intensity_dist_to_varian_ref": 0.18196281515436935
+            }
+          }
+        }
+      },
+      "both": {
+        "ckpt": "/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment1/BothCRB/weights/crb_both_mse_iso_g160_fov_full_generator.pth",
+        "scans": {
+          "CV_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5388667414585749,
+              "mean_L1_over_zero": 1.0717370629976477,
+              "mean_cos": 0.401523834759266,
+              "mean_k": 0.852921319504579,
+              "beat_zero_pct": 58.888888888888886,
+              "intensity_dist_to_varian_ref": 0.16100047399681042
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5656699476970567,
+              "mean_L1_over_zero": 1.1305942720456037,
+              "mean_cos": 0.38966574042828545,
+              "mean_k": 0.9576899700694614,
+              "beat_zero_pct": 41.111111111111114,
+              "intensity_dist_to_varian_ref": 0.02877224255768812
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5750393057862918,
+              "mean_L1_over_zero": 1.1447967487875306,
+              "mean_cos": 0.3852054135977394,
+              "mean_k": 0.9779452631870905,
+              "beat_zero_pct": 38.888888888888886,
+              "intensity_dist_to_varian_ref": 0.023164133762407273
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5811837707956632,
+              "mean_L1_over_zero": 1.1527437604451374,
+              "mean_cos": 0.3768962780531082,
+              "mean_k": 0.9803997685511907,
+              "beat_zero_pct": 37.77777777777778,
+              "intensity_dist_to_varian_ref": 0.02053840194705702
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5874463119440608,
+              "mean_L1_over_zero": 1.1635104190747707,
+              "mean_cos": 0.3615104775565366,
+              "mean_k": 0.9798188206222322,
+              "beat_zero_pct": 33.333333333333336,
+              "intensity_dist_to_varian_ref": 0.02128515155669144
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5574130887786547,
+              "mean_L1_over_zero": 1.1154524876775473,
+              "mean_cos": 0.3949284358984894,
+              "mean_k": 0.9628578301933076,
+              "beat_zero_pct": 44.44444444444444,
+              "intensity_dist_to_varian_ref": 0.06589532886206131
+            }
+          },
+          "CV_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5225831892755296,
+              "mean_L1_over_zero": 0.8614367782768516,
+              "mean_cos": 0.5993264393674003,
+              "mean_k": 0.619782202773624,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.42045344325753936
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5850904832283655,
+              "mean_L1_over_zero": 0.9595239661114099,
+              "mean_cos": 0.5732313123014238,
+              "mean_k": 0.7797922766870923,
+              "beat_zero_pct": 70.0,
+              "intensity_dist_to_varian_ref": 0.05936948774475686
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5829021599557664,
+              "mean_L1_over_zero": 0.9565578577002338,
+              "mean_cos": 0.5778979976971944,
+              "mean_k": 0.7794311347934935,
+              "beat_zero_pct": 73.33333333333333,
+              "intensity_dist_to_varian_ref": 0.052917787242300895
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5795408147904608,
+              "mean_L1_over_zero": 0.9521710918896452,
+              "mean_cos": 0.5839804632796182,
+              "mean_k": 0.7809002849790785,
+              "beat_zero_pct": 74.44444444444444,
+              "intensity_dist_to_varian_ref": 0.05037871458848248
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5725452348589897,
+              "mean_L1_over_zero": 0.9436221951581958,
+              "mean_cos": 0.5937323795424567,
+              "mean_k": 0.7857501758469476,
+              "beat_zero_pct": 75.55555555555556,
+              "intensity_dist_to_varian_ref": 0.054956235226567694
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5526206091046333,
+              "mean_L1_over_zero": 0.9085701354844384,
+              "mean_cos": 0.595601404706637,
+              "mean_k": 0.7383950346046024,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.10539875685403369
+            }
+          },
+          "CV_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.5385973534650272,
+              "mean_L1_over_zero": 0.8816156685105038,
+              "mean_cos": 0.5924661618967851,
+              "mean_k": 0.8142194658517837,
+              "beat_zero_pct": 76.66666666666667,
+              "intensity_dist_to_varian_ref": 0.10629434786315951
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.5389525993002786,
+              "mean_L1_over_zero": 0.8825118962878805,
+              "mean_cos": 0.6383661200602849,
+              "mean_k": 0.9135569396946165,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.0832009808871327
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.5381820799575912,
+              "mean_L1_over_zero": 0.8797372686141784,
+              "mean_cos": 0.6366126587821378,
+              "mean_k": 0.8933330201440387,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.08527579930816033
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5372425062788857,
+              "mean_L1_over_zero": 0.8766380400053173,
+              "mean_cos": 0.632305808365345,
+              "mean_k": 0.869002319375674,
+              "beat_zero_pct": 80.0,
+              "intensity_dist_to_varian_ref": 0.08703942496010816
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.5357443607515759,
+              "mean_L1_over_zero": 0.8722323430598505,
+              "mean_cos": 0.6252987930758132,
+              "mean_k": 0.8341221726602979,
+              "beat_zero_pct": 82.22222222222223,
+              "intensity_dist_to_varian_ref": 0.09668632693959084
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.5305038058095508,
+              "mean_L1_over_zero": 0.8670428270049142,
+              "mean_cos": 0.6422557801629106,
+              "mean_k": 0.8819512211614184,
+              "beat_zero_pct": 80.0,
+              "intensity_dist_to_varian_ref": 0.08579953501154142
+            }
+          },
+          "CV_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.6341482336322467,
+              "mean_L1_over_zero": 0.738734973626576,
+              "mean_cos": 0.6931656840774748,
+              "mean_k": 0.6098320739136802,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.09635490904475162
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6694114471475283,
+              "mean_L1_over_zero": 0.7789682040338589,
+              "mean_cos": 0.6740161862638262,
+              "mean_k": 0.6738338894314236,
+              "beat_zero_pct": 91.11111111111111,
+              "intensity_dist_to_varian_ref": 0.11846849747808676
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6715820946627193,
+              "mean_L1_over_zero": 0.7807348769933833,
+              "mean_cos": 0.6725618145532078,
+              "mean_k": 0.6688421232832803,
+              "beat_zero_pct": 90.0,
+              "intensity_dist_to_varian_ref": 0.12448968322011732
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6732285997933811,
+              "mean_L1_over_zero": 0.7819288497094394,
+              "mean_cos": 0.6712357583973143,
+              "mean_k": 0.6615028159485923,
+              "beat_zero_pct": 91.11111111111111,
+              "intensity_dist_to_varian_ref": 0.1315343880722406
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6755585432052612,
+              "mean_L1_over_zero": 0.7835735640957092,
+              "mean_cos": 0.6689826526575618,
+              "mean_k": 0.650085277027554,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.132855478263588
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6792134563128154,
+              "mean_L1_over_zero": 0.7898153872242648,
+              "mean_cos": 0.6589505271779166,
+              "mean_k": 0.691975215739674,
+              "beat_zero_pct": 91.11111111111111,
+              "intensity_dist_to_varian_ref": 0.09162185455308221
+            }
+          },
+          "CV_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.6820192274120119,
+              "mean_L1_over_zero": 0.8192590048354921,
+              "mean_cos": 0.6066514088047875,
+              "mean_k": 0.39730029073026446,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.171898815281094
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6530094226201375,
+              "mean_L1_over_zero": 0.7744976498852133,
+              "mean_cos": 0.6580850246879789,
+              "mean_k": 0.5206190556287765,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.0698141182107829
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.6624499105744892,
+              "mean_L1_over_zero": 0.7839569028706129,
+              "mean_cos": 0.6479579105145401,
+              "mean_k": 0.5126153190930685,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.06311121853083064
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.6680201361576716,
+              "mean_L1_over_zero": 0.789805134620671,
+              "mean_cos": 0.6415118404560619,
+              "mean_k": 0.5084007273117701,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.06361871802043131
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.6713499888777733,
+              "mean_L1_over_zero": 0.7931333235571879,
+              "mean_cos": 0.6381747802098592,
+              "mean_k": 0.5076269533899095,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.07862138811268564
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.6155884698033333,
+              "mean_L1_over_zero": 0.7313295762185423,
+              "mean_cos": 0.7048489181531801,
+              "mean_k": 0.557254492243131,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.09495496788416904
+            }
+          },
+          "CE_P1_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7286908970938788,
+              "mean_L1_over_zero": 0.9770427549255513,
+              "mean_cos": 0.2727846649164955,
+              "mean_k": 0.387947326236301,
+              "beat_zero_pct": 68.88888888888889,
+              "intensity_dist_to_varian_ref": 0.5805298672401855
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.6025591519143846,
+              "mean_L1_over_zero": 0.8107417953235969,
+              "mean_cos": 0.6529372004999054,
+              "mean_k": 0.7424742763241132,
+              "beat_zero_pct": 95.55555555555556,
+              "intensity_dist_to_varian_ref": 0.2785188245791183
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.591286180416743,
+              "mean_L1_over_zero": 0.7974981029263423,
+              "mean_cos": 0.6591545202665858,
+              "mean_k": 0.7109290861421161,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.26198855030421897
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.5866917923092843,
+              "mean_L1_over_zero": 0.792420074472328,
+              "mean_cos": 0.6603111543589169,
+              "mean_k": 0.6911076923211416,
+              "beat_zero_pct": 97.77777777777777,
+              "intensity_dist_to_varian_ref": 0.2670351738527381
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.580478602482213,
+              "mean_L1_over_zero": 0.7864904552336608,
+              "mean_cos": 0.6594497836298413,
+              "mean_k": 0.652611847056283,
+              "beat_zero_pct": 100.0,
+              "intensity_dist_to_varian_ref": 0.26985068546498236
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.605429879327615,
+              "mean_L1_over_zero": 0.8113481441743684,
+              "mean_cos": 0.6335772514343262,
+              "mean_k": 0.6432776739199956,
+              "beat_zero_pct": 98.88888888888889,
+              "intensity_dist_to_varian_ref": 0.26721205068235926
+            }
+          },
+          "CE_P2_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.9232223798831304,
+              "mean_L1_over_zero": 1.0108841948971103,
+              "mean_cos": 0.2236646104791564,
+              "mean_k": 0.40858649038192296,
+              "beat_zero_pct": 58.888888888888886,
+              "intensity_dist_to_varian_ref": 0.6714213081589794
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.8346837672922346,
+              "mean_L1_over_zero": 0.9408277917375786,
+              "mean_cos": 0.4026730089247899,
+              "mean_k": 0.5284219034843974,
+              "beat_zero_pct": 72.22222222222223,
+              "intensity_dist_to_varian_ref": 0.4051470718565534
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.8314773789710469,
+              "mean_L1_over_zero": 0.9405232306542075,
+              "mean_cos": 0.4223589605651796,
+              "mean_k": 0.5605422697133489,
+              "beat_zero_pct": 73.33333333333333,
+              "intensity_dist_to_varian_ref": 0.36549928375453444
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.8522293287846777,
+              "mean_L1_over_zero": 0.962578649561461,
+              "mean_cos": 0.4217502387033569,
+              "mean_k": 0.5888396857513322,
+              "beat_zero_pct": 72.22222222222223,
+              "intensity_dist_to_varian_ref": 0.2563729811143488
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.86093374159601,
+              "mean_L1_over_zero": 0.9738300567134124,
+              "mean_cos": 0.4243215860074593,
+              "mean_k": 0.6142135785685645,
+              "beat_zero_pct": 68.88888888888889,
+              "intensity_dist_to_varian_ref": 0.158582551857544
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.8808246536387337,
+              "mean_L1_over_zero": 0.9682126966920462,
+              "mean_cos": 0.37504515548547107,
+              "mean_k": 0.4414979237649176,
+              "beat_zero_pct": 76.66666666666667,
+              "intensity_dist_to_varian_ref": 0.32983440121670393
+            }
+          },
+          "CE_P3_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 2.2731202024552557,
+              "mean_L1_over_zero": 0.9346555480078371,
+              "mean_cos": 0.47052241952882873,
+              "mean_k": 0.19336341979602972,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.9794256358047544
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 2.2056453219718404,
+              "mean_L1_over_zero": 0.9002653445441439,
+              "mean_cos": 0.5334564103505626,
+              "mean_k": 0.27367805420524544,
+              "beat_zero_pct": 84.44444444444444,
+              "intensity_dist_to_varian_ref": 0.516117337001346
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 2.179064354300499,
+              "mean_L1_over_zero": 0.891886264561523,
+              "mean_cos": 0.5370388537852301,
+              "mean_k": 0.30443232171237466,
+              "beat_zero_pct": 81.11111111111111,
+              "intensity_dist_to_varian_ref": 0.4334149400751406
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 2.1766058140330844,
+              "mean_L1_over_zero": 0.8922843570481095,
+              "mean_cos": 0.5253337545197508,
+              "mean_k": 0.30022179563012386,
+              "beat_zero_pct": 80.0,
+              "intensity_dist_to_varian_ref": 0.39757963439870186
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 2.1833102585540876,
+              "mean_L1_over_zero": 0.89880845624123,
+              "mean_cos": 0.5090010950548781,
+              "mean_k": 0.2858153952492608,
+              "beat_zero_pct": 81.11111111111111,
+              "intensity_dist_to_varian_ref": 0.39382222062768163
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 2.2131383003460035,
+              "mean_L1_over_zero": 0.912025628608634,
+              "mean_cos": 0.4174483724973268,
+              "mean_k": 0.20670903138816357,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.37263486923392286
+            }
+          },
+          "CE_P4_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 0.7670832749870088,
+              "mean_L1_over_zero": 0.8987017197749249,
+              "mean_cos": 0.5123901651758287,
+              "mean_k": 0.5865745178527302,
+              "beat_zero_pct": 83.33333333333333,
+              "intensity_dist_to_varian_ref": 0.48182446597580836
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.760435523920589,
+              "mean_L1_over_zero": 0.900568849129917,
+              "mean_cos": 0.527563428464863,
+              "mean_k": 0.6658709443277783,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.1079006275628767
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.7623330768611696,
+              "mean_L1_over_zero": 0.9034188418027713,
+              "mean_cos": 0.5233115055831149,
+              "mean_k": 0.6694269912110434,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.08504789093873533
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.7637431525521808,
+              "mean_L1_over_zero": 0.9047618865353373,
+              "mean_cos": 0.5185898305227359,
+              "mean_k": 0.6665596634149551,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.08081433484793929
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.7663619756698609,
+              "mean_L1_over_zero": 0.9060292922454427,
+              "mean_cos": 0.5080276840262943,
+              "mean_k": 0.6450725969341066,
+              "beat_zero_pct": 78.88888888888889,
+              "intensity_dist_to_varian_ref": 0.08667015932407302
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.7868380881018109,
+              "mean_L1_over_zero": 0.9353293896381476,
+              "mean_cos": 0.49419773179623816,
+              "mean_k": 0.7009224194619391,
+              "beat_zero_pct": 77.77777777777777,
+              "intensity_dist_to_varian_ref": 0.06282469215900556
+            }
+          },
+          "CE_P5_V_01": {
+            "minmax": {
+              "n_directed": 90,
+              "mean_L1": 1.0889468156629138,
+              "mean_L1_over_zero": 0.9287694550657029,
+              "mean_cos": 0.4459165543938676,
+              "mean_k": 0.2542417401240932,
+              "beat_zero_pct": 92.22222222222223,
+              "intensity_dist_to_varian_ref": 0.39978891263111505
+            },
+            "p0.5_p99.5": {
+              "n_directed": 90,
+              "mean_L1": 0.9542890035443836,
+              "mean_L1_over_zero": 0.8321233952601601,
+              "mean_cos": 0.573836277394245,
+              "mean_k": 0.47482835517989264,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.2711726587806985
+            },
+            "p1_p99": {
+              "n_directed": 90,
+              "mean_L1": 0.9460647874408298,
+              "mean_L1_over_zero": 0.8259436281996587,
+              "mean_cos": 0.5797690634473434,
+              "mean_k": 0.4830753137667974,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.22407570855986914
+            },
+            "p2_p98": {
+              "n_directed": 90,
+              "mean_L1": 0.940811883409818,
+              "mean_L1_over_zero": 0.8228656572807901,
+              "mean_cos": 0.582171525961409,
+              "mean_k": 0.4898397535085678,
+              "beat_zero_pct": 87.77777777777777,
+              "intensity_dist_to_varian_ref": 0.19556884061061447
+            },
+            "p5_p95": {
+              "n_directed": 90,
+              "mean_L1": 0.9463375094864104,
+              "mean_L1_over_zero": 0.8305739155453721,
+              "mean_cos": 0.5677552945084042,
+              "mean_k": 0.4829615039957894,
+              "beat_zero_pct": 86.66666666666667,
+              "intensity_dist_to_varian_ref": 0.18336104608057158
+            },
+            "mu_air_water": {
+              "n_directed": 90,
+              "mean_L1": 0.926900969280137,
+              "mean_L1_over_zero": 0.822627188983341,
+              "mean_cos": 0.5901930031677087,
+              "mean_k": 0.4873831570148468,
+              "beat_zero_pct": 88.88888888888889,
+              "intensity_dist_to_varian_ref": 0.18196281515436935
+            }
+          }
+        }
+      }
+    }
+  }
+}

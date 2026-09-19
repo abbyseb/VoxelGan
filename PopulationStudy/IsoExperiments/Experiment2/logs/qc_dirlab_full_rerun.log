@@ -1,0 +1,137 @@
+Iso-E2 DIR QC  device=cuda:0  packed=/home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment2/packed_iso  arches=['encoder', 'decoder', 'both']
+loaded encoder crb_enc_mse_iso_e2_full_generator.pth
+skip encoder P1_DIR minmax (exists)
+skip encoder P2_DIR minmax (exists)
+skip encoder P3_DIR minmax (exists)
+skip encoder P4_DIR minmax (exists)
+skip encoder P5_DIR minmax (exists)
+skip encoder P6_DIR minmax (exists)
+  [encoder|P7_DIR|minmax] 25/100
+  [encoder|P7_DIR|minmax] 50/100
+  [encoder|P7_DIR|minmax] 75/100
+  [encoder|P7_DIR|minmax] 100/100
+[encoder|P7_DIR|minmax] L1=2.124mm cos=-0.276 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P7_DIR
+  [encoder|P8_DIR|minmax] 25/100
+  [encoder|P8_DIR|minmax] 50/100
+  [encoder|P8_DIR|minmax] 75/100
+  [encoder|P8_DIR|minmax] 100/100
+[encoder|P8_DIR|minmax] L1=2.758mm cos=-0.184 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P8_DIR
+  [encoder|P9_DIR|minmax] 25/100
+  [encoder|P9_DIR|minmax] 50/100
+  [encoder|P9_DIR|minmax] 75/100
+  [encoder|P9_DIR|minmax] 100/100
+[encoder|P9_DIR|minmax] L1=1.683mm cos=-0.207 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P9_DIR
+  [encoder|P10_DIR|minmax] 25/100
+  [encoder|P10_DIR|minmax] 50/100
+  [encoder|P10_DIR|minmax] 75/100
+  [encoder|P10_DIR|minmax] 100/100
+[encoder|P10_DIR|minmax] L1=2.224mm cos=-0.256 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/EncoderCRB/plots/qc_dir_minmax/P10_DIR
+loaded decoder crb_dec_mse_iso_e2_full_generator.pth
+  [decoder|P1_DIR|minmax] 25/100
+  [decoder|P1_DIR|minmax] 50/100
+  [decoder|P1_DIR|minmax] 75/100
+  [decoder|P1_DIR|minmax] 100/100
+[decoder|P1_DIR|minmax] L1=1.324mm cos=-0.205 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P1_DIR
+  [decoder|P2_DIR|minmax] 25/100
+  [decoder|P2_DIR|minmax] 50/100
+  [decoder|P2_DIR|minmax] 75/100
+  [decoder|P2_DIR|minmax] 100/100
+[decoder|P2_DIR|minmax] L1=1.387mm cos=0.017 beat=7% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P2_DIR
+  [decoder|P3_DIR|minmax] 25/100
+  [decoder|P3_DIR|minmax] 50/100
+  [decoder|P3_DIR|minmax] 75/100
+  [decoder|P3_DIR|minmax] 100/100
+[decoder|P3_DIR|minmax] L1=1.637mm cos=-0.204 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P3_DIR
+  [decoder|P4_DIR|minmax] 25/100
+  [decoder|P4_DIR|minmax] 50/100
+  [decoder|P4_DIR|minmax] 75/100
+  [decoder|P4_DIR|minmax] 100/100
+[decoder|P4_DIR|minmax] L1=2.252mm cos=-0.250 beat=1% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P4_DIR
+  [decoder|P5_DIR|minmax] 25/100
+  [decoder|P5_DIR|minmax] 50/100
+  [decoder|P5_DIR|minmax] 75/100
+  [decoder|P5_DIR|minmax] 100/100
+[decoder|P5_DIR|minmax] L1=1.640mm cos=-0.131 beat=3% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P5_DIR
+  [decoder|P6_DIR|minmax] 25/100
+  [decoder|P6_DIR|minmax] 50/100
+  [decoder|P6_DIR|minmax] 75/100
+  [decoder|P6_DIR|minmax] 100/100
+[decoder|P6_DIR|minmax] L1=3.337mm cos=-0.421 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P6_DIR
+  [decoder|P7_DIR|minmax] 25/100
+  [decoder|P7_DIR|minmax] 50/100
+  [decoder|P7_DIR|minmax] 75/100
+  [decoder|P7_DIR|minmax] 100/100
+[decoder|P7_DIR|minmax] L1=2.289mm cos=-0.274 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P7_DIR
+  [decoder|P8_DIR|minmax] 25/100
+  [decoder|P8_DIR|minmax] 50/100
+  [decoder|P8_DIR|minmax] 75/100
+  [decoder|P8_DIR|minmax] 100/100
+[decoder|P8_DIR|minmax] L1=2.843mm cos=-0.188 beat=8% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P8_DIR
+  [decoder|P9_DIR|minmax] 25/100
+  [decoder|P9_DIR|minmax] 50/100
+  [decoder|P9_DIR|minmax] 75/100
+  [decoder|P9_DIR|minmax] 100/100
+[decoder|P9_DIR|minmax] L1=1.984mm cos=-0.227 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P9_DIR
+  [decoder|P10_DIR|minmax] 25/100
+  [decoder|P10_DIR|minmax] 50/100
+  [decoder|P10_DIR|minmax] 75/100
+  [decoder|P10_DIR|minmax] 100/100
+[decoder|P10_DIR|minmax] L1=2.132mm cos=-0.153 beat=10% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/DecoderCRB/plots/qc_dir_minmax/P10_DIR
+loaded both crb_both_mse_iso_e2_full_generator.pth
+  [both|P1_DIR|minmax] 25/100
+  [both|P1_DIR|minmax] 50/100
+  [both|P1_DIR|minmax] 75/100
+  [both|P1_DIR|minmax] 100/100
+[both|P1_DIR|minmax] L1=1.439mm cos=-0.150 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P1_DIR
+  [both|P2_DIR|minmax] 25/100
+  [both|P2_DIR|minmax] 50/100
+  [both|P2_DIR|minmax] 75/100
+  [both|P2_DIR|minmax] 100/100
+[both|P2_DIR|minmax] L1=1.287mm cos=-0.019 beat=8% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P2_DIR
+  [both|P3_DIR|minmax] 25/100
+  [both|P3_DIR|minmax] 50/100
+  [both|P3_DIR|minmax] 75/100
+  [both|P3_DIR|minmax] 100/100
+[both|P3_DIR|minmax] L1=1.765mm cos=-0.200 beat=0% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P3_DIR
+  [both|P4_DIR|minmax] 25/100
+  [both|P4_DIR|minmax] 50/100
+  [both|P4_DIR|minmax] 75/100
+  [both|P4_DIR|minmax] 100/100
+[both|P4_DIR|minmax] L1=1.824mm cos=-0.215 beat=3% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P4_DIR
+  [both|P5_DIR|minmax] 25/100
+  [both|P5_DIR|minmax] 50/100
+  [both|P5_DIR|minmax] 75/100
+  [both|P5_DIR|minmax] 100/100
+[both|P5_DIR|minmax] L1=1.563mm cos=-0.047 beat=3% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P5_DIR
+  [both|P6_DIR|minmax] 25/100
+  [both|P6_DIR|minmax] 50/100
+  [both|P6_DIR|minmax] 75/100
+  [both|P6_DIR|minmax] 100/100
+[both|P6_DIR|minmax] L1=2.761mm cos=-0.250 beat=6% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P6_DIR
+  [both|P7_DIR|minmax] 25/100
+  [both|P7_DIR|minmax] 50/100
+  [both|P7_DIR|minmax] 75/100
+  [both|P7_DIR|minmax] 100/100
+[both|P7_DIR|minmax] L1=1.968mm cos=-0.219 beat=10% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P7_DIR
+  [both|P8_DIR|minmax] 25/100
+  [both|P8_DIR|minmax] 50/100
+  [both|P8_DIR|minmax] 75/100
+  [both|P8_DIR|minmax] 100/100
+[both|P8_DIR|minmax] L1=2.723mm cos=-0.120 beat=14% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P8_DIR
+  [both|P9_DIR|minmax] 25/100
+  [both|P9_DIR|minmax] 50/100
+  [both|P9_DIR|minmax] 75/100
+  [both|P9_DIR|minmax] 100/100
+[both|P9_DIR|minmax] L1=1.428mm cos=-0.134 beat=6% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P9_DIR
+  [both|P10_DIR|minmax] 25/100
+  [both|P10_DIR|minmax] 50/100
+  [both|P10_DIR|minmax] 75/100
+  [both|P10_DIR|minmax] 100/100
+[both|P10_DIR|minmax] L1=2.093mm cos=-0.169 beat=11% → /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/BothCRB/plots/qc_dir_minmax/P10_DIR
+
+======== ISO-E2 DIR SUMMARY ========
+encoder   L1=1.952 mm  cos=-0.207  L1/z=1.322  beat=0%  n=10
+decoder   L1=2.082 mm  cos=-0.204  L1/z=1.360  beat=3%  n=10
+both      L1=1.885 mm  cos=-0.152  L1/z=1.293  beat=6%  n=10
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/IsoExperiments/Experiment2/plots/qc_summary/summary_encoder_decoder_both_dir_iso.json
+DONE

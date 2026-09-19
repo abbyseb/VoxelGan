@@ -1,0 +1,1 @@
+Rule of thumb (75-pt T00→T50 only): TRE < identity TRE = helped; TRE > identity = worse than doing nothing. Cohort identity ≈ 8.69 mm; Case 1 ≈ 3.91 mm. Never use 300-pt for arm scores.

@@ -1,0 +1,27 @@
+Grid160-A0 QC  device=cpu  arms=['a0_full', 'a0h']  arches=['encoder', 'decoder', 'both']  norms=['minmax', 'mu']
+loaded a0_full encoder crb_enc_mse_iso_g160_a0_full_generator.pth
+  [a0_full|encoder|CV_P1_V_01|minmax] 25/100
+  [a0_full|encoder|CV_P1_V_01|minmax] 50/100
+  [a0_full|encoder|CV_P1_V_01|minmax] 75/100
+  [a0_full|encoder|CV_P1_V_01|minmax] 100/100
+[a0_full|encoder|CV_P1_V_01|minmax] cos=0.390 beat=43% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/EncoderCRB/plots/qc_varian/a0_full/minmax/P1/CV_P1_V_01
+  [a0_full|encoder|CV_P2_V_01|minmax] 25/100
+  [a0_full|encoder|CV_P2_V_01|minmax] 50/100
+  [a0_full|encoder|CV_P2_V_01|minmax] 75/100
+  [a0_full|encoder|CV_P2_V_01|minmax] 100/100
+[a0_full|encoder|CV_P2_V_01|minmax] cos=0.611 beat=98% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/EncoderCRB/plots/qc_varian/a0_full/minmax/P2/CV_P2_V_01
+  [a0_full|encoder|CV_P3_V_01|minmax] 25/100
+  [a0_full|encoder|CV_P3_V_01|minmax] 50/100
+  [a0_full|encoder|CV_P3_V_01|minmax] 75/100
+  [a0_full|encoder|CV_P3_V_01|minmax] 100/100
+[a0_full|encoder|CV_P3_V_01|minmax] cos=0.612 beat=82% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/EncoderCRB/plots/qc_varian/a0_full/minmax/P3/CV_P3_V_01
+  [a0_full|encoder|CV_P4_V_01|minmax] 25/100
+  [a0_full|encoder|CV_P4_V_01|minmax] 50/100
+  [a0_full|encoder|CV_P4_V_01|minmax] 75/100
+  [a0_full|encoder|CV_P4_V_01|minmax] 100/100
+[a0_full|encoder|CV_P4_V_01|minmax] cos=0.666 beat=97% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/EncoderCRB/plots/qc_varian/a0_full/minmax/P4/CV_P4_V_01
+  [a0_full|encoder|CV_P5_V_01|minmax] 25/100
+  [a0_full|encoder|CV_P5_V_01|minmax] 50/100
+  [a0_full|encoder|CV_P5_V_01|minmax] 75/100
+  [a0_full|encoder|CV_P5_V_01|minmax] 100/100
+[a0_full|encoder|CV_P5_V_01|minmax] cos=0.557 beat=98% → /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/EncoderCRB/plots/qc_varian/a0_full/minmax/P5/CV_P5_V_01

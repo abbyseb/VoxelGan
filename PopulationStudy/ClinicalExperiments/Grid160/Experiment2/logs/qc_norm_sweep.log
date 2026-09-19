@@ -1,0 +1,689 @@
+G160-E2 norm sweep  device=cuda:0  arms=['a0_full', 'a0h', 'a1_full']  arches=['encoder', 'decoder', 'both']  norms=['minmax', 'p0.5_p99.5', 'p1_p99', 'p2_p98', 'p5_p95', 'mu_air_water']
+
+loaded a0_full encoder ← crb_enc_mse_iso_g160_a0_full_generator.pth
+  [a0_full|encoder|CV_P1_V_01]
+    minmax          cos=0.390  L1/z=1.086  beat=43%  dist=0.161
+    p0.5_p99.5      cos=0.367  L1/z=1.030  beat=52%  dist=0.029
+    p1_p99          cos=0.361  L1/z=1.028  beat=50%  dist=0.023
+    p2_p98          cos=0.353  L1/z=1.036  beat=48%  dist=0.021
+    p5_p95          cos=0.350  L1/z=1.068  beat=41%  dist=0.021
+    mu_air_water    cos=0.253  L1/z=1.022  beat=59%  dist=0.066
+  [a0_full|encoder|CV_P2_V_01]
+    minmax          cos=0.611  L1/z=0.843  beat=98%  dist=0.420
+    p0.5_p99.5      cos=0.507  L1/z=0.933  beat=88%  dist=0.059
+    p1_p99          cos=0.492  L1/z=0.938  beat=89%  dist=0.053
+    p2_p98          cos=0.473  L1/z=0.942  beat=87%  dist=0.050
+    p5_p95          cos=0.440  L1/z=0.945  beat=88%  dist=0.055
+    mu_air_water    cos=0.410  L1/z=0.941  beat=82%  dist=0.105
+  [a0_full|encoder|CV_P3_V_01]
+    minmax          cos=0.612  L1/z=0.873  beat=82%  dist=0.106
+    p0.5_p99.5      cos=0.599  L1/z=0.838  beat=90%  dist=0.083
+    p1_p99          cos=0.594  L1/z=0.849  beat=90%  dist=0.085
+    p2_p98          cos=0.589  L1/z=0.856  beat=90%  dist=0.087
+    p5_p95          cos=0.576  L1/z=0.861  beat=90%  dist=0.097
+    mu_air_water    cos=0.568  L1/z=0.866  beat=87%  dist=0.086
+  [a0_full|encoder|CV_P4_V_01]
+    minmax          cos=0.666  L1/z=0.766  beat=97%  dist=0.096
+    p0.5_p99.5      cos=0.658  L1/z=0.780  beat=96%  dist=0.118
+    p1_p99          cos=0.654  L1/z=0.786  beat=94%  dist=0.124
+    p2_p98          cos=0.648  L1/z=0.793  beat=94%  dist=0.132
+    p5_p95          cos=0.637  L1/z=0.806  beat=94%  dist=0.133
+    mu_air_water    cos=0.584  L1/z=0.841  beat=94%  dist=0.092
+  [a0_full|encoder|CV_P5_V_01]
+    minmax          cos=0.557  L1/z=0.850  beat=98%  dist=0.172
+    p0.5_p99.5      cos=0.615  L1/z=0.824  beat=94%  dist=0.070
+    p1_p99          cos=0.607  L1/z=0.833  beat=93%  dist=0.063
+    p2_p98          cos=0.595  L1/z=0.842  beat=92%  dist=0.064
+    p5_p95          cos=0.571  L1/z=0.856  beat=92%  dist=0.079
+    mu_air_water    cos=0.609  L1/z=0.812  beat=99%  dist=0.095
+  [a0_full|encoder|CE_P1_V_01]
+    minmax          cos=0.427  L1/z=0.982  beat=63%  dist=0.581
+    p0.5_p99.5      cos=0.562  L1/z=0.872  beat=90%  dist=0.279
+    p1_p99          cos=0.556  L1/z=0.873  beat=89%  dist=0.262
+    p2_p98          cos=0.551  L1/z=0.875  beat=90%  dist=0.267
+    p5_p95          cos=0.543  L1/z=0.872  beat=93%  dist=0.270
+    mu_air_water    cos=0.610  L1/z=0.828  beat=100%  dist=0.267
+  [a0_full|encoder|CE_P2_V_01]
+    minmax          cos=0.254  L1/z=1.091  beat=32%  dist=0.671
+    p0.5_p99.5      cos=0.311  L1/z=1.026  beat=50%  dist=0.405
+    p1_p99          cos=0.320  L1/z=1.008  beat=54%  dist=0.365
+    p2_p98          cos=0.371  L1/z=0.966  beat=69%  dist=0.256
+    p5_p95          cos=0.389  L1/z=0.948  beat=73%  dist=0.159
+    mu_air_water    cos=0.387  L1/z=0.962  beat=77%  dist=0.330
+  [a0_full|encoder|CE_P3_V_01]
+    minmax          cos=0.358  L1/z=0.976  beat=70%  dist=0.979
+    p0.5_p99.5      cos=0.441  L1/z=0.940  beat=74%  dist=0.516
+    p1_p99          cos=0.461  L1/z=0.926  beat=79%  dist=0.433
+    p2_p98          cos=0.468  L1/z=0.919  beat=80%  dist=0.398
+    p5_p95          cos=0.442  L1/z=0.926  beat=78%  dist=0.394
+    mu_air_water    cos=0.469  L1/z=0.901  beat=83%  dist=0.373
+  [a0_full|encoder|CE_P4_V_01]
+    minmax          cos=0.423  L1/z=0.934  beat=82%  dist=0.482
+    p0.5_p99.5      cos=0.473  L1/z=0.896  beat=89%  dist=0.108
+    p1_p99          cos=0.474  L1/z=0.894  beat=88%  dist=0.085
+    p2_p98          cos=0.468  L1/z=0.896  beat=87%  dist=0.081
+    p5_p95          cos=0.452  L1/z=0.903  beat=86%  dist=0.087
+    mu_air_water    cos=0.444  L1/z=0.924  beat=82%  dist=0.063
+  [a0_full|encoder|CE_P5_V_01]
+    minmax          cos=0.489  L1/z=0.909  beat=89%  dist=0.400
+    p0.5_p99.5      cos=0.476  L1/z=0.902  beat=86%  dist=0.271
+    p1_p99          cos=0.493  L1/z=0.890  beat=86%  dist=0.224
+    p2_p98          cos=0.500  L1/z=0.882  beat=88%  dist=0.196
+    p5_p95          cos=0.504  L1/z=0.878  beat=88%  dist=0.183
+    mu_air_water    cos=0.583  L1/z=0.833  beat=88%  dist=0.182
+
+loaded a0_full decoder ← crb_dec_mse_iso_g160_a0_full_generator.pth
+  [a0_full|decoder|CV_P1_V_01]
+    minmax          cos=0.366  L1/z=1.092  beat=40%  dist=0.161
+    p0.5_p99.5      cos=0.374  L1/z=1.157  beat=38%  dist=0.029
+    p1_p99          cos=0.365  L1/z=1.110  beat=42%  dist=0.023
+    p2_p98          cos=0.372  L1/z=1.060  beat=56%  dist=0.021
+    p5_p95          cos=0.365  L1/z=1.208  beat=31%  dist=0.021
+    mu_air_water    cos=0.246  L1/z=1.359  beat=24%  dist=0.066
+  [a0_full|decoder|CV_P2_V_01]
+    minmax          cos=0.603  L1/z=0.851  beat=98%  dist=0.420
+    p0.5_p99.5      cos=0.457  L1/z=1.104  beat=40%  dist=0.059
+    p1_p99          cos=0.444  L1/z=1.123  beat=40%  dist=0.053
+    p2_p98          cos=0.446  L1/z=1.168  beat=32%  dist=0.050
+    p5_p95          cos=0.450  L1/z=1.206  beat=30%  dist=0.055
+    mu_air_water    cos=0.257  L1/z=1.175  beat=21%  dist=0.105
+  [a0_full|decoder|CV_P3_V_01]
+    minmax          cos=0.581  L1/z=0.915  beat=72%  dist=0.106
+    p0.5_p99.5      cos=0.627  L1/z=0.934  beat=70%  dist=0.083
+    p1_p99          cos=0.629  L1/z=0.921  beat=71%  dist=0.085
+    p2_p98          cos=0.629  L1/z=0.917  beat=73%  dist=0.087
+    p5_p95          cos=0.618  L1/z=0.922  beat=72%  dist=0.097
+    mu_air_water    cos=0.583  L1/z=0.900  beat=79%  dist=0.086
+  [a0_full|decoder|CV_P4_V_01]
+    minmax          cos=0.646  L1/z=0.786  beat=98%  dist=0.096
+    p0.5_p99.5      cos=0.669  L1/z=0.775  beat=89%  dist=0.118
+    p1_p99          cos=0.663  L1/z=0.786  beat=89%  dist=0.124
+    p2_p98          cos=0.654  L1/z=0.798  beat=89%  dist=0.132
+    p5_p95          cos=0.635  L1/z=0.818  beat=88%  dist=0.133
+    mu_air_water    cos=0.567  L1/z=0.852  beat=90%  dist=0.092
+  [a0_full|decoder|CV_P5_V_01]
+    minmax          cos=0.558  L1/z=0.854  beat=100%  dist=0.172
+    p0.5_p99.5      cos=0.694  L1/z=0.745  beat=100%  dist=0.070
+    p1_p99          cos=0.693  L1/z=0.745  beat=100%  dist=0.063
+    p2_p98          cos=0.686  L1/z=0.750  beat=100%  dist=0.064
+    p5_p95          cos=0.665  L1/z=0.765  beat=100%  dist=0.079
+    mu_air_water    cos=0.645  L1/z=0.792  beat=100%  dist=0.095
+  [a0_full|decoder|CE_P1_V_01]
+    minmax          cos=0.004  L1/z=1.031  beat=36%  dist=0.581
+    p0.5_p99.5      cos=0.452  L1/z=0.966  beat=66%  dist=0.279
+    p1_p99          cos=0.456  L1/z=0.988  beat=56%  dist=0.262
+    p2_p98          cos=0.478  L1/z=0.974  beat=62%  dist=0.267
+    p5_p95          cos=0.534  L1/z=0.920  beat=81%  dist=0.270
+    mu_air_water    cos=0.569  L1/z=0.871  beat=97%  dist=0.267
+  [a0_full|decoder|CE_P2_V_01]
+    minmax          cos=-0.068  L1/z=1.039  beat=19%  dist=0.671
+    p0.5_p99.5      cos=0.130  L1/z=1.023  beat=40%  dist=0.405
+    p1_p99          cos=0.231  L1/z=0.987  beat=72%  dist=0.365
+    p2_p98          cos=0.436  L1/z=0.914  beat=79%  dist=0.256
+    p5_p95          cos=0.470  L1/z=0.913  beat=74%  dist=0.159
+    mu_air_water    cos=0.406  L1/z=0.943  beat=77%  dist=0.330
+  [a0_full|decoder|CE_P3_V_01]
+    minmax          cos=0.123  L1/z=0.990  beat=53%  dist=0.979
+    p0.5_p99.5      cos=0.278  L1/z=0.965  beat=61%  dist=0.516
+    p1_p99          cos=0.375  L1/z=0.925  beat=78%  dist=0.433
+    p2_p98          cos=0.442  L1/z=0.899  beat=82%  dist=0.398
+    p5_p95          cos=0.429  L1/z=0.907  beat=82%  dist=0.394
+    mu_air_water    cos=0.372  L1/z=0.917  beat=83%  dist=0.373
+  [a0_full|decoder|CE_P4_V_01]
+    minmax          cos=0.210  L1/z=0.994  beat=58%  dist=0.482
+    p0.5_p99.5      cos=0.472  L1/z=0.924  beat=79%  dist=0.108
+    p1_p99          cos=0.501  L1/z=0.904  beat=80%  dist=0.085
+    p2_p98          cos=0.510  L1/z=0.906  beat=80%  dist=0.081
+    p5_p95          cos=0.500  L1/z=0.927  beat=79%  dist=0.087
+    mu_air_water    cos=0.476  L1/z=0.936  beat=78%  dist=0.063
+  [a0_full|decoder|CE_P5_V_01]
+    minmax          cos=0.488  L1/z=0.905  beat=86%  dist=0.400
+    p0.5_p99.5      cos=0.363  L1/z=0.941  beat=77%  dist=0.271
+    p1_p99          cos=0.489  L1/z=0.884  beat=84%  dist=0.224
+    p2_p98          cos=0.547  L1/z=0.842  beat=86%  dist=0.196
+    p5_p95          cos=0.572  L1/z=0.822  beat=83%  dist=0.183
+    mu_air_water    cos=0.573  L1/z=0.830  beat=87%  dist=0.182
+
+loaded a0_full both ← crb_both_mse_iso_g160_a0_full_generator.pth
+  [a0_full|both|CV_P1_V_01]
+    minmax          cos=0.374  L1/z=1.110  beat=38%  dist=0.161
+    p0.5_p99.5      cos=0.375  L1/z=1.139  beat=48%  dist=0.029
+    p1_p99          cos=0.364  L1/z=1.127  beat=47%  dist=0.023
+    p2_p98          cos=0.354  L1/z=1.104  beat=49%  dist=0.021
+    p5_p95          cos=0.358  L1/z=1.106  beat=43%  dist=0.021
+    mu_air_water    cos=0.385  L1/z=1.088  beat=51%  dist=0.066
+  [a0_full|both|CV_P2_V_01]
+    minmax          cos=0.569  L1/z=0.867  beat=100%  dist=0.420
+    p0.5_p99.5      cos=0.540  L1/z=0.960  beat=74%  dist=0.059
+    p1_p99          cos=0.548  L1/z=0.953  beat=78%  dist=0.053
+    p2_p98          cos=0.555  L1/z=0.945  beat=78%  dist=0.050
+    p5_p95          cos=0.566  L1/z=0.930  beat=81%  dist=0.055
+    mu_air_water    cos=0.530  L1/z=0.923  beat=82%  dist=0.105
+  [a0_full|both|CV_P3_V_01]
+    minmax          cos=0.592  L1/z=0.902  beat=77%  dist=0.106
+    p0.5_p99.5      cos=0.613  L1/z=0.862  beat=82%  dist=0.083
+    p1_p99          cos=0.610  L1/z=0.855  beat=83%  dist=0.085
+    p2_p98          cos=0.607  L1/z=0.853  beat=84%  dist=0.087
+    p5_p95          cos=0.606  L1/z=0.852  beat=84%  dist=0.097
+    mu_air_water    cos=0.645  L1/z=0.837  beat=84%  dist=0.086
+  [a0_full|both|CV_P4_V_01]
+    minmax          cos=0.685  L1/z=0.770  beat=96%  dist=0.096
+    p0.5_p99.5      cos=0.709  L1/z=0.739  beat=96%  dist=0.118
+    p1_p99          cos=0.705  L1/z=0.744  beat=94%  dist=0.124
+    p2_p98          cos=0.700  L1/z=0.750  beat=94%  dist=0.132
+    p5_p95          cos=0.693  L1/z=0.758  beat=94%  dist=0.133
+    mu_air_water    cos=0.699  L1/z=0.741  beat=98%  dist=0.092
+  [a0_full|both|CV_P5_V_01]
+    minmax          cos=0.568  L1/z=0.852  beat=96%  dist=0.172
+    p0.5_p99.5      cos=0.652  L1/z=0.776  beat=100%  dist=0.070
+    p1_p99          cos=0.633  L1/z=0.791  beat=100%  dist=0.063
+    p2_p98          cos=0.618  L1/z=0.806  beat=100%  dist=0.064
+    p5_p95          cos=0.608  L1/z=0.819  beat=100%  dist=0.079
+    mu_air_water    cos=0.702  L1/z=0.721  beat=100%  dist=0.095
+  [a0_full|both|CE_P1_V_01]
+    minmax          cos=0.411  L1/z=1.018  beat=60%  dist=0.581
+    p0.5_p99.5      cos=0.625  L1/z=0.834  beat=92%  dist=0.279
+    p1_p99          cos=0.622  L1/z=0.845  beat=88%  dist=0.262
+    p2_p98          cos=0.623  L1/z=0.844  beat=90%  dist=0.267
+    p5_p95          cos=0.632  L1/z=0.834  beat=90%  dist=0.270
+    mu_air_water    cos=0.539  L1/z=0.874  beat=99%  dist=0.267
+  [a0_full|both|CE_P2_V_01]
+    minmax          cos=0.245  L1/z=1.025  beat=63%  dist=0.671
+    p0.5_p99.5      cos=0.316  L1/z=0.992  beat=71%  dist=0.405
+    p1_p99          cos=0.359  L1/z=0.975  beat=73%  dist=0.365
+    p2_p98          cos=0.448  L1/z=0.926  beat=74%  dist=0.256
+    p5_p95          cos=0.460  L1/z=0.916  beat=76%  dist=0.159
+    mu_air_water    cos=0.364  L1/z=0.957  beat=74%  dist=0.330
+  [a0_full|both|CE_P3_V_01]
+    minmax          cos=-0.126  L1/z=1.020  beat=18%  dist=0.979
+    p0.5_p99.5      cos=0.444  L1/z=0.931  beat=88%  dist=0.516
+    p1_p99          cos=0.506  L1/z=0.903  beat=84%  dist=0.433
+    p2_p98          cos=0.525  L1/z=0.895  beat=83%  dist=0.398
+    p5_p95          cos=0.536  L1/z=0.892  beat=83%  dist=0.394
+    mu_air_water    cos=0.443  L1/z=0.914  beat=83%  dist=0.373
+  [a0_full|both|CE_P4_V_01]
+    minmax          cos=0.386  L1/z=0.959  beat=72%  dist=0.482
+    p0.5_p99.5      cos=0.499  L1/z=0.892  beat=86%  dist=0.108
+    p1_p99          cos=0.502  L1/z=0.890  beat=83%  dist=0.085
+    p2_p98          cos=0.498  L1/z=0.891  beat=82%  dist=0.081
+    p5_p95          cos=0.484  L1/z=0.896  beat=82%  dist=0.087
+    mu_air_water    cos=0.472  L1/z=0.916  beat=81%  dist=0.063
+  [a0_full|both|CE_P5_V_01]
+    minmax          cos=0.263  L1/z=0.969  beat=69%  dist=0.400
+    p0.5_p99.5      cos=0.523  L1/z=0.868  beat=84%  dist=0.271
+    p1_p99          cos=0.547  L1/z=0.851  beat=84%  dist=0.224
+    p2_p98          cos=0.547  L1/z=0.849  beat=84%  dist=0.196
+    p5_p95          cos=0.530  L1/z=0.858  beat=86%  dist=0.183
+    mu_air_water    cos=0.602  L1/z=0.818  beat=88%  dist=0.182
+
+loaded a0h encoder ← crb_enc_mse_iso_g160_a0h_generator.pth
+  [a0h|encoder|CV_P1_V_01]
+    minmax          cos=0.350  L1/z=1.126  beat=39%  dist=0.161
+    p0.5_p99.5      cos=0.369  L1/z=1.069  beat=50%  dist=0.029
+    p1_p99          cos=0.366  L1/z=1.063  beat=57%  dist=0.023
+    p2_p98          cos=0.361  L1/z=1.055  beat=58%  dist=0.021
+    p5_p95          cos=0.352  L1/z=1.030  beat=60%  dist=0.021
+    mu_air_water    cos=0.054  L1/z=1.086  beat=20%  dist=0.066
+  [a0h|encoder|CV_P2_V_01]
+    minmax          cos=0.529  L1/z=0.940  beat=80%  dist=0.420
+    p0.5_p99.5      cos=0.429  L1/z=0.987  beat=69%  dist=0.059
+    p1_p99          cos=0.401  L1/z=0.994  beat=69%  dist=0.053
+    p2_p98          cos=0.363  L1/z=1.003  beat=66%  dist=0.050
+    p5_p95          cos=0.308  L1/z=1.010  beat=59%  dist=0.055
+    mu_air_water    cos=0.142  L1/z=1.049  beat=23%  dist=0.105
+  [a0h|encoder|CV_P3_V_01]
+    minmax          cos=0.576  L1/z=0.886  beat=80%  dist=0.106
+    p0.5_p99.5      cos=0.602  L1/z=0.829  beat=96%  dist=0.083
+    p1_p99          cos=0.601  L1/z=0.827  beat=97%  dist=0.085
+    p2_p98          cos=0.596  L1/z=0.828  beat=97%  dist=0.087
+    p5_p95          cos=0.567  L1/z=0.844  beat=97%  dist=0.097
+    mu_air_water    cos=0.404  L1/z=0.935  beat=79%  dist=0.086
+  [a0h|encoder|CV_P4_V_01]
+    minmax          cos=0.662  L1/z=0.786  beat=94%  dist=0.096
+    p0.5_p99.5      cos=0.623  L1/z=0.802  beat=97%  dist=0.118
+    p1_p99          cos=0.615  L1/z=0.811  beat=97%  dist=0.124
+    p2_p98          cos=0.602  L1/z=0.826  beat=97%  dist=0.132
+    p5_p95          cos=0.560  L1/z=0.862  beat=96%  dist=0.133
+    mu_air_water    cos=0.258  L1/z=0.967  beat=68%  dist=0.092
+  [a0h|encoder|CV_P5_V_01]
+    minmax          cos=0.550  L1/z=0.863  beat=91%  dist=0.172
+    p0.5_p99.5      cos=0.622  L1/z=0.805  beat=97%  dist=0.070
+    p1_p99          cos=0.619  L1/z=0.808  beat=97%  dist=0.063
+    p2_p98          cos=0.619  L1/z=0.811  beat=97%  dist=0.064
+    p5_p95          cos=0.621  L1/z=0.817  beat=98%  dist=0.079
+    mu_air_water    cos=0.529  L1/z=0.847  beat=98%  dist=0.095
+  [a0h|encoder|CE_P1_V_01]
+    minmax          cos=0.390  L1/z=1.010  beat=50%  dist=0.581
+    p0.5_p99.5      cos=0.585  L1/z=0.840  beat=92%  dist=0.279
+    p1_p99          cos=0.583  L1/z=0.841  beat=93%  dist=0.262
+    p2_p98          cos=0.579  L1/z=0.843  beat=93%  dist=0.267
+    p5_p95          cos=0.546  L1/z=0.858  beat=91%  dist=0.270
+    mu_air_water    cos=0.572  L1/z=0.849  beat=100%  dist=0.267
+  [a0h|encoder|CE_P2_V_01]
+    minmax          cos=0.242  L1/z=1.066  beat=37%  dist=0.671
+    p0.5_p99.5      cos=0.305  L1/z=1.007  beat=57%  dist=0.405
+    p1_p99          cos=0.349  L1/z=0.978  beat=67%  dist=0.365
+    p2_p98          cos=0.439  L1/z=0.922  beat=76%  dist=0.256
+    p5_p95          cos=0.406  L1/z=0.943  beat=76%  dist=0.159
+    mu_air_water    cos=0.455  L1/z=0.941  beat=73%  dist=0.330
+  [a0h|encoder|CE_P3_V_01]
+    minmax          cos=0.417  L1/z=0.953  beat=79%  dist=0.979
+    p0.5_p99.5      cos=0.523  L1/z=0.915  beat=86%  dist=0.516
+    p1_p99          cos=0.535  L1/z=0.907  beat=84%  dist=0.433
+    p2_p98          cos=0.520  L1/z=0.911  beat=83%  dist=0.398
+    p5_p95          cos=0.465  L1/z=0.928  beat=84%  dist=0.394
+    mu_air_water    cos=0.485  L1/z=0.903  beat=82%  dist=0.373
+  [a0h|encoder|CE_P4_V_01]
+    minmax          cos=0.424  L1/z=0.948  beat=83%  dist=0.482
+    p0.5_p99.5      cos=0.490  L1/z=0.901  beat=82%  dist=0.108
+    p1_p99          cos=0.493  L1/z=0.900  beat=82%  dist=0.085
+    p2_p98          cos=0.491  L1/z=0.900  beat=83%  dist=0.081
+    p5_p95          cos=0.477  L1/z=0.905  beat=82%  dist=0.087
+    mu_air_water    cos=0.382  L1/z=0.972  beat=77%  dist=0.063
+  [a0h|encoder|CE_P5_V_01]
+    minmax          cos=0.383  L1/z=0.936  beat=86%  dist=0.400
+    p0.5_p99.5      cos=0.513  L1/z=0.875  beat=88%  dist=0.271
+    p1_p99          cos=0.529  L1/z=0.865  beat=88%  dist=0.224
+    p2_p98          cos=0.532  L1/z=0.865  beat=87%  dist=0.196
+    p5_p95          cos=0.528  L1/z=0.868  beat=86%  dist=0.183
+    mu_air_water    cos=0.553  L1/z=0.847  beat=81%  dist=0.182
+
+loaded a0h decoder ← crb_dec_mse_iso_g160_a0h_generator.pth
+  [a0h|decoder|CV_P1_V_01]
+    minmax          cos=0.369  L1/z=1.141  beat=32%  dist=0.161
+    p0.5_p99.5      cos=0.352  L1/z=1.101  beat=51%  dist=0.029
+    p1_p99          cos=0.342  L1/z=1.105  beat=53%  dist=0.023
+    p2_p98          cos=0.327  L1/z=1.101  beat=53%  dist=0.021
+    p5_p95          cos=0.271  L1/z=1.085  beat=57%  dist=0.021
+    mu_air_water    cos=0.001  L1/z=1.084  beat=37%  dist=0.066
+  [a0h|decoder|CV_P2_V_01]
+    minmax          cos=0.530  L1/z=0.911  beat=87%  dist=0.420
+    p0.5_p99.5      cos=0.375  L1/z=0.978  beat=73%  dist=0.059
+    p1_p99          cos=0.331  L1/z=0.992  beat=70%  dist=0.053
+    p2_p98          cos=0.276  L1/z=1.012  beat=61%  dist=0.050
+    p5_p95          cos=0.300  L1/z=1.001  beat=64%  dist=0.055
+    mu_air_water    cos=0.323  L1/z=0.999  beat=69%  dist=0.105
+  [a0h|decoder|CV_P3_V_01]
+    minmax          cos=0.562  L1/z=0.905  beat=73%  dist=0.106
+    p0.5_p99.5      cos=0.611  L1/z=0.836  beat=83%  dist=0.083
+    p1_p99          cos=0.597  L1/z=0.841  beat=83%  dist=0.085
+    p2_p98          cos=0.574  L1/z=0.851  beat=87%  dist=0.087
+    p5_p95          cos=0.521  L1/z=0.879  beat=84%  dist=0.097
+    mu_air_water    cos=0.360  L1/z=0.960  beat=68%  dist=0.086
+  [a0h|decoder|CV_P4_V_01]
+    minmax          cos=0.665  L1/z=0.772  beat=97%  dist=0.096
+    p0.5_p99.5      cos=0.648  L1/z=0.792  beat=97%  dist=0.118
+    p1_p99          cos=0.631  L1/z=0.811  beat=97%  dist=0.124
+    p2_p98          cos=0.611  L1/z=0.835  beat=97%  dist=0.132
+    p5_p95          cos=0.552  L1/z=0.876  beat=94%  dist=0.133
+    mu_air_water    cos=0.448  L1/z=0.916  beat=89%  dist=0.092
+  [a0h|decoder|CV_P5_V_01]
+    minmax          cos=0.386  L1/z=0.925  beat=90%  dist=0.172
+    p0.5_p99.5      cos=0.653  L1/z=0.781  beat=100%  dist=0.070
+    p1_p99          cos=0.657  L1/z=0.780  beat=100%  dist=0.063
+    p2_p98          cos=0.664  L1/z=0.780  beat=100%  dist=0.064
+    p5_p95          cos=0.655  L1/z=0.795  beat=100%  dist=0.079
+    mu_air_water    cos=0.573  L1/z=0.852  beat=100%  dist=0.095
+  [a0h|decoder|CE_P1_V_01]
+    minmax          cos=-0.227  L1/z=1.024  beat=8%  dist=0.581
+    p0.5_p99.5      cos=0.459  L1/z=0.899  beat=91%  dist=0.279
+    p1_p99          cos=0.475  L1/z=0.893  beat=91%  dist=0.262
+    p2_p98          cos=0.453  L1/z=0.904  beat=88%  dist=0.267
+    p5_p95          cos=0.391  L1/z=0.929  beat=90%  dist=0.270
+    mu_air_water    cos=0.466  L1/z=0.907  beat=92%  dist=0.267
+  [a0h|decoder|CE_P2_V_01]
+    minmax          cos=-0.163  L1/z=1.020  beat=14%  dist=0.671
+    p0.5_p99.5      cos=0.115  L1/z=0.994  beat=68%  dist=0.405
+    p1_p99          cos=0.324  L1/z=0.955  beat=76%  dist=0.365
+    p2_p98          cos=0.436  L1/z=0.913  beat=78%  dist=0.256
+    p5_p95          cos=0.355  L1/z=0.956  beat=74%  dist=0.159
+    mu_air_water    cos=0.444  L1/z=0.912  beat=80%  dist=0.330
+  [a0h|decoder|CE_P3_V_01]
+    minmax          cos=0.093  L1/z=0.999  beat=53%  dist=0.979
+    p0.5_p99.5      cos=0.384  L1/z=0.957  beat=81%  dist=0.516
+    p1_p99          cos=0.463  L1/z=0.915  beat=86%  dist=0.433
+    p2_p98          cos=0.445  L1/z=0.919  beat=86%  dist=0.398
+    p5_p95          cos=0.419  L1/z=0.923  beat=87%  dist=0.394
+    mu_air_water    cos=0.463  L1/z=0.903  beat=86%  dist=0.373
+  [a0h|decoder|CE_P4_V_01]
+    minmax          cos=0.180  L1/z=0.991  beat=68%  dist=0.482
+    p0.5_p99.5      cos=0.377  L1/z=0.945  beat=87%  dist=0.108
+    p1_p99          cos=0.417  L1/z=0.929  beat=87%  dist=0.085
+    p2_p98          cos=0.432  L1/z=0.922  beat=87%  dist=0.081
+    p5_p95          cos=0.417  L1/z=0.926  beat=84%  dist=0.087
+    mu_air_water    cos=0.382  L1/z=0.947  beat=74%  dist=0.063
+  [a0h|decoder|CE_P5_V_01]
+    minmax          cos=0.285  L1/z=0.965  beat=81%  dist=0.400
+    p0.5_p99.5      cos=0.442  L1/z=0.906  beat=86%  dist=0.271
+    p1_p99          cos=0.527  L1/z=0.862  beat=87%  dist=0.224
+    p2_p98          cos=0.533  L1/z=0.855  beat=87%  dist=0.196
+    p5_p95          cos=0.523  L1/z=0.857  beat=83%  dist=0.183
+    mu_air_water    cos=0.516  L1/z=0.865  beat=80%  dist=0.182
+WARN skip a0h/both: missing /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment0/BothCRB/weights/crb_both_mse_iso_g160_a0h_generator.pth
+
+loaded a1_full encoder ← crb_enc_mse_iso_g160_fov_full_generator.pth
+  [a1_full|encoder|CV_P1_V_01]
+    minmax          cos=0.382  L1/z=1.065  beat=51%  dist=0.161
+    p0.5_p99.5      cos=0.378  L1/z=1.025  beat=61%  dist=0.029
+    p1_p99          cos=0.376  L1/z=1.024  beat=61%  dist=0.023
+    p2_p98          cos=0.370  L1/z=1.027  beat=59%  dist=0.021
+    p5_p95          cos=0.364  L1/z=1.038  beat=57%  dist=0.021
+    mu_air_water    cos=0.367  L1/z=1.055  beat=59%  dist=0.066
+  [a1_full|encoder|CV_P2_V_01]
+    minmax          cos=0.597  L1/z=0.858  beat=97%  dist=0.420
+    p0.5_p99.5      cos=0.573  L1/z=0.888  beat=92%  dist=0.059
+    p1_p99          cos=0.578  L1/z=0.885  beat=93%  dist=0.053
+    p2_p98          cos=0.582  L1/z=0.884  beat=93%  dist=0.050
+    p5_p95          cos=0.580  L1/z=0.888  beat=90%  dist=0.055
+    mu_air_water    cos=0.628  L1/z=0.855  beat=94%  dist=0.105
+  [a1_full|encoder|CV_P3_V_01]
+    minmax          cos=0.597  L1/z=0.866  beat=83%  dist=0.106
+    p0.5_p99.5      cos=0.626  L1/z=0.824  beat=89%  dist=0.083
+    p1_p99          cos=0.624  L1/z=0.824  beat=91%  dist=0.085
+    p2_p98          cos=0.620  L1/z=0.826  beat=92%  dist=0.087
+    p5_p95          cos=0.613  L1/z=0.831  beat=92%  dist=0.097
+    mu_air_water    cos=0.647  L1/z=0.828  beat=84%  dist=0.086
+  [a1_full|encoder|CV_P4_V_01]
+    minmax          cos=0.694  L1/z=0.742  beat=94%  dist=0.096
+    p0.5_p99.5      cos=0.681  L1/z=0.765  beat=96%  dist=0.118
+    p1_p99          cos=0.677  L1/z=0.770  beat=96%  dist=0.124
+    p2_p98          cos=0.673  L1/z=0.774  beat=94%  dist=0.132
+    p5_p95          cos=0.667  L1/z=0.781  beat=93%  dist=0.133
+    mu_air_water    cos=0.691  L1/z=0.749  beat=96%  dist=0.092
+  [a1_full|encoder|CV_P5_V_01]
+    minmax          cos=0.544  L1/z=0.853  beat=98%  dist=0.172
+    p0.5_p99.5      cos=0.645  L1/z=0.804  beat=100%  dist=0.070
+    p1_p99          cos=0.637  L1/z=0.811  beat=100%  dist=0.063
+    p2_p98          cos=0.628  L1/z=0.818  beat=100%  dist=0.064
+    p5_p95          cos=0.614  L1/z=0.826  beat=100%  dist=0.079
+    mu_air_water    cos=0.672  L1/z=0.764  beat=99%  dist=0.095
+  [a1_full|encoder|CE_P1_V_01]
+    minmax          cos=0.253  L1/z=0.983  beat=62%  dist=0.581
+    p0.5_p99.5      cos=0.552  L1/z=0.864  beat=96%  dist=0.279
+    p1_p99          cos=0.557  L1/z=0.869  beat=93%  dist=0.262
+    p2_p98          cos=0.558  L1/z=0.872  beat=92%  dist=0.267
+    p5_p95          cos=0.571  L1/z=0.866  beat=92%  dist=0.270
+    mu_air_water    cos=0.592  L1/z=0.835  beat=99%  dist=0.267
+  [a1_full|encoder|CE_P2_V_01]
+    minmax          cos=0.188  L1/z=1.012  beat=50%  dist=0.671
+    p0.5_p99.5      cos=0.334  L1/z=0.966  beat=70%  dist=0.405
+    p1_p99          cos=0.373  L1/z=0.951  beat=72%  dist=0.365
+    p2_p98          cos=0.402  L1/z=0.940  beat=77%  dist=0.256
+    p5_p95          cos=0.381  L1/z=0.955  beat=79%  dist=0.159
+    mu_air_water    cos=0.355  L1/z=0.960  beat=78%  dist=0.330
+  [a1_full|encoder|CE_P3_V_01]
+    minmax          cos=0.354  L1/z=0.954  beat=87%  dist=0.979
+    p0.5_p99.5      cos=0.470  L1/z=0.911  beat=86%  dist=0.516
+    p1_p99          cos=0.489  L1/z=0.902  beat=86%  dist=0.433
+    p2_p98          cos=0.487  L1/z=0.901  beat=82%  dist=0.398
+    p5_p95          cos=0.484  L1/z=0.904  beat=82%  dist=0.394
+    mu_air_water    cos=0.465  L1/z=0.902  beat=88%  dist=0.373
+  [a1_full|encoder|CE_P4_V_01]
+    minmax          cos=0.406  L1/z=0.936  beat=86%  dist=0.482
+    p0.5_p99.5      cos=0.436  L1/z=0.914  beat=84%  dist=0.108
+    p1_p99          cos=0.421  L1/z=0.920  beat=84%  dist=0.085
+    p2_p98          cos=0.404  L1/z=0.926  beat=84%  dist=0.081
+    p5_p95          cos=0.388  L1/z=0.932  beat=84%  dist=0.087
+    mu_air_water    cos=0.445  L1/z=0.921  beat=81%  dist=0.063
+  [a1_full|encoder|CE_P5_V_01]
+    minmax          cos=0.417  L1/z=0.936  beat=79%  dist=0.400
+    p0.5_p99.5      cos=0.525  L1/z=0.861  beat=86%  dist=0.271
+    p1_p99          cos=0.540  L1/z=0.852  beat=84%  dist=0.224
+    p2_p98          cos=0.545  L1/z=0.851  beat=84%  dist=0.196
+    p5_p95          cos=0.547  L1/z=0.855  beat=84%  dist=0.183
+    mu_air_water    cos=0.604  L1/z=0.818  beat=89%  dist=0.182
+
+loaded a1_full decoder ← crb_dec_mse_iso_g160_fov_full_generator.pth
+  [a1_full|decoder|CV_P1_V_01]
+    minmax          cos=0.405  L1/z=1.056  beat=53%  dist=0.161
+    p0.5_p99.5      cos=0.396  L1/z=1.041  beat=58%  dist=0.029
+    p1_p99          cos=0.396  L1/z=1.036  beat=58%  dist=0.023
+    p2_p98          cos=0.396  L1/z=1.035  beat=58%  dist=0.021
+    p5_p95          cos=0.394  L1/z=1.030  beat=57%  dist=0.021
+    mu_air_water    cos=0.394  L1/z=1.063  beat=53%  dist=0.066
+  [a1_full|decoder|CV_P2_V_01]
+    minmax          cos=0.619  L1/z=0.840  beat=100%  dist=0.420
+    p0.5_p99.5      cos=0.534  L1/z=0.912  beat=97%  dist=0.059
+    p1_p99          cos=0.542  L1/z=0.905  beat=97%  dist=0.053
+    p2_p98          cos=0.563  L1/z=0.885  beat=99%  dist=0.050
+    p5_p95          cos=0.598  L1/z=0.853  beat=100%  dist=0.055
+    mu_air_water    cos=0.617  L1/z=0.856  beat=98%  dist=0.105
+  [a1_full|decoder|CV_P3_V_01]
+    minmax          cos=0.605  L1/z=0.846  beat=83%  dist=0.106
+    p0.5_p99.5      cos=0.629  L1/z=0.812  beat=90%  dist=0.083
+    p1_p99          cos=0.626  L1/z=0.810  beat=92%  dist=0.085
+    p2_p98          cos=0.623  L1/z=0.810  beat=93%  dist=0.087
+    p5_p95          cos=0.621  L1/z=0.811  beat=92%  dist=0.097
+    mu_air_water    cos=0.647  L1/z=0.811  beat=87%  dist=0.086
+  [a1_full|decoder|CV_P4_V_01]
+    minmax          cos=0.634  L1/z=0.781  beat=98%  dist=0.096
+    p0.5_p99.5      cos=0.641  L1/z=0.788  beat=93%  dist=0.118
+    p1_p99          cos=0.637  L1/z=0.793  beat=92%  dist=0.124
+    p2_p98          cos=0.633  L1/z=0.797  beat=92%  dist=0.132
+    p5_p95          cos=0.626  L1/z=0.803  beat=92%  dist=0.133
+    mu_air_water    cos=0.658  L1/z=0.768  beat=96%  dist=0.092
+  [a1_full|decoder|CV_P5_V_01]
+    minmax          cos=0.558  L1/z=0.844  beat=98%  dist=0.172
+    p0.5_p99.5      cos=0.650  L1/z=0.780  beat=99%  dist=0.070
+    p1_p99          cos=0.639  L1/z=0.794  beat=99%  dist=0.063
+    p2_p98          cos=0.634  L1/z=0.801  beat=98%  dist=0.064
+    p5_p95          cos=0.627  L1/z=0.810  beat=98%  dist=0.079
+    mu_air_water    cos=0.688  L1/z=0.749  beat=99%  dist=0.095
+  [a1_full|decoder|CE_P1_V_01]
+    minmax          cos=-0.103  L1/z=1.045  beat=13%  dist=0.581
+    p0.5_p99.5      cos=0.677  L1/z=0.764  beat=98%  dist=0.279
+    p1_p99          cos=0.684  L1/z=0.760  beat=98%  dist=0.262
+    p2_p98          cos=0.682  L1/z=0.765  beat=98%  dist=0.267
+    p5_p95          cos=0.660  L1/z=0.783  beat=99%  dist=0.270
+    mu_air_water    cos=0.628  L1/z=0.801  beat=100%  dist=0.267
+  [a1_full|decoder|CE_P2_V_01]
+    minmax          cos=0.185  L1/z=0.989  beat=74%  dist=0.671
+    p0.5_p99.5      cos=0.413  L1/z=0.928  beat=79%  dist=0.405
+    p1_p99          cos=0.443  L1/z=0.915  beat=76%  dist=0.365
+    p2_p98          cos=0.462  L1/z=0.904  beat=77%  dist=0.256
+    p5_p95          cos=0.456  L1/z=0.919  beat=77%  dist=0.159
+    mu_air_water    cos=0.430  L1/z=0.930  beat=77%  dist=0.330
+  [a1_full|decoder|CE_P3_V_01]
+    minmax          cos=0.246  L1/z=0.967  beat=83%  dist=0.979
+    p0.5_p99.5      cos=0.518  L1/z=0.894  beat=89%  dist=0.516
+    p1_p99          cos=0.558  L1/z=0.879  beat=87%  dist=0.433
+    p2_p98          cos=0.555  L1/z=0.880  beat=86%  dist=0.398
+    p5_p95          cos=0.553  L1/z=0.886  beat=81%  dist=0.394
+    mu_air_water    cos=0.527  L1/z=0.898  beat=90%  dist=0.373
+  [a1_full|decoder|CE_P4_V_01]
+    minmax          cos=0.453  L1/z=0.917  beat=87%  dist=0.482
+    p0.5_p99.5      cos=0.517  L1/z=0.890  beat=82%  dist=0.108
+    p1_p99          cos=0.505  L1/z=0.896  beat=82%  dist=0.085
+    p2_p98          cos=0.493  L1/z=0.902  beat=83%  dist=0.081
+    p5_p95          cos=0.474  L1/z=0.911  beat=83%  dist=0.087
+    mu_air_water    cos=0.469  L1/z=0.928  beat=78%  dist=0.063
+  [a1_full|decoder|CE_P5_V_01]
+    minmax          cos=0.188  L1/z=0.985  beat=73%  dist=0.400
+    p0.5_p99.5      cos=0.559  L1/z=0.836  beat=87%  dist=0.271
+    p1_p99          cos=0.571  L1/z=0.822  beat=87%  dist=0.224
+    p2_p98          cos=0.573  L1/z=0.819  beat=87%  dist=0.196
+    p5_p95          cos=0.570  L1/z=0.822  beat=87%  dist=0.183
+    mu_air_water    cos=0.556  L1/z=0.833  beat=86%  dist=0.182
+
+loaded a1_full both ← crb_both_mse_iso_g160_fov_full_generator.pth
+  [a1_full|both|CV_P1_V_01]
+    minmax          cos=0.402  L1/z=1.072  beat=59%  dist=0.161
+    p0.5_p99.5      cos=0.390  L1/z=1.131  beat=41%  dist=0.029
+    p1_p99          cos=0.385  L1/z=1.145  beat=39%  dist=0.023
+    p2_p98          cos=0.377  L1/z=1.153  beat=38%  dist=0.021
+    p5_p95          cos=0.362  L1/z=1.164  beat=33%  dist=0.021
+    mu_air_water    cos=0.395  L1/z=1.115  beat=44%  dist=0.066
+  [a1_full|both|CV_P2_V_01]
+    minmax          cos=0.599  L1/z=0.861  beat=98%  dist=0.420
+    p0.5_p99.5      cos=0.573  L1/z=0.960  beat=70%  dist=0.059
+    p1_p99          cos=0.578  L1/z=0.957  beat=73%  dist=0.053
+    p2_p98          cos=0.584  L1/z=0.952  beat=74%  dist=0.050
+    p5_p95          cos=0.594  L1/z=0.944  beat=76%  dist=0.055
+    mu_air_water    cos=0.596  L1/z=0.909  beat=84%  dist=0.105
+  [a1_full|both|CV_P3_V_01]
+    minmax          cos=0.592  L1/z=0.882  beat=77%  dist=0.106
+    p0.5_p99.5      cos=0.638  L1/z=0.883  beat=79%  dist=0.083
+    p1_p99          cos=0.637  L1/z=0.880  beat=78%  dist=0.085
+    p2_p98          cos=0.632  L1/z=0.877  beat=80%  dist=0.087
+    p5_p95          cos=0.625  L1/z=0.872  beat=82%  dist=0.097
+    mu_air_water    cos=0.642  L1/z=0.867  beat=80%  dist=0.086
+  [a1_full|both|CV_P4_V_01]
+    minmax          cos=0.693  L1/z=0.739  beat=98%  dist=0.096
+    p0.5_p99.5      cos=0.674  L1/z=0.779  beat=91%  dist=0.118
+    p1_p99          cos=0.673  L1/z=0.781  beat=90%  dist=0.124
+    p2_p98          cos=0.671  L1/z=0.782  beat=91%  dist=0.132
+    p5_p95          cos=0.669  L1/z=0.784  beat=92%  dist=0.133
+    mu_air_water    cos=0.659  L1/z=0.790  beat=91%  dist=0.092
+  [a1_full|both|CV_P5_V_01]
+    minmax          cos=0.607  L1/z=0.819  beat=100%  dist=0.172
+    p0.5_p99.5      cos=0.658  L1/z=0.774  beat=99%  dist=0.070
+    p1_p99          cos=0.648  L1/z=0.784  beat=99%  dist=0.063
+    p2_p98          cos=0.642  L1/z=0.790  beat=99%  dist=0.064
+    p5_p95          cos=0.638  L1/z=0.793  beat=99%  dist=0.079
+    mu_air_water    cos=0.705  L1/z=0.731  beat=100%  dist=0.095
+  [a1_full|both|CE_P1_V_01]
+    minmax          cos=0.273  L1/z=0.977  beat=69%  dist=0.581
+    p0.5_p99.5      cos=0.653  L1/z=0.811  beat=96%  dist=0.279
+    p1_p99          cos=0.659  L1/z=0.797  beat=98%  dist=0.262
+    p2_p98          cos=0.660  L1/z=0.792  beat=98%  dist=0.267
+    p5_p95          cos=0.659  L1/z=0.786  beat=100%  dist=0.270
+    mu_air_water    cos=0.634  L1/z=0.811  beat=99%  dist=0.267
+  [a1_full|both|CE_P2_V_01]
+    minmax          cos=0.224  L1/z=1.011  beat=59%  dist=0.671
+    p0.5_p99.5      cos=0.403  L1/z=0.941  beat=72%  dist=0.405
+    p1_p99          cos=0.422  L1/z=0.941  beat=73%  dist=0.365
+    p2_p98          cos=0.422  L1/z=0.963  beat=72%  dist=0.256
+    p5_p95          cos=0.424  L1/z=0.974  beat=69%  dist=0.159
+    mu_air_water    cos=0.375  L1/z=0.968  beat=77%  dist=0.330
+  [a1_full|both|CE_P3_V_01]
+    minmax          cos=0.471  L1/z=0.935  beat=79%  dist=0.979
+    p0.5_p99.5      cos=0.533  L1/z=0.900  beat=84%  dist=0.516
+    p1_p99          cos=0.537  L1/z=0.892  beat=81%  dist=0.433
+    p2_p98          cos=0.525  L1/z=0.892  beat=80%  dist=0.398
+    p5_p95          cos=0.509  L1/z=0.899  beat=81%  dist=0.394
+    mu_air_water    cos=0.417  L1/z=0.912  beat=87%  dist=0.373
+  [a1_full|both|CE_P4_V_01]
+    minmax          cos=0.512  L1/z=0.899  beat=83%  dist=0.482
+    p0.5_p99.5      cos=0.528  L1/z=0.901  beat=78%  dist=0.108
+    p1_p99          cos=0.523  L1/z=0.903  beat=78%  dist=0.085
+    p2_p98          cos=0.519  L1/z=0.905  beat=78%  dist=0.081
+    p5_p95          cos=0.508  L1/z=0.906  beat=79%  dist=0.087
+    mu_air_water    cos=0.494  L1/z=0.935  beat=78%  dist=0.063
+  [a1_full|both|CE_P5_V_01]
+    minmax          cos=0.446  L1/z=0.929  beat=92%  dist=0.400
+    p0.5_p99.5      cos=0.574  L1/z=0.832  beat=88%  dist=0.271
+    p1_p99          cos=0.580  L1/z=0.826  beat=88%  dist=0.224
+    p2_p98          cos=0.582  L1/z=0.823  beat=88%  dist=0.196
+    p5_p95          cos=0.568  L1/z=0.831  beat=87%  dist=0.183
+    mu_air_water    cos=0.590  L1/z=0.823  beat=89%  dist=0.182
+
+======== G160-E2 COHORT MEANS ========
+a0_full  encoder  minmax         varian   cos=0.567  L1/z=0.884  beat=84%  dist=0.191
+a0_full  encoder  p0.5_p99.5     varian   cos=0.549  L1/z=0.881  beat=84%  dist=0.072
+a0_full  encoder  p1_p99         varian   cos=0.542  L1/z=0.887  beat=83%  dist=0.070
+a0_full  encoder  p2_p98         varian   cos=0.532  L1/z=0.894  beat=82%  dist=0.071
+a0_full  encoder  p5_p95         varian   cos=0.515  L1/z=0.907  beat=81%  dist=0.077
+a0_full  encoder  mu_air_water   varian   cos=0.485  L1/z=0.896  beat=84%  dist=0.089
+a0_full  encoder  minmax         elekta   cos=0.390  L1/z=0.978  beat=67%  dist=0.623
+a0_full  encoder  p0.5_p99.5     elekta   cos=0.453  L1/z=0.927  beat=78%  dist=0.316
+a0_full  encoder  p1_p99         elekta   cos=0.461  L1/z=0.918  beat=79%  dist=0.274
+a0_full  encoder  p2_p98         elekta   cos=0.472  L1/z=0.908  beat=83%  dist=0.239
+a0_full  encoder  p5_p95         elekta   cos=0.466  L1/z=0.905  beat=84%  dist=0.218
+a0_full  encoder  mu_air_water   elekta   cos=0.499  L1/z=0.889  beat=86%  dist=0.243
+a0_full  decoder  minmax         varian   cos=0.551  L1/z=0.900  beat=82%  dist=0.191
+a0_full  decoder  p0.5_p99.5     varian   cos=0.564  L1/z=0.943  beat=67%  dist=0.072
+a0_full  decoder  p1_p99         varian   cos=0.559  L1/z=0.937  beat=68%  dist=0.070
+a0_full  decoder  p2_p98         varian   cos=0.557  L1/z=0.938  beat=70%  dist=0.071
+a0_full  decoder  p5_p95         varian   cos=0.547  L1/z=0.984  beat=64%  dist=0.077
+a0_full  decoder  mu_air_water   varian   cos=0.460  L1/z=1.016  beat=63%  dist=0.089
+a0_full  decoder  minmax         elekta   cos=0.152  L1/z=0.992  beat=50%  dist=0.623
+a0_full  decoder  p0.5_p99.5     elekta   cos=0.339  L1/z=0.964  beat=64%  dist=0.316
+a0_full  decoder  p1_p99         elekta   cos=0.410  L1/z=0.937  beat=74%  dist=0.274
+a0_full  decoder  p2_p98         elekta   cos=0.483  L1/z=0.907  beat=78%  dist=0.239
+a0_full  decoder  p5_p95         elekta   cos=0.501  L1/z=0.898  beat=80%  dist=0.218
+a0_full  decoder  mu_air_water   elekta   cos=0.479  L1/z=0.900  beat=84%  dist=0.243
+a0_full  both     minmax         varian   cos=0.558  L1/z=0.900  beat=81%  dist=0.191
+a0_full  both     p0.5_p99.5     varian   cos=0.578  L1/z=0.895  beat=80%  dist=0.072
+a0_full  both     p1_p99         varian   cos=0.572  L1/z=0.894  beat=80%  dist=0.070
+a0_full  both     p2_p98         varian   cos=0.567  L1/z=0.892  beat=81%  dist=0.071
+a0_full  both     p5_p95         varian   cos=0.566  L1/z=0.893  beat=81%  dist=0.077
+a0_full  both     mu_air_water   varian   cos=0.592  L1/z=0.862  beat=83%  dist=0.089
+a0_full  both     minmax         elekta   cos=0.236  L1/z=0.998  beat=56%  dist=0.623
+a0_full  both     p0.5_p99.5     elekta   cos=0.482  L1/z=0.903  beat=84%  dist=0.316
+a0_full  both     p1_p99         elekta   cos=0.507  L1/z=0.893  beat=83%  dist=0.274
+a0_full  both     p2_p98         elekta   cos=0.528  L1/z=0.881  beat=83%  dist=0.239
+a0_full  both     p5_p95         elekta   cos=0.528  L1/z=0.879  beat=83%  dist=0.218
+a0_full  both     mu_air_water   elekta   cos=0.484  L1/z=0.896  beat=85%  dist=0.243
+a0h      encoder  minmax         varian   cos=0.533  L1/z=0.920  beat=77%  dist=0.191
+a0h      encoder  p0.5_p99.5     varian   cos=0.529  L1/z=0.899  beat=82%  dist=0.072
+a0h      encoder  p1_p99         varian   cos=0.520  L1/z=0.901  beat=83%  dist=0.070
+a0h      encoder  p2_p98         varian   cos=0.508  L1/z=0.905  beat=83%  dist=0.071
+a0h      encoder  p5_p95         varian   cos=0.481  L1/z=0.913  beat=82%  dist=0.077
+a0h      encoder  mu_air_water   varian   cos=0.277  L1/z=0.977  beat=58%  dist=0.089
+a0h      encoder  minmax         elekta   cos=0.372  L1/z=0.983  beat=67%  dist=0.623
+a0h      encoder  p0.5_p99.5     elekta   cos=0.483  L1/z=0.907  beat=81%  dist=0.316
+a0h      encoder  p1_p99         elekta   cos=0.498  L1/z=0.898  beat=83%  dist=0.274
+a0h      encoder  p2_p98         elekta   cos=0.512  L1/z=0.888  beat=84%  dist=0.239
+a0h      encoder  p5_p95         elekta   cos=0.484  L1/z=0.900  beat=84%  dist=0.218
+a0h      encoder  mu_air_water   elekta   cos=0.489  L1/z=0.902  beat=83%  dist=0.243
+a0h      decoder  minmax         varian   cos=0.503  L1/z=0.931  beat=76%  dist=0.191
+a0h      decoder  p0.5_p99.5     varian   cos=0.528  L1/z=0.898  beat=81%  dist=0.072
+a0h      decoder  p1_p99         varian   cos=0.512  L1/z=0.906  beat=81%  dist=0.070
+a0h      decoder  p2_p98         varian   cos=0.490  L1/z=0.916  beat=80%  dist=0.071
+a0h      decoder  p5_p95         varian   cos=0.460  L1/z=0.927  beat=80%  dist=0.077
+a0h      decoder  mu_air_water   varian   cos=0.341  L1/z=0.962  beat=72%  dist=0.089
+a0h      decoder  minmax         elekta   cos=0.034  L1/z=1.000  beat=45%  dist=0.623
+a0h      decoder  p0.5_p99.5     elekta   cos=0.355  L1/z=0.940  beat=82%  dist=0.316
+a0h      decoder  p1_p99         elekta   cos=0.441  L1/z=0.911  beat=85%  dist=0.274
+a0h      decoder  p2_p98         elekta   cos=0.460  L1/z=0.903  beat=85%  dist=0.239
+a0h      decoder  p5_p95         elekta   cos=0.421  L1/z=0.918  beat=84%  dist=0.218
+a0h      decoder  mu_air_water   elekta   cos=0.454  L1/z=0.907  beat=82%  dist=0.243
+a1_full  encoder  minmax         varian   cos=0.563  L1/z=0.877  beat=85%  dist=0.191
+a1_full  encoder  p0.5_p99.5     varian   cos=0.581  L1/z=0.861  beat=88%  dist=0.072
+a1_full  encoder  p1_p99         varian   cos=0.579  L1/z=0.863  beat=88%  dist=0.070
+a1_full  encoder  p2_p98         varian   cos=0.575  L1/z=0.866  beat=88%  dist=0.071
+a1_full  encoder  p5_p95         varian   cos=0.568  L1/z=0.873  beat=86%  dist=0.077
+a1_full  encoder  mu_air_water   varian   cos=0.601  L1/z=0.850  beat=86%  dist=0.089
+a1_full  encoder  minmax         elekta   cos=0.324  L1/z=0.964  beat=73%  dist=0.623
+a1_full  encoder  p0.5_p99.5     elekta   cos=0.463  L1/z=0.903  beat=84%  dist=0.316
+a1_full  encoder  p1_p99         elekta   cos=0.476  L1/z=0.899  beat=84%  dist=0.274
+a1_full  encoder  p2_p98         elekta   cos=0.479  L1/z=0.898  beat=84%  dist=0.239
+a1_full  encoder  p5_p95         elekta   cos=0.474  L1/z=0.902  beat=84%  dist=0.218
+a1_full  encoder  mu_air_water   elekta   cos=0.492  L1/z=0.887  beat=87%  dist=0.243
+a1_full  decoder  minmax         varian   cos=0.564  L1/z=0.873  beat=86%  dist=0.191
+a1_full  decoder  p0.5_p99.5     varian   cos=0.570  L1/z=0.867  beat=87%  dist=0.072
+a1_full  decoder  p1_p99         varian   cos=0.568  L1/z=0.867  beat=88%  dist=0.070
+a1_full  decoder  p2_p98         varian   cos=0.570  L1/z=0.866  beat=88%  dist=0.071
+a1_full  decoder  p5_p95         varian   cos=0.573  L1/z=0.861  beat=88%  dist=0.077
+a1_full  decoder  mu_air_water   varian   cos=0.601  L1/z=0.849  beat=86%  dist=0.089
+a1_full  decoder  minmax         elekta   cos=0.194  L1/z=0.981  beat=66%  dist=0.623
+a1_full  decoder  p0.5_p99.5     elekta   cos=0.537  L1/z=0.863  beat=87%  dist=0.316
+a1_full  decoder  p1_p99         elekta   cos=0.552  L1/z=0.855  beat=86%  dist=0.274
+a1_full  decoder  p2_p98         elekta   cos=0.553  L1/z=0.854  beat=86%  dist=0.239
+a1_full  decoder  p5_p95         elekta   cos=0.543  L1/z=0.864  beat=85%  dist=0.218
+a1_full  decoder  mu_air_water   elekta   cos=0.522  L1/z=0.878  beat=86%  dist=0.243
+a1_full  both     minmax         varian   cos=0.579  L1/z=0.875  beat=86%  dist=0.191
+a1_full  both     p0.5_p99.5     varian   cos=0.587  L1/z=0.905  beat=76%  dist=0.072
+a1_full  both     p1_p99         varian   cos=0.584  L1/z=0.909  beat=76%  dist=0.070
+a1_full  both     p2_p98         varian   cos=0.581  L1/z=0.911  beat=76%  dist=0.071
+a1_full  both     p5_p95         varian   cos=0.578  L1/z=0.911  beat=76%  dist=0.077
+a1_full  both     mu_air_water   varian   cos=0.599  L1/z=0.882  beat=80%  dist=0.089
+a1_full  both     minmax         elekta   cos=0.385  L1/z=0.950  beat=76%  dist=0.623
+a1_full  both     p0.5_p99.5     elekta   cos=0.538  L1/z=0.877  beat=84%  dist=0.316
+a1_full  both     p1_p99         elekta   cos=0.544  L1/z=0.872  beat=84%  dist=0.274
+a1_full  both     p2_p98         elekta   cos=0.542  L1/z=0.875  beat=83%  dist=0.239
+a1_full  both     p5_p95         elekta   cos=0.534  L1/z=0.879  beat=83%  dist=0.218
+a1_full  both     mu_air_water   elekta   cos=0.502  L1/z=0.890  beat=86%  dist=0.243
+
+======== BEST ELEKTA NORM PER MODEL ========
+a0_full  encoder   best=mu_air_water    elekta_cos=0.499  (minmax=0.390, Δ=+0.108)
+a0_full  decoder   best=p5_p95          elekta_cos=0.501  (minmax=0.152, Δ=+0.349)
+a0_full  both      best=p5_p95          elekta_cos=0.528  (minmax=0.236, Δ=+0.293)
+a0h      encoder   best=p2_p98          elekta_cos=0.512  (minmax=0.372, Δ=+0.140)
+a0h      decoder   best=p2_p98          elekta_cos=0.460  (minmax=0.034, Δ=+0.426)
+a1_full  encoder   best=mu_air_water    elekta_cos=0.492  (minmax=0.324, Δ=+0.169)
+a1_full  decoder   best=p2_p98          elekta_cos=0.553  (minmax=0.194, Δ=+0.359)
+a1_full  both      best=p1_p99          elekta_cos=0.544  (minmax=0.385, Δ=+0.159)
+
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/Experiment2/plots/qc_norm_sweep/summary_a0_full_a0h_a1_full_encoder_decoder_both.json
+DONE

@@ -1,0 +1,152 @@
+Pack DIR-Lab → /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/packed  n=10
+  lungmask R231 on GTVol_01.mha …
+lungmask 2026-08-31 12:19:24 Postprocessing
+  mask voxels=984301 frac=0.160
+[P1_DIR] bbox zyx=[0:94,27:214,0:256] spacing_xyz=[0.97, 0.97, 2.5]
+[P1_DIR]   CT_01 HU[-1024,13616] → µ[-0.0005,0.2472] shape=(128, 128, 128)
+[P1_DIR]   CT_02 HU[-1024,12922] → µ[-0.0005,0.2385] shape=(128, 128, 128)
+[P1_DIR]   CT_03 HU[-1024,11923] → µ[-0.0005,0.2288] shape=(128, 128, 128)
+[P1_DIR]   CT_04 HU[-1024,10851] → µ[-0.0005,0.2149] shape=(128, 128, 128)
+[P1_DIR]   CT_05 HU[-1024,9673] → µ[-0.0005,0.2023] shape=(128, 128, 128)
+[P1_DIR]   CT_06 HU[-1024,9448] → µ[-0.0005,0.1994] shape=(128, 128, 128)
+[P1_DIR]   CT_07 HU[-1024,9524] → µ[-0.0005,0.2006] shape=(128, 128, 128)
+[P1_DIR]   CT_08 HU[-1024,9800] → µ[-0.0005,0.2023] shape=(128, 128, 128)
+[P1_DIR]   CT_09 HU[-1024,10903] → µ[-0.0005,0.2158] shape=(128, 128, 128)
+[P1_DIR]   CT_10 HU[-1024,13445] → µ[-0.0005,0.2455] shape=(128, 128, 128)
+[P1_DIR] wrote /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/packed/P1_DIR/all  mask_vox=826179
+  lungmask R231 on GTVol_01.mha …
+lungmask 2026-08-31 12:19:27 Postprocessing
+  mask voxels=1553956 frac=0.212
+[P2_DIR] bbox zyx=[0:112,10:216,0:256] spacing_xyz=[1.16, 1.16, 2.5]
+[P2_DIR]   CT_01 HU[-1024,3223] → µ[-0.0005,0.0484] shape=(128, 128, 128)
+[P2_DIR]   CT_02 HU[-1024,3137] → µ[-0.0005,0.0482] shape=(128, 128, 128)
+[P2_DIR]   CT_03 HU[-1024,2992] → µ[-0.0005,0.0484] shape=(128, 128, 128)
+[P2_DIR]   CT_04 HU[-1024,3167] → µ[-0.0005,0.0491] shape=(128, 128, 128)
+[P2_DIR]   CT_05 HU[-1024,3400] → µ[-0.0005,0.0483] shape=(128, 128, 128)
+[P2_DIR]   CT_06 HU[-1024,3450] → µ[-0.0005,0.0496] shape=(128, 128, 128)
+[P2_DIR]   CT_07 HU[-1024,3400] → µ[-0.0005,0.0493] shape=(128, 128, 128)
+[P2_DIR]   CT_08 HU[-1024,2974] → µ[-0.0005,0.0482] shape=(128, 128, 128)
+[P2_DIR]   CT_09 HU[-1024,2884] → µ[-0.0005,0.0489] shape=(128, 128, 128)
+[P2_DIR]   CT_10 HU[-1024,3167] → µ[-0.0005,0.0483] shape=(128, 128, 128)
+[P2_DIR] wrote /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/packed/P2_DIR/all  mask_vox=931311
+  lungmask R231 on GTVol_01.mha …
+lungmask 2026-08-31 12:19:29 Postprocessing
+  mask voxels=1209002 frac=0.177
+[P3_DIR] bbox zyx=[0:104,26:222,0:256] spacing_xyz=[1.15, 1.15, 2.5]
+[P3_DIR]   CT_01 HU[-1024,12350] → µ[-0.0005,0.1100] shape=(128, 128, 128)
+[P3_DIR]   CT_02 HU[-1024,9421] → µ[-0.0005,0.0992] shape=(128, 128, 128)
+[P3_DIR]   CT_03 HU[-1024,9170] → µ[-0.0005,0.0911] shape=(128, 128, 128)
+[P3_DIR]   CT_04 HU[-1024,13924] → µ[-0.0005,0.1150] shape=(128, 128, 128)
+[P3_DIR]   CT_05 HU[-1024,15304] → µ[-0.0005,0.0965] shape=(128, 128, 128)
+[P3_DIR]   CT_06 HU[-1024,15390] → µ[-0.0005,0.0937] shape=(128, 128, 128)
+[P3_DIR]   CT_07 HU[-1024,14698] → µ[-0.0005,0.0888] shape=(128, 128, 128)
+[P3_DIR]   CT_08 HU[-1024,16137] → µ[-0.0005,0.1031] shape=(128, 128, 128)
+[P3_DIR]   CT_09 HU[-1024,13255] → µ[-0.0005,0.1022] shape=(128, 128, 128)
+[P3_DIR]   CT_10 HU[-1024,10742] → µ[-0.0005,0.1080] shape=(128, 128, 128)
+[P3_DIR] wrote /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/packed/P3_DIR/all  mask_vox=861072
+  lungmask R231 on GTVol_01.mha …
+lungmask 2026-08-31 12:19:31 Postprocessing
+  mask voxels=923342 frac=0.142
+[P4_DIR] bbox zyx=[0:99,27:225,0:256] spacing_xyz=[1.13, 1.13, 2.5]
+[P4_DIR]   CT_01 HU[-1024,4854] → µ[-0.0005,0.0929] shape=(128, 128, 128)
+[P4_DIR]   CT_02 HU[-1024,5059] → µ[-0.0005,0.0987] shape=(128, 128, 128)
+[P4_DIR]   CT_03 HU[-1024,4547] → µ[-0.0005,0.0950] shape=(128, 128, 128)
+[P4_DIR]   CT_04 HU[-1024,4957] → µ[-0.0005,0.0947] shape=(128, 128, 128)
+[P4_DIR]   CT_05 HU[-1024,5255] → µ[-0.0005,0.0908] shape=(128, 128, 128)
+[P4_DIR]   CT_06 HU[-1024,5210] → µ[-0.0005,0.0877] shape=(128, 128, 128)
+[P4_DIR]   CT_07 HU[-1024,5386] → µ[-0.0005,0.0844] shape=(128, 128, 128)
+[P4_DIR]   CT_08 HU[-1024,4814] → µ[-0.0005,0.0923] shape=(128, 128, 128)
+[P4_DIR]   CT_09 HU[-1024,5119] → µ[-0.0005,0.0844] shape=(128, 128, 128)
+[P4_DIR]   CT_10 HU[-1024,4990] → µ[-0.0005,0.0885] shape=(128, 128, 128)
+[P4_DIR] wrote /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/packed/P4_DIR/all  mask_vox=713630
+  lungmask R231 on GTVol_01.mha …
+lungmask 2026-08-31 12:19:33 Postprocessing
+  mask voxels=1094557 frac=0.158
+[P5_DIR] bbox zyx=[0:106,38:239,0:256] spacing_xyz=[1.1, 1.1, 2.5]
+[P5_DIR]   CT_01 HU[-1024,3071] → µ[-0.0005,0.0619] shape=(128, 128, 128)
+[P5_DIR]   CT_02 HU[-1024,3071] → µ[-0.0005,0.0613] shape=(128, 128, 128)
+[P5_DIR]   CT_03 HU[-1024,3071] → µ[-0.0005,0.0553] shape=(128, 128, 128)
+[P5_DIR]   CT_04 HU[-1024,3071] → µ[-0.0005,0.0666] shape=(128, 128, 128)
+[P5_DIR]   CT_05 HU[-1024,3071] → µ[-0.0005,0.0695] shape=(128, 128, 128)
+[P5_DIR]   CT_06 HU[-1024,3071] → µ[-0.0005,0.0665] shape=(128, 128, 128)
+[P5_DIR]   CT_07 HU[-1024,3071] → µ[-0.0005,0.0635] shape=(128, 128, 128)
+[P5_DIR]   CT_08 HU[-1024,3071] → µ[-0.0005,0.0590] shape=(128, 128, 128)
+[P5_DIR]   CT_09 HU[-1024,3071] → µ[-0.0005,0.0613] shape=(128, 128, 128)
+[P5_DIR]   CT_10 HU[-1024,3071] → µ[-0.0005,0.0630] shape=(128, 128, 128)
+[P5_DIR] wrote /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/packed/P5_DIR/all  mask_vox=736898
+  lungmask R231 on GTVol_01.mha …
+lungmask 2026-08-31 12:19:34 Postprocessing
+  mask voxels=1285721 frac=0.038
+[P6_DIR] bbox zyx=[0:127,121:343,112:445] spacing_xyz=[0.97, 0.97, 2.5]
+[P6_DIR]   CT_01 HU[-1024,3071] → µ[-0.0005,0.0814] shape=(128, 128, 128)
+[P6_DIR]   CT_02 HU[-1024,3071] → µ[-0.0005,0.0814] shape=(128, 128, 128)
+[P6_DIR]   CT_03 HU[-1024,3071] → µ[-0.0005,0.0808] shape=(128, 128, 128)
+[P6_DIR]   CT_04 HU[-1024,3071] → µ[-0.0005,0.0813] shape=(128, 128, 128)
+[P6_DIR]   CT_05 HU[-1024,3071] → µ[-0.0005,0.0814] shape=(128, 128, 128)
+[P6_DIR]   CT_06 HU[-1024,3071] → µ[-0.0005,0.0814] shape=(128, 128, 128)
+[P6_DIR]   CT_07 HU[-1024,3071] → µ[-0.0005,0.0814] shape=(128, 128, 128)
+[P6_DIR]   CT_08 HU[-1024,3071] → µ[-0.0005,0.0809] shape=(128, 128, 128)
+[P6_DIR]   CT_09 HU[-1024,3071] → µ[-0.0005,0.0814] shape=(128, 128, 128)
+[P6_DIR]   CT_10 HU[-1024,3071] → µ[-0.0005,0.0814] shape=(128, 128, 128)
+[P6_DIR] wrote /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/packed/P6_DIR/all  mask_vox=511362
+  lungmask R231 on GTVol_01.mha …
+lungmask 2026-08-31 12:19:37 Postprocessing
+  mask voxels=1543726 frac=0.043
+[P7_DIR] bbox zyx=[0:133,125:349,103:434] spacing_xyz=[0.97, 0.97, 2.5]
+[P7_DIR]   CT_01 HU[-1024,3071] → µ[-0.0005,0.0587] shape=(128, 128, 128)
+[P7_DIR]   CT_02 HU[-1024,3071] → µ[-0.0005,0.0655] shape=(128, 128, 128)
+[P7_DIR]   CT_03 HU[-1024,3071] → µ[-0.0005,0.0685] shape=(128, 128, 128)
+[P7_DIR]   CT_04 HU[-1024,3071] → µ[-0.0005,0.0681] shape=(128, 128, 128)
+[P7_DIR]   CT_05 HU[-1024,3071] → µ[-0.0005,0.0670] shape=(128, 128, 128)
+[P7_DIR]   CT_06 HU[-1024,3071] → µ[-0.0005,0.0659] shape=(128, 128, 128)
+[P7_DIR]   CT_07 HU[-1024,3071] → µ[-0.0005,0.0655] shape=(128, 128, 128)
+[P7_DIR]   CT_08 HU[-1024,3071] → µ[-0.0005,0.0659] shape=(128, 128, 128)
+[P7_DIR]   CT_09 HU[-1024,3071] → µ[-0.0005,0.0685] shape=(128, 128, 128)
+[P7_DIR]   CT_10 HU[-1024,3071] → µ[-0.0005,0.0587] shape=(128, 128, 128)
+[P7_DIR] wrote /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/packed/P7_DIR/all  mask_vox=583056
+  lungmask R231 on GTVol_01.mha …
+lungmask 2026-08-31 12:19:40 Postprocessing
+  mask voxels=2335727 frac=0.070
+[P8_DIR] bbox zyx=[0:122,65:315,96:411] spacing_xyz=[0.97, 0.97, 2.5]
+[P8_DIR]   CT_01 HU[-1024,3071] → µ[-0.0005,0.0761] shape=(128, 128, 128)
+[P8_DIR]   CT_02 HU[-1024,3071] → µ[-0.0005,0.0751] shape=(128, 128, 128)
+[P8_DIR]   CT_03 HU[-1024,3071] → µ[-0.0005,0.0791] shape=(128, 128, 128)
+[P8_DIR]   CT_04 HU[-1024,3071] → µ[-0.0005,0.0643] shape=(128, 128, 128)
+[P8_DIR]   CT_05 HU[-1024,3071] → µ[-0.0005,0.0712] shape=(128, 128, 128)
+[P8_DIR]   CT_06 HU[-1024,3071] → µ[-0.0005,0.0517] shape=(128, 128, 128)
+[P8_DIR]   CT_07 HU[-1024,3071] → µ[-0.0005,0.0490] shape=(128, 128, 128)
+[P8_DIR]   CT_08 HU[-1024,3071] → µ[-0.0005,0.0676] shape=(128, 128, 128)
+[P8_DIR]   CT_09 HU[-1024,3071] → µ[-0.0005,0.0704] shape=(128, 128, 128)
+[P8_DIR]   CT_10 HU[-1024,3071] → µ[-0.0005,0.0654] shape=(128, 128, 128)
+[P8_DIR] wrote /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/packed/P8_DIR/all  mask_vox=797602
+  lungmask R231 on GTVol_01.mha …
+lungmask 2026-08-31 12:19:44 Postprocessing
+  mask voxels=818123 frac=0.024
+[P9_DIR] bbox zyx=[34:128,118:340,121:399] spacing_xyz=[0.97, 0.97, 2.5]
+[P9_DIR]   CT_01 HU[-1024,3071] → µ[-0.0005,0.0766] shape=(128, 128, 128)
+[P9_DIR]   CT_02 HU[-1024,3071] → µ[-0.0005,0.0786] shape=(128, 128, 128)
+[P9_DIR]   CT_03 HU[-1024,3071] → µ[-0.0005,0.0779] shape=(128, 128, 128)
+[P9_DIR]   CT_04 HU[-1024,3071] → µ[-0.0005,0.0774] shape=(128, 128, 128)
+[P9_DIR]   CT_05 HU[-1024,3071] → µ[-0.0005,0.0724] shape=(128, 128, 128)
+[P9_DIR]   CT_06 HU[-1024,3071] → µ[-0.0005,0.0812] shape=(128, 128, 128)
+[P9_DIR]   CT_07 HU[-1024,3071] → µ[-0.0005,0.0763] shape=(128, 128, 128)
+[P9_DIR]   CT_08 HU[-1024,3071] → µ[-0.0005,0.0673] shape=(128, 128, 128)
+[P9_DIR]   CT_09 HU[-1024,3071] → µ[-0.0005,0.0697] shape=(128, 128, 128)
+[P9_DIR]   CT_10 HU[-1024,3071] → µ[-0.0005,0.0746] shape=(128, 128, 128)
+[P9_DIR] wrote /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/packed/P9_DIR/all  mask_vox=595736
+  lungmask R231 on GTVol_01.mha …
+lungmask 2026-08-31 12:19:47 Postprocessing
+  mask voxels=1370005 frac=0.044
+[P10_DIR] bbox zyx=[4:120,97:346,131:399] spacing_xyz=[0.97, 0.97, 2.5]
+[P10_DIR]   CT_01 HU[-1024,3071] → µ[-0.0005,0.0645] shape=(128, 128, 128)
+[P10_DIR]   CT_02 HU[-1024,3071] → µ[-0.0005,0.0645] shape=(128, 128, 128)
+[P10_DIR]   CT_03 HU[-1024,3071] → µ[-0.0005,0.0721] shape=(128, 128, 128)
+[P10_DIR]   CT_04 HU[-1024,3071] → µ[-0.0005,0.0717] shape=(128, 128, 128)
+[P10_DIR]   CT_05 HU[-1024,3071] → µ[-0.0005,0.0730] shape=(128, 128, 128)
+[P10_DIR]   CT_06 HU[-1024,3071] → µ[-0.0005,0.0750] shape=(128, 128, 128)
+[P10_DIR]   CT_07 HU[-1024,3071] → µ[-0.0005,0.0744] shape=(128, 128, 128)
+[P10_DIR]   CT_08 HU[-1024,3071] → µ[-0.0005,0.0743] shape=(128, 128, 128)
+[P10_DIR]   CT_09 HU[-1024,3071] → µ[-0.0005,0.0777] shape=(128, 128, 128)
+[P10_DIR]   CT_10 HU[-1024,3071] → µ[-0.0005,0.0702] shape=(128, 128, 128)
+[P10_DIR] wrote /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/packed/P10_DIR/all  mask_vox=666023
+DONE

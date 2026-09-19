@@ -1,0 +1,199 @@
+=== P1 ===
+  [P1] CT_01
+  [P1] CT_02
+  [P1] CT_03
+  [P1] CT_04
+  [P1] CT_05
+  [P1] CT_06
+  [P1] CT_07
+  [P1] CT_08
+  [P1] CT_09
+  [P1] CT_10
+  [P1] DVF ref=01 done
+  [P1] DVF ref=02 done
+  [P1] DVF ref=03 done
+  [P1] DVF ref=04 done
+  [P1] DVF ref=05 done
+  [P1] DVF ref=06 done
+  [P1] DVF ref=07 done
+  [P1] DVF ref=08 done
+  [P1] DVF ref=09 done
+  [P1] DVF ref=10 done
+[P1] wrote /home/abhishek/Voxel_GAN/PopulationStudy/data_iso/P1/all | lung_u=445926 lung_p=1112441 centroid=[235.6, 99.9, 257.8] sp128=[2.109, 1.719, 2.812]
+=== P2 ===
+  [P2] CT_01
+  [P2] CT_02
+  [P2] CT_03
+  [P2] CT_04
+  [P2] CT_05
+  [P2] CT_06
+  [P2] CT_07
+  [P2] CT_08
+  [P2] CT_09
+  [P2] CT_10
+  [P2] DVF ref=01 done
+  [P2] DVF ref=02 done
+  [P2] DVF ref=03 done
+  [P2] DVF ref=04 done
+  [P2] DVF ref=05 done
+  [P2] DVF ref=06 done
+  [P2] DVF ref=07 done
+  [P2] DVF ref=08 done
+  [P2] DVF ref=09 done
+  [P2] DVF ref=10 done
+[P2] wrote /home/abhishek/Voxel_GAN/PopulationStudy/data_iso/P2/all | lung_u=435563 lung_p=625465 centroid=[235.9, 138.4, 231.6] sp128=[1.625, 1.719, 2.312]
+=== P3 ===
+  [P3] CT_01
+  [P3] CT_02
+  [P3] CT_03
+  [P3] CT_04
+  [P3] CT_05
+  [P3] CT_06
+  [P3] CT_07
+  [P3] CT_08
+  [P3] CT_09
+  [P3] CT_10
+  [P3] DVF ref=01 done
+  [P3] DVF ref=02 done
+  [P3] DVF ref=03 done
+  [P3] DVF ref=04 done
+  [P3] DVF ref=05 done
+  [P3] DVF ref=06 done
+  [P3] DVF ref=07 done
+  [P3] DVF ref=08 done
+  [P3] DVF ref=09 done
+  [P3] DVF ref=10 done
+[P3] wrote /home/abhishek/Voxel_GAN/PopulationStudy/data_iso/P3/all | lung_u=493319 lung_p=1210130 centroid=[222.6, 91.4, 230.0] sp128=[2.156, 1.719, 2.586]
+=== P4 ===
+  [P4] CT_01
+  [P4] CT_02
+  [P4] CT_03
+  [P4] CT_04
+  [P4] CT_05
+  [P4] CT_06
+  [P4] CT_07
+  [P4] CT_08
+  [P4] CT_09
+  [P4] CT_10
+  [P4] DVF ref=01 done
+  [P4] DVF ref=02 done
+  [P4] DVF ref=03 done
+  [P4] DVF ref=04 done
+  [P4] DVF ref=05 done
+  [P4] DVF ref=06 done
+  [P4] DVF ref=07 done
+  [P4] DVF ref=08 done
+  [P4] DVF ref=09 done
+  [P4] DVF ref=10 done
+[P4] wrote /home/abhishek/Voxel_GAN/PopulationStudy/data_iso/P4/all | lung_u=384579 lung_p=995083 centroid=[231.2, 132.3, 230.4] sp128=[2.164, 1.719, 2.586]
+=== P5 ===
+  [P5] CT_01
+  [P5] CT_02
+  [P5] CT_03
+  [P5] CT_04
+  [P5] CT_05
+  [P5] CT_06
+  [P5] CT_07
+  [P5] CT_08
+  [P5] CT_09
+  [P5] CT_10
+  [P5] DVF ref=01 done
+  [P5] DVF ref=02 done
+  [P5] DVF ref=03 done
+  [P5] DVF ref=04 done
+  [P5] DVF ref=05 done
+  [P5] DVF ref=06 done
+  [P5] DVF ref=07 done
+  [P5] DVF ref=08 done
+  [P5] DVF ref=09 done
+  [P5] DVF ref=10 done
+[P5] wrote /home/abhishek/Voxel_GAN/PopulationStudy/data_iso/P5/all | lung_u=284286 lung_p=941493 centroid=[150.7, 82.5, 211.2] sp128=[2.109, 1.578, 2.453]
+=== P6 ===
+  [P6] CT_01
+  [P6] CT_02
+  [P6] CT_03
+  [P6] CT_04
+  [P6] CT_05
+  [P6] CT_06
+  [P6] CT_07
+  [P6] CT_08
+  [P6] CT_09
+  [P6] CT_10
+  [P6] DVF ref=01 done
+  [P6] DVF ref=02 done
+  [P6] DVF ref=03 done
+  [P6] DVF ref=04 done
+  [P6] DVF ref=05 done
+  [P6] DVF ref=06 done
+  [P6] DVF ref=07 done
+  [P6] DVF ref=08 done
+  [P6] DVF ref=09 done
+  [P6] DVF ref=10 done
+[P6] wrote /home/abhishek/Voxel_GAN/PopulationStudy/data_iso/P6/all | lung_u=272706 lung_p=501750 centroid=[243.9, 145.3, 227.4] sp128=[1.555, 1.719, 2.133]
+=== P7 ===
+  [P7] CT_01
+  [P7] CT_02
+  [P7] CT_03
+  [P7] CT_04
+  [P7] CT_05
+  [P7] CT_06
+  [P7] CT_07
+  [P7] CT_08
+  [P7] CT_09
+  [P7] CT_10
+  [P7] DVF ref=01 done
+  [P7] DVF ref=02 done
+  [P7] DVF ref=03 done
+  [P7] DVF ref=04 done
+  [P7] DVF ref=05 done
+  [P7] DVF ref=06 done
+  [P7] DVF ref=07 done
+  [P7] DVF ref=08 done
+  [P7] DVF ref=09 done
+  [P7] DVF ref=10 done
+[P7] wrote /home/abhishek/Voxel_GAN/PopulationStudy/data_iso/P7/all | lung_u=266957 lung_p=792820 centroid=[246.3, 147.9, 222.9] sp128=[1.906, 1.719, 2.211]
+=== P8 ===
+  [P8] CT_01
+  [P8] CT_02
+  [P8] CT_03
+  [P8] CT_04
+  [P8] CT_05
+  [P8] CT_06
+  [P8] CT_07
+  [P8] CT_08
+  [P8] CT_09
+  [P8] CT_10
+  [P8] DVF ref=01 done
+  [P8] DVF ref=02 done
+  [P8] DVF ref=03 done
+  [P8] DVF ref=04 done
+  [P8] DVF ref=05 done
+  [P8] DVF ref=06 done
+  [P8] DVF ref=07 done
+  [P8] DVF ref=08 done
+  [P8] DVF ref=09 done
+  [P8] DVF ref=10 done
+[P8] wrote /home/abhishek/Voxel_GAN/PopulationStudy/data_iso/P8/all | lung_u=426051 lung_p=514266 centroid=[242.5, 132.1, 212.5] sp128=[1.727, 1.523, 1.969]
+=== P9 ===
+  [P9] CT_01
+  [P9] CT_02
+  [P9] CT_03
+  [P9] CT_04
+  [P9] CT_05
+  [P9] CT_06
+  [P9] CT_07
+  [P9] CT_08
+  [P9] CT_09
+  [P9] CT_10
+  [P9] DVF ref=01 done
+  [P9] DVF ref=02 done
+  [P9] DVF ref=03 done
+  [P9] DVF ref=04 done
+  [P9] DVF ref=05 done
+  [P9] DVF ref=06 done
+  [P9] DVF ref=07 done
+  [P9] DVF ref=08 done
+  [P9] DVF ref=09 done
+  [P9] DVF ref=10 done
+[P9] wrote /home/abhishek/Voxel_GAN/PopulationStudy/data_iso/P9/all | lung_u=381050 lung_p=1237500 centroid=[245.5, 134.0, 223.1] sp128=[2.109, 1.719, 2.617]
+done → /home/abhishek/Voxel_GAN/PopulationStudy/data_iso

@@ -1,0 +1,3 @@
+experiment	arch	norm	vendor	scan	cos	L1_over_zero	beat
+Iso-E2	both	mu	varian	CV_P1_V_01	0.3852	1.0879	51.1
+Iso-E2	both	mu	elekta	CE_P1_V_01	0.5394	0.8737	98.9

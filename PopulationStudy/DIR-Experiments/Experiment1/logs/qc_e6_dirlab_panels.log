@@ -1,0 +1,75 @@
+DIR E1 QC  device=cuda:0  arches=['encoder', 'decoder', 'both']  norms=['mu', 'minmax']
+loaded encoder encoder_e6_normal.pth
+[encoder|mu|P1_DIR] TRE=6.13±3.76 mm  med=5.83  id=3.89 mm  n=300
+[encoder|mu|P2_DIR] TRE=7.69±4.40 mm  med=7.14  id=4.34 mm  n=300
+[encoder|mu|P3_DIR] TRE=7.19±3.96 mm  med=6.76  id=6.94 mm  n=300
+[encoder|mu|P4_DIR] TRE=9.19±5.09 mm  med=8.33  id=9.83 mm  n=300
+[encoder|mu|P5_DIR] TRE=8.55±5.22 mm  med=7.63  id=7.48 mm  n=300
+[encoder|mu|P6_DIR] TRE=10.80±7.28 mm  med=8.60  id=10.89 mm  n=300
+[encoder|mu|P7_DIR] TRE=11.66±7.17 mm  med=10.15  id=11.03 mm  n=300
+[encoder|mu|P8_DIR] TRE=14.75±7.86 mm  med=12.92  id=14.99 mm  n=300
+[encoder|mu|P9_DIR] TRE=8.47±3.78 mm  med=8.29  id=7.92 mm  n=300
+[encoder|mu|P10_DIR] TRE=8.75±5.90 mm  med=8.06  id=7.30 mm  n=300
+[encoder|minmax|P1_DIR] TRE=4.36±2.64 mm  med=3.65  id=3.89 mm  n=300
+[encoder|minmax|P2_DIR] TRE=7.84±4.40 mm  med=7.57  id=4.34 mm  n=300
+[encoder|minmax|P3_DIR] TRE=6.75±4.40 mm  med=5.19  id=6.94 mm  n=300
+[encoder|minmax|P4_DIR] TRE=8.91±4.42 mm  med=8.03  id=9.83 mm  n=300
+[encoder|minmax|P5_DIR] TRE=8.70±5.25 mm  med=7.90  id=7.48 mm  n=300
+[encoder|minmax|P6_DIR] TRE=11.42±6.83 mm  med=10.75  id=10.89 mm  n=300
+[encoder|minmax|P7_DIR] TRE=11.82±6.96 mm  med=10.92  id=11.03 mm  n=300
+[encoder|minmax|P8_DIR] TRE=15.22±7.29 mm  med=14.29  id=14.99 mm  n=300
+[encoder|minmax|P9_DIR] TRE=8.56±3.58 mm  med=8.43  id=7.92 mm  n=300
+[encoder|minmax|P10_DIR] TRE=9.17±5.68 mm  med=8.63  id=7.30 mm  n=300
+loaded decoder decoder_e6_normal.pth
+[decoder|mu|P1_DIR] TRE=5.48±3.08 mm  med=5.04  id=3.89 mm  n=300
+[decoder|mu|P2_DIR] TRE=7.03±3.95 mm  med=6.29  id=4.34 mm  n=300
+[decoder|mu|P3_DIR] TRE=7.01±3.89 mm  med=6.30  id=6.94 mm  n=300
+[decoder|mu|P4_DIR] TRE=8.86±4.63 mm  med=8.31  id=9.83 mm  n=300
+[decoder|mu|P5_DIR] TRE=7.84±5.19 mm  med=7.02  id=7.48 mm  n=300
+[decoder|mu|P6_DIR] TRE=10.87±7.00 mm  med=9.11  id=10.89 mm  n=300
+[decoder|mu|P7_DIR] TRE=10.62±6.47 mm  med=8.75  id=11.03 mm  n=300
+[decoder|mu|P8_DIR] TRE=14.22±8.18 mm  med=12.29  id=14.99 mm  n=300
+[decoder|mu|P9_DIR] TRE=8.03±3.34 mm  med=8.19  id=7.92 mm  n=300
+[decoder|mu|P10_DIR] TRE=8.87±5.78 mm  med=7.79  id=7.30 mm  n=300
+[decoder|minmax|P1_DIR] TRE=4.46±2.86 mm  med=3.78  id=3.89 mm  n=300
+[decoder|minmax|P2_DIR] TRE=6.53±3.64 mm  med=6.05  id=4.34 mm  n=300
+[decoder|minmax|P3_DIR] TRE=6.85±4.20 mm  med=5.66  id=6.94 mm  n=300
+[decoder|minmax|P4_DIR] TRE=8.68±5.03 mm  med=7.98  id=9.83 mm  n=300
+[decoder|minmax|P5_DIR] TRE=8.14±4.68 mm  med=7.02  id=7.48 mm  n=300
+[decoder|minmax|P6_DIR] TRE=9.63±6.25 mm  med=8.07  id=10.89 mm  n=300
+[decoder|minmax|P7_DIR] TRE=10.87±5.94 mm  med=10.05  id=11.03 mm  n=300
+[decoder|minmax|P8_DIR] TRE=14.13±7.90 mm  med=12.68  id=14.99 mm  n=300
+[decoder|minmax|P9_DIR] TRE=7.47±2.98 mm  med=7.26  id=7.92 mm  n=300
+[decoder|minmax|P10_DIR] TRE=9.24±5.57 mm  med=8.54  id=7.30 mm  n=300
+loaded both both_e6_normal.pth
+[both|mu|P1_DIR] TRE=5.67±3.18 mm  med=5.05  id=3.89 mm  n=300
+[both|mu|P2_DIR] TRE=7.85±4.04 mm  med=7.13  id=4.34 mm  n=300
+[both|mu|P3_DIR] TRE=7.58±3.51 mm  med=7.03  id=6.94 mm  n=300
+[both|mu|P4_DIR] TRE=9.21±4.64 mm  med=8.57  id=9.83 mm  n=300
+[both|mu|P5_DIR] TRE=8.19±4.96 mm  med=7.33  id=7.48 mm  n=300
+[both|mu|P6_DIR] TRE=10.61±6.30 mm  med=8.89  id=10.89 mm  n=300
+[both|mu|P7_DIR] TRE=10.81±6.20 mm  med=9.34  id=11.03 mm  n=300
+[both|mu|P8_DIR] TRE=14.71±7.83 mm  med=13.28  id=14.99 mm  n=300
+[both|mu|P9_DIR] TRE=7.90±3.11 mm  med=7.98  id=7.92 mm  n=300
+[both|mu|P10_DIR] TRE=8.90±5.46 mm  med=7.95  id=7.30 mm  n=300
+[both|minmax|P1_DIR] TRE=4.60±2.78 mm  med=4.04  id=3.89 mm  n=300
+[both|minmax|P2_DIR] TRE=6.99±3.78 mm  med=6.45  id=4.34 mm  n=300
+[both|minmax|P3_DIR] TRE=6.54±4.49 mm  med=4.71  id=6.94 mm  n=300
+[both|minmax|P4_DIR] TRE=9.12±5.32 mm  med=8.45  id=9.83 mm  n=300
+[both|minmax|P5_DIR] TRE=8.42±5.28 mm  med=7.70  id=7.48 mm  n=300
+[both|minmax|P6_DIR] TRE=11.25±6.90 mm  med=10.04  id=10.89 mm  n=300
+[both|minmax|P7_DIR] TRE=11.32±6.72 mm  med=9.65  id=11.03 mm  n=300
+[both|minmax|P8_DIR] TRE=15.26±7.95 mm  med=13.84  id=14.99 mm  n=300
+[both|minmax|P9_DIR] TRE=8.55±3.19 mm  med=8.66  id=7.92 mm  n=300
+[both|minmax|P10_DIR] TRE=9.27±5.59 mm  med=8.21  id=7.30 mm  n=300
+
+======== COHORT TRE (mm) ========
+encoder  mu       mean_TRE=9.32 mm  (id=8.46)  n_pat=10
+encoder  minmax   mean_TRE=9.28 mm  (id=8.46)  n_pat=10
+decoder  mu       mean_TRE=8.88 mm  (id=8.46)  n_pat=10
+decoder  minmax   mean_TRE=8.60 mm  (id=8.46)  n_pat=10
+both     mu       mean_TRE=9.14 mm  (id=8.46)  n_pat=10
+both     minmax   mean_TRE=9.13 mm  (id=8.46)  n_pat=10
+
+wrote /home/abhishek/Voxel_GAN/PopulationStudy/DIR-Experiments/Experiment1/logs/tre_summary.tsv
+DONE
