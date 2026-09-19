@@ -12,7 +12,7 @@ from __future__ import annotations
 from typing import Literal
 
 import numpy as np
-from scipy.ndimage import map_coordinates, zoom
+from scipy.ndimage import affine_transform, map_coordinates
 
 Component = Literal["mag", "LR", "SI", "AP"]
 
@@ -24,8 +24,10 @@ def warp_pull(source_zyx: np.ndarray, dvf_zyx3: np.ndarray, *, sign: float = 1.0
     """
     src = np.asarray(source_zyx, dtype=np.float64)
     dvf = np.asarray(dvf_zyx3, dtype=np.float64)
-    if src.shape != dvf.shape[:3]:
+    if src.ndim != 3 or dvf.shape != (*src.shape, 3):
         raise ValueError(f"shape mismatch src {src.shape} vs dvf {dvf.shape}")
+    if not np.isfinite(src).all() or not np.isfinite(dvf).all():
+        raise ValueError("Source volume and DVF must contain only finite values")
     zz, yy, xx = np.meshgrid(
         np.arange(src.shape[0]),
         np.arange(src.shape[1]),
@@ -81,23 +83,68 @@ def label_components(frame: str) -> dict[str, str]:
 def upsample_to_pack(
     vol_zyx: np.ndarray,
     pack_shape_zyx: tuple[int, int, int],
+    *,
+    frame: str = "native",
 ) -> np.ndarray:
-    """Nearest/linear zoom from 128³ (z,y,x) → pack (nz,ny,nx)."""
+    """Resample compute-grid scalars onto pack indices using the TRE convention."""
     src = np.asarray(vol_zyx, dtype=np.float32)
-    factors = (
-        pack_shape_zyx[0] / src.shape[0],
-        pack_shape_zyx[1] / src.shape[1],
-        pack_shape_zyx[2] / src.shape[2],
+    matrix, offset = _pack_to_compute(src.shape, pack_shape_zyx, frame)
+    return affine_transform(
+        src, matrix, offset=offset, output_shape=pack_shape_zyx,
+        order=1, mode="nearest", prefilter=False,
     )
-    return zoom(src, factors, order=1).astype(np.float32)
+
+
+def _pack_to_compute(sub_shape, pack_shape, frame):
+    """Map output pack (z,y,x) to input compute (z,y,x), including R3 flips."""
+    sz, sy, sx = sub_shape
+    nz, ny, nx = pack_shape
+    if frame == "native":
+        return np.diag([sz / nz, sy / ny, sx / nx]), np.zeros(3)
+    if frame == "r3":
+        return (
+            np.array([[0, -sz / ny, 0], [-sy / nz, 0, 0], [0, 0, sx / nx]]),
+            np.array([(ny - 1) * sz / ny, (nz - 1) * sy / nz, 0]),
+        )
+    raise ValueError(f"Unknown DVF frame {frame!r}; specify native or r3")
+
+
+def _displacements_to_pack(disp_xyz, sub_shape, pack_shape, frame):
+    sz, sy, sx = sub_shape
+    nz, ny, nx = pack_shape
+    if frame == "native":
+        return disp_xyz * np.array([nx / sx, ny / sy, nz / sz])
+    if frame == "r3":
+        return disp_xyz[..., [0, 2, 1]] * np.array([nx / sx, -ny / sz, -nz / sy])
+    raise ValueError(f"Unknown DVF frame {frame!r}")
 
 
 def upsample_dvf_to_pack(
     dvf_zyx3: np.ndarray,
     pack_shape_zyx: tuple[int, int, int],
+    *,
+    frame: str = "native",
 ) -> np.ndarray:
-    chans = [upsample_to_pack(dvf_zyx3[..., i], pack_shape_zyx) for i in range(3)]
-    return np.stack(chans, axis=-1)
+    chans = [upsample_to_pack(dvf_zyx3[..., i], pack_shape_zyx, frame=frame) for i in range(3)]
+    return _displacements_to_pack(
+        np.stack(chans, axis=-1), dvf_zyx3.shape[:3], pack_shape_zyx, frame
+    )
+
+
+def pack_arrows_zyx(dvf, pack_shape, *, frame, step=6, slice_axis=0, slice_index=0, gain=1.0):
+    """Sample only visible arrows; avoid allocating a full-resolution vector volume."""
+    if step < 1 or slice_axis not in (0, 1, 2):
+        raise ValueError("Arrow step must be positive and slice axis must be 0, 1 or 2")
+    grid = [np.arange(0, size, step) for size in pack_shape]
+    grid[slice_axis] = np.array([np.clip(slice_index, 0, pack_shape[slice_axis] - 1)])
+    positions = np.stack(np.meshgrid(*grid, indexing="ij"), axis=-1).reshape(-1, 3)
+    matrix, offset = _pack_to_compute(dvf.shape[:3], pack_shape, frame)
+    coords = (positions @ matrix.T + offset).T
+    disp = np.stack([
+        map_coordinates(dvf[..., i], coords, order=1, mode="nearest") for i in range(3)
+    ], axis=-1)
+    pack_xyz = _displacements_to_pack(disp, dvf.shape[:3], pack_shape, frame)
+    return np.stack([positions, pack_xyz[:, ::-1] * gain], axis=1)
 
 
 def decimated_arrows_zyx(
@@ -137,10 +184,14 @@ def decimated_arrows_zyx(
 
 
 def lung_mae(a: np.ndarray, b: np.ndarray, mask: np.ndarray | None) -> float:
+    if np.shape(a) != np.shape(b):
+        raise ValueError("MAE volumes must have matching shapes")
     d = np.abs(np.asarray(a, dtype=np.float64) - np.asarray(b, dtype=np.float64))
     if mask is None:
         return float(d.mean())
     m = np.asarray(mask, dtype=bool)
     if m.shape != d.shape:
-        return float(d.mean())
-    return float(d[m].mean()) if m.any() else float(d.mean())
+        raise ValueError(f"Lung mask shape {m.shape} does not match volume {d.shape}")
+    if not m.any():
+        raise ValueError("Lung mask is empty")
+    return float(d[m].mean())

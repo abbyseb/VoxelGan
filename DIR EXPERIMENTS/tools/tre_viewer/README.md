@@ -6,25 +6,56 @@ Interactive TRE / DVF / DRR diagnosis for **DIR EXPERIMENTS** runs.
 **Default display frame (later phases):** pack-native mm  
 **Stack:** dedicated `.venv` here (not LEARN-GUI).
 
-## Phase 0 (this milestone)
+## Start here
 
-Scaffold + run discovery + thin adapter over `scripts/dirlab_tre.py` / `eval_a1_tre.py` + per-landmark cache + verify.
+The target platform is **Linux** with a desktop display, **Python 3.10+**,
+DIR-Lab landmark packs, and prepared experiment runs.
+The raw CTs, landmarks, fields and checkpoints are not included in this code checkout.
+Set `DIRLAB_ROOT` to the folder containing `Case1Pack`, `Case2Pack`, etc.
+The coordinate adapter is `DIR EXPERIMENTS/scripts/eval_a1_tre.py`.
 
 ### Setup
+
+On a minimal Ubuntu/Debian installation, install the Qt/OpenGL/font libraries first:
+
+```bash
+sudo apt-get update
+sudo apt-get install -y python3-venv libegl1 libgl1-mesa-dri libopengl0 \
+  libglib2.0-0 libfontconfig1 fonts-dejavu-core libdbus-1-3 libxkbcommon-x11-0 \
+  libxcb-cursor0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 \
+  libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0 libxcb-shape0
+# For headless tests, also install: sudo apt-get install -y xvfb xauth
+```
 
 ```bash
 cd "DIR EXPERIMENTS/tools/tre_viewer"
 bash setup_venv.sh
+# If python3 is older than 3.10:
+# PYTHON=python3.11 bash setup_venv.sh
 ```
 
 ### Commands
 
 ```bash
 cd "DIR EXPERIMENTS/tools"
+./tre_viewer/.venv/bin/python -m tre_viewer doctor
 ./tre_viewer/.venv/bin/python -m tre_viewer list-runs
 ./tre_viewer/.venv/bin/python -m tre_viewer verify --arm A1 --case 1
 ./tre_viewer/.venv/bin/python -m tre_viewer per-landmark --arm A1 --case 1 --field elastix_mha
 ```
+
+`list-runs`, `verify`, `per-landmark` and `view` accept `--runs-dir /path/to/runs`.
+Run `python -m tre_viewer --help` for commands or add `--debug` **before** the
+command to show a full traceback. Help and run discovery do not require patient data.
+
+`verify` recalculates TRE and compares the selected **75 or 300** landmark set
+against its matching reference. It returns 0 only when all requested comparisons
+pass, 1 for absent reference files/runs or skipped comparisons, and 2 for failed
+checks (including missing fields/pairs in an existing summary). An absent
+reference file is reported as **SKIP**, never as a successful verification.
+
+The experiment's primary arm KPI is **75-point Sampled4D TRE**. The 300-point
+option is for pack QA/debugging and must not be reported as an arm score.
 
 ### Success criteria
 
@@ -48,9 +79,12 @@ cd "DIR EXPERIMENTS/tools"
 **In the Controls dock**
 - **Runs folder** + **Browse…** / **Scan folder** — pick an arm root, `…/runs`, or parent of `DIR_Cxx`
 - **Case / patient** dropdown — switch C01–C10 without restarting; shows TRE75 from `tre_summary.json`
-- Then field / pair / 75·300 / overlays as before
+- Select the field, phase pair and 75/300 landmarks, then click **Apply data / refresh**.
+- Slice plane, displacement display, checkboxes and arrow settings update immediately.
+- The case label reports the **loaded** field, pair and landmark set.
+- A failed case or landmark load preserves the previous display and shows the error.
 
-Keys: `W` jump worst TRE · `Shift+W` worst identity · `A`/`C`/`S` orient · **Reload overlays** in Controls.
+Keys: `W` jump worst TRE · `Shift+W` worst identity · `A`/`C`/`S` orient · **Apply data / refresh** in Controls.
 
 ### Success criteria
 
@@ -65,7 +99,14 @@ Overlays (Controls dock / layer list):
 - `DVF arrows` — decimated quiver on current slice
 - `warped source`, `target − warped`, `target − source (identity)`
 - **Space** blinks target ↔ warped
+- Arrows follow the current slice and use pack-voxel lengths; R3 fields are reoriented before display.
+- Failed overlay/projection loads clear stale images. Without a lung mask, MAE is labeled **whole volume**.
+- Reverse (`T50_T00`) landmark TRE remains available. Reverse **image** overlays require an inverse DVF and are disabled until one is supplied; the forward field cannot be reused for that warp.
 - Missing VoxelMap cache → infer once from `best.pt` (LEARN torch if needed) and write `tre/voxelmap_dvf_phase01_mean.npy`
+
+For inference, set `VOXELMAP_CLINICAL_ROOT` to your VoxelMap_Clinical checkout.
+If torch/model dependencies live in another environment, set
+`TRE_VIEWER_INFERENCE_PYTHON=/path/to/that/venv/bin/python`.
 
 ```bash
 ./tre_viewer/.venv/bin/python -m tre_viewer smoke --case 1
@@ -97,6 +138,28 @@ Multipane layout (napari docks, overridden for a usable default):
 | DRR / RTK page **Export PNG…** (`Ctrl+S`) | Save that page’s figure as PNG |
 
 PNG defaults go under ``<run>/tre/exports/``.
+
+## Regression tests
+
+From the repository root:
+
+```bash
+"DIR EXPERIMENTS/tools/tre_viewer/.venv/bin/python" -m pip install -r "DIR EXPERIMENTS/tools/tre_viewer/requirements-dev.txt"
+"DIR EXPERIMENTS/tools/tre_viewer/.venv/bin/python" -m pytest "DIR EXPERIMENTS/tools/tre_viewer/tests" -q
+```
+
+Tests use synthetic volumes and landmarks. On a headless Linux machine, install
+the libraries listed above plus Xvfb/xauth, then use Mesa software rendering:
+
+```bash
+QT_QPA_PLATFORM=xcb QT_API=pyqt6 LIBGL_ALWAYS_SOFTWARE=1 \
+  xvfb-run -a -s '-screen 0 1280x1024x24' \
+  "DIR EXPERIMENTS/tools/tre_viewer/.venv/bin/python" -m pytest "DIR EXPERIMENTS/tools/tre_viewer/tests" -q
+```
+
+Real-case `verify` and `smoke` still need your prepared data.
+Landmark caches are rebuilt when their DVF metadata, landmarks,
+coordinate adapter or frame changes; verification always bypasses cached results.
 
 Starts **maximized** (not tiny). Bottom dock has clickable **DRR** / **RTK** buttons for the same pages. If the launcher vanished, press **`P`**.
 Panels are rebuilt from scratch if their dock was destroyed, so `P` always works:

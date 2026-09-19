@@ -44,14 +44,14 @@ def parse_geometry_xml(path: Path) -> GeometryInfo:
 
     mats = []
     angles = []
-    for proj in root.findall("Projection"):
+    for index, proj in enumerate(root.findall("Projection"), start=1):
         m_el = proj.find("Matrix")
         a_el = proj.find("GantryAngle")
         if m_el is None or m_el.text is None:
-            continue
+            raise ValueError(f"Projection {index} has no matrix in {path}")
         vals = [float(x) for x in m_el.text.split()]
-        if len(vals) != 12:
-            continue
+        if len(vals) != 12 or not np.isfinite(vals).all():
+            raise ValueError(f"Projection {index} needs 12 finite matrix values in {path}")
         mats.append(np.array(vals, dtype=np.float64).reshape(3, 4))
         angles.append(float(a_el.text) if a_el is not None and a_el.text else len(angles))
     if not mats:
@@ -175,17 +175,25 @@ def proj_path(
 def r3_ct_physical_landmarks(run, pack_xyz: np.ndarray) -> tuple[np.ndarray, Path]:
     """Pack-frame landmark indices → physical mm in the R3 CT used for DRRs."""
     import SimpleITK as sitk
-    from eval_a1_tre import pack_to_r3
-    from tre_viewer.data import CASE_INFO
+    from tre_viewer.data import CASE_INFO, train_dir
+    from tre_viewer.evaluation import require_evaluator
 
     (_nx, ny, nz), _ = CASE_INFO[run.case]
-    ct_path = run.run_root / run.scan_id / "train" / "CT_06.mha"
+    train = train_dir(run.run_root, run.scan_id)
+    if train is None:
+        raise FileNotFoundError(f"no train folder under {run.run_root}")
+    ct_path = train / "CT_06.mha"
     if not ct_path.is_file():
-        hits = list((run.run_root / run.scan_id / "train").glob("CT_*.mha"))
+        hits = sorted(train.glob("CT_*.mha"))
         if not hits:
             raise FileNotFoundError(f"no CT_*.mha under {run.run_root}")
         ct_path = hits[0]
     img = sitk.ReadImage(str(ct_path))
-    r3 = pack_to_r3(np.asarray(pack_xyz, dtype=np.float64), ny, nz)
-    mm = itk_index_to_physical(r3, img.GetOrigin(), img.GetSpacing())
+    indices = np.asarray(pack_xyz, dtype=np.float64)
+    if run.frame == "r3":
+        indices = require_evaluator().pack_to_r3(indices, ny, nz)
+    elif run.frame != "native":
+        raise ValueError("Projection landmarks require a known native/r3 frame")
+    # ITK direction may be non-identity; origin + index * spacing alone loses it.
+    mm = np.asarray([img.TransformContinuousIndexToPhysicalPoint(tuple(point)) for point in indices])
     return mm, ct_path
