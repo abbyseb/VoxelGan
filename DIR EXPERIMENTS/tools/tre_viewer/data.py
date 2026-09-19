@@ -48,9 +48,9 @@ from .evaluation import require_evaluator
 
 FrameName = Literal["pack", "r3", "official", "sub"]
 LandmarkSet = Literal["75", "300"]
-PhasePair = Literal["T00_T50", "T50_T00"]
+PhasePair = str
 
-_CASE_RE = re.compile(r"(?:DIR_)?C(\d{1,2})$", re.IGNORECASE)
+_CASE_RE = re.compile(r"(?:DIR_)?C(\d{1,2})(?:_[A-Za-z0-9_-]+)?$", re.IGNORECASE)
 _SCAN_RE = re.compile(r"DIR_C(\d{2})$", re.IGNORECASE)
 
 
@@ -398,11 +398,10 @@ def phase_to_train_idx(phase: str) -> int:
 
 
 def pair_phases(pair: PhasePair) -> tuple[str, str]:
-    if pair == "T00_T50":
-        return "T00", "T50"
-    if pair == "T50_T00":
-        return "T50", "T00"
-    raise ValueError(pair)
+    phases = pair.split("_")
+    if len(phases) != 2 or any(p not in PHASE_TO_IDX for p in phases):
+        raise ValueError(f"Unknown phase pair {pair!r}")
+    return phases[0], phases[1]
 
 
 @dataclass(frozen=True)
@@ -748,7 +747,7 @@ def field_warp_bundle(
     pair: PhasePair = "T00_T50",
 ) -> dict[str, Any]:
     """Source/target/warped/diffs + DVF mm maps on the sub grid (+ pack upsamples)."""
-    if pair == "T50_T00" and field != "identity":
+    if pair != "T00_T50" and field != "identity":
         raise ValueError(
             "Reverse image warping requires an inverse DVF. Select T00_T50 for "
             "image overlays; reverse landmark TRE is still available."

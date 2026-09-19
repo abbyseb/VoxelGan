@@ -117,3 +117,120 @@ def test_projection_page_clears_stale_plot_and_updates_slider(viewer):
         assert page.slider.value() == 1
     finally:
         page.win.close()
+
+
+def test_phase_ct_missing_tre_clears_points_and_returns_to_kpi(viewer):
+    from tre_viewer.phases import PhaseResult
+    missing = PhaseResult(viewer.run, 'synth', 'T70', 'unavailable', 'No T70 annotations')
+    assert viewer._switch_to_run(viewer.run, phase_record=missing)
+    assert viewer.vol_dst.phase == 'T70'
+    assert not len(viewer.layer_truth.data)
+    assert not len(viewer.layer_pred.data)
+    assert 'TRE unavailable' in viewer.summary_label.text()
+    assert not viewer._ctrl_pair.isEnabled()
+    viewer._update_case_tre_label()
+    assert 'TRE unavailable' in viewer._case_tre_label.text()
+    assert not viewer._error_label.text()
+    assert not viewer.layer_warped.visible
+    viewer.jump_worst()  # empty set must be safe
+    viewer.jump_to_landmark(74)
+    assert viewer._switch_to_run(viewer.run)
+    assert viewer.pair == 'T00_T50'
+    assert len(viewer.layer_truth.data) == 75
+    assert viewer._ctrl_pair.isEnabled()
+
+
+def test_phase_heatmap_click_links_phase_and_landmark(viewer):
+    from tre_viewer.phases import PhaseResult
+    panel = viewer._phase_panel
+    panel.runs = [viewer.run]
+    panel.patient.addItem(viewer.run.run_root.name)
+    record = PhaseResult(viewer.run, 'synth', 'T20', 'ok', landmarks=viewer.pl,
+                         observed_mm=np.zeros((75, 3)), predicted_mm=np.ones((75, 3)))
+    panel.results[(str(viewer.run.run_root), 'T20')] = record
+    panel.redraw()
+    panel.landmark.setValue(7)
+    panel._plot_clicked(SimpleNamespace(inaxes=panel.figures[1].axes[0],
+                                       canvas=panel.canvases[1], xdata=2, ydata=0))
+    assert viewer.vol_dst.phase == 'T20'
+    assert viewer.layer_truth.selected_data == {7}
+    assert panel.phase.currentText() == 'T20'
+    viewer.jump_to_landmark(4)
+    assert panel.landmark.value() == 4
+
+
+def test_failed_phase_ct_load_preserves_previous_selection(viewer, monkeypatch):
+    from tre_viewer.phases import PhaseResult
+    original = viewer.layer_ct.data
+    def missing(*args):
+        raise FileNotFoundError('missing phase CT')
+    monkeypatch.setattr(viewer_module, 'load_pack_volume', missing)
+    record = PhaseResult(viewer.run, 'synth', 'T90', 'unavailable')
+    assert not viewer._switch_to_run(viewer.run, phase_record=record)
+    assert viewer.layer_ct.data is original
+    assert viewer._phase_record is None
+    assert viewer.pair == 'T00_T50'
+
+
+def test_phase_background_evaluation_and_stage_reset(viewer, monkeypatch):
+    from qtpy.QtWidgets import QApplication
+    from tre_viewer import phase_panel
+    from tre_viewer.phases import PhaseResult, PHASES
+    import time
+    def evaluate(runs, stage, **kwargs):
+        for phase in PHASES:
+            yield PhaseResult(runs[0], stage, phase, 'unavailable', 'test missing annotation')
+    monkeypatch.setattr(phase_panel, 'evaluate_cohort', evaluate)
+    panel = viewer._phase_panel
+    panel.evaluate()
+    deadline = time.monotonic() + 20
+    while panel.worker is not None and time.monotonic() < deadline:
+        QApplication.processEvents()
+        time.sleep(.01)
+    assert panel.worker is None
+    assert len(panel.results) == 10
+    assert '10 unavailable' in panel.status.text()
+    panel.stage.setCurrentIndex(1)
+    assert not panel.results
+    assert not panel.image_button.isEnabled()
+
+
+def test_phase_inspection_clears_open_projection_pages(viewer):
+    from tre_viewer.phases import PhaseResult
+    from tre_viewer.proj_pages import ProjectionPageWindow
+    page = ProjectionPageWindow(viewer, kind='drr')
+    try:
+        page.ax.imshow(np.ones((8, 8)))
+        viewer._phase_record = PhaseResult(viewer.run, 'synth', 'T70', 'unavailable')
+        page.refresh()
+        assert not page.ax.images
+        assert viewer._drr_frame_data() is None
+    finally:
+        page.win.close()
+
+
+def test_phase_image_worker_shows_images_without_landmarks_and_clears_on_return(viewer, monkeypatch):
+    from qtpy.QtWidgets import QApplication
+    from tre_viewer import phase_panel
+    from tre_viewer.phases import PhaseResult
+    import time
+    panel = viewer._phase_panel
+    panel.runs = [viewer.run]
+    panel.patient.addItem(viewer.run.run_root.name)
+    panel.phase.setCurrentText('T70')
+    record = PhaseResult(viewer.run, 'synth', 'T70', 'unavailable', 'No annotations')
+    panel.results[(str(viewer.run.run_root), 'T70')] = record
+    truth = viewer.vol_dst
+    monkeypatch.setattr(phase_panel, 'synth_image_check', lambda *a: (truth, truth.data + 5, np.full_like(truth.data, 5), 5.))
+    panel.image_check()
+    deadline = time.monotonic() + 20
+    while panel.image_worker is not None and time.monotonic() < deadline:
+        QApplication.processEvents()
+        time.sleep(.01)
+    assert panel.image_worker is None
+    assert len(viewer._phase_images) == 2
+    assert '5.0 HU' in panel.detail.text()
+    assert not len(viewer.layer_truth.data)
+    layers = list(viewer._phase_images)
+    assert viewer._switch_to_run(viewer.run)
+    assert all(layer not in viewer.viewer.layers for layer in layers)

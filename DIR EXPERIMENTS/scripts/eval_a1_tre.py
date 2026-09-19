@@ -182,12 +182,17 @@ def tre_t50_t00(dvf_zyx3: np.ndarray, case: int, which: str = "75", *, r3: bool 
     }
 
 
-def infer_voxelmap_dvf_phase01(
+def infer_voxelmap_dvf_phase(
     ckpt: Path,
     data_dir: Path,
     device: str,
     stride: int = 10,
+    *,
+    phase: int = 1,
 ) -> tuple[np.ndarray, int]:
+    """Infer one target phase (01–10), conditioned on reference phase 06."""
+    if phase not in range(1, 11) or phase == 6:
+        raise ValueError("Target phase must be 01–10 excluding reference phase 06")
     sys.path.insert(0, str(VMC))
     import torch
     from ml.utilities import networksFiLM
@@ -215,7 +220,7 @@ def infer_voxelmap_dvf_phase01(
         angles = pd.read_csv(ap, header=None).values.squeeze()
         angles = np.atleast_1d(np.asarray(angles, dtype=np.float64)).ravel()
 
-    tgt_files = sorted((data_dir / "TargetProjections").glob("01_Proj_*_bin.npy"))
+    tgt_files = sorted((data_dir / "TargetProjections").glob(f"{phase:02d}_Proj_*_bin.npy"))
     tgt_files = tgt_files[:: max(1, stride)]
     flows = []
     with torch.no_grad():
@@ -231,10 +236,15 @@ def infer_voxelmap_dvf_phase01(
             flows.append(pred_flow[0].detach().cpu().numpy())
 
     if not flows:
-        raise ValueError("No phase-01 projection pairs found for inference")
+        raise ValueError(f"No phase-{phase:02d} projection pairs found for inference")
     mean_flow = np.mean(np.stack(flows, axis=0), axis=0)  # (3,H,W,D) = GT npy layout
     hwd = np.moveaxis(mean_flow, 0, -1).astype(np.float64)  # (H,W,D,3)
     return npy_hwd_to_zyx(hwd), len(flows)
+
+
+def infer_voxelmap_dvf_phase01(ckpt, data_dir, device, stride=10):
+    """Compatibility entry point for the established T00/T50 evaluator."""
+    return infer_voxelmap_dvf_phase(ckpt, data_dir, device, stride, phase=1)
 
 
 def main() -> int:
