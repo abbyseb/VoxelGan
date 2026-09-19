@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""dirlab_tre.py — target registration error on the DIR-Lab 4DCT dataset."""
+"""dirlab_tre.py — target registration error on the DIR-Lab 4DCT dataset.
+
+DIR EXPERIMENTS hard rule: primary KPI is the **75-point** Sampled4D set
+(T00→T50 unless noted). Do not report 300-pt means as arm scores.
+`--check` may still print 300-pt identity vs published values (pack QA only).
+"""
 
 from __future__ import annotations
 
@@ -250,7 +255,18 @@ def main():
     )
     p.add_argument("--phase", default="T50", help="target phase (default T50)")
     p.add_argument("--src-phase", default="T00", help="source phase")
-    p.add_argument("--set", choices=("75", "300"), default="75", dest="which", help="landmark set for --pred/--dvf")
+    p.add_argument(
+        "--set",
+        choices=("75", "300"),
+        default="75",
+        dest="which",
+        help="landmark set for --pred/--dvf (DIR EXPERIMENTS KPI is 75; 300 needs --allow-300)",
+    )
+    p.add_argument(
+        "--allow-300",
+        action="store_true",
+        help="permit --set 300 for --pred/--dvf (pack debugging only; not an arm KPI)",
+    )
     p.add_argument("--root", default=None, help="override DIRLAB_ROOT")
     A = p.parse_args()
 
@@ -259,6 +275,11 @@ def main():
         ROOT = Path(A.root)
     if A.case is not None and A.case not in CASE_INFO:
         p.error(f"--case must be one of {sorted(CASE_INFO)}, got {A.case}")
+    if A.which == "300" and (A.pred or A.dvf) and not A.allow_300:
+        p.error(
+            "DIR EXPERIMENTS hard rule: use --set 75 for arm TRE. "
+            "Pass --allow-300 only for pack debugging."
+        )
 
     if A.check and A.case is None:
         print(f"Checking all cases against published identity TRE  [{ROOT}]")

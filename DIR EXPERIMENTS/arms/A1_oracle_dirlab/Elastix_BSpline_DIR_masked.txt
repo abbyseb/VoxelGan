@@ -1,0 +1,40 @@
+// DIR-Lab A1: masked B-spline on HU-kept 128³ (unit spacing).
+// Based on My v1.0/configs/elastix_bspline_masked.txt — finer grid than
+// LEARN Sliding_LowRes (32) which underfits large-SI cases (e.g. Case 8).
+// Use with fixed+moving lung masks.
+
+(FixedInternalImagePixelType "float")
+(MovingInternalImagePixelType "float")
+(UseDirectionCosines "true")
+
+(Registration "MultiResolutionRegistration")
+(Interpolator "BSplineInterpolator")
+(ResampleInterpolator "FinalBSplineInterpolator")
+(Resampler "DefaultResampler")
+
+(FixedImagePyramid "FixedRecursiveImagePyramid")
+(MovingImagePyramid "MovingRecursiveImagePyramid")
+
+(Optimizer "AdaptiveStochasticGradientDescent")
+(Transform "BSplineTransform")
+(Metric "AdvancedMattesMutualInformation")
+
+(FinalGridSpacingInPhysicalUnits 16)
+(HowToCombineTransforms "Compose")
+
+(NumberOfHistogramBins 32)
+(ErodeMask "false")
+
+(NumberOfResolutions 4)
+(MaximumNumberOfIterations 4000)
+
+(NumberOfSpatialSamples 4096)
+(NewSamplesEveryIteration "true")
+(ImageSampler "Random")
+
+(BSplineInterpolationOrder 1)
+(FinalBSplineInterpolationOrder 3)
+(DefaultPixelValue 0)
+(WriteResultImage "false")
+(ResultImagePixelType "float")
+(ResultImageFormat "mha")

@@ -2,14 +2,25 @@
 
 Primary KPI: **TRE in mm** on DIR-Lab landmarks (not Elastix L1/cos).
 
+## Landmark sets (KPI)
+
+Report **both** on T00→T50 (unless noted):
+
+| Set | Role |
+|-----|------|
+| **75-pt** Sampled4D | Primary internal KPI / trajectory subsample |
+| **300-pt** extreme | Paper-comparable DIR-Lab headline set |
+
+Do not mix 75 and 300 when comparing to literature. `--check` still uses 300-pt identity vs published for pack QA.
+
 Data: `data/dirlab_packs/Case{N}Pack` (official packs).  
 Processed SPARE-style volumes also live under `PopulationStudy/DIR-Experiments/data/P*_DIR` (CRB packing / prior work).
 
-TRE harness: [`scripts/dirlab_tre.py`](scripts/dirlab_tre.py)  
+TRE harness: [`scripts/dirlab_tre.py`](scripts/dirlab_tre.py) · A1 eval: [`scripts/eval_a1_tre.py`](scripts/eval_a1_tre.py)  
 ```bash
 export DIRLAB_ROOT="$(pwd)/data/dirlab_packs"
-python scripts/dirlab_tre.py --check          # identity vs published
-python scripts/dirlab_tre.py --case 1 --dvf path/to/field.npy --set 300
+python scripts/dirlab_tre.py --check
+python scripts/eval_a1_tre.py --case 1 --gpu 0   # prints 75 + 300
 ```
 
 Field convention for `--dvf`: `(nz, ny, nx, 3)` as `(dx, dy, dz)` **voxels**,  
@@ -38,11 +49,11 @@ invert before calling (see script docstring) — wrong sign looks like mediocre 
 
 ## Suggested order
 
-1. **Harness** — `dirlab_tre.py --check` (must match published identity TRE).  
-2. **A0** — report identity TRE on 300-pt T00→T50 (and 75-pt if used).  
-3. **A1 oracle** — stage DIR 4D-CT → VoxelMap train per case (or leave-one-in) → TRE.  
-4. **A2 generic** — SPARE-trained VoxelMap (or SPARE Elastix DVFs as motion prior) on DIR → TRE.  
-5. **A3 synth** — G160-A1 (or chosen synthesizer) from mid-phase CT → synth 4D → VoxelMap → TRE.  
+1. **Harness** — `dirlab_tre.py --check` (pack QA).  
+2. **A0** — report **75-pt** identity TRE on T00→T50.  
+3. **A1 oracle** — stage DIR 4D-CT → VoxelMap train per case → **75-pt** TRE.  
+4. **A2 generic** — SPARE-trained VoxelMap on DIR → **75-pt** TRE.  
+5. **A3 synth** — G160-A1 (or chosen synthesizer) from mid-phase CT → synth 4D → VoxelMap → **75-pt** TRE.  
 6. **A4 / A5** if A3 is competitive.
 
 Leave-one-out vs train-on-all-but-test-case for A1/A2 should be fixed before claiming cohort numbers.

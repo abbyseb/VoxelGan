@@ -1,6 +1,5 @@
-# A2 — Generic SPARE motion prior
+# A2_generic_spare
 
-VoxelMap (or motion library) from **SPARE population**, applied on DIR-Lab.  
-Tests whether patient-conditioned synthesis (A3) beats a generic prior.
+Fresh arm folder for **R3-centred** DIR DRRs (`Geometry_SPARE.xml`).
 
-Status: scaffold.
+Previous (incorrect-orbit) runs: [`../Incorrect DRR/A2_generic_spare/`](../Incorrect%20DRR/A2_generic_spare/)
