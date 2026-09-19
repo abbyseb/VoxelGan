@@ -164,18 +164,19 @@ class TreViewerApp:
             np.zeros((0, 3)),
             name="truth (dst)",
             size=12.0,
-            face_color="lime",
+            face_color="green",
             border_width=0.15,
+            symbol="disc",
             shading="spherical",
             **_pt,
         )
         self.layer_pred = self.viewer.add_points(
             np.zeros((0, 3)),
             name="pred",
-            size=10.0,
-            face_color="magenta",
+            size=12.0,
+            face_color="red",
             border_width=0.15,
-            symbol="disc",
+            symbol="cross",
             **_pt,
         )
         self.layer_src_pts = self.viewer.add_points(
@@ -195,6 +196,7 @@ class TreViewerApp:
             face_color=[0, 0, 0, 0],
             border_width=0.35,
             opacity=1.0,
+            visible=False,
             **_pt,
         )
         # User marker styles (napari left panel) — survive reload / case switch.
@@ -202,24 +204,24 @@ class TreViewerApp:
         self._marker_style_cache: dict[str, dict] = {
             "truth": {
                 "size": 12.0,
-                "symbol": "o",
-                "border_width": 0.15,
-                "opacity": 1.0,
-                "blending": "translucent",
-                "shading": "spherical",
-                "border_color": "white",
-                "face_color": "lime",
-                "color_by_tre": True,
-            },
-            "pred": {
-                "size": 10.0,
                 "symbol": "disc",
                 "border_width": 0.15,
                 "opacity": 1.0,
                 "blending": "translucent",
+                "shading": "spherical",
+                "border_color": "green",
+                "face_color": "green",
+                "color_by_tre": False,
+            },
+            "pred": {
+                "size": 12.0,
+                "symbol": "cross",
+                "border_width": 0.15,
+                "opacity": 1.0,
+                "blending": "translucent",
                 "shading": "none",
-                "border_color": "white",
-                "face_color": "magenta",
+                "border_color": "red",
+                "face_color": "red",
                 "color_by_tre": False,
             },
             "src": {
@@ -246,9 +248,9 @@ class TreViewerApp:
                 "size_by_tre": True,
             },
             "err": {
-                "edge_width": 1.5,
+                "edge_width": 5.0,
                 "opacity": 1.0,
-                "color_by_tre": True,
+                "color_by_tre": False,
                 "edge_color": "yellow",
             },
         }
@@ -256,10 +258,11 @@ class TreViewerApp:
             np.zeros((0, 2, 3)),
             name="error vectors",
             scale=scale,
-            edge_width=1.5,
+            edge_width=5.0,
             length=1.0,
-            vector_style="triangle",
-            opacity=0.95,
+            vector_style="arrow",
+            edge_color="yellow",
+            opacity=1.0,
         )
         self._wire_marker_style_persistence()
 
@@ -2187,7 +2190,7 @@ class TreViewerApp:
             summary_line(pl)
             + f"\nfield={self.field}  oob={int(pl.oob_mask.sum())}  "
             f"display=pack-mm  DVF_frame={pl.frame}\n"
-            f"truth/pred markers keep your face colour & size  |  "
+            f"truth=green disc · pred=red cross  |  "
             f"W=worst  Space=blink",
         )
         self.viewer.title = (
