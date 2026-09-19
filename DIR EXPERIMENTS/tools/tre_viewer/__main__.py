@@ -162,6 +162,21 @@ def _cmd_per_landmark(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_phase_performance(args):
+    from tre_viewer.phases import evaluate_cohort, export_results
+    runs = _runs(args)
+    if not runs:
+        raise ValueError("No matching runs")
+    results = list(evaluate_cohort(runs, args.stage, infer=args.infer_voxelmap,
+                                  stride=args.stride, device=args.device, real_runs_dir=args.real_runs_dir))
+    export_results(Path(args.output), results, expected_cells=len(runs) * 10)
+    for result in results:
+        score = f"mean {result.metric('mean'):.3f} mm" if result.landmarks else result.reason
+        print(f"{result.run.run_root.name} {result.phase}: {result.status} {score}")
+    print(f"Saved {len(results)} cells to {args.output}")
+    return 0 if any(r.status == "ok" for r in results) and not any(r.status == "error" for r in results) else 1
+
+
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="tre_viewer",
@@ -212,6 +227,18 @@ def build_parser() -> argparse.ArgumentParser:
         "--pair", choices=("T00_T50", "T50_T00"), default="T00_T50"
     )
     pp.set_defaults(func=_cmd_per_landmark)
+
+    phases = sub.add_parser("phase-performance", help="Evaluate all respiratory phases using 75 landmarks")
+    phases.add_argument("--arm", default="A3")
+    phases.add_argument("--runs-dir", default=None)
+    phases.add_argument("--case", type=int, choices=range(1, 11), default=None)
+    phases.add_argument("--stage", choices=("synth", "voxelmap"), default="synth")
+    phases.add_argument("--output", required=True, help="JSON output; unavailable values are null")
+    phases.add_argument("--infer-voxelmap", action="store_true", help="Infer missing per-phase caches using best.pt")
+    phases.add_argument("--real-runs-dir", default=None, help="Real A1 runs directory for downstream evaluation (never synthetic training DRRs)")
+    phases.add_argument("--device", default="cuda", help="PyTorch device for optional inference")
+    phases.add_argument("--stride", type=int, default=10, help="Projection sampling stride")
+    phases.set_defaults(func=_cmd_phase_performance)
 
     vp = sub.add_parser("view", help="Launch the interactive TRE viewer")
     vp.add_argument("--arm", default="A1")

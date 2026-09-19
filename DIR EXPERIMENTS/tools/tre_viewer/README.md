@@ -114,11 +114,78 @@ If torch/model dependencies live in another environment, set
 ```
 
 
+## Respiratory Phase Performance
+
+Open the **Phase Performance** tab (or **Window → TRE Panels → Show Phase Performance**).
+Choose **Direct synthesizer** or **Downstream VoxelMap**, then click **Evaluate runs**.
+Evaluation runs in the background across the loaded runs folder; **Cancel** keeps completed cells.
+Run names such as `DIR_C01_muhist` and `DIR_C01_g160ft` appear separately.
+
+- **Phase curves:** selected run's 75-point mean and p95 TRE, identity mean, and improvement
+  (`identity − model`, positive is better). Gaps indicate unavailable scores.
+- **Patient × phase:** mean, p95, or improvement heatmap. Negative improvement means worse
+  than identity. The detail text identifies the selected run's highest-error scored phase.
+- **Landmark trajectory:** observed and predicted signed displacement from T50 in mm,
+  on official xyz axes (approximately LR/AP/SI). Landmark IDs are zero-based, matching the TRE panel.
+- Click a heatmap cell or plotted phase to load that run/phase's real CT and available
+  landmark overlays. The landmark selector and TRE worst-landmark jump stay linked.
+- **Check synth CT** loads the saved synthesized CT and a signed `synth − real` HU layer.
+  It also reports whole-volume HU MAE, including background. This check works without
+  annotations and is an image-similarity diagnostic, not a substitute for TRE.
+- **Export JSON** saves scores, status/reasons, coverage and landmark trajectories.
+  Missing scores are JSON `null`, never zero. **Return to KPI view** restores the usual
+  T00→T50 view. Historical image/DVF/DRR overlays are disabled during phase inspection
+  so they cannot reuse a field belonging to a different phase or mapping direction.
+
+All new phase scores map **T50 → target phase**, using **75 corresponding Sampled4D
+landmarks only**. T50 is an explicitly marked zero-motion reference, excluded from rankings.
+Only phases with both reference and target annotations are scored; coverage is discovered
+from the pack, not assumed to include all ten phases. Rankings describe the scored phases
+of the selected run; they do not establish clinical adequacy or statistically significant differences.
+
+Direct synth evaluation requires `synth_meta.json` and
+`<scan_id>/train/_synth_dvf_infer_XX.npy`, as written by `prepare_a3_dir_case.py`.
+It uses the raw pull field, **not** the negated `DVF_sub_XX.mha` training label.
+The evaluator reproduces the preparation script's resize-then-warp sampling and solves
+`q + u(q) = p` for each reference landmark, with a maximum residual of **0.01 mm**.
+If any of the 75 solutions fails to converge or leaves the image grid, the phase is marked
+invalid and excluded from scoring. Convergence does not prove the field is globally invertible.
+The legacy T00→T50 KPI still uses its existing first-order inverse approximation; its values
+are not interchangeable with the new phase curves.
+
+Downstream VoxelMap evaluation reads each phase's own
+`tre/voxelmap_dvf_phaseXX_mean.npy` (`XX=01…10`, zyx grid, xyz components).
+A phase-01 cache is never substituted for another phase. The GUI does not run GPU inference.
+Create missing caches with the batch command in the environment containing PyTorch and
+VoxelMap dependencies:
+
+```bash
+cd "DIR EXPERIMENTS/tools"
+export DIRLAB_ROOT=/path/to/dirlab_packs
+export VOXELMAP_CLINICAL_ROOT=/path/to/VoxelMap_Clinical
+python -m tre_viewer phase-performance \
+  --runs-dir /path/to/A3/runs --stage synth --output /tmp/synth_phases.json
+python -m tre_viewer phase-performance \
+  --runs-dir /path/to/A3/runs --stage voxelmap --infer-voxelmap \
+  --real-runs-dir /path/to/A1/runs --device cuda --stride 10 \
+  --output /tmp/voxelmap_phases.json
+```
+
+Use `--case 1` to restrict evaluation. Inference is only attempted for annotated,
+non-reference phases. Existing caches are reused. Newly inferred caches include a JSON
+sidecar recording the phase, reference, frame, checkpoint, real data directory, stride and
+projection count. A3 inference uses **real A1** projections, following `eval_a3_tre.py`;
+it never defaults to the synthetic training projections. Without `--real-runs-dir`, it
+uses the existing TRE summary's evaluation directory or the canonical A1 runs folder.
+The command exits 0 when at least one non-reference cell is scored and no cell is invalid;
+missing annotations/fields remain explicit in the export. It exits 1 if nothing is scored
+or any cell is invalid. Setup/output errors exit 2.
+
 ## Window / panels
 
 Multipane layout (napari docks, overridden for a usable default):
 - **Center:** CT + TRE overlays (primary canvas)
-- **Right tabs:** **TRE** (summary / worst list) ↔ **Controls** (cases + overlays) — tabified so they don’t fight for height; Controls scrolls if needed
+- **Right tabs:** **TRE** (summary / worst list) ↔ **Controls** (cases + overlays) ↔ **Phase Performance** (respiratory phase graphs) — tabified so they don’t fight for height; Controls scrolls if needed
 - **Bottom:** clickable **DRR** / **RTK** launchers → separate maximized full-page windows (Shift+D / Shift+T)
 - Soft size hints only (no hard min widths that clip). Drag edges / float titles as usual.
 - Close (X) hides a panel; **P** or Window→TRE Panels restores.

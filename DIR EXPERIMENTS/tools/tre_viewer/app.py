@@ -98,6 +98,8 @@ class TreViewerApp:
         import napari
 
         self.run = run
+        self._phase_record = None
+        self._phase_images = []
         self.which = which
         self.pair: PhasePair = pair
         self.field = field or default_field(run)
@@ -356,6 +358,10 @@ class TreViewerApp:
             area="right",
         )
 
+        self._register_dock(
+            name="Phase Performance", builder=self._build_phase_panel, area="right",
+        )
+
         # Keybindings
         @self.viewer.bind_key("w")
         def _jump_worst(viewer):  # noqa: ARG001
@@ -432,6 +438,11 @@ class TreViewerApp:
         sa.setWidget(widget)
         return sa
 
+    def _build_phase_panel(self):
+        from .phase_panel import PhasePerformancePanel
+        self._phase_panel = PhasePerformancePanel(self)
+        return self._phase_panel
+
     def _finalize_layout(self) -> None:
         """Corners, tabify right panels, sensible sizes — override napari defaults."""
         from qtpy.QtCore import Qt
@@ -463,6 +474,10 @@ class TreViewerApp:
                 qw.resizeDocks([tre, ctrl], [3, 2], Qt.Orientation.Vertical)
             except Exception:
                 pass
+
+        phase = self._docks.get("Phase Performance")
+        if self._qt_alive(tre) and self._qt_alive(phase):
+            qw.tabifyDockWidget(tre, phase)
 
         drr = self._docks.get("DRR")
         if self._qt_alive(drr):
@@ -629,6 +644,8 @@ class TreViewerApp:
         form.setFieldGrowthPolicy(QFormLayout.FieldGrowthPolicy.AllNonFixedFieldsGrow)
 
         fields = list(self.run.fields_available) or ["identity"]
+        if self._phase_record is not None:
+            fields.append(self.field)
         self._ctrl_field = QComboBox()
         self._ctrl_field.addItems(fields)
         if self.field in fields:
@@ -794,6 +811,9 @@ class TreViewerApp:
 
     def _apply_overlay_controls(self) -> None:
         """Read compact Controls widgets and refresh overlays / volumes."""
+        if self._phase_record is not None:
+            self._report_error("Use Return to KPI view in Phase Performance to change the primary TRE pair.")
+            return
         field_w = getattr(self, "_ctrl_field", None)
         if field_w is not None and self._qt_alive(field_w):
             field = field_w.currentText() or self.field
@@ -872,10 +892,9 @@ class TreViewerApp:
         for run in self._catalog:
             combo.addItem(self._case_combo_label(run), str(run.run_root))
         # select
-        want = select_case if select_case is not None else self.run.case
         idx = 0
         for i in range(combo.count()):
-            if self._catalog[i].case == want:
+            if self._catalog[i].run_root == self.run.run_root:
                 idx = i
                 break
         combo.setCurrentIndex(idx)
@@ -946,6 +965,9 @@ class TreViewerApp:
         if pl is None:
             lab.setText("Loading landmark results…")
             return
+        if self._phase_record is not None and self._phase_record.landmarks is None:
+            lab.setText(f"{self.run.run_root.name} · {self._phase_record.phase}: TRE unavailable")
+            return
         lab.setText(
             f"Loaded C{pl.case:02d} · {pl.which} landmarks · {pl.pair.replace('_', ' → ')}\n"
             f"{pl.field}: {pl.registered_stats['mean']:.2f} mm · "
@@ -957,6 +979,14 @@ class TreViewerApp:
         if field_w is None or not self._qt_alive(field_w):
             return
         fields = list(self.run.fields_available) or ["identity"]
+        if self._phase_record is not None:
+            fields.append(self.field)
+        for selector in (self._ctrl_field, self._ctrl_pair, self._ctrl_which):
+            selector.setEnabled(self._phase_record is None)
+        self._ctrl_pair.blockSignals(True)
+        self._ctrl_pair.clear()
+        self._ctrl_pair.addItems(list(dict.fromkeys(["T00_T50", "T50_T00", self.pair])))
+        self._ctrl_pair.blockSignals(False)
         try:
             cur = field_w.currentText()
             field_w.blockSignals(True)
@@ -992,19 +1022,31 @@ class TreViewerApp:
         if self._qt_alive(getattr(self, "_spin_arrow_gain", None)):
             self._spin_arrow_gain.setValue(float(self._arrow_gain))
 
-    def _switch_to_run(self, run: RunRef) -> bool:
-        """Hot-swap patient/case without restarting napari."""
-        field = self.field if self.field in run.fields_available else default_field(run)
-        src_ph, dst_ph = pair_phases(self.pair)
+    def _switch_to_run(self, run: RunRef, *, phase_record=None) -> bool:
+        """Load everything before changing case/phase so failed CT loads roll back."""
+        if phase_record is not None:
+            from .phases import empty_landmarks
+            field, pair, which = phase_record.stage, f"T50_{phase_record.phase}", "75"
+            pl = phase_record.landmarks or empty_landmarks(phase_record)
+        else:
+            field = self.field if self.field in run.fields_available else default_field(run)
+            pair = "T00_T50" if self._phase_record is not None else self.pair
+            which = "75" if self._phase_record is not None else self.which
+        src_ph, dst_ph = pair_phases(pair)
         try:
             vol_dst = load_pack_volume(run, dst_ph)
             vol_src = load_pack_volume(run, src_ph)
-            pl = per_landmark(run, field, which=self.which, pair=self.pair)
+            if phase_record is None:
+                pl = per_landmark(run, field, which=which, pair=pair)
         except (OSError, ValueError, ImportError, RuntimeError, KeyError) as exc:
             self._report_error(f"Could not load C{run.case:02d}: {exc}")
             return False
-        self.run = run
-        self.field = field
+        for layer in self._phase_images:
+            if layer in self.viewer.layers:
+                self.viewer.layers.remove(layer)
+        self._phase_images = []
+        self._phase_record = phase_record
+        self.run, self.field, self.pair, self.which = run, field, pair, which
         self._bundle = None
         self._bundle_key = None
         self._blink_warped = False
@@ -1056,6 +1098,7 @@ class TreViewerApp:
                 pass
 
         self._sync_field_choices()
+        self._refill_case_combo(select_case=self.run.case)
         self._update_case_tre_label()
         self._apply_thick_slices()
         self._refresh_landmarks(pl)
@@ -1185,7 +1228,7 @@ class TreViewerApp:
         spec["dock_widget"] = dock_widget
         if rebuilt:
             self._repopulate_panel(name)
-        if name in ("TRE", "Controls", "DRR"):
+        if name in ("TRE", "Controls", "DRR", "Phase Performance"):
             try:
                 self._finalize_layout()
             except Exception:
@@ -1247,7 +1290,7 @@ class TreViewerApp:
         if not hasattr(self, "pl"):
             return
         if name == "TRE":
-            self._refresh_landmarks()
+            self._refresh_landmarks(self.pl)
             self._append_warp_summary()
         elif name == "Controls":
             self._refill_case_combo(select_case=self.run.case)
@@ -1710,6 +1753,8 @@ class TreViewerApp:
         self._open_proj_page("rtk")
 
     def _open_proj_page(self, kind: str) -> None:
+        if self._phase_record is not None:
+            return None
         if getattr(self, "_geom", None) is None or getattr(self, "_mt", None) is None:
             self.viewer.status = (
                 "No geometry / ModelTraining — cannot open projection page"
@@ -1741,6 +1786,8 @@ class TreViewerApp:
 
     def _drr_frame_data(self) -> dict | None:
         """Shared projection frame for dock meta + full-page windows."""
+        if self._phase_record is not None:
+            return None
         if getattr(self, "_geom", None) is None or getattr(self, "_mt", None) is None:
             return None
         if not hasattr(self, "pl"):
@@ -2063,6 +2110,8 @@ class TreViewerApp:
         tre_colors: np.ndarray | None = None,
         tre_sizes: np.ndarray | None = None,
     ) -> None:
+        if n == 0:
+            return
         style = self._marker_style_cache.get(key, {})
         self._applying_marker_style = True
         try:
@@ -2208,6 +2257,13 @@ class TreViewerApp:
                     f"idnt {row['ident_mm']:.2f}  z={row['slice_z']}"
                 )
 
+        if self._phase_record is not None and self._phase_record.landmarks is None:
+            message = f"{self.run.run_root.name} · {self._phase_record.phase}: TRE unavailable\n{self._phase_record.reason}"
+            self._set_label("summary_label", message)
+            self._set_label("_case_tre_label", message)
+            self._set_label("selected_label", "No scored landmarks for this phase.")
+            self.viewer.title = f"TRE Viewer │ {self.run.run_root.name} │ {self._phase_record.phase} │ TRE unavailable"
+
     def _set_label(self, attr: str, text: str) -> None:
         """Set a panel label's text, tolerating a panel that was destroyed."""
         label = getattr(self, attr, None)
@@ -2220,7 +2276,7 @@ class TreViewerApp:
             self.jump_to_landmark(self._worst_rows[row]["id"])
 
     def jump_worst(self, *, by_identity: bool = False) -> None:
-        if not hasattr(self, "pl"):
+        if not hasattr(self, "pl") or not len(self.pl.tre_mm):
             return
         key = self.pl.identity_mm if by_identity else self.pl.tre_mm
         order = np.argsort(-key)
@@ -2232,6 +2288,8 @@ class TreViewerApp:
         """Recompute warp/DVF pack overlays for the current field/pair."""
         key = (self.run.run_root, self.field, self.pair)
         try:
+            if self._phase_record is not None:
+                raise ValueError("Phase inspection shows landmarks and real CT; use Check synth CT for image comparison.")
             bundle = (self._bundle if self._bundle is not None and self._bundle_key == key
                       else field_warp_bundle(self.run, self.field, self.pair))
         except Exception as exc:  # noqa: BLE001 — show in UI, don't crash viewer
@@ -2252,7 +2310,10 @@ class TreViewerApp:
                     box.blockSignals(True)
                     box.setChecked(False)
                     box.blockSignals(False)
-            self._report_error(f"DVF overlay unavailable: {exc}")
+            if self._phase_record is None:
+                self._report_error(f"DVF overlay unavailable: {exc}")
+            else:
+                self._set_label("_error_label", "")
             label = getattr(self, "summary_label", None)
             if self._qt_alive(label):
                 label.setText(label.text().split("\nwarp")[0])
@@ -2349,6 +2410,15 @@ class TreViewerApp:
 
     def jump_to_landmark(self, idx: int) -> None:
         pl = self.pl
+        if not 0 <= idx < len(pl.tre_mm):
+            return
+        panel = getattr(self, "_phase_panel", None)
+        if self._phase_record is not None and self._qt_alive(panel):
+            if panel.landmark.value() != idx:
+                panel.landmark.blockSignals(True)
+                panel.landmark.setValue(idx)
+                panel.landmark.blockSignals(False)
+                panel.redraw()
         z, y, x = xyz_to_zyx(pl.truth_pack[idx : idx + 1])[0]
         # Slider axis is dims.order[0]; step must be *data index*, not mm
         # (set_point uses world mm when scale≠1 — that was hiding the points).
