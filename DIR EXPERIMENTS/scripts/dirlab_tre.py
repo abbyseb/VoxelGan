@@ -59,7 +59,12 @@ PHASES = [f"T{10 * i:02d}" for i in range(10)]
 def read_points(path):
     """(N, 3) zero-based voxel indices (x, y, z) from a DIR-Lab landmark file."""
     rows = [r.split() for r in Path(path).read_text().strip().splitlines() if r.strip()]
-    return np.array([[float(v) for v in r[:3]] for r in rows], dtype=np.float64) - 1.0
+    if not rows or any(len(row) != 3 for row in rows):
+        raise ValueError(f"Expected non-empty rows of x y z coordinates in {path}")
+    points = np.array([[float(v) for v in r] for r in rows], dtype=np.float64) - 1.0
+    if not np.isfinite(points).all():
+        raise ValueError(f"Non-finite landmark coordinates in {path}")
+    return points
 
 
 def _pack_dir(case: int) -> Path:
@@ -68,7 +73,7 @@ def _pack_dir(case: int) -> Path:
         p = ROOT / name
         if p.is_dir():
             return p
-    raise SystemExit(
+    raise FileNotFoundError(
         f"no pack at {ROOT / f'Case{case}Pack'}. Set DIRLAB_ROOT (currently {ROOT})."
     )
 
@@ -227,6 +232,7 @@ def report_identity(case):
         ok = abs(delta) < 0.05
         print(_row("300pt T00-T50", s, f"   published {pub:5.2f}{flag}"))
     except FileNotFoundError as e:
+        ok = False
         print(f"  300-point set unavailable: {e}")
 
     phs = phases_75(case)
@@ -288,7 +294,7 @@ def main():
             try:
                 if not report_identity(c):
                     bad.append(c)
-            except SystemExit as e:
+            except (OSError, ValueError) as e:
                 print(f"\nCase {c}: {e}")
                 bad.append(c)
         print()

@@ -107,16 +107,18 @@ def load_dvf_zyx3(path: Path) -> np.ndarray:
     if path.suffix == ".npy":
         a = np.load(path).astype(np.float64)
         if a.ndim != 4 or a.shape[-1] != 3:
-            raise SystemExit(f"Expected (H,W,D,3) DVF npy, got {a.shape} from {path}")
+            raise ValueError(f"Expected (H,W,D,3) DVF npy, got {a.shape} from {path}")
         a = npy_hwd_to_zyx(a)
     else:
         import SimpleITK as sitk
 
         a = sitk.GetArrayFromImage(sitk.ReadImage(str(path))).astype(np.float64)
     if a.ndim != 4 or a.shape[-1] != 3:
-        raise SystemExit(f"Expected (z,y,x,3) DVF, got {a.shape} from {path}")
-    if a.shape[0] != 128:
-        raise SystemExit(f"Expected 128³ DVF, got {a.shape}")
+        raise ValueError(f"Expected (z,y,x,3) DVF, got {a.shape} from {path}")
+    if a.shape != (128, 128, 128, 3):
+        raise ValueError(f"Expected 128³ DVF, got {a.shape} from {path}")
+    if not np.isfinite(a).all():
+        raise ValueError(f"Non-finite values in DVF {path}")
     return a
 
 
@@ -185,7 +187,7 @@ def infer_voxelmap_dvf_phase01(
     data_dir: Path,
     device: str,
     stride: int = 10,
-) -> np.ndarray:
+) -> tuple[np.ndarray, int]:
     sys.path.insert(0, str(VMC))
     import torch
     from ml.utilities import networksFiLM
@@ -201,8 +203,8 @@ def infer_voxelmap_dvf_phase01(
 
     src_vol_path = data_dir / "SourceVolumes" / "sub_CT_06_mha.npy"
     src_vol = _normalize(np.load(src_vol_path).squeeze())
-    while src_vol.ndim > 3:
-        src_vol = src_vol.squeeze(0)
+    if src_vol.shape != (128, 128, 128):
+        raise ValueError(f"Expected 128³ source volume, got {src_vol.shape} from {src_vol_path}")
     src_vol_t = torch.from_numpy(src_vol[None, None]).to(device)
 
     angles = None
@@ -229,7 +231,7 @@ def infer_voxelmap_dvf_phase01(
             flows.append(pred_flow[0].detach().cpu().numpy())
 
     if not flows:
-        raise SystemExit("No phase-01 projection pairs found for inference")
+        raise ValueError("No phase-01 projection pairs found for inference")
     mean_flow = np.mean(np.stack(flows, axis=0), axis=0)  # (3,H,W,D) = GT npy layout
     hwd = np.moveaxis(mean_flow, 0, -1).astype(np.float64)  # (H,W,D,3)
     return npy_hwd_to_zyx(hwd), len(flows)

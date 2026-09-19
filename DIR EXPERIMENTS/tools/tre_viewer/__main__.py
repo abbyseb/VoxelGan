@@ -9,6 +9,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import math
+import os
 import sys
 from pathlib import Path
 
@@ -17,16 +19,43 @@ _TOOLS = Path(__file__).resolve().parent.parent
 if str(_TOOLS) not in sys.path:
     sys.path.insert(0, str(_TOOLS))
 
-from tre_viewer.data import (  # noqa: E402
-    DIR_EXP,
-    discover_runs,
-    per_landmark,
-    verify_against_summary,
-)
+def _runs(args):
+    from tre_viewer.data import discover_runs, discover_runs_in_folder
+
+    runs = (discover_runs_in_folder(args.runs_dir) if args.runs_dir
+            else discover_runs([args.arm] if args.arm else None))
+    return [r for r in runs if args.case is None or r.case == args.case]
+
+
+def _cmd_doctor(args: argparse.Namespace) -> int:
+    from importlib import import_module
+
+    root = _TOOLS.parent
+    checks = [("Python 3.10+", sys.version_info >= (3, 10), sys.version.split()[0])]
+    for module in ("numpy", "scipy", "SimpleITK", "napari", "qtpy", "PyQt6.QtWidgets", "matplotlib"):
+        try:
+            import_module(module)
+            checks.append((module, True, "imports successfully"))
+        except (ImportError, OSError, RuntimeError) as exc:
+            checks.append((module, False, str(exc)))
+    evaluator = root / "scripts" / "eval_a1_tre.py"
+    checks.append(("TRE coordinate adapter", evaluator.is_file(), str(evaluator)))
+    packs = Path(os.environ.get("DIRLAB_ROOT", root / "data" / "dirlab_packs")).expanduser()
+    checks.append(("DIR-Lab packs", packs.is_dir(), f"{packs} (set DIRLAB_ROOT to change)"))
+    for label, ok, detail in checks:
+        print(f"[{'OK' if ok else 'MISSING'}] {label}: {detail}")
+    return 0 if all(ok for _, ok, _ in checks) else 1
+
+
+def _nonnegative_float(value: str) -> float:
+    number = float(value)
+    if not math.isfinite(number) or number < 0:
+        raise argparse.ArgumentTypeError("must be a finite, non-negative number")
+    return number
 
 
 def _cmd_list_runs(args: argparse.Namespace) -> int:
-    from tre_viewer.data import discover_runs_in_folder
+    from tre_viewer.data import DIR_EXP, discover_runs, discover_runs_in_folder
 
     if args.runs_dir:
         runs = discover_runs_in_folder(
@@ -36,7 +65,7 @@ def _cmd_list_runs(args: argparse.Namespace) -> int:
         arms = [args.arm] if args.arm else None
         runs = discover_runs(arms, require_summary=args.require_summary)
     if not runs:
-        print("No runs found.")
+        print("No runs found. Use --runs-dir /path/to/runs or run 'tre_viewer doctor'.")
         return 1
     print(f"{'arm':<28} {'case':>4} {'frame':<8} {'fields':<40} summary")
     print("-" * 100)
@@ -55,28 +84,36 @@ def _cmd_list_runs(args: argparse.Namespace) -> int:
 
 
 def _cmd_verify(args: argparse.Namespace) -> int:
-    arms = [args.arm] if args.arm else None
-    runs = discover_runs(arms)
-    if args.case is not None:
-        runs = [r for r in runs if r.case == args.case]
+    from tre_viewer.data import verify_against_summary
+
+    runs = _runs(args)
     if not runs:
         print("No matching runs.")
         return 1
 
     n_fail = 0
+    n_checked = 0
+    n_skipped = 0
     for run in runs:
         print(f"\n=== {run.arm} C{run.case:02d} frame={run.frame} ===")
-        checks = verify_against_summary(
-            run,
-            field=args.field,
-            which=args.which,
-            pair=args.pair,
-            atol=args.atol,
-        )
+        try:
+            checks = verify_against_summary(
+                run, field=args.field, which=args.which, pair=args.pair, atol=args.atol,
+            )
+        except (OSError, ValueError, ImportError) as exc:
+            if args.debug:
+                raise
+            print(f"  [FAIL] {exc}")
+            n_fail += 1
+            continue
         for c in checks:
-            status = "OK" if c["ok"] else "FAIL"
-            if not c["ok"]:
+            status = "SKIP" if c["ok"] is None else ("OK" if c["ok"] else "FAIL")
+            if c["ok"] is None:
+                n_skipped += 1
+            elif not c["ok"]:
                 n_fail += 1
+            else:
+                n_checked += 1
             exp = c.get("expected")
             got = c.get("got")
             delta = c.get("delta")
@@ -88,20 +125,18 @@ def _cmd_verify(args: argparse.Namespace) -> int:
     if n_fail:
         print(f"\n{n_fail} check(s) failed.")
         return 2
-    print("\nAll checks passed.")
+    if not n_checked or n_skipped:
+        print(f"\nVerification incomplete: {n_checked} passed, {n_skipped} skipped.")
+        return 1
+    print(f"\nAll {n_checked} checks passed.")
     return 0
 
 
 def _cmd_per_landmark(args: argparse.Namespace) -> int:
-    runs = discover_runs([args.arm] if args.arm else None)
-    runs = [r for r in runs if r.case == args.case]
-    if not runs:
-        print("No matching run.")
-        return 1
-    run = runs[0]
-    field = args.field or next(
-        (f for f in run.fields_available if f.startswith("elastix")), "identity"
-    )
+    from tre_viewer.data import default_field, per_landmark, per_landmark_cache_path, resolve_run
+
+    run = resolve_run(args.arm, args.case, runs_dir=args.runs_dir)
+    field = args.field or default_field(run)
     pl = per_landmark(run, field, which=args.which, pair=args.pair)
     print(
         json.dumps(
@@ -118,9 +153,7 @@ def _cmd_per_landmark(args: argparse.Namespace) -> int:
                 "worst_idx": int(pl.tre_mm.argmax()),
                 "worst_tre_mm": float(pl.tre_mm.max()),
                 "cache": str(
-                    run.run_root
-                    / "tre"
-                    / f"per_landmark_{pl.which}_{pl.pair}_{pl.field}.npz"
+                    per_landmark_cache_path(run, pl.field, pl.which, pl.pair)
                 ),
             },
             indent=2,
@@ -132,9 +165,12 @@ def _cmd_per_landmark(args: argparse.Namespace) -> int:
 def build_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(
         prog="tre_viewer",
-        description="TRE Viewer (Phase 0: discovery + adapter + verify)",
+        description="Inspect DIR-Lab registration: browse cases, view overlays, and verify TRE.",
     )
+    p.add_argument("--debug", action="store_true", help="Show a traceback for troubleshooting")
     sub = p.add_subparsers(dest="cmd", required=True)
+
+    sub.add_parser("doctor", help="Check dependencies, coordinate adapter and data location").set_defaults(func=_cmd_doctor)
 
     lp = sub.add_parser("list-runs", help="Discover arms/*/runs/*")
     lp.add_argument("--arm", default=None, help="A1 or A1_oracle_dirlab")
@@ -152,7 +188,8 @@ def build_parser() -> argparse.ArgumentParser:
 
     vp = sub.add_parser("verify", help="Match adapter means to tre_summary / A0")
     vp.add_argument("--arm", default="A1")
-    vp.add_argument("--case", type=int, default=None)
+    vp.add_argument("--runs-dir", default=None, help="Check an external runs folder")
+    vp.add_argument("--case", type=int, choices=range(1, 11), default=None)
     vp.add_argument(
         "--field",
         default=None,
@@ -162,12 +199,13 @@ def build_parser() -> argparse.ArgumentParser:
     vp.add_argument(
         "--pair", choices=("T00_T50", "T50_T00"), default="T00_T50"
     )
-    vp.add_argument("--atol", type=float, default=1e-6)
+    vp.add_argument("--atol", type=_nonnegative_float, default=1e-6)
     vp.set_defaults(func=_cmd_verify)
 
     pp = sub.add_parser("per-landmark", help="Compute/cache per-landmark TRE")
     pp.add_argument("--arm", default="A1")
-    pp.add_argument("--case", type=int, required=True)
+    pp.add_argument("--runs-dir", default=None, help="Compute TRE for an external runs folder")
+    pp.add_argument("--case", type=int, choices=range(1, 11), required=True)
     pp.add_argument("--field", default=None)
     pp.add_argument("--which", choices=("75", "300"), default="75")
     pp.add_argument(
@@ -175,9 +213,9 @@ def build_parser() -> argparse.ArgumentParser:
     )
     pp.set_defaults(func=_cmd_per_landmark)
 
-    vp = sub.add_parser("view", help="Launch napari TRE viewer (Phase 1)")
+    vp = sub.add_parser("view", help="Launch the interactive TRE viewer")
     vp.add_argument("--arm", default="A1")
-    vp.add_argument("--case", type=int, default=1)
+    vp.add_argument("--case", type=int, choices=range(1, 11), default=1)
     vp.add_argument(
         "--runs-dir",
         default=None,
@@ -192,14 +230,14 @@ def build_parser() -> argparse.ArgumentParser:
 
     sp = sub.add_parser("smoke", help="Offscreen smoke test (no GUI loop)")
     sp.add_argument("--arm", default="A1")
-    sp.add_argument("--case", type=int, default=1)
+    sp.add_argument("--case", type=int, choices=range(1, 11), default=1)
     sp.set_defaults(func=_cmd_smoke)
 
     ps = sub.add_parser(
         "panel-smoke", help="Offscreen dock close→reopen regression test"
     )
     ps.add_argument("--arm", default="A1")
-    ps.add_argument("--case", type=int, default=1)
+    ps.add_argument("--case", type=int, choices=range(1, 11), default=1)
     ps.set_defaults(func=_cmd_panel_smoke)
 
     return p
@@ -261,7 +299,14 @@ def main(argv: list[str] | None = None) -> int:
 
     parser = build_parser()
     args = parser.parse_args(argv)
-    return int(args.func(args))
+    try:
+        return int(args.func(args))
+    except (OSError, ValueError, ImportError, RuntimeError) as exc:
+        if args.debug:
+            raise
+        print(f"tre_viewer: {exc}", file=sys.stderr)
+        print("Run 'python -m tre_viewer doctor' for setup checks, or use --debug for details.", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":

@@ -14,9 +14,12 @@ Phase 0 surface:
 from __future__ import annotations
 
 import json
+import hashlib
 import os
 import re
 import sys
+import warnings
+from zipfile import BadZipFile
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any, Iterable, Literal
@@ -40,17 +43,8 @@ from dirlab_tre import (  # noqa: E402
     stats,
     tre_mm,
 )
-from eval_a1_tre import (  # noqa: E402
-    load_dvf_zyx3,
-    npy_hwd_to_zyx,
-    official_to_pack,
-    pack_to_official,
-    pack_to_r3,
-    pack_to_sub,
-    r3_shape_spacing,
-    r3_to_pack,
-    sub_disp_to_pack,
-)
+from .evaluation import require_evaluator
+
 
 FrameName = Literal["pack", "r3", "official", "sub"]
 LandmarkSet = Literal["75", "300"]
@@ -138,7 +132,7 @@ def arm_dir(arm: str) -> Path:
 
 def case_info(case: int) -> dict[str, Any]:
     (nx, ny, nz), (dx, dy, dz) = CASE_INFO[case]
-    r3_shape, r3_sp = r3_shape_spacing(case)
+    r3_shape, r3_sp = require_evaluator().r3_shape_spacing(case)
     return {
         "case": case,
         "pack_shape_xyz": (nx, ny, nz),
@@ -160,7 +154,19 @@ def _parse_case_from_name(name: str) -> int | None:
     m = _SCAN_RE.fullmatch(name) or _CASE_RE.fullmatch(name)
     if not m:
         return None
-    return int(m.group(1))
+    case = int(m.group(1))
+    return case if case in CASE_INFO else None
+
+
+def _read_summary(path: Path) -> dict[str, Any] | None:
+    try:
+        summary = json.loads(path.read_text())
+        if not isinstance(summary, dict):
+            raise ValueError("expected a JSON object")
+        return summary
+    except (OSError, ValueError) as exc:
+        warnings.warn(f"Cannot read TRE summary {path}: {exc}", stacklevel=2)
+        return None
 
 
 def _find_tre_summary(run_root: Path) -> Path | None:
@@ -182,7 +188,8 @@ def _read_frame(summary: dict[str, Any] | None, run_root: Path) -> str:
     if summary and summary.get("frame") in ("r3", "native"):
         return str(summary["frame"])
     # Heuristic: R3 CT is (nx, nz, ny) e.g. 256x94x256 for case 1
-    ct = run_root / run_root.name / "train" / "CT_01.mha"
+    train = _train_dir(run_root, run_root.name)
+    ct = (train or run_root / "train") / "CT_01.mha"
     if not ct.is_file():
         # some layouts nest scan_id twice
         for cand in run_root.glob("DIR_C*/train/CT_01.mha"):
@@ -192,8 +199,10 @@ def _read_frame(summary: dict[str, Any] | None, run_root: Path) -> str:
         try:
             import SimpleITK as sitk
 
-            img = sitk.ReadImage(str(ct))
-            size = tuple(int(x) for x in img.GetSize())  # ITK (x,y,z)
+            reader = sitk.ImageFileReader()
+            reader.SetFileName(str(ct))
+            reader.ReadImageInformation()
+            size = tuple(int(x) for x in reader.GetSize())  # ITK (x,y,z)
             # pack native: (nx,ny,nz) with ny≈nx; R3: (nx,nz,ny) with middle = nz small
             if len(size) == 3 and size[1] < size[0] and size[1] < size[2]:
                 return "r3"
@@ -283,15 +292,15 @@ def _make_run_ref(
     summary_path = _find_tre_summary(run_root)
     if require_summary and summary_path is None:
         return None
-    summary = None
-    if summary_path is not None:
-        try:
-            summary = json.loads(summary_path.read_text())
-        except json.JSONDecodeError:
-            summary = None
+    summary = _read_summary(summary_path) if summary_path else None
+    if summary is None:
+        summary_path = None
+        if require_summary:
+            return None
     if summary and "case" in summary:
-        case = int(summary["case"])
-        scan_id = str(summary.get("scan_id", scan_id))
+        if str(summary["case"]) != str(case):
+            warnings.warn(f"Skipping {run_root}: summary case does not match folder")
+            return None
     frame = _read_frame(summary, run_root)
     fields = _fields_for_run(run_root, scan_id)
     ckpt = (run_root / "checkpoints_nofilm" / "best.pt").is_file()
@@ -350,6 +359,8 @@ def discover_runs(
 ) -> list[RunRef]:
     """Glob ``arms/*/runs/*`` and return RunRefs (tolerant of empty arms)."""
     if arms is None:
+        if not ARMS_ROOT.is_dir():
+            return []
         arm_folders = sorted(
             p.name for p in ARMS_ROOT.iterdir() if p.is_dir() and not p.name.startswith(".")
         )
@@ -370,7 +381,7 @@ def discover_runs(
 def load_tre_summary(run: RunRef) -> dict[str, Any] | None:
     if run.tre_summary_path is None or not run.tre_summary_path.is_file():
         return None
-    return json.loads(run.tre_summary_path.read_text())
+    return _read_summary(run.tre_summary_path)
 
 
 # ---------------------------------------------------------------------------
@@ -477,6 +488,11 @@ def resolve_run(
     if not hits:
         where = f"runs_dir={runs_dir!r}" if runs_dir else f"arm={arm!r}"
         raise FileNotFoundError(f"No run for {where} case={case}")
+    if len(hits) > 1:
+        raise ValueError(
+            f"Multiple runs match case {case}; select --arm or --runs-dir: "
+            + ", ".join(str(r.run_root) for r in hits)
+        )
     return hits[0]
 
 
@@ -491,6 +507,8 @@ def default_field(run: RunRef) -> str:
 # Landmarks
 # ---------------------------------------------------------------------------
 def _load_pair(case: int, which: LandmarkSet, pair: PhasePair):
+    if which not in ("75", "300"):
+        raise ValueError(f"Unknown landmark set {which!r}; choose 75 or 300")
     load = landmarks_75 if which == "75" else landmarks_300
     if pair == "T00_T50":
         return load(case, "T00"), load(case, "T50")
@@ -511,14 +529,14 @@ def landmarks(
     (nx, ny, nz), _ = CASE_INFO[case]
     if frame == "official":
         return xyz
-    pack = official_to_pack(xyz, nz)
+    pack = require_evaluator().official_to_pack(xyz, nz)
     if frame == "pack":
         return pack
     if frame == "r3":
-        return pack_to_r3(pack, ny, nz)
+        return require_evaluator().pack_to_r3(pack, ny, nz)
     if frame == "sub":
         # sub of pack (native) — for r3-sub use frame='r3' then pack_to_sub yourself
-        return pack_to_sub(pack, (nx, ny, nz))
+        return require_evaluator().pack_to_sub(pack, (nx, ny, nz))
     raise ValueError(frame)
 
 
@@ -542,12 +560,12 @@ def load_field_zyx3(run: RunRef, field: str, *, infer: bool = True) -> np.ndarra
     if field == "elastix_mha":
         if train is None:
             raise FileNotFoundError(f"no train/ under {run.run_root}")
-        return load_dvf_zyx3(train / "DVF_sub_01.mha")
+        return require_evaluator().load_dvf_zyx3(train / "DVF_sub_01.mha")
 
     if field == "elastix_npy":
         if mt is None:
             raise FileNotFoundError(f"no ModelTraining under {run.run_root}")
-        return load_dvf_zyx3(mt / "DVFs" / "DVF_01_mha.npy")
+        return require_evaluator().load_dvf_zyx3(mt / "DVFs" / "DVF_01_mha.npy")
 
     if field in ("voxelmap", "voxelmap_ckpt"):
         return ensure_voxelmap_dvf(run, infer=infer)
@@ -556,8 +574,8 @@ def load_field_zyx3(run: RunRef, field: str, *, infer: bool = True) -> np.ndarra
     path = Path(field)
     if path.is_file():
         if path.suffix == ".mha":
-            return load_dvf_zyx3(path)
-        return _load_zyx_npy(path) if _npy_is_zyx_cache(path) else load_dvf_zyx3(path)
+            return require_evaluator().load_dvf_zyx3(path)
+        return _load_zyx_npy(path) if _npy_is_zyx_cache(path) else require_evaluator().load_dvf_zyx3(path)
 
     raise KeyError(
         f"Unknown field {field!r}. Available: {run.fields_available}"
@@ -614,17 +632,20 @@ def _infer_voxelmap_dvf(ckpt: Path, mt: Path, *, stride: int = 10) -> np.ndarray
         dvf, n = infer_voxelmap_dvf_phase01(ckpt, mt, device, stride=stride)
         print(f"[tre_viewer] inferred VoxelMap DVF over {n} projs → cache")
         return np.asarray(dvf, dtype=np.float64)
-    except ImportError:
-        pass
+    except ImportError as exc:
+        import_error = exc
 
-    learn_py = Path(
-        "/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/bin/python"
-    )
+    learn_py = Path(os.environ.get(
+        "TRE_VIEWER_INFERENCE_PYTHON",
+        "/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/bin/python",
+    )).expanduser()
     if not learn_py.is_file():
         raise ImportError(
-            "torch not in tre_viewer venv and LEARN-GUI python not found; "
-            "install torch or run eval_a1_tre.py once to create the DVF cache"
-        )
+            f"VoxelMap inference dependency unavailable: {import_error}. "
+            "Install torch and set VOXELMAP_CLINICAL_ROOT, set "
+            "TRE_VIEWER_INFERENCE_PYTHON to a prepared Python environment, "
+            "or run eval_a1_tre.py there to create the DVF cache."
+        ) from import_error
     import subprocess
     import tempfile
 
@@ -645,7 +666,9 @@ def _infer_voxelmap_dvf(ckpt: Path, mt: Path, *, stride: int = 10) -> np.ndarray
             "print(f'WROTE {out} n={n}')\n"
         )
         helper.close()
-        tmp_out = Path(tempfile.mkstemp(suffix=".npy")[1])
+        fd, tmp_name = tempfile.mkstemp(suffix=".npy")
+        os.close(fd)
+        tmp_out = Path(tmp_name)
         cmd = [
             str(learn_py),
             helper.name,
@@ -664,6 +687,16 @@ def _infer_voxelmap_dvf(ckpt: Path, mt: Path, *, stride: int = 10) -> np.ndarray
             tmp_out.unlink(missing_ok=True)
 
 
+def _load_hwd_volume(path: Path) -> np.ndarray:
+    """Validate once; repeatedly squeezing a non-singleton axis never terminates."""
+    a = np.load(path, allow_pickle=False).squeeze()
+    if a.shape != (128, 128, 128):
+        raise ValueError(f"Expected a 128³ HWD volume, got {a.shape} from {path}")
+    if not np.isfinite(a).all():
+        raise ValueError(f"Non-finite values in volume {path}")
+    return np.transpose(a, (2, 0, 1))
+
+
 def load_sub_volume_zyx(run: RunRef, phase: str) -> np.ndarray:
     """Load 128³ sub_CT as (z,y,x) float32 (from npy HWD or mha)."""
     idx = phase_to_train_idx(phase)
@@ -671,11 +704,7 @@ def load_sub_volume_zyx(run: RunRef, phase: str) -> np.ndarray:
     if mt is not None:
         npy = mt / "SourceVolumes" / f"sub_CT_{idx:02d}_mha.npy"
         if npy.is_file():
-            a = np.load(npy).squeeze().astype(np.float32)
-            while a.ndim > 3:
-                a = a.squeeze()
-            # prep_train HWD (y,x,z) → zyx
-            return np.transpose(a, (2, 0, 1))
+            return _load_hwd_volume(npy).astype(np.float32)
     train = _train_dir(run.run_root, run.scan_id)
     if train is None:
         raise FileNotFoundError(f"no sub_CT for {run.scan_id} phase {phase}")
@@ -685,7 +714,10 @@ def load_sub_volume_zyx(run: RunRef, phase: str) -> np.ndarray:
     import SimpleITK as sitk
 
     # sitk array is already zyx for these volumes
-    return sitk.GetArrayFromImage(sitk.ReadImage(str(path))).astype(np.float32)
+    a = sitk.GetArrayFromImage(sitk.ReadImage(str(path))).astype(np.float32)
+    if a.shape != (128, 128, 128) or not np.isfinite(a).all():
+        raise ValueError(f"Expected a finite 128³ volume, got {a.shape} from {path}")
+    return a
 
 
 def load_lung_mask_zyx(run: RunRef) -> np.ndarray | None:
@@ -695,11 +727,7 @@ def load_lung_mask_zyx(run: RunRef) -> np.ndarray | None:
     p = mt / "Masks" / "Mask_Lung_mha.npy"
     if not p.is_file():
         return None
-    a = np.load(p).squeeze()
-    while a.ndim > 3:
-        a = a.squeeze()
-    # same HWD layout as SourceVolumes
-    return np.transpose(a.astype(bool), (2, 0, 1))
+    return _load_hwd_volume(p).astype(bool)
 
 
 def sub_to_mm_xyz(run: RunRef) -> tuple[float, float, float]:
@@ -720,6 +748,13 @@ def field_warp_bundle(
     pair: PhasePair = "T00_T50",
 ) -> dict[str, Any]:
     """Source/target/warped/diffs + DVF mm maps on the sub grid (+ pack upsamples)."""
+    if pair == "T50_T00" and field != "identity":
+        raise ValueError(
+            "Reverse image warping requires an inverse DVF. Select T00_T50 for "
+            "image overlays; reverse landmark TRE is still available."
+        )
+    if run.frame not in ("native", "r3"):
+        raise ValueError("Cannot display DVF overlays without a known native/r3 frame")
     from .warp_dvf import (
         dvf_components_mm,
         label_components,
@@ -733,11 +768,7 @@ def field_warp_bundle(
     tgt = load_sub_volume_zyx(run, dst_ph)
     mask = load_lung_mask_zyx(run)
     dvf = load_field_zyx3(run, field, infer=True)
-    # Image warp always +disp (T00→T50 and T50→T00 both pull moving→fixed
-    # with the Elastix field defined on fixed=T50; for T50→T00 display we still
-    # warp source toward target with +disp on the stored field — matches TRE
-    # sign only for T00→T50 KPI path. For T50→T00 use +disp at T50 samples for
-    # landmarks; image blink uses source=T50 target=T00 with +disp.)
+    # Stored field is defined on fixed=T50 and pulls the moving=T00 image.
     warped = warp_pull(src, dvf, sign=1.0)
     diff = (tgt - warped).astype(np.float32)
     ident_diff = (tgt - src).astype(np.float32)
@@ -751,6 +782,9 @@ def field_warp_bundle(
         "SI": comps[labels["SI"]],
         "AP": comps[labels["AP"]],
     }
+    if run.r3:
+        ui_comps["SI"] = -ui_comps["SI"]
+        ui_comps["AP"] = -ui_comps["AP"]
     pshape = pack_shape_zyx(run.case)
     return {
         "src": src,
@@ -761,16 +795,17 @@ def field_warp_bundle(
         "dvf": dvf,
         "comps": ui_comps,
         "mask": mask,
+        "mae_region": "lung" if mask is not None else "whole volume (no lung mask)",
         "mae_warped_lung": lung_mae(warped, tgt, mask),
         "mae_ident_lung": lung_mae(src, tgt, mask),
         "pack": {
-            "warped": upsample_to_pack(warped, pshape),
-            "diff": upsample_to_pack(diff, pshape),
-            "ident_diff": upsample_to_pack(ident_diff, pshape),
-            "mag": upsample_to_pack(ui_comps["mag"], pshape),
-            "SI": upsample_to_pack(ui_comps["SI"], pshape),
-            "AP": upsample_to_pack(ui_comps["AP"], pshape),
-            "LR": upsample_to_pack(ui_comps["LR"], pshape),
+            "warped": upsample_to_pack(warped, pshape, frame=run.frame),
+            "diff": upsample_to_pack(diff, pshape, frame=run.frame),
+            "ident_diff": upsample_to_pack(ident_diff, pshape, frame=run.frame),
+            "mag": upsample_to_pack(ui_comps["mag"], pshape, frame=run.frame),
+            "SI": upsample_to_pack(ui_comps["SI"], pshape, frame=run.frame),
+            "AP": upsample_to_pack(ui_comps["AP"], pshape, frame=run.frame),
+            "LR": upsample_to_pack(ui_comps["LR"], pshape, frame=run.frame),
             "dvf": None,  # filled lazily if arrows need pack
         },
         "sub_to_mm_xyz": sx_yz,
@@ -785,9 +820,11 @@ def _npy_is_zyx_cache(path: Path) -> bool:
 
 
 def _load_zyx_npy(path: Path) -> np.ndarray:
-    a = np.load(path).astype(np.float64)
-    if a.ndim != 4 or a.shape[-1] != 3 or a.shape[0] != 128:
+    a = np.load(path, allow_pickle=False).astype(np.float64)
+    if a.shape != (128, 128, 128, 3):
         raise ValueError(f"Expected (128,128,128,3) zyx DVF, got {a.shape} from {path}")
+    if not np.isfinite(a).all():
+        raise ValueError(f"Non-finite values in DVF {path}")
     return a
 
 
@@ -808,27 +845,61 @@ def _push_forward(
     sign=+1 for T50→T00.
     """
     (nx, ny, nz), _ = CASE_INFO[case]
-    src_pack = official_to_pack(src_official, nz)
+    src_pack = require_evaluator().official_to_pack(src_official, nz)
     if r3:
-        shape, _ = r3_shape_spacing(case)
-        src_g = pack_to_r3(src_pack, ny, nz)
-        src_sub = pack_to_sub(src_g, shape)
+        shape, _ = require_evaluator().r3_shape_spacing(case)
+        src_g = require_evaluator().pack_to_r3(src_pack, ny, nz)
+        src_sub = require_evaluator().pack_to_sub(src_g, shape)
         disp = sample_dvf(dvf_zyx3, src_sub)
-        pred_g = src_g + sign * sub_disp_to_pack(disp, shape)
-        pred_pack = r3_to_pack(pred_g, ny, nz)
-        hi = np.array([shape[0] - 1, shape[1] - 1, shape[2] - 1], dtype=np.float64)
+        pred_g = src_g + sign * require_evaluator().sub_disp_to_pack(disp, shape)
+        pred_pack = require_evaluator().r3_to_pack(pred_g, ny, nz)
         # oob in the grid where we sample (r3 continuous → sub)
-        oob = ((src_g < 0) | (src_g > np.array([shape[0] - 1, shape[1] - 1, shape[2] - 1]))).any(
-            axis=1
-        )
     else:
         shape = (nx, ny, nz)
-        src_sub = pack_to_sub(src_pack, shape)
+        src_sub = require_evaluator().pack_to_sub(src_pack, shape)
         disp = sample_dvf(dvf_zyx3, src_sub)
-        pred_pack = src_pack + sign * sub_disp_to_pack(disp, shape)
-        oob = ((src_pack < 0) | (src_pack > np.array([nx - 1, ny - 1, nz - 1]))).any(axis=1)
-    pred_official = pack_to_official(pred_pack, nz)
+        pred_pack = src_pack + sign * require_evaluator().sub_disp_to_pack(disp, shape)
+    # Report clamping on the actual sampled grid, including its upper edge.
+    hi = np.asarray(dvf_zyx3.shape[:3][::-1]) - 1
+    oob = ((src_sub < 0) | (src_sub > hi)).any(axis=1)
+    pred_official = require_evaluator().pack_to_official(pred_pack, nz)
     return pred_official, pred_pack, oob
+
+
+def per_landmark_cache_path(run: RunRef, field: str, which: str, pair: str) -> Path:
+    """External field paths must never become directories inside the cache name."""
+    key = field
+    if field not in ("identity", "elastix_mha", "elastix_npy", "voxelmap", "voxelmap_ckpt"):
+        key = "custom_" + hashlib.sha256(str(Path(field).resolve()).encode()).hexdigest()[:16]
+    return run.run_root / "tre" / f"per_landmark_{which}_{pair}_{key}.npz"
+
+
+def _cache_signature(run: RunRef, field: str, src: np.ndarray, dst: np.ndarray) -> str:
+    paths = [Path(require_evaluator().__file__)]
+    train = _train_dir(run.run_root, run.scan_id)
+    mt = _model_training_dir(run.run_root, run.scan_id)
+    if field == "elastix_mha" and train:
+        paths.append(train / "DVF_sub_01.mha")
+    elif field == "elastix_npy" and mt:
+        paths.append(mt / "DVFs" / "DVF_01_mha.npy")
+    elif field in ("voxelmap", "voxelmap_ckpt"):
+        paths.extend([
+            voxelmap_cache_path(run),
+            run.run_root / "tre_75" / "voxelmap_dvf_phase01_mean.npy",
+        ])
+    elif field != "identity":
+        paths.append(Path(field))
+    metadata = []
+    for path in paths:
+        if path.is_file():
+            st = path.stat()
+            metadata.append((str(path.resolve()), st.st_size, st.st_mtime_ns))
+        else:
+            metadata.append((str(path.resolve()), None, None))
+    digest = hashlib.sha256(json.dumps([2, run.case, run.frame, field, metadata]).encode())
+    digest.update(np.asarray(src, dtype=np.float64).tobytes())
+    digest.update(np.asarray(dst, dtype=np.float64).tobytes())
+    return digest.hexdigest()
 
 
 def per_landmark(
@@ -841,18 +912,25 @@ def per_landmark(
     write_cache: bool = True,
 ) -> PerLandmarkResult:
     """Compute (or load) per-landmark TRE for a run/field."""
-    cache_path = (
-        run.run_root
-        / "tre"
-        / f"per_landmark_{which}_{pair}_{field}.npz"
-    )
-    if use_cache and cache_path.is_file():
-        return _load_per_landmark_npz(cache_path)
-
     src_off, dst_off = _load_pair(run.case, which, pair)
+    if (src_off.shape != dst_off.shape or src_off.shape != (int(which), 3)
+            or not np.isfinite(src_off).all() or not np.isfinite(dst_off).all()):
+        raise ValueError(f"Expected two finite ({which}, 3) landmark sets for C{run.case:02d}")
+    if field != "identity" and run.frame not in ("native", "r3"):
+        raise ValueError("Unknown DVF frame: provide a tre_summary.json with frame 'native' or 'r3'.")
+    cache_path = per_landmark_cache_path(run, field, which, pair)
+    signature = _cache_signature(run, field, src_off, dst_off)
+    if use_cache and cache_path.is_file():
+        try:
+            with np.load(cache_path, allow_pickle=False) as cached:
+                if str(cached.get("signature", "")) == signature:
+                    return _load_per_landmark_npz(cache_path)
+        except (OSError, ValueError, KeyError, EOFError, BadZipFile):
+            warnings.warn(f"Rebuilding unreadable landmark cache {cache_path}", stacklevel=2)
+
     (nx, ny, nz), spacing = CASE_INFO[run.case]
-    src_pack = official_to_pack(src_off, nz)
-    dst_pack = official_to_pack(dst_off, nz)
+    src_pack = require_evaluator().official_to_pack(src_off, nz)
+    dst_pack = require_evaluator().official_to_pack(dst_off, nz)
 
     if field == "identity":
         pred_off = src_off.copy()
@@ -862,9 +940,6 @@ def per_landmark(
         dvf = load_field_zyx3(run, field)
         sign = -1 if pair == "T00_T50" else +1
         r3 = run.frame == "r3"
-        if run.frame == "unknown":
-            # Prefer summary-less heuristic already stored; default native
-            r3 = False
         pred_off, pred_pack, oob = _push_forward(
             dvf, run.case, src_off, r3=r3, sign=sign
         )
@@ -893,14 +968,33 @@ def per_landmark(
         identity_stats=stats(ident),
     )
     if write_cache:
-        cache_path.parent.mkdir(parents=True, exist_ok=True)
-        _save_per_landmark_npz(cache_path, result)
+        # Inference may have created the DVF file since the initial signature.
+        signature = _cache_signature(run, field, src_off, dst_off)
+        try:
+            cache_path.parent.mkdir(parents=True, exist_ok=True)
+            _save_per_landmark_npz(cache_path, result, signature=signature)
+        except OSError as exc:
+            warnings.warn(f"TRE computed, but could not save cache {cache_path}: {exc}", stacklevel=2)
     return result
 
 
-def _save_per_landmark_npz(path: Path, r: PerLandmarkResult) -> None:
+def _save_per_landmark_npz(path: Path, r: PerLandmarkResult, *, signature: str = "") -> None:
+    import tempfile
+
+    # A cancelled save must not replace a usable cache with a partial zip file.
+    with tempfile.NamedTemporaryFile(dir=path.parent, suffix=".npz", delete=False) as tmp:
+        temporary = Path(tmp.name)
+    try:
+        _write_per_landmark_npz(temporary, r, signature=signature)
+        temporary.replace(path)
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
+def _write_per_landmark_npz(path: Path, r: PerLandmarkResult, *, signature: str) -> None:
     np.savez_compressed(
         path,
+        signature=signature,
         case=r.case,
         field=r.field,
         which=r.which,
@@ -922,7 +1016,8 @@ def _save_per_landmark_npz(path: Path, r: PerLandmarkResult) -> None:
 
 
 def _load_per_landmark_npz(path: Path) -> PerLandmarkResult:
-    z = np.load(path, allow_pickle=False)
+    with np.load(path, allow_pickle=False) as cache:
+        z = {key: cache[key] for key in cache.files}
     return PerLandmarkResult(
         case=int(z["case"]),
         field=str(z["field"]),
@@ -963,11 +1058,15 @@ def verify_against_summary(
     summary = load_tre_summary(run)
 
     # Identity always — compare to A0 and/or summary identity block
-    pl_id = per_landmark(run, "identity", which=which, pair=pair, write_cache=True)
+    pl_id = per_landmark(run, "identity", which=which, pair=pair, use_cache=False)
     a0_path = ARMS_ROOT / "A0_identity" / "results" / "summary.json"
     if a0_path.is_file():
         a0 = json.loads(a0_path.read_text())
-        a0_case = next((c for c in a0["cases"] if int(c["case"]) == run.case), None)
+        src_ph, dst_ph = pair_phases(pair)
+        a0_case = next((c for c in a0["cases"]
+                        if int(c["case"]) == run.case
+                        and str(c.get("set")) == which
+                        and {c.get("src"), c.get("dst")} == {src_ph, dst_ph}), None)
         if a0_case is not None:
             exp = float(a0_case["mean_mm"])
             got = float(pl_id.identity_stats["mean"])
@@ -981,22 +1080,26 @@ def verify_against_summary(
                 }
             )
 
-    fields = [field] if field else [
+    fields = [field] if field and field != "identity" else [
         f for f in run.fields_available if f not in ("identity", "voxelmap_ckpt")
     ]
+    if field == "identity":
+        fields = []
     if summary is None:
         for f in fields:
-            pl = per_landmark(run, f, which=which, pair=pair)
+            pl = per_landmark(run, f, which=which, pair=pair, use_cache=False)
             checks.append(
                 {
                     "name": f"{f}/{which}/{pair} (no summary)",
-                    "ok": True,
+                    "ok": None,
                     "expected": None,
                     "got": pl.registered_stats["mean"],
                     "delta": None,
                     "note": "no tre_summary.json to compare",
                 }
             )
+        if not checks:
+            checks.append({"name": "reference", "ok": None, "note": "No matching reference to verify"})
         return checks
 
     arms = summary.get("arms") or {}
@@ -1014,7 +1117,10 @@ def verify_against_summary(
                 }
             )
             continue
-        block = (arm.get(which) or {}).get(pair) or arm.get(pair)
+        # Legacy top-level pairs contain the 75-point result only.
+        block = (arm.get(which) or {}).get(pair)
+        if not block and which == "75":
+            block = arm.get(pair)
         if not block:
             checks.append(
                 {
@@ -1027,7 +1133,7 @@ def verify_against_summary(
             )
             continue
         exp = float(block["registered"]["mean"])
-        pl = per_landmark(run, f, which=which, pair=pair)
+        pl = per_landmark(run, f, which=which, pair=pair, use_cache=False)
         got = float(pl.registered_stats["mean"])
         checks.append(
             {
@@ -1051,4 +1157,6 @@ def verify_against_summary(
                 "delta": got_i - exp_i,
             }
         )
+    if not checks:
+        checks.append({"name": "reference", "ok": None, "note": "No matching reference to verify"})
     return checks

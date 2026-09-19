@@ -19,7 +19,6 @@ from tre_viewer.data import (  # noqa: E402
     discover_runs_in_folder,
     field_warp_bundle,
     load_pack_volume,
-    load_tre_summary,
     normalize_runs_dir,
     pair_phases,
     per_landmark,
@@ -33,8 +32,7 @@ from tre_viewer.encodings import (  # noqa: E402
     worst_table,
 )
 from tre_viewer.warp_dvf import (  # noqa: E402
-    decimated_arrows_zyx,
-    upsample_dvf_to_pack,
+    pack_arrows_zyx,
 )
 
 # napari dims.order: which axis is the slider (first) for 2D view of last two
@@ -122,6 +120,7 @@ class TreViewerApp:
         src_ph, dst_ph = pair_phases(pair)
         self.vol_dst = load_pack_volume(run, dst_ph)  # target (T50 for KPI)
         self.vol_src = load_pack_volume(run, src_ph)
+        initial_landmarks = per_landmark(run, self.field, which=self.which, pair=self.pair)
 
         self.viewer = napari.Viewer(
             title=(
@@ -267,6 +266,7 @@ class TreViewerApp:
         # --- Phase 2: DVF / warp overlays (pack-shaped upsamples; off by default) ---
         self._blink_warped = False
         self._bundle = None
+        self._bundle_key = None
         z0 = np.zeros_like(self.vol_dst.data, dtype=np.float32)
         self.layer_dvf_mag = self.viewer.add_image(
             z0,
@@ -403,8 +403,10 @@ class TreViewerApp:
         self._hijack_napari_rotate_button()
         self._finalize_layout()
         self._set_orient("axial")
-        self._refresh_landmarks()
+        self._refresh_landmarks(initial_landmarks)
         self._refresh_dvf_overlays()
+        self.viewer.dims.events.current_step.connect(self._refresh_arrows)
+        self.viewer.dims.events.order.connect(self._refresh_arrows)
         self._refresh_projection_views()
         # Land on the worst landmark so points are immediately visible.
         if len(self.pl.tre_mm):
@@ -593,6 +595,7 @@ class TreViewerApp:
 
         scan_btn = QPushButton("Scan folder")
         scan_btn.clicked.connect(self._scan_runs_dir_from_edit)
+        self._runs_dir_edit.returnPressed.connect(self._scan_runs_dir_from_edit)
         cases_lay.addWidget(scan_btn)
 
         cases_lay.addWidget(QLabel("Case / patient"))
@@ -610,6 +613,10 @@ class TreViewerApp:
         )
         cases_lay.addWidget(self._case_tre_label)
         lay.addWidget(cases)
+        self._error_label = QLabel("")
+        self._error_label.setWordWrap(True)
+        self._error_label.setStyleSheet("color: #ffb86c;")
+        lay.addWidget(self._error_label)
 
         # --- Data selectors ---
         data = QGroupBox("Data")
@@ -624,27 +631,38 @@ class TreViewerApp:
         if self.field in fields:
             self._ctrl_field.setCurrentText(self.field)
         form.addRow("Field", self._ctrl_field)
+        self._ctrl_field.setToolTip("identity: no registration; elastix: reference DVF; voxelmap: learned DVF; ckpt: infer from checkpoint")
 
         self._ctrl_pair = QComboBox()
         self._ctrl_pair.addItems(["T00_T50", "T50_T00"])
         self._ctrl_pair.setCurrentText(self.pair)
         form.addRow("Pair", self._ctrl_pair)
+        self._ctrl_pair.setToolTip("Source → target. Reverse landmark TRE is supported; reverse image warping needs an inverse field.")
 
         self._ctrl_which = QComboBox()
         self._ctrl_which.addItems(["75", "300"])
         self._ctrl_which.setCurrentText(self.which)
+        self._ctrl_which.setToolTip("75: primary experiment KPI; 300: pack QA/debugging only")
         form.addRow("Landmarks", self._ctrl_which)
 
         self._ctrl_orient = QComboBox()
         self._ctrl_orient.addItems(list(_ORIENT.keys()))
         self._ctrl_orient.setCurrentText(self._orient_name)
-        form.addRow("Orient", self._ctrl_orient)
+        form.addRow("Slice plane", self._ctrl_orient)
 
         self._ctrl_dvf = QComboBox()
         self._ctrl_dvf.addItems(["off", "mag", "SI", "AP", "LR"])
         self._ctrl_dvf.setCurrentText(self._dvf_component)
-        form.addRow("DVF", self._ctrl_dvf)
+        form.addRow("Displacement", self._ctrl_dvf)
+        self._ctrl_dvf.setToolTip("mag: magnitude; SI: superior/inferior; AP: anterior/posterior; LR: left/right, in mm")
         lay.addWidget(data)
+        reload_btn = QPushButton("Apply data / refresh")
+        reload_btn.setDefault(True)
+        reload_btn.clicked.connect(self._apply_overlay_controls)
+        lay.addWidget(reload_btn)
+        hint = QLabel("Apply data after changing field, pair or landmark set. Display controls update immediately.")
+        hint.setWordWrap(True)
+        lay.addWidget(hint)
 
         # --- Visibility grid ---
         vis = QGroupBox("Overlays")
@@ -657,13 +675,13 @@ class TreViewerApp:
             box.setChecked(checked)
             return box
 
-        self._cb_src_pts = _cb("Src pts", self.layer_src_pts.visible)
-        self._cb_rings = _cb("Rings", self.layer_rings.visible)
-        self._cb_vectors = _cb("Vectors", self.layer_err.visible)
+        self._cb_src_pts = _cb("Source landmarks", self.layer_src_pts.visible)
+        self._cb_rings = _cb("TRE rings", self.layer_rings.visible)
+        self._cb_vectors = _cb("Error vectors", self.layer_err.visible)
         self._cb_arrows = _cb("DVF arrows", self.layer_dvf_arrows.visible)
-        self._cb_warped = _cb("Warped", self.layer_warped.visible)
-        self._cb_diff = _cb("Diff", self.layer_diff.visible)
-        self._cb_ident = _cb("Ident diff", self.layer_ident_diff.visible)
+        self._cb_warped = _cb("Warped source", self.layer_warped.visible)
+        self._cb_diff = _cb("Target − warped", self.layer_diff.visible)
+        self._cb_ident = _cb("Target − source", self.layer_ident_diff.visible)
         self._cb_truth_tre = _cb(
             "Truth color by TRE",
             bool(self._marker_style_cache["truth"].get("color_by_tre", True)),
@@ -690,12 +708,12 @@ class TreViewerApp:
         self._spin_arrow_step = QSpinBox()
         self._spin_arrow_step.setRange(1, 32)
         self._spin_arrow_step.setValue(int(self._arrow_step))
-        aform.addRow("Step", self._spin_arrow_step)
+        aform.addRow("Spacing (voxels)", self._spin_arrow_step)
         self._spin_arrow_gain = QDoubleSpinBox()
         self._spin_arrow_gain.setRange(0.1, 20.0)
         self._spin_arrow_gain.setSingleStep(0.5)
         self._spin_arrow_gain.setValue(float(self._arrow_gain))
-        aform.addRow("Gain", self._spin_arrow_gain)
+        aform.addRow("Length multiplier", self._spin_arrow_gain)
         lay.addWidget(arrows)
 
         # --- In-plane rotation (full 0→90→180→270 clockwise) ---
@@ -728,10 +746,6 @@ class TreViewerApp:
         rot_lay.addWidget(hint)
         lay.addWidget(rot)
 
-        reload_btn = QPushButton("Reload overlays")
-        reload_btn.setDefault(True)
-        reload_btn.clicked.connect(self._apply_overlay_controls)
-        lay.addWidget(reload_btn)
         lay.addStretch(1)
 
         # Callable for smoke / programmatic reload (replaces magicgui FunctionGui).
@@ -740,15 +754,70 @@ class TreViewerApp:
         self._refill_case_combo(select_case=self.run.case)
         self._update_case_tre_label()
         self._sync_rot_widgets()
+        self._ctrl_orient.currentTextChanged.connect(self._set_orient)
+        self._ctrl_dvf.currentTextChanged.connect(self._apply_display_controls)
+        for box in checks[:-1]:
+            box.toggled.connect(self._apply_display_controls)
+        self._spin_arrow_step.valueChanged.connect(self._apply_display_controls)
+        self._spin_arrow_gain.valueChanged.connect(self._apply_display_controls)
         return self._as_scroll(root)
+
+    def _report_error(self, message: str) -> None:
+        self.viewer.status = message
+        self._set_label("_error_label", message)
+
+    def _apply_display_controls(self, *_args) -> None:
+        """Apply presentation-only controls without reloading volumes or landmarks."""
+        self.layer_src_pts.visible = self._cb_src_pts.isChecked()
+        self.layer_rings.visible = self._cb_rings.isChecked()
+        self.layer_err.visible = self._cb_vectors.isChecked()
+        self._dvf_component = self._ctrl_dvf.currentText()
+        self._arrow_step = int(self._spin_arrow_step.value())
+        self._arrow_gain = float(self._spin_arrow_gain.value())
+        self.layer_dvf_arrows.visible = self._cb_arrows.isChecked()
+        self.layer_warped.visible = self._cb_warped.isChecked()
+        self.layer_diff.visible = self._cb_diff.isChecked()
+        self.layer_ident_diff.visible = self._cb_ident.isChecked()
+        if (self._dvf_component != "off" or any(layer.visible for layer in (
+            self.layer_dvf_arrows, self.layer_warped, self.layer_diff, self.layer_ident_diff
+        ))):
+            self._refresh_dvf_overlays()
+        else:
+            self.layer_dvf_mag.visible = False
+            self.layer_dvf_comp.visible = False
+        # A manual visibility change ends the blink cycle.
+        self._blink_warped = False
+        self.layer_ct.visible = True
 
     def _apply_overlay_controls(self) -> None:
         """Read compact Controls widgets and refresh overlays / volumes."""
         field_w = getattr(self, "_ctrl_field", None)
         if field_w is not None and self._qt_alive(field_w):
-            self.field = field_w.currentText() or self.field
-            self.pair = self._ctrl_pair.currentText()  # type: ignore[assignment]
-            self.which = self._ctrl_which.currentText()
+            field = field_w.currentText() or self.field
+            pair = self._ctrl_pair.currentText()
+            which = self._ctrl_which.currentText()
+            try:
+                src_ph, dst_ph = pair_phases(pair)
+                vol_dst = (self.vol_dst if self.vol_dst.phase == dst_ph
+                           else load_pack_volume(self.run, dst_ph))
+                vol_src = (self.vol_src if self.vol_src.phase == src_ph
+                           else load_pack_volume(self.run, src_ph))
+                pl = per_landmark(self.run, field, which=which, pair=pair, use_cache=False)
+            except (OSError, ValueError, ImportError, RuntimeError, KeyError) as exc:
+                self._sync_field_choices()
+                self._report_error(f"Could not apply data: {exc}")
+                return
+            self.field, self.pair, self.which = field, pair, which
+            self.vol_dst, self.vol_src = vol_dst, vol_src
+            self.layer_ct.data = vol_dst.data
+            self.layer_ct.name = f"CT {dst_ph} (target)"
+            self.layer_src.data = vol_src.data
+            self.layer_src.name = f"CT {src_ph} (source)"
+            self._bundle = None
+            self._bundle_key = None
+            self._blink_warped = False
+            self.layer_ct.visible = True
+            self._set_label("_error_label", "")
             self.layer_src_pts.visible = self._cb_src_pts.isChecked()
             self.layer_rings.visible = self._cb_rings.isChecked()
             self.layer_err.visible = self._cb_vectors.isChecked()
@@ -765,8 +834,10 @@ class TreViewerApp:
             self._arrow_gain = float(self._spin_arrow_gain.value())
             orient = self._ctrl_orient.currentText()
             self._set_orient(orient)
-        self._reload_volumes_if_needed()
-        self._refresh_landmarks()
+        else:
+            pl = None
+        self._refresh_landmarks(pl)
+        self._update_case_tre_label()
         self._refresh_dvf_overlays()
         self._refresh_drr_panel()
         self._apply_inplane_ornament()
@@ -796,12 +867,12 @@ class TreViewerApp:
         combo.blockSignals(True)
         combo.clear()
         for run in self._catalog:
-            combo.addItem(self._case_combo_label(run), run.case)
+            combo.addItem(self._case_combo_label(run), str(run.run_root))
         # select
         want = select_case if select_case is not None else self.run.case
         idx = 0
         for i in range(combo.count()):
-            if combo.itemData(i) == want:
+            if self._catalog[i].case == want:
                 idx = i
                 break
         combo.setCurrentIndex(idx)
@@ -831,67 +902,52 @@ class TreViewerApp:
             runs_dir = normalize_runs_dir(path)
             catalog = discover_runs_in_folder(runs_dir)
         except Exception as exc:
-            self.viewer.status = f"Runs folder error: {exc}"
+            self._report_error(f"Runs folder error: {exc}")
             return
         if not catalog:
-            self.viewer.status = f"No DIR_Cxx runs in {runs_dir}"
+            self._report_error(f"No DIR_Cxx runs in {runs_dir}")
+            return
+        pick = next((r for r in catalog if r.case == self.run.case), catalog[0])
+        if not self._switch_to_run(pick):
+            self._runs_dir_edit.setText(str(self._runs_dir))
             return
         self._runs_dir = runs_dir
         self._catalog = catalog
         if self._qt_alive(getattr(self, "_runs_dir_edit", None)):
             self._runs_dir_edit.setText(str(runs_dir))
         # Prefer same case number if present, else first
-        pick = next((r for r in catalog if r.case == self.run.case), catalog[0])
         self._refill_case_combo(select_case=pick.case)
-        self._switch_to_run(pick)
         self.viewer.status = f"Loaded {len(catalog)} case(s) from {runs_dir}"
 
     def _on_case_combo_changed(self, index: int) -> None:
         if index < 0 or not self._catalog:
             return
-        case = self._case_combo.itemData(index)
-        if case is None:
+        root = self._case_combo.itemData(index)
+        if root is None:
             return
-        case = int(case)
-        if case == self.run.case and any(
-            r.run_root == self.run.run_root for r in self._catalog if r.case == case
-        ):
+        if root == str(self.run.run_root):
             # still update TRE label
             self._update_case_tre_label()
             return
-        hit = next((r for r in self._catalog if r.case == case), None)
+        hit = next((r for r in self._catalog if str(r.run_root) == root), None)
         if hit is None:
             return
-        self._switch_to_run(hit)
+        if not self._switch_to_run(hit):
+            self._refill_case_combo(select_case=self.run.case)
 
     def _update_case_tre_label(self) -> None:
         lab = getattr(self, "_case_tre_label", None)
         if lab is None or not self._qt_alive(lab):
             return
-        summ = load_tre_summary(self.run)
-        if not summ:
-            lab.setText(f"C{self.run.case:02d}: no tre_summary.json")
+        pl = getattr(self, "pl", None)
+        if pl is None:
+            lab.setText("Loading landmark results…")
             return
-        try:
-            arms = summ.get("arms") or {}
-            vm = (arms.get("voxelmap") or {}).get("75", {}).get("T00_T50") or {}
-            reg = (vm.get("registered") or {}).get("mean")
-            ident = (vm.get("identity") or {}).get("mean")
-            el = (
-                (arms.get("elastix_mha") or {}).get("75", {}).get("T00_T50", {})
-                .get("registered", {})
-                .get("mean")
-            )
-            parts = [f"C{self.run.case:02d} TRE75"]
-            if reg is not None:
-                parts.append(f"VM={reg:.2f}")
-            if el is not None:
-                parts.append(f"El={el:.2f}")
-            if ident is not None:
-                parts.append(f"id={ident:.2f}")
-            lab.setText("  ".join(parts) + " mm")
-        except Exception:
-            lab.setText(f"C{self.run.case:02d}: tre_summary present")
+        lab.setText(
+            f"Loaded C{pl.case:02d} · {pl.which} landmarks · {pl.pair.replace('_', ' → ')}\n"
+            f"{pl.field}: {pl.registered_stats['mean']:.2f} mm · "
+            f"identity: {pl.identity_stats['mean']:.2f} mm"
+        )
 
     def _sync_field_choices(self) -> None:
         field_w = getattr(self, "_ctrl_field", None)
@@ -933,17 +989,29 @@ class TreViewerApp:
         if self._qt_alive(getattr(self, "_spin_arrow_gain", None)):
             self._spin_arrow_gain.setValue(float(self._arrow_gain))
 
-    def _switch_to_run(self, run: RunRef) -> None:
+    def _switch_to_run(self, run: RunRef) -> bool:
         """Hot-swap patient/case without restarting napari."""
+        field = self.field if self.field in run.fields_available else default_field(run)
+        src_ph, dst_ph = pair_phases(self.pair)
+        try:
+            vol_dst = load_pack_volume(run, dst_ph)
+            vol_src = load_pack_volume(run, src_ph)
+            pl = per_landmark(run, field, which=self.which, pair=self.pair)
+        except (OSError, ValueError, ImportError, RuntimeError, KeyError) as exc:
+            self._report_error(f"Could not load C{run.case:02d}: {exc}")
+            return False
         self.run = run
-        if self.field not in run.fields_available:
-            self.field = default_field(run)
+        self.field = field
         self._bundle = None
+        self._bundle_key = None
+        self._blink_warped = False
+        self.layer_ct.visible = True
+        self._set_label("_error_label", "")
         self._worst_cycle = 0
 
         src_ph, dst_ph = pair_phases(self.pair)
-        self.vol_dst = load_pack_volume(run, dst_ph)
-        self.vol_src = load_pack_volume(run, src_ph)
+        self.vol_dst = vol_dst
+        self.vol_src = vol_src
         scale = self.vol_dst.scale
 
         self.layer_ct.data = self.vol_dst.data
@@ -987,7 +1055,7 @@ class TreViewerApp:
         self._sync_field_choices()
         self._update_case_tre_label()
         self._apply_thick_slices()
-        self._refresh_landmarks()
+        self._refresh_landmarks(pl)
         self._refresh_dvf_overlays()
         # Re-resolve projection geometry for the new case.
         try:
@@ -1007,6 +1075,7 @@ class TreViewerApp:
         self.viewer.status = (
             f"Switched → {run.arm} C{run.case:02d}  field={self.field}"
         )
+        return True
 
     # ---- dock lifecycle ----------------------------------------------
     def _register_dock(
@@ -1779,6 +1848,11 @@ class TreViewerApp:
 
     def _set_orient(self, name: str) -> None:
         self._orient_name = name
+        widget = getattr(self, "_ctrl_orient", None)
+        if self._qt_alive(widget) and widget.currentText() != name:
+            widget.blockSignals(True)
+            widget.setCurrentText(name)
+            widget.blockSignals(False)
         self._apply_thick_slices()
         # Re-apply in-plane 0/90/180/270 for this plane (all four work on coronal too)
         self._apply_inplane_ornament()
@@ -2044,14 +2118,16 @@ class TreViewerApp:
             return row
         return np.repeat(row.reshape(1, 4), n, axis=0)
 
-    def _refresh_landmarks(self) -> None:
-        pl = per_landmark(
+    def _refresh_landmarks(self, pl=None) -> None:
+        pl = pl if pl is not None else per_landmark(
             self.run,
             self.field,
             which=self.which,  # type: ignore[arg-type]
             pair=self.pair,
         )
         self.pl = pl
+        self._worst_cycle = 0
+        self._set_label("selected_label", "Click a landmark or press W to inspect its error.")
         (nx, ny, nz), spacing = CASE_INFO[self.run.case]
 
         # Capture any in-panel edits before data assignment resets napari state.
@@ -2119,6 +2195,7 @@ class TreViewerApp:
             f"{self.field} │ mean {pl.registered_stats['mean']:.2f} mm"
         )
 
+        self._update_case_tre_label()
         self._worst_rows = worst_table(pl, k=15)
         if self._qt_alive(getattr(self, "worst_list", None)):
             self.worst_list.clear()
@@ -2150,13 +2227,36 @@ class TreViewerApp:
 
     def _refresh_dvf_overlays(self) -> None:
         """Recompute warp/DVF pack overlays for the current field/pair."""
+        key = (self.run.run_root, self.field, self.pair)
         try:
-            bundle = field_warp_bundle(self.run, self.field, self.pair)
+            bundle = (self._bundle if self._bundle is not None and self._bundle_key == key
+                      else field_warp_bundle(self.run, self.field, self.pair))
         except Exception as exc:  # noqa: BLE001 — show in UI, don't crash viewer
-            self.viewer.status = f"DVF overlay unavailable: {exc}"
             self._bundle = None
+            self._bundle_key = None
+            self._blink_warped = False
+            self.layer_ct.visible = True
+            empty = np.zeros_like(self.vol_dst.data, dtype=np.float32)
+            for layer in (self.layer_warped, self.layer_diff, self.layer_ident_diff,
+                          self.layer_dvf_mag, self.layer_dvf_comp):
+                layer.data = empty
+                layer.visible = False
+            self.layer_dvf_arrows.data = np.zeros((0, 2, 3))
+            self.layer_dvf_arrows.visible = False
+            for name in ("_cb_warped", "_cb_diff", "_cb_ident", "_cb_arrows"):
+                box = getattr(self, name, None)
+                if self._qt_alive(box):
+                    box.blockSignals(True)
+                    box.setChecked(False)
+                    box.blockSignals(False)
+            self._report_error(f"DVF overlay unavailable: {exc}")
+            label = getattr(self, "summary_label", None)
+            if self._qt_alive(label):
+                label.setText(label.text().split("\nwarp")[0])
             return
         self._bundle = bundle
+        self._bundle_key = key
+        self._set_label("_error_label", "")
         pk = bundle["pack"]
         self.layer_warped.data = pk["warped"]
         self.layer_diff.data = pk["diff"]
@@ -2188,27 +2288,32 @@ class TreViewerApp:
             self.layer_dvf_comp.contrast_limits = (-lim, lim)
             self.layer_dvf_comp.name = f"DVF {comp} mm"
 
-        # Arrows from upsampled DVF on current slice
-        dvf_pack = upsample_dvf_to_pack(bundle["dvf"], self.vol_dst.data.shape)
-        order = self.viewer.dims.order
-        slider_axis = int(order[0])
-        slice_index = int(self.viewer.dims.current_step[slider_axis])
-        arrows = decimated_arrows_zyx(
-            dvf_pack,
-            step=getattr(self, "_arrow_step", 6),
-            slice_axis=slider_axis,
-            slice_index=slice_index,
-            gain=getattr(self, "_arrow_gain", 2.0),
-        )
-        self.layer_dvf_arrows.data = arrows
+        self._refresh_arrows()
 
         self._append_warp_summary()
         mae_w = bundle["mae_warped_lung"]
         mae_i = bundle["mae_ident_lung"]
         self.viewer.status = (
-            f"DVF overlays ready │ lung MAE warped {mae_w:.1f} vs ident {mae_i:.1f} HU │ "
+            f"DVF overlays ready │ {bundle['mae_region']} MAE warped {mae_w:.1f} vs ident {mae_i:.1f} HU │ "
             f"Space=blink"
         )
+
+    def _refresh_arrows(self, _event=None) -> None:
+        if (self._bundle is None or not self.layer_dvf_arrows.visible
+                or self.viewer.dims.ndim != 3
+                or self.layer_dvf_arrows not in self.viewer.layers
+                or getattr(self, "_updating_arrows", False)):
+            return
+        axis = int(self.viewer.dims.order[0])
+        self._updating_arrows = True
+        try:
+            self.layer_dvf_arrows.data = pack_arrows_zyx(
+                self._bundle["dvf"], self.vol_dst.data.shape, frame=self.run.frame,
+                step=self._arrow_step, slice_axis=axis,
+                slice_index=int(self.viewer.dims.current_step[axis]), gain=self._arrow_gain,
+            )
+        finally:
+            self._updating_arrows = False
 
     def _append_warp_summary(self) -> None:
         """Append the warp-vs-identity lung MAE line to the summary panel."""
@@ -2218,7 +2323,7 @@ class TreViewerApp:
         mae_w = bundle["mae_warped_lung"]
         mae_i = bundle["mae_ident_lung"]
         extra = (
-            f"\nwarp lung MAE {mae_w:.1f} HU  identity {mae_i:.1f} HU  "
+            f"\nwarp {bundle['mae_region']} MAE {mae_w:.1f} HU  identity {mae_i:.1f} HU  "
             f"Δ {mae_i - mae_w:+.1f}  (+disp image warp)"
         )
         self.summary_label.setText(self.summary_label.text().split("\nwarp")[0] + extra)

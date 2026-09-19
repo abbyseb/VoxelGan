@@ -39,7 +39,7 @@ class ProjectionPageWindow:
         from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg
         from matplotlib.figure import Figure
         from qtpy.QtCore import Qt
-        from qtpy.QtGui import QKeySequence
+        from qtpy.QtGui import QKeySequence, QShortcut
         from qtpy.QtWidgets import (
             QComboBox,
             QHBoxLayout,
@@ -47,7 +47,6 @@ class ProjectionPageWindow:
             QListWidget,
             QMainWindow,
             QPushButton,
-            QShortcut,
             QSlider,
             QSplitter,
             QVBoxLayout,
@@ -246,12 +245,14 @@ class ProjectionPageWindow:
     def sync_slider(self) -> None:
         if not self.app._qt_alive(self.slider):
             return
-        nmax = self.slider.maximum()
+        geometry = self.app._geom
+        nmax = max(0, geometry.n_views - 1) if geometry else 0
         v = min(max(0, int(self.app._drr_view)), nmax)
-        if self.slider.value() != v:
-            self.slider.blockSignals(True)
-            self.slider.setValue(v)
-            self.slider.blockSignals(False)
+        self.slider.blockSignals(True)
+        self.slider.setMaximum(nmax)
+        self.slider.setValue(v)
+        self.slider.setEnabled(geometry is not None and nmax > 0)
+        self.slider.blockSignals(False)
 
     def _refill_worst_list(self) -> None:
         from tre_viewer.encodings import worst_table
@@ -370,12 +371,23 @@ class ProjectionPageWindow:
             self.app.viewer.status = f"PNG export failed: {exc}"
 
     def refresh(self) -> None:
+        self.sync_slider()
+        self.win.setWindowTitle(
+            f"{self.kind.upper()} │ {self.app.run.arm} C{self.app.run.case:02d} │ {self.app.field}"
+        )
         frame = self.app._drr_frame_data()
-        if frame is None:
-            self.meta.setText("Projection data unavailable")
-            return
-        if frame.get("error"):
-            self.meta.setText(str(frame["error"]))
+        if frame is None or frame.get("error"):
+            message = str(frame["error"]) if frame else "Projection data unavailable"
+            self.meta.setText(message)
+            self.ax.clear()
+            self.ax.text(.5, .5, message, ha="center", va="center", wrap=True,
+                         transform=self.ax.transAxes)
+            self.canvas.draw_idle()
+            self.worst_list.clear()
+            self._worst_rows = []
+            self._last_d2 = None
+            self._selected_lm = None
+            self._sel_label.setText("selected: —")
             return
 
         self.sync_slider()
