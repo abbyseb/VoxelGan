@@ -195,6 +195,8 @@ We did **not** edit `Geometry.xml` angles. SPARE XML (OffsetY **−2**) was alre
 
 Elastix TRE (volume landmarks) can look fine with bad DRRs. **VoxelMap learns from projections** — wrong orbit inflated A1 VM until R3 re-prep + retrain.
 
+**Figures:** `arms/Incorrect DRR/A1_oracle_dirlab/plots/soft_case_diagnosis/` — start with `C01_orbit_fix_probe/C01_orbit_fix_VERDICT.png` and `C01_orbit_fix_T50.mp4` (see README there).
+
 ---
 
 ## Why the negative (−u) is needed
