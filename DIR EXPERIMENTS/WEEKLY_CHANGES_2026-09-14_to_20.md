@@ -19,7 +19,7 @@ Detail: `diary.md`, `docs/DVF_pull_vs_push_sign.md`.
 | **A3** synth oracle (SPARE G160) | 12.06 (raw \(u\)) | **6.13** (\(-\,u\)) |
 | **A3** VoxelMap (SPARE G160 teacher) | ~id / worse | **6.49** |
 | **A3** synth oracle (TCIA2 best) | — | **5.17** |
-| **A3** VoxelMap (TCIA2 teacher) | — | **partial** (C01/02/03/08 done) |
+| **A3** VoxelMap (TCIA2 teacher) | — | **4.95** (n=6; C06/07/09/10 pending) |
 
 ---
 
@@ -161,18 +161,23 @@ Student ≈ teacher ceiling (~6.1 mm oracle → ~6.5 mm A3).
 | C10 | 8.33 | 2.18 | 6.16 | +2.17 |
 | **mean ± SD** | **8.69** | **2.08** | **6.49 ± 3.48** | — |
 
-### 3d. A3 VoxelMap — TCIA2 teacher (in progress)
+### 3d. A3 VoxelMap — TCIA2 teacher (6/10 done; C06/C07 training, C09–C10 queued)
 
 | Case | A3 SPARE | A3 TCIA2 | Δ |
 |-----:|---------:|---------:|--:|
 | C01 | 2.16 | **1.97** | −0.19 |
 | C02 | 2.75 | **2.20** | −0.55 |
 | C03 | 3.91 | **3.97** | +0.06 |
+| C04 | 7.30 | **6.06** | **−1.24** |
+| C05 | 4.51 | **4.03** | −0.48 |
+| C06 | 8.94 | *training* | — |
+| C07 | 9.33 | *training* | — |
 | C08 | 13.61 | **11.45** | **−2.16** |
-| C04–C07, C09–C10 | done (SPARE) | **training** | — |
-| **mean (n=4)** | — | **4.90** | — |
+| C09 | 6.18 | *queued* | — |
+| C10 | 6.16 | *queued* | — |
+| **mean (n=6)** | **5.71** | **4.95 ± 3.51** | **−0.76** |
 
-C08 (hardest) follows the better oracle; easy cases stay near SPARE.
+C08 / C04 move most with the better teacher; C03 flat. Student still tracks oracle ceiling (~5.2 mm TCIA2 vs ~6.1 SPARE).
 
 ---
 
@@ -213,7 +218,7 @@ A3 VoxelMap is a **student of the synthesizer**. If the SPARE G160 **oracle** is
 
 Easy cases (C01 ~2 mm) are near the teacher floor. **Hard cases** (C08 ~13 mm) are where the teacher under-moves.
 
-**TCIA2** (4D-Lung Decoder) raises the teacher: cohort oracle **6.13 → 5.17**, C08 **13.0 → 10.1**. A3 with that teacher follows on tough cases (C08 **13.6 → 11.5**). Remaining gap to A1 is synthesizer/domain quality, not DRR/sign bugs.
+**TCIA2** (4D-Lung Decoder) raises the teacher: cohort oracle **6.13 → 5.17**, C08 **13.0 → 10.1**. A3 with that teacher follows on tough cases (C08 **13.6 → 11.5**, C04 **7.3 → 6.1**); partial student mean **4.95** (n=6) vs SPARE **5.71** on the same cases. Remaining gap to A1 is synthesizer/domain quality, not DRR/sign bugs.
 
 ---
 
@@ -236,4 +241,4 @@ Easy cases (C01 ~2 mm) are near the teacher floor. **Hard cases** (C08 ~13 mm) a
 | A3 TCIA2 runs | `arms/A3_synth_conditioned/runs/DIR_C0N_tcia2/` |
 | TCIA2 oracle JSON | `…/TCIA2/DecoderCRB/plots/qc_dir_oracle/tre75_final_best_vs_ep100_vs_spare.json` |
 
-*Updated 2026-09-20 — separate A1 / A2 / A3 tables.*
+*Updated 2026-09-21 — A3 TCIA2 student TRE for C01–C05 + C08.*
