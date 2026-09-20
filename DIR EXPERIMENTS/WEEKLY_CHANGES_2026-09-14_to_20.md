@@ -227,34 +227,64 @@ Elastix TRE (volume landmarks) can look fine with bad DRRs. **VoxelMap learns fr
 
 ---
 
-## Why SPARE A3 is bounded — and why TCIA
+## Why SPARE A3 is bounded — and why TCIA2
 
-A3 VoxelMap is a **student of the synthesizer**. If the SPARE G160 **oracle** is already ~**6.1 mm**, A3 cannot systematically beat that teacher (~**6.5 mm** observed).
+A3 VoxelMap is a **student of the synthesizer**. Whatever DVF the G160 teacher can invent on DIR `CT_06` is the ceiling the student can learn from projections.
 
-Easy cases (C01 ~2 mm) are near the teacher floor. **Hard cases** (C08 ~13 mm) are where the teacher under-moves.
+| Teacher | Synth oracle TRE75 | A3 student (same cases) |
+|---------|-------------------:|------------------------:|
+| SPARE G160 (MC prior) | **6.13 mm** | **6.49** (full) / **5.71** on n=6 done |
+| **TCIA2** (4D-Lung Decoder) | **5.17 mm** | **4.95** (n=6 so far) |
 
-**TCIA2** (4D-Lung Decoder) raises the teacher: cohort oracle **6.13 → 5.17**, C08 **13.0 → 10.1**. A3 with that teacher follows on tough cases (C08 **13.6 → 11.5**, C04 **7.3 → 6.1**); partial student mean **4.95** (n=6) vs SPARE **5.71** on the same cases. Remaining gap to A1 is synthesizer/domain quality, not DRR/sign bugs.
+**Why SPARE wasn’t enough:** SPARE motion is a narrow domain. On easy DIR cases the oracle was already near the floor (C01 ~2 mm). On **large-motion / hard** cases the teacher **under-moves** → student stuck near identity-ish TRE (C08 SPARE oracle **13.0**, A3 **13.6**).
+
+**Why TCIA2 is needed:** more patients, more breath diversity, same R3/A3-compatible frame → a better motion prior to warp DIR anatomy. That lifts the **oracle** first; A3 follows because it is trained on those synth DVFs/DRRs.
+
+**Where the gain shows (hard cases):**
+
+| Case | SPARE oracle | TCIA2 oracle | A3 SPARE | A3 TCIA2 | Δ student |
+|-----:|-------------:|-------------:|---------:|---------:|----------:|
+| C04 | 6.13 | 5.89 | 7.30 | **6.06** | **−1.24** |
+| C06 | 8.00 | 6.59 | 8.94 | *training* | — |
+| C07 | 8.24 | 7.70 | 9.33 | *training* | — |
+| **C08** | **13.04** | **10.07** | **13.61** | **11.45** | **−2.16** |
+| C09 | 6.25 | 4.74 | 6.18 | *queued* | — |
+
+Easy cases barely move (C01 2.16→1.97). The story is **hard-case headroom**, not a uniform −1 mm everywhere. Residual to A1 Elastix (~2 mm) is still synthesizer/domain quality — not DRR/sign bugs.
 
 ---
 
-## TCIA2 training recipe
+## TCIA2 — data, why, and training steps
+
+### What it is trained on
+
+- **82** TCIA 4D-Lung scans × **10** phases = **820** phase CTs  
+- Packed to **160³ @ 2 mm**, **R3** (SPARE/A3 axes + centred)  
+- **Elastix on HU** (good MI); network trains on **µ** (`CT_*_mu.npy`) — matches A3 synth intensity  
+- **100 phase-pairs / scan** (incl. identity) → **8200** pairs → **7380 train / 820 val** (10% pairs held out per scan)
 
 One-liner (`seed.json`): **A1 FOV — R3 — Elastix HU / train µ — A3-compatible**.
 
+### Why this recipe (training steps)
+
+1. **Repack / R3** — put TCIA volumes in the same patient frame as DIR A3 (SI on Y, centred) so warped DIR + SPARE geometry stay consistent.  
+2. **Elastix library on HU** — build phase-pair DVF labels with contrast that registration likes.  
+3. **Train Decoder on µ + FOV aug** — same intensity and half-fan/CBCT corruptions A3/VoxelMap see, so the teacher isn’t SPARE-MC-only.  
+4. **Pick best by val MSE** — then run as DIR synth oracle (`CT_06` → 10 phases) and bake `DVF_sub = −u` for TRE/A3.  
+5. **A3 student** — train VoxelMap on those TCIA2 synth DRRs/DVFs; TRE on real DIR landmarks.
+
+### Optim / schedule
+
 | Item | Setting |
 |------|---------|
-| Data | 82 TCIA 4D-Lung scans → **160³ @ 2 mm**, **R3** frame |
-| Labels | **Elastix on HU**; network sees **µ** CTs |
-| Pairs | 100 phase-pairs/scan (incl. identity) → 8200; **7380 train / 820 val** (10%/scan, seed `20260918`) |
-| Model | **UNetCRBDecoder** (decoder-only), phase-conditioned (`n_phases=10`) |
-| Objective | Lung-masked **MSE** vs Elastix DVF |
-| Crops | **64³**; train random crop; val fixed |
-| Aug (train only) | A1 FOV ¼ each: normal / half-FOV / CBCT noise / both |
+| Model | **UNetCRBDecoder**, phase-conditioned (`n_phases=10`) |
+| Loss | Lung-masked **MSE** vs Elastix DVF |
+| Crops | **64³**; train random + FOV ¼; val fixed, no FOV |
 | Patches | 16/pair train, 8/pair val |
 | Optim | Adam **1e-4**, batch **1**, no weight decay, **100** epochs |
-| Selection | Best = min **val MSE** (`0.453` @ ep98); ep100 val `0.491` |
+| Best | min val MSE **0.453** @ ep98 (ep100 val 0.491) |
 
-Train≪val gap (~0.22 from ~ep20) is a stable generalization gap (held-out pairs + no WD + FOV only on train), not a failed schedule. Resume past 100 needs `--epochs` raised (wrapper defaults to 100).
+Train≪val gap (~0.22 from ~ep20) is a stable generalization gap, not a broken run. Resume past 100 needs `--epochs` raised (`start_train.sh` defaults to 100).
 
 Path: `PopulationStudy/ClinicalExperiments/Grid160/TCIA2/` (`seed.json`, `scripts/train_mse.py`, `scripts/start_train.sh`).
 
@@ -281,4 +311,4 @@ Path: `PopulationStudy/ClinicalExperiments/Grid160/TCIA2/` (`seed.json`, `script
 | A3 phase / DVF panels | `arms/A3_synth_conditioned/plots/synth_phase_panels/` |
 | DVF sign scatter (\(r\)) | `…/plots/synth_phase_panels/dvf_sign_scatter/` |
 
-*Updated 2026-09-21 — A3 TCIA2 TRE, TCIA2 recipe, −u clarification + SI scatter.*
+*Updated 2026-09-21 — TCIA2 data (82 scans), why/hard-case gains, training steps.*
