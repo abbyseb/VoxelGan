@@ -199,16 +199,25 @@ Elastix TRE (volume landmarks) can look fine with bad DRRs. **VoxelMap learns fr
 
 ## Why the negative (−u) is needed
 
+**Problem:** two tools define “displacement” in **opposite** directions — not wrong, just different standards.
+
+| Check | Raw \(u\) (G160 pull) | \(-\,u\) (Elastix / TRE) |
+|-------|----------------------:|-------------------------:|
+| Corr vs Elastix DVF | **−0.83** | **+0.83** |
+| Synth oracle TRE75 | **12.1 mm** (worse than identity 8.7) | **6.1 mm** (better than identity) |
+
 | Convention | Meaning |
 |------------|---------|
-| **Elastix / TRE** | Fixed=T50, \(x_{\mathrm{mov}} \approx x_{\mathrm{fix}}+d\) → \(d\) is **fixed→moving** |
-| **G160 warp** | \(I_{\mathrm{tgt}}(x)=I_{06}(x+u(x))\) → \(u\) is a **pull / sampling** field |
+| **Elastix / TRE** | Fixed=T50, \(x_{\mathrm{mov}} \approx x_{\mathrm{fix}}+d\) → \(d\) is **fixed→moving** (push / landmark) |
+| **G160 warp** | \(I_{\mathrm{phase}}(x)=I_{06}(x+u(x))\) → \(u\) is a **pull / sampling** field on the **output** grid |
 
-First-order: \(d \approx -u\). Empirically corr(Elastix, \(u\)) ≈ −0.83; corr(Elastix, \(-\,u\)) ≈ +0.83.
+**We do synthesize from reference → other phases** (`CT_06` / T50 is the source volume; we build `CT_01`…). That narrative is correct. The mismatch is **what the stored vector means**: for each voxel \(x\) on the new phase, `warp` **samples** the reference at \(x+u\). Tissue that lands at \(x\) came from \(x+u\) on T50 → anatomical motion T50→phase ≈ **\(-\,u\)**. So \(u\) is **not** “push this voxel along the breath.”
 
-**CT QA does not catch this** — warping with raw \(u\) is self-consistent. Feeding raw \(u\) into Elastix TRE / VoxelMap labels is the wrong sign → TRE **worse than identity** (12.1 vs id 8.7). Negating is a **convention fix**, not a free TRE knob.
+**Why it went unnoticed:** synthetic CTs looked fine either way — image warping is self-consistent with whatever sign the warper expects. Only landmark TRE exposed the Elastix mismatch.
 
-Baked as `DVF_sub = -u` in `prepare_a3_dir_case.py` (`--dvf-convention elastix`).
+**Why \(-\,u\) isn’t a perfect fix:** negation ≈ first-order field inversion, not a true inverse. Residual oracle ~**6.1 mm** vs Elastix ~**2 mm** is real teacher/model error, not leftover sign bug.
+
+**Fix going forward:** convert once at the source in `prepare_a3_dir_case.py` (`DVF_sub = -u`, `--dvf-convention elastix`) — don’t flip ad hoc at every eval/plot.
 
 ---
 
@@ -265,4 +274,4 @@ Path: `PopulationStudy/ClinicalExperiments/Grid160/TCIA2/` (`seed.json`, `script
 | TCIA2 oracle JSON | `…/TCIA2/DecoderCRB/plots/qc_dir_oracle/tre75_final_best_vs_ep100_vs_spare.json` |
 | TCIA2 recipe / train | `PopulationStudy/ClinicalExperiments/Grid160/TCIA2/seed.json` |
 
-*Updated 2026-09-21 — A3 TCIA2 student TRE + TCIA2 training recipe.*
+*Updated 2026-09-21 — A3 TCIA2 TRE, TCIA2 recipe, clarified −u (ref→phase synth vs pull vector).*
