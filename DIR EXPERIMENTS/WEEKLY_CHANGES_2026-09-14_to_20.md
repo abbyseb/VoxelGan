@@ -19,7 +19,7 @@ Detail: `diary.md`, `docs/DVF_pull_vs_push_sign.md`.
 | **A3** synth oracle (SPARE G160) | 12.06 (raw \(u\)) | **6.13** (\(-\,u\)) |
 | **A3** VoxelMap (SPARE G160 teacher) | ~id / worse | **6.49** |
 | **A3** synth oracle (TCIA2 best) | — | **5.17** |
-| **A3** VoxelMap (TCIA2 teacher) | — | **4.95** (n=6; C06/07/09/10 pending) |
+| **A3** VoxelMap (TCIA2 teacher) | — | **~5.4** (n=8 final+interim; C09–C10 pending) |
 
 ---
 
@@ -161,7 +161,7 @@ Student ≈ teacher ceiling (~6.1 mm oracle → ~6.5 mm A3).
 | C10 | 8.33 | 2.18 | 6.16 | +2.17 |
 | **mean ± SD** | **8.69** | **2.08** | **6.49 ± 3.48** | — |
 
-### 3d. A3 VoxelMap — TCIA2 teacher (6/10 done; C06/C07 training, C09–C10 queued)
+### 3d. A3 VoxelMap — TCIA2 teacher (8/10 have numbers; C09–C10 queued)
 
 | Case | A3 SPARE | A3 TCIA2 | Δ |
 |-----:|---------:|---------:|--:|
@@ -170,14 +170,17 @@ Student ≈ teacher ceiling (~6.1 mm oracle → ~6.5 mm A3).
 | C03 | 3.91 | **3.97** | +0.06 |
 | C04 | 7.30 | **6.06** | **−1.24** |
 | C05 | 4.51 | **4.03** | −0.48 |
-| C06 | 8.94 | *training* | — |
-| C07 | 9.33 | *training* | — |
+| C06 | 8.94 | **7.56*** | **−1.38** |
+| C07 | 9.33 | **8.07*** | **−1.26** |
 | C08 | 13.61 | **11.45** | **−2.16** |
 | C09 | 6.18 | *queued* | — |
 | C10 | 6.16 | *queued* | — |
-| **mean (n=6)** | **5.71** | **4.95 ± 3.51** | **−0.76** |
+| **mean (n=6 final)** | **5.71** | **4.95 ± 3.51** | **−0.76** |
+| **mean (n=8 +interim)** | **6.56** | **5.66** | **−0.90** |
 
-C08 / C04 move most with the better teacher; C03 flat. Student still tracks oracle ceiling (~5.2 mm TCIA2 vs ~6.1 SPARE).
+\* **Temporary / mid-train** TRE75 from `best.pt` at ~ep 36–37/50 (2026-09-21). Not final — re-run after ep50. JSON: `runs/DIR_C0{6,7}_tcia2/tre_interim/`. Already beat SPARE A3; still a bit above TCIA2 oracle (C06 6.59 / C07 7.70).
+
+C08 / C04 / C06–C07 move most with the better teacher; C03 flat. Student tracks oracle ceiling (~5.2 mm TCIA2 vs ~6.1 SPARE).
 
 ---
 
@@ -245,10 +248,12 @@ A3 VoxelMap is a **student of the synthesizer**. Whatever DVF the G160 teacher c
 | Case | SPARE oracle | TCIA2 oracle | A3 SPARE | A3 TCIA2 | Δ student |
 |-----:|-------------:|-------------:|---------:|---------:|----------:|
 | C04 | 6.13 | 5.89 | 7.30 | **6.06** | **−1.24** |
-| C06 | 8.00 | 6.59 | 8.94 | *training* | — |
-| C07 | 8.24 | 7.70 | 9.33 | *training* | — |
+| C06 | 8.00 | 6.59 | 8.94 | **7.56*** | **−1.38** |
+| C07 | 8.24 | 7.70 | 9.33 | **8.07*** | **−1.26** |
 | **C08** | **13.04** | **10.07** | **13.61** | **11.45** | **−2.16** |
 | C09 | 6.25 | 4.74 | 6.18 | *queued* | — |
+
+\*C06/C07 student = **interim** mid-train TRE (see §3d).
 
 Easy cases barely move (C01 2.16→1.97). The story is **hard-case headroom**, not a uniform −1 mm everywhere. Residual to A1 Elastix (~2 mm) is still synthesizer/domain quality — not DRR/sign bugs.
 
@@ -311,4 +316,4 @@ Path: `PopulationStudy/ClinicalExperiments/Grid160/TCIA2/` (`seed.json`, `script
 | A3 phase / DVF panels | `arms/A3_synth_conditioned/plots/synth_phase_panels/` |
 | DVF sign scatter (\(r\)) | `…/plots/synth_phase_panels/dvf_sign_scatter/` |
 
-*Updated 2026-09-21 — TCIA2 data (82 scans), why/hard-case gains, training steps.*
+*Updated 2026-09-21 — C06/C07 interim mid-train TCIA2 A3 TRE (not final).*
