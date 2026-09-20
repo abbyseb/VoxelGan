@@ -313,6 +313,7 @@ Path: `PopulationStudy/ClinicalExperiments/Grid160/TCIA2/` (`seed.json`, `script
 | A3 SPARE runs | `arms/A3_synth_conditioned/runs/DIR_C0N/` |
 | A3 TCIA2 runs | `arms/A3_synth_conditioned/runs/DIR_C0N_tcia2/` |
 | TCIA2 oracle JSON | `…/TCIA2/DecoderCRB/plots/qc_dir_oracle/tre75_final_best_vs_ep100_vs_spare.json` |
+| TCIA CT survey (82 scans) | `TCIA_4D-Lung_ct_survey/` |
 | A3 phase / DVF panels | `arms/A3_synth_conditioned/plots/synth_phase_panels/` |
 | DVF sign scatter (\(r\)) | `…/plots/synth_phase_panels/dvf_sign_scatter/` |
 
