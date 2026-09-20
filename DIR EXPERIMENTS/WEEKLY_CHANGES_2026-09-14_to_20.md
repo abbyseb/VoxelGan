@@ -270,6 +270,31 @@ Easy cases barely move (C01 2.16→1.97). The story is **hard-case headroom**, n
 
 One-liner (`seed.json`): **A1 FOV — R3 — Elastix HU / train µ — A3-compatible**.
 
+### Motion stats — TCIA vs SPARE (don’t ratio naively)
+
+Both cohorts have DVF characteristic surveys, but **units differ**.
+
+**TCIA** (82 scans, lung-masked ‖u‖ in **mm** @ 2 mm iso) — `…/TCIA_4D-Lung/plots/dvf_characteristics/`:
+
+| Metric | Value |
+|--------|------:|
+| **01→06 mean** | **6.25 mm** |
+| median / p10–p90 | 6.28 / 3.7–9.1 |
+| min–max | 2.1–12.4 |
+| SI (mean \|component\|) | **~5.0 mm** (dominates) |
+
+Plots: `motion_ranking_01_to_06.png`, `motion_hist_01_to_06.png`, `motion_heatmap_mean.png`, `summary.json`.
+
+**SPARE P1–P9** (`PopulationStudy/DVFCharacteristics/`) — same idea (ranking, heatmaps), but ‖u‖ is in **128³ lung-bbox voxels**, not mm:
+
+| | 01→06 ‖u‖ (vox) |
+|--|--:|
+| ~mean | ~**2.0** |
+| Max (P4) | 3.33 |
+| Min (P7) | 1.30 |
+
+So: TCIA has a real physical-mm motion census and much more breath diversity (**82 vs 9**). SPARE’s table is fine for **ranking within SPARE**; converting to mm needs per-patient spacing (bbox→128³). Do **not** read “TCIA ≈ 3× SPARE” from the raw numbers.
+
 ### Why this recipe (training steps)
 
 1. **Repack / R3** — put TCIA volumes in the same patient frame as DIR A3 (SI on Y, centred) so warped DIR + SPARE geometry stay consistent.  
