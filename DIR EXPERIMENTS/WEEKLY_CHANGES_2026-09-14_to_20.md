@@ -270,30 +270,20 @@ Easy cases barely move (C01 2.16→1.97). The story is **hard-case headroom**, n
 
 One-liner (`seed.json`): **A1 FOV — R3 — Elastix HU / train µ — A3-compatible**.
 
-### Motion stats — TCIA vs SPARE (don’t ratio naively)
+### Motion stats — TCIA vs SPARE (fair mm @ 2 mm iso)
 
-Both cohorts have DVF characteristic surveys, but **units differ**.
+Apples-to-apples on **160³ @ 2 mm** lung-masked ‖u‖:
 
-**TCIA** (82 scans, lung-masked ‖u‖ in **mm** @ 2 mm iso) — `…/TCIA_4D-Lung/plots/dvf_characteristics/`:
+| Metric | SPARE `data_iso` (n=9) | TCIA (n=82) |
+|--------|-----------------------:|------------:|
+| **01→06 mean** | **4.20 mm** | **6.25 mm** |
+| median / min–max | 3.94 / 2.68–6.84 | 6.28 / 2.1–12.4 |
+| mean all non-id pairs | 2.11 mm | 2.98 mm |
 
-| Metric | Value |
-|--------|------:|
-| **01→06 mean** | **6.25 mm** |
-| median / p10–p90 | 6.28 / 3.7–9.1 |
-| min–max | 2.1–12.4 |
-| SI (mean \|component\|) | **~5.0 mm** (dominates) |
+TCIA ≈ **1.5×** SPARE on 01→06 (physical mm). More patients + larger breaths → better hard-case teacher.
 
-Plots: `motion_ranking_01_to_06.png`, `motion_hist_01_to_06.png`, `motion_heatmap_mean.png`, `summary.json`.
-
-**SPARE P1–P9** (`PopulationStudy/DVFCharacteristics/`) — same idea (ranking, heatmaps), but ‖u‖ is in **128³ lung-bbox voxels**, not mm:
-
-| | 01→06 ‖u‖ (vox) |
-|--|--:|
-| ~mean | ~**2.0** |
-| Max (P4) | 3.33 |
-| Min (P7) | 1.30 |
-
-So: TCIA has a real physical-mm motion census and much more breath diversity (**82 vs 9**). SPARE’s table is fine for **ranking within SPARE**; converting to mm needs per-patient spacing (bbox→128³). Do **not** read “TCIA ≈ 3× SPARE” from the raw numbers.
+Paths: `PopulationStudy/DVFCharacteristics_iso/` · `TCIA_4D-Lung_dvf_characteristics/`  
+*(Old `PopulationStudy/DVFCharacteristics/` is 128³ **voxel** ranking only — do not ratio against TCIA mm.)*
 
 ### Why this recipe (training steps)
 
@@ -339,9 +329,10 @@ Path: `PopulationStudy/ClinicalExperiments/Grid160/TCIA2/` (`seed.json`, `script
 | A3 TCIA2 runs | `arms/A3_synth_conditioned/runs/DIR_C0N_tcia2/` |
 | TCIA2 oracle JSON | `…/TCIA2/DecoderCRB/plots/qc_dir_oracle/tre75_final_best_vs_ep100_vs_spare.json` |
 | TCIA CT survey (82 scans) | `TCIA_4D-Lung_ct_survey/` |
-| TCIA DVF / motion stats | `…/TCIA_4D-Lung/plots/dvf_characteristics/` (external disk) |
-| SPARE DVF characteristics | `PopulationStudy/DVFCharacteristics/` |
+| TCIA DVF / motion stats (mm) | `TCIA_4D-Lung_dvf_characteristics/` |
+| SPARE DVF iso (mm, fair vs TCIA) | `PopulationStudy/DVFCharacteristics_iso/` |
+| SPARE DVF (old, 128³ voxels) | `PopulationStudy/DVFCharacteristics/` |
 | A3 phase / DVF panels | `arms/A3_synth_conditioned/plots/synth_phase_panels/` |
 | DVF sign scatter (\(r\)) | `…/plots/synth_phase_panels/dvf_sign_scatter/` |
 
-*Updated 2026-09-21 — TCIA vs SPARE motion stats (mm vs voxel caveat).*
+*Updated 2026-09-21 — fair SPARE iso vs TCIA motion stats (mm @ 2 mm).*
