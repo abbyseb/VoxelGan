@@ -203,7 +203,7 @@ Elastix TRE (volume landmarks) can look fine with bad DRRs. **VoxelMap learns fr
 
 | Check | Raw \(u\) (G160 pull) | \(-\,u\) (Elastix / TRE) |
 |-------|----------------------:|-------------------------:|
-| Corr vs Elastix DVF | **−0.83** | **+0.83** |
+| Corr vs Elastix \(u_{SI}\) (lung, C01–C10 mean) | **−0.64** | **+0.64** |
 | Synth oracle TRE75 | **12.1 mm** (worse than identity 8.7) | **6.1 mm** (better than identity) |
 
 | Convention | Meaning |
@@ -212,6 +212,10 @@ Elastix TRE (volume landmarks) can look fine with bad DRRs. **VoxelMap learns fr
 | **G160 warp** | \(I_{\mathrm{phase}}(x)=I_{06}(x+u(x))\) → \(u\) is a **pull / sampling** field on the **output** grid |
 
 **We do synthesize from reference → other phases** (`CT_06` / T50 is the source volume; we build `CT_01`…). That narrative is correct. The mismatch is **what the stored vector means**: for each voxel \(x\) on the new phase, `warp` **samples** the reference at \(x+u\). Tissue that lands at \(x\) came from \(x+u\) on T50 → anatomical motion T50→phase ≈ **\(-\,u\)**. So \(u\) is **not** “push this voxel along the breath.”
+
+**Figures**
+- SI sign flip (raw vs −u): `arms/A3_synth_conditioned/plots/synth_phase_panels/coronal_dvf_raw/vs_elastix/`
+- Voxel scatter + \(r\): `…/dvf_sign_scatter/DIR_C01_dvf_si_elastix_vs_synth_sign_scatter.png` (also cohort pooled PNG); script `scripts/plot_dvf_sign_scatter.py`
 
 **Why it went unnoticed:** synthetic CTs looked fine either way — image warping is self-consistent with whatever sign the warper expects. Only landmark TRE exposed the Elastix mismatch.
 
@@ -272,6 +276,7 @@ Path: `PopulationStudy/ClinicalExperiments/Grid160/TCIA2/` (`seed.json`, `script
 | A3 SPARE runs | `arms/A3_synth_conditioned/runs/DIR_C0N/` |
 | A3 TCIA2 runs | `arms/A3_synth_conditioned/runs/DIR_C0N_tcia2/` |
 | TCIA2 oracle JSON | `…/TCIA2/DecoderCRB/plots/qc_dir_oracle/tre75_final_best_vs_ep100_vs_spare.json` |
-| TCIA2 recipe / train | `PopulationStudy/ClinicalExperiments/Grid160/TCIA2/seed.json` |
+| A3 phase / DVF panels | `arms/A3_synth_conditioned/plots/synth_phase_panels/` |
+| DVF sign scatter (\(r\)) | `…/plots/synth_phase_panels/dvf_sign_scatter/` |
 
-*Updated 2026-09-21 — A3 TCIA2 TRE, TCIA2 recipe, clarified −u (ref→phase synth vs pull vector).*
+*Updated 2026-09-21 — A3 TCIA2 TRE, TCIA2 recipe, −u clarification + SI scatter.*
