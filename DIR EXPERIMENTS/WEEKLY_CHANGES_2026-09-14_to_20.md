@@ -1,174 +1,225 @@
 # DIR EXPERIMENTS — what changed (14–20 Sep 2026)
 
-Short narrative of the two big fixes (**DRR orbit**, **DVF sign**), **why** each was needed, why SPARE A3 is **bounded by the SPARE oracle**, and how **TCIA2** starts to break that bound on hard cases.
+**KPI throughout:** mean TRE (mm), DIR-Lab **75-point** landmarks, **T00→T50**, R3 frame after the DRR fix.
 
-Detail and plots: `diary.md`, `docs/DVF_pull_vs_push_sign.md`.
+Two bugs were fixed (**DRR orbit**, **DVF sign**), then a better motion teacher (**TCIA2**) was trained. Tables below are **per arm**. Narrative “why” sections follow.
 
----
-
-## 1. Problem before the fixes
-
-We had two separate issues that both made A3 (and early A1 VoxelMap) look worse than they were:
-
-| Issue | Symptom | What was wrong |
-|-------|---------|----------------|
-| **Bad DRR orbit** | DIR DRRs didn’t match SPARE chest↔spine orbit; anatomy swung off-detector | DIR SI was on **itk Z**, volumes **corner-origin**; RTK orbits **world Y** around isocentre. SPARE has SI on Y and centred volumes. |
-| **Wrong DVF sign for A3** | Synth CT looked fine, but TRE ≫ identity | G160 outputs a **pull** field \(I(x+u)\); Elastix / our TRE path expects **fixed→moving** \(\approx -u\). |
-
-Old wrong-orbit runs were moved to `arms/Incorrect DRR/` (do not use for reporting).
+Detail: `diary.md`, `docs/DVF_pull_vs_push_sign.md`.
 
 ---
 
-## 2. Why the DRR was wrong
+## Summary (cohort means)
 
-RTK / SPARE circular DRR always orbits **world Y** (patient SI should be that axis), around the **volume isocentre**.
-
-What DIR had instead:
-
-1. **SI axis mismatch** — SPARE GTVol puts SI on **itk Y** (thin axis). Native DIR packs put SI on **itk Z**. So with SPARE’s `Geometry.xml` unchanged, the gantry was spinning around the wrong patient axis → chest↔spine orbit became a mess / anatomy left the detector.
-2. **Origin mismatch** — SPARE volumes are **centred** on isocentre. DIR used `origin=(0,0,0)` (corner). RTK still orbits world origin → the orbit centre sat near a corner of the box, roughly **outside** the patient.
-3. **Permute alone is not enough** — mapping SI→Y without recentre still fails. After permute we also needed **AP flip** and **SI flip** so the patient is upright and matches SPARE’s chest↔spine video (**R3**).
-
-**Important:** we did **not** “fix” this by editing projection angles in `Geometry.xml`. The XML (SPARE, OffsetY **−2**) was already correct for SPARE-shaped volumes. DIR volumes had to be brought into that frame.
-
-**Why VoxelMap cared more than Elastix TRE:** Elastix TRE is scored on **volume landmarks** (can look fine even if DRRs are wrong). VoxelMap learns motion from **projections**. Wrong orbit ⇒ the network never saw the right 2D↔3D relationship ⇒ inflated A1 VM TRE until R3 re-prep + retrain.
-
----
-
-## 3. Fix A — DRR / geometry (R3), ~14–16 Sep
-
-**Locked recipe (R3):**
-- Reorient DIR CT: SI→Y + AP flip + SI flip, centre on isocentre  
-  (`arr.transpose(1,0,2)[::-1,::-1,:]`, origin = −(size−1)×spacing/2).
-- Keep **`Geometry_SPARE.xml`** (OffsetY **−2**). Do **not** edit orbit matrices.
-- Bake into `prepare_a1_case.py`; TRE with `eval_a1_tre.py --r3`.
-
-**How TRE changed (after full A1 re-prep + retrain):**
-
-| Arm | Before (wrong orbit) | After R3 | Notes |
-|-----|---------------------:|---------:|-------|
-| A1 Elastix | ~2.08 mm | **~2.08 mm** | Volume landmarks ≈ unchanged |
-| A1 VoxelMap | ~3.2 mm | **~2.32 mm** | Large gain — projections finally match anatomy |
-| A2 zero-shot | slightly **worse** than identity | **beats identity by ~1.4 mm** (mean TRE ~7.3) | Still far from A1 |
-
-Per-case R3 A1 VM: C01 1.40 … C08 4.48; cohort mean **2.32 ± 1.01** mm (TRE75 T00→T50).
+| Arm / field | Wrong-orbit / wrong-sign era | After fixes (R3 + correct DVF) |
+|-------------|-----------------------------:|-------------------------------:|
+| A0 identity | 8.69 | 8.69 |
+| **A1** Elastix | 2.08 | **2.08** |
+| **A1** VoxelMap | **3.16** | **2.32** |
+| **A2** VoxelMap (SPARE prior) | **8.97** (worse than id) | **7.27** (beats id) |
+| **A3** synth oracle (SPARE G160) | 12.06 (raw \(u\)) | **6.13** (\(-\,u\)) |
+| **A3** VoxelMap (SPARE G160 teacher) | ~id / worse | **6.49** |
+| **A3** synth oracle (TCIA2 best) | — | **5.17** |
+| **A3** VoxelMap (TCIA2 teacher) | — | **partial** (C01/02/03/08 done) |
 
 ---
 
-## 4. Why the negative (−u) is needed
+## A1 — patient oracle (real 4D → DRR → NoFiLM)
 
-Two **different displacement conventions** were being mixed:
+**What changed:** volumes reoriented to **R3** + SPARE geometry; full re-prep + retrain. Elastix is volume-landmark registration (barely moved). VoxelMap learns from projections (large gain).
 
-### Elastix / ITK (what A1 labels and our TRE harness use)
+### Cohort
 
-- Fixed = mid-exhale T50 (`sub_CT_06`), moving = inhale phase (e.g. T00).
-- Transformix DF: \(x_{\mathrm{moving}} \approx x_{\mathrm{fixed}} + d(x_{\mathrm{fixed}})\).
-- So \(d\) is **fixed → moving** on the fixed grid (T50→T00).
-- TRE: T00→T50 uses `pred = lm00 − disp` with that DF.
+| Field | Incorrect DRR | After R3 | Δ |
+|-------|--------------:|---------:|--:|
+| Identity | 8.69 | 8.69 | 0 |
+| Elastix | 2.08 | 2.08 | ~0 |
+| **VoxelMap** | **3.16** | **2.32** | **−0.84** |
 
-### G160 synthesizer (what `warp` actually does)
+### Per-case TRE75 (mm) — A1 after R3
 
-- \(I_{\mathrm{tgt}}(x) = I_{06}(x + u(x))\) via `grid_sample` (`identity + flow`).
-- \(u\) is a **pull / sampling** field on the **output** grid: “where to read in the reference.”
-- That is **tgt → ref** (~ opposite transport sense to Elastix \(d\)).
+| Case | Identity | Elastix | VoxelMap | Δid (id − VM) |
+|-----:|---------:|--------:|---------:|--------------:|
+| C01 | 3.91 | 1.26 | 1.40 | +2.51 |
+| C02 | 4.65 | 1.08 | 1.40 | +3.25 |
+| C03 | 7.25 | 1.30 | 1.44 | +5.81 |
+| C04 | 9.69 | 1.91 | 1.88 | +7.81 |
+| C05 | 7.41 | 2.02 | 2.19 | +5.22 |
+| C06 | 11.77 | 2.90 | 3.56 | +8.21 |
+| C07 | 10.71 | 2.34 | 2.63 | +8.08 |
+| C08 | 16.00 | 3.77 | 4.48 | +11.52 |
+| C09 | 7.16 | 2.05 | 2.08 | +5.08 |
+| C10 | 8.33 | 2.18 | 2.12 | +6.22 |
+| **mean ± SD** | **8.69 ± 3.55** | **2.08 ± 0.81** | **2.32 ± 1.01** | **+6.37** |
 
-**First-order inverse:** \(d_{\mathrm{Elastix}} \approx -u_{\mathrm{synth}}\).
+### Per-case — A1 VoxelMap before vs after R3
 
-Empirically: corr(Elastix SI, raw \(u\)) ≈ **−0.83**; corr(Elastix SI, \(-\,u\)) ≈ **+0.83**.
+| Case | VM (incorrect DRR) | VM (R3) | Δ |
+|-----:|-------------------:|--------:|--:|
+| C01 | 1.33 | 1.40 | +0.07 |
+| C02 | 1.38 | 1.40 | +0.02 |
+| C03 | 1.86 | 1.44 | −0.42 |
+| C04 | 3.10 | 1.88 | −1.22 |
+| C05 | 2.32 | 2.19 | −0.13 |
+| C06 | 3.83 | 3.56 | −0.27 |
+| C07 | 5.03 | 2.63 | −2.40 |
+| C08 | 4.91 | 4.48 | −0.43 |
+| C09 | 4.72 | 2.08 | −2.64 |
+| C10 | 3.14 | 2.12 | −1.02 |
+| **mean** | **3.16** | **2.32** | **−0.84** |
 
-### Why CT QA does not catch this
-
-Warping CT with raw \(u\) is **internally consistent** — synth CT can look excellent. That only proves the warp matches the field the synthesizer was trained with. It does **not** prove the field is in the same convention as Elastix labels / TRE.
-
-Feeding raw \(u\) into the Elastix TRE / VoxelMap-label path is the **wrong sign** → TRE worse than identity (cohort **12.1** mm vs id **8.7**). Negating fixes the convention (cohort **6.1** mm), not a free “TRE knob.”
-
-Bake **`DVF_sub = -u`** in `prepare_a3_dir_case.py` (`--dvf-convention elastix`, default). See `docs/DVF_pull_vs_push_sign.md`.
-
----
-
-## 5. Fix B — DVF sign baked in, ~16 Sep
-
-Smoke (synth DVF vs Elastix TRE, no VoxelMap yet):
-
-| Convention | Cohort TRE75 mean |
-|------------|------------------:|
-| Raw synth \(u\) (as-is) | **12.06 mm** (worse than identity 8.69) |
-| **\(-\,u\)** (Elastix convention) | **6.13 mm** (beats identity 10/10) |
-| A1 Elastix | 2.08 mm |
-
-Then A3 full VoxelMap train (SPARE G160 teacher + correct R3 DRRs + \(-\,u\) labels):
-
-| Case | A3 VoxelMap TRE75 (SPARE G160) |
-|-----:|-------------------------------:|
-| C01 | 2.16 |
-| C02 | 2.75 |
-| C03 | 3.91 |
-| C04 | 7.30 |
-| C05 | 4.51 |
-| C06 | 8.94 |
-| C07 | 9.33 |
-| C08 | 13.61 |
-| C09 | 6.18 |
-| C10 | 6.16 |
-| **mean** | **6.49 ± 3.48** |
+Hard / soft cases (C07, C09) improved most once projections matched anatomy.
 
 ---
 
-## 6. Why SPARE A3 is bounded by the SPARE oracle — and why TCIA
+## A2 — SPARE MC prior zero-shot on DIR
 
-### The bound
+**What changed:** same SPARE-trained ckpt; only **re-evaluated on R3 A1** projections (no A2 retrain). Wrong-orbit A2 was ~identity or slightly worse; R3 A2 now beats identity but stays far from A1.
 
-A3 VoxelMap is trained on **synthetic 4D** whose motion teacher is the **G160 synthesizer**.  
-If that teacher’s DIR oracle TRE (synth DVF scored like Elastix, no VoxelMap) is already **~6.1 mm**, VoxelMap cannot magically invent better motion than it was shown. Empirically:
+### Cohort
 
-| Stage | Cohort TRE75 |
-|-------|-------------:|
-| SPARE G160 **oracle** (synth alone) | **~6.13 mm** |
-| A3 VoxelMap taught by SPARE G160 | **~6.49 mm** |
+| Field | Incorrect DRR | After R3 | Δ |
+|-------|--------------:|---------:|--:|
+| Identity | 8.69 | 8.69 | 0 |
+| **A2 VoxelMap** | **8.97** | **7.27** | **−1.70** |
+| vs identity (Δid) | **−0.28** (worse) | **+1.42** (better) | — |
 
-A3 sits **at / slightly above** the SPARE oracle — as expected for a student of that teacher (plus DRR/train noise). Easy cases (C01 ~2.2) are already near the teacher; **hard cases** (C08 ~13–14) are where the teacher under-moves / misses DIR-like amplitude.
+### Per-case TRE75 (mm) — A2
 
-P3 semi-oracle (synth DRRs + **real A1 Elastix labels**) already showed C01 ~2.5 mm: **appearance was OK**; the **motion teacher** was the ceiling.
+| Case | Identity | A2 (incorrect) | A2 (R3) | Δid R3 |
+|-----:|---------:|---------------:|--------:|-------:|
+| C01 | 3.91 | 4.07 | 3.85 | +0.07 |
+| C02 | 4.65 | 4.94 | 4.65 | +0.00 |
+| C03 | 7.25 | 7.36 | 6.79 | +0.46 |
+| C04 | 9.69 | 9.86 | 7.86 | +1.83 |
+| C05 | 7.41 | 7.67 | 6.15 | +1.25 |
+| C06 | 11.77 | 12.06 | 9.21 | +2.57 |
+| C07 | 10.71 | 10.58 | 8.65 | +2.06 |
+| C08 | 16.00 | 16.13 | 13.66 | +2.34 |
+| C09 | 7.16 | 8.12 | 6.62 | +0.54 |
+| C10 | 8.33 | 8.92 | 5.22 | +3.11 |
+| **mean ± SD** | **8.69** | **8.97 ± 3.49** | **7.27 ± 2.82** | **+1.42** |
 
-### Breaking the bound → better teacher (TCIA2)
-
-To push A3 **below** the SPARE oracle, the synthesizer itself must improve on DIR (especially large-motion patients). That is what **TCIA2** (4D-Lung, R3+µ, A1 FOV Decoder) is for.
-
-**Synthesizer alone (DIR oracle TRE75):**
-
-| Model | Mean ± SD | C01 | C08 (tough) |
-|-------|----------:|----:|------------:|
-| SPARE G160-A1 | 6.13 ± 3.15 | 2.15 | **13.04** |
-| **TCIA2 best** (final val) | **5.17 ± 2.51** | 2.13 | **10.07** |
-| TCIA2 ep100 latest | 5.28 ± 2.61 | 2.35 | 10.61 |
-
-TCIA2 improves the **cohort** (~1 mm) and, more importantly, **cuts the hard-case oracle** (C08 **13.0 → 10.1**). Soft cases were already near Elastix; the gap was in large SI motion.
-
-**A3 VoxelMap with that teacher** (student follows the new ceiling):
-
-| Case | SPARE G160 A3 | TCIA2 A3 | Δ |
-|-----:|--------------:|---------:|--:|
-| C01 (easy) | 2.16 | **1.97** | −0.19 |
-| C08 (tough) | 13.61 | **11.45** | **−2.16** |
-| C02–C07, C09–C10 | SPARE done | TCIA2 pipeline in progress | |
-
-So: SPARE A3 ≈ SPARE oracle bound; TCIA2 lowers the oracle, and A3 on tough cases moves with it (C08 ~2 mm better so far). Remaining gap to A1 Elastix / A1 VM is still synthesizer quality + domain, not DRR/sign bugs.
+Takeaway: generic SPARE prior **transfers poorly** to DIR; R3 helps, but A2 is not a substitute for A1/A3.
 
 ---
 
-## 7. Tooling added alongside
+## A3 — synth-conditioned (G160 teacher → DIR VoxelMap)
 
-- **TRE viewer** (`tools/tre_viewer`): napari overlays, DRR/RTK pages, Phase Performance (T50→phase).
-- Merged to `main` / `TRE-VIZ` (PR #2 verify/UI, PR #3 phase graphs).
-- Defaults: green truth / red cross pred; TRE rings off; stronger error arrows.
+**What changed:** (1) R3 DRRs, (2) bake **`DVF_sub = −u`** (Elastix convention), (3) optional **TCIA2** teacher instead of SPARE G160.
+
+### 3a. Synth oracle only (no VoxelMap) — DVF sign
+
+| Case | Identity | Raw \(u\) | **\(-\,u\)** (Elastix) | A1 Elastix |
+|-----:|---------:|----------:|-----------------------:|-----------:|
+| C01 | 3.91 | 6.60 | 2.15 | 1.26 |
+| C02 | 4.65 | 8.25 | 2.76 | 1.08 |
+| C03 | 7.25 | 10.87 | 4.14 | 1.30 |
+| C04 | 9.69 | 13.65 | 6.13 | 1.91 |
+| C05 | 7.41 | 11.40 | 4.52 | 2.02 |
+| C06 | 11.77 | 16.05 | 8.00 | 2.90 |
+| C07 | 10.71 | 13.57 | 8.24 | 2.34 |
+| C08 | 16.00 | 19.51 | 13.04 | 3.77 |
+| C09 | 7.16 | 9.51 | 6.25 | 2.05 |
+| C10 | 8.33 | 11.14 | 6.09 | 2.18 |
+| **mean** | **8.69** | **12.06** | **6.13** | **2.08** |
+
+\(-\,u\) beats raw **10/10** and beats identity **10/10**. Residual to Elastix ≈ under-motion / model gap, not sign.
+
+### 3b. Synth oracle — SPARE G160 vs TCIA2 teacher
+
+| Case | SPARE G160 oracle | TCIA2 best oracle | Δ (TCIA − SPARE) |
+|-----:|------------------:|------------------:|-----------------:|
+| C01 | 2.15 | 2.13 | −0.02 |
+| C02 | 2.76 | 2.12 | −0.64 |
+| C03 | 4.14 | 3.41 | −0.73 |
+| C04 | 6.13 | 5.89 | −0.24 |
+| C05 | 4.52 | 3.78 | −0.74 |
+| C06 | 8.00 | 6.59 | −1.41 |
+| C07 | 8.24 | 7.70 | −0.54 |
+| C08 | **13.04** | **10.07** | **−2.97** |
+| C09 | 6.25 | 4.74 | −1.51 |
+| C10 | 6.09 | 5.23 | −0.86 |
+| **mean ± SD** | **6.13 ± 3.15** | **5.17 ± 2.51** | **−0.96** |
+
+Tough cases (C06–C08) move most; easy cases were already near the floor.
+
+### 3c. A3 VoxelMap — SPARE teacher (full cohort)
+
+Student ≈ teacher ceiling (~6.1 mm oracle → ~6.5 mm A3).
+
+| Case | Identity | A1 Elastix | A3 VM (SPARE) | Δid |
+|-----:|---------:|-----------:|--------------:|----:|
+| C01 | 3.91 | 1.26 | 2.16 | +1.76 |
+| C02 | 4.65 | 1.08 | 2.75 | +1.90 |
+| C03 | 7.25 | 1.30 | 3.91 | +3.34 |
+| C04 | 9.69 | 1.91 | 7.30 | +2.39 |
+| C05 | 7.41 | 2.02 | 4.51 | +2.89 |
+| C06 | 11.77 | 2.90 | 8.94 | +2.83 |
+| C07 | 10.71 | 2.34 | 9.33 | +1.38 |
+| C08 | 16.00 | 3.77 | 13.61 | +2.39 |
+| C09 | 7.16 | 2.05 | 6.18 | +0.98 |
+| C10 | 8.33 | 2.18 | 6.16 | +2.17 |
+| **mean ± SD** | **8.69** | **2.08** | **6.49 ± 3.48** | — |
+
+### 3d. A3 VoxelMap — TCIA2 teacher (in progress)
+
+| Case | A3 SPARE | A3 TCIA2 | Δ |
+|-----:|---------:|---------:|--:|
+| C01 | 2.16 | **1.97** | −0.19 |
+| C02 | 2.75 | **2.20** | −0.55 |
+| C03 | 3.91 | **3.97** | +0.06 |
+| C08 | 13.61 | **11.45** | **−2.16** |
+| C04–C07, C09–C10 | done (SPARE) | **training** | — |
+| **mean (n=4)** | — | **4.90** | — |
+
+C08 (hardest) follows the better oracle; easy cases stay near SPARE.
 
 ---
 
-## 8. One-line takeaway
+## Why the DRR was wrong
 
-1. **DRR was wrong** because DIR SI/origin didn’t match SPARE’s RTK frame — VoxelMap (projections) broke; Elastix volume TRE hid it.  
-2. **\(-\,u\) is required** because G160 \(u\) is pull and Elastix/TRE \(d\) is fixed→moving — CT QA can’t see the mismatch.  
-3. **SPARE A3 ≈ SPARE oracle (~6 mm)**; to go lower need a better teacher → **TCIA2**, which mainly helps **tough cases** (C08 oracle 13→10; A3 13.6→11.5).
+RTK / SPARE circular DRR orbits **world Y** (patient SI) around the **volume isocentre**.
+
+DIR had instead:
+
+1. **SI on itk Z** (SPARE uses itk Y) → gantry spun about the wrong patient axis.  
+2. **Corner origin** `(0,0,0)` (SPARE is centred) → orbit centre sat outside the patient.  
+3. **Permute alone insufficient** — need AP + SI flips as well (**R3**).
+
+We did **not** edit `Geometry.xml` angles. SPARE XML (OffsetY **−2**) was already correct for SPARE-shaped volumes; DIR volumes had to enter that frame.
+
+Elastix TRE (volume landmarks) can look fine with bad DRRs. **VoxelMap learns from projections** — wrong orbit inflated A1 VM until R3 re-prep + retrain.
+
+---
+
+## Why the negative (−u) is needed
+
+| Convention | Meaning |
+|------------|---------|
+| **Elastix / TRE** | Fixed=T50, \(x_{\mathrm{mov}} \approx x_{\mathrm{fix}}+d\) → \(d\) is **fixed→moving** |
+| **G160 warp** | \(I_{\mathrm{tgt}}(x)=I_{06}(x+u(x))\) → \(u\) is a **pull / sampling** field |
+
+First-order: \(d \approx -u\). Empirically corr(Elastix, \(u\)) ≈ −0.83; corr(Elastix, \(-\,u\)) ≈ +0.83.
+
+**CT QA does not catch this** — warping with raw \(u\) is self-consistent. Feeding raw \(u\) into Elastix TRE / VoxelMap labels is the wrong sign → TRE **worse than identity** (12.1 vs id 8.7). Negating is a **convention fix**, not a free TRE knob.
+
+Baked as `DVF_sub = -u` in `prepare_a3_dir_case.py` (`--dvf-convention elastix`).
+
+---
+
+## Why SPARE A3 is bounded — and why TCIA
+
+A3 VoxelMap is a **student of the synthesizer**. If the SPARE G160 **oracle** is already ~**6.1 mm**, A3 cannot systematically beat that teacher (~**6.5 mm** observed).
+
+Easy cases (C01 ~2 mm) are near the teacher floor. **Hard cases** (C08 ~13 mm) are where the teacher under-moves.
+
+**TCIA2** (4D-Lung Decoder) raises the teacher: cohort oracle **6.13 → 5.17**, C08 **13.0 → 10.1**. A3 with that teacher follows on tough cases (C08 **13.6 → 11.5**). Remaining gap to A1 is synthesizer/domain quality, not DRR/sign bugs.
+
+---
+
+## Tooling
+
+- TRE viewer (`tools/tre_viewer`): overlays, DRR/RTK, Phase Performance; on `main` / `TRE-VIZ`.
 
 ---
 
@@ -176,13 +227,13 @@ So: SPARE A3 ≈ SPARE oracle bound; TCIA2 lowers the oracle, and A3 on tough ca
 
 | Topic | Path |
 |-------|------|
-| Full diary | `DIR EXPERIMENTS/diary.md` |
+| This note | `DIR EXPERIMENTS/WEEKLY_CHANGES_2026-09-14_to_20.md` |
+| Diary | `DIR EXPERIMENTS/diary.md` |
 | DVF pull vs push | `DIR EXPERIMENTS/docs/DVF_pull_vs_push_sign.md` |
-| Older Results snapshot | `DIR EXPERIMENTS/Results.md` (pre-R3 / partial) |
+| A1/A2 R3 cohort JSON | `arms/A1_oracle_dirlab/results/cohort_tre_r3_final.json` |
 | Incorrect-orbit archive | `arms/Incorrect DRR/` |
-| A1/A2 R3 cohort | `arms/*/results/cohort_tre_r3_final.json` |
 | A3 SPARE runs | `arms/A3_synth_conditioned/runs/DIR_C0N/` |
 | A3 TCIA2 runs | `arms/A3_synth_conditioned/runs/DIR_C0N_tcia2/` |
-| TCIA2 oracle JSON | `…/Grid160/TCIA2/DecoderCRB/plots/qc_dir_oracle/tre75_final_best_vs_ep100_vs_spare.json` |
+| TCIA2 oracle JSON | `…/TCIA2/DecoderCRB/plots/qc_dir_oracle/tre75_final_best_vs_ep100_vs_spare.json` |
 
-*Written / updated 2026-09-20.*
+*Updated 2026-09-20 — separate A1 / A2 / A3 tables.*
