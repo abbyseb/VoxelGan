@@ -222,6 +222,29 @@ Easy cases (C01 ~2 mm) are near the teacher floor. **Hard cases** (C08 ~13 mm) a
 
 ---
 
+## TCIA2 training recipe
+
+One-liner (`seed.json`): **A1 FOV — R3 — Elastix HU / train µ — A3-compatible**.
+
+| Item | Setting |
+|------|---------|
+| Data | 82 TCIA 4D-Lung scans → **160³ @ 2 mm**, **R3** frame |
+| Labels | **Elastix on HU**; network sees **µ** CTs |
+| Pairs | 100 phase-pairs/scan (incl. identity) → 8200; **7380 train / 820 val** (10%/scan, seed `20260918`) |
+| Model | **UNetCRBDecoder** (decoder-only), phase-conditioned (`n_phases=10`) |
+| Objective | Lung-masked **MSE** vs Elastix DVF |
+| Crops | **64³**; train random crop; val fixed |
+| Aug (train only) | A1 FOV ¼ each: normal / half-FOV / CBCT noise / both |
+| Patches | 16/pair train, 8/pair val |
+| Optim | Adam **1e-4**, batch **1**, no weight decay, **100** epochs |
+| Selection | Best = min **val MSE** (`0.453` @ ep98); ep100 val `0.491` |
+
+Train≪val gap (~0.22 from ~ep20) is a stable generalization gap (held-out pairs + no WD + FOV only on train), not a failed schedule. Resume past 100 needs `--epochs` raised (wrapper defaults to 100).
+
+Path: `PopulationStudy/ClinicalExperiments/Grid160/TCIA2/` (`seed.json`, `scripts/train_mse.py`, `scripts/start_train.sh`).
+
+---
+
 ## Tooling
 
 - TRE viewer (`tools/tre_viewer`): overlays, DRR/RTK, Phase Performance; on `main` / `TRE-VIZ`.
@@ -240,5 +263,6 @@ Easy cases (C01 ~2 mm) are near the teacher floor. **Hard cases** (C08 ~13 mm) a
 | A3 SPARE runs | `arms/A3_synth_conditioned/runs/DIR_C0N/` |
 | A3 TCIA2 runs | `arms/A3_synth_conditioned/runs/DIR_C0N_tcia2/` |
 | TCIA2 oracle JSON | `…/TCIA2/DecoderCRB/plots/qc_dir_oracle/tre75_final_best_vs_ep100_vs_spare.json` |
+| TCIA2 recipe / train | `PopulationStudy/ClinicalExperiments/Grid160/TCIA2/seed.json` |
 
-*Updated 2026-09-21 — A3 TCIA2 student TRE for C01–C05 + C08.*
+*Updated 2026-09-21 — A3 TCIA2 student TRE + TCIA2 training recipe.*
