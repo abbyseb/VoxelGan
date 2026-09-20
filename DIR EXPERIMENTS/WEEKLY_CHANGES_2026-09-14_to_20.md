@@ -272,18 +272,23 @@ One-liner (`seed.json`): **A1 FOV — R3 — Elastix HU / train µ — A3-compat
 
 ### Motion stats — TCIA vs SPARE (fair mm @ 2 mm iso)
 
-Apples-to-apples on **160³ @ 2 mm** lung-masked ‖u‖:
+Same recipe: **160³ @ 2.0 mm**, lung-masked Elastix ‖u‖. SPARE from `data_iso` P1–P9; TCIA from 82-scan library.
 
-| Metric | SPARE `data_iso` (n=9) | TCIA (n=82) |
-|--------|-----------------------:|------------:|
-| **01→06 mean** | **4.20 mm** | **6.25 mm** |
-| median / min–max | 3.94 / 2.68–6.84 | 6.28 / 2.1–12.4 |
-| mean all non-id pairs | 2.11 mm | 2.98 mm |
+| | SPARE iso | TCIA | TCIA / SPARE |
+|--|----------:|-----:|-------------:|
+| **n scans / patients** | 9 | **82** | **9.1×** |
+| **n phase-pairs** | 900 | **8200** | **9.1×** |
+| **01→06 ‖u‖ mean** | 4.20 mm | **6.25 mm** | **1.49×** |
+| 01→06 median | 3.94 mm | **6.28 mm** | 1.59× |
+| 01→06 p10 – p90 | 2.80 – 6.06 mm | **3.66 – 9.14 mm** | — |
+| 01→06 min – max | 2.68 – 6.84 mm | **2.09 – 12.41 mm** | max **1.81×** |
+| mean ‖u‖ all non-id pairs | 2.11 mm | **2.98 mm** | **1.41×** |
+| non-id median | 1.97 mm | **2.95 mm** | 1.50× |
 
-TCIA ≈ **1.5×** SPARE on 01→06 (physical mm). More patients + larger breaths → better hard-case teacher.
+**Takeaway:** on matched physical units, TCIA breathes **~1.5×** harder on average and stretches to **~12 mm** 01→06 (SPARE tops out ~7 mm), with **9×** more scans — that extra amplitude/diversity is why hard DIR cases (C06–C08) gain under the TCIA2 teacher.
 
 Paths: `PopulationStudy/DVFCharacteristics_iso/` · `TCIA_4D-Lung_dvf_characteristics/`  
-*(Old `PopulationStudy/DVFCharacteristics/` is 128³ **voxel** ranking only — do not ratio against TCIA mm.)*
+*(Old `PopulationStudy/DVFCharacteristics/` = 128³ **voxel** ranking only — not for this table.)*
 
 ### Why this recipe (training steps)
 
