@@ -285,6 +285,20 @@ Same recipe: **160³ @ 2.0 mm**, lung-masked Elastix ‖u‖. SPARE from `data_i
 | mean ‖u‖ all non-id pairs | 2.11 mm | **2.98 mm** | **1.41×** |
 | non-id median | 1.97 mm | **2.95 mm** | 1.50× |
 
+**What each row means** (lung-masked Elastix ‖u‖ on **160³ @ 2 mm**):
+
+| Row | Meaning |
+|-----|---------|
+| **n scans / patients** | How many 4D-CTs are in the cohort (SPARE P1–P9 vs TCIA S1–S82). |
+| **n phase-pairs** | All ref→tgt phase pairs (10×10 per scan, incl. identity) — SPARE 9×100, TCIA 82×100. |
+| **01→06 ‖u‖ mean** | Average displacement for the big breath (phase **01→06**), over lung voxels, then over scans. Main “how hard do they breathe?” number. |
+| **01→06 median** | Same 01→06 magnitude for the **middle** scan — less skewed by extremes. |
+| **01→06 p10 – p90** | Softest 10% and hardest 10% of scans on 01→06 — typical range. |
+| **01→06 min – max** | Quietest and deepest breathers in the cohort. |
+| **mean ‖u‖ all non-id pairs** | Average motion over **every** directed phase pair (skip identity). Overall library motion. |
+| **non-id median** | Same, median across scans — typical library motion. |
+| **TCIA / SPARE** | How many times larger TCIA is on that row. |
+
 **Takeaway:** on matched physical units, TCIA breathes **~1.5×** harder on average and stretches to **~12 mm** 01→06 (SPARE tops out ~7 mm), with **9×** more scans — that extra amplitude/diversity is why hard DIR cases (C06–C08) gain under the TCIA2 teacher.
 
 Paths: `PopulationStudy/DVFCharacteristics_iso/` · `TCIA_4D-Lung_dvf_characteristics/`  
