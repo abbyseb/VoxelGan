@@ -1,6 +1,4 @@
-# This week's update
-
-21–27 September 2026
+# This week's update (21–27 September 2026)
 
 The numbers to keep are the finished TCIA3 VoxelMap runs on all 10 DIR-Lab cases. Later tries (deeper training views, a scale on the motion, a lung crop of the X-ray) did not beat them. C08 stays near 12 mm.
 
