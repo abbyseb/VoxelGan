@@ -26,13 +26,27 @@ Inhale to exhale, real X-rays, R3. TCIA3 epoch 100 makes the motion. VoxelMap is
 
 C01 and C02 are near 2 mm. C06 and C07 are already 6–7 mm. C08 is the worst, not the only miss. A registration on the same C08 landmarks is 3.77 mm (75 points) and 3.32 mm (300 points).
 
-## What we tried on C08
+## What we tried, and what failed
 
-Each of these kept the TCIA3 motion as the thing being copied. None of them moved the landmark error off about 11–12 mm.
+Baseline for the motion network is TCIA3 epoch 100: synth-oracle mean **4.94 mm** on 75 landmarks, C08 **10.65 mm**. The VoxelMap table above is the deployable number (real X-rays). Nothing this week beat either one by a useful amount.
 
-- **Four motion sizes in training** (0.8, 1.0, 1.3, 2.0). On the synthetic X-rays the network followed the size. On the real C08 X-rays it still answered a shallow breath. Final error: 11.83 mm (75) and 11.15 mm (300).
-- **A scale on top of the frozen TCIA3 field.** On the TCIA patients the scale stayed at 1, because the field already matches those breaths. Where the field points the wrong way, a positive scale learns to shrink it.
-- **Lung crop, then 128×128.** The lungs already filled the picture from top to bottom, so the up-down breath did not get bigger. Only the empty side was cut. C01 finished at 2.26 mm (75) against 2.13 mm before. C08 at epoch 20 was 11.81 mm (75) and 10.98 mm (300), the same as the finished run.
+| Try | What it was | Result |
+|---|---|---|
+| AmpHead | One scale from the phase number only, TCIA-trained, frozen TCIA3 | One scale for every DIR case (1.04). Cohort 4.94 → 4.86 mm. Not a real gain. |
+| FeatAmpHead | Scale from the CT plus the size of the predicted motion | Scale stuck at the floor, 0.80, on all 10 cases. Cohort got worse: 5.50 mm. |
+| MagFT | Fine-tune TCIA3 with an under-move penalty. Did not overwrite TCIA3. | Best snapshot −0.18 mm (4.76 at epoch 12). The saved best epoch was 4.89. C08 10.65 → 9.80 only at that early snapshot. Not the 1 mm we wanted. |
+| MagMatch | Fine-tune so the motion size matches the real TCIA field, including the head-foot part | Killed at epoch 10. Cohort 5.13 mm, worse than 4.94. |
+| Four depths (amp4) | Train VoxelMap on C08 at motion scales 0.8, 1.0, 1.3, 2.0 | It followed the size on synthetic X-rays. On real C08 X-rays the predicted breath stayed shallow (about 3 mm against a 13 mm label). Final landmarks: 11.83 mm (75) and 11.15 mm (300). |
+| Scale map | A small network on the frozen TCIA3 field, free to multiply the motion by 0.5–2.5 | On TCIA patients the multiplier stayed at 1. The field already fits those patients. |
+| Scale map on DIR | Same head, trained to match DIR registrations. Oracle only, not a result. | Where the real breath was larger, the multiplier went down. Shrinking a badly aimed arrow reduces the training error. |
+| Brightness match | Force the real C08 X-rays to look like the synthetic ones, then predict | Predicted breath moved from 2.84 to 2.95. The network already rescales each X-ray on its own. |
+| Lung crop, then 128×128 | Cut to the lungs before the shrink, same TCIA3 motion | The lungs already filled the picture top to bottom, so the up-down breath did not get bigger (1.00×). C01 finished 2.26 mm against 2.13 mm. C08 at epoch 20 was 11.81 / 10.98 mm, the same as the finished run. |
+| TCIA3.5 | Same MAE training as TCIA3, with the field-of-view augmentation turned off | Finished 100 epochs. A check near epoch 88 was already behind: about 5.15 mm mean, C08 11.35 mm. Not adopted. |
+| TCIA3.1 | Same MAE, with extra copies of the large breaths | At epoch 35 the oracle was 5.39–5.59 mm, behind 4.94. Paused during epoch 75 so C08 could use the GPU. Not a result. |
+
+Two ideas were written down and not run. Measuring the diaphragm on the real X-rays and stretching the field to match was rejected: that uses the test scan to build the motion. Pasting measured TCIA breathing onto C01 and C08 was rejected for the same reason.
+
+A separate check, not a trained model: if C08 were given the true motion size but kept our direction, the 75-landmark error would still be about 7.2 mm. The true direction with our size would still be about 9.8 mm. Registration on that case is 3.8 mm. The arrows are too small and they point the wrong way. A single multiplier cannot fix both.
 
 ## Why C08 stays there
 
