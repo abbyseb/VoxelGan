@@ -4,11 +4,11 @@ The numbers to keep are the finished TCIA3 VoxelMap runs on all 10 DIR-Lab cases
 
 ## Result
 
-Inhale to exhale, real X-rays, R3. TCIA3 epoch 100 makes the motion. VoxelMap is trained on those synthetic X-rays and scored on the real ones.
+Inhale to exhale, real X-rays, R3. A3 TCIA3 (MAE), epoch 100, makes the motion. VoxelMap is trained on those synthetic X-rays and scored on the real ones.
 
 75 landmarks:
 
-| Case | TCIA3 | Do nothing |
+| Case | A3 TCIA3 (MAE) | Do nothing |
 |---|---:|---:|
 | C01 | 2.13 mm | 3.91 mm |
 | C02 | 1.93 mm | 4.65 mm |
@@ -24,7 +24,7 @@ Inhale to exhale, real X-rays, R3. TCIA3 epoch 100 makes the motion. VoxelMap is
 
 300 landmarks:
 
-| Case | TCIA3 | Do nothing |
+| Case | A3 TCIA3 (MAE) | Do nothing |
 |---|---:|---:|
 | C01 | 1.87 mm | 3.89 mm |
 | C02 | 1.84 mm | 4.34 mm |
@@ -44,11 +44,11 @@ C01 and C02 are near 2 mm. C06 and C07 are already 6–7 mm. C08 is the worst, n
 
 ## TCIA2, next to the other finished arms
 
-Same test: real X-rays, inhale to exhale. TCIA2 is the previous motion network (MSE), copied by VoxelMap the same way as TCIA3. A1 SPARE is VoxelMap trained on the original SPARE motion. A2 Voxel is the generic SPARE prior, with no patient-specific motion. A1 Voxel is trained on that patient’s own real 4D scan. Identity is no motion.
+Same test: real X-rays, inhale to exhale. A3 TCIA2 (MSE) and A3 TCIA3 (MAE) are VoxelMap trained on synthetic X-rays from those motion networks. A3 SPARE is the same pipeline with the original SPARE motion. A2 Voxel is the generic SPARE prior, with no patient-specific motion. A1 Voxel is trained on that patient’s own real 4D scan. Identity is no motion.
 
 75 landmarks:
 
-| Case | TCIA2 | TCIA3 | A1 SPARE | Identity | A2 Voxel | A1 Voxel |
+| Case | A3 TCIA2 (MSE) | A3 TCIA3 (MAE) | A3 SPARE | Identity | A2 Voxel | A1 Voxel |
 |---|---:|---:|---:|---:|---:|---:|
 | C01 | 1.97 | 2.13 | 2.16 | 3.91 | 3.85 | 1.40 |
 | C02 | 2.20 | 1.93 | 2.75 | 4.65 | 4.65 | 1.40 |
@@ -64,7 +64,7 @@ Same test: real X-rays, inhale to exhale. TCIA2 is the previous motion network (
 
 300 landmarks:
 
-| Case | TCIA2 | TCIA3 | A1 SPARE | Identity | A2 Voxel | A1 Voxel |
+| Case | A3 TCIA2 (MSE) | A3 TCIA3 (MAE) | A3 SPARE | Identity | A2 Voxel | A1 Voxel |
 |---|---:|---:|---:|---:|---:|---:|
 | C01 | 1.83 | 1.87 | 2.14 | 3.89 | 3.78 | 1.29 |
 | C02 | 2.06 | 1.84 | 2.63 | 4.34 | 4.36 | 1.31 |
@@ -78,7 +78,7 @@ Same test: real X-rays, inhale to exhale. TCIA2 is the previous motion network (
 | C10 | 4.78 | 4.76 | 5.42 | 7.30 | 4.54 | 2.14 |
 | **Mean ± SD** | **5.32 ± 2.73** | **5.03 ± 2.75** | **6.30 ± 3.33** | **8.46 ± 3.33** | **7.09 ± 2.71** | **2.23 ± 0.94** |
 
-TCIA2 beats SPARE and A2. TCIA3 beats TCIA2 by about 0.3 mm. A1 Voxel is still about 3 mm better than TCIA3, because it sees that patient’s real scan.
+A3 TCIA2 beats A3 SPARE and A2. A3 TCIA3 beats A3 TCIA2 by about 0.3 mm. A1 Voxel is still about 3 mm better than A3 TCIA3, because it sees that patient’s real scan.
 
 ## What we tried, and what failed
 
