@@ -72,10 +72,10 @@ def _imshow(ax, sl: np.ndarray, *, extent, cmap, vmin, vmax):
     )
 
 
-def plot_case(case: int, out_dir: Path) -> tuple[Path, Path]:
+def plot_case(case: int, out_dir: Path, run_suffix: str = "", label: str = "synth") -> tuple[Path, Path]:
     sid = f"DIR_C{case:02d}"
     a1_train = A1 / sid / sid / "train"
-    a3_train = A3 / sid / sid / "train"
+    a3_train = A3 / f"{sid}{run_suffix}" / sid / "train"
 
     real01, spacing = load_img(a1_train / "CT_01.mha")
     real01 = hu_window(mid_coronal(real01))
@@ -122,7 +122,7 @@ def plot_case(case: int, out_dir: Path) -> tuple[Path, Path]:
     cax_u = fig.add_subplot(gs[3, n_cols])
 
     fig.suptitle(
-        f"{sid}  ·  mid-coronal mid-AP (SI×LR, shared mm FOV)  ·  real | synth | synth−real | −synth |u|",
+        f"{sid}  ·  {label}  ·  mid-coronal mid-AP (SI×LR, shared mm FOV)  ·  real | synth | synth−real | −synth |u|",
         fontsize=12,
         fontweight="bold",
     )
@@ -161,7 +161,7 @@ def plot_case(case: int, out_dir: Path) -> tuple[Path, Path]:
     plt.close(fig)
 
     fig2, axs = plt.subplots(1, 4, figsize=(14, 3.5))
-    fig2.suptitle(f"{sid}  ·  DVF |u| mid-coronal (mid-AP)  ·  phase 06→01", fontsize=12, fontweight="bold")
+    fig2.suptitle(f"{sid}  ·  {label}  ·  DVF |u| mid-coronal (mid-AP)  ·  phase 06→01", fontsize=12, fontweight="bold")
     fig2.subplots_adjust(left=0.04, right=0.98, top=0.82, bottom=0.08, wspace=0.25)
     for ax, img, title, vmax in [
         (axs[0], el_mag, "Elastix |u|", vmax_u),
@@ -189,12 +189,15 @@ def plot_case(case: int, out_dir: Path) -> tuple[Path, Path]:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--cases", type=int, nargs="*", default=list(range(1, 11)))
+    ap.add_argument("--run-suffix", default="", help="Appended to DIR_Cxx, e.g. _tcia3")
+    ap.add_argument("--out", type=Path, default=OUT)
+    ap.add_argument("--label", default="synth")
     args = ap.parse_args()
     for c in args.cases:
-        p1, p2 = plot_case(c, OUT)
+        p1, p2 = plot_case(c, args.out, args.run_suffix, args.label)
         print("wrote", p1)
         print("wrote", p2)
-    print("OUT", OUT)
+    print("OUT", args.out)
     return 0
 
 
