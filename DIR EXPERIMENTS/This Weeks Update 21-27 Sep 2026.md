@@ -22,13 +22,31 @@ Inhale to exhale, real X-rays, R3. TCIA3 epoch 100 makes the motion. VoxelMap is
 | C10 | 5.44 mm | 8.33 mm |
 | **Mean ± SD** | **5.26 ± 2.89 mm** | **8.69 ± 3.55 mm** |
 
-300 landmarks: mean **5.03 ± 2.75 mm**. C08 is **10.99 mm**. The ± is the standard deviation across the 10 cases.
+300 landmarks:
+
+| Case | TCIA3 | Do nothing |
+|---|---:|---:|
+| C01 | 1.87 mm | 3.89 mm |
+| C02 | 1.84 mm | 4.34 mm |
+| C03 | 3.19 mm | 6.94 mm |
+| C04 | 5.30 mm | 9.83 mm |
+| C05 | 3.57 mm | 7.48 mm |
+| C06 | 5.93 mm | 10.89 mm |
+| C07 | 7.41 mm | 11.03 mm |
+| C08 | 10.99 mm | 14.99 mm |
+| C09 | 5.47 mm | 7.92 mm |
+| C10 | 4.76 mm | 7.30 mm |
+| **Mean ± SD** | **5.03 ± 2.75 mm** | **8.46 ± 3.33 mm** |
+
+The ± is the standard deviation across the 10 cases.
 
 C01 and C02 are near 2 mm. C06 and C07 are already 6–7 mm. C08 is the worst, not the only miss. A registration on the same C08 landmarks is 3.77 mm (75 points) and 3.32 mm (300 points).
 
 ## TCIA2, next to the other finished arms
 
-Same test: real X-rays, 75 landmarks, inhale to exhale. TCIA2 is the previous motion network (MSE), copied by VoxelMap the same way as TCIA3. A1 SPARE is VoxelMap trained on the original SPARE motion. A2 Voxel is the generic SPARE prior, with no patient-specific motion. A1 Voxel is trained on that patient’s own real 4D scan. Identity is no motion.
+Same test: real X-rays, inhale to exhale. TCIA2 is the previous motion network (MSE), copied by VoxelMap the same way as TCIA3. A1 SPARE is VoxelMap trained on the original SPARE motion. A2 Voxel is the generic SPARE prior, with no patient-specific motion. A1 Voxel is trained on that patient’s own real 4D scan. Identity is no motion.
+
+75 landmarks:
 
 | Case | TCIA2 | TCIA3 | A1 SPARE | Identity | A2 Voxel | A1 Voxel |
 |---|---:|---:|---:|---:|---:|---:|
@@ -44,7 +62,21 @@ Same test: real X-rays, 75 landmarks, inhale to exhale. TCIA2 is the previous mo
 | C10 | 5.41 | 5.44 | 6.16 | 8.33 | 5.22 | 2.12 |
 | **Mean ± SD** | **5.54 ± 2.89** | **5.26 ± 2.89** | **6.49 ± 3.48** | **8.69 ± 3.55** | **7.27 ± 2.82** | **2.32 ± 1.01** |
 
-300 landmarks, cohort mean ± SD: TCIA2 **5.32 ± 2.73 mm**, TCIA3 **5.03 ± 2.75 mm**, A1 SPARE **6.30 ± 3.33 mm**, identity **8.46 ± 3.33 mm**, A2 Voxel **7.09 ± 2.71 mm**, A1 Voxel **2.23 ± 0.94 mm**.
+300 landmarks:
+
+| Case | TCIA2 | TCIA3 | A1 SPARE | Identity | A2 Voxel | A1 Voxel |
+|---|---:|---:|---:|---:|---:|---:|
+| C01 | 1.83 | 1.87 | 2.14 | 3.89 | 3.78 | 1.29 |
+| C02 | 2.06 | 1.84 | 2.63 | 4.34 | 4.36 | 1.31 |
+| C03 | 3.72 | 3.19 | 3.61 | 6.94 | 6.61 | 1.40 |
+| C04 | 6.01 | 5.30 | 7.33 | 9.83 | 8.09 | 1.77 |
+| C05 | 3.88 | 3.57 | 4.52 | 7.48 | 6.07 | 2.09 |
+| C06 | 6.91 | 5.93 | 8.35 | 10.89 | 8.46 | 3.47 |
+| C07 | 8.29 | 7.41 | 9.60 | 11.03 | 8.85 | 2.83 |
+| C08 | 10.58 | 10.99 | 12.74 | 14.99 | 12.89 | 4.04 |
+| C09 | 5.15 | 5.47 | 6.67 | 7.92 | 7.23 | 1.96 |
+| C10 | 4.78 | 4.76 | 5.42 | 7.30 | 4.54 | 2.14 |
+| **Mean ± SD** | **5.32 ± 2.73** | **5.03 ± 2.75** | **6.30 ± 3.33** | **8.46 ± 3.33** | **7.09 ± 2.71** | **2.23 ± 0.94** |
 
 TCIA2 beats SPARE and A2. TCIA3 beats TCIA2 by about 0.3 mm. A1 Voxel is still about 3 mm better than TCIA3, because it sees that patient’s real scan.
 
