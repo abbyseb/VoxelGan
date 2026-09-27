@@ -86,7 +86,7 @@ Baseline for the motion network is TCIA3 epoch 100: synth-oracle mean **4.94 mm*
 
 | Try | What it was | Result |
 |---|---|---|
-| AmpHead | One scale from the phase number only, TCIA-trained, frozen TCIA3 | One scale for every DIR case (1.04). Cohort 4.94 → 4.86 mm. Not a real gain. |
+| AmpHead | One scale from the phase number only, TCIA-trained, frozen TCIA3 | One scale for every DIR case (1.04). Oracle 4.94 → 4.86 mm (75) and 4.70 → 4.62 mm (300). Not a real gain. See below. |
 | FeatAmpHead | Scale from the CT plus the size of the predicted motion | Scale stuck at the floor, 0.80, on all 10 cases. Cohort got worse: 5.50 mm. |
 | MagFT | Fine-tune TCIA3 with an under-move penalty. Did not overwrite TCIA3. | Best snapshot −0.18 mm (4.76 at epoch 12). The saved best epoch was 4.89. C08 10.65 → 9.80 only at that early snapshot. Not the 1 mm we wanted. |
 | MagMatch | Fine-tune so the motion size matches the real TCIA field, including the head-foot part | Killed at epoch 10. Cohort 5.13 mm, worse than 4.94. |
@@ -97,6 +97,21 @@ Baseline for the motion network is TCIA3 epoch 100: synth-oracle mean **4.94 mm*
 | Lung crop, then 128×128 | Cut to the lungs before the shrink, same TCIA3 motion | The lungs already filled the picture top to bottom, so the up-down breath did not get bigger (1.00×). Finished cases (75 / 300 mm), next to the TCIA3 table: C01 2.26/1.93 (was 2.13/1.87), C02 1.94/1.83 (1.93/1.84), C03 3.40/3.18 (3.38/3.19), C04 5.25/5.13 (5.43/5.30), C05 3.69/3.61 (3.70/3.57), C06 5.88/5.66 (6.15/5.93), C08 11.67/10.79 (11.82/10.99). A few tenths either way. C07, C09, and C10 were still training on 28 September. |
 | TCIA3.5 | Same MAE training as TCIA3, with the field-of-view augmentation turned off | Finished 100 epochs. Best validation is epoch 92: mean 5.02 mm, C08 11.07 mm. Epoch 100 is worse: mean 5.34 mm, C08 11.30 mm. Both behind TCIA3 (4.94 / 10.65). Not adopted. |
 | TCIA3.1 | Same MAE, with extra copies of the large breaths | At epoch 35 the oracle was 5.39–5.59 mm, behind 4.94. Paused during epoch 75 so C08 could use the GPU. Not a result. |
+
+### AmpHead
+
+TCIA3 epoch 100 stays frozen. A small network sits on top of it. The only inputs are the two phase numbers. It outputs one scale, kept between 0.8 and 2.5, and that scale multiplies the whole motion field. It does not see the CT, so it cannot give C08 a different scale from C01.
+
+Training used TCIA breathing pairs only, for 1000 epochs. For each pair the target scale is the one that matches the real TCIA lung-motion size. DIR cases were not in that training. On the inhale-to-exhale pair the learned scale is 1.04, and that same 1.04 is applied to every DIR case.
+
+The numbers below are the oracle test: the TCIA3 field itself, sampled on the DIR landmarks. VoxelMap was not retrained, so the real-X-ray table (5.26 mm) is unchanged.
+
+| | TRE75 | TRE300 |
+|---|---:|---:|
+| TCIA3 oracle | 4.94 ± 2.54 mm | 4.70 ± 2.40 mm |
+| AmpHead × 1.04 | 4.86 ± 2.47 mm | 4.62 ± 2.34 mm |
+
+C08 moves from 10.65 to 10.47 mm (75) and from 9.80 to 9.62 mm (300). About 0.08 mm on the cohort. A single scale cannot fix a field that also points the wrong way.
 
 Two ideas were written down and not run. Measuring the diaphragm on the real X-rays and stretching the field to match was rejected: that uses the test scan to build the motion. Pasting measured TCIA breathing onto C01 and C08 was rejected for the same reason.
 
