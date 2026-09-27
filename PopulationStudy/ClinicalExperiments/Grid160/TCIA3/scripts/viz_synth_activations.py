@@ -54,12 +54,17 @@ def load_decoder(ckpt: Path, device: torch.device):
     return g
 
 
+VIEWS = ("View 1", "View 2", "View 3")
+
+
 def mid_slices(vol: np.ndarray):
     z, y, x = vol.shape
+    # View 3 is the side slice, turned 90° clockwise so the patient is upright.
+    side = np.rot90(vol[:, :, x // 2], k=-1)
     return {
-        "axial": vol[z // 2],
-        "coronal": vol[:, y // 2, :],
-        "sagittal": vol[:, :, x // 2],
+        "View 1": vol[z // 2],
+        "View 2": vol[:, y // 2, :],
+        "View 3": side,
     }
 
 
@@ -77,7 +82,7 @@ def overlay_panel(ct: np.ndarray, heat: np.ndarray, title: str, path: Path) -> N
     ct_views = mid_slices(ct)
     h_views = mid_slices(h)
     fig, axes = plt.subplots(2, 3, figsize=(12, 7.5))
-    for i, name in enumerate(("axial", "coronal", "sagittal")):
+    for i, name in enumerate(VIEWS):
         axes[0, i].imshow(ct_views[name], cmap="gray", vmin=-800, vmax=200)
         axes[0, i].set_title(f"CT {name}")
         axes[0, i].axis("off")
@@ -102,7 +107,7 @@ def gradcam_trio(ct: np.ndarray, maps: dict[str, np.ndarray], title: str, path: 
     missing = [key for _lab, key in layers if key not in maps]
     if missing:
         raise RuntimeError(f"missing Grad-CAM maps: {missing}")
-    planes = ("axial", "coronal", "sagittal")
+    planes = VIEWS
     ct_views = mid_slices(ct)
     heats = {key: mid_slices(heat_on_ct(ct, maps[key])) for _lab, key in layers}
     fig, axes = plt.subplots(4, 3, figsize=(12, 14))

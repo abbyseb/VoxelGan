@@ -2,7 +2,7 @@
 
 Decoder checkpoint: `DecoderCRB/checkpoints/epoch_100.pt` (A3 TCIA3, MAE).
 
-Input is the real DIR phase-06 CT. The network predicts the motion from phase 06 to phase 01. Hotter colour means a higher value. Each picture shows three mid-slices of the 160³ volume: axial, coronal, and sagittal. The top row is the CT. The bottom row is the map drawn on that CT.
+Input is the real DIR phase-06 CT. The network predicts the motion from phase 06 to phase 01. Hotter colour means a higher value. Each picture shows three mid-slices of the 160³ volume, labeled View 1, View 2, and View 3. View 2 is the axial slice. View 3 is the sagittal slice, turned 90° clockwise. The top row is the CT. The bottom row is the map drawn on that CT.
 
 ## Files in each case folder
 
