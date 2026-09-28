@@ -90,7 +90,7 @@ Baseline for the motion network is TCIA3 epoch 100: synth-oracle mean **4.94 mm*
 | FeatAmpHead | Scale from the CT plus the size of the predicted motion | Scale stuck at the floor, 0.80, on all 10 cases. Cohort got worse: 5.50 mm. |
 | MagFT | Fine-tune TCIA3 with an under-move penalty. Did not overwrite TCIA3. | Best snapshot −0.18 mm (4.76 at epoch 12). The saved best epoch was 4.89. C08 10.65 → 9.80 only at that early snapshot. Not the 1 mm we wanted. |
 | MagMatch | Fine-tune so the motion size matches the real TCIA field, including the head-foot part | Killed at epoch 10. Cohort 5.13 mm, worse than 4.94. |
-| Four depths (amp4) | Train VoxelMap on C08 at motion scales 0.8, 1.0, 1.3, 2.0 | It followed the size on synthetic X-rays. On real C08 X-rays the predicted breath stayed shallow (about 3 mm against a 13 mm label). Final landmarks: 11.83 mm (75) and 11.15 mm (300). |
+| Four depths (amp4) | One C08 VoxelMap trained on four copies of the TCIA3 breath (0.8×, 1.0×, 1.3×, 2.0×) | Followed the size on synthetic X-rays. On real C08 X-rays the breath stayed about 2.8 mm against a 13.4 mm label. Landmarks 11.83 mm (75) and 11.15 mm (300). See below. |
 | Scale map | A small network on the frozen TCIA3 field, free to multiply the motion by 0.5–2.5 | On TCIA patients the multiplier stayed at 1. The field already fits those patients. |
 | Scale map on DIR | Same head, trained to match DIR registrations. Oracle only, not a result. | Where the real breath was larger, the multiplier went down. Shrinking a badly aimed arrow reduces the training error. |
 | Brightness match | Force the real C08 X-rays to look like the synthetic ones, then predict | Predicted breath moved from 2.84 to 2.95. The network already rescales each X-ray on its own. |
@@ -116,6 +116,32 @@ C08 moves from 10.65 to 10.47 mm (75) and from 9.80 to 9.62 mm (300). About 0.08
 Two ideas were written down and not run. Measuring the diaphragm on the real X-rays and stretching the field to match was rejected: that uses the test scan to build the motion. Pasting measured TCIA breathing onto C01 and C08 was rejected for the same reason.
 
 A separate check, not a trained model: if C08 were given the true motion size but kept our direction, the 75-landmark error would still be about 7.2 mm. The true direction with our size would still be about 9.8 mm. Registration on that case is 3.8 mm. The arrows are too small and they point the wrong way. A single multiplier cannot fix both.
+
+### Four depths
+
+The idea was to let VoxelMap learn breath size from the X-rays. C08’s real breath is about 13 mm. The TCIA3 field on that CT is only about 3.5 mm, and a normal VoxelMap copies that small field. If the same patient is shown at several breath sizes, and each X-ray pair is tied to the motion that made it, the network might learn “a bigger change in the X-ray means a bigger motion,” then use that on the real scan.
+
+A normal A3 VoxelMap, the one in the table above, is trained on one breath. TCIA3 warps that patient’s exhale CT into the other phases at its own size (1.0×). Fake X-rays are made from those CTs. The network sees a pair of fake X-rays and is asked to predict that one motion. At test time the fake X-rays are swapped for the real ones. There is only one answer it has ever been shown.
+
+Four depths changes the training set, not the network. The frozen TCIA3 field for C08 is copied four times and multiplied by 0.8, 1.0, 1.3, and 2.0. Each copy warps the CT, and fake X-rays are made from it. The camera angles are the same at every size: 170 views, every fourth angle of the full 680. Each size gives 1,530 pairs. All four are mixed into one training set, 6,120 pairs, and one VoxelMap is trained on C08 only. AmpHead is a different experiment: it multiplies the teacher field by one number taken from the phase index, and VoxelMap is not retrained. Here the size has to be read from the pictures, because the real X-rays do not come with a scale.
+
+The mix is the test. Four separate networks would each still know one size, and a real X-ray has no label saying which network to use. One mixed network sees the same anatomy from the same angles, with the breath size as the thing that changes.
+
+On the fake X-rays it did that. Lung motion size (95th percentile, mm):
+
+| Breath | True size | Predicted |
+|---|---:|---:|
+| 0.8× | 2.8 | 2.4 |
+| 1.0× | 3.5 | 3.0 |
+| 1.3× | 4.6 | 3.9 |
+| 2.0× | 7.0 | 6.2 |
+| Real C08 X-rays | 13.4 | 2.8 |
+
+Matching the brightness of the real X-rays to the synthetic ones moved the prediction from 2.8 mm to 2.9 mm. The landmark error stayed with the plain TCIA3 C08 VoxelMap: 11.83 mm on 75 landmarks and 11.15 mm on 300, against 11.82 mm and 10.99 mm.
+
+It failed because the real X-rays do not look like a larger copy of the training breaths. In training, a bigger breath makes a bigger change between the two X-rays: about 3.7 at 1.0× and about 6.6 at 2.0×. The real pair changes by about 4.4, which sits between 1.0× and 1.3×, so the cue it learned says “ordinary breath.” The largest motion it was ever asked to predict was 7 mm. The diaphragm on every synthetic scale shifts downward, from 1.2 mm to 3.3 mm as the scale grows. On the real X-rays it shifts the other way, by about 0.5 mm.
+
+The mid-coronal comparison is `arms/A3_synth_conditioned/plots/amp4/c08_amp4_scale_vs_real_coronal.png`. The real motion is a wide smooth slide. The four synthetic columns are the same TCIA3 pattern, only brighter.
 
 ## Why C08 stays there
 
