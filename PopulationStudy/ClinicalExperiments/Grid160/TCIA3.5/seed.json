@@ -1,0 +1,12 @@
+{
+  "experiment": "TCIA3.5",
+  "note": "TCIA3 MAE recipe with FOV/CBCT augmentation off. TCIA3 weights are not read or written.",
+  "torch_seed": 20260918,
+  "fov_aug": false,
+  "loss": "lung-masked MAE",
+  "epochs": 100,
+  "lr": 0.0001,
+  "patches_per_pair_train": 16,
+  "patches_per_pair_val": 8,
+  "batch_size": 1
+}

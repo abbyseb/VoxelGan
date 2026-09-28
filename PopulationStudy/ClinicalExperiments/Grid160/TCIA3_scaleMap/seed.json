@@ -1,0 +1,8 @@
+{
+  "experiment": "TCIA3_scaleMap",
+  "decoder": "frozen TCIA3 epoch_100",
+  "head": "8^3 scale map, input CT and |u|, s in [0.5, 2.5], init s=1",
+  "loss": "lung-masked L1 of s*u vs TCIA Elastix",
+  "pairs": "TCIA3 val_pairs only (decoder was not updated on them)",
+  "dir_elastix_at_train": false
+}

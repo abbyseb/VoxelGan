@@ -46,6 +46,12 @@ def main() -> int:
         action="store_true",
         help="DVF/landmarks on R3-reoriented A1 DIR grid",
     )
+    ap.add_argument(
+        "--data-dir",
+        type=Path,
+        default=None,
+        help="Projection folder for inference (default: A1 ModelTraining). Landmarks stay on A1.",
+    )
     args = ap.parse_args()
 
     os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
@@ -62,10 +68,13 @@ def main() -> int:
         raise SystemExit(f"Missing ckpt: {ckpt}")
 
     a1_root = A1 / "runs" / scan_id
-    mt = a1_root / "ModelTraining" / "train" / scan_id
+    a1_mt = a1_root / "ModelTraining" / "train" / scan_id
+    mt = args.data_dir if args.data_dir is not None else a1_mt
     train = a1_root / scan_id / "train"
+    if not a1_mt.is_dir():
+        raise SystemExit(f"Missing A1 ModelTraining: {a1_mt}")
     if not mt.is_dir():
-        raise SystemExit(f"Missing A1 ModelTraining: {mt}")
+        raise SystemExit(f"Missing inference data: {mt}")
 
     out_dir = run / "tre"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -106,7 +115,7 @@ def main() -> int:
 
     for label, path in [
         ("elastix_mha", train / "DVF_sub_01.mha"),
-        ("elastix_npy", mt / "DVFs" / "DVF_01_mha.npy"),
+        ("elastix_npy", a1_mt / "DVFs" / "DVF_01_mha.npy"),
     ]:
         if path.is_file():
             _store_arm(label, path, load_dvf_zyx3(path))
@@ -117,7 +126,7 @@ def main() -> int:
     dvf_vm, n = infer_voxelmap_dvf_phase01(ckpt, mt, device, stride=args.stride)
     np.save(out_dir / "voxelmap_dvf_phase01_mean.npy", dvf_vm.astype(np.float32))
     extra = {"n_proj_averaged": n, "checkpoint": str(ckpt)}
-    gt_path = mt / "DVFs" / "DVF_01_mha.npy"
+    gt_path = a1_mt / "DVFs" / "DVF_01_mha.npy"
     if gt_path.is_file():
         gt = load_dvf_zyx3(gt_path)
         extra["l1_vs_elastix_zyx"] = float(np.mean(np.abs(dvf_vm - gt)))

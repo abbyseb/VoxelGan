@@ -63,6 +63,53 @@ def scan_id_for_case(case: int) -> str:
     return f"DIR_C{case:02d}"
 
 
+def parse_amplitudes(text: str | None) -> list[float] | None:
+    if text is None or not str(text).strip():
+        return None
+    amps = [float(x) for x in str(text).split(",") if x.strip()]
+    if not amps or any(a <= 0 for a in amps):
+        raise SystemExit(f"amplitudes must be positive, got {amps}")
+    return amps
+
+
+def amp_tag(amplitude: float) -> str:
+    return f"a{int(round(float(amplitude) * 100)):03d}"
+
+
+def thin_geometry_xml(src: Path, dst: Path, stride: int) -> int:
+    """Keep every ``stride``-th projection. Indices restart at 1 in the DRR writer."""
+    text = src.read_text()
+    blocks = re.findall(r"<Projection>.*?</Projection>", text, flags=re.S)
+    if stride < 1 or not blocks:
+        raise SystemExit(f"Cannot thin geometry {src}: stride={stride} n={len(blocks)}")
+    if len(blocks) % stride != 0:
+        raise SystemExit(
+            f"Geometry has {len(blocks)} projections, not divisible by {stride} amplitudes"
+        )
+    kept = blocks[::stride]
+    start = text.index("<Projection>")
+    end = text.rindex("</Projection>") + len("</Projection>")
+    dst.write_text(text[:start] + "\n".join(kept) + text[end:])
+    return len(kept)
+
+
+def count_training_pairs(mt: Path) -> int:
+    tgt = mt / "TargetProjections"
+    src = mt / "SourceProjections"
+    dvf = mt / "DVFs"
+    n = 0
+    if not tgt.is_dir():
+        return 0
+    for f in tgt.glob("*_bin.npy"):
+        parts = f.name.split("_")
+        if len(parts) < 3:
+            continue
+        vol, proj = parts[0], parts[2]
+        if (src / f"06_Proj_{proj}_bin.npy").is_file() and (dvf / f"DVF_{vol}_mha.npy").is_file():
+            n += 1
+    return n
+
+
 def hu_to_mu(hu: np.ndarray, mu_water: float = 0.02) -> np.ndarray:
     """Standard linear HU→µ_water mapping (air HU=-1000 → 0)."""
     return (hu.astype(np.float32) + 1000.0) * (mu_water / 1000.0)
@@ -225,6 +272,7 @@ def synthesize(
     spec: dict,
     *,
     mu_mode: str = "default",
+    amplitude: float = 1.0,
 ) -> dict:
     net_root = Path(spec["net_root"])
     if str(net_root) not in sys.path:
@@ -266,9 +314,16 @@ def synthesize(
         "hu_range": [float(ct06_hu.min()), float(ct06_hu.max())],
         "mu_range": [float(ct06_mu.min()), float(ct06_mu.max())],
         "phases": {},
+        "amplitude": float(amplitude),
     }
 
-    logging.info("Synthesizing from CT_06 | %s | native=%s | infer=%d", spec["label"], native_shape, infer)
+    logging.info(
+        "Synthesizing from CT_06 | %s | native=%s | infer=%d | amplitude=%.3f",
+        spec["label"],
+        native_shape,
+        infer,
+        amplitude,
+    )
     for phase in range(1, 11):
         tgt_ph = torch.tensor([phase - 1], dtype=torch.long, device=device)
         with torch.no_grad():
@@ -277,7 +332,7 @@ def synthesize(
             else:
                 dvf_inf = g(x, ref_ph, tgt_ph)
 
-        dvf_np = dvf_inf[0].cpu().numpy()
+        dvf_np = dvf_inf[0].cpu().numpy() * float(amplitude)
         dvf_nat = upsample_dvf_voxel(dvf_np, native_shape, infer)
         # Warp HU volume (DIR intensity for DRR / VoxelMap)
         ct_t = torch.from_numpy(ct06_hu[None, None])
@@ -407,6 +462,51 @@ def run_compress(train: Path) -> int:
     return len(list(train.glob("*_Proj_*.bin")))
 
 
+def _finish_one_depth(
+    run_root: Path,
+    train: Path,
+    gt06: Path,
+    train_geom: Path,
+    device: torch.device,
+    spec: dict,
+    scan_id: str,
+    *,
+    mu_mode: str,
+    amplitude: float,
+    dvf_convention: str,
+    skip_drr: bool,
+    with_test: bool,
+) -> None:
+    logging.info("=== SYNTHESIZE amplitude=%.3f ===", amplitude)
+    meta = synthesize(train, gt06, device, spec, mu_mode=mu_mode, amplitude=amplitude)
+    meta["dvf_label_convention"] = dvf_convention
+    meta["dvf_label_note"] = (
+        "elastix: DVF_sub = -u (G160 pull→ITK fixed→moving); "
+        "pull: DVF_sub = u as used by warp(I_06, u)"
+    )
+    (run_root / "synth_meta.json").write_text(json.dumps(meta, indent=2) + "\n")
+
+    logging.info("=== DOWNSAMPLE (HU kept) ===")
+    logging.info("sub_CT count: %d", run_downsample(train))
+
+    logging.info("=== WRITE SYNTH DVFs (convention=%s) ===", dvf_convention)
+    logging.info(
+        "DVFs: %d",
+        write_synth_dvfs_after_downsample(
+            train, int(SYNTH_SPEC["infer_size"]), convention=dvf_convention
+        ),
+    )
+
+    if not skip_drr:
+        logging.info("=== DRR ===")
+        run_drr(train, train_geom)
+        logging.info("=== COMPRESS ===")
+        logging.info("bins: %d", run_compress(train))
+
+    logging.info("=== PREP_TRAIN ===")
+    run_prep(run_root, scan_id, train_geom, with_test=with_test)
+
+
 def run_prep(run_root: Path, scan_id: str, geom_xml: Path, *, with_test: bool) -> None:
     from modules.prep_train.run import run_prep_train
 
@@ -450,6 +550,20 @@ def main() -> int:
         choices=("elastix", "pull"),
         default="elastix",
         help="DVF_sub labels: elastix = -u (fixed→moving, default); pull = raw G160 sampling field",
+    )
+    ap.add_argument(
+        "--amplitudes",
+        default=None,
+        help=(
+            "Comma-separated motion scales, e.g. 0.8,1.0,1.3,2.0. "
+            "Each scale is its own training root. Angles are subsampled by "
+            "the number of scales so the total pair count stays about 680×9."
+        ),
+    )
+    ap.add_argument(
+        "--train-only",
+        action="store_true",
+        help="Write the ModelTraining train split only",
     )
     args = ap.parse_args()
 
@@ -517,42 +631,94 @@ def main() -> int:
         device,
     )
 
+    amplitudes = parse_amplitudes(args.amplitudes)
+    with_test = bool(args.with_test) and not args.train_only
     gt06 = stage_from_a1(case, staged, geom_xml)
-    train = ensure_layout(run_root, staged, scan_id)
-    train_geom = train / "Proj" / "Geometry.xml"
 
-    logging.info("=== SYNTHESIZE ===")
-    meta = synthesize(train, gt06, device, spec, mu_mode=args.mu_mode)
-    meta["dvf_label_convention"] = args.dvf_convention
-    meta["dvf_label_note"] = (
-        "elastix: DVF_sub = -u (G160 pull→ITK fixed→moving); "
-        "pull: DVF_sub = u as used by warp(I_06, u)"
-    )
-    (run_root / "synth_meta.json").write_text(json.dumps(meta, indent=2) + "\n")
+    if not amplitudes:
+        train = ensure_layout(run_root, staged, scan_id)
+        train_geom = train / "Proj" / "Geometry.xml"
+        _finish_one_depth(
+            run_root,
+            train,
+            gt06,
+            train_geom,
+            device,
+            spec,
+            scan_id,
+            mu_mode=args.mu_mode,
+            amplitude=1.0,
+            dvf_convention=args.dvf_convention,
+            skip_drr=args.skip_drr,
+            with_test=with_test,
+        )
+        mt = run_root / "ModelTraining" / "train" / scan_id
+        logging.info("Done in %.1f min → %s", (time.perf_counter() - t0) / 60, mt)
+        return 0 if mt.is_dir() else 1
 
-    logging.info("=== DOWNSAMPLE (HU kept) ===")
-    logging.info("sub_CT count: %d", run_downsample(train))
-
-    logging.info("=== WRITE SYNTH DVFs (convention=%s) ===", args.dvf_convention)
+    n_full = len(ET.parse(geom_xml).findall("Projection"))
+    thin_geom = run_root / "Geometry_thin.xml"
+    n_kept = thin_geometry_xml(geom_xml, thin_geom, len(amplitudes))
     logging.info(
-        "DVFs: %d",
-        write_synth_dvfs_after_downsample(
-            train, int(SYNTH_SPEC["infer_size"]), convention=args.dvf_convention
-        ),
+        "Multi-depth amplitudes=%s | angles %d → %d (stride %d) | same views at each depth",
+        amplitudes,
+        n_full,
+        n_kept,
+        len(amplitudes),
     )
+    data_dirs = []
+    per_depth = []
+    for amplitude in amplitudes:
+        tag = amp_tag(amplitude)
+        sub = run_root / tag
+        logging.info("=== DEPTH %s amplitude=%.3f ===", tag, amplitude)
+        train = ensure_layout(sub, staged, scan_id)
+        train_geom = train / "Proj" / "Geometry.xml"
+        shutil.copy2(thin_geom, train_geom)
+        bins = [str((i % 10) + 1) for i in range(n_kept)]
+        (train / "Proj" / "RespBin.csv").write_text("\n".join(bins) + "\n")
+        _finish_one_depth(
+            sub,
+            train,
+            gt06,
+            train_geom,
+            device,
+            spec,
+            scan_id,
+            mu_mode=args.mu_mode,
+            amplitude=amplitude,
+            dvf_convention=args.dvf_convention,
+            skip_drr=args.skip_drr,
+            with_test=with_test,
+        )
+        mt = sub / "ModelTraining" / "train" / scan_id
+        n_pairs = count_training_pairs(mt)
+        logging.info("Depth %s pairs=%d → %s", tag, n_pairs, mt)
+        data_dirs.append(str(mt))
+        per_depth.append({"tag": tag, "amplitude": amplitude, "pairs": n_pairs, "data_dir": str(mt)})
 
-    if not args.skip_drr:
-        logging.info("=== DRR ===")
-        run_drr(train, train_geom)
-        logging.info("=== COMPRESS ===")
-        logging.info("bins: %d", run_compress(train))
-
-    logging.info("=== PREP_TRAIN ===")
-    run_prep(run_root, scan_id, train_geom, with_test=args.with_test)
-
-    mt = run_root / "ModelTraining" / "train" / scan_id
-    logging.info("Done in %.1f min → %s", (time.perf_counter() - t0) / 60, mt)
-    return 0 if mt.is_dir() else 1
+    total_pairs = sum(d["pairs"] for d in per_depth)
+    expected = 9 * n_full
+    manifest = {
+        "amplitudes": amplitudes,
+        "angles_per_depth": n_kept,
+        "angles_full": n_full,
+        "total_pairs": total_pairs,
+        "expected_pairs": expected,
+        "data_dirs": data_dirs,
+        "depths": per_depth,
+    }
+    (run_root / "amp_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
+    logging.info(
+        "Done in %.1f min | total pairs %d (expected %d)",
+        (time.perf_counter() - t0) / 60,
+        total_pairs,
+        expected,
+    )
+    if total_pairs != expected:
+        logging.error("Pair count %d != %d", total_pairs, expected)
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
