@@ -94,7 +94,7 @@ Baseline for the motion network is TCIA3 epoch 100: synth-oracle mean **4.94 mm*
 | Scale map | A small network on the frozen TCIA3 field, free to multiply the motion by 0.5–2.5 | On TCIA patients the multiplier stayed at 1. The field already fits those patients. |
 | Scale map on DIR | Same head, trained to match DIR registrations. Oracle only, not a result. | Where the real breath was larger, the multiplier went down. Shrinking a badly aimed arrow reduces the training error. |
 | Brightness match | Force the real C08 X-rays to look like the synthetic ones, then predict | Predicted breath moved from 2.84 to 2.95. The network already rescales each X-ray on its own. |
-| Lung crop, then 128×128 | Cut to the lungs before the shrink, same TCIA3 motion | The lungs already filled the picture top to bottom, so the up-down breath did not get bigger (1.00×). Finished cases (75 / 300 mm), next to the TCIA3 table: C01 2.26/1.93 (was 2.13/1.87), C02 1.94/1.83 (1.93/1.84), C03 3.40/3.18 (3.38/3.19), C04 5.25/5.13 (5.43/5.30), C05 3.69/3.61 (3.70/3.57), C06 5.88/5.66 (6.15/5.93), C08 11.67/10.79 (11.82/10.99). A few tenths either way. C07, C09, and C10 were still training on 28 September. |
+| Lung crop, then 128×128 | Cut to the lungs before the shrink, same TCIA3 motion | Nine cases scored. Mean of those nine is 5.27 mm (75) and 5.09 mm (300), against 5.23 and 5.06 for the same cases in the TCIA3 table. C10 still training. See below. |
 | TCIA3.5 | Same MAE training as TCIA3, with the field-of-view augmentation turned off | Finished 100 epochs. Best validation is epoch 92: mean 5.02 mm, C08 11.07 mm. Epoch 100 is worse: mean 5.34 mm, C08 11.30 mm. Both behind TCIA3 (4.94 / 10.65). Not adopted. |
 | TCIA3.1 | Same MAE, with extra copies of the large breaths | At epoch 35 the oracle was 5.39–5.59 mm, behind 4.94. Paused during epoch 75 so C08 could use the GPU. Not a result. |
 
@@ -143,6 +143,46 @@ It failed because the real X-rays do not look like a larger copy of the training
 
 The mid-coronal comparison is `arms/A3_synth_conditioned/plots/amp4/c08_amp4_scale_vs_real_coronal.png`. The real motion is a wide smooth slide. The four synthetic columns are the same TCIA3 pattern, only brighter.
 
+### Lung crop
+
+Same TCIA3 motion as the table at the top. The only change is the X-ray: the lung is cut out on the detector, with a small margin, then shrunk to 128×128. The lungs already filled the picture from top to bottom, so the up-down breath did not get bigger (zoom 1.00×). The side-to-side crop is about 1.5–1.8×. Front-view pairs for C01–C09 are in `arms/A3_synth_conditioned/plots/lung128/`.
+
+Scored on 28 September. C10 was still training, so the mean is the nine finished cases, not a replacement for the 10-case TCIA3 mean.
+
+75 landmarks:
+
+| Case | Lung crop | A3 TCIA3 (MAE) |
+|---|---:|---:|
+| C01 | 2.26 mm | 2.13 mm |
+| C02 | 1.94 mm | 1.93 mm |
+| C03 | 3.40 mm | 3.38 mm |
+| C04 | 5.25 mm | 5.43 mm |
+| C05 | 3.69 mm | 3.70 mm |
+| C06 | 5.88 mm | 6.15 mm |
+| C07 | 8.02 mm | 7.35 mm |
+| C08 | 11.67 mm | 11.82 mm |
+| C09 | 5.27 mm | 5.21 mm |
+| C10 | still training | 5.44 mm |
+| **Mean of C01–C09** | **5.27 mm** | **5.23 mm** |
+
+300 landmarks:
+
+| Case | Lung crop | A3 TCIA3 (MAE) |
+|---|---:|---:|
+| C01 | 1.93 mm | 1.87 mm |
+| C02 | 1.83 mm | 1.84 mm |
+| C03 | 3.18 mm | 3.19 mm |
+| C04 | 5.13 mm | 5.30 mm |
+| C05 | 3.61 mm | 3.57 mm |
+| C06 | 5.66 mm | 5.93 mm |
+| C07 | 8.20 mm | 7.41 mm |
+| C08 | 10.79 mm | 10.99 mm |
+| C09 | 5.50 mm | 5.47 mm |
+| C10 | still training | 4.76 mm |
+| **Mean of C01–C09** | **5.09 mm** | **5.06 mm** |
+
+C04, C06, and C08 move by a few tenths of a millimetre. C07 goes the other way, 7.35 → 8.02 mm (75) and 7.41 → 8.20 mm (300). The nine-case mean is level with TCIA3.
+
 ## Why C08 stays there
 
 On the 82 TCIA patients, a big breath stays big. For the largest 01→06 breaths the TCIA3 field is about 93% of the real one (biggest: 13.3 mm real, 12.3 mm predicted).
@@ -151,4 +191,4 @@ C08 was not one of those patients. The network guesses a breath from that CT. Th
 
 ## Left running
 
-C07 and C09 lung-crop training were still going on 28 September, with C10 queued after C07. The finished cases do not replace the table above. TCIA3.1 (the oversampled MAE run) is still paused at epoch 75. Resume from `TCIA3.1/DecoderCRB/checkpoints/interrupt.pt`.
+C10 lung-crop training started on 28 September after C07 finished. The nine scored cases do not replace the TCIA3 table above. TCIA3.1 (the oversampled MAE run) is still paused at epoch 75. Resume from `TCIA3.1/DecoderCRB/checkpoints/interrupt.pt`.
