@@ -1,3 +1,62 @@
+# 2026-10-03 06:30 — Hybrid seed 2 PASSES; free checks (flip / weight-average / ensemble); two new lite runs queued
+
+All TRE = plain STANDARD TRE300 via `rescore_oracle_iso2mm_v3.py --skip-oracle` (mm), unless "mirror". Scorer JSON `Grid160/TCIA3/DecoderCRB/plots/qc_dir_oracle/rescore_oracle_iso2mm_v3_20261003_055111.json`. Analysis scripts + JSON copied to `Grid160/TCIA_lite/analysis_2026-10-03/`.
+
+**1. Hybrid seed 2 (`TCIA_lite/run_A2_full160_aug_hybrid_s2`, seed 20261002) — PASSED the fixed rule.** Finished 00:54 (40 ep, best val ep 19 = 0.501, val MAE flat 0.50–0.55 throughout, as in seed 1 and full160-aug).
+- Last-5 (ep 36–40): s2 **4.163**, seed 1 4.174, full160-aug 4.470 → −0.31 mm. Ep 40 cases lower than full160-aug: **9/10** (C05 a near-tie 4.47 vs 4.49; C06 worse). Hybrid gain confirmed on two seeds.
+
+| case | full160-aug | hybrid s1 | hybrid s2 | s2 − aug |
+|---|---:|---:|---:|---:|
+| C01 | 2.37 | 2.10 | 2.02 | −0.35 |
+| C02 | 3.03 | 2.42 | 2.39 | −0.63 |
+| C03 | 3.14 | 2.85 | 3.06 | −0.08 |
+| C04 | 4.26 | 3.74 | 3.91 | −0.35 |
+| C05 | 4.48 | 3.90 | 4.48 | 0.00 |
+| C06 | 4.06 | 4.17 | 4.19 | +0.12 |
+| C07 | 6.23 | 6.66 | 6.17 | −0.06 |
+| C08 | 8.83 | 7.91 | 7.61 | −1.22 |
+| C09 | 4.38 | 4.00 | 3.91 | −0.47 |
+| C10 | 3.93 | 3.99 | 3.90 | −0.04 |
+| **mean** | **4.47** | **4.17** | **4.16** | **−0.31** |
+(per-case = mean over ep 36–40). Gains in both seeds: C01, C02, C04, C08, C09. C06 worse in both (~+0.1). C05 and C07 differ between seeds.
+
+**2. Validation MAE does not track TRE in the lite runs.** s2 TRE fell 4.16 (ep 13) → 4.09 (ep 20) → 4.15 (ep 36–40) while val MAE never beat ep 1. `*best*` (val-picked) checkpoint = wrong one to score; keep scoring fixed epochs.
+
+**3. TCIA3.5-hybrid (`Grid160/TCIA3.5_hybrid`, GPU0, running) — interim, same-epoch vs TCIA3.5:**
+ep 10 4.192 vs 4.482 · ep 16 4.148 vs 4.338 · ep 22 4.128 vs 4.062 · ep 25 4.143 vs 4.124 · ep 46 **4.129 vs 4.353 (7/10 lower)**. TCIA3.5 (constant lr) swings ±0.15 between epochs, so single-epoch comparisons mislead; ep 22/25 "tie" was baseline noise. Hybrid itself is flat ~4.13 from ep 16. C08 not improved (9.1–9.4). Fixed rule (ep 96–100) still pending (~midnight 3 Oct).
+
+**4. Free checks on saved checkpoints (no training; `analysis_2026-10-03/free_checks.py`):**
+
+| model | plain | mirror |
+|---|---:|---:|
+| hybrid s1 ep40 | 4.171 | 4.133 |
+| hybrid s2 ep40 | 4.172 | 4.145 |
+| s1 weight-avg ep36–40 | 4.174 | 4.138 |
+| s2 weight-avg ep36–40 | 4.162 | 4.135 |
+| TCIA3.5-hybrid ep46 | 4.129 | 4.011 |
+| ENS s1+s2 (avg weights) | 4.076 | 4.059 |
+| **ENS s1+s2+TCIA3.5-hyb ep46** | **3.916** | **3.909** |
+
+Earlier (2 Oct 21:53, `mirror_tta_iso2mm_20261002_215330.json`): TCIA3.5-hyb ep22 mirror 3.919 vs TCIA3.5 ep22 mirror 3.990; s2 ep28 4.193→4.160; full160-aug ep28 4.427→4.371.
+- Mirror: −0.12 to −0.21 on crop-trained TCIA3.5-hybrid, only −0.03 on whole-volume lite models.
+- Weight averaging of last 5 epochs: ~0 → dropped.
+- **Ensembles now help** (earlier "ensembles ~0" was among models with shared errors): whole-volume lite + crop-trained TCIA3.5-hybrid differ enough → −0.21 vs best single. C08 worse in the 3-model ensemble (8.1 vs 7.6) because TCIA3.5-hyb is weak on C08. Best number so far **3.91** (interim, TCIA3.5-hyb not finished). Ensemble members chosen after seeing results → report as exploratory.
+
+**5. Scale oracle on hybrid models (2 Oct 21:51, `scale_oracle_*_20261002_2151*.json`):** plain / one shared k / per-case lsq k:
+s2 ep28 4.19 / 4.08 (k 1.26) / 3.81 · full160-aug ep28 4.43 / 4.45 (k 1.15) / 3.88 · TCIA3.5-hyb ep22 4.13 / 4.13 (k 1.20) / 3.61 · TCIA3.5 ep22 4.06 / 4.09 (k 1.20) / 3.58. C08 k_lsq ≈ 2.1 (TCIA3.5 models), 1.6 (s2). → Hybrid gain on lite is mostly NOT shape (lsq 3.88→3.81, −0.07) but plain −0.24; breath-depth ceiling unchanged (same finding as 29 Sep).
+
+**6. Breath depth: training vs DIR-Lab (`analysis_2026-10-03/breath.py`).** CORRECTION during analysis: pair DVFs are in **2 mm voxels**, not mm (matches `TCIA_4D-Lung_dvf_characteristics`: S1 06→01 8.39 mm = 2 × 4.20). In mm: training 06→01 lung-mean |u| median 6.2, p90 9.3, max 12.3; p95 median 16.9, max 37.9. DIR-Lab landmark mean |T00→T50|: C01 3.9 … C08 15.0. Rank of DIR case in training distribution (mean): C01 13 %, C02 19 %, C03 63 %, C04 96 %, C05 71 %, C06 97 %, C07 97 %, **C08 100 %**, C09 76 %, C10 69 %. → Only C08 is beyond every training scan; C04/C06/C07 at the top 3–4 %. (First pass, before the unit fix, wrongly said 8/10 beyond every training scan.) Landmark vs lung-average measures differ (landmarks oversample moving regions) → rough comparison only. Lung volume / SI height / density vs motion: corr ≤ 0.13, LOO R² 0.16 (agrees with 29 Sep `amp_from_ct_check.py`).
+
+**7. Label-stretch augmentation alone — NOT run.** Already reasoned out: amp4 (25 Sep, different model, broken input) and `ChangesNeeded.md` P1-B say amplitude aug only helps together with an amplitude input; clinic has a single planning CT (30 Sep). Without a depth input, stretching ≈ one shared k, which the scale oracle bounds at ~0–0.1 mm.
+
+**8. Queued / running on GPU1 (lite, copies of hybrid seed 1, seed 20260929, one change each; rule: last-5 > 0.1 mm better than s1 4.174 AND ≥ 7/10 cases lower than s1 ep40):**
+- `TCIA_lite/run_A2_full160_aug_hybrid_img30/` — **LAMBDA_IMG 10 → 30**. Gate passed (`--check-only`). Auto-started 00:54 after s2. Ep 17 4.173 vs s1 ep17 4.138 (level). Finishes ~12:30.
+- `TCIA_lite/run_A2_full160_aug_hybrid_extreme/` — **deepest-breath label**: for each train scan, the (5→0)/(0→5) slots use that scan's largest-motion pair (`TCIA_4D-Lung_dvf_characteristics/metrics_per_scan.tsv` max_pair; inhale = member cyclically closer to 01). Max pair is 01↔06 in 48/82 scans; 29/65 train scans changed; val unchanged. Why: DIR-Lab T00/T50 are true extremes, TCIA 06/01 often are not (29 Sep note). Gate passed; label override checked on S05 (06_to_01 slot → 07_to_01, labels 5→0). Auto-starts after img30 (`logs/start_after_img30.sh`), ~11 h.
+
+**Target 3.8.** Single-CT literature/oracle floor ≈ 3.9–4.0 (29 Sep, 30 Sep). Current best 3.91 (3-model ensemble). Remaining levers: TCIA3.5-hyb final epochs, extreme-pair run, img30.
+
+---
+
 # 2026-10-02 11:50 — A1 / A2 TRE re-scored with an exact inverse (old T00→T50 numbers were too high)
 
 **Audit of `DIR EXPERIMENTS/scripts/eval_a1_tre.py` + `dirlab_tre.py`.**
