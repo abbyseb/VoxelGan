@@ -1,19 +1,16 @@
-"""3D U-Net with VoxelMap's blocks, synthesizer inputs.
+"""3D U-Net with VoxelMap's stride-2 blocks and the CRB phase block.
 
-VoxelMap's concatenated net encodes two 2D X-rays and grows a volume from one
-code. It has no skip links. This keeps that net's residual stride-2 blocks,
-batch-norm, and doubling channels, and changes the front:
+One 3D CT, phase pair (t_ref, t_tgt) coded like UNetCRBDecoder, skip links.
+The encoder is anatomy only. Each decoder block turns the two phase numbers
+into a scale and a shift with the CRB MLP (2 → 32 → 16 → 2C), applies that
+before the ReLU, and adds a skip that is not normalized.
 
-  - one 3D CT instead of two X-rays
-  - phase pair (t_ref, t_tgt), same coding as UNetCRBDecoder
-  - skip links, so it is a U-Net: the decoder sees the encoder map at each size
-  - encoder is anatomy only; FiLM from the phase pair is on the decoder
+No batch-norm. Channels start at 16 and double up to 64, so 160³ is
+16-32-64-64-64 with a 5³ bottleneck. The 4-channel batch-norm FiLM version
+predicted a zero field on SPARE.
 
 Depth follows the volume. Each down halves the grid, and stops when the next
-grid would be odd or smaller than 2³. 160³ → 5 downs, channels 4-8-16-32-64, bottleneck 5³.
-128³ → 6 downs, channels 4-8-16-32-64-128, bottleneck 2³.
-The last step to 1³ is left out: batch-norm on a single voxel breaks.
-Output is a direct 3-channel DVF, no scaling-and-squaring.
+grid would be odd or smaller than 2³. Output is a direct 3-channel DVF.
 """
 
 from __future__ import annotations
@@ -23,57 +20,60 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 
-class PhaseFiLM(nn.Module):
-    """Scale and shift a 3D feature map from the two phase numbers."""
+class PhaseScaleShift(nn.Module):
+    """CRB phase MLP. y * a + b, with (a, b) from the two phase numbers."""
 
     def __init__(self, num_features: int, cond_dim: int = 2):
         super().__init__()
-        self.gamma = nn.Linear(cond_dim, num_features)
-        self.beta = nn.Linear(cond_dim, num_features)
-        nn.init.zeros_(self.gamma.weight)
-        nn.init.ones_(self.gamma.bias)
-        nn.init.zeros_(self.beta.weight)
-        nn.init.zeros_(self.beta.bias)
+        self.fc = nn.Sequential(
+            nn.Linear(cond_dim, 32),
+            nn.ReLU(inplace=True),
+            nn.Linear(32, 16),
+            nn.ReLU(inplace=True),
+            nn.Linear(16, 2 * num_features),
+        )
 
-    def forward(self, x: torch.Tensor, cond: torch.Tensor) -> torch.Tensor:
-        g = self.gamma(cond).view(-1, x.shape[1], 1, 1, 1)
-        b = self.beta(cond).view(-1, x.shape[1], 1, 1, 1)
-        return g * x + b
+    def forward(self, y: torch.Tensor, cond: torch.Tensor) -> torch.Tensor:
+        a, b = self.fc(cond).chunk(2, dim=1)
+        a = a.view(-1, y.shape[1], 1, 1, 1)
+        b = b.view(-1, y.shape[1], 1, 1, 1)
+        return y * a + b
 
 
 class DownBlock3D(nn.Module):
-    """VoxelMap down block: stride-2 conv, second conv, batch-norm, residual."""
+    """Stride-2 conv, second conv, residual. No batch-norm."""
 
     def __init__(self, in_ch: int, out_ch: int):
         super().__init__()
-        self.conv1 = nn.Conv3d(in_ch, out_ch, kernel_size=4, stride=2, padding=1, bias=False)
-        self.conv2 = nn.Conv3d(out_ch, out_ch, kernel_size=3, stride=1, padding=1, bias=False)
-        self.bn = nn.BatchNorm3d(out_ch)
+        self.conv1 = nn.Conv3d(in_ch, out_ch, kernel_size=4, stride=2, padding=1)
+        self.conv2 = nn.Conv3d(out_ch, out_ch, kernel_size=3, stride=1, padding=1)
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
-        conv1 = F.relu(self.conv1(x), inplace=True)
-        conv2 = self.bn(self.conv2(conv1))
-        return F.relu(conv1 + conv2, inplace=True)
+        conv1 = F.relu(self.conv1(x))
+        conv2 = self.conv2(conv1)
+        return F.relu(conv1 + conv2)
 
 
 class UpBlock3D(nn.Module):
-    """VoxelMap up block, plus the encoder skip and phase FiLM."""
+    """Learned upsample, encoder skip, then the CRB phase block."""
 
     def __init__(self, in_ch: int, skip_ch: int, out_ch: int, cond_dim: int = 2):
         super().__init__()
-        self.up = nn.ConvTranspose3d(in_ch, out_ch, kernel_size=4, stride=2, padding=1, bias=False)
-        self.conv2 = nn.Conv3d(out_ch + skip_ch, out_ch, kernel_size=3, padding=1, bias=False)
-        self.bn = nn.BatchNorm3d(out_ch)
-        self.film = PhaseFiLM(out_ch, cond_dim)
-        self.proj = nn.Conv3d(out_ch + skip_ch, out_ch, kernel_size=1, bias=False)
+        self.up = nn.ConvTranspose3d(in_ch, out_ch, kernel_size=4, stride=2, padding=1)
+        self.conv1 = nn.Conv3d(out_ch + skip_ch, out_ch, kernel_size=3, padding=1)
+        self.phase = PhaseScaleShift(out_ch, cond_dim)
+        self.conv2 = nn.Conv3d(out_ch, out_ch, kernel_size=3, padding=1)
+        self.proj = nn.Conv3d(out_ch + skip_ch, out_ch, kernel_size=1)
 
     def forward(self, x: torch.Tensor, skip: torch.Tensor, cond: torch.Tensor) -> torch.Tensor:
-        conv1 = F.relu(self.up(x), inplace=True)
-        if conv1.shape[2:] != skip.shape[2:]:
-            conv1 = F.interpolate(conv1, size=skip.shape[2:], mode="trilinear", align_corners=True)
-        cat = torch.cat([conv1, skip], dim=1)
-        conv2 = self.film(self.bn(self.conv2(cat)), cond)
-        return F.relu(self.proj(cat) + conv2, inplace=True)
+        up = F.relu(self.up(x))
+        if up.shape[2:] != skip.shape[2:]:
+            up = F.interpolate(up, size=skip.shape[2:], mode="trilinear", align_corners=True)
+        cat = torch.cat([up, skip], dim=1)
+        y = self.phase(self.conv1(cat), cond)
+        y = F.relu(y)
+        y = self.conv2(y)
+        return F.relu(y + self.proj(cat))
 
 
 def _n_downs(im_size: int) -> int:
@@ -84,6 +84,16 @@ def _n_downs(im_size: int) -> int:
         size //= 2
         n += 1
     return n
+
+
+def _channels(n_down: int) -> list[int]:
+    """Start at 16 and double, capped at 64. 160³ → 16-32-64-64-64."""
+    channels = []
+    width = 16
+    for _ in range(n_down):
+        channels.append(width)
+        width = min(width * 2, 64)
+    return channels
 
 
 class UNetVoxelMapCT(nn.Module):
@@ -97,14 +107,12 @@ class UNetVoxelMapCT(nn.Module):
         if n_down < 1:
             raise ValueError(f"im_size {im_size} cannot be halved")
 
-        # VoxelMap's list starts at 4 and doubles. 160³ stops at 64 (5³). 128³ stops at 128 (2³).
-        channels = [2 ** (i + 2) for i in range(n_down)]
+        channels = _channels(n_down)
         self.channels = channels
         stem_ch = channels[0]
 
         self.stem = nn.Sequential(
-            nn.Conv3d(1, stem_ch, kernel_size=3, padding=1, bias=False),
-            nn.BatchNorm3d(stem_ch),
+            nn.Conv3d(1, stem_ch, kernel_size=3, padding=1),
             nn.ReLU(inplace=True),
         )
         downs = []
@@ -135,7 +143,6 @@ class UNetVoxelMapCT(nn.Module):
         for down in self.downs:
             x = down(x)
             skips.append(x)
-        # bottleneck is the last encoder map; decoder skips are the ones above it
         for up, skip in zip(self.ups, reversed(skips[:-1])):
             x = up(x, skip, cond)
         return self.out_conv(x)

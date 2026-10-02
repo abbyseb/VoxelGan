@@ -70,14 +70,15 @@ def apply_cbct_noise(vol: np.ndarray, rng: np.random.Generator) -> np.ndarray:
 
 def apply_fov_aug(
     reference_ct: np.ndarray,
-    target_ct: np.ndarray,
+    target_ct: np.ndarray | None,
     lung_mask: np.ndarray,
     target_dvf: np.ndarray,
     rng: np.random.Generator,
     mode: int | None = None,
 ):
     """
-    reference_ct/target_ct/lung_mask: (S,S,S)
+    reference_ct/lung_mask: (S,S,S). target_ct is the same shape, or None when
+    the network does not use the target scan.
     target_dvf: (3,S,S,S)
     Returns possibly modified arrays + mode int.
     """
@@ -96,9 +97,10 @@ def apply_fov_aug(
         keep = half_fov_mask(ref.shape, rng, axis=-1)
         fill = 0.0
         ref = ref.copy()
-        tgt = tgt.copy()
         ref[~keep] = fill
-        tgt[~keep] = fill
+        if tgt is not None:
+            tgt = tgt.copy()
+            tgt[~keep] = fill
         mask = mask * keep.astype(np.float32)
         # zero DVF outside FOV (clean target; loss already masked)
         dvf = dvf.copy()
@@ -106,7 +108,7 @@ def apply_fov_aug(
 
     if do_noise:
         ref = apply_cbct_noise(ref, rng)
-        # independent noise on target (different acquisition realization)
-        tgt = apply_cbct_noise(tgt, rng)
+        if tgt is not None:
+            tgt = apply_cbct_noise(tgt, rng)
 
     return ref, tgt, mask, dvf, mode

@@ -64,9 +64,18 @@ A_GRID = np.round(np.arange(0.8, 3.01, 0.1), 2)
 
 
 def load_ckpt(path: Path, device):
-    if str(v2.NET) not in sys.path:
-        sys.path.insert(0, str(v2.NET))
-    from networks.generator_crb_dec import UNetCRBDecoder
+    net_py = os.environ.get("TCIA_NET_PY", "").strip()
+    if net_py:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("tcia_net_override", net_py)
+        mod = importlib.util.module_from_spec(spec)
+        assert spec.loader is not None
+        spec.loader.exec_module(mod)
+        UNetCRBDecoder = mod.UNetCRBDecoder
+    else:
+        if str(v2.NET) not in sys.path:
+            sys.path.insert(0, str(v2.NET))
+        from networks.generator_crb_dec import UNetCRBDecoder
 
     g = UNetCRBDecoder(im_size=v2.SIZE, n_phases=10)
     raw = torch.load(str(path), map_location=device, weights_only=False)
@@ -135,7 +144,12 @@ def main() -> None:
     ap.add_argument("--cases", type=int, nargs="*", default=list(range(1, 11)))
     ap.add_argument("--skip-oracle", action="store_true")
     ap.add_argument("--skip-rescore", action="store_true")
+    ap.add_argument("--ckpt", action="append", default=[],
+                    help="LABEL=PATH, repeatable; replaces the built-in checkpoint list")
     args = ap.parse_args()
+    global CKPTS
+    if args.ckpt:
+        CKPTS = [(c.split("=", 1)[0], Path(c.split("=", 1)[1]), 1.0) for c in args.ckpt]
 
     os.environ.setdefault("DIRLAB_ROOT", str(DIR_EXP / "data" / "dirlab_packs"))
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")

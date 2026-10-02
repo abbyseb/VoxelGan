@@ -7,6 +7,7 @@ Val: normal only.
 from __future__ import annotations
 
 import importlib.util
+import multiprocessing as mp
 import os
 import sys
 from pathlib import Path
@@ -37,6 +38,17 @@ class FOVAugPhasePairDataset(MultiPatientPhasePairDataset):
         super().__init__(*args, **kwargs)
         self.fov_aug = bool(fov_aug)
         self.aug_seed = int(aug_seed)
+        self._aug_epoch = mp.Value("i", 0)
+
+    def set_epoch(self, epoch: int) -> None:
+        """Include the epoch in the augmentation seed. Call once per epoch."""
+        self._aug_epoch.value = int(epoch)
+
+    def _aug_rng(self, idx: int, patch_idx: int) -> np.random.Generator:
+        epoch = int(self._aug_epoch.value)
+        return np.random.default_rng(
+            self.aug_seed + epoch * 1_000_003 + int(idx) * 10007 + patch_idx * 17
+        )
 
     def __getitem__(self, idx):
         pair_idx = idx // self.patches_per_pair
@@ -70,9 +82,7 @@ class FOVAugPhasePairDataset(MultiPatientPhasePairDataset):
 
         aug_mode = 0
         if self.fov_aug:
-            rng = np.random.default_rng(
-                self.aug_seed + int(idx) * 10007 + patch_idx * 17
-            )
+            rng = self._aug_rng(idx, patch_idx)
             reference_ct, target_ct, lung_mask, target_dvf, aug_mode = apply_fov_aug(
                 reference_ct, target_ct, lung_mask, target_dvf, rng, mode=None
             )

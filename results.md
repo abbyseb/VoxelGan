@@ -174,7 +174,7 @@ Fair transfer: init from models trained on **all** P1 pairs (`spare_mc_p1_full_w
 | What | Path |
 |------|------|
 | This summary | `results.md` |
-| Diary (narrative) | `Diary.md`, `Dan'sPaperGan/Diary.md` |
+| Diary (narrative) | `Diary.md` (repo root; central) |
 | P1 QC metrics | `plots/qc_test_*/metrics.tsv` |
 | P2 metrics | `P2/*/metrics.tsv` |
 | Our Warp LOOCV | `plots/loocv_warp_d/` |

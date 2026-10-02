@@ -1,10 +1,8 @@
-"""UNetCRB-Decoder — Dan CRB with conditioning moved to the decoder.
+"""UNetCRBDecoder: phase-blind residual encoder, CRB phase block in the decoder.
 
-Copied from Dan2.0 for PopulationStudy/Experiment1 (self-contained).
-
-Encoder + bottleneck: plain residual blocks (anatomy only, no phase).
-Decoder: CRB after skip concat (phase codes [t_ref, t_tgt]).
-Direct 3-ch DVF, no SVF. Same channel progression as UNetCRB.
+Encoder and bottleneck see only the CT. Each decoder block has its own phase MLP.
+Direct 3-channel DVF. No normalization layers. The width schedule does not depend
+on im_size; that argument is stored and unused. Training uses a 160³ input.
 """
 
 import torch
@@ -86,9 +84,9 @@ class UpCRB(nn.Module):
 class UNetCRBDecoder(nn.Module):
     """5-level U-Net: plain encoder, CRB decoder → direct 3-ch DVF."""
 
-    def __init__(self, im_size=128, n_phases=10):
+    def __init__(self, im_size=160, n_phases=10):
         super().__init__()
-        self.im_size = im_size
+        self.im_size = im_size  # unused: the net is fully convolutional
         self.n_phases = n_phases
         cond_dim = 2
 

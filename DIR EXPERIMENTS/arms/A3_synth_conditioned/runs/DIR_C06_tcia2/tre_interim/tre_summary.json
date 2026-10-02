@@ -8,7 +8,7 @@
   "scan_id": "DIR_C06",
   "frame": "r3",
   "run": "/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A3_synth_conditioned/runs/DIR_C06_tcia2/tre_interim_run",
-  "checkpoint": "/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A3_synth_conditioned/runs/DIR_C06_tcia2/checkpoints_nofilm/best.pt",
+  "checkpoint": "/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A3_synth_conditioned/runs/DIR_C06_tcia2/tre_interim/best_snap_101544.pt",
   "data_dir": "/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A1_oracle_dirlab/runs/DIR_C06/ModelTraining/train/DIR_C06",
   "stride": 10,
   "note": "VoxelMap trained on G160 synth 4D; TRE on A1 DIR ModelTraining + landmarks",
@@ -281,16 +281,16 @@
     },
     "voxelmap": {
       "n_proj_averaged": 68,
-      "checkpoint": "/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A3_synth_conditioned/runs/DIR_C06_tcia2/checkpoints_nofilm/best.pt",
-      "l1_vs_elastix_zyx": 2.352796763375372,
+      "checkpoint": "/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A3_synth_conditioned/runs/DIR_C06_tcia2/tre_interim/best_snap_101544.pt",
+      "l1_vs_elastix_zyx": 2.346820572345995,
       "75": {
         "T00_T50": {
           "registered": {
-            "mean": 7.554780424483732,
-            "std": 4.117806605372445,
-            "p50": 6.362017449932243,
-            "p95": 15.143473881178279,
-            "max": 18.4545196329996,
+            "mean": 7.37335233826142,
+            "std": 4.157381658959769,
+            "p50": 6.258465620127288,
+            "p95": 15.175501193196133,
+            "max": 18.548046452532734,
             "n": 75
           },
           "identity": {
@@ -301,17 +301,17 @@
             "max": 27.112456546760935,
             "n": 75
           },
-          "improvement_mm": 4.220163016906731,
+          "improvement_mm": 4.401591103129042,
           "set": "75",
           "frame": "r3"
         },
         "T50_T00": {
           "registered": {
-            "mean": 8.363373014923722,
-            "std": 4.92923095708835,
-            "p50": 6.906188397633924,
-            "p95": 17.978629861118655,
-            "max": 20.04476130477246,
+            "mean": 8.159409995020713,
+            "std": 4.954754043942847,
+            "p50": 6.521548819641993,
+            "p95": 17.95712599802961,
+            "max": 20.079071852475153,
             "n": 75
           },
           "identity": {
@@ -322,18 +322,18 @@
             "max": 27.112456546760935,
             "n": 75
           },
-          "improvement_mm": 3.4115704264667404,
+          "improvement_mm": 3.6155334463697493,
           "set": "75",
           "frame": "r3"
         }
       },
       "T00_T50": {
         "registered": {
-          "mean": 7.554780424483732,
-          "std": 4.117806605372445,
-          "p50": 6.362017449932243,
-          "p95": 15.143473881178279,
-          "max": 18.4545196329996,
+          "mean": 7.37335233826142,
+          "std": 4.157381658959769,
+          "p50": 6.258465620127288,
+          "p95": 15.175501193196133,
+          "max": 18.548046452532734,
           "n": 75
         },
         "identity": {
@@ -344,17 +344,17 @@
           "max": 27.112456546760935,
           "n": 75
         },
-        "improvement_mm": 4.220163016906731,
+        "improvement_mm": 4.401591103129042,
         "set": "75",
         "frame": "r3"
       },
       "T50_T00": {
         "registered": {
-          "mean": 8.363373014923722,
-          "std": 4.92923095708835,
-          "p50": 6.906188397633924,
-          "p95": 17.978629861118655,
-          "max": 20.04476130477246,
+          "mean": 8.159409995020713,
+          "std": 4.954754043942847,
+          "p50": 6.521548819641993,
+          "p95": 17.95712599802961,
+          "max": 20.079071852475153,
           "n": 75
         },
         "identity": {
@@ -365,18 +365,18 @@
           "max": 27.112456546760935,
           "n": 75
         },
-        "improvement_mm": 3.4115704264667404,
+        "improvement_mm": 3.6155334463697493,
         "set": "75",
         "frame": "r3"
       },
       "300": {
         "T00_T50": {
           "registered": {
-            "mean": 7.000056853981318,
-            "std": 4.149757863009103,
-            "p50": 6.073310490390536,
-            "p95": 15.293026267321151,
-            "max": 19.579235347929032,
+            "mean": 6.7994489238322915,
+            "std": 4.17385158295982,
+            "p50": 5.891816802247252,
+            "p95": 15.146705566672875,
+            "max": 19.702397080547538,
             "n": 300
           },
           "identity": {
@@ -387,17 +387,17 @@
             "max": 27.59403015146573,
             "n": 300
           },
-          "improvement_mm": 3.8909673572642216,
+          "improvement_mm": 4.0915752874132485,
           "set": "300",
           "frame": "r3"
         },
         "T50_T00": {
           "registered": {
-            "mean": 7.6525002418112535,
-            "std": 4.790323488202192,
-            "p50": 6.544689249142127,
-            "p95": 17.270385168395926,
-            "max": 21.052718688472282,
+            "mean": 7.436254000247885,
+            "std": 4.798071808063289,
+            "p50": 6.29445422790009,
+            "p95": 17.116903544803957,
+            "max": 21.056289414080148,
             "n": 300
           },
           "identity": {
@@ -408,13 +408,11 @@
             "max": 27.59403015146573,
             "n": 300
           },
-          "improvement_mm": 3.2385239694342864,
+          "improvement_mm": 3.454770210997655,
           "set": "300",
           "frame": "r3"
         }
       }
     }
-  },
-  "note_interim": "TEMPORARY mid-train TRE from best.pt before ep50; not final",
-  "latest_epoch_file": "epoch_037.pt"
+  }
 }

@@ -70,3 +70,4 @@ PopulationStudy/plots/**/qc_*/**/*.png
 # Videos: allow report plots; skip test-set sweeps under ModelTraining (already ignored)
 **/Test_Breathing_Sweep.mp4
 **/eval_sweep/*.mp4
+.venv_tcia/

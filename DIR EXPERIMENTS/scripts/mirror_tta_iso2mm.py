@@ -51,6 +51,14 @@ def tre(u, case, pack):
 
 
 def main() -> None:
+    import argparse
+    global MODELS
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--ckpt", action="append", default=[],
+                    help="LABEL=PATH, repeatable; replaces the built-in model list")
+    args = ap.parse_args()
+    if args.ckpt:
+        MODELS = {c.split("=", 1)[0]: Path(c.split("=", 1)[1]) for c in args.ckpt}
     os.environ.setdefault("DIRLAB_ROOT", str(DIR_EXP / "data" / "dirlab_packs"))
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     cases = list(range(1, 11))
