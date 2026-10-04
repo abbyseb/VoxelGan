@@ -51,7 +51,7 @@ T50→T00 (exact in both versions): A1 Elastix 1.64 / 1.57 · A1 VoxelMap 2.02 /
 | **TCIA-lite hybrid seed 1**, ep 36–40 | **4.174** | 4.133 (ep 40) | 0.924 (ep 40) | 0.0001 % | passed rule |
 | **TCIA-lite hybrid seed 2**, ep 36–40 | **4.163** | 4.145 (ep 40) | **0.925** (ep 40) | **0 %** | passed rule (9/10 cases lower at ep 40) |
 | TCIA3.5 (crops, old loss), ep 96–100 | 4.20 | 4.02 | 0.930 (mirror) | — | |
-| **TCIA3.5-hybrid, ep 96–100 (final)** | **4.11** | **3.87** | **0.930** (mirror) | 0 % | **best model**; plain −0.09 (fails bar), mirror −0.15 (passes) |
+| **TCIA3.5-hybrid, ep 96–100 (final)** | **4.11** | **3.87** | **0.930** (mirror) | 0 % (mirror) | **best model**; plain −0.09 (fails bar), mirror −0.15 (passes) |
 | MagFT (TCIA3 fine-tune), ep 26–30 | 4.15 | 4.15 | — | — | re-scored 5 Oct under the rule |
 | Ensemble s1 + s2 + TCIA3.5-hyb ep 100 (**exploratory**) | 3.898 | 3.854 | — | — | members picked after seeing results |
 | Lite hybrid, image weight 30, ep 36–40 | 4.339 | — | — | — | worse than weight 10 |
@@ -80,6 +80,17 @@ Hybrid = L1 DVF + 10 · image match |tgt − warp(ref, pred)| (lung) + 0.1 · sm
 - NCC, real CT_01 vs CT_06 warped by the network, lung mask dilated 10 mm: identity 0.845 → s2 0.925 (old loss 0.915). Whole 160³ box: identity 0.971, **old loss 0.957 (worse than no motion)**, s2 0.979. Per case (lung): C01 0.963, C02 0.931, C03 0.956, C04 0.925, C05 0.935, C06 0.885, C07 0.920, C08 0.873, C09 0.943, C10 0.917.
 - Jacobian det of x + u(x): lung folding 0 % in all 10 cases, min +0.20 (per-case min +0.20 to +0.50), mean 0.90 (≈ 10 % lung volume change), 1st–99th pct 0.59–1.16. Whole box 0.06 % folded (outside lung).
 - No Elastix upper reference on this grid yet.
+
+**Jacobian, main model (det of x + u(x), DIR-Lab, lung mask +10 mm; `analysis_2026-10-03/jacobian_dirlab_main.json`, 5 Oct):**
+
+| Model (ep 100 unless noted) | Lung folded | Lung min | Lung mean | Box folded |
+|---|---:|---:|---:|---:|
+| **TCIA3.5-hybrid + mirror, ep 96–100** | **0 % every epoch** | +0.09 to +0.17 | 0.89–0.90 | 0.006–0.017 % |
+| TCIA3.5-hybrid plain | 0.0008 % | −0.20 | 0.88 | 0.056 % |
+| TCIA3.5 old + mirror | 0 % | +0.15 | 0.90 | 0 % |
+| TCIA3.5 old plain | 0.0017 % | −0.20 | 0.90 | 0.0004 % |
+
+Hybrid + mirror ep 100 per case: no lung folding in C01–C10 (min +0.14 to +0.40). Mirror removes the few folded lung voxels; hybrid adds slight folding outside the lung vs old loss.
 
 **POPI and the 16-patient test (main model, ep 96–100, 5 Oct; `analysis_2026-10-03/{popi_scores,spread}.json`):**
 
