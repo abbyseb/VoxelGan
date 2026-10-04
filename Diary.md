@@ -1,3 +1,31 @@
+# 2026-10-05 08:00 — Main-model final (TCIA3.5-hybrid), POPI, 16-patient test, spread, code verification, MagFT re-score
+
+Write-up of the whole project path: `DIR EXPERIMENTS/ROAD_TO_3.8mm.md` (copy of claude.ai doc 9d861ebd-a480-424c-9729-9007cbf17e06).
+
+**1. TCIA3.5-hybrid finished (100 ep, 34 h 43 min).** Epochs 96–100, DIR-Lab TRE300: hybrid **4.11 plain / 3.87 mirror** vs TCIA3.5 4.20 / 4.02. Fixed rule (> 0.1 mm better): plain −0.09 FAILS narrowly; mirror −0.15 PASSES. Best single epoch hyb@96 mirror 3.77 (not used). Hybrid better on hard cases (C04, C05, C07, C08, C09), worse on easy C01–C03. Scorer JSON `qc_dir_oracle/rescore_oracle_iso2mm_v3_20261004_211606.json`, mirror `mirror_tta_iso2mm_20261004_211712.json`.
+
+**2. Lite runs finished, none passed** (last-5 vs same-seed weight 10): img30 4.339 vs s1 4.174 (+0.17, 3/10) · deepest breath 4.245 vs s1 4.174 (+0.07, 6/10) · all-82 4.495 vs s2 4.163 (+0.33, 3/10; C06 5.48). Keep LAMBDA_IMG = 10. All-82 failure unexplained → inspect the 4 added holdout patients (104, 107, 110, 115).
+
+**3. POPI (6 patients, `analysis_2026-10-03/popi_score.py` → `popi_scores.json`, LPS scorer).** Last-5 mean, plain / mirror: TCIA3.5 4.56 / 4.50 · TCIA3.5-hybrid **4.84 / 4.46** · lite full160-aug 4.73 · lite hybrid s1 4.80 · s2 5.05. **Hybrid alone is worse on POPI**; hybrid + mirror slightly better. Per patient (bl ng dx gt mm2 bh), hybrid+mirror: 4.14 7.43 5.04 3.89 4.24 2.03.
+
+**4. 16 patients (DIR-Lab + POPI), hybrid vs old, paired:** plain +0.05 mm (95% bootstrap −0.14 to +0.25, 9/16 better, Wilcoxon p 0.90); mirror **−0.11** (−0.23 to +0.01, 11/16, p 0.14). Not significant. Per-patient diff SD ≈ 0.28 ≈ seed-to-seed swing on lite → seeds of BOTH losses needed (est. 3–4 each for p < 0.05 if effect is uniform).
+
+**5. Mean ± SD (`analysis_2026-10-03/spread.py` → `spread.json`), epochs 96–100, hybrid + mirror:** DIR-Lab 3.87 ± 1.96 (patient) / ± 3.33 (landmark) · POPI 4.46 ± 1.76 / 4.41 ± 2.85 · all 16 4.09 ± 1.85 / 3.96 ± 3.26. Smallest spread of the four variants. Old loss + mirror: DIR 4.02 ± 2.19 / ± 3.63.
+
+**6. NCC on the main model (`ncc_dirlab_main.py`):** lung (mask +10 mm) hybrid+mirror 0.930 = old+mirror 0.930; whole box hybrid 0.976–0.979 vs old 0.960 (old < identity 0.971 → false motion outside lung). verify_iso2mm lung NCC: id 0.799, net 0.896, Elastix 0.914.
+
+**7. Code verification 5 Oct (all PASS, no new bug):** `dirlab_tre.py --check` identity matches published (10/10) · `verify_iso2mm.py` on TCIA3.5-hybrid ep100: round trip ≤ 0.002 mm, per-axis r > 0 (SI 0.73–0.85), NCC beats identity 10/10, inversion residual < 0.01 vox (JSON `verify_iso2mm_20261005_072010.json`) · mirror code: exact mirror-equivariant fake net → mirror = plain (0.0), without dx negation → 0.98 · net 1.070 M params, 5→5 output 0.0002 vs 5→0 0.86 vox, deterministic · crop gate single-crop true (TCIA3.5-hybrid s1, s2) · all 7 hybrid gates ok · POPI spine QC 6/6 · lite split 16/4 patients, no overlap · TCIA3.5 val = same 82 scans (pair split; never used to pick epochs) · two scorer paths agree (4.112 / 3.873).
+
+**8. Logic checks.** DIR-Lab reused for ~20 ideas → best DIR number mildly optimistic; POPI is the independent check. Mirror chosen after DIR (no tunable setting, also helps POPI). Chart steps not additive (hybrid −0.09 plain, −0.15 with mirror). 3-model ensemble 3.85 (s1+s2+T35hyb@100, mirror) = exploratory only (members picked after results).
+
+**9. MagFT re-scored under the rule (gap closed).** `TCIA3_magFT` ep 26–30: **4.147 plain / 4.148 mirror** (single last epoch had been 4.08). Behind hybrid + mirror 3.87 → dropping MagFT lost nothing. JSON `mirror_tta_iso2mm_20261005_073408.json`.
+
+**10. Literature (as recorded 29 Sep):** Ehrhardt TMI 2011 1 CT + spirometry 3.3 ± 1.8 / 4.2 ± 2.2 (own patients) · Fuerst 2 CTs 3.88 ± 1.54 on DIR C06–C10 (ours 5.11) · Elastix 4D-CT 1.49 native / 1.96 on 2 mm path. TTA refs: Wang et al. Neurocomputing 2019; nnU-Net (Isensee 2021). No single-CT method on DIR-Lab/POPI found.
+
+**Running:** GPU0 TCIA3.5_s2 (old loss, seed 20261002), GPU1 TCIA3.5_hybrid_s2 (seed 20261002; restarted on GPU1, short GPU0 log `logs/train_gpu0_aborted.log`). Both finish ~6 Oct morning. Rule: mean of seeds 1+2, ep 96–100, plain AND mirror, hybrid > 0.1 mm better than old and ≥ 7/10 cases; then 16-patient paired test.
+
+---
+
 # 2026-10-03 07:30 — Hybrid seed 2: NCC + Jacobian on DIR-Lab; all-82-scans run queued
 
 **NCC (`Grid160/TCIA_lite/analysis_2026-10-03/ncc_dirlab.py` → `ncc_dirlab.json`).** Real CT_01 (T00) vs CT_06 (T50) warped by the network, warped(x) = T50(x + u(x)), on the verified 2 mm iso grid (`eval_dir_tcia3_iso2mm_v2`). Region: T50 lung mask dilated 5 vox (10 mm); also whole 160³ box.
