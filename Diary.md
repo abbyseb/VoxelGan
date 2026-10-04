@@ -1,3 +1,41 @@
+# 2026-10-03 07:30 — Hybrid seed 2: NCC + Jacobian on DIR-Lab; all-82-scans run queued
+
+**NCC (`Grid160/TCIA_lite/analysis_2026-10-03/ncc_dirlab.py` → `ncc_dirlab.json`).** Real CT_01 (T00) vs CT_06 (T50) warped by the network, warped(x) = T50(x + u(x)), on the verified 2 mm iso grid (`eval_dir_tcia3_iso2mm_v2`). Region: T50 lung mask dilated 5 vox (10 mm); also whole 160³ box.
+
+| model (ep 40) | lung | whole box |
+|---|---:|---:|
+| identity | 0.845 | 0.971 |
+| old loss full160-aug | 0.915 | **0.957** |
+| hybrid s1 | 0.924 | 0.978 |
+| **hybrid s2** | **0.925** | **0.979** |
+| hybrid s2 + mirror | 0.926 | 0.980 |
+
+s2 per case (lung): C01 0.963 · C02 0.931 · C03 0.956 · C04 0.925 · C05 0.935 · C06 0.885 · C07 0.920 · C08 0.873 · C09 0.943 · C10 0.917.
+- Old loss makes the whole box match WORSE than no motion (0.957 < 0.971) → false motion outside the lung; image term removes it. Hardest cases same as TRE (C08, C06).
+- No Elastix upper reference on this grid yet (TCIA training labels reach 0.993 inside lung, 2026-09 relabel check, different data/mask → not comparable). NCC is coarse; TRE stays the headline.
+
+**Jacobian (`analysis_2026-10-03/jacobian_dirlab.py` → `jacobian_dirlab.json`).** det(I + ∇u) of x + u(x), voxel units, same region.
+
+| model (ep 40) | lung folded | lung min | lung mean | 1st / 99th pct | box folded |
+|---|---:|---:|---:|---:|---:|
+| **hybrid s2** | **0 %** | +0.20 | 0.90 | 0.59 / 1.16 | 0.06 % |
+| hybrid s1 | 0.0001 % | −0.28 | 0.90 | 0.56 / 1.17 | 0.05 % |
+| old loss | 0 % | +0.12 | 0.89 | 0.57 / 1.13 | 0.03 % |
+
+s2: no folding in the lung in any case (per-case min +0.20 to +0.50). Mean 0.90 ≈ 10 % lung volume change inhale→exhale (plausible). Box folding (~2,400 of 4.1 M voxels) is outside the lung, about 2× the old loss. Mirror ~no change.
+
+**Loss metrics, for the record.** Elastix labels use Mattes MI (`arms/A1_oracle_dirlab/Elastix_BSpline_DIR_masked.txt`); hybrid image term is L1 intensity (`image_term`, lung dilated 2 vox); NCC above is evaluation only. Local-NCC image term = possible future one-change lite run.
+
+**Queued: all-82-scans run** (`TCIA_lite/run_A2_full160_aug_hybrid_s2_all82/`). Copy of hybrid s2 (seed 20261002, LAMBDA_IMG 10), ONE change: train = data_allscans train + val pairs (82 scans / 20 patients / 8200 pairs vs 65 / 6500). Printed "val MAE" is no longer held out (log only); DIR-Lab is separate. ~14 h. Rule fixed: last-5 > 0.1 mm better than s2 4.163 AND ≥ 7/10 cases lower than s2 ep40.
+- Gate fix: the gates sample fixed indices (0, n/2, n−1) and in the 8200 list those are same-phase (zero-motion) pairs → consistency 0.0000 and hybrid gate failed. Added `moving()` to step to the next pair with ref ≠ tgt (gate only; training unchanged). Then passed (consistency none 0.0053 vs identity 0.0114).
+- Launcher `logs/start_when_gpu_free.sh`: starts on GPU0 when TCIA3.5-hybrid (PID 2688725) exits, or GPU1 when the img30 → extreme queue is done, whichever first (expected GPU1 ~23:30 3 Oct).
+
+**Schedule (3 Oct 06:20):** GPU0 TCIA3.5-hybrid ep 47/100 → ~00:45 Sun. GPU1 img30 ep 19/40 → ~12:20; extreme → ~23:30; all82 → ~13:30 Sun. GPU0 free from ~01:00 Sun, nothing queued.
+
+Results.md (`DIR EXPERIMENTS/Results.md`) gained a "Synthesiser" section with these numbers.
+
+---
+
 # 2026-10-03 06:30 — Hybrid seed 2 PASSES; free checks (flip / weight-average / ensemble); two new lite runs queued
 
 All TRE = plain STANDARD TRE300 via `rescore_oracle_iso2mm_v3.py --skip-oracle` (mm), unless "mirror". Scorer JSON `Grid160/TCIA3/DecoderCRB/plots/qc_dir_oracle/rescore_oracle_iso2mm_v3_20261003_055111.json`. Analysis scripts + JSON copied to `Grid160/TCIA_lite/analysis_2026-10-03/`.

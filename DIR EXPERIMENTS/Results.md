@@ -40,6 +40,45 @@ T50→T00 (exact in both versions): A1 Elastix 1.64 / 1.57 · A1 VoxelMap 2.02 /
 - **Do not mix scorers.** Arm numbers here are on the native DIR-Lab grid. Synthesiser (mid-CT → motion) numbers come from `eval_dir_tcia3_iso2mm_v2.py` on a 2 mm grid and are TRE300 (e.g. hybrid 4.17, TCIA3.5 + mirror 4.00); not directly comparable with this table.
 - Old A3 rows (6.56 partial, ablations) used the squeezed / wrongly normalised input and are withdrawn.
 
+## Synthesiser: single planning CT → motion (2 mm iso scorer, TRE₃₀₀, T00→T50)
+
+*Separate scorer from the arm table above (`scripts/rescore_oracle_iso2mm_v3.py`, 2 mm iso grid, `eval_dir_tcia3_iso2mm_v2` geometry). Input = DIR-Lab CT_06 (T50) only. Updated 2026-10-03.*
+
+| Model | TRE₃₀₀ | + mirror | Lung NCC | Lung folding (det J ≤ 0) | Note |
+|---|---:|---:|---:|---:|---|
+| Identity (no motion) | 8.46 | — | 0.845 | — | |
+| TCIA-lite full160-aug (old loss), ep 36–40 | 4.470 | 4.371 (ep 28) | 0.915 (ep 40) | 0 % | baseline for hybrid |
+| **TCIA-lite hybrid seed 1**, ep 36–40 | **4.174** | 4.133 (ep 40) | 0.924 (ep 40) | 0.0001 % | passed rule |
+| **TCIA-lite hybrid seed 2**, ep 36–40 | **4.163** | 4.145 (ep 40) | **0.925** (ep 40) | **0 %** | passed rule (9/10 cases lower at ep 40) |
+| TCIA3.5 (crops, old loss), ep 92 | 4.18 | 4.00 | — | — | |
+| TCIA3.5-hybrid, ep 46 (**interim**, run to ep 100) | 4.129 | 4.011 | — | — | vs TCIA3.5 ep 46 4.353 |
+| Ensemble s1 + s2 + TCIA3.5-hyb ep 46 (**exploratory**) | 3.916 | **3.909** | — | — | members picked after seeing results |
+
+Hybrid = L1 DVF + 10 · image match |tgt − warp(ref, pred)| (lung) + 0.1 · smoothness. Rule: last-5 mean > 0.1 mm better than baseline and ≥ 7/10 cases lower.
+
+**Per case, TRE₃₀₀ mean over ep 36–40 (mm):**
+
+| Case | full160-aug | hybrid s1 | hybrid s2 |
+|-----:|------:|------:|------:|
+| 1 | 2.37 | 2.10 | 2.02 |
+| 2 | 3.03 | 2.42 | 2.39 |
+| 3 | 3.14 | 2.85 | 3.06 |
+| 4 | 4.26 | 3.74 | 3.91 |
+| 5 | 4.48 | 3.90 | 4.48 |
+| 6 | 4.06 | 4.17 | 4.19 |
+| 7 | 6.23 | 6.66 | 6.17 |
+| 8 | 8.83 | 7.91 | 7.61 |
+| 9 | 4.38 | 4.00 | 3.91 |
+| 10 | 3.93 | 3.99 | 3.90 |
+| **mean** | **4.47** | **4.17** | **4.16** |
+
+**Image match and plausibility, hybrid seed 2 ep 40 (`Grid160/TCIA_lite/analysis_2026-10-03/`):**
+- NCC, real CT_01 vs CT_06 warped by the network, lung mask dilated 10 mm: identity 0.845 → s2 0.925 (old loss 0.915). Whole 160³ box: identity 0.971, **old loss 0.957 (worse than no motion)**, s2 0.979. Per case (lung): C01 0.963, C02 0.931, C03 0.956, C04 0.925, C05 0.935, C06 0.885, C07 0.920, C08 0.873, C09 0.943, C10 0.917.
+- Jacobian det of x + u(x): lung folding 0 % in all 10 cases, min +0.20 (per-case min +0.20 to +0.50), mean 0.90 (≈ 10 % lung volume change), 1st–99th pct 0.59–1.16. Whole box 0.06 % folded (outside lung).
+- No Elastix upper reference on this grid yet.
+
+Sources: `Grid160/TCIA3/DecoderCRB/plots/qc_dir_oracle/rescore_oracle_iso2mm_v3_20261003_055111.json`, `mirror_tta_iso2mm_20261002_215330.json`; `Grid160/TCIA_lite/analysis_2026-10-03/{free_checks,ncc_dirlab,jacobian_dirlab}.json`.
+
 ## Sources
 
 - A1: `arms/A1_oracle_dirlab/results/cohort_tre_v2_exact_inverse.json` (old: `cohort_tre_r3_final.json`)
