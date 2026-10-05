@@ -11,7 +11,7 @@ From one planning CT, the best model predicts inhale-to-exhale lung motion with 
 - **What limits it:** breath depth. One CT cannot show how deeply a patient breathes, and the deep breathers (DIR-Lab case 8, POPI ng) carry most of the error.
 - **Status of the claim:** the hybrid loss + mirror beats the old loss on 11 of 16 patients (−0.11 mm), but this is not significant (Wilcoxon p = 0.14). Second seeds of both losses finish on 6 Oct 2026.
 
-One-line claim: from a single planning CT the model reaches 3.9 mm on DIR-Lab and 4.5 mm on POPI, in the range of published models that also need a breathing signal (3.3–4.2 mm).
+One-line claim: from a single planning CT the model reaches 3.9 mm on DIR-Lab and 4.5 mm on POPI, in the range of published models that also need a breathing signal (3.3–4.2 mm). To our knowledge it is the first single-CT method evaluated with expert-landmark TRE on public benchmarks; the closest related work (Kanamuro et al., 2025) predicts from one CT but reports only motion-field error against registration on 6 private patients.
 
 ## Problem and setup
 
@@ -240,9 +240,9 @@ The hybrid loss + mirror has the lowest error and the smallest spread on both te
 
 Literature values are as recorded in the diary on 29 Sep 2026; check whether each paper's ± is over landmarks or patients before quoting it beside ours. Mirror averaging is test-time augmentation; see Wang et al., Neurocomputing 2019, and nnU-Net (Isensee et al., Nature Methods 2021).
 
-### Literature search, 5 Oct 2026 (focused web search, not a systematic review)
+### Literature search, 5 Oct 2026 (focused web search, not a systematic review; DRTT and Kanamuro read in full)
 
-No published method was found that predicts respiratory motion from a single planning CT **without** a breathing signal and reports landmark TRE on DIR-Lab or POPI. Every comparable method uses more information.
+Single-CT motion prediction without a patient breathing signal has been tried once (Kanamuro et al., EMBC 2025), but only on private data and scored against registration fields. No method found predicts from one CT and reports expert-landmark TRE on DIR-Lab or POPI. All others use more information (a breathing trace, a surface signal or a second CT).
 
 | Method | Input at test time | Reported accuracy | Comparable to ours? |
 | --- | --- | --- | --- |
@@ -252,10 +252,11 @@ No published method was found that predicts respiratory motion from a single pla
 | Ehrhardt et al., IEEE TMI 2011 (statistical 4D mean motion model) | 1 CT + breathing volume (spirometry) | 3.3 ± 1.8 mm (end-exhale to end-inhale) | Partly: extra input, own patients |
 | [Fuerst et al., MICCAI 2012](https://pmc.ncbi.nlm.nih.gov/articles/PMC3919462/) | 2 CTs (end-exhale + end-inhale) | 3.88 ± 1.54 mm, DIR-Lab cases 6–10 | Partly: same data, but 2 CTs (details below) |
 | [PCWS sparse population model](https://scholars.houstonmethodist.org/en/publications/a-novel-population-characteristic-weighted-sparse-model-for-accur/) | 2 CTs | 0.20 ± 0.15 mm "lung estimation error" | No: two scans, different error measure |
-| Kanamuro et al., EMBC 2025 ([doi](https://doi.org/10.1109/embc58623.2025.11254765)), diffusion model for 4D CT | 1 CT + chosen motion magnitude | landmark results not found | No: motion size supplied |
+| **Kanamuro et al., EMBC 2025** ([doi](https://doi.org/10.1109/embc58623.2025.11254765)), 2D conditional latent diffusion, DVF per coronal slice | 1 CT (end-inhale) + population mean DVF at one **constant** magnitude for all patients | DVF MAE per axis vs VoxelMorph fields, body ROI; images; **no landmarks, no comparison with other methods** | **Closest related work:** also single CT with no patient signal, but 62 private patients (6 test), slice-wise 2D, scored against registration not truth. They also report predicted displacement smaller than target (same under-prediction we measure) |
+| [DRTT, Li et al., IROS 2025](https://doi.org/10.1109/iros60139.2025.11247123), recursive diffusion | **2 breath-hold low-dose CTs** (end-inhale + end-exhale) | NMSE 0.0445, PSNR 26.4 dB on TCIA 4D-Lung (20 patients, 10-fold CV); 0.62–2.90 mm FRE is skin-surface registration, not motion | No: 2 CTs, interpolation, no landmark TRE |
 | Registration (e.g. [Kalman + 4DCT](https://www.researchgate.net/publication/346196808_Lung_Respiratory_Motion_Estimation_Based_on_Fast_Kalman_Filtering_and_4D_CT_Image_Registration)) | both scans | 0.91 mm DIR-Lab, 0.85 mm POPI | No: registration, not prediction |
 
-Safe wording: "To our knowledge, no published method predicts respiratory motion from a single planning CT without a breathing signal and reports landmark TRE on DIR-Lab or POPI." Do not place RMSim's 0.92 mm beside our 3.87 mm without the caveats above. Full texts of RMSim, Cao et al. and Kanamuro et al. still to be read in full.
+Safe wording: "Single-CT motion prediction without a breathing signal has been explored recently (Kanamuro et al., 2025), but evaluated only against registration-derived motion fields on private data. To our knowledge, this is the first single-CT method evaluated with expert-landmark TRE on public benchmarks (DIR-Lab and POPI), and the first to quantify how much of the remaining error is due to unknown breath depth." Do not place RMSim's 0.92 mm beside our 3.87 mm without the caveats above. Do not compare DRTT's FRE with TRE. Still worth a Google Scholar check (2024+, "DIR-Lab" with "single CT"/"static CT") and a supervisor check before submission.
 
 ### Fuerst et al. in detail: what they built and why only cases 6–10
 
@@ -299,6 +300,23 @@ Fuerst B, Mansi T, Zhang J, Khurd P, Declerck J, Boettger T, Navab N, Bayouth J,
 Theirs is effectively interpolation between two known extremes; ours is prediction without knowing breath depth. The gap is largest on the deep breather (case 8, 3.2 mm) and smallest on cases 9–10 (0.5–0.8 mm).
 
 **Clinical feasibility of a second CT:** a 4DCT is standard for lung radiotherapy in many clinics, but with a 4DCT one would register it directly (about 1.5–2 mm) rather than predict. Inhale/exhale breath-hold pairs are common in COPD imaging but cost extra dose, need breath-hold compliance, and breath-hold depth differs from free breathing. Our model targets the one-CT-only setting where 2-CT methods cannot run.
+
+### With two CTs: a simple baseline beats the published 2-CT model (5 Oct 2026, `analysis_2026-10-03/twoct_baseline.py`)
+
+No training. Elastix registration between the two extremes (T00 inhale ↔ T50 exhale, verified 2 mm cube), scaled by phase: landmark at Tk = lm00 + (k/5) · u(lm00) for T10–T40. Scored with the 75 DIR-Lab landmarks of each intermediate phase, as Fuerst et al. did.
+
+| | No motion | Scaled Elastix (2 CTs) | Best fraction per phase (oracle, uses the answer) | Fuerst et al. (biomechanical, 2 CTs) |
+| --- | --- | --- | --- | --- |
+| All 10 cases, T10–T40 TRE75 (mm) | 4.99 | **2.00** | 1.78 | not reported |
+| Cases 6–10 | 5.89 | **2.35** | 2.17 | 3.88 |
+
+Per case 6–10 (scaled Elastix vs Fuerst): 2.58 vs 3.67 · 1.97 vs 4.55 · 3.08 vs 5.41 · 1.89 vs 3.18 · 2.25 vs 2.56.
+
+- With two CTs the problem is largely solved by registration: plain scaled registration beats the 15-hour physics model on every case, and DRTT (also 2 CTs) reports no such baseline.
+- Best fractions are below linear early in exhale (about 0.1–0.4 at T10–T20); a breathing-curve fraction would close most of the 2.00 → 1.78 gap.
+- So a 2-CT network was not trained: little room left (oracle 1.78–2.17).
+- **What it shows about one CT:** knowing breath depth (two CTs) takes the error from about 4–5 mm to about 2 mm. Missing breath depth is the main cost of having one CT.
+- Caveat: Fuerst's exact landmark sets and preprocessing may differ; the gap (3.88 vs 2.35) is too large to come only from that.
 
 ## Limitations and next steps
 
