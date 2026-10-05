@@ -240,6 +240,66 @@ The hybrid loss + mirror has the lowest error and the smallest spread on both te
 
 Literature values are as recorded in the diary on 29 Sep 2026; check whether each paper's ± is over landmarks or patients before quoting it beside ours. Mirror averaging is test-time augmentation; see Wang et al., Neurocomputing 2019, and nnU-Net (Isensee et al., Nature Methods 2021).
 
+### Literature search, 5 Oct 2026 (focused web search, not a systematic review)
+
+No published method was found that predicts respiratory motion from a single planning CT **without** a breathing signal and reports landmark TRE on DIR-Lab or POPI. Every comparable method uses more information.
+
+| Method | Input at test time | Reported accuracy | Comparable to ours? |
+| --- | --- | --- | --- |
+| **Ours** | **1 CT only** | **3.87 mm** DIR-Lab (10), **4.46 mm** POPI (6) | — |
+| [RMSim, Lee et al. 2023](https://arxiv.org/abs/2301.11422) | 1 CT + 1D breathing trace | 0.92 ± 0.64 mm on one POPI case | No: trace taken from that patient's own 4D lung segmentations (true depth known), one patient, averaged over all predicted phases |
+| [Cao et al. 2024, arXiv 2404.00163](https://arxiv.org/abs/2404.00163) | 1 CT + body-surface breathing signal | tumour centre error 2.35 mm | No: tumour error, not DIR-Lab/POPI landmarks |
+| Ehrhardt et al., IEEE TMI 2011 (statistical 4D mean motion model) | 1 CT + breathing volume (spirometry) | 3.3 ± 1.8 mm (end-exhale to end-inhale) | Partly: extra input, own patients |
+| [Fuerst et al., MICCAI 2012](https://pmc.ncbi.nlm.nih.gov/articles/PMC3919462/) | 2 CTs (end-exhale + end-inhale) | 3.88 ± 1.54 mm, DIR-Lab cases 6–10 | Partly: same data, but 2 CTs (details below) |
+| [PCWS sparse population model](https://scholars.houstonmethodist.org/en/publications/a-novel-population-characteristic-weighted-sparse-model-for-accur/) | 2 CTs | 0.20 ± 0.15 mm "lung estimation error" | No: two scans, different error measure |
+| Kanamuro et al., EMBC 2025 ([doi](https://doi.org/10.1109/embc58623.2025.11254765)), diffusion model for 4D CT | 1 CT + chosen motion magnitude | landmark results not found | No: motion size supplied |
+| Registration (e.g. [Kalman + 4DCT](https://www.researchgate.net/publication/346196808_Lung_Respiratory_Motion_Estimation_Based_on_Fast_Kalman_Filtering_and_4D_CT_Image_Registration)) | both scans | 0.91 mm DIR-Lab, 0.85 mm POPI | No: registration, not prediction |
+
+Safe wording: "To our knowledge, no published method predicts respiratory motion from a single planning CT without a breathing signal and reports landmark TRE on DIR-Lab or POPI." Do not place RMSim's 0.92 mm beside our 3.87 mm without the caveats above. Full texts of RMSim, Cao et al. and Kanamuro et al. still to be read in full.
+
+### Fuerst et al. in detail: what they built and why only cases 6–10
+
+Fuerst B, Mansi T, Zhang J, Khurd P, Declerck J, Boettger T, Navab N, Bayouth J, Comaniciu D, Kamen A. *A Personalized Biomechanical Model for Respiratory Motion Prediction.* MICCAI 2012, 15(3): 566–573. [doi:10.1007/978-3-642-33454-2_70](https://doi.org/10.1007/978-3-642-33454-2_70)
+
+**Method (physics simulation, not a neural network):**
+
+1. Patient-specific finite-element mesh from CT (CGAL): about 25,351 lung, 2,650 thorax (ribs + skin) and 2,754 sub-diaphragm (diaphragm + abdomen) tetrahedra.
+2. Linear elastic material with co-rotational tetrahedra for large deformation: lung E = 900 Pa, ν = 0.4; thorax and diaphragm E = 7,800 Pa, ν = 0.43.
+3. Breathing driven by negative pressure on 9 thoracic patches (incl. mediastinum) and 2 diaphragm patches: 14 pressures.
+4. Personalisation: the 14 pressures are fitted with Powell's NEWUOA (derivative-free) so the model deforms end-exhale to end-inhale. Cost E1 = surface distance; E2 = surface + landmark distance (the 3.88 mm setting).
+5. Prediction: pressures switched off after reaching end-inhale; the lung relaxes, solved with a semi-implicit Euler solver at 1 ms steps; landmark positions at each intermediate exhale phase are the prediction.
+6. Software SOFA; about 15 h per patient single-threaded (~109 optimiser iterations).
+
+**Why only DIR-Lab cases 6–10:** these are the cases where the whole thorax is visible, which a chest-wall-driven biomechanical model needs. Cases 1–5 have a cropped field of view. Our model runs on all 10.
+
+**Their task vs ours:**
+
+| | Fuerst et al. | Ours |
+| --- | --- | --- |
+| Type | Physics (finite elements + optimiser) | Deep learning (UNetCRBDecoder) |
+| Learns from other patients | No, fitted per patient | Yes, 82 TCIA scans |
+| Input | 2 CTs (both breathing extremes) | 1 CT |
+| Breath depth | Known | Must be guessed |
+| Landmarks during fitting | Yes (E2) | Never; scoring only |
+| Scored on | Intermediate exhale phases (75-point sets) | Full end-exhale to end-inhale motion (300 points) |
+| Time per patient | about 15 h | seconds |
+| Needs whole thorax | Yes | No |
+
+**Same cases (mm):**
+
+| Case | Fuerst (2 CTs, intermediate phases) | Ours (1 CT, full breath, hybrid + mirror) |
+| --- | --- | --- |
+| 6 | 3.67 | 4.40 |
+| 7 | 4.55 | 5.47 |
+| 8 | 5.41 | 8.61 |
+| 9 | 3.18 | 3.69 |
+| 10 | 2.56 | 3.37 |
+| **Mean** | **3.88** | **5.11** |
+
+Theirs is effectively interpolation between two known extremes; ours is prediction without knowing breath depth. The gap is largest on the deep breather (case 8, 3.2 mm) and smallest on cases 9–10 (0.5–0.8 mm).
+
+**Clinical feasibility of a second CT:** a 4DCT is standard for lung radiotherapy in many clinics, but with a 4DCT one would register it directly (about 1.5–2 mm) rather than predict. Inhale/exhale breath-hold pairs are common in COPD imaging but cost extra dose, need breath-hold compliance, and breath-hold depth differs from free breathing. Our model targets the one-CT-only setting where 2-CT methods cannot run.
+
 ## Limitations and next steps
 
 About 3.8 mm is the realistic floor for a sharp single CT; going lower needs breath-depth information, which the planned clinical pipeline does not have.
