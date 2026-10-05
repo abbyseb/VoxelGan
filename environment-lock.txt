@@ -1,9 +1,10 @@
-# Environment snapshot 2026-10-06
-# python: Python 3.12.3
+# Environment snapshot 2026-10-06T10:54:29
+# python: 3.12.3 (/usr/bin/python3)
 # torch: 2.7.0 cuda 12.8 cudnn 90800
 # driver: 570.211.01
 # lambda-stack-cuda: 0.1.17~24.04.1
-# gpus: NVIDIA RTX 6000 Ada Generation,NVIDIA RTX 6000 Ada Generation
+# gpus: 0, NVIDIA RTX 6000 Ada Generation, 300.00 W | 1, NVIDIA RTX 6000 Ada Generation, 300.00 W
+# held: lambda-stack-cuda, nvidia-driver-570, python3-torch-cuda, python3-torchvision-cuda
 absl-py==2.1.0
 appdirs==1.4.4
 astunparse==1.6.3
