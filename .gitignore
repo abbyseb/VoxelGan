@@ -71,3 +71,4 @@ PopulationStudy/plots/**/qc_*/**/*.png
 **/Test_Breathing_Sweep.mp4
 **/eval_sweep/*.mp4
 .venv_tcia/
+PopulationStudy/ClinicalExperiments/Grid160/TCIA_lite/analysis_2026-10-03/model_volumes/

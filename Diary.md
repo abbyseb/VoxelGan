@@ -1,3 +1,30 @@
+# 2026-10-08 13:30 — Seed 2 overturns the main-model hybrid result; corrected headline 4.07 / 4.57 mm; local NCC not kept; label cleaning helps
+
+Full write-up: `DIR EXPERIMENTS/ROAD_TO_3.8mm.md` (summary corrected; new section "Update 6–8 Oct"). JSONs in `Grid160/TCIA_lite/analysis_2026-10-03/`.
+
+**1. Main model, seed 2 (seed 20261002) of both losses (`seeds_final.json`).** Ep 96–100, DIR / POPI, plain and mirror:
+old s1 4.20/4.56, 4.02/4.50 · old s2 4.23/5.07, 4.12/4.64 · hybrid s1 4.11/4.84, 3.87/4.46 · hybrid s2 4.47/4.91, 4.37/4.63.
+Seed means: old 4.21/4.82 (mirror **4.07/4.57**, all 16 4.26); hybrid 4.29/4.87 (mirror 4.12/4.54, all 16 4.28).
+Paired 16 patients (seed means), hybrid − old: plain +0.07 (5/16, p 0.46); mirror +0.02 (7/16, CI −0.04…+0.08, p 0.46). **Hybrid FAILS on the main model.** Hybrid seed gap 0.50 mm (mirror) vs 0.10 for old. 3.87 was the lucky end. Train/val curves of the seeds near-identical; only TRE differs.
+Likely causes (untested): 64³ crops (image term sees little lung, border padding), constant lr 1e-4 (final weights keep moving, ±0.15 mm epoch-to-epoch).
+**Headline: best single model = TCIA3.5 old loss + mirror, 4.07 DIR-Lab / 4.57 POPI / 4.26 all 16 (2-seed mean).**
+
+**2. Free stabilisation (`stabilise_free.py`), mirror DIR/POPI/all16.** Weight-avg ep 91–100: old s1 4.02/4.50/4.20, old s2 4.09/4.68/4.31, hyb s1 3.90/4.48/4.12, hyb s2 4.27/4.62/4.41. Seeds combined (weight-avg): old 4.00/4.53/4.20, hyb 4.02/4.48/4.19. Averaging helps old on DIR (−0.08) but not the hybrid seed gap.
+
+**3. Small + big combination, primary fixed before scoring (`combo_small_big.py`).** Small hyb s1+s2 + big old s1+s2, mirror: **3.95 DIR / 4.53 POPI / 4.17 all 16** (big old pair 4.08/4.48/4.23; small pair 4.06/4.81/4.34). Exploratory: + big hybrid instead 3.90/4.51; all six 3.91/4.46. Gain mostly DIR-Lab. C08: small 7.76, big 9.43, combo 8.51.
+
+**4. Local NCC.** Probe 1 (`lncc_probe.py`, 50 held-out lite pairs, small hyb s2): rank corr(image gap, motion error) LNCC 0.84–0.89 vs L1 0.50–0.65; LNCC noisy (pred beats zero only 40% on real-motion pairs). Probe 2 (`lncc_truth_probe.py`, DIR-Lab, landmark-interpolated correction σ 6 vox): toward truth LNCC −40% vs L1 −8.5%, 10/10 both. Probe 3 (5-epoch top-up of small hyb s1 ep40, lr 1e-5, λ_LNCC 1 vs matched control, run sequentially on GPU1): ep 3–5 mean DIR −0.022 (mirror −0.021), POPI −0.002 (−0.005); last epoch 9/10 DIR, 4/6 POPI better. **NOT KEPT** (bar > 0.05 on both). LNCC doubles epoch time (35 vs 17 min).
+
+**5. Label cleaning (small hybrid s2 unless noted; ep 36–40; `all82_clean_old.json`).** DIR / DIR+mirror / POPI+mirror / all16+mirror:
+65 scans 4.16/4.14/4.96/4.45 · all 82 4.50/4.41/4.92/4.60 · **78 = 82 − S29, S10, S14, S26: 4.27/4.24/4.73/4.42** · old 65 4.47/4.40/4.68/4.50 · old 82 (seed 20261002) 4.39/4.33/4.86/4.53.
+Flags (`holdout_patients_check.py`, held-out 17 scans vs 65): inverse consistency 1.85 vs 1.58 mm; label-image fit 0.446 vs 0.377; S29 folding +4.2 SD, ICE +3.0, motion +3.3; S10, S14, S26 fit +2.3 to +2.8 SD; P107 small lungs 4.8 L, shallow 3.6 mm. Removing 4 scans recovered 0.23 of 0.33 mm (pre-set 4.26: just missed → mostly explained), best small-model POPI. C06 worse with extra patients under both losses (4.06→4.97 old, 4.19→5.48 hybrid).
+
+**6. Other analyses (5–6 Oct).** Vector RMSE (`vector_rmse.py`, main hybrid+mirror ep96–100): vs Elastix in lung 5.79 mm, vs landmark truth 4.57 (Elastix 2.32), size ratio 0.75 (C08 0.43, C01 1.19). Jacobian main model (`jacobian_dirlab_main.py`): mirror 0 % lung folding all epochs 96–100. Two-CT step 0 (`twoct_baseline.py`): scaled Elastix 2.00 mm T10–T40 (C06–10 2.35 vs Fuerst 3.88). Literature: Kanamuro et al. EMBC 2025 = closest related (1 CT + constant population mDVF, 2D, 6 private test, DVF MAE only; also under-predicts magnitude); DRTT IROS 2025 needs 2 breath-hold CTs, no landmark TRE. Volumes + explanatory figures for 11 models in `analysis_2026-10-03/model_volumes/` (6.4 GB, not in git; push model invalid there — input-grid labels); figures copied to `analysis_2026-10-03/figures/`.
+
+**7. Operations.** 6 Oct 15:16 systemd-oomd killed the Claude app scope → two setsid/nohup runs died before epoch 1. 7 Oct: two whole-volume lite runs in separate `systemd-run` units still tripped oomd (~240 GB page cache each, 251 GB RAM). Now: `systemd-run --user`, whole-volume runs queued one at a time.
+
+---
+
 # 2026-10-05 08:00 — Main-model final (TCIA3.5-hybrid), POPI, 16-patient test, spread, code verification, MagFT re-score
 
 Write-up of the whole project path: `DIR EXPERIMENTS/ROAD_TO_3.8mm.md` (copy of claude.ai doc 9d861ebd-a480-424c-9729-9007cbf17e06).

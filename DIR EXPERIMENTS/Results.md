@@ -40,7 +40,24 @@ T50→T00 (exact in both versions): A1 Elastix 1.64 / 1.57 · A1 VoxelMap 2.02 /
 - **Do not mix scorers.** Arm numbers here are on the native DIR-Lab grid. Synthesiser (mid-CT → motion) numbers come from `eval_dir_tcia3_iso2mm_v2.py` on a 2 mm grid and are TRE300 (e.g. hybrid 4.17, TCIA3.5 + mirror 4.00); not directly comparable with this table.
 - Old A3 rows (6.56 partial, ablations) used the squeezed / wrongly normalised input and are withdrawn.
 
+## Synthesiser headline (corrected 8 Oct 2026, two seeds)
+
+*Single planning CT only. 2 mm iso scorer, TRE₃₀₀; POPI via `eval_popi_tcia3_lps.py`. Main model epochs 96–100, small model 36–40. `Grid160/TCIA_lite/analysis_2026-10-03/{seeds_final,stabilise_free,combo_small_big,all82_clean_old}.json`.*
+
+| Model | DIR-Lab (10) | POPI (6) | All 16 | Note |
+|---|---:|---:|---:|---|
+| **Best single model: TCIA3.5 old loss + mirror, seeds 1+2 mean** | **4.07** | **4.57** | **4.26** | seed 1 4.02 / 4.50, seed 2 4.12 / 4.64 |
+| TCIA3.5 hybrid loss + mirror, seeds 1+2 mean | 4.12 | 4.54 | 4.28 | seed 1 3.87 / 4.46, seed 2 4.37 / 4.63 (unstable) |
+| TCIA3.5 old loss, plain, seeds mean | 4.21 | 4.82 | 4.44 | |
+| TCIA3.5 hybrid, plain, seeds mean | 4.29 | 4.87 | 4.51 | |
+| **Pre-specified combination:** small hybrid s1+s2 + TCIA3.5 old s1+s2, mirror | **3.95** | **4.53** | **4.17** | fixed before scoring |
+| Small hybrid, 78 scans (82 minus 4 flagged labels), mirror | 4.24 | 4.73 | 4.42 | best small-model POPI |
+
+Hybrid vs old on the main model (16 patients, seed means): mirror +0.02 mm, p = 0.46 → **no improvement; the earlier 3.87 mm was one seed.** Local NCC top-up: −0.02 DIR-Lab, 0.00 POPI (not kept). The "Synthesiser" section below keeps the earlier single-seed numbers for the record.
+
 ## Synthesiser: single planning CT → motion (2 mm iso scorer, TRE₃₀₀, T00→T50)
+
+*Earlier single-seed snapshot (superseded by the headline above).*
 
 *Separate scorer from the arm table above (`scripts/rescore_oracle_iso2mm_v3.py`, 2 mm iso grid, `eval_dir_tcia3_iso2mm_v2` geometry). Input = DIR-Lab CT_06 (T50) only. Updated 2026-10-05.*
 

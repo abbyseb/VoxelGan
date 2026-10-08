@@ -2,16 +2,62 @@
 
 5 Oct 2026. Copy of the claude.ai doc https://claude.ai/code/artifact/9d861ebd-a480-424c-9729-9007cbf17e06 (the doc is the live version).
 
-## Summary
+## Summary (corrected 8 Oct 2026 after seed 2)
 
-From one planning CT, the best model predicts inhale-to-exhale lung motion with a landmark error of **3.87 mm on DIR-Lab** (10 patients) and **4.46 mm on POPI** (6 patients), 4.09 mm over all 16. With no motion the error is 8.46 mm on DIR-Lab, so the model removes 54% of it.
+From one planning CT, the best **single model** predicts inhale-to-exhale lung motion with a landmark error of **4.07 mm on DIR-Lab** (10 patients) and **4.57 mm on POPI** (6 patients), 4.26 mm over all 16, averaged over two training seeds (seed difference 0.10 mm). With no motion the error is 8.46 mm on DIR-Lab, so the model removes about 52% of it. A combination fixed in advance (2 whole-lung + 2 crop-trained models) reaches **3.95 mm** on DIR-Lab and 4.53 mm on POPI.
 
-- **Best model:** the TCIA3.5 decoder (82 TCIA scans, 64³ crops, 100 epochs) trained with the hybrid loss (motion L1 + 10 × image match + 0.1 × smoothness), scored with left-right mirror test-time augmentation, mean over epochs 96–100.
-- **What moved the number:** fixing the scorers, using full-lung views, the hybrid loss and mirror averaging. Changes to network size, augmentation and labels gave less than 0.1 mm each.
-- **What limits it:** breath depth. One CT cannot show how deeply a patient breathes, and the deep breathers (DIR-Lab case 8, POPI ng) carry most of the error.
-- **Status of the claim:** the hybrid loss + mirror beats the old loss on 11 of 16 patients (−0.11 mm), but this is not significant (Wilcoxon p = 0.14). Second seeds of both losses finish on 6 Oct 2026.
+- **Best single model:** the TCIA3.5 decoder (82 TCIA scans, 64³ crops, 100 epochs) with the **old loss** (lung-masked motion L1), scored with left-right mirror averaging, mean over epochs 96–100.
+- **The earlier 3.87 mm was one lucky seed.** The hybrid loss on the main model gave 3.87 (seed 1) and 4.37 (seed 2) with mirror; averaged over seeds it equals the old loss (4.12 vs 4.07 DIR-Lab; 16-patient paired test +0.02 mm, p = 0.46). On the 64³-crop model the hybrid loss mainly adds seed variation (0.50 mm between seeds vs 0.10 for the old loss).
+- **What moved the number:** fixing the scorer, mirror averaging and combining whole-lung with crop-trained models. Loss changes (hybrid, image weight 30, local NCC), label changes and network size each gave less than 0.1 mm, or did not reproduce.
+- **What limits it:** breath depth. One CT cannot show how deeply a patient breathes; deep breathers (DIR-Lab case 8, POPI ng) carry most of the error. With two CTs, simple scaled registration reaches about 2 mm.
+- **Label quality matters:** adding 4 patients with noisier Elastix labels made the whole-lung model worse (4.16 → 4.50); removing the 4 worst scans recovered most of it (4.27) and improved POPI.
 
-One-line claim: from a single planning CT the model reaches 3.9 mm on DIR-Lab and 4.5 mm on POPI, in the range of published models that also need a breathing signal (3.3–4.2 mm). To our knowledge it is the first single-CT method evaluated with expert-landmark TRE on public benchmarks; the closest related work (Kanamuro et al., 2025) predicts from one CT but reports only motion-field error against registration on 6 private patients.
+One-line claim: from a single planning CT the model reaches 4.1 mm on DIR-Lab and 4.6 mm on POPI (two-seed mean), in the range of published models that also need a breathing signal (3.3–4.2 mm). To our knowledge it is the first single-CT method evaluated with expert-landmark TRE on public benchmarks; the closest related work (Kanamuro et al., 2025) predicts from one CT but reports only motion-field error against registration on 6 private patients.
+
+## Update 6–8 Oct 2026: second seeds, stabilisation, local NCC, label cleaning
+
+**Main model, two seeds (DIR-Lab / POPI TRE300 mm, epochs 96–100):**
+
+| | Seed 1 | Seed 2 | Mean DIR-Lab | Mean POPI | All 16 |
+| --- | --- | --- | --- | --- | --- |
+| Old loss | 4.20 / 4.56 | 4.23 / 5.07 | 4.21 | 4.82 | 4.44 |
+| **Old loss + mirror** | 4.02 / 4.50 | 4.12 / 4.64 | **4.07** | **4.57** | **4.26** |
+| Hybrid loss | 4.11 / 4.84 | 4.47 / 4.91 | 4.29 | 4.87 | 4.51 |
+| Hybrid loss + mirror | 3.87 / 4.46 | 4.37 / 4.63 | 4.12 | 4.54 | 4.28 |
+
+Paired test over 16 patients (seed means), hybrid vs old: plain +0.07 mm (5/16 better, p = 0.46); mirror +0.02 mm (7/16, 95% CI −0.04 to +0.08, p = 0.46). **Hybrid loss fails the rule on the main model.** Training curves of the two seeds were nearly identical; only TRE diverged.
+
+**Why the main model is unstable with the hybrid loss (likely, not proven):** it trains on 64³ crops where the image term sees little lung and border padding corrupts the warp at crop edges; it also uses a constant learning rate (1e-4 for 100 epochs), so the final weights keep moving (±0.15 mm between epochs). The small model (whole 160³, cosine lr) is stable across seeds (4.17 vs 4.16).
+
+**Free stabilisation checks (no training; `analysis_2026-10-03/stabilise_free.py`), mirror, DIR-Lab / POPI / all 16:**
+
+| | Old loss | Hybrid loss |
+| --- | --- | --- |
+| Seed 1, weight-average ep 91–100 | 4.02 / 4.50 / 4.20 | 3.90 / 4.48 / 4.12 |
+| Seed 2, weight-average ep 91–100 | 4.09 / 4.68 / 4.31 | 4.27 / 4.62 / 4.41 |
+| Seeds 1 + 2 combined (weight-avg) | **4.00 / 4.53 / 4.20** | 4.02 / 4.48 / 4.19 |
+
+Weight averaging helps the old loss on DIR-Lab (−0.08) but does not close the hybrid seed gap; combining seeds makes both losses about equal.
+
+**Small + big combination, fixed before scoring (`combo_small_big.py`), mirror:** primary = small hybrid s1 + s2 + big old-loss s1 + s2: **3.95 DIR-Lab, 4.53 POPI, 4.17 all 16** (vs 4.08 / 4.48 / 4.23 for the two big models alone; small models alone 4.06 / 4.81). Gain is mostly on DIR-Lab. Secondary groups (chosen afterwards, exploratory): with big hybrid 3.90 / 4.51; all six 3.91 / 4.46.
+
+**Local NCC (three-step test).** (1) On held-out pairs, local NCC tracked motion error better than L1 image difference (rank correlation 0.84–0.89 vs 0.50–0.65) but was noisy. (2) Moving the predicted DIR-Lab motion toward the landmark truth lowered local NCC by 40% vs 8.5% for L1 (10/10 cases both). (3) 5-epoch top-up of small hybrid s1 (lr 1e-5), local NCC (weight 1) vs a matched control: DIR-Lab −0.02 mm, POPI 0.00 (9/10 and 4/6 cases better at the last epoch). **Not kept**: most of the earlier −0.04 came from extra training.
+
+**Label cleaning on the small model (seed 2, hybrid unless noted), ep 36–40, DIR-Lab / DIR + mirror / POPI + mirror / all 16 + mirror:**
+
+| Training scans | DIR | DIR + mirror | POPI + mirror | All 16 + mirror |
+| --- | --- | --- | --- | --- |
+| 65 (16 patients) | **4.16** | **4.14** | 4.96 | 4.45 |
+| All 82 | 4.50 | 4.41 | 4.92 | 4.60 |
+| **78 (all 82 minus S29, S10, S14, S26)** | 4.27 | 4.24 | **4.73** | **4.42** |
+| Old loss, 65 | 4.47 | 4.40 | 4.68 | 4.50 |
+| Old loss, all 82 | 4.39 | 4.33 | 4.86 | 4.53 |
+
+The 4 dropped scans were flagged by label checks (`holdout_patients_check.py`): S29 folding +4.2 SD, inverse consistency +3.0 SD, motion +3.3 SD; S10, S14, S26 label-image fit +2.3 to +2.8 SD. Removing them recovered 0.23 of the 0.33 mm drop (pre-set threshold 4.26: just missed, "mostly explained") and gave the best small-model POPI. Case 6 gets worse with the extra patients under both losses (data effect). Held-out patients' labels: inverse-consistency 1.85 vs 1.58 mm, image fit 0.446 vs 0.377 (training scans).
+
+**Other results these days:** vector RMSE vs Elastix (main hybrid + mirror) 5.79 mm in the lung; vs landmark truth 4.57 mm (Elastix 2.32); motion size 75% of Elastix (case 8 43%, case 1 119%). Jacobian of the best models: no folding in the lung at any of epochs 96–100 with mirror. Deepest-breath labels: 4.25 vs 4.17 (worse; relabelling only 2 of 100 pairs confused phase numbering). Two-CT step 0 (scaled Elastix): 2.00 mm, see below.
+
+**Operational note.** Two whole-volume small-model runs at once exceed RAM (about 240 GB page cache each on a 251 GB machine) and were killed by systemd-oomd on 6–7 Oct; runs launched from inside the app also die if the app scope is killed. Long runs now use `systemd-run --user` and whole-volume runs are queued one at a time.
 
 ## Problem and setup
 
@@ -29,7 +75,7 @@ The task is to predict a patient's full breathing motion from **one 3D planning 
 
 Test patients never appear in training: DIR-Lab and POPI are separate datasets from TCIA. All headline numbers use the corrected 2 mm scorer (section Code verification).
 
-## How we got from 4.70 to 3.87 mm
+## How we got from 4.70 to 3.87 mm (history; see the 8 Oct correction above)
 
 The biggest single step was fixing how DIR-Lab was fed to the network (4.70 → 4.25 mm); after that, only the hybrid loss and mirror averaging moved the number by more than 0.1 mm. All values are DIR-Lab TRE300 in mm.
 
@@ -246,7 +292,7 @@ Single-CT motion prediction without a patient breathing signal has been tried on
 
 | Method | Input at test time | Reported accuracy | Comparable to ours? |
 | --- | --- | --- | --- |
-| **Ours** | **1 CT only** | **3.87 mm** DIR-Lab (10), **4.46 mm** POPI (6) | — |
+| **Ours** | **1 CT only** | **4.07 mm** DIR-Lab (10), **4.57 mm** POPI (6), best single model, 2-seed mean (lucky single seed 3.87) | — |
 | [RMSim, Lee et al. 2023](https://arxiv.org/abs/2301.11422) | 1 CT + 1D breathing trace | 0.92 ± 0.64 mm on one POPI case | No: trace taken from that patient's own 4D lung segmentations (true depth known), one patient, averaged over all predicted phases |
 | [Cao et al. 2024, arXiv 2404.00163](https://arxiv.org/abs/2404.00163) | 1 CT + body-surface breathing signal | tumour centre error 2.35 mm | No: tumour error, not DIR-Lab/POPI landmarks |
 | Ehrhardt et al., IEEE TMI 2011 (statistical 4D mean motion model) | 1 CT + breathing volume (spirometry) | 3.3 ± 1.8 mm (end-exhale to end-inhale) | Partly: extra input, own patients |
@@ -256,7 +302,7 @@ Single-CT motion prediction without a patient breathing signal has been tried on
 | [DRTT, Li et al., IROS 2025](https://doi.org/10.1109/iros60139.2025.11247123), recursive diffusion | **2 breath-hold low-dose CTs** (end-inhale + end-exhale) | NMSE 0.0445, PSNR 26.4 dB on TCIA 4D-Lung (20 patients, 10-fold CV); 0.62–2.90 mm FRE is skin-surface registration, not motion | No: 2 CTs, interpolation, no landmark TRE |
 | Registration (e.g. [Kalman + 4DCT](https://www.researchgate.net/publication/346196808_Lung_Respiratory_Motion_Estimation_Based_on_Fast_Kalman_Filtering_and_4D_CT_Image_Registration)) | both scans | 0.91 mm DIR-Lab, 0.85 mm POPI | No: registration, not prediction |
 
-Safe wording: "Single-CT motion prediction without a breathing signal has been explored recently (Kanamuro et al., 2025), but evaluated only against registration-derived motion fields on private data. To our knowledge, this is the first single-CT method evaluated with expert-landmark TRE on public benchmarks (DIR-Lab and POPI), and the first to quantify how much of the remaining error is due to unknown breath depth." Do not place RMSim's 0.92 mm beside our 3.87 mm without the caveats above. Do not compare DRTT's FRE with TRE. Still worth a Google Scholar check (2024+, "DIR-Lab" with "single CT"/"static CT") and a supervisor check before submission.
+Safe wording: "Single-CT motion prediction without a breathing signal has been explored recently (Kanamuro et al., 2025), but evaluated only against registration-derived motion fields on private data. To our knowledge, this is the first single-CT method evaluated with expert-landmark TRE on public benchmarks (DIR-Lab and POPI), and the first to quantify how much of the remaining error is due to unknown breath depth." Do not place RMSim's 0.92 mm beside our 4.07 mm without the caveats above. Do not compare DRTT's FRE with TRE. Still worth a Google Scholar check (2024+, "DIR-Lab" with "single CT"/"static CT") and a supervisor check before submission.
 
 ### Fuerst et al. in detail: what they built and why only cases 6–10
 
@@ -320,21 +366,20 @@ Per case 6–10 (scaled Elastix vs Fuerst): 2.58 vs 3.67 · 1.97 vs 4.55 · 3.08
 
 ## Limitations and next steps
 
-About 3.8 mm is the realistic floor for a sharp single CT; going lower needs breath-depth information, which the planned clinical pipeline does not have.
+About 3.9–4.1 mm is the realistic level for a sharp single CT with this approach; going lower needs breath-depth information, which the planned clinical pipeline does not have.
 
 **Limitations**
 
-- Breath depth is invisible in one CT. Even with each patient's exact depth, the main model would reach only about 3.6 mm (scale oracle).
-- Deep breathers dominate the error: DIR-Lab case 8 (8.6 mm) and POPI patient ng (7.4 mm).
-- 16 test patients cannot prove a 0.1 mm gain; the hybrid loss result is one seed per loss until 6 Oct.
-- The hybrid loss helps on DIR-Lab and hurts on POPI without mirror; it also makes easy cases 1–3 slightly worse on the main model.
-- Hybrid weights (10 and 0.1) were set by size balance, not tuned.
+- Breath depth is invisible in one CT. Even with each patient's exact depth, the models would reach only about 3.6 (big) to 3.8 mm (small) (scale oracle).
+- Deep breathers dominate the error: DIR-Lab case 8 (8.5–9.4 mm) and POPI patient ng (7.4 mm).
+- Only 16 test patients; differences of about 0.1 mm cannot be proven. DIR-Lab was reused to compare about 25 ideas, so DIR-Lab numbers are mildly optimistic; POPI is the independent check.
+- The hybrid loss does not reproduce on the crop-trained main model (seed gap 0.5 mm); its small-model gain on DIR-Lab did not carry to POPI.
+- Label quality varies between patients and limits what more data can add.
 
 **Next steps**
 
-- [ ] Score both seed-2 runs (old and hybrid loss) on DIR-Lab and POPI when they finish on 6 Oct; repeat the 16-patient paired test.
-- [ ] If p is close to 0.05, run a third seed of both losses (about 35 h on two GPUs).
-- [ ] Inspect the 4 extra patients behind the all-82 failure (case 6 at 5.5 mm).
+- [ ] Write up: headline 4.07 / 4.57 mm (best single model, 2 seeds) and 3.95 / 4.53 mm (pre-specified combination).
+- [ ] Optional: big model with cosine learning rate, and with the 4 flagged scans removed (about 35 h per run, 2 seeds needed).
 - [ ] Ask the clinic whether the planning CT is free-breathing; if so, diaphragm blur may carry breath depth.
-- [ ] Decide the thesis claim with the supervisor: "best result 3.87 mm" or "hybrid loss significantly better" (the second needs the extra seeds).
-- [ ] Optional: whole-lung training on the main setup with the hybrid loss; local-NCC image term.
+- [ ] Decide the thesis framing with the supervisor (single-CT limit and breath depth as the main finding; losses as a negative result).
+- [ ] Before submission: Google Scholar check for 2024+ single-CT methods on DIR-Lab/POPI.
