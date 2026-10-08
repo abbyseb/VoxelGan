@@ -13,7 +13,7 @@ Previous version kept as `Results_pre_2026-10-02.md`.*
 | **A0** Identity | No motion | **8.69** | **8.46** | |
 | **A1** Elastix | Oracle registration on the patient's own 4D-CT | **1.55** | **1.49** | was 2.08 / 1.96 (approx. inverse) |
 | **A1** VoxelMap | Patient oracle (real 4D → DRR → NoFiLM) | **1.95** | **1.90** | was 2.32 / 2.23; older 3.16 superseded |
-| **A2** VoxelMap | SPARE population prior, zero-shot | **7.30** | **7.12** | **provisional** (see below); was 8.97 in the 14 Sep snapshot |
+| **A2** VoxelMap | SPARE population prior, zero-shot | **7.30** | **7.12** | verified 8 Oct (weights found); was 8.97 with the old DRR orbit |
 | **A3** VoxelMap | Synthesiser 4D-CT → DRR → VoxelMap | — | — | **to be redone** with the corrected input and the final synthesiser |
 
 T50→T00 (exact in both versions): A1 Elastix 1.64 / 1.57 · A1 VoxelMap 2.02 / 1.97 · A2 VoxelMap 7.49 / 7.30.
@@ -36,7 +36,7 @@ T50→T00 (exact in both versions): A1 Elastix 1.64 / 1.57 · A1 VoxelMap 2.02 /
 
 ## Caveats
 
-- **A2 is provisional.** Its checkpoint link points into `arms/Incorrect DRR/…`, the weights file is missing, and no other A2 weights exist. It was probably trained on DRRs later found to be wrong. Saved fields were re-scored; the model cannot be re-run. Retrain before any claim that depends on A3 vs A2 being close.
+- **A2 verified (8 Oct 2026).** The weights were found on the external drive (`/media/abhishek/C8421E6E421E620C/Incorrect DRR/A2_generic_spare/checkpoints/…`, 12 Sep, trained on SPARE MC Val Prior P1–P9 with each patient's own SPARE geometry); the checkpoint symlink now points there. Re-running inference with `--r3` reproduced the 16 Sep results exactly (exact-inverse cohort JSON identical to 2e-5 mm). The "Incorrect DRR" folder refers to the old DIR-Lab test-DRR orbit, not the SPARE training data, so A2 = **7.30 / 7.12** stands. A full retrain would take about 40 h (prep ~1.2 h, 50 epochs × ~46 min).
 - **Do not mix scorers.** Arm numbers here are on the native DIR-Lab grid. Synthesiser (mid-CT → motion) numbers come from `eval_dir_tcia3_iso2mm_v2.py` on a 2 mm grid and are TRE300 (e.g. hybrid 4.17, TCIA3.5 + mirror 4.00); not directly comparable with this table.
 - Old A3 rows (6.56 partial, ablations) used the squeezed / wrongly normalised input and are withdrawn.
 

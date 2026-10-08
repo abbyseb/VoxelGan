@@ -1,3 +1,12 @@
+# 2026-10-08 19:30 — A2 weights found and verified: 7.30 / 7.12 stands (no longer provisional)
+
+- Weights found on external drive: `/media/abhishek/C8421E6E421E620C/Incorrect DRR/A2_generic_spare/checkpoints/a2_spare_mc_val_prior_p1to9_concat_nofilm.pt` (43 MB, 12 Sep; keys config, model_state). The repo symlink `arms/A2_generic_spare/checkpoints/…pt` now points there (was pointing at a deleted copy under `DIR EXPERIMENTS/arms/Incorrect DRR/`).
+- Archived README: pooled SPARE MC Val Prior P1–P9, DRRs with each patient's own SPARE geometry, NoFiLM 50 ep (best val 0.0360 @ ep 45). "Incorrect DRR" = the old DIR-Lab **test**-DRR orbit (frozen 12 Sep result 8.97 TRE75), not the training data. So the 2 Oct guess "probably trained on wrong DRRs" was wrong.
+- Mistake + recovery: first re-run omitted `--r3` and overwrote `runs/DIR_C0N/tre/{tre_summary.json,voxelmap_dvf_phase01_mean.npy}` (untracked). Re-run with `--r3` regenerated them: first-order TRE300 identical to the 16 Sep log for C01–C09; exact-inverse cohort JSON regenerated and identical to the 2 Oct one (max diff 2e-5 mm), original kept. Logs `arms/A2_generic_spare/logs/eval_a2_rerun{,_r3}_20261008.log` (the non-r3 one is invalid).
+- Full A2 retrain cost, if ever needed: prep ~1.2 h (2 GPUs), training 50 × ~46 min ≈ 39 h.
+
+---
+
 # 2026-10-08 13:30 — Seed 2 overturns the main-model hybrid result; corrected headline 4.07 / 4.57 mm; local NCC not kept; label cleaning helps
 
 Full write-up: `DIR EXPERIMENTS/ROAD_TO_3.8mm.md` (summary corrected; new section "Update 6–8 Oct"). JSONs in `Grid160/TCIA_lite/analysis_2026-10-03/`.

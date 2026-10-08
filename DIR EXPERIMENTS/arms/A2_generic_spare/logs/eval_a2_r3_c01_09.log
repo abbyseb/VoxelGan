@@ -1,0 +1,127 @@
+2026-09-16T10:26:59+10:00 START A2 R3 TRE case=1 gpu=0
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+A2 Case 1 | zero-shot TRE (75+300) | frame=r3 | ckpt=a2_spare_mc_val_prior_p1to9_concat_nofilm.pt | data=/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A1_oracle_dirlab/runs/DIR_C01/ModelTraining/train/DIR_C01
+elastix_mha  [ 75] T00→T50 TRE=1.263 mm (identity 3.913, Δ +2.650)
+elastix_mha  [300] T00→T50 TRE=1.135 mm (identity 3.892, Δ +2.758)
+elastix_npy  [ 75] T00→T50 TRE=1.263 mm (identity 3.913, Δ +2.650)
+elastix_npy  [300] T00→T50 TRE=1.135 mm (identity 3.892, Δ +2.758)
+voxelmap           L1 vs elastix: 0.8911
+voxelmap     [ 75] T00→T50 TRE=3.848 mm (identity 3.913, Δ +0.065)
+voxelmap     [300] T00→T50 TRE=3.782 mm (identity 3.892, Δ +0.111)
+voxelmap           averaged over 68 projs (stride=10)
+Wrote /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_generic_spare/runs/DIR_C01/tre/tre_summary.json
+2026-09-16T10:27:05+10:00 DONE A2 R3 TRE case=1
+2026-09-16T10:27:05+10:00 START A2 R3 TRE case=2 gpu=0
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+A2 Case 2 | zero-shot TRE (75+300) | frame=r3 | ckpt=a2_spare_mc_val_prior_p1to9_concat_nofilm.pt | data=/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A1_oracle_dirlab/runs/DIR_C02/ModelTraining/train/DIR_C02
+elastix_mha  [ 75] T00→T50 TRE=1.084 mm (identity 4.649, Δ +3.565)
+elastix_mha  [300] T00→T50 TRE=1.045 mm (identity 4.338, Δ +3.293)
+elastix_npy  [ 75] T00→T50 TRE=1.084 mm (identity 4.649, Δ +3.565)
+elastix_npy  [300] T00→T50 TRE=1.045 mm (identity 4.338, Δ +3.293)
+voxelmap           L1 vs elastix: 1.1554
+voxelmap     [ 75] T00→T50 TRE=4.647 mm (identity 4.649, Δ +0.002)
+voxelmap     [300] T00→T50 TRE=4.356 mm (identity 4.338, Δ -0.018)
+voxelmap           averaged over 68 projs (stride=10)
+Wrote /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_generic_spare/runs/DIR_C02/tre/tre_summary.json
+2026-09-16T10:27:09+10:00 DONE A2 R3 TRE case=2
+2026-09-16T10:27:09+10:00 START A2 R3 TRE case=3 gpu=0
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+A2 Case 3 | zero-shot TRE (75+300) | frame=r3 | ckpt=a2_spare_mc_val_prior_p1to9_concat_nofilm.pt | data=/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A1_oracle_dirlab/runs/DIR_C03/ModelTraining/train/DIR_C03
+elastix_mha  [ 75] T00→T50 TRE=1.300 mm (identity 7.246, Δ +5.946)
+elastix_mha  [300] T00→T50 TRE=1.302 mm (identity 6.943, Δ +5.641)
+elastix_npy  [ 75] T00→T50 TRE=1.300 mm (identity 7.246, Δ +5.946)
+elastix_npy  [300] T00→T50 TRE=1.302 mm (identity 6.943, Δ +5.641)
+voxelmap           L1 vs elastix: 1.3225
+voxelmap     [ 75] T00→T50 TRE=6.786 mm (identity 7.246, Δ +0.460)
+voxelmap     [300] T00→T50 TRE=6.614 mm (identity 6.943, Δ +0.329)
+voxelmap           averaged over 68 projs (stride=10)
+Wrote /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_generic_spare/runs/DIR_C03/tre/tre_summary.json
+2026-09-16T10:27:13+10:00 DONE A2 R3 TRE case=3
+2026-09-16T10:27:13+10:00 START A2 R3 TRE case=4 gpu=0
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+A2 Case 4 | zero-shot TRE (75+300) | frame=r3 | ckpt=a2_spare_mc_val_prior_p1to9_concat_nofilm.pt | data=/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A1_oracle_dirlab/runs/DIR_C04/ModelTraining/train/DIR_C04
+elastix_mha  [ 75] T00→T50 TRE=1.908 mm (identity 9.689, Δ +7.781)
+elastix_mha  [300] T00→T50 TRE=1.785 mm (identity 9.830, Δ +8.045)
+elastix_npy  [ 75] T00→T50 TRE=1.908 mm (identity 9.689, Δ +7.781)
+elastix_npy  [300] T00→T50 TRE=1.785 mm (identity 9.830, Δ +8.045)
+voxelmap           L1 vs elastix: 1.3713
+voxelmap     [ 75] T00→T50 TRE=7.857 mm (identity 9.689, Δ +1.833)
+voxelmap     [300] T00→T50 TRE=8.092 mm (identity 9.830, Δ +1.738)
+voxelmap           averaged over 68 projs (stride=10)
+Wrote /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_generic_spare/runs/DIR_C04/tre/tre_summary.json
+2026-09-16T10:27:16+10:00 DONE A2 R3 TRE case=4
+2026-09-16T10:27:16+10:00 START A2 R3 TRE case=5 gpu=0
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+A2 Case 5 | zero-shot TRE (75+300) | frame=r3 | ckpt=a2_spare_mc_val_prior_p1to9_concat_nofilm.pt | data=/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A1_oracle_dirlab/runs/DIR_C05/ModelTraining/train/DIR_C05
+elastix_mha  [ 75] T00→T50 TRE=2.016 mm (identity 7.406, Δ +5.390)
+elastix_mha  [300] T00→T50 TRE=1.881 mm (identity 7.477, Δ +5.596)
+elastix_npy  [ 75] T00→T50 TRE=2.016 mm (identity 7.406, Δ +5.390)
+elastix_npy  [300] T00→T50 TRE=1.881 mm (identity 7.477, Δ +5.596)
+voxelmap           L1 vs elastix: 1.4211
+voxelmap     [ 75] T00→T50 TRE=6.154 mm (identity 7.406, Δ +1.251)
+voxelmap     [300] T00→T50 TRE=6.068 mm (identity 7.477, Δ +1.409)
+voxelmap           averaged over 68 projs (stride=10)
+Wrote /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_generic_spare/runs/DIR_C05/tre/tre_summary.json
+2026-09-16T10:27:20+10:00 DONE A2 R3 TRE case=5
+2026-09-16T10:27:20+10:00 START A2 R3 TRE case=6 gpu=0
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+A2 Case 6 | zero-shot TRE (75+300) | frame=r3 | ckpt=a2_spare_mc_val_prior_p1to9_concat_nofilm.pt | data=/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A1_oracle_dirlab/runs/DIR_C06/ModelTraining/train/DIR_C06
+elastix_mha  [ 75] T00→T50 TRE=2.899 mm (identity 11.775, Δ +8.876)
+elastix_mha  [300] T00→T50 TRE=2.581 mm (identity 10.891, Δ +8.310)
+elastix_npy  [ 75] T00→T50 TRE=2.899 mm (identity 11.775, Δ +8.876)
+elastix_npy  [300] T00→T50 TRE=2.581 mm (identity 10.891, Δ +8.310)
+voxelmap           L1 vs elastix: 2.3940
+voxelmap     [ 75] T00→T50 TRE=9.210 mm (identity 11.775, Δ +2.565)
+voxelmap     [300] T00→T50 TRE=8.465 mm (identity 10.891, Δ +2.426)
+voxelmap           averaged over 68 projs (stride=10)
+Wrote /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_generic_spare/runs/DIR_C06/tre/tre_summary.json
+2026-09-16T10:27:23+10:00 DONE A2 R3 TRE case=6
+2026-09-16T10:27:23+10:00 START A2 R3 TRE case=7 gpu=0
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+A2 Case 7 | zero-shot TRE (75+300) | frame=r3 | ckpt=a2_spare_mc_val_prior_p1to9_concat_nofilm.pt | data=/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A1_oracle_dirlab/runs/DIR_C07/ModelTraining/train/DIR_C07
+elastix_mha  [ 75] T00→T50 TRE=2.343 mm (identity 10.713, Δ +8.370)
+elastix_mha  [300] T00→T50 TRE=2.394 mm (identity 11.026, Δ +8.632)
+elastix_npy  [ 75] T00→T50 TRE=2.343 mm (identity 10.713, Δ +8.370)
+elastix_npy  [300] T00→T50 TRE=2.394 mm (identity 11.026, Δ +8.632)
+voxelmap           L1 vs elastix: 1.7203
+voxelmap     [ 75] T00→T50 TRE=8.651 mm (identity 10.713, Δ +2.062)
+voxelmap     [300] T00→T50 TRE=8.850 mm (identity 11.026, Δ +2.176)
+voxelmap           averaged over 68 projs (stride=10)
+Wrote /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_generic_spare/runs/DIR_C07/tre/tre_summary.json
+2026-09-16T10:27:26+10:00 DONE A2 R3 TRE case=7
+2026-09-16T10:27:26+10:00 START A2 R3 TRE case=8 gpu=0
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+A2 Case 8 | zero-shot TRE (75+300) | frame=r3 | ckpt=a2_spare_mc_val_prior_p1to9_concat_nofilm.pt | data=/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A1_oracle_dirlab/runs/DIR_C08/ModelTraining/train/DIR_C08
+elastix_mha  [ 75] T00→T50 TRE=3.771 mm (identity 16.000, Δ +12.230)
+elastix_mha  [300] T00→T50 TRE=3.324 mm (identity 14.995, Δ +11.671)
+elastix_npy  [ 75] T00→T50 TRE=3.771 mm (identity 16.000, Δ +12.230)
+elastix_npy  [300] T00→T50 TRE=3.324 mm (identity 14.995, Δ +11.671)
+voxelmap           L1 vs elastix: 2.8019
+voxelmap     [ 75] T00→T50 TRE=13.658 mm (identity 16.000, Δ +2.343)
+voxelmap     [300] T00→T50 TRE=12.893 mm (identity 14.995, Δ +2.101)
+voxelmap           averaged over 68 projs (stride=10)
+Wrote /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_generic_spare/runs/DIR_C08/tre/tre_summary.json
+2026-09-16T10:27:29+10:00 DONE A2 R3 TRE case=8
+2026-09-16T10:27:29+10:00 START A2 R3 TRE case=9 gpu=0
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+A2 Case 9 | zero-shot TRE (75+300) | frame=r3 | ckpt=a2_spare_mc_val_prior_p1to9_concat_nofilm.pt | data=/home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A1_oracle_dirlab/runs/DIR_C09/ModelTraining/train/DIR_C09
+elastix_mha  [ 75] T00→T50 TRE=2.046 mm (identity 7.157, Δ +5.111)
+elastix_mha  [300] T00→T50 TRE=1.956 mm (identity 7.918, Δ +5.963)
+elastix_npy  [ 75] T00→T50 TRE=2.046 mm (identity 7.157, Δ +5.111)
+elastix_npy  [300] T00→T50 TRE=1.956 mm (identity 7.918, Δ +5.963)
+voxelmap           L1 vs elastix: 1.2661
+voxelmap     [ 75] T00→T50 TRE=6.622 mm (identity 7.157, Δ +0.535)
+voxelmap     [300] T00→T50 TRE=7.232 mm (identity 7.918, Δ +0.687)
+voxelmap           averaged over 68 projs (stride=10)
+Wrote /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_generic_spare/runs/DIR_C09/tre/tre_summary.json
+2026-09-16T10:27:32+10:00 DONE A2 R3 TRE case=9
+2026-09-16T10:27:32+10:00 A2 R3 sample TRE DONE C01-C09
