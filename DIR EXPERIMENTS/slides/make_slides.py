@@ -53,6 +53,32 @@ fig.suptitle("Small setup: training curves (validation views differ: 64³ crops 
 plt.tight_layout(); plt.savefig(F / "05b_lite_training_curves.png", dpi=110); plt.close(fig)
 for k in LR: shutil.copy(G / f"TCIA_lite/run_{k}/DecoderCRB/plots/crb_dec_mae_tcia_lite_run_{k.lower()}.png", F / f"05c_curve_{k}.png")
 fin = {k: (curves[k][-1, 1], curves[k][-1, 2], int(curves[k][-1, 0])) for k in LR}
+# train vs validation curves for each timeline step (from each run's log)
+RUN = {"full160": "TCIA_lite/run_A2_full160/logs/train_decoder.log", "lite": "TCIA_lite/run_A2_full160_aug/logs/train_decoder.log",
+       "small_h_s1": "TCIA_lite/run_A2_full160_aug_hybrid/logs/train.log", "small_h_s2": "TCIA_lite/run_A2_full160_aug_hybrid_s2/logs/train.log",
+       "big_old_s1": "TCIA3.5/logs/train_decoder.log", "big_old_s2": "TCIA3.5_s2/logs/train.log",
+       "big_hyb_s1": "TCIA3.5_hybrid/logs/train.log", "big_hyb_s2": "TCIA3.5_hybrid_s2/logs/train.log"}
+def run_curve(k):
+    rows = [_re.match(r"Epoch: (\d+) \| train MAE: ([\d.]+) \| val MAE: ([\d.]+)", l) for l in open(G / RUN[k])]
+    return np.array([[float(x) for x in m.groups()] for m in rows if m])
+def curve_fig(step, runs, title):
+    fig, ax = plt.subplots(figsize=(10, 4.2))
+    for (lab, k), col in zip(runs, ["tab:blue", "tab:red", "tab:green", "tab:purple"]):
+        e, tr, va = run_curve(k).T
+        ax.plot(e, tr, color=col, label=f"{lab} · train"); ax.plot(e, va, color=col, ls="--", label=f"{lab} · validation")
+    ax.set_xlabel("epoch"); ax.set_ylabel("lung-masked motion L1 (2 mm voxels)"); ax.grid(alpha=.3); ax.legend(fontsize=8, ncol=2)
+    ax.set_title(f"{title}: train (solid) vs validation (dashed)", fontsize=11)
+    plt.tight_layout(); plt.savefig(F / f"{step}_curves.png", dpi=110); plt.close(fig)
+for step, runs, title in (
+        ("T1", [("A′-full160", "full160")], "A′-full160"),
+        ("T2", [("TCIA-lite", "lite")], "TCIA-lite (full160 + augmentation, cosine lr)"),
+        ("T3", [("Big old s1", "big_old_s1")], "Big model, seed 1 (flip is test-time only, same training)"),
+        ("T4", [("Small, old loss", "lite"), ("Small, hybrid s1", "small_h_s1")], "Small model: old vs hybrid loss"),
+        ("T5", [("Big old s1", "big_old_s1"), ("Big hybrid s1", "big_hyb_s1")], "Big model, seed 1: old vs hybrid loss"),
+        ("T6", [("Big old s2", "big_old_s2"), ("Big hybrid s2", "big_hyb_s2")], "Big model, seed 2: old vs hybrid loss"),
+        ("T7", [("Small hybrid s1", "small_h_s1"), ("Small hybrid s2", "small_h_s2"), ("Big old s1", "big_old_s1"), ("Big old s2", "big_old_s2")],
+         "The four models in the combination")):
+    curve_fig(step, runs, title)
 TS = J(F / "timeline_stats.json")  # written by make_timeline_figs.py (run that first)
 def tl(step):
     rows = TS[step]; labs = list(dict.fromkeys(r["row"] for r in rows)); cs = (1, 4, 8)
@@ -277,6 +303,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 {tl("T1")}
 
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T1 curves](figs/T1_curves.png)
+
 ---
 
 ## Slide T2 · 1 Oct · + augmentation and cosine learning rate (TCIA-lite)
@@ -287,6 +317,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 ![lite](figs/T2_lite_aug.png)
 
 {tl("T2")}
+
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T2 curves](figs/T2_curves.png)
 
 ---
 
@@ -302,6 +336,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 {tl("T3")}
 
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T3 curves](figs/T3_curves.png)
+
 ---
 
 ## Slide T4 · 2 Oct · Hybrid loss on the small model
@@ -314,6 +352,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 ![hybrid small b](figs/T4_hybrid_small_b.png)
 
 {tl("T4")}
+
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T4 curves](figs/T4_curves.png)
 
 ---
 
@@ -328,6 +370,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 {tl("T5")}
 
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T5 curves](figs/T5_curves.png)
+
 ---
 
 ## Slide T6 · 4–6 Oct · Second seed: the gain does not repeat
@@ -341,6 +387,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 {tl("T6")}
 
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T6 curves](figs/T6_curves.png)
+
 ---
 
 ## Slide T7 · 8 Oct · Pre-set combination (2 small hybrid + 2 big old, flip)
@@ -352,6 +402,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 ![combination](figs/T7_combination.png)
 
 {tl("T7")}
+
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T7 curves](figs/T7_curves.png)
 
 ---
 

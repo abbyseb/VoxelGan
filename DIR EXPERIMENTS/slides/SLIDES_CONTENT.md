@@ -194,6 +194,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 |---|---|---|
 | A′-full160 | 4.65 ± 1.85 | 4.52 ± 1.74 |
 
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T1 curves](figs/T1_curves.png)
+
 ---
 
 ## Slide T2 · 1 Oct · + augmentation and cosine learning rate (TCIA-lite)
@@ -214,6 +218,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | | TRE75 (mm) | TRE300 (mm) |
 |---|---|---|
 | TCIA-lite | 4.56 ± 1.91 | 4.47 ± 1.76 |
+
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T2 curves](figs/T2_curves.png)
 
 ---
 
@@ -240,6 +248,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | Big, plain | 4.48 ± 2.48 | 4.28 ± 2.26 |
 | Big, flip | 4.27 ± 2.41 | 4.10 ± 2.19 |
 
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T3 curves](figs/T3_curves.png)
+
 ---
 
 ## Slide T4 · 2 Oct · Hybrid loss on the small model
@@ -263,6 +275,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 |---|---|---|
 | Small, old loss | 4.56 ± 1.91 | 4.47 ± 1.76 |
 | Small, hybrid | 4.29 ± 1.79 | 4.17 ± 1.72 |
+
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T4 curves](figs/T4_curves.png)
 
 ---
 
@@ -288,6 +304,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | Big old, flip | 4.27 ± 2.41 | 4.10 ± 2.19 |
 | Big hybrid, flip | 3.94 ± 1.98 | 3.82 ± 1.80 |
 
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T5 curves](figs/T5_curves.png)
+
 ---
 
 ## Slide T6 · 4–6 Oct · Second seed: the gain does not repeat
@@ -312,6 +332,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | Big old s2, flip | 4.35 ± 2.41 | 4.17 ± 2.21 |
 | Big hybrid s2, flip | 4.45 ± 2.64 | 4.33 ± 2.46 |
 
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T6 curves](figs/T6_curves.png)
+
 ---
 
 ## Slide T7 · 8 Oct · Pre-set combination (2 small hybrid + 2 big old, flip)
@@ -333,6 +357,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | | TRE75 (mm) | TRE300 (mm) |
 |---|---|---|
 | Combination | 4.08 ± 2.08 | 3.94 ± 1.96 |
+
+**Training curves** (motion L1 only, also for hybrid runs). Small model: validation = 4 held-out TCIA patients, whole lung. Big model: validation = 820 of the 8200 pairs from the *same* 82 scans (no held-out patients), on 64³ crops, so its validation is close to training error. Compare curves only within one model type:
+
+![T7 curves](figs/T7_curves.png)
 
 ---
 
