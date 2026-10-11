@@ -195,6 +195,14 @@ Same network (UNetCRBDecoder, 1.07 M parameters) and base loss, different traini
 
 - **Loss = motion + 10 × image + 0.1 × smoothness.**
 - Rule of thumb: make each part about the same size at the start (image ≈ 0.02 × 10 ≈ 0.2, close to motion ≈ 0.25; smoothness a light touch).
+- **Why 10: the parts are in different units**, so they need balancing (not a correction of any error):
+
+| Loss part | What it measures | Units | Typical size at start |
+|---|---|---|---|
+| Motion error (L1) | predicted motion vs Elastix | voxels (2 mm each) | about 0.25 |
+| Image error (L1) | warped CT vs real CT | image brightness, scaled 0–1 | about 0.02 |
+
+- The image error is naturally about 10× smaller; added as is it would be almost invisible to training. × 10 brings it to about 0.2, so **both parts have about equal influence**.
 - **Fixed before training, never tuned on DIR-Lab** (tuning on the test set would inflate the result).
 - Checked later: **weight 30 was worse** (4.34 vs 4.17), so 10 stayed.
 
@@ -206,10 +214,12 @@ Same network (UNetCRBDecoder, 1.07 M parameters) and base loss, different traini
 
 | | **First-order** (used) | **Second-order (bending energy)** |
 |---|---|---|
+| Name | **diffusion penalty** (squared gradient, as in VoxelMorph) | bending energy |
 | Penalises | sudden changes between neighbours | bending / curving of the motion |
 | Even stretch (lung expanding) | penalised a little | free |
 | Typical in | deep-learning registration (VoxelMorph) | B-spline registration (Elastix) |
 
+- Our term: mean of squared differences between neighbouring motion vectors along z, y, x (forward differences), over the **whole volume**, weight 0.1.
 - Chosen as a **simple, standard, stable default** with a **light weight (0.1)**, only to stop jagged motion.
 - **Not tested:** second-order might suit breathing (smooth stretching) slightly better; expected effect small.
 
