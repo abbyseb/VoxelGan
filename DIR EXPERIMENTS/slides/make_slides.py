@@ -34,6 +34,25 @@ shutil.copy(Q / "orientation_tcia_s1_vs_dir_c01.png", F / "02_orientation_tcia_v
 bars(["Old scorer\n(squeezed DIR CT)", "Fixed scorer\n(2 mm, lung-centred)"], [4.70, 4.25], "Same model (TCIA3), two scorers", "03_scorer_fix.png", hl=1)
 bars(["Model as is", "One shared size\nfor everyone", "Each patient's\ntrue breath depth"], [4.25, 4.27, 3.60], "Scale test: the error is breath size (TCIA3)", "04_scale_test.png", hl=2)
 bars(["64³ patches\n(baseline)", "Half width\n0.27 M", "Deeper\n(128³)", "Whole lung\n160³"], [np.mean(lite["A2"]), np.mean(lite["A2_small"]), np.mean(lite["A2_deep128"]), np.mean(lite["A2_full160"])], "Small setup: network size and view", "05_lite_variants.png", hl=3)
+# small-setup training curves (train / validation L1 from each run's log)
+import re as _re
+LR = {"A2": ("A′ (64³, 1.07 M)", "tab:blue"), "A2_small": ("A′-small (64³, half width, 0.27 M)", "tab:red"),
+      "A2_deep128": ("A′-deep128 (128³, +1 level, 2.20 M)", "tab:purple"), "A2_full160": ("A′-full160 (whole 160³, 1.07 M)", "tab:green")}
+curves = {}
+for k in LR:
+    rows = [_re.search(r"Epoch: (\d+) \| train MAE: ([\d.]+) \| val MAE: ([\d.]+)", l) for l in open(G / f"TCIA_lite/run_{k}/logs/train_decoder.log")]
+    curves[k] = np.array([[float(x) for x in m.groups()] for m in rows if m])
+fig, ax = plt.subplots(1, 2, figsize=(13, 4.6), sharey=True)
+for k, (lab, col) in LR.items():
+    e, tr, va = curves[k].T
+    ax[0].plot(e, tr, color=col, label=lab); ax[1].plot(e, va, color=col, label=lab)
+for a, t in zip(ax, ["Training error (seen patients)", "Validation error (4 new patients)"]):
+    a.set_title(t); a.set_xlabel("epoch"); a.grid(alpha=.3)
+ax[0].set_ylabel("lung-masked motion L1 (2 mm voxels)"); ax[1].legend(fontsize=9)
+fig.suptitle("Small setup: training curves (validation views differ: 64³ crops / 128³ crop / whole 160³)", fontsize=11)
+plt.tight_layout(); plt.savefig(F / "05b_lite_training_curves.png", dpi=110); plt.close(fig)
+for k in LR: shutil.copy(G / f"TCIA_lite/run_{k}/DecoderCRB/plots/crb_dec_mae_tcia_lite_run_{k.lower()}.png", F / f"05c_curve_{k}.png")
+fin = {k: (curves[k][-1, 1], curves[k][-1, 2], int(curves[k][-1, 0])) for k in LR}
 fig, ax = plt.subplots(figsize=(8, 4)); ideas = ["Push labels", "Combine old models", "EPE loss", "Brightness match", "Mirror (flip)", "Hybrid loss (small)"]; g = [-0.09, 0.02, -0.06, 0.39, -0.18, -0.30]
 ax.barh(ideas, g, color=["tab:green" if x <= -0.1 else ("tab:red" if x > 0.05 else "lightgrey") for x in g]); ax.axvline(-0.1, ls="--", color="k", lw=1); ax.text(-0.105, 5.4, "pass bar −0.1 mm", ha="right", fontsize=9)
 for i, x in enumerate(g): ax.text(x + (0.02 if x >= 0 else -0.02), i, f"{x:+.2f}", va="center", ha="left" if x >= 0 else "right", fontsize=9)
@@ -180,6 +199,38 @@ Same network (UNetCRBDecoder, 1.07 M parameters) and base loss, different traini
 **Case by case (early models):**
 
 {T_early}
+
+---
+
+## Slide 5d · The four small-setup networks, in detail
+
+All four use the **same U-Net (UNetCRBDecoder)**: a plain encoder that sees only the CT, and a decoder whose blocks are told the two breathing phases (conditional residual blocks); the output is the 3-channel motion field. Same data (65 scans / 16 patients, validation 17 scans / 4 new patients), loss (lung-masked L1), Adam lr 1e-4 constant, no augmentation, seed 20260929.
+
+| | A′ (baseline) | A′-small | A′-deep128 | A′-full160 |
+|---|---|---|---|---|
+| What changed | — | every channel halved | +1 level down/up, and 128³ crops | whole 160³ volume |
+| Levels (image halvings) | 5 (4 halvings) | 5 (4) | **6 (5)** | 5 (4) |
+| Channels, top → bottom | 16-32-32-64-64 | **8-16-16-32-32** | 16-32-32-64-64-**128** | 16-32-32-64-64 |
+| Parameters | 1.07 M | **0.27 M** | **2.20 M** | 1.07 M |
+| Training view | 64³ crops, 4 per pair | 64³ crops, 4 per pair | **128³ crop, 1 per pair** | **whole 160³, 1 per pair** |
+| Smallest map inside the net | 4³ | 4³ | 4³ | 10³ |
+| Epochs | 80 | 80 | 80 | 40 |
+| Training time | 6 h 20 min | 4 h 37 min | 13 h 37 min | 10 h 24 min |
+| GPU memory | — | 0.2 GB | 2.4 GB | 4.7 GB |
+| Final train / val error | {fin['A2'][0]:.3f} / {fin['A2'][1]:.3f} | {fin['A2_small'][0]:.3f} / {fin['A2_small'][1]:.3f} | {fin['A2_deep128'][0]:.3f} / {fin['A2_deep128'][1]:.3f} | {fin['A2_full160'][0]:.3f} / {fin['A2_full160'][1]:.3f} |
+| **DIR-Lab TRE300** (last 5 epochs) | {np.mean(lite['A2']):.2f} | {np.mean(lite['A2_small']):.2f} (worse) | {np.mean(lite['A2_deep128']):.2f} | **{np.mean(lite['A2_full160']):.2f}** |
+
+- **Why deep128 needed 128³ crops:** each level halves the image. A 64³ crop after 5 halvings is only 2³, almost nothing to look at; 128³ keeps it at 4³, like the baseline.
+- **Why full160 kept the baseline net:** to separate "sees more" from "is deeper". It matched deep128 without the extra level and was better on C08 (8.68 vs 9.71), so the whole-lung view was kept.
+- **Reading the curves:** training error keeps falling while validation error is flat from about epoch 5 (A′ 0.48–0.51), so most later training is memorising. The small net memorises less (smaller gap) but does not score better on DIR-Lab. Validation numbers are measured on different views (64³ crops / one 128³ crop / whole volume), so compare their shapes, not their levels.
+
+![training curves](figs/05b_lite_training_curves.png)
+
+| A′ | A′-small |
+|---|---|
+| ![A′](figs/05c_curve_A2.png) | ![small](figs/05c_curve_A2_small.png) |
+| **A′-deep128** | **A′-full160** |
+| ![deep128](figs/05c_curve_A2_deep128.png) | ![full160](figs/05c_curve_A2_full160.png) |
 
 ---
 

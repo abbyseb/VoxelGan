@@ -112,6 +112,38 @@ Same network (UNetCRBDecoder, 1.07 M parameters) and base loss, different traini
 
 ---
 
+## Slide 5d · The four small-setup networks, in detail
+
+All four use the **same U-Net (UNetCRBDecoder)**: a plain encoder that sees only the CT, and a decoder whose blocks are told the two breathing phases (conditional residual blocks); the output is the 3-channel motion field. Same data (65 scans / 16 patients, validation 17 scans / 4 new patients), loss (lung-masked L1), Adam lr 1e-4 constant, no augmentation, seed 20260929.
+
+| | A′ (baseline) | A′-small | A′-deep128 | A′-full160 |
+|---|---|---|---|---|
+| What changed | — | every channel halved | +1 level down/up, and 128³ crops | whole 160³ volume |
+| Levels (image halvings) | 5 (4 halvings) | 5 (4) | **6 (5)** | 5 (4) |
+| Channels, top → bottom | 16-32-32-64-64 | **8-16-16-32-32** | 16-32-32-64-64-**128** | 16-32-32-64-64 |
+| Parameters | 1.07 M | **0.27 M** | **2.20 M** | 1.07 M |
+| Training view | 64³ crops, 4 per pair | 64³ crops, 4 per pair | **128³ crop, 1 per pair** | **whole 160³, 1 per pair** |
+| Smallest map inside the net | 4³ | 4³ | 4³ | 10³ |
+| Epochs | 80 | 80 | 80 | 40 |
+| Training time | 6 h 20 min | 4 h 37 min | 13 h 37 min | 10 h 24 min |
+| GPU memory | — | 0.2 GB | 2.4 GB | 4.7 GB |
+| Final train / val error | 0.262 / 0.494 | 0.317 / 0.488 | 0.214 / 0.529 | 0.239 / 0.566 |
+| **DIR-Lab TRE300** (last 5 epochs) | 4.74 | 4.84 (worse) | 4.59 | **4.58** |
+
+- **Why deep128 needed 128³ crops:** each level halves the image. A 64³ crop after 5 halvings is only 2³, almost nothing to look at; 128³ keeps it at 4³, like the baseline.
+- **Why full160 kept the baseline net:** to separate "sees more" from "is deeper". It matched deep128 without the extra level and was better on C08 (8.68 vs 9.71), so the whole-lung view was kept.
+- **Reading the curves:** training error keeps falling while validation error is flat from about epoch 5 (A′ 0.48–0.51), so most later training is memorising. The small net memorises less (smaller gap) but does not score better on DIR-Lab. Validation numbers are measured on different views (64³ crops / one 128³ crop / whole volume), so compare their shapes, not their levels.
+
+![training curves](figs/05b_lite_training_curves.png)
+
+| A′ | A′-small |
+|---|---|
+| ![A′](figs/05c_curve_A2.png) | ![small](figs/05c_curve_A2_small.png) |
+| **A′-deep128** | **A′-full160** |
+| ![deep128](figs/05c_curve_A2_deep128.png) | ![full160](figs/05c_curve_A2_full160.png) |
+
+---
+
 ## Slide 6 · Ideas that did not work
 
 - Push-style labels, re-made labels, brightness matching, EPE loss, combining old models: each **less than 0.1 mm**.
