@@ -2,21 +2,15 @@
  "T0": [
   {
    "case": 1,
-   "row": "No motion",
-   "tre300": 3.892,
-   "lung_ncc": 0.9215
-  },
-  {
-   "case": 1,
    "row": "Elastix",
    "tre300": 1.134,
    "lung_ncc": 0.9716
   },
   {
-   "case": 8,
-   "row": "No motion",
-   "tre300": 14.995,
-   "lung_ncc": 0.765
+   "case": 4,
+   "row": "Elastix",
+   "tre300": 1.784,
+   "lung_ncc": 0.9414
   },
   {
    "case": 8,
@@ -33,6 +27,12 @@
    "lung_ncc": 0.9284
   },
   {
+   "case": 4,
+   "row": "A\u2032-full160",
+   "tre300": 4.141,
+   "lung_ncc": 0.9228
+  },
+  {
    "case": 8,
    "row": "A\u2032-full160",
    "tre300": 8.506,
@@ -45,6 +45,12 @@
    "row": "TCIA-lite",
    "tre300": 2.368,
    "lung_ncc": 0.9556
+  },
+  {
+   "case": 4,
+   "row": "TCIA-lite",
+   "tre300": 4.294,
+   "lung_ncc": 0.9272
   },
   {
    "case": 8,
@@ -61,16 +67,28 @@
    "lung_ncc": 0.9701
   },
   {
-   "case": 1,
-   "row": "Big, flip",
-   "tre300": 1.819,
-   "lung_ncc": 0.9691
+   "case": 4,
+   "row": "Big, plain",
+   "tre300": 4.054,
+   "lung_ncc": 0.9329
   },
   {
    "case": 8,
    "row": "Big, plain",
    "tre300": 9.991,
    "lung_ncc": 0.8506
+  },
+  {
+   "case": 1,
+   "row": "Big, flip",
+   "tre300": 1.819,
+   "lung_ncc": 0.9691
+  },
+  {
+   "case": 4,
+   "row": "Big, flip",
+   "tre300": 3.527,
+   "lung_ncc": 0.9391
   },
   {
    "case": 8,
@@ -87,16 +105,28 @@
    "lung_ncc": 0.9556
   },
   {
-   "case": 1,
-   "row": "Small, hybrid",
-   "tre300": 2.087,
-   "lung_ncc": 0.9617
+   "case": 4,
+   "row": "Small, old loss",
+   "tre300": 4.294,
+   "lung_ncc": 0.9272
   },
   {
    "case": 8,
    "row": "Small, old loss",
    "tre300": 8.844,
    "lung_ncc": 0.8689
+  },
+  {
+   "case": 1,
+   "row": "Small, hybrid",
+   "tre300": 2.087,
+   "lung_ncc": 0.9617
+  },
+  {
+   "case": 4,
+   "row": "Small, hybrid",
+   "tre300": 3.734,
+   "lung_ncc": 0.9181
   },
   {
    "case": 8,
@@ -113,16 +143,28 @@
    "lung_ncc": 0.9691
   },
   {
-   "case": 1,
-   "row": "Big hybrid, flip",
-   "tre300": 2.169,
-   "lung_ncc": 0.9533
+   "case": 4,
+   "row": "Big old, flip",
+   "tre300": 3.527,
+   "lung_ncc": 0.9391
   },
   {
    "case": 8,
    "row": "Big old, flip",
    "tre300": 9.439,
    "lung_ncc": 0.8532
+  },
+  {
+   "case": 1,
+   "row": "Big hybrid, flip",
+   "tre300": 2.169,
+   "lung_ncc": 0.9533
+  },
+  {
+   "case": 4,
+   "row": "Big hybrid, flip",
+   "tre300": 2.936,
+   "lung_ncc": 0.9411
   },
   {
    "case": 8,
@@ -139,16 +181,28 @@
    "lung_ncc": 0.9635
   },
   {
-   "case": 1,
-   "row": "Big hybrid s2, flip",
-   "tre300": 1.96,
-   "lung_ncc": 0.9611
+   "case": 4,
+   "row": "Big old s2, flip",
+   "tre300": 3.519,
+   "lung_ncc": 0.9432
   },
   {
    "case": 8,
    "row": "Big old s2, flip",
    "tre300": 9.493,
    "lung_ncc": 0.8613
+  },
+  {
+   "case": 1,
+   "row": "Big hybrid s2, flip",
+   "tre300": 1.96,
+   "lung_ncc": 0.9611
+  },
+  {
+   "case": 4,
+   "row": "Big hybrid s2, flip",
+   "tre300": 3.569,
+   "lung_ncc": 0.9404
   },
   {
    "case": 8,
@@ -163,6 +217,12 @@
    "row": "Combination",
    "tre300": 1.67,
    "lung_ncc": 0.9756
+  },
+  {
+   "case": 4,
+   "row": "Combination",
+   "tre300": 3.443,
+   "lung_ncc": 0.9401
   },
   {
    "case": 8,

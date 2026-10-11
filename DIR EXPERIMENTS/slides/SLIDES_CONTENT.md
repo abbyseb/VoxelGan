@@ -146,21 +146,25 @@ All four use the **same U-Net (UNetCRBDecoder)**: a plain encoder that sees only
 
 ## Slide T · The timeline in pictures: how to read them
 
-Each picture shows **C01** (shallow breather, 3.9 mm average motion) and **C08** (deep breather, 15.0 mm), on the mid-coronal slice of the fixed 2 mm grid. Columns, left to right:
+Each picture uses the **same layout as slide 5b**: rows **C01** (shallow breather, 3.9 mm average motion), **C04** (middle) and **C08** (deep breather, 15.0 mm), on the mid-coronal slice of the fixed 2 mm grid, head at top. Columns, left to right:
 
-1. **Elastix motion |u|** (mm): the reference, what the models learn from.
-2. **Model motion |u|** (mm), on the same colour scale as Elastix.
-3. **T50 (breathed-out CT) warped by the model** toward T00 (breathed-in).
-4. **|warped − real T00|** in HU: **dark = good match**, bright = mismatch (vessels, diaphragm and ribs show it first).
+1. **Input T50** (breathed-out CT).
+2. **Target T00** (breathed-in CT).
+3. **T50 warped by the model** toward T00, with that model's TRE300 for the case.
+4. **Target − input (before)**: red/blue = what has to move.
+5. **Target − warped (after)**: the closer to white, the better the match (lung NCC is in the table below).
+6. **Model motion |u|** with arrows: **cyan = model, green = Elastix** (the label).
 
-Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they differ from the headline numbers (last-5-epoch and 2-seed means). The bright band at the bottom edge of the box is the end of the scan, not an error of the model.
+Steps that compare two models show two pictures, one per model. Numbers are for **that one checkpoint**, so they differ from the headline numbers (last-5-epoch and 2-seed means). The band at the bottom edge of the box is the end of the scan, not a model error.
+
+This first picture is **Elastix itself**: the best a model could do by copying its label.
 
 ![reference](figs/T0_reference.png)
 
-| | C01 No motion | C01 Elastix | C08 No motion | C08 Elastix |
-|---|---|---|---|---|
-| TRE300 (mm) | 3.89 | 1.13 | 14.99 | 3.32 |
-| Lung NCC | 0.921 | 0.972 | 0.765 | 0.875 |
+| | C01 Elastix | C04 Elastix | C08 Elastix |
+|---|---|---|---|
+| TRE300 (mm) | 1.13 | 1.78 | 3.32 |
+| Lung NCC | 0.972 | 0.941 | 0.875 |
 
 ---
 
@@ -171,10 +175,10 @@ Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they 
 
 ![full160](figs/T1_full160.png)
 
-| | C01 A′-full160 | C08 A′-full160 |
-|---|---|---|
-| TRE300 (mm) | 3.16 | 8.51 |
-| Lung NCC | 0.928 | 0.853 |
+| | C01 A′-full160 | C04 A′-full160 | C08 A′-full160 |
+|---|---|---|---|
+| TRE300 (mm) | 3.16 | 4.14 | 8.51 |
+| Lung NCC | 0.928 | 0.923 | 0.853 |
 
 ---
 
@@ -185,10 +189,10 @@ Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they 
 
 ![lite](figs/T2_lite_aug.png)
 
-| | C01 TCIA-lite | C08 TCIA-lite |
-|---|---|---|
-| TRE300 (mm) | 2.37 | 8.84 |
-| Lung NCC | 0.956 | 0.869 |
+| | C01 TCIA-lite | C04 TCIA-lite | C08 TCIA-lite |
+|---|---|---|---|
+| TRE300 (mm) | 2.37 | 4.29 | 8.84 |
+| Lung NCC | 0.956 | 0.927 | 0.869 |
 
 ---
 
@@ -198,12 +202,14 @@ Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they 
 - Free (no training). Helps both cases a little here; −0.18 mm on all 10 cases for the big model.
 - The big model's motion is sharper and more patchy than the small model's (it was trained on 64³ patches).
 
-![flip](figs/T3_flip.png)
+![flip a](figs/T3_flip_a.png)
 
-| | C01 Big, plain | C01 Big, flip | C08 Big, plain | C08 Big, flip |
-|---|---|---|---|---|
-| TRE300 (mm) | 1.90 | 1.82 | 9.99 | 9.44 |
-| Lung NCC | 0.970 | 0.969 | 0.851 | 0.853 |
+![flip b](figs/T3_flip_b.png)
+
+| | C01 Big, plain | C01 Big, flip | C04 Big, plain | C04 Big, flip | C08 Big, plain | C08 Big, flip |
+|---|---|---|---|---|---|---|
+| TRE300 (mm) | 1.90 | 1.82 | 4.05 | 3.53 | 9.99 | 9.44 |
+| Lung NCC | 0.970 | 0.969 | 0.933 | 0.939 | 0.851 | 0.853 |
 
 ---
 
@@ -212,12 +218,14 @@ Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they 
 - Motion + 10 × image match + 0.1 × smoothness. The image term pulls the warped CT toward the real T00.
 - Both cases improve; the error images get darker around the diaphragm.
 
-![hybrid small](figs/T4_hybrid_small.png)
+![hybrid small a](figs/T4_hybrid_small_a.png)
 
-| | C01 Small, old loss | C01 Small, hybrid | C08 Small, old loss | C08 Small, hybrid |
-|---|---|---|---|---|
-| TRE300 (mm) | 2.37 | 2.09 | 8.84 | 7.90 |
-| Lung NCC | 0.956 | 0.962 | 0.869 | 0.874 |
+![hybrid small b](figs/T4_hybrid_small_b.png)
+
+| | C01 Small, old loss | C01 Small, hybrid | C04 Small, old loss | C04 Small, hybrid | C08 Small, old loss | C08 Small, hybrid |
+|---|---|---|---|---|---|---|
+| TRE300 (mm) | 2.37 | 2.09 | 4.29 | 3.73 | 8.84 | 7.90 |
+| Lung NCC | 0.956 | 0.962 | 0.927 | 0.918 | 0.869 | 0.874 |
 
 ---
 
@@ -226,12 +234,14 @@ Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they 
 - Looked like the best model (3.87 mm on all 10 cases, with flip).
 - In pictures: **better on C08** (the warped CT matches better, error image darker), **worse on C01**.
 
-![hybrid big s1](figs/T5_hybrid_big_s1.png)
+![hybrid big s1 a](figs/T5_hybrid_big_s1_a.png)
 
-| | C01 Big old, flip | C01 Big hybrid, flip | C08 Big old, flip | C08 Big hybrid, flip |
-|---|---|---|---|---|
-| TRE300 (mm) | 1.82 | 2.17 | 9.44 | 8.41 |
-| Lung NCC | 0.969 | 0.953 | 0.853 | 0.870 |
+![hybrid big s1 b](figs/T5_hybrid_big_s1_b.png)
+
+| | C01 Big old, flip | C01 Big hybrid, flip | C04 Big old, flip | C04 Big hybrid, flip | C08 Big old, flip | C08 Big hybrid, flip |
+|---|---|---|---|---|---|---|
+| TRE300 (mm) | 1.82 | 2.17 | 3.53 | 2.94 | 9.44 | 8.41 |
+| Lung NCC | 0.969 | 0.953 | 0.939 | 0.941 | 0.853 | 0.870 |
 
 ---
 
@@ -240,12 +250,14 @@ Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they 
 - Same two recipes, new random start. Now the hybrid is **worse** on C08 and slightly better on C01: the opposite of seed 1.
 - So the seed-1 difference was luck. Over 16 patients the hybrid gain is +0.02 mm (p = 0.46).
 
-![seed 2](figs/T6_seed2.png)
+![seed 2 a](figs/T6_seed2_a.png)
 
-| | C01 Big old s2, flip | C01 Big hybrid s2, flip | C08 Big old s2, flip | C08 Big hybrid s2, flip |
-|---|---|---|---|---|
-| TRE300 (mm) | 2.07 | 1.96 | 9.49 | 10.44 |
-| Lung NCC | 0.964 | 0.961 | 0.861 | 0.856 |
+![seed 2 b](figs/T6_seed2_b.png)
+
+| | C01 Big old s2, flip | C01 Big hybrid s2, flip | C04 Big old s2, flip | C04 Big hybrid s2, flip | C08 Big old s2, flip | C08 Big hybrid s2, flip |
+|---|---|---|---|---|---|---|
+| TRE300 (mm) | 2.07 | 1.96 | 3.52 | 3.57 | 9.49 | 10.44 |
+| Lung NCC | 0.964 | 0.961 | 0.943 | 0.940 | 0.861 | 0.856 |
 
 ---
 
@@ -257,10 +269,10 @@ Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they 
 
 ![combination](figs/T7_combination.png)
 
-| | C01 Combination | C08 Combination |
-|---|---|---|
-| TRE300 (mm) | 1.67 | 8.51 |
-| Lung NCC | 0.976 | 0.873 |
+| | C01 Combination | C04 Combination | C08 Combination |
+|---|---|---|---|
+| TRE300 (mm) | 1.67 | 3.44 | 8.51 |
+| Lung NCC | 0.976 | 0.940 | 0.873 |
 
 ---
 

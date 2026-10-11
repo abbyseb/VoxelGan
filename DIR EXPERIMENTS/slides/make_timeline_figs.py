@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Slide figures for the timeline after the small-network tests: DIR-Lab C01 and C08, per step.
+"""Slide figures for the timeline after the small-network tests: DIR-Lab C01, C04 and C08, per step.
 
-Each row = one case and one model: Elastix |u| (reference), model |u|, the input CT (T50) warped by the model,
-and |warped - real T00| (the error image). Mid-coronal slice through the lung, fixed 2 mm scorer grid
-(eval_dir_tcia3_iso2mm_v2). warped(x) = T50(x + u(x)) should match T00(x) (as ncc_dirlab.py).
+Same 6-panel layout as slide 5b (analysis_2026-10-03/explain_figs.py), one PNG per model; steps that compare two
+models get _a/_b files. Mid-coronal slice through the lung, fixed 2 mm scorer grid (eval_dir_tcia3_iso2mm_v2). warped(x) = T50(x + u(x)) should match T00(x) (as ncc_dirlab.py).
 TRE300 and lung NCC printed per row are for THIS checkpoint only (not the last-5-epoch / 2-seed headline).
 
   cd "DIR EXPERIMENTS"; CUDA_VISIBLE_DEVICES=1 <LEARN-GUI venv python> slides/make_timeline_figs.py
@@ -34,7 +33,8 @@ from rescore_oracle_iso2mm_v3 import load_ckpt  # noqa: E402
 G = Path("/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160")
 L = G / "TCIA_lite"
 FIGS = DIR_EXP / "slides" / "figs"
-CASES = (1, 8)
+CASES = (1, 4, 8)
+VOX_MM = 2.0  # iso grid spacing; u and Elastix fields are in voxels
 CK = {
     "full160": L / "run_A2_full160/DecoderCRB/checkpoints/epoch_040.pt",
     "lite": L / "run_A2_full160_aug/DecoderCRB/checkpoints/epoch_040.pt",
@@ -45,8 +45,6 @@ CK = {
     "big_hyb_s1": G / "TCIA3.5_hybrid/DecoderCRB/checkpoints/epoch_100.pt",
     "big_hyb_s2": G / "TCIA3.5_hybrid_s2/DecoderCRB/checkpoints/epoch_100.pt",
 }
-HU_WIN = (-1000, 400)
-DIFF_MAX = 500.0
 
 
 def warp(img, u):
@@ -68,8 +66,9 @@ def load_cases():
         t00 = v2.resample_to_iso(sitk.GetArrayFromImage(ct).astype(np.float32), p["origin_xyz"], p["spacing_xyz"],
                                  p["origin_iso_xyz"], order=1, cval=-1000.0)
         reg = binary_dilation(p["lung_iso"], iterations=5)
-        z = int(np.round(np.nonzero(p["lung_iso"].any(axis=(1, 2)))[0].mean()))
-        D[c] = {"p": p, "t00": t00, "reg": reg, "z": z, "el": v2.elastix_on_iso(p)}
+        z = int(np.round(np.where(p["hu_iso"] < -400)[0].mean()))  # same slice rule as slide 5b (explain_figs.py)
+        D[c] = {"p": p, "t00": t00, "reg": reg, "z": z, "el": v2.elastix_on_iso(p),
+                "tre0": v2.score_set(np.zeros((*p["hu_iso"].shape, 3), np.float32), c, "300", p)["registered"]["mean"]}
     return D
 
 
@@ -96,33 +95,43 @@ def row_stats(D, c, u):
     return w, v2.score_set(u, c, "300", d["p"])["registered"]["mean"], ncc(w[d["reg"]], d["t00"][d["reg"]])
 
 
-def figure(D, rows, title, fname):
-    """rows: list of (case, label, u or None for 'no motion')."""
-    fig, ax = plt.subplots(len(rows), 4, figsize=(15, 3.9 * len(rows)), squeeze=False)
+def figure(D, label, ufn, title, fname):
+    """Slide-5b layout (as analysis_2026-10-03/explain_figs.py), one model, rows C01/C04/C08.
+    Columns: input T50, target T00, warped by model, target - input, target - warped, |u| with model/Elastix arrows."""
+    H = 4.4 * len(CASES) + 0.8  # +0.8 in for the two-line title
+    fig, ax = plt.subplots(len(CASES), 6, figsize=(24, H), squeeze=False)
     stats = []
-    for r, (c, label, u) in enumerate(rows):
+    kw = dict(cmap="gray", vmin=-1000, vmax=300)
+    for i, c in enumerate(CASES):
         d = D[c]
-        z, el = d["z"], d["el"]
-        u = np.zeros_like(el) if u is None else u
+        z, el, inp, tgt = d["z"], d["el"], d["p"]["hu_iso"], d["t00"]
+        u = ufn(c)
         w, t300, nc = row_stats(D, c, u)
         stats.append({"case": c, "row": label, "tre300": round(t300, 3), "lung_ncc": round(nc, 4)})
-        vmax = float(np.percentile(np.linalg.norm(el[z], axis=-1)[d["p"]["lung_iso"][z]] * 2.0, 99))
-        mags = [np.linalg.norm(el[z], axis=-1) * 2.0, np.linalg.norm(u[z], axis=-1) * 2.0]
-        for k, (m, t) in enumerate(zip(mags, ["Elastix motion |u| (mm)", f"{label}: motion |u| (mm)"])):
-            im = ax[r, k].imshow(m, cmap="magma", vmin=0, vmax=vmax)
-            ax[r, k].set_title(t, fontsize=10)
-            plt.colorbar(im, ax=ax[r, k], fraction=0.046)
-        ax[r, 2].imshow(w[z], cmap="gray", vmin=HU_WIN[0], vmax=HU_WIN[1])
-        ax[r, 2].set_title(f"T50 warped toward T00 · lung NCC {nc:.3f}", fontsize=10)
-        im = ax[r, 3].imshow(np.abs(w[z] - d["t00"][z]), cmap="inferno", vmin=0, vmax=DIFF_MAX)
-        ax[r, 3].set_title(f"|warped − real T00| (HU) · TRE300 {t300:.2f} mm", fontsize=10)
-        plt.colorbar(im, ax=ax[r, 3], fraction=0.046)
-        ax[r, 0].set_ylabel(f"C{c:02d}", fontsize=13, rotation=0, labelpad=25)
-        for a in ax[r]:
-            a.set_xticks([]), a.set_yticks([])
-    fig.suptitle(title, fontsize=13)
-    fig.tight_layout(rect=(0, 0, 1, 0.97))
-    fig.savefig(FIGS / fname, dpi=100)
+        ax[i, 0].imshow(inp[z], **kw); ax[i, 0].set_title(f"C{c:02d} input CT_06 (T50, exhale)")
+        ax[i, 1].imshow(tgt[z], **kw); ax[i, 1].set_title("target CT_01 (T00, inhale)")
+        ax[i, 2].imshow(w[z], **kw); ax[i, 2].set_title(f"warped by model (TRE {t300:.2f} mm)")
+        ax[i, 3].imshow(tgt[z] - inp[z], cmap="bwr", vmin=-600, vmax=600); ax[i, 3].set_title("target - input (before)")
+        ax[i, 4].imshow(tgt[z] - w[z], cmap="bwr", vmin=-600, vmax=600)
+        ax[i, 4].set_title("target - warped (after)")
+        um, em = u[z] * VOX_MM, el[z] * VOX_MM
+        mag, emag = np.linalg.norm(um, axis=-1), np.linalg.norm(em, axis=-1)
+        ax[i, 5].imshow(mag, cmap="magma", vmin=0, vmax=max(emag.max(), mag.max(), 1))
+        st = 6
+        yy, xx = np.mgrid[0:mag.shape[0]:st, 0:mag.shape[1]:st]
+        q = dict(angles="xy", scale_units="xy", scale=0.5)
+        ax[i, 5].quiver(xx, yy, um[::st, ::st, 0], um[::st, ::st, 1], color="cyan", width=0.003, label="model", **q)
+        ax[i, 5].quiver(xx, yy, em[::st, ::st, 0], em[::st, ::st, 1], color="lime", width=0.002, alpha=.6,
+                        label="Elastix", **q)
+        ax[i, 5].set_title(f"model |DVF| max {mag.max():.1f} mm; Elastix max {emag.max():.1f}")
+        ax[i, 5].legend(loc="lower right", fontsize=8)
+        for a in ax[i]:
+            a.axis("off")
+    mean = np.mean([s["tre300"] for s in stats])
+    fig.suptitle(f"{title}\n{label} (C01/C04/C08 mean TRE300 {mean:.2f} mm) — coronal slice through lung centre, "
+                 "head at top", fontsize=14)
+    fig.tight_layout(rect=(0, 0, 1, 1 - 0.8 / H))
+    fig.savefig(FIGS / fname, dpi=90)
     plt.close(fig)
     print("wrote", fname, flush=True)
     return stats
@@ -133,28 +142,29 @@ def main():
     U = predict_all(D)
     E = {c: D[c]["el"] for c in CASES}
     S = {}
-    rc = lambda rows: [(c, lab, u(c)) for c in CASES for lab, u in rows]  # noqa: E731
-    S["T0"] = figure(D, rc([("No motion", lambda c: None), ("Elastix", lambda c: E[c])]),
-                     "Reference: no motion vs Elastix (the label the models learn from)", "T0_reference.png")
-    S["T1"] = figure(D, rc([("A′-full160", lambda c: U[("full160", "plain", c)])]),
-                     "30 Sep · Whole-lung view (A′-full160, epoch 40, no augmentation)", "T1_full160.png")
-    S["T2"] = figure(D, rc([("TCIA-lite", lambda c: U[("lite", "plain", c)])]),
-                     "1 Oct · + augmentation and cosine lr (full160-aug = TCIA-lite, epoch 40)", "T2_lite_aug.png")
-    S["T3"] = figure(D, rc([("Big, plain", lambda c: U[("big_old_s1", "plain", c)]),
-                            ("Big, flip", lambda c: U[("big_old_s1", "flip", c)])]),
-                     "1 Oct · Mirror (flip) averaging on the big model (TCIA3.5 seed 1, epoch 100)", "T3_flip.png")
-    S["T4"] = figure(D, rc([("Small, old loss", lambda c: U[("lite", "plain", c)]),
-                            ("Small, hybrid", lambda c: U[("small_h_s1", "plain", c)])]),
-                     "2 Oct · Hybrid loss on the small model (seed 1, epoch 40)", "T4_hybrid_small.png")
-    S["T5"] = figure(D, rc([("Big old, flip", lambda c: U[("big_old_s1", "flip", c)]),
-                            ("Big hybrid, flip", lambda c: U[("big_hyb_s1", "flip", c)])]),
-                     "2–4 Oct · Hybrid loss on the big model, seed 1 (epoch 100, flip)", "T5_hybrid_big_s1.png")
-    S["T6"] = figure(D, rc([("Big old s2, flip", lambda c: U[("big_old_s2", "flip", c)]),
-                            ("Big hybrid s2, flip", lambda c: U[("big_hyb_s2", "flip", c)])]),
-                     "4–6 Oct · Second seed: the hybrid gain does not repeat (epoch 100, flip)", "T6_seed2.png")
-    S["T7"] = figure(D, rc([("Combination", lambda c: U[("combo", "flip", c)])]),
-                     "8 Oct · Pre-set combination: 2 small hybrid + 2 big old models, flip, fields averaged",
-                     "T7_combination.png")
+    steps = [  # (step, title, [(label, field, file)])
+        ("T0", "Reference: Elastix (the label the models learn from)", [("Elastix", lambda c: E[c], "T0_reference.png")]),
+        ("T1", "30 Sep · Whole-lung view, epoch 40, no augmentation",
+         [("A′-full160", lambda c: U[("full160", "plain", c)], "T1_full160.png")]),
+        ("T2", "1 Oct · + augmentation and cosine lr (full160-aug = TCIA-lite, epoch 40)",
+         [("TCIA-lite", lambda c: U[("lite", "plain", c)], "T2_lite_aug.png")]),
+        ("T3", "1 Oct · Mirror (flip) averaging on the big model (TCIA3.5 seed 1, epoch 100)",
+         [("Big, plain", lambda c: U[("big_old_s1", "plain", c)], "T3_flip_a.png"),
+          ("Big, flip", lambda c: U[("big_old_s1", "flip", c)], "T3_flip_b.png")]),
+        ("T4", "2 Oct · Hybrid loss on the small model (seed 1, epoch 40)",
+         [("Small, old loss", lambda c: U[("lite", "plain", c)], "T4_hybrid_small_a.png"),
+          ("Small, hybrid", lambda c: U[("small_h_s1", "plain", c)], "T4_hybrid_small_b.png")]),
+        ("T5", "2–4 Oct · Hybrid loss on the big model, seed 1 (epoch 100, flip)",
+         [("Big old, flip", lambda c: U[("big_old_s1", "flip", c)], "T5_hybrid_big_s1_a.png"),
+          ("Big hybrid, flip", lambda c: U[("big_hyb_s1", "flip", c)], "T5_hybrid_big_s1_b.png")]),
+        ("T6", "4–6 Oct · Second seed (epoch 100, flip)",
+         [("Big old s2, flip", lambda c: U[("big_old_s2", "flip", c)], "T6_seed2_a.png"),
+          ("Big hybrid s2, flip", lambda c: U[("big_hyb_s2", "flip", c)], "T6_seed2_b.png")]),
+        ("T7", "8 Oct · Pre-set combination: 2 small hybrid + 2 big old models, flip, fields averaged",
+         [("Combination", lambda c: U[("combo", "flip", c)], "T7_combination.png")]),
+    ]
+    for step, title, models in steps:
+        S[step] = [r for lab, fn, f in models for r in figure(D, lab, fn, title, f)]
     (FIGS / "timeline_stats.json").write_text(json.dumps(S, indent=1))
     print(json.dumps(S, indent=1))
 

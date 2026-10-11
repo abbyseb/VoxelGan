@@ -55,11 +55,11 @@ for k in LR: shutil.copy(G / f"TCIA_lite/run_{k}/DecoderCRB/plots/crb_dec_mae_tc
 fin = {k: (curves[k][-1, 1], curves[k][-1, 2], int(curves[k][-1, 0])) for k in LR}
 TS = J(F / "timeline_stats.json")  # written by make_timeline_figs.py (run that first)
 def tl(step):
-    rows = TS[step]; labs = list(dict.fromkeys(r["row"] for r in rows))
-    out = "| | " + " | ".join(f"C01 {l}" for l in labs) + " | " + " | ".join(f"C08 {l}" for l in labs) + " |\n|---|" + "---|" * (2 * len(labs)) + "\n"
+    rows = TS[step]; labs = list(dict.fromkeys(r["row"] for r in rows)); cs = (1, 4, 8)
+    out = "| | " + " | ".join(f"C{c:02d} {l}" for c in cs for l in labs) + " |\n|---|" + "---|" * (len(cs) * len(labs)) + "\n"
     g = {(r["case"], r["row"]): r for r in rows}
-    out += "| TRE300 (mm) | " + " | ".join(f"{g[(c, l)]['tre300']:.2f}" for c in (1, 8) for l in labs) + " |\n"
-    out += "| Lung NCC | " + " | ".join(f"{g[(c, l)]['lung_ncc']:.3f}" for c in (1, 8) for l in labs) + " |"
+    out += "| TRE300 (mm) | " + " | ".join(f"{g[(c, l)]['tre300']:.2f}" for c in cs for l in labs) + " |\n"
+    out += "| Lung NCC | " + " | ".join(f"{g[(c, l)]['lung_ncc']:.3f}" for c in cs for l in labs) + " |"
     return out
 fig, ax = plt.subplots(figsize=(8, 4)); ideas = ["Push labels", "Combine old models", "EPE loss", "Brightness match", "Mirror (flip)", "Hybrid loss (small)"]; g = [-0.09, 0.02, -0.06, 0.39, -0.18, -0.30]
 ax.barh(ideas, g, color=["tab:green" if x <= -0.1 else ("tab:red" if x > 0.05 else "lightgrey") for x in g]); ax.axvline(-0.1, ls="--", color="k", lw=1); ax.text(-0.105, 5.4, "pass bar −0.1 mm", ha="right", fontsize=9)
@@ -244,14 +244,18 @@ All four use the **same U-Net (UNetCRBDecoder)**: a plain encoder that sees only
 
 ## Slide T · The timeline in pictures: how to read them
 
-Each picture shows **C01** (shallow breather, 3.9 mm average motion) and **C08** (deep breather, 15.0 mm), on the mid-coronal slice of the fixed 2 mm grid. Columns, left to right:
+Each picture uses the **same layout as slide 5b**: rows **C01** (shallow breather, 3.9 mm average motion), **C04** (middle) and **C08** (deep breather, 15.0 mm), on the mid-coronal slice of the fixed 2 mm grid, head at top. Columns, left to right:
 
-1. **Elastix motion |u|** (mm): the reference, what the models learn from.
-2. **Model motion |u|** (mm), on the same colour scale as Elastix.
-3. **T50 (breathed-out CT) warped by the model** toward T00 (breathed-in).
-4. **|warped − real T00|** in HU: **dark = good match**, bright = mismatch (vessels, diaphragm and ribs show it first).
+1. **Input T50** (breathed-out CT).
+2. **Target T00** (breathed-in CT).
+3. **T50 warped by the model** toward T00, with that model's TRE300 for the case.
+4. **Target − input (before)**: red/blue = what has to move.
+5. **Target − warped (after)**: the closer to white, the better the match (lung NCC is in the table below).
+6. **Model motion |u|** with arrows: **cyan = model, green = Elastix** (the label).
 
-Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they differ from the headline numbers (last-5-epoch and 2-seed means). The bright band at the bottom edge of the box is the end of the scan, not an error of the model.
+Steps that compare two models show two pictures, one per model. Numbers are for **that one checkpoint**, so they differ from the headline numbers (last-5-epoch and 2-seed means). The band at the bottom edge of the box is the end of the scan, not a model error.
+
+This first picture is **Elastix itself**: the best a model could do by copying its label.
 
 ![reference](figs/T0_reference.png)
 
@@ -287,7 +291,9 @@ Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they 
 - Free (no training). Helps both cases a little here; −0.18 mm on all 10 cases for the big model.
 - The big model's motion is sharper and more patchy than the small model's (it was trained on 64³ patches).
 
-![flip](figs/T3_flip.png)
+![flip a](figs/T3_flip_a.png)
+
+![flip b](figs/T3_flip_b.png)
 
 {tl("T3")}
 
@@ -298,7 +304,9 @@ Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they 
 - Motion + 10 × image match + 0.1 × smoothness. The image term pulls the warped CT toward the real T00.
 - Both cases improve; the error images get darker around the diaphragm.
 
-![hybrid small](figs/T4_hybrid_small.png)
+![hybrid small a](figs/T4_hybrid_small_a.png)
+
+![hybrid small b](figs/T4_hybrid_small_b.png)
 
 {tl("T4")}
 
@@ -309,7 +317,9 @@ Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they 
 - Looked like the best model (3.87 mm on all 10 cases, with flip).
 - In pictures: **better on C08** (the warped CT matches better, error image darker), **worse on C01**.
 
-![hybrid big s1](figs/T5_hybrid_big_s1.png)
+![hybrid big s1 a](figs/T5_hybrid_big_s1_a.png)
+
+![hybrid big s1 b](figs/T5_hybrid_big_s1_b.png)
 
 {tl("T5")}
 
@@ -320,7 +330,9 @@ Numbers on each row (TRE300, lung NCC) are for **that one checkpoint**, so they 
 - Same two recipes, new random start. Now the hybrid is **worse** on C08 and slightly better on C01: the opposite of seed 1.
 - So the seed-1 difference was luck. Over 16 patients the hybrid gain is +0.02 mm (p = 0.46).
 
-![seed 2](figs/T6_seed2.png)
+![seed 2 a](figs/T6_seed2_a.png)
+
+![seed 2 b](figs/T6_seed2_b.png)
 
 {tl("T6")}
 
