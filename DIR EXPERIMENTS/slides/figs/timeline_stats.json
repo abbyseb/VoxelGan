@@ -1,0 +1,174 @@
+{
+ "T0": [
+  {
+   "case": 1,
+   "row": "No motion",
+   "tre300": 3.892,
+   "lung_ncc": 0.9215
+  },
+  {
+   "case": 1,
+   "row": "Elastix",
+   "tre300": 1.134,
+   "lung_ncc": 0.9716
+  },
+  {
+   "case": 8,
+   "row": "No motion",
+   "tre300": 14.995,
+   "lung_ncc": 0.765
+  },
+  {
+   "case": 8,
+   "row": "Elastix",
+   "tre300": 3.322,
+   "lung_ncc": 0.875
+  }
+ ],
+ "T1": [
+  {
+   "case": 1,
+   "row": "A\u2032-full160",
+   "tre300": 3.16,
+   "lung_ncc": 0.9284
+  },
+  {
+   "case": 8,
+   "row": "A\u2032-full160",
+   "tre300": 8.506,
+   "lung_ncc": 0.8532
+  }
+ ],
+ "T2": [
+  {
+   "case": 1,
+   "row": "TCIA-lite",
+   "tre300": 2.368,
+   "lung_ncc": 0.9556
+  },
+  {
+   "case": 8,
+   "row": "TCIA-lite",
+   "tre300": 8.844,
+   "lung_ncc": 0.8689
+  }
+ ],
+ "T3": [
+  {
+   "case": 1,
+   "row": "Big, plain",
+   "tre300": 1.903,
+   "lung_ncc": 0.9701
+  },
+  {
+   "case": 1,
+   "row": "Big, flip",
+   "tre300": 1.819,
+   "lung_ncc": 0.9691
+  },
+  {
+   "case": 8,
+   "row": "Big, plain",
+   "tre300": 9.991,
+   "lung_ncc": 0.8506
+  },
+  {
+   "case": 8,
+   "row": "Big, flip",
+   "tre300": 9.439,
+   "lung_ncc": 0.8532
+  }
+ ],
+ "T4": [
+  {
+   "case": 1,
+   "row": "Small, old loss",
+   "tre300": 2.368,
+   "lung_ncc": 0.9556
+  },
+  {
+   "case": 1,
+   "row": "Small, hybrid",
+   "tre300": 2.087,
+   "lung_ncc": 0.9617
+  },
+  {
+   "case": 8,
+   "row": "Small, old loss",
+   "tre300": 8.844,
+   "lung_ncc": 0.8689
+  },
+  {
+   "case": 8,
+   "row": "Small, hybrid",
+   "tre300": 7.902,
+   "lung_ncc": 0.8736
+  }
+ ],
+ "T5": [
+  {
+   "case": 1,
+   "row": "Big old, flip",
+   "tre300": 1.819,
+   "lung_ncc": 0.9691
+  },
+  {
+   "case": 1,
+   "row": "Big hybrid, flip",
+   "tre300": 2.169,
+   "lung_ncc": 0.9533
+  },
+  {
+   "case": 8,
+   "row": "Big old, flip",
+   "tre300": 9.439,
+   "lung_ncc": 0.8532
+  },
+  {
+   "case": 8,
+   "row": "Big hybrid, flip",
+   "tre300": 8.408,
+   "lung_ncc": 0.8699
+  }
+ ],
+ "T6": [
+  {
+   "case": 1,
+   "row": "Big old s2, flip",
+   "tre300": 2.073,
+   "lung_ncc": 0.9635
+  },
+  {
+   "case": 1,
+   "row": "Big hybrid s2, flip",
+   "tre300": 1.96,
+   "lung_ncc": 0.9611
+  },
+  {
+   "case": 8,
+   "row": "Big old s2, flip",
+   "tre300": 9.493,
+   "lung_ncc": 0.8613
+  },
+  {
+   "case": 8,
+   "row": "Big hybrid s2, flip",
+   "tre300": 10.444,
+   "lung_ncc": 0.8562
+  }
+ ],
+ "T7": [
+  {
+   "case": 1,
+   "row": "Combination",
+   "tre300": 1.67,
+   "lung_ncc": 0.9756
+  },
+  {
+   "case": 8,
+   "row": "Combination",
+   "tre300": 8.507,
+   "lung_ncc": 0.8732
+  }
+ ]
+}
