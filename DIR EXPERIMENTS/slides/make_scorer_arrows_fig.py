@@ -45,6 +45,17 @@ def old_field_mm(g, device, pack):
     return u.astype(np.float32)
 
 
+def squeezed_view(g, device):
+    """What the network saw and said under the old scorer: squeezed input, raw output on that grid (x 2 mm)."""
+    hu, lung, _, _, _ = V2.load_case_image(CASE)
+    xin = norm_mu(resize_volume_zyx(hu_to_mu(hu, 0.02), 160))
+    m = resize_volume_zyx(lung.astype(np.float32), 160) > 0.5
+    with torch.no_grad():
+        d = g(torch.from_numpy(xin[None, None]).to(device), torch.tensor([5], device=device),
+              torch.tensor([0], device=device))[0].cpu().numpy()
+    return np.clip(xin, 0, 1), m, np.moveaxis(d, 0, -1) * V2.SPACING
+
+
 def lung_cos(a, b, m):
     a, b = a[m], b[m]
     return float(np.mean((a * b).sum(1) / (np.linalg.norm(a, axis=1) * np.linalg.norm(b, axis=1) + 1e-6)))
@@ -61,17 +72,18 @@ def main():
     c_old, c_new = lung_cos(old, el, lung), lung_cos(new, el, lung)
     print(f"C{CASE:02d} lung cosine vs Elastix: old {c_old:.2f}  new {c_new:.2f}")
 
-    z = int(np.round(np.nonzero(lung.any(axis=(1, 2)))[0].mean()))
-    img = V2.minmax(pack["mu"])[z]
-    m2 = lung[z]
+    sq_img, sq_lung, sq_u = squeezed_view(g, device)
+    fixed_img = V2.minmax(pack["mu"])
+    panels = [(sq_img, sq_lung, sq_u, "What the model SAW (old scorer)\nsqueezed input, its own arrows", "tab:red"),
+              (fixed_img, lung, old, f"Old arrows mapped back to the patient\nagreement {c_old:.2f}", "tab:red"),
+              (fixed_img, lung, el, "Elastix (reference)", "tab:green"),
+              (fixed_img, lung, new, f"Model, FIXED scorer input\nagreement {c_new:.2f}", "tab:blue")]
     yy, xx = np.mgrid[0:160:STEP, 0:160:STEP]
-    keep = m2[yy, xx]
-    panels = [(el, "Elastix (reference)", "tab:green"),
-              (old, f"Model, OLD scorer input\nagreement {c_old:.2f}", "tab:red"),
-              (new, f"Model, FIXED scorer input\nagreement {c_new:.2f}", "tab:blue")]
-    fig, ax = plt.subplots(1, 3, figsize=(15, 6.0))
-    for a, (u, title, col) in zip(ax, panels):
-        a.imshow(img, cmap="gray", vmin=0, vmax=1, origin="upper")
+    fig, ax = plt.subplots(1, 4, figsize=(20, 6.0))
+    for a, (vol, mvol, u, title, col) in zip(ax, panels):
+        z = int(np.round(np.nonzero(mvol.any(axis=(1, 2)))[0].mean()))
+        keep = mvol[z][yy, xx]
+        a.imshow(vol[z], cmap="gray", vmin=0, vmax=1, origin="upper")
         ux, uy = u[z, yy, xx, 0], u[z, yy, xx, 1]
         # u is a pull field (points up, toward the apex, for exhale->inhale); -u is drawn so arrows show tissue motion
         # (diaphragm moving down); both in-plane components negated, same for all panels.
@@ -79,7 +91,7 @@ def main():
                  scale=0.5, width=0.004)
         a.set_title(title, fontsize=12)
         a.set_xticks([]), a.set_yticks([])
-    fig.suptitle(f"DIR-Lab C{CASE:02d}: breathing motion arrows (same model TCIA3, same slice, same arrow scale)",
+    fig.suptitle(f"DIR-Lab C{CASE:02d}: breathing motion arrows (same model TCIA3, mid-coronal slice, same arrow scale; panel 1 is the squeezed grid the model saw)",
                  fontsize=13)
     fig.tight_layout(rect=(0, 0, 1, 0.94))
     fig.savefig(OUT, dpi=120)
