@@ -355,6 +355,11 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 - Pictures show the **plain** prediction (no mirror); mirror results for the small models are on slide T3.
 - Motion + 10 × image match + 0.1 × smoothness. The image term pulls the warped CT toward the real T00.
+- **Balancing factors (why 10 and 0.1):** the parts are in different units, so they are weighted to have about equal influence.
+  - Motion error ≈ **0.25** (2 mm voxels; old-loss training settles at 0.248). Image error ≈ **0.02** (CT brightness scaled 0–1; logged 0.019–0.023).
+  - 0.25 / 0.02 ≈ 12 → **× 10** brings the image term to ≈ 0.2, level with motion. Without it the image term would be ~10× too small to matter.
+  - Smoothness × **0.1**: a light touch, only to stop jagged motion (first-order, see slide 9).
+  - Fixed **before** training, never tuned on DIR-Lab. Checked later: × 30 was worse (4.34 vs 4.17 mm), so 10 stayed. Details on slide 8.
 - Both cases improve; the error images get darker around the diaphragm.
 
 ![hybrid small a](figs/T4_hybrid_small_a.png)
