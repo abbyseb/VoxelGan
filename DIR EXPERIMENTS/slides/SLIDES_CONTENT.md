@@ -510,6 +510,32 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 ---
 
+## Slide 15b · A2-TCIA (X-ray model trained on TCIA): case by case
+
+- VoxelMap (two X-rays in, motion out), trained on 82 TCIA scans, tested zero-shot on DIR-Lab. Epochs 46–50, each case's mean averaged over the 5 checkpoints.
+- Per case: **mean ± SD over that case's landmarks** (75 or 300). Bottom row: **mean ± SD over the 10 cases**.
+
+| Case | No motion TRE75 | A2-TCIA TRE75 | No motion TRE300 | A2-TCIA TRE300 |
+|---|---|---|---|---|
+| C01 | 3.91 ± 2.80 | **2.27** ± 1.40 | 3.89 ± 2.78 | **2.23** ± 1.30 |
+| C02 | 4.65 ± 4.09 | **2.44** ± 1.66 | 4.34 ± 3.90 | **2.35** ± 1.65 |
+| C03 | 7.25 ± 3.98 | **3.66** ± 1.76 | 6.94 ± 4.05 | **3.56** ± 1.85 |
+| C04 | 9.69 ± 4.79 | **3.96** ± 1.99 | 9.83 ± 4.85 | **3.82** ± 1.97 |
+| C05 | 7.41 ± 5.61 | **3.96** ± 3.08 | 7.48 ± 5.50 | **3.81** ± 2.84 |
+| C06 | 11.77 ± 7.07 | **6.13** ± 3.20 | 10.89 ± 6.96 | **5.84** ± 3.36 |
+| C07 | 10.71 ± 7.14 | **7.38** ± 4.06 | 11.03 ± 7.42 | **7.69** ± 4.33 |
+| C08 | 16.00 ± 9.22 | **11.58** ± 6.54 | 14.99 ± 9.00 | **10.94** ± 6.32 |
+| C09 | 7.16 ± 3.91 | **6.01** ± 2.62 | 7.92 ± 3.97 | **6.50** ± 2.73 |
+| C10 | 8.33 ± 6.85 | **5.18** ± 4.29 | 7.30 ± 6.34 | **4.71** ± 3.94 |
+| **Mean ± SD over 10 cases** | 8.69 ± 3.37 | **5.26 ± 2.62** | 8.46 ± 3.16 | **5.14 ± 2.55** |
+
+- For comparison, the best single-CT model: **4.07 mm** TRE300 (TCIA3.5 + mirror, 2 seeds).
+- Training curves: train and validation **merge**, but validation is a random 10% of X-ray pairs from the **same patients** (`trainer.py`, `random_split`), so it is not a test on new patients. DIR-Lab is.
+
+![voxelmap curves](figs/22_voxelmap_curves.png)
+
+---
+
 ## Slide 16 · Two CTs and the literature
 
 - With **two CTs**, scaled Elastix (no training) gives **2.0 mm** (2.35 on C6–10), beating the published physics model (Fuerst et al., 3.88).

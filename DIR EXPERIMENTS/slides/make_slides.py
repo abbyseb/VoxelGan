@@ -79,6 +79,17 @@ for step, runs, title in (
         ("T7", [("Small hybrid s1", "small_h_s1"), ("Small hybrid s2", "small_h_s2"), ("Big old s1", "big_old_s1"), ("Big old s2", "big_old_s2")],
          "The four models in the combination")):
     curve_fig(step, runs, title)
+# A2-TCIA per-case table: epochs 46-50, per-case mean TRE averaged over the 5 checkpoints; SD = landmark SD averaged likewise
+def a2t_table():
+    E = [J(V / f"DIR EXPERIMENTS/arms/A2_tcia/eval/ep0{e}/tre_exact.json")["cases"] for e in range(46, 51)]
+    g = lambda c, k, w, f: np.mean([e[str(c)][k][w][f] for e in E])
+    out = "| Case | No motion TRE75 | A2-TCIA TRE75 | No motion TRE300 | A2-TCIA TRE300 |\n|---|---|---|---|---|\n"
+    for c in C:
+        out += f"| C{c:02d} | {g(c, '75', 'identity', 'mean'):.2f} ± {g(c, '75', 'identity', 'std'):.2f} | **{g(c, '75', 'registered', 'mean'):.2f}** ± {g(c, '75', 'registered', 'std'):.2f} | {g(c, '300', 'identity', 'mean'):.2f} ± {g(c, '300', 'identity', 'std'):.2f} | **{g(c, '300', 'registered', 'mean'):.2f}** ± {g(c, '300', 'registered', 'std'):.2f} |\n"
+    m = {(k, w): [g(c, k, w, "mean") for c in C] for k in ("75", "300") for w in ("identity", "registered")}
+    f = lambda v: f"{np.mean(v):.2f} ± {np.std(v):.2f}"
+    out += f"| **Mean ± SD over 10 cases** | {f(m[('75', 'identity')])} | **{f(m[('75', 'registered')])}** | {f(m[('300', 'identity')])} | **{f(m[('300', 'registered')])}** |"
+    return out
 TS = J(F / "timeline_stats.json")  # written by make_timeline_figs.py (run that first)
 def tl(step):
     rows = TS[step]; labs = list(dict.fromkeys(r["row"] for r in rows)); cs = (1, 4, 8)
@@ -552,6 +563,20 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 - Likely reason: this variant only sees the two X-rays, **never the CT**, so it cannot use anatomy or scan size.
 
 ![xray models](figs/18_xray_models.png)
+
+---
+
+## Slide 15b · A2-TCIA (X-ray model trained on TCIA): case by case
+
+- VoxelMap (two X-rays in, motion out), trained on 82 TCIA scans, tested zero-shot on DIR-Lab. Epochs 46–50, each case's mean averaged over the 5 checkpoints.
+- Per case: **mean ± SD over that case's landmarks** (75 or 300). Bottom row: **mean ± SD over the 10 cases**.
+
+{a2t_table()}
+
+- For comparison, the best single-CT model: **4.07 mm** TRE300 (TCIA3.5 + mirror, 2 seeds).
+- Training curves: train and validation **merge**, but validation is a random 10% of X-ray pairs from the **same patients** (`trainer.py`, `random_split`), so it is not a test on new patients. DIR-Lab is.
+
+![voxelmap curves](figs/22_voxelmap_curves.png)
 
 ---
 
