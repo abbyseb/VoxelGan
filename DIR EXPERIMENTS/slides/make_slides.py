@@ -320,6 +320,15 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 {tl("T0")}
 
+**Two Elastix numbers — both correct, different scorers:**
+
+| Scorer | TRE75 | TRE300 | Use |
+|---|---|---|---|
+| **Official: native DIR-Lab grid, exact inverse** (Results.md, A1) | **1.55** | **1.49** | Elastix's true accuracy; quote this for Elastix itself |
+| 2 mm synthesiser grid, same scorer as every model on these slides | 2.08 | 1.96 | like-for-like with the models above (the gap to Elastix) |
+
+The 2 mm grid scorer adds about 0.5 mm (motion coarsened to 2 mm voxels, approximate inverse), most on the big cases (C08: 1.67 native vs 3.32 here). Model numbers on these slides are all on the 2 mm scorer, so compare them with **1.96**, not 1.49.
+
 ---
 
 ## Slide T1 · 30 Sep · Whole-lung view (A′-full160)
@@ -390,7 +399,7 @@ This first picture is **Elastix itself**: the best a model could do by copying i
   - Fixed **before** training, never tuned on DIR-Lab. Checked later: × 30 was worse (4.34 vs 4.17 mm), so 10 stayed. Details on slide 8.
 - **Where 0.25 comes from, and what it is not:**
   - It is the **training motion error** read from the big old-loss model's log: mean of epochs 90–100 = **0.248**. Units are **voxels** (2 mm each), so ≈ **0.5 mm** per direction. For scale: no motion = 0.685, label-noise floor ≈ 0.165.
-  - It is **not** the model's accuracy. It is (1) on training patients (new patients ≈ 0.55 vox ≈ 1.1 mm), (2) against Elastix, which is itself ≈ 2 mm off at landmarks, (3) averaged over all lung voxels, most of which barely move, and (4) per direction, not 3D distance.
+  - It is **not** the model's accuracy. It is (1) on training patients (new patients ≈ 0.55 vox ≈ 1.1 mm), (2) against Elastix, which is itself off at landmarks (1.49 mm official, 1.96 mm on the 2 mm scorer), (3) averaged over all lung voxels, most of which barely move, and (4) per direction, not 3D distance.
   - The real accuracy is the **TRE**: ≈ **4 mm** on new patients (DIR-Lab), 8–9 mm on the deep breather C08. 0.25 is only used to balance the loss.
 - Both cases improve; the error images get darker around the diaphragm.
 

@@ -3,7 +3,7 @@
 
 Both were trained with VoxelMap_Clinical/ml/trainer.py, --val_split 0.1: random_split over ALL projection pairs of all
 scans, so validation pairs come from the same patients/scans as training (not held-out patients).
-A2-SPARE history is on the external drive (run on the DRRs later found to have the wrong orbit; Diary 2026-09-16).
+A2-SPARE history is on the external drive (folder 'Incorrect DRR' = the old DIR-Lab TEST DRR orbit; the SPARE\ntraining data were correct, A2 re-verified 8 Oct, Results.md).
 """
 import json
 from pathlib import Path
