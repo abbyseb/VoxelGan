@@ -58,7 +58,9 @@ def tl(step):
     rows = TS[step]; labs = list(dict.fromkeys(r["row"] for r in rows)); cs = (1, 4, 8)
     out = "| | " + " | ".join(f"C{c:02d} {l}" for c in cs for l in labs) + " |\n|---|" + "---|" * (len(cs) * len(labs)) + "\n"
     g = {(r["case"], r["row"]): r for r in rows}
-    out += "| TRE300 (mm) | " + " | ".join(f"{g[(c, l)]['tre300']:.2f}" for c in cs for l in labs) + " |\n"
+    pm = lambda r, k: f"{r[k]:.2f} ± {r[k + '_sd']:.2f}"
+    out += "| TRE75 (mm, mean ± SD) | " + " | ".join(pm(g[(c, l)], "tre75") for c in cs for l in labs) + " |\n"
+    out += "| TRE300 (mm, mean ± SD) | " + " | ".join(pm(g[(c, l)], "tre300") for c in cs for l in labs) + " |\n"
     out += "| Lung NCC | " + " | ".join(f"{g[(c, l)]['lung_ncc']:.3f}" for c in cs for l in labs) + " |"
     return out
 fig, ax = plt.subplots(figsize=(8, 4)); ideas = ["Push labels", "Combine old models", "EPE loss", "Brightness match", "Mirror (flip)", "Hybrid loss (small)"]; g = [-0.09, 0.02, -0.06, 0.39, -0.18, -0.30]
@@ -248,7 +250,7 @@ Each picture uses the **same layout as slide 5b**: rows **C01** (shallow breathe
 
 1. **Input T50** (breathed-out CT).
 2. **Target T00** (breathed-in CT).
-3. **T50 warped by the model** toward T00, with that model's TRE300 for the case.
+3. **T50 warped by the model** toward T00, with that model's TRE75 and TRE300 for the case (mean ± SD over the 75 / 300 landmarks). Column 1 gives the same numbers with no motion.
 4. **Target − input (before)**: red/blue = what has to move.
 5. **Target − warped (after)**: the closer to white, the better the match (lung NCC is in the table below).
 6. **Model motion |u|** with arrows: **cyan = model, green = Elastix** (the label).

@@ -68,7 +68,7 @@ def load_cases():
         reg = binary_dilation(p["lung_iso"], iterations=5)
         z = int(np.round(np.where(p["hu_iso"] < -400)[0].mean()))  # same slice rule as slide 5b (explain_figs.py)
         D[c] = {"p": p, "t00": t00, "reg": reg, "z": z, "el": v2.elastix_on_iso(p),
-                "tre0": v2.score_set(np.zeros((*p["hu_iso"].shape, 3), np.float32), c, "300", p)["registered"]["mean"]}
+                "tre0": tre(np.zeros((*p["hu_iso"].shape, 3), np.float32), c, p)}
     return D
 
 
@@ -89,16 +89,25 @@ def predict_all(D):
     return U
 
 
+def tre(u, c, p):
+    """{'75': (mean, sd), '300': (mean, sd)} in mm over the case's landmarks."""
+    return {k: (r["mean"], r["std"]) for k in ("75", "300") for r in [v2.score_set(u, c, k, p)["registered"]]}
+
+
 def row_stats(D, c, u):
     d = D[c]
     w = warp(d["p"]["hu_iso"], u)
-    return w, v2.score_set(u, c, "300", d["p"])["registered"]["mean"], ncc(w[d["reg"]], d["t00"][d["reg"]])
+    return w, tre(u, c, d["p"]), ncc(w[d["reg"]], d["t00"][d["reg"]])
+
+
+def pm(t):
+    return f"{t[0]:.2f} ± {t[1]:.2f}"
 
 
 def figure(D, label, ufn, title, fname):
     """Slide-5b layout (as analysis_2026-10-03/explain_figs.py), one model, rows C01/C04/C08.
     Columns: input T50, target T00, warped by model, target - input, target - warped, |u| with model/Elastix arrows."""
-    H = 4.4 * len(CASES) + 0.8  # +0.8 in for the two-line title
+    H = 5.0 * len(CASES) + 0.8  # +0.8 in for the two-line title
     fig, ax = plt.subplots(len(CASES), 6, figsize=(24, H), squeeze=False)
     stats = []
     kw = dict(cmap="gray", vmin=-1000, vmax=300)
@@ -106,11 +115,13 @@ def figure(D, label, ufn, title, fname):
         d = D[c]
         z, el, inp, tgt = d["z"], d["el"], d["p"]["hu_iso"], d["t00"]
         u = ufn(c)
-        w, t300, nc = row_stats(D, c, u)
-        stats.append({"case": c, "row": label, "tre300": round(t300, 3), "lung_ncc": round(nc, 4)})
-        ax[i, 0].imshow(inp[z], **kw); ax[i, 0].set_title(f"C{c:02d} input CT_06 (T50, exhale)")
-        ax[i, 1].imshow(tgt[z], **kw); ax[i, 1].set_title("target CT_01 (T00, inhale)")
-        ax[i, 2].imshow(w[z], **kw); ax[i, 2].set_title(f"warped by model (TRE {t300:.2f} mm)")
+        w, t, nc = row_stats(D, c, u)
+        stats.append({"case": c, "row": label, "tre75": round(t["75"][0], 3), "tre75_sd": round(t["75"][1], 3),
+                      "tre300": round(t["300"][0], 3), "tre300_sd": round(t["300"][1], 3), "lung_ncc": round(nc, 4)})
+        ax[i, 0].imshow(inp[z], **kw); ax[i, 0].set_title(f"C{c:02d} input CT_06 (T50, exhale)\nno motion: TRE75 {pm(d['tre0']['75'])} · "
+                                          f"TRE300 {pm(d['tre0']['300'])} mm", fontsize=9.5)
+        ax[i, 1].imshow(tgt[z], **kw); ax[i, 1].set_title("target CT_01 (T00, inhale)", fontsize=10)
+        ax[i, 2].imshow(w[z], **kw); ax[i, 2].set_title(f"warped by model\nTRE75 {pm(t['75'])} · TRE300 {pm(t['300'])} mm", fontsize=9.5)
         ax[i, 3].imshow(tgt[z] - inp[z], cmap="bwr", vmin=-600, vmax=600); ax[i, 3].set_title("target - input (before)")
         ax[i, 4].imshow(tgt[z] - w[z], cmap="bwr", vmin=-600, vmax=600)
         ax[i, 4].set_title("target - warped (after)")
@@ -127,10 +138,10 @@ def figure(D, label, ufn, title, fname):
         ax[i, 5].legend(loc="lower right", fontsize=8)
         for a in ax[i]:
             a.axis("off")
-    mean = np.mean([s["tre300"] for s in stats])
-    fig.suptitle(f"{title}\n{label} (C01/C04/C08 mean TRE300 {mean:.2f} mm) — coronal slice through lung centre, "
-                 "head at top", fontsize=14)
-    fig.tight_layout(rect=(0, 0, 1, 1 - 0.8 / H))
+    m75, m300 = (np.mean([s[k] for s in stats]) for k in ("tre75", "tre300"))
+    fig.suptitle(f"{title}\n{label} (mean of C01/C04/C08: TRE75 {m75:.2f} mm, TRE300 {m300:.2f} mm; per case "
+                 "mean ± SD over landmarks) — coronal slice through lung centre, head at top", fontsize=14)
+    fig.tight_layout(rect=(0, 0, 1, 1 - 0.8 / H), h_pad=2.0)
     fig.savefig(FIGS / fname, dpi=90)
     plt.close(fig)
     print("wrote", fname, flush=True)

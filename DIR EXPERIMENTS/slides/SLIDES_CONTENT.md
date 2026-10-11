@@ -150,7 +150,7 @@ Each picture uses the **same layout as slide 5b**: rows **C01** (shallow breathe
 
 1. **Input T50** (breathed-out CT).
 2. **Target T00** (breathed-in CT).
-3. **T50 warped by the model** toward T00, with that model's TRE300 for the case.
+3. **T50 warped by the model** toward T00, with that model's TRE75 and TRE300 for the case (mean ± SD over the 75 / 300 landmarks). Column 1 gives the same numbers with no motion.
 4. **Target − input (before)**: red/blue = what has to move.
 5. **Target − warped (after)**: the closer to white, the better the match (lung NCC is in the table below).
 6. **Model motion |u|** with arrows: **cyan = model, green = Elastix** (the label).
@@ -163,7 +163,8 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 | | C01 Elastix | C04 Elastix | C08 Elastix |
 |---|---|---|---|
-| TRE300 (mm) | 1.13 | 1.78 | 3.32 |
+| TRE75 (mm, mean ± SD) | 1.26 ± 0.73 | 1.91 ± 1.09 | 3.77 ± 2.13 |
+| TRE300 (mm, mean ± SD) | 1.13 ± 0.59 | 1.78 ± 1.24 | 3.32 ± 1.87 |
 | Lung NCC | 0.972 | 0.941 | 0.875 |
 
 ---
@@ -177,7 +178,8 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 | | C01 A′-full160 | C04 A′-full160 | C08 A′-full160 |
 |---|---|---|---|
-| TRE300 (mm) | 3.16 | 4.14 | 8.51 |
+| TRE75 (mm, mean ± SD) | 3.25 ± 1.80 | 4.06 ± 2.50 | 9.14 ± 5.93 |
+| TRE300 (mm, mean ± SD) | 3.16 ± 1.80 | 4.14 ± 2.43 | 8.51 ± 5.77 |
 | Lung NCC | 0.928 | 0.923 | 0.853 |
 
 ---
@@ -191,7 +193,8 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 | | C01 TCIA-lite | C04 TCIA-lite | C08 TCIA-lite |
 |---|---|---|---|
-| TRE300 (mm) | 2.37 | 4.29 | 8.84 |
+| TRE75 (mm, mean ± SD) | 2.48 ± 1.28 | 4.28 ± 2.30 | 9.56 ± 6.40 |
+| TRE300 (mm, mean ± SD) | 2.37 ± 1.32 | 4.29 ± 2.44 | 8.84 ± 6.24 |
 | Lung NCC | 0.956 | 0.927 | 0.869 |
 
 ---
@@ -208,7 +211,8 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 | | C01 Big, plain | C01 Big, flip | C04 Big, plain | C04 Big, flip | C08 Big, plain | C08 Big, flip |
 |---|---|---|---|---|---|---|
-| TRE300 (mm) | 1.90 | 1.82 | 4.05 | 3.53 | 9.99 | 9.44 |
+| TRE75 (mm, mean ± SD) | 2.10 ± 1.26 | 2.00 ± 0.93 | 4.11 ± 1.72 | 3.54 ± 1.76 | 10.89 ± 6.77 | 10.32 ± 6.37 |
+| TRE300 (mm, mean ± SD) | 1.90 ± 1.16 | 1.82 ± 1.01 | 4.05 ± 1.79 | 3.53 ± 1.98 | 9.99 ± 6.62 | 9.44 ± 6.18 |
 | Lung NCC | 0.970 | 0.969 | 0.933 | 0.939 | 0.851 | 0.853 |
 
 ---
@@ -224,7 +228,8 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 | | C01 Small, old loss | C01 Small, hybrid | C04 Small, old loss | C04 Small, hybrid | C08 Small, old loss | C08 Small, hybrid |
 |---|---|---|---|---|---|---|
-| TRE300 (mm) | 2.37 | 2.09 | 4.29 | 3.73 | 8.84 | 7.90 |
+| TRE75 (mm, mean ± SD) | 2.48 ± 1.28 | 2.34 ± 1.54 | 4.28 ± 2.30 | 3.61 ± 1.96 | 9.56 ± 6.40 | 8.46 ± 5.90 |
+| TRE300 (mm, mean ± SD) | 2.37 ± 1.32 | 2.09 ± 1.41 | 4.29 ± 2.44 | 3.73 ± 2.15 | 8.84 ± 6.24 | 7.90 ± 5.59 |
 | Lung NCC | 0.956 | 0.962 | 0.927 | 0.918 | 0.869 | 0.874 |
 
 ---
@@ -240,7 +245,8 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 | | C01 Big old, flip | C01 Big hybrid, flip | C04 Big old, flip | C04 Big hybrid, flip | C08 Big old, flip | C08 Big hybrid, flip |
 |---|---|---|---|---|---|---|
-| TRE300 (mm) | 1.82 | 2.17 | 3.53 | 2.94 | 9.44 | 8.41 |
+| TRE75 (mm, mean ± SD) | 2.00 ± 0.93 | 2.45 ± 1.23 | 3.54 ± 1.76 | 2.77 ± 1.60 | 10.32 ± 6.37 | 9.13 ± 6.09 |
+| TRE300 (mm, mean ± SD) | 1.82 ± 1.01 | 2.17 ± 1.17 | 3.53 ± 1.98 | 2.94 ± 1.75 | 9.44 ± 6.18 | 8.41 ± 5.86 |
 | Lung NCC | 0.969 | 0.953 | 0.939 | 0.941 | 0.853 | 0.870 |
 
 ---
@@ -256,7 +262,8 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 | | C01 Big old s2, flip | C01 Big hybrid s2, flip | C04 Big old s2, flip | C04 Big hybrid s2, flip | C08 Big old s2, flip | C08 Big hybrid s2, flip |
 |---|---|---|---|---|---|---|
-| TRE300 (mm) | 2.07 | 1.96 | 3.52 | 3.57 | 9.49 | 10.44 |
+| TRE75 (mm, mean ± SD) | 2.29 ± 1.24 | 2.08 ± 1.00 | 3.50 ± 1.93 | 3.51 ± 2.15 | 10.36 ± 6.63 | 11.21 ± 7.26 |
+| TRE300 (mm, mean ± SD) | 2.07 ± 1.17 | 1.96 ± 1.02 | 3.52 ± 1.99 | 3.57 ± 2.35 | 9.49 ± 6.38 | 10.44 ± 7.07 |
 | Lung NCC | 0.964 | 0.961 | 0.943 | 0.940 | 0.861 | 0.856 |
 
 ---
@@ -271,7 +278,8 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 | | C01 Combination | C04 Combination | C08 Combination |
 |---|---|---|---|
-| TRE300 (mm) | 1.67 | 3.44 | 8.51 |
+| TRE75 (mm, mean ± SD) | 1.88 ± 0.96 | 3.44 ± 1.84 | 9.16 ± 6.13 |
+| TRE300 (mm, mean ± SD) | 1.67 ± 0.93 | 3.44 ± 2.02 | 8.51 ± 5.92 |
 | Lung NCC | 0.976 | 0.940 | 0.873 |
 
 ---
