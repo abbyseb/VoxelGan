@@ -73,8 +73,9 @@ def main():
     for a, (u, title, col) in zip(ax, panels):
         a.imshow(img, cmap="gray", vmin=0, vmax=1, origin="upper")
         ux, uy = u[z, yy, xx, 0], u[z, yy, xx, 1]
-        # image rows grow downward, so +y (index) is drawn downward: invert v for quiver with origin="upper"
-        a.quiver(xx[keep], yy[keep], ux[keep], -uy[keep], color=col, angles="xy", scale_units="xy",
+        # u is a pull field (points up, toward the apex, for exhale->inhale); -u is drawn so arrows show tissue motion
+        # (diaphragm moving down); both in-plane components negated, same for all panels.
+        a.quiver(xx[keep], yy[keep], -ux[keep], -uy[keep], color=col, angles="xy", scale_units="xy",
                  scale=0.5, width=0.004)
         a.set_title(title, fontsize=12)
         a.set_xticks([]), a.set_yticks([])
