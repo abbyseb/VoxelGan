@@ -27,6 +27,23 @@ Simple slide-by-slide content. All errors are DIR-Lab landmark error (TRE300, mm
 
 *Black edges on the fixed C01 = air outside the scan (C01 covers ~250 mm of the 320 mm box). C08 (scanned ~500 mm wide) is cropped at the arms; all lung and all 300 landmarks stay inside.*
 
+**Why the squeeze gave 1.5–3.1 mm voxels.** DIR-Lab has two scan groups: C01–C05 are 256 × 256 (about 250–300 mm wide), C06–C10 are 512 × 512 (about 500 mm wide); all have 2.5 mm slices. Squeezing a whole scan into 160³ makes each voxel = scan size ÷ 160.
+
+| Case | Grid | Native voxel (mm) | Scan size (mm) | Squeezed voxel (mm) | vs training 2 mm |
+|---|---|---|---|---|---|
+| C01 | 256×256×94 | 0.97 × 0.97 × 2.5 | 248 × 248 × 235 | 1.55 × 1.55 × 1.47 | chest enlarged |
+| C02 | 256×256×112 | 1.16 × 1.16 × 2.5 | 297 × 297 × 280 | 1.86 × 1.86 × 1.75 | enlarged |
+| C03 | 256×256×104 | 1.15 × 1.15 × 2.5 | 294 × 294 × 260 | 1.84 × 1.84 × 1.63 | enlarged |
+| C04 | 256×256×99 | 1.13 × 1.13 × 2.5 | 289 × 289 × 248 | 1.81 × 1.81 × 1.55 | enlarged |
+| C05 | 256×256×106 | 1.10 × 1.10 × 2.5 | 282 × 282 × 265 | 1.76 × 1.76 × 1.66 | enlarged |
+| C06 | 512×512×128 | 0.97 × 0.97 × 2.5 | 497 × 497 × 320 | 3.10 × 3.10 × 2.00 | shrunk to ~65% width |
+| C07 | 512×512×136 | 0.97 × 0.97 × 2.5 | 497 × 497 × 340 | 3.10 × 3.10 × 2.13 | shrunk, uneven |
+| C08 | 512×512×128 | 0.97 × 0.97 × 2.5 | 497 × 497 × 320 | 3.10 × 3.10 × 2.00 | shrunk to ~65% width |
+| C09 | 512×512×128 | 0.97 × 0.97 × 2.5 | 497 × 497 × 320 | 3.10 × 3.10 × 2.00 | shrunk to ~65% width |
+| C10 | 512×512×120 | 0.97 × 0.97 × 2.5 | 497 × 497 × 300 | 3.10 × 3.10 × 1.88 | shrunk, uneven |
+
+*Fixed scorer: every case resampled to 2 × 2 × 2 mm, 160³ box (320 mm) centred on the lung, same brightness scaling as training.*
+
 ---
 
 ## Slide 3 · Fixing the scorer
