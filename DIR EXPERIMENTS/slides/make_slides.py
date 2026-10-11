@@ -92,13 +92,18 @@ Simple slide-by-slide content. All errors are DIR-Lab landmark error (TRE300, mm
 
 ---
 
-## Slide 2 · What was wrong: the scorer
+## Slide 2 · What was wrong: the DIR-Lab scorer
 
-- DIR-Lab CTs were **squeezed into the model's 160³ box** instead of resampled: voxels 1.5–3.1 mm and uneven instead of 2 mm; chests about 35% narrower than in training.
-- **Brightness was scaled differently** from training.
-- So the model was tested on **distorted images** it had never seen.
+*Applies to every TCIA-trained model scored on DIR-Lab before 29 Sep (TCIA3, TCIA3.5 and the fine-tunes).*
 
-![orientation](figs/02_orientation_tcia_vs_dir.png)
+- **Found in a code audit (29 Sep).** Warning sign: predicted motion was **too small** (0.65 of the real size; C08 0.44), and "move more" fixes (MagFT, MagMatch, AmpHead) did not help.
+- DIR-Lab CTs were **squeezed or stretched into the model's 160³ box** instead of resampled: voxels 1.5–3.1 mm and uneven instead of 2 mm; chests up to about 35% narrower (C06–C10) or wider (C01–C05) than in training.
+- **Brightness was scaled differently** from training (DIR-Lab came out much brighter).
+- So the model was tested on **distorted images** it had never seen. The model and its training data were fine.
+
+![input old vs fixed](figs/20_scorer_input_old_vs_new.png)
+
+*Black edges on the fixed C01 = air outside the scan (C01 covers ~250 mm of the 320 mm box). C08 (scanned ~500 mm wide) is cropped at the arms; all lung and all 300 landmarks stay inside.*
 
 ---
 
@@ -114,7 +119,13 @@ Simple slide-by-slide content. All errors are DIR-Lab landmark error (TRE300, mm
 
 ## Slide 4 · What the fixed scorer revealed
 
-- Motion **direction** was mostly right (agreement with Elastix 0.32 → 0.85).
+- Same model, same measurement, all 10 cases: **direction 0.80 → 0.84** (already mostly right), **motion size 0.65 → 0.78** (this is what the fix changed).
+- C01 (shallow breather) goes from 1.03 to 1.37 of the real size (too big); C08 (deep breather) stays at 0.39–0.44 (too small).
+
+![arrows C08](figs/21_arrows_c08_old_vs_new.png)
+
+![arrows C01](figs/21_arrows_c01_old_vs_new.png)
+
 - The main error is **breath size**: shallow breathers get too much motion, deep breathers too little.
 - With each patient's true breath depth: about **3.6 mm**. But **one CT cannot show breath depth** (lung size and shape do not predict it).
 
