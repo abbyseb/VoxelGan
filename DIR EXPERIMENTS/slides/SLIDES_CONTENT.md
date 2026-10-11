@@ -146,6 +146,86 @@ Same network (UNetCRBDecoder, 1.07 M parameters) and base loss, different traini
 
 ---
 
+---
+
+## Slide 10 · Hybrid loss on the small model: it works, twice
+
+- Small model (whole lung): **4.47 → 4.17 mm** (seed 1) and **4.16 mm** (seed 2), 7/10 and 9/10 cases better.
+- First change in the project to pass the fixed rule (> 0.1 mm better, ≥ 7/10 cases).
+- But on POPI the small hybrid was **not** better (4.80 / 5.05 vs 4.73 old loss).
+
+![small hybrid seeds](figs/13_small_hybrid_seeds.png)
+
+---
+
+## Slide 11 · Hybrid loss on the big model: one lucky seed
+
+- Seed 1 looked great: **3.87 mm** with flip. Seed 2: **4.37 mm**.
+- Averaged over seeds: hybrid 4.12 vs old loss **4.07**, no improvement (16-patient test +0.02 mm, p = 0.46).
+- Big-model hybrid seeds differ by **0.5 mm**; old loss only 0.1 mm. Likely causes: 64³ patches (image check sees little lung, padded edges) and a constant learning rate.
+- **Lesson:** always run a second seed before claiming a gain.
+
+![big seeds](figs/14_big_seeds.png)
+
+---
+
+## Slide 12 · Making the result stable
+
+- Averaging the last 10 epochs' weights: helps the old loss a little (−0.08 mm), does not fix the hybrid seed gap.
+- **Combining 2 small + 2 big models** (fixed before scoring): **3.95 mm DIR-Lab, 4.53 mm POPI**. Small and big models make different mistakes.
+
+![combination](figs/15_combination.png)
+
+---
+
+## Slide 13 · Local NCC: promising on paper, tiny in practice
+
+- Check 1: local NCC notices motion errors much better than plain image difference (rank correlation 0.84–0.89 vs 0.50–0.65), but is noisy.
+- Check 2: moving toward the true landmark motion lowers local NCC by **40%** vs 8.5% for plain difference.
+- Check 3 (5-epoch top-up vs matched control): **−0.02 mm DIR-Lab, 0.00 POPI**. Not kept.
+
+![local NCC](figs/16_local_ncc.png)
+
+---
+
+## Slide 14 · Label quality matters
+
+- Adding the 4 held-out patients (82 scans) made the small model **worse** (4.16 → 4.50).
+- Their Elastix labels are noisier (forward-backward error +17%); one scan (S29) is clearly bad (folding +4.2 SD).
+- **Removing 4 flagged scans** (78 scans): 4.27 DIR-Lab and the **best small-model POPI (4.73)**.
+
+![label cleaning](figs/17_label_cleaning.png)
+
+---
+
+## Slide 15 · X-ray models (VoxelMap): better data helps, but not enough
+
+- **A2:** VoxelMap trained on 9 SPARE patients, tested zero-shot: **7.12 mm** (weights found and re-verified).
+- **A2-TCIA:** same network and settings, trained on 82 TCIA scans: **5.14 mm**.
+- Still worse than the single-CT model (**4.07**) on every case, most on the big scans (C6–10: 7.13 vs 5.52).
+- Likely reason: this variant only sees the two X-rays, **never the CT**, so it cannot use anatomy or scan size.
+
+![xray models](figs/18_xray_models.png)
+
+---
+
+## Slide 16 · Two CTs and the literature
+
+- With **two CTs**, scaled Elastix (no training) gives **2.0 mm** (2.35 on C6–10), beating the published physics model (Fuerst et al., 3.88).
+- So knowing breath depth takes the error from about 4–5 mm to about 2 mm: **missing depth is the main cost of one CT**.
+- Literature: no method found that predicts from **one CT without a breathing signal** and reports DIR-Lab/POPI landmark error. Closest: Kanamuro et al. 2025 (one CT, private data, no landmarks).
+
+![two CT](figs/19_two_ct.png)
+
+---
+
+## Slide 17 · Summary
+
+- **Best single model:** 4.07 mm DIR-Lab, 4.57 mm POPI (2 seeds). **Pre-set combination:** 3.95 / 4.53 mm.
+- About **half of the motion error removed** from one CT, in the range of methods that need a breathing signal (3.3–4.2 mm).
+- What helped: fixing the scorer, flip averaging, combining models, clean labels. Loss changes: no reliable gain.
+- **Limit: breath depth is invisible in one CT.** Deep breathers (C8) carry most of the error.
+
 ## Appendix A · Small model, case by case (epochs 36–40)
 
 | Model | C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | C9 | C10 | **Mean** | C1–5 | C6–10 |

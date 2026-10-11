@@ -1,0 +1,110 @@
+/home/abhishek/Documents/LEARN-GUI/LEARN-GUI-Python/.venv/lib/python3.12/site-packages/torch/functional.py:539: UserWarning: torch.meshgrid: in an upcoming release, it will be required to pass the indexing argument. (Triggered internally at /pytorch/aten/src/ATen/native/TensorShape.cpp:3637.)
+  return _VF.meshgrid(tensors, **kwargs)  # type: ignore[attr-defined]
+--- VoxelMap Clinical Trainer ---
+Device: cuda | AMP: False | FiLM: False
+Checkpoints: /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/checkpoints
+Loss plots: /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm
+Discovered 56088 projection pairs.
+Split: train=50480 | val=5608
+Epoch 1/50 | Train: 1.4375 | Val: 1.0221 | 2814.2s *best*
+  saved epoch_001.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 2/50 | Train: 0.8853 | Val: 0.7656 | 2818.9s *best*
+  saved epoch_002.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 3/50 | Train: 0.7014 | Val: 0.6332 | 2819.2s *best*
+  saved epoch_003.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 4/50 | Train: 0.5854 | Val: 0.5253 | 2816.3s *best*
+  saved epoch_004.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 5/50 | Train: 0.5040 | Val: 0.4470 | 2811.8s *best*
+  saved epoch_005.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 6/50 | Train: 0.4206 | Val: 0.3673 | 2809.9s *best*
+  saved epoch_006.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 7/50 | Train: 0.3505 | Val: 0.3046 | 2808.4s *best*
+  saved epoch_007.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 8/50 | Train: 0.3051 | Val: 0.2674 | 2807.2s *best*
+  saved epoch_008.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 9/50 | Train: 0.2719 | Val: 0.2472 | 2805.3s *best*
+  saved epoch_009.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 10/50 | Train: 0.2448 | Val: 0.2208 | 2805.0s *best*
+  saved epoch_010.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 11/50 | Train: 0.2259 | Val: 0.1997 | 2804.2s *best*
+  saved epoch_011.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 12/50 | Train: 0.2066 | Val: 0.1884 | 2799.7s *best*
+  saved epoch_012.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 13/50 | Train: 0.1923 | Val: 0.1739 | 2798.5s *best*
+  saved epoch_013.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 14/50 | Train: 0.1800 | Val: 0.1555 | 2797.9s *best*
+  saved epoch_014.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 15/50 | Train: 0.1685 | Val: 0.1594 | 2796.7s
+  saved epoch_015.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 16/50 | Train: 0.1585 | Val: 0.1374 | 2795.8s *best*
+  saved epoch_016.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 17/50 | Train: 0.1492 | Val: 0.1302 | 2795.2s *best*
+  saved epoch_017.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 18/50 | Train: 0.1423 | Val: 0.1324 | 2795.5s
+  saved epoch_018.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 19/50 | Train: 0.1339 | Val: 0.1162 | 2795.5s *best*
+  saved epoch_019.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 20/50 | Train: 0.1280 | Val: 0.1139 | 2794.7s *best*
+  saved epoch_020.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 21/50 | Train: 0.1215 | Val: 0.1110 | 2793.5s *best*
+  saved epoch_021.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 22/50 | Train: 0.1166 | Val: 0.1061 | 2793.9s *best*
+  saved epoch_022.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 23/50 | Train: 0.1120 | Val: 0.1135 | 2793.6s
+  saved epoch_023.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 24/50 | Train: 0.1071 | Val: 0.0984 | 2793.6s *best*
+  saved epoch_024.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 25/50 | Train: 0.1027 | Val: 0.0912 | 2792.9s *best*
+  saved epoch_025.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 26/50 | Train: 0.0994 | Val: 0.0910 | 2793.0s *best*
+  saved epoch_026.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 27/50 | Train: 0.0957 | Val: 0.0961 | 2793.6s
+  saved epoch_027.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 28/50 | Train: 0.0915 | Val: 0.0818 | 2792.7s *best*
+  saved epoch_028.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 29/50 | Train: 0.0888 | Val: 0.0839 | 2792.2s
+  saved epoch_029.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 30/50 | Train: 0.0860 | Val: 0.0781 | 2792.7s *best*
+  saved epoch_030.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 31/50 | Train: 0.0837 | Val: 0.0757 | 2791.6s *best*
+  saved epoch_031.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 32/50 | Train: 0.0817 | Val: 0.0736 | 2791.7s *best*
+  saved epoch_032.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 33/50 | Train: 0.0787 | Val: 0.0715 | 2792.1s *best*
+  saved epoch_033.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 34/50 | Train: 0.0767 | Val: 0.0709 | 2791.0s *best*
+  saved epoch_034.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 35/50 | Train: 0.0744 | Val: 0.0687 | 2791.3s *best*
+  saved epoch_035.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 36/50 | Train: 0.0725 | Val: 0.0684 | 2791.7s *best*
+  saved epoch_036.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 37/50 | Train: 0.0714 | Val: 0.0697 | 2790.8s
+  saved epoch_037.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 38/50 | Train: 0.0704 | Val: 0.0669 | 2791.7s *best*
+  saved epoch_038.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 39/50 | Train: 0.0676 | Val: 0.0613 | 2791.3s *best*
+  saved epoch_039.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 40/50 | Train: 0.0662 | Val: 0.0620 | 2791.5s
+  saved epoch_040.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 41/50 | Train: 0.0650 | Val: 0.0615 | 2791.6s
+  saved epoch_041.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 42/50 | Train: 0.0637 | Val: 0.0575 | 2791.4s *best*
+  saved epoch_042.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 43/50 | Train: 0.0627 | Val: 0.0586 | 2790.9s
+  saved epoch_043.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 44/50 | Train: 0.0615 | Val: 0.0595 | 2792.4s
+  saved epoch_044.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 45/50 | Train: 0.0596 | Val: 0.0573 | 2792.5s *best*
+  saved epoch_045.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 46/50 | Train: 0.0593 | Val: 0.0543 | 2792.4s *best*
+  saved epoch_046.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 47/50 | Train: 0.0587 | Val: 0.0567 | 2791.3s
+  saved epoch_047.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 48/50 | Train: 0.0578 | Val: 0.0517 | 2791.0s *best*
+  saved epoch_048.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 49/50 | Train: 0.0568 | Val: 0.0547 | 2790.7s
+  saved epoch_049.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Epoch 50/50 | Train: 0.0551 | Val: 0.0540 | 2790.9s
+  saved epoch_050.pt | plot -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm/loss_curves.png
+Best model copied to arms/A2_tcia/checkpoints/a2_tcia_concat_nofilm.pt
+--- Done | best val/train loss: 0.0517 ---

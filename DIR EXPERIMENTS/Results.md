@@ -14,6 +14,7 @@ Previous version kept as `Results_pre_2026-10-02.md`.*
 | **A1** Elastix | Oracle registration on the patient's own 4D-CT | **1.55** | **1.49** | was 2.08 / 1.96 (approx. inverse) |
 | **A1** VoxelMap | Patient oracle (real 4D → DRR → NoFiLM) | **1.95** | **1.90** | was 2.32 / 2.23; older 3.16 superseded |
 | **A2** VoxelMap | SPARE population prior, zero-shot | **7.30** | **7.12** | verified 8 Oct (weights found); was 8.97 with the old DRR orbit |
+| **A2-TCIA** VoxelMap | Same network/settings as A2, trained on TCIA 82 scans, zero-shot | — | **5.14** | 8 Oct–11 Oct 2026; C1–5 3.15, C6–10 7.13; `arms/A2_tcia/eval/` (exact-inverse, 2 mm-free R3 path) |
 | **A3** VoxelMap | Synthesiser 4D-CT → DRR → VoxelMap | — | — | **to be redone** with the corrected input and the final synthesiser |
 
 T50→T00 (exact in both versions): A1 Elastix 1.64 / 1.57 · A1 VoxelMap 2.02 / 1.97 · A2 VoxelMap 7.49 / 7.30.

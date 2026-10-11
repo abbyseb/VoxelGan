@@ -1,3 +1,29 @@
+# 2026-10-11 10:00 — A2-TCIA: same X-ray VoxelMap as A2, trained on TCIA 82 scans: 7.12 → 5.14 mm (still behind single CT 4.07)
+
+**Correction to A2's description:** the "concatenated" VoxelMap (`VoxelMap_Clinical/ml/utilities/networksFiLM.py`, `ConcatenatedEncoder`) predicts motion from **source + target X-ray only**; the CT (`source_vol`) is used only to warp afterwards, never as network input. Pooled over many patients it must guess 3D motion for an anatomy it cannot see. Variants that take the CT exist (`separate`, `broadcast`) but were never trained. Benchmark at 128³, batch 8: concatenated 402 ms/step (46 min/epoch at 55k pairs, matches A2's real 47), broadcast 306 ms (35 min), separate 495 ms (57 min).
+
+**Prep** (`scripts/prepare_a2_tcia.py`, arm `arms/A2_tcia/`): packed_r3_hu CT_XX.npy (HU, already R3 frame) → mha (2 mm, centred), then exactly A1's steps (downsample keep-HU, DRR with A1's DIR-Lab Geometry.xml thinned to every 9th = 76 angles, masked Elastix at 128³, prep_train). 6.2 min/scan; 82 scans in 2 h 20 min (8 in parallel, DRR on GPU1). 684 pairs/scan → 56,088 pairs (A2: 55,080). QC: projections and CT orientation match DIR-Lab.
+Note: DIR-Lab grid sizes differ (C1–5 ≈ 250 mm → ~1.9 mm/voxel on 128³; C6–10 ≈ 500 mm LR → ~3.9 mm); TCIA 320 mm (2.5 mm). The concatenated model outputs voxels and cannot see the CT → scale error expected in opposite directions for the two groups → report separately.
+
+**Training:** A2's exact recipe (concatenated, NoFiLM, 50 ep, batch 8, lr 1e-5, random 10% val), GPU1, `systemd-run` unit a2tcia-train, 9 Oct 06:05 → 10 Oct 20:56 (2,790 s/epoch). First attempt found 0 pairs (unquoted path with a space) — fixed with a quoted array. Final train 0.055 / val 0.054 (best val ep 48).
+
+**Scoring** (`scripts/score_a2_tcia.py`, writes only under `arms/A2_tcia/eval/`; same inference as A2 + exact-inverse TRE). Scorer validated: A2's own weights → 7.12 exactly. DIR-Lab TRE300, ep 46–50 mean:
+
+| | all | C1–5 | C6–10 |
+|---|---:|---:|---:|
+| no motion | 8.46 | 6.50 | 10.43 |
+| A2 (SPARE 9) | 7.12 | 5.79 | 8.45 |
+| **A2-TCIA (82 scans)** | **5.14** | **3.15** | **7.13** |
+| single CT (big old loss + flip, 2 seeds) | 4.07 | 2.62 | 5.52 |
+
+Per case A2-TCIA: 2.23 2.35 3.56 3.82 3.81 | 5.84 7.69 10.94 6.50 4.71. Single epochs 5.05–5.23; best-val ep48 5.23; ep14 preview 5.34.
+- Training data matters a lot (−1.98 mm), but X-ray-only VoxelMap is worse than single CT on every case, more on big scans (+1.6 vs +0.5) — consistent with no CT input / no scale information. Case 8 still ~11 mm.
+- Option not run: broadcast variant on the same prepared data (~29 h).
+
+Slide content: `DIR EXPERIMENTS/slides/SLIDES_CONTENT.md` (17 slides + case-wise appendices, figures from `make_slides.py`).
+
+---
+
 # 2026-10-08 19:30 — A2 weights found and verified: 7.30 / 7.12 stands (no longer provisional)
 
 - Weights found on external drive: `/media/abhishek/C8421E6E421E620C/Incorrect DRR/A2_generic_spare/checkpoints/a2_spare_mc_val_prior_p1to9_concat_nofilm.pt` (43 MB, 12 Sep; keys config, model_state). The repo symlink `arms/A2_generic_spare/checkpoints/…pt` now points there (was pointing at a deleted copy under `DIR EXPERIMENTS/arms/Incorrect DRR/`).

@@ -1,0 +1,6 @@
+--- VoxelMap Clinical Trainer ---
+Device: cuda | AMP: False | FiLM: False
+Checkpoints: /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/checkpoints
+Loss plots: /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/plots_nofilm
+Discovered 0 projection pairs.
+ERROR: Dataset is empty.

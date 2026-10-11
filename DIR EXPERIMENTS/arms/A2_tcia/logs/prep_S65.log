@@ -1,0 +1,56 @@
+23:04:32 | INFO | Staged TCIA S65 (10 GTVol, lung 354643 vox, 76 projs) -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/data/staged/TCIA_S65
+23:04:32 | INFO | SPARE Normalize: Scanning /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/data/staged/TCIA_S65
+23:04:32 | INFO | SPARE Normalize: GTVol_03.mha -> CT_03.mha
+23:04:32 | INFO | SPARE Normalize: GTVol_01.mha -> CT_01.mha
+23:04:32 | INFO | SPARE Normalize: GTVol_06.mha -> CT_06.mha
+23:04:32 | INFO | SPARE Normalize: GTVol_10.mha -> CT_10.mha
+23:04:32 | INFO | SPARE Normalize: GTVol_08.mha -> CT_08.mha
+23:04:32 | INFO | SPARE Normalize: GTVol_05.mha -> CT_05.mha
+23:04:32 | INFO | SPARE Normalize: GTVol_09.mha -> CT_09.mha
+23:04:32 | INFO | SPARE Normalize: GTVol_02.mha -> CT_02.mha
+23:04:32 | INFO | SPARE Normalize: GTVol_07.mha -> CT_07.mha
+23:04:32 | INFO | SPARE Normalize: GTVol_04.mha -> CT_04.mha
+23:04:44 | INFO | Saved sub_CT_01.mha (HU kept, min=-1000.0 max=1329.2)
+23:04:44 | INFO | Saved sub_CT_02.mha (HU kept, min=-1000.0 max=1295.8)
+23:04:44 | INFO | Saved sub_CT_03.mha (HU kept, min=-1000.0 max=1310.9)
+23:04:44 | INFO | Saved sub_CT_04.mha (HU kept, min=-1000.0 max=1323.8)
+23:04:44 | INFO | Saved sub_CT_05.mha (HU kept, min=-1000.0 max=1355.6)
+23:04:44 | INFO | Saved sub_CT_06.mha (HU kept, min=-1000.0 max=1272.4)
+23:04:44 | INFO | Saved sub_CT_07.mha (HU kept, min=-1000.0 max=1301.8)
+23:04:44 | INFO | Saved sub_CT_08.mha (HU kept, min=-1000.0 max=1317.4)
+23:04:44 | INFO | Saved sub_CT_09.mha (HU kept, min=-1000.0 max=1291.7)
+23:04:44 | INFO | Saved sub_CT_10.mha (HU kept, min=-1000.0 max=1290.6)
+23:04:44 | INFO | === DOWNSAMPLE (HU preserved) === sub_CT 10
+23:04:44 | INFO | === DRR ===
+23:04:44 | INFO | DRR CT_01.mha (1/10)
+23:04:47 | INFO | DRR CT_02.mha (2/10)
+23:04:49 | INFO | DRR CT_03.mha (3/10)
+23:04:52 | INFO | DRR CT_04.mha (4/10)
+23:04:54 | INFO | DRR CT_05.mha (5/10)
+23:04:57 | INFO | DRR CT_06.mha (6/10)
+23:04:59 | INFO | DRR CT_07.mha (7/10)
+23:05:01 | INFO | DRR CT_08.mha (8/10)
+23:05:04 | INFO | DRR CT_09.mha (9/10)
+23:05:06 | INFO | DRR CT_10.mha (10/10)
+23:05:07 | INFO | === COMPRESS === bins 760
+23:05:07 | INFO | === DVF (fixed=sub_CT_06, masked) ===
+23:06:29 | INFO | DVF 1/9 sub_CT_01.mha (masked DIR param)
+23:09:12 | INFO | DVF 2/9 sub_CT_02.mha (masked DIR param)
+23:09:12 | INFO | DVF 3/9 sub_CT_03.mha (masked DIR param)
+23:10:36 | INFO | DVF 4/9 sub_CT_04.mha (masked DIR param)
+23:12:00 | INFO | DVF 5/9 sub_CT_05.mha (masked DIR param)
+23:13:24 | INFO | DVF 6/9 sub_CT_07.mha (masked DIR param)
+23:16:12 | INFO | DVF 7/9 sub_CT_08.mha (masked DIR param)
+23:16:12 | INFO | DVF 8/9 sub_CT_09.mha (masked DIR param)
+23:18:01 | INFO | DVF 9/9 sub_CT_10.mha (masked DIR param)
+23:18:01 | INFO | === PREP_TRAIN ===
+23:18:02 | INFO | --- Processing Job 1/1: TCIA_S65 (TRAIN) ---
+23:18:02 | INFO |   > Categorizing and converting 760 projections...
+23:18:02 | INFO |   > Converting and downsampling 10 CT volumes to SourceVolumes/...
+23:18:02 | INFO |   > Converting and downsampling 9 displacement fields to DVFs/...
+23:18:04 | INFO |   > Converting and downsampling 2 masks to Masks/...
+23:18:04 | INFO |   > Extracting angles from: Geometry.xml
+23:18:05 | INFO |   > Saved Angles.csv (76 entries)
+23:18:05 | INFO | Done in 13.6 min -> /home/abhishek/Voxel_GAN/DIR EXPERIMENTS/arms/A2_tcia/runs/TCIA_S65/ModelTraining/train/TCIA_S65
+Resizing Mask_Lung.mha: (160, 160, 160) -> (128, 128, 128)
+Resizing Mask_Body.mha: (160, 160, 160) -> (128, 128, 128)

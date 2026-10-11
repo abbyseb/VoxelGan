@@ -75,6 +75,12 @@ The task is to predict a patient's full breathing motion from **one 3D planning 
 
 Test patients never appear in training: DIR-Lab and POPI are separate datasets from TCIA. All headline numbers use the corrected 2 mm scorer (section Code verification).
 
+## Update 8–11 Oct 2026: X-ray models (A2 verified, A2-TCIA)
+
+- **A2 weights found** on the external drive and re-verified (7.30 / 7.12 stands). "Incorrect DRR" referred to the old DIR-Lab test-DRR orbit, not A2's training data.
+- **A2's network (concatenated VoxelMap) never sees the CT**: it predicts motion from two X-rays only; the CT is only warped afterwards.
+- **A2-TCIA** (same network and settings, trained on 82 TCIA scans, 56,088 pairs, ~39 h): DIR-Lab **5.14 mm** (C1–5 3.15, C6–10 7.13) vs A2 7.12 and single CT 4.07. Better data helps a lot, but X-ray-only VoxelMap is worse than the single-CT model on every case.
+
 ## How we got from 4.70 to 3.87 mm (history; see the 8 Oct correction above)
 
 The biggest single step was fixing how DIR-Lab was fed to the network (4.70 → 4.25 mm); after that, only the hybrid loss and mirror averaging moved the number by more than 0.1 mm. All values are DIR-Lab TRE300 in mm.
