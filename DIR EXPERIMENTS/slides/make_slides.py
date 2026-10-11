@@ -311,6 +311,7 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 ## Slide T2 · 1 Oct · + augmentation and cosine learning rate (TCIA-lite)
 
+- Pictures show the **plain** prediction (no mirror); mirror results for the small models are on slide T3.
 - Flip, shift, zoom, brightness and noise; cosine learning rate. This became the **small model**.
 - C01 improves clearly (less overshoot); C08 is still much too small: breath depth again.
 
@@ -329,6 +330,14 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 - Average each prediction with the prediction on the left-right mirrored CT (left-right motion sign flipped back).
 - Free (no training). Helps both cases a little here; −0.18 mm on all 10 cases for the big model.
 - The big model's motion is sharper and more patchy than the small model's (it was trained on 64³ patches).
+- Idea: standard test-time augmentation, as in nnU-Net (Isensee et al. 2018, arXiv:1809.10486), which mirrors at inference but does not measure the gain. For motion, the left-right component must also be negated when flipping back. The gain below is our own measurement.
+- Mirror also tested on the small (TCIA-lite) models: it helps, but less, because they were trained with left-right flips and already give nearly the same answer on the mirrored CT.
+
+| Model (DIR-Lab TRE300, all 10 cases) | Plain | Mirror | Change |
+|---|---|---|---|
+| TCIA-lite (full160-aug, epochs 36–40) | 4.47 | 4.40 | −0.07 |
+| Small hybrid (2-seed mean, epochs 36–40) | 4.17 | 4.06 | −0.10 |
+| **Big model TCIA3.5 (epochs 96–100)** | 4.20 | 4.02 | **−0.18** |
 
 ![flip a](figs/T3_flip_a.png)
 
@@ -344,6 +353,7 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 
 ## Slide T4 · 2 Oct · Hybrid loss on the small model
 
+- Pictures show the **plain** prediction (no mirror); mirror results for the small models are on slide T3.
 - Motion + 10 × image match + 0.1 × smoothness. The image term pulls the warped CT toward the real T00.
 - Both cases improve; the error images get darker around the diaphragm.
 
