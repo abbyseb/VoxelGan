@@ -62,6 +62,9 @@ def tl(step):
     out += "| TRE75 (mm, mean ± SD) | " + " | ".join(pm(g[(c, l)], "tre75") for c in cs for l in labs) + " |\n"
     out += "| TRE300 (mm, mean ± SD) | " + " | ".join(pm(g[(c, l)], "tre300") for c in cs for l in labs) + " |\n"
     out += "| Lung NCC | " + " | ".join(f"{g[(c, l)]['lung_ncc']:.3f}" for c in cs for l in labs) + " |"
+    r1 = {r["row"]: r for r in rows}
+    out += "\n\n**All 10 DIR-Lab cases** (mean ± SD over cases):\n\n| | TRE75 (mm) | TRE300 (mm) |\n|---|---|---|\n"
+    out += "\n".join(f"| {l} | {pm(r1[l], 'all10_tre75')} | {pm(r1[l], 'all10_tre300')} |" for l in labs)
     return out
 fig, ax = plt.subplots(figsize=(8, 4)); ideas = ["Push labels", "Combine old models", "EPE loss", "Brightness match", "Mirror (flip)", "Hybrid loss (small)"]; g = [-0.09, 0.02, -0.06, 0.39, -0.18, -0.30]
 ax.barh(ideas, g, color=["tab:green" if x <= -0.1 else ("tab:red" if x > 0.05 else "lightgrey") for x in g]); ax.axvline(-0.1, ls="--", color="k", lw=1); ax.text(-0.105, 5.4, "pass bar −0.1 mm", ha="right", fontsize=9)

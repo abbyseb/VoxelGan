@@ -167,6 +167,12 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | TRE300 (mm, mean ± SD) | 1.13 ± 0.59 | 1.78 ± 1.24 | 3.32 ± 1.87 |
 | Lung NCC | 0.972 | 0.941 | 0.875 |
 
+**All 10 DIR-Lab cases** (mean ± SD over cases):
+
+| | TRE75 (mm) | TRE300 (mm) |
+|---|---|---|
+| Elastix | 2.08 ± 0.77 | 1.96 ± 0.67 |
+
 ---
 
 ## Slide T1 · 30 Sep · Whole-lung view (A′-full160)
@@ -182,6 +188,12 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | TRE300 (mm, mean ± SD) | 3.16 ± 1.80 | 4.14 ± 2.43 | 8.51 ± 5.77 |
 | Lung NCC | 0.928 | 0.923 | 0.853 |
 
+**All 10 DIR-Lab cases** (mean ± SD over cases):
+
+| | TRE75 (mm) | TRE300 (mm) |
+|---|---|---|
+| A′-full160 | 4.65 ± 1.85 | 4.52 ± 1.74 |
+
 ---
 
 ## Slide T2 · 1 Oct · + augmentation and cosine learning rate (TCIA-lite)
@@ -196,6 +208,12 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | TRE75 (mm, mean ± SD) | 2.48 ± 1.28 | 4.28 ± 2.30 | 9.56 ± 6.40 |
 | TRE300 (mm, mean ± SD) | 2.37 ± 1.32 | 4.29 ± 2.44 | 8.84 ± 6.24 |
 | Lung NCC | 0.956 | 0.927 | 0.869 |
+
+**All 10 DIR-Lab cases** (mean ± SD over cases):
+
+| | TRE75 (mm) | TRE300 (mm) |
+|---|---|---|
+| TCIA-lite | 4.56 ± 1.91 | 4.47 ± 1.76 |
 
 ---
 
@@ -215,6 +233,13 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | TRE300 (mm, mean ± SD) | 1.90 ± 1.16 | 1.82 ± 1.01 | 4.05 ± 1.79 | 3.53 ± 1.98 | 9.99 ± 6.62 | 9.44 ± 6.18 |
 | Lung NCC | 0.970 | 0.969 | 0.933 | 0.939 | 0.851 | 0.853 |
 
+**All 10 DIR-Lab cases** (mean ± SD over cases):
+
+| | TRE75 (mm) | TRE300 (mm) |
+|---|---|---|
+| Big, plain | 4.48 ± 2.48 | 4.28 ± 2.26 |
+| Big, flip | 4.27 ± 2.41 | 4.10 ± 2.19 |
+
 ---
 
 ## Slide T4 · 2 Oct · Hybrid loss on the small model
@@ -231,6 +256,13 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | TRE75 (mm, mean ± SD) | 2.48 ± 1.28 | 2.34 ± 1.54 | 4.28 ± 2.30 | 3.61 ± 1.96 | 9.56 ± 6.40 | 8.46 ± 5.90 |
 | TRE300 (mm, mean ± SD) | 2.37 ± 1.32 | 2.09 ± 1.41 | 4.29 ± 2.44 | 3.73 ± 2.15 | 8.84 ± 6.24 | 7.90 ± 5.59 |
 | Lung NCC | 0.956 | 0.962 | 0.927 | 0.918 | 0.869 | 0.874 |
+
+**All 10 DIR-Lab cases** (mean ± SD over cases):
+
+| | TRE75 (mm) | TRE300 (mm) |
+|---|---|---|
+| Small, old loss | 4.56 ± 1.91 | 4.47 ± 1.76 |
+| Small, hybrid | 4.29 ± 1.79 | 4.17 ± 1.72 |
 
 ---
 
@@ -249,6 +281,13 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | TRE300 (mm, mean ± SD) | 1.82 ± 1.01 | 2.17 ± 1.17 | 3.53 ± 1.98 | 2.94 ± 1.75 | 9.44 ± 6.18 | 8.41 ± 5.86 |
 | Lung NCC | 0.969 | 0.953 | 0.939 | 0.941 | 0.853 | 0.870 |
 
+**All 10 DIR-Lab cases** (mean ± SD over cases):
+
+| | TRE75 (mm) | TRE300 (mm) |
+|---|---|---|
+| Big old, flip | 4.27 ± 2.41 | 4.10 ± 2.19 |
+| Big hybrid, flip | 3.94 ± 1.98 | 3.82 ± 1.80 |
+
 ---
 
 ## Slide T6 · 4–6 Oct · Second seed: the gain does not repeat
@@ -266,6 +305,13 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | TRE300 (mm, mean ± SD) | 2.07 ± 1.17 | 1.96 ± 1.02 | 3.52 ± 1.99 | 3.57 ± 2.35 | 9.49 ± 6.38 | 10.44 ± 7.07 |
 | Lung NCC | 0.964 | 0.961 | 0.943 | 0.940 | 0.861 | 0.856 |
 
+**All 10 DIR-Lab cases** (mean ± SD over cases):
+
+| | TRE75 (mm) | TRE300 (mm) |
+|---|---|---|
+| Big old s2, flip | 4.35 ± 2.41 | 4.17 ± 2.21 |
+| Big hybrid s2, flip | 4.45 ± 2.64 | 4.33 ± 2.46 |
+
 ---
 
 ## Slide T7 · 8 Oct · Pre-set combination (2 small hybrid + 2 big old, flip)
@@ -281,6 +327,12 @@ This first picture is **Elastix itself**: the best a model could do by copying i
 | TRE75 (mm, mean ± SD) | 1.88 ± 0.96 | 3.44 ± 1.84 | 9.16 ± 6.13 |
 | TRE300 (mm, mean ± SD) | 1.67 ± 0.93 | 3.44 ± 2.02 | 8.51 ± 5.92 |
 | Lung NCC | 0.976 | 0.940 | 0.873 |
+
+**All 10 DIR-Lab cases** (mean ± SD over cases):
+
+| | TRE75 (mm) | TRE300 (mm) |
+|---|---|---|
+| Combination | 4.08 ± 2.08 | 3.94 ± 1.96 |
 
 ---
 

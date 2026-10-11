@@ -34,6 +34,8 @@ G = Path("/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160")
 L = G / "TCIA_lite"
 FIGS = DIR_EXP / "slides" / "figs"
 CASES = (1, 4, 8)
+ALL = tuple(range(1, 11))
+COMBO = ("small_h_s1", "small_h_s2", "big_old_s1", "big_old_s2")
 VOX_MM = 2.0  # iso grid spacing; u and Elastix fields are in voxels
 CK = {
     "full160": L / "run_A2_full160/DecoderCRB/checkpoints/epoch_040.pt",
@@ -60,33 +62,54 @@ def ncc(a, b):
 
 def load_cases():
     D = {}
-    for c in CASES:
+    for c in ALL:
         p = v2.pack_case(c)
+        D[c] = {"p": p}
+        if c not in CASES:
+            continue
         ct = sitk.ReadImage(str(p["train"] / "CT_01.mha"))
         t00 = v2.resample_to_iso(sitk.GetArrayFromImage(ct).astype(np.float32), p["origin_xyz"], p["spacing_xyz"],
                                  p["origin_iso_xyz"], order=1, cval=-1000.0)
         reg = binary_dilation(p["lung_iso"], iterations=5)
         z = int(np.round(np.where(p["hu_iso"] < -400)[0].mean()))  # same slice rule as slide 5b (explain_figs.py)
-        D[c] = {"p": p, "t00": t00, "reg": reg, "z": z, "el": v2.elastix_on_iso(p),
-                "tre0": tre(np.zeros((*p["hu_iso"].shape, 3), np.float32), c, p)}
+        D[c].update({"t00": t00, "reg": reg, "z": z, "el": v2.elastix_on_iso(p),
+                     "tre0": tre(np.zeros((*p["hu_iso"].shape, 3), np.float32), c, p)})
     return D
 
 
 def predict_all(D):
+    """Fields U[(name, mode, case)] for the figure cases; T[(name, mode)][case] = TRE dict for all 10 cases."""
     dev = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-    U = {}
+    U, T, flips = {}, {}, {}
     for name, path in CK.items():
         g = load_ckpt(path, dev)
-        for c in CASES:
+        for c in ALL:
             a, m = mt.predict_mirror(g, dev, D[c]["p"]["mu"])
-            U[(name, "plain", c)], U[(name, "flip", c)] = a, m
+            for mode, u in (("plain", a), ("flip", m)):
+                T.setdefault((name, mode), {})[c] = tre(u, c, D[c]["p"])
+                if c in CASES:
+                    U[(name, mode, c)] = u
+            if name in COMBO:
+                flips[(name, c)] = m
         del g
         torch.cuda.empty_cache()
         print("predicted", name, flush=True)
-    for c in CASES:  # pre-set combination: mean of the four flip fields (as combo_small_big.py)
-        U[("combo", "flip", c)] = np.mean([U[(k, "flip", c)] for k in ("small_h_s1", "small_h_s2", "big_old_s1",
-                                                                         "big_old_s2")], 0)
-    return U
+    for c in ALL:  # pre-set combination: mean of the four flip fields (as combo_small_big.py)
+        u = np.mean([flips[(k, c)] for k in COMBO], 0)
+        T.setdefault(("combo", "flip"), {})[c] = tre(u, c, D[c]["p"])
+        if c in CASES:
+            U[("combo", "flip", c)] = u
+    for c in ALL:
+        T.setdefault(("elastix", "-"), {})[c] = tre(D[c]["el"] if c in CASES else v2.elastix_on_iso(D[c]["p"]), c,
+                                                   D[c]["p"])
+        T.setdefault(("none", "-"), {})[c] = tre(np.zeros((*D[c]["p"]["hu_iso"].shape, 3), np.float32), c,
+                                                D[c]["p"])
+    return U, T
+
+
+def full10(T, key):
+    """Mean ± SD over the 10 DIR-Lab cases of each case's mean TRE, for 75 and 300 landmarks."""
+    return {k: (float(np.mean(v := [T[key][c][k][0] for c in ALL])), float(np.std(v))) for k in ("75", "300")}
 
 
 def tre(u, c, p):
@@ -104,7 +127,7 @@ def pm(t):
     return f"{t[0]:.2f} ± {t[1]:.2f}"
 
 
-def figure(D, label, ufn, title, fname):
+def figure(D, U, T, label, key, title, fname):
     """Slide-5b layout (as analysis_2026-10-03/explain_figs.py), one model, rows C01/C04/C08.
     Columns: input T50, target T00, warped by model, target - input, target - warped, |u| with model/Elastix arrows."""
     H = 5.0 * len(CASES) + 0.8  # +0.8 in for the two-line title
@@ -114,7 +137,7 @@ def figure(D, label, ufn, title, fname):
     for i, c in enumerate(CASES):
         d = D[c]
         z, el, inp, tgt = d["z"], d["el"], d["p"]["hu_iso"], d["t00"]
-        u = ufn(c)
+        u = D[c]["el"] if key[0] == "elastix" else U[(*key, c)]
         w, t, nc = row_stats(D, c, u)
         stats.append({"case": c, "row": label, "tre75": round(t["75"][0], 3), "tre75_sd": round(t["75"][1], 3),
                       "tre300": round(t["300"][0], 3), "tre300_sd": round(t["300"][1], 3), "lung_ncc": round(nc, 4)})
@@ -138,9 +161,12 @@ def figure(D, label, ufn, title, fname):
         ax[i, 5].legend(loc="lower right", fontsize=8)
         for a in ax[i]:
             a.axis("off")
-    m75, m300 = (np.mean([s[k] for s in stats]) for k in ("tre75", "tre300"))
-    fig.suptitle(f"{title}\n{label} (mean of C01/C04/C08: TRE75 {m75:.2f} mm, TRE300 {m300:.2f} mm; per case "
-                 "mean ± SD over landmarks) — coronal slice through lung centre, head at top", fontsize=14)
+    f = full10(T, key)
+    for r in stats:
+        r.update({"all10_tre75": round(f["75"][0], 3), "all10_tre75_sd": round(f["75"][1], 3),
+                  "all10_tre300": round(f["300"][0], 3), "all10_tre300_sd": round(f["300"][1], 3)})
+    fig.suptitle(f"{title}\n{label} — all 10 DIR-Lab cases: TRE75 {pm(f['75'])} mm, TRE300 {pm(f['300'])} mm "
+                 "(mean ± SD over cases) — coronal slice through lung centre, head at top", fontsize=14)
     fig.tight_layout(rect=(0, 0, 1, 1 - 0.8 / H), h_pad=2.0)
     fig.savefig(FIGS / fname, dpi=90)
     plt.close(fig)
@@ -150,32 +176,32 @@ def figure(D, label, ufn, title, fname):
 
 def main():
     D = load_cases()
-    U = predict_all(D)
-    E = {c: D[c]["el"] for c in CASES}
+    U, T = predict_all(D)
     S = {}
     steps = [  # (step, title, [(label, field, file)])
-        ("T0", "Reference: Elastix (the label the models learn from)", [("Elastix", lambda c: E[c], "T0_reference.png")]),
+        ("T0", "Reference: Elastix (the label the models learn from)", [("Elastix", ("elastix", "-"), "T0_reference.png")]),
         ("T1", "30 Sep · Whole-lung view, epoch 40, no augmentation",
-         [("A′-full160", lambda c: U[("full160", "plain", c)], "T1_full160.png")]),
+         [("A′-full160", ("full160", "plain"), "T1_full160.png")]),
         ("T2", "1 Oct · + augmentation and cosine lr (full160-aug = TCIA-lite, epoch 40)",
-         [("TCIA-lite", lambda c: U[("lite", "plain", c)], "T2_lite_aug.png")]),
+         [("TCIA-lite", ("lite", "plain"), "T2_lite_aug.png")]),
         ("T3", "1 Oct · Mirror (flip) averaging on the big model (TCIA3.5 seed 1, epoch 100)",
-         [("Big, plain", lambda c: U[("big_old_s1", "plain", c)], "T3_flip_a.png"),
-          ("Big, flip", lambda c: U[("big_old_s1", "flip", c)], "T3_flip_b.png")]),
+         [("Big, plain", ("big_old_s1", "plain"), "T3_flip_a.png"),
+          ("Big, flip", ("big_old_s1", "flip"), "T3_flip_b.png")]),
         ("T4", "2 Oct · Hybrid loss on the small model (seed 1, epoch 40)",
-         [("Small, old loss", lambda c: U[("lite", "plain", c)], "T4_hybrid_small_a.png"),
-          ("Small, hybrid", lambda c: U[("small_h_s1", "plain", c)], "T4_hybrid_small_b.png")]),
+         [("Small, old loss", ("lite", "plain"), "T4_hybrid_small_a.png"),
+          ("Small, hybrid", ("small_h_s1", "plain"), "T4_hybrid_small_b.png")]),
         ("T5", "2–4 Oct · Hybrid loss on the big model, seed 1 (epoch 100, flip)",
-         [("Big old, flip", lambda c: U[("big_old_s1", "flip", c)], "T5_hybrid_big_s1_a.png"),
-          ("Big hybrid, flip", lambda c: U[("big_hyb_s1", "flip", c)], "T5_hybrid_big_s1_b.png")]),
+         [("Big old, flip", ("big_old_s1", "flip"), "T5_hybrid_big_s1_a.png"),
+          ("Big hybrid, flip", ("big_hyb_s1", "flip"), "T5_hybrid_big_s1_b.png")]),
         ("T6", "4–6 Oct · Second seed (epoch 100, flip)",
-         [("Big old s2, flip", lambda c: U[("big_old_s2", "flip", c)], "T6_seed2_a.png"),
-          ("Big hybrid s2, flip", lambda c: U[("big_hyb_s2", "flip", c)], "T6_seed2_b.png")]),
+         [("Big old s2, flip", ("big_old_s2", "flip"), "T6_seed2_a.png"),
+          ("Big hybrid s2, flip", ("big_hyb_s2", "flip"), "T6_seed2_b.png")]),
         ("T7", "8 Oct · Pre-set combination: 2 small hybrid + 2 big old models, flip, fields averaged",
-         [("Combination", lambda c: U[("combo", "flip", c)], "T7_combination.png")]),
+         [("Combination", ("combo", "flip"), "T7_combination.png")]),
     ]
     for step, title, models in steps:
-        S[step] = [r for lab, fn, f in models for r in figure(D, lab, fn, title, f)]
+        S[step] = [r for lab, key, f in models for r in figure(D, U, T, lab, key, title, f)]
+    S["all10_no_motion"] = {k: [round(x, 3) for x in v] for k, v in full10(T, ("none", "-")).items()}
     (FIGS / "timeline_stats.json").write_text(json.dumps(S, indent=1))
     print(json.dumps(S, indent=1))
 
