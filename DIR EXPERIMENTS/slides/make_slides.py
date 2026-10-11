@@ -360,6 +360,10 @@ This first picture is **Elastix itself**: the best a model could do by copying i
   - 0.25 / 0.02 ≈ 12 → **× 10** brings the image term to ≈ 0.2, level with motion. Without it the image term would be ~10× too small to matter.
   - Smoothness × **0.1**: a light touch, only to stop jagged motion (first-order, see slide 9).
   - Fixed **before** training, never tuned on DIR-Lab. Checked later: × 30 was worse (4.34 vs 4.17 mm), so 10 stayed. Details on slide 8.
+- **Where 0.25 comes from, and what it is not:**
+  - It is the **training motion error** read from the big old-loss model's log: mean of epochs 90–100 = **0.248**. Units are **voxels** (2 mm each), so ≈ **0.5 mm** per direction. For scale: no motion = 0.685, label-noise floor ≈ 0.165.
+  - It is **not** the model's accuracy. It is (1) on training patients (new patients ≈ 0.55 vox ≈ 1.1 mm), (2) against Elastix, which is itself ≈ 2 mm off at landmarks, (3) averaged over all lung voxels, most of which barely move, and (4) per direction, not 3D distance.
+  - The real accuracy is the **TRE**: ≈ **4 mm** on new patients (DIR-Lab), 8–9 mm on the deep breather C08. 0.25 is only used to balance the loss.
 - Both cases improve; the error images get darker around the diaphragm.
 
 ![hybrid small a](figs/T4_hybrid_small_a.png)
