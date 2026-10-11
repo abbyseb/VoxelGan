@@ -69,7 +69,7 @@ def main():
     panels = [(el, "Elastix (reference)", "tab:green"),
               (old, f"Model, OLD scorer input\nagreement {c_old:.2f}", "tab:red"),
               (new, f"Model, FIXED scorer input\nagreement {c_new:.2f}", "tab:blue")]
-    fig, ax = plt.subplots(1, 3, figsize=(15, 5.6))
+    fig, ax = plt.subplots(1, 3, figsize=(15, 6.0))
     for a, (u, title, col) in zip(ax, panels):
         a.imshow(img, cmap="gray", vmin=0, vmax=1, origin="upper")
         ux, uy = u[z, yy, xx, 0], u[z, yy, xx, 1]
@@ -80,7 +80,7 @@ def main():
         a.set_xticks([]), a.set_yticks([])
     fig.suptitle(f"DIR-Lab C{CASE:02d}: breathing motion arrows (same model TCIA3, same slice, same arrow scale)",
                  fontsize=13)
-    fig.tight_layout()
+    fig.tight_layout(rect=(0, 0, 1, 0.94))
     fig.savefig(OUT, dpi=120)
     print("wrote", OUT)
 
