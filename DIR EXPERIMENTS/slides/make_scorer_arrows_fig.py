@@ -26,7 +26,7 @@ sys.path.insert(0, str(DIR_EXP / "scripts"))
 import eval_dir_tcia3_iso2mm_v2 as V2  # noqa: E402
 from prepare_a3_dir_case import hu_to_mu, norm_mu, resize_volume_zyx, upsample_dvf_voxel  # noqa: E402
 
-CASE = 8
+CASE = int(sys.argv[1]) if len(sys.argv) > 1 else 8
 OUT = DIR_EXP / "slides" / "figs" / f"21_arrows_c{CASE:02d}_old_vs_new.png"
 STEP = 6  # voxels between arrows
 
