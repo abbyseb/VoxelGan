@@ -194,13 +194,22 @@ Same network (UNetCRBDecoder, 1.07 M parameters) and base loss, different traini
 ## Slide 8 · How the weights were chosen (an educated guess)
 
 - **Loss = motion + 10 × image + 0.1 × smoothness.**
-- Rule of thumb: make each part about the same size at the start (image ≈ 0.02 × 10 ≈ 0.2, close to motion ≈ 0.25; smoothness a light touch).
+- Rule of thumb: make each part about the same size (image ≈ 0.02 × 10 ≈ 0.2, close to motion ≈ 0.25; smoothness a light touch).
 - **Why 10: the parts are in different units**, so they need balancing (not a correction of any error):
 
-| Loss part | What it measures | Units | Typical size at start |
+| Loss part | What it measures | Units | Typical size during training |
 |---|---|---|---|
 | Motion error (L1) | predicted motion vs Elastix | voxels (2 mm each) | about 0.25 |
 | Image error (L1) | warped CT vs real CT | image brightness, scaled 0–1 | about 0.02 |
+
+**Where these two numbers come from (measured, not assumed):**
+
+- **Motion error ≈ 0.25** = the training motion error the old-loss main model (TCIA3.5) settles at: mean over epochs 90–100 = **0.248**.
+  - Definition (`DVFLoss`): inside the lung mask, the mean of |Elastix label − prediction| over all voxels and the 3 components, in 2 mm voxels. So 0.25 ≈ 0.5 mm per component.
+  - For scale: predicting no motion gives 0.685; the measured label-noise floor is about 0.165.
+- **Image error ≈ 0.02** = the image term's size in practice: mean |real CT − warped CT| in the lung mask (dilated 2 voxels), on CT brightness min-max scaled to 0–1.
+  - Logged values: 0.019–0.023 during small-model hybrid training; 0.027 with the Elastix labels on 64³ patches (big-model safety check).
+- So 0.25 / 0.02 ≈ 12, rounded to **10**.
 
 - The image error is naturally about 10× smaller; added as is it would be almost invisible to training. × 10 brings it to about 0.2, so **both parts have about equal influence**.
 - **Fixed before training, never tuned on DIR-Lab** (tuning on the test set would inflate the result).
