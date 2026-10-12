@@ -7,24 +7,23 @@ Changes vs LNCC-only (one idea: give the network the target X-ray):
     DRR/back-projection: xray/drr_torch.py (cone-beam, RTK geometry, checked vs RTK Joseph). Made on the fly from the
     (geometrically augmented) target CT, no grad. Standardised per image (zero mean, unit std) so the scale of real
     X-rays does not matter.
-  * warm start from LNCC-only epoch 40; the new channel's weights start at ZERO, so at step 0 the model equals LNCC-only
-    exactly (checked in the gate).
-  * 10 epochs, cosine lr 1e-4 -> 1e-6.
+  * trained FROM SCRATCH, same recipe as LNCC-only: 40 epochs, cosine lr 1e-4 -> 1e-6, seed 20260929, same aug.
+    The LNCC-only run IS the matched no-X-ray baseline.
+  * LNCC computed with a separable box filter (3 x 1-D passes, 5 maps in one grouped conv): same loss to 8 digits,
+    35x faster than the 9^3 conv3d (4.6 vs 162 ms fwd+bwd at 160^3). Pure speed-up.
 Loss unchanged: 1 - lung LNCC_9(tgt, warp(ref_geo, pred)). No labels, no regulariser.
 
---zero-xray = MATCHED CONTROL (same everything, X-ray channel all zeros) -> run_A2_full160_aug_xray1_ctrl.
-Any gain of X1 over the control is from the X-ray, not from 10 more epochs.
+--zero-xray: optional sanity run with the X-ray channel all zeros -> run_A2_full160_aug_xray1_ctrl (not queued).
 
 Logged each epoch: val LNCC (real X-ray), val LNCC with a SHUFFLED X-ray (another val pair's; every 5th pair),
 val DVF MAE vs Elastix, fold %, std log|det J|.
 
-GATE: consistency check + LNCC gate (as before) + (c) warm-started model == LNCC-only output (max |diff| < 1e-5)
-      + (d) the new X-ray weights receive a non-zero gradient.
+GATE: consistency check + LNCC gate (as before) + (c) fast LNCC == 9^3-conv LNCC on a real pair (rel diff < 1e-5)
+      + (d) the X-ray input weights receive a non-zero gradient.
 
   cd PopulationStudy/ClinicalExperiments/Grid160/TCIA_lite/run_A2_full160_aug_xray1
   python -u scripts/train_xray1.py --gpu 1 --check-only
-  python -u scripts/train_xray1.py --gpu 1                 # X1
-  python -u scripts/train_xray1.py --gpu 1 --zero-xray     # matched control
+  python -u scripts/train_xray1.py --gpu 1                 # X1 (from scratch, 40 epochs)
 """
 from __future__ import annotations
 
@@ -52,8 +51,7 @@ LITE = RUN.parent
 E1 = LITE.parent / "Experiment1"
 T35 = LITE.parent / "TCIA3.5"
 FILENAME = "crb_dec_tcia_lite_run_a2_full160_aug_xray1"
-LABEL = "TCIA-lite X1 · 160³ · CT + 1 AP DRR (back-projected) · loss = local NCC only · aug · cosine lr · warm start"
-INIT = LITE / "run_A2_full160_aug_unsup_lncc" / "DecoderCRB" / "checkpoints" / "epoch_040.pt"
+LABEL = "TCIA-lite X1 · 160³ · CT + 1 AP DRR (back-projected) · loss = local NCC only · aug · cosine lr · from scratch"
 XRAY_ANGLES = [0.0]
 LNCC_WIN = 9
 CKPT_DIR = RUN / "DecoderCRB" / "checkpoints"
@@ -163,7 +161,24 @@ def dilate(mask: torch.Tensor, r: int = 2) -> torch.Tensor:
     return F.max_pool3d((mask > 0.5).float(), 2 * r + 1, stride=1, padding=r)
 
 
+def box_mean(x: torch.Tensor, k: int = LNCC_WIN) -> torch.Tensor:
+    """k^3 box mean with zero padding (== conv3d with ones/k^3), as 3 separable 1-D passes, per channel."""
+    c = x.shape[1]
+    for ks in ((k, 1, 1), (1, k, 1), (1, 1, k)):
+        x = F.conv3d(x, torch.full((c, 1, *ks), 1.0 / k, device=x.device, dtype=x.dtype),
+                     padding=tuple(s // 2 for s in ks), groups=c)
+    return x
+
+
 def lncc_term(ref_geo, tgt, pred, mask, k: int = LNCC_WIN) -> torch.Tensor:
+    w = warp(ref_geo, pred); m = dilate(mask)
+    a, b, wt, ww, tt = box_mean(torch.cat([w, tgt, w * tgt, w * w, tgt * tgt], 1), k).unbind(1)
+    cc = (wt - a * b) / torch.sqrt((ww - a * a).clamp_min(1e-6) * (tt - b * b).clamp_min(1e-6))
+    return 1 - (cc[:, None] * m).sum() / m.sum().clamp_min(1.0)
+
+
+def lncc_term_conv(ref_geo, tgt, pred, mask, k: int = LNCC_WIN) -> torch.Tensor:
+    """Reference 9^3 conv3d version (LNCC-only run); used only by the gate."""
     w = warp(ref_geo, pred); m = dilate(mask); o = torch.ones(1, 1, k, k, k, device=w.device) / k ** 3
     mu = lambda x: F.conv3d(x, o, padding=k // 2)
     a, b = mu(w), mu(tgt)
@@ -221,15 +236,6 @@ class XrayUNet(UNetCRBDecoder):
         return super().forward(torch.cat([reference_ct, xray], 1), ref_phase, target_phase)
 
 
-def warm_start(model: XrayUNet, state: dict) -> None:
-    """Load a 1-channel UNetCRBDecoder state; X-ray input weights = 0 so the output is unchanged."""
-    st = dict(state)
-    for k in ("enc1.conv1.weight", "enc1.proj.weight"):
-        w = st[k]
-        st[k] = torch.cat([w, torch.zeros(w.shape[0], model.n_xray, *w.shape[2:], dtype=w.dtype)], 1)
-    model.load_state_dict(st, strict=True)
-
-
 def xray_channel(tgt: torch.Tensor, angles=XRAY_ANGLES) -> torch.Tensor:
     """target CT (B,1,D,H,W) -> back-projected, per-image standardised DRR(s) (B,len(angles),D,H,W). No grad."""
     with torch.no_grad():
@@ -269,18 +275,15 @@ def load_manifest() -> dict:
 
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--epochs", type=int, default=10)
+    ap.add_argument("--epochs", type=int, default=40)
     ap.add_argument("--lr", type=float, default=1e-4)
     ap.add_argument("--lr-min", type=float, default=1e-6)
     ap.add_argument("--gpu", type=int, default=1)
     ap.add_argument("--seed", type=int, default=20260929)
     ap.add_argument("--check-only", action="store_true")
     ap.add_argument("--zero-xray", action="store_true", help="matched control: X-ray channel all zeros")
-    ap.add_argument("--init", type=str, default=None, help="override warm-start checkpoint (gate tests only)")
     args = ap.parse_args()
-    global RUN, CKPT_DIR, WEIGHTS_DIR, PLOTS_DIR, FILENAME, INIT
-    if args.init:
-        INIT = Path(args.init)
+    global RUN, CKPT_DIR, WEIGHTS_DIR, PLOTS_DIR, FILENAME
     if args.zero_xray:
         RUN = RUN.parent / "run_A2_full160_aug_xray1_ctrl"
         FILENAME += "_ctrl"
@@ -319,30 +322,22 @@ def main() -> int:
     if not hg["ok"]:
         raise SystemExit("UNSUP GATE FAILED - not training")
     print(f"[{FILENAME}] unsup gate passed | LNCC_WIN {LNCC_WIN}", flush=True)
-    init_state = torch.load(str(INIT), map_location="cpu", weights_only=False)["generator"]
-    base = UNetCRBDecoder(im_size=im_size, n_phases=n_phases).to(device).eval()
-    base.load_state_dict(init_state)
-    xm = XrayUNet(n_xray=len(XRAY_ANGLES), im_size=im_size, n_phases=n_phases).to(device).eval()
-    warm_start(xm, init_state)
     d0 = valset[len(valset) // 2]
-    r0, t0_ = (d0[k][None].to(device) for k in ("reference_ct", "target_ct"))
+    r0, t0_, m0, v0 = (d0[k][None].to(device) for k in ("reference_ct", "target_ct", "lung_mask", "target_dvf"))
     rp0, tp0 = d0["ref_phase"][None].to(device), d0["target_phase"][None].to(device)
-    xr0 = xray_channel(t0_)
-    tf32 = torch.backends.cudnn.allow_tf32
-    torch.backends.cudnn.allow_tf32 = False          # exact comparison (TF32 rounding differs by channel count)
     with torch.no_grad():
-        diff = float((xm(r0, rp0, tp0, xr0) - base(r0, rp0, tp0)).abs().max())
-    torch.backends.cudnn.allow_tf32 = tf32
-    xm.train()
-    lncc_term(r0, t0_, xm(r0, rp0, tp0, xr0), d0["lung_mask"][None].to(device)).backward()
+        lf, lc = float(lncc_term(r0, t0_, v0, m0)), float(lncc_term_conv(r0, t0_, v0, m0))
+    xm = XrayUNet(n_xray=len(XRAY_ANGLES), im_size=im_size, n_phases=n_phases).to(device).train()
+    xr0 = xray_channel(t0_)
+    lncc_term(r0, t0_, xm(r0, rp0, tp0, xr0), m0).backward()
     gnew = float(xm.enc1.conv1.weight.grad[:, 1:].norm())
-    hg.update({"c_warm_start_max_abs_diff": diff, "d_xray_weight_grad_norm": gnew,
-               "xray_channel_std": float(xr0.std()), "init": str(INIT)})
+    hg.update({"c_fast_lncc": lf, "c_conv_lncc": lc, "c_rel_diff": abs(lf - lc) / max(abs(lc), 1e-12),
+               "d_xray_weight_grad_norm": gnew, "xray_channel_std": float(xr0.std())})
     (RUN / "logs" / "unsup_gate.json").write_text(json.dumps(hg, indent=2) + "\n")
-    print(f"[{FILENAME}] warm-start diff {diff:.2e} | X-ray weight grad {gnew:.3e}", flush=True)
-    if not (diff < 1e-5 and gnew > 0):
+    print(f"[{FILENAME}] fast LNCC {lf:.7f} vs conv {lc:.7f} | X-ray weight grad {gnew:.3e}", flush=True)
+    if not (hg["c_rel_diff"] < 1e-5 and gnew > 0):
         raise SystemExit("X-RAY GATE FAILED - not training")
-    del base, xm
+    del xm
     torch.cuda.empty_cache()
     if args.check_only:
         return 0
@@ -355,7 +350,6 @@ def main() -> int:
     valloader = DataLoader(valset, shuffle=False, **dl_kw)
 
     generator = XrayUNet(n_xray=len(XRAY_ANGLES), im_size=im_size, n_phases=n_phases).to(device)
-    warm_start(generator, init_state)
     xin = (lambda t: torch.zeros(t.shape[0], len(XRAY_ANGLES), *t.shape[2:], device=t.device)) if args.zero_xray \
         else xray_channel
     mae_loss = DVFLoss()
@@ -448,7 +442,7 @@ def main() -> int:
                    "best_epoch": best_epoch, "elapsed_s": el,
                    "cfg": {"torch_seed": args.seed, "lr": args.lr, "lr_min": args.lr_min, "schedule": "cosine",
                            "run": RUN.name, "loss": "lncc_only", "zero_xray": args.zero_xray,
-                           "xray_angles": XRAY_ANGLES, "init": str(INIT), "n_xray": len(XRAY_ANGLES),
+                           "xray_angles": XRAY_ANGLES, "init": "scratch", "n_xray": len(XRAY_ANGLES),
                            "lncc_win": LNCC_WIN, "unsup_gate": hg, "history": hist, "im_size": im_size, "aug": AUG_CFG,
                            "manifest": "data_allscans/manifest.json", "consistency_check": chk}}
         torch.save(payload, str(CKPT_DIR / f"epoch_{epoch:03d}.pt"))

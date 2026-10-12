@@ -1,4 +1,4 @@
-"""Per-epoch TRE watcher for X1 (CT + 1 AP DRR) and its matched control (X-ray zeroed). Same scorer as score_unsup.py:
+"""Per-epoch TRE watcher for X1 (CT + 1 AP DRR, trained from scratch, 40 epochs); baseline = LNCC-only run (unsup_lncc_tre.json). Same scorer as score_unsup.py:
 DIR-Lab TRE300 (10, 2 mm iso v2) and POPI (6), plain + mirror, folding on DIR fields.
 The conditioning X-ray is the DRR of the TARGET CT made with xray/drr_torch.py (same code as training):
   DIR-Lab: input CT_06 (T50), phases 5 -> 0, target = CT_01 (T00) resampled onto the same iso grid.
@@ -16,9 +16,9 @@ from dirlab_tre import landmarks_300
 L = Path("/home/abhishek/Voxel_GAN/PopulationStudy/ClinicalExperiments/Grid160/TCIA_lite")
 spec = importlib.util.spec_from_file_location("x1", L / "run_A2_full160_aug_xray1" / "scripts" / "train_xray1.py")
 X1 = importlib.util.module_from_spec(spec); spec.loader.exec_module(X1)
-RUNS = {"xray1": L / "run_A2_full160_aug_xray1", "xray1_ctrl": L / "run_A2_full160_aug_xray1_ctrl"}
+RUNS = {"xray1": L / "run_A2_full160_aug_xray1"}
 OUT = Path(__file__).resolve().parent / "xray1_tre.json"
-dev = torch.device("cuda:0"); Sp = v2.SPACING; EPOCHS = 10
+dev = torch.device("cuda:0"); Sp = v2.SPACING; EPOCHS = 40
 mm = v2.minmax
 
 packs = {c: v2.pack_case(c) for c in range(1, 11)}
