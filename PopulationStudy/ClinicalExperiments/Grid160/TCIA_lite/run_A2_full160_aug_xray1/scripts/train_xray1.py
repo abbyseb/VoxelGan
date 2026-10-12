@@ -15,7 +15,8 @@ Loss unchanged: 1 - lung LNCC_9(tgt, warp(ref_geo, pred)). No labels, no regular
 
 --zero-xray: optional sanity run with the X-ray channel all zeros -> run_A2_full160_aug_xray1_ctrl (not queued).
 
-Logged each epoch: val LNCC (real X-ray), val LNCC with a SHUFFLED X-ray (another val pair's; every 5th pair),
+Logged each epoch: TRAIN-EVAL LNCC (fixed 343 training pairs, every 19th, no aug, eval mode = same conditions as val,
+so train-eval vs val is the true generalisation gap), val LNCC (real X-ray), val LNCC with a SHUFFLED X-ray (another val pair's; every 5th pair),
 val DVF MAE vs Elastix, fold %, std log|det J|.
 
 GATE: consistency check + LNCC gate (as before) + (c) fast LNCC == 9^3-conv LNCC on a real pair (rel diff < 1e-5)
@@ -44,7 +45,7 @@ import numpy as np
 import torch
 import torch.nn.functional as F
 import torch.optim as optim
-from torch.utils.data import DataLoader
+from torch.utils.data import DataLoader, Subset
 
 RUN = Path(__file__).resolve().parents[1]
 LITE = RUN.parent
@@ -348,6 +349,7 @@ def main() -> int:
                  persistent_workers=True, prefetch_factor=2)
     trainloader = DataLoader(trainset, shuffle=True, generator=g_dl, **dl_kw)
     valloader = DataLoader(valset, shuffle=False, **dl_kw)
+    trevalloader = DataLoader(Subset(trainset, list(range(0, len(trainset), 19))), shuffle=False, **dl_kw)
 
     generator = XrayUNet(n_xray=len(XRAY_ANGLES), im_size=im_size, n_phases=n_phases).to(device)
     xin = (lambda t: torch.zeros(t.shape[0], len(XRAY_ANGLES), *t.shape[2:], device=t.device)) if args.zero_xray \
@@ -384,6 +386,12 @@ def main() -> int:
             n += 1
 
         generator.eval()
+        te, nte = 0.0, 0
+        with torch.no_grad():
+            for data in trevalloader:
+                ref, tgt, mask = (data[k].to(device) for k in ("reference_ct", "target_ct", "lung_mask"))
+                pred = generator(ref, data["ref_phase"].to(device), data["target_phase"].to(device), xin(tgt))
+                te += float(lncc_term(ref, tgt, pred, mask)); nte += 1
         va, va_mae, fold, lstd, nv = 0.0, 0.0, 0.0, 0.0, 0
         va_sh, nsh, prev_x = 0.0, 0, None
         with torch.no_grad():
@@ -402,7 +410,8 @@ def main() -> int:
                 fold += f; lstd += s_
                 nv += 1
         k_ = max(nv, 1)
-        hist.append({"epoch": epoch, "train_lncc_loss": tr / max(n, 1), "val_lncc_loss": va / k_,
+        hist.append({"epoch": epoch, "train_lncc_loss": tr / max(n, 1), "train_eval_lncc_loss": te / max(nte, 1),
+                     "val_lncc_loss": va / k_,
                      "val_lncc_loss_shuffled_xray": va_sh / max(nsh, 1),
                      "val_dvf_mae_vs_elastix": va_mae / k_, "val_fold_pct": fold / k_, "val_logjac_std": lstd / k_})
         (RUN / "logs" / "history.json").write_text(json.dumps(hist, indent=2) + "\n")
@@ -420,6 +429,8 @@ def main() -> int:
               % (epoch, tr_m, va_m, optimizer_g.param_groups[0]["lr"], el // 3600, (el % 3600) // 60, mem, mark),
               flush=True)
         h = hist[-1]
+        print(f"   gap: train-eval {h['train_eval_lncc_loss']:.6f} vs val {h['val_lncc_loss']:.6f} "
+              f"-> gap {h['val_lncc_loss'] - h['train_eval_lncc_loss']:.6f}", flush=True)
         print(f"   diag: val LNCC shuffled X-ray {h['val_lncc_loss_shuffled_xray']:.6f} | "
               f"val DVF MAE vs Elastix {h['val_dvf_mae_vs_elastix']:.4f} | fold {h['val_fold_pct']:.3f} % "
               f"| std log|detJ| {h['val_logjac_std']:.4f}", flush=True)
@@ -427,6 +438,8 @@ def main() -> int:
         xs = np.arange(1, epoch + 1)
         fig, ax = plt.subplots()
         ax.plot(xs, train_losses, "b-o", markersize=3, label="Train LNCC loss (augmented)")
+        ax.plot(xs, [h_["train_eval_lncc_loss"] for h_ in hist], "g-s", markersize=3,
+                label="Train-eval LNCC loss (343 train pairs, no aug, end of epoch)")
         ax.plot(xs, val_losses, "r-o", markersize=3, label="Val LNCC loss")
         ax.set_xlabel("Epoch")
         ax.set_ylabel("1 - lung LNCC")
