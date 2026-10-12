@@ -69,8 +69,9 @@ DIR-Lab TRE300 (plain + mirror, per case, last-5-epoch mean), POPI TRE, folding 
 #views/angle, zeroed/shuffled-X-ray controls. Expected ordering: CT-only 4.0 > X1 > … > X5 → toward Elastix 1.5–2.0.
 
 ## Keep rule (fixed now)
-A stage is kept if DIR-Lab last-5 TRE300 improves > 0.1 mm over the previous kept stage AND POPI does not get worse
-by > 0.05 mm AND the shuffled-X-ray control is worse than the real X-ray by > 0.3 mm.
+A stage is kept if DIR-Lab last-5 TRE300 improves > 0.1 mm over the previous kept stage AND >= 7/10 cases improve
+AND the shuffled-X-ray control is worse than the real X-ray by > 0.3 mm. POPI is reported but not part of the rule
+(user decision, 13 Oct 2026).
 
 ## Risks
 - **Train/test DRR mismatch.** Same code and geometry for TCIA and DIR-Lab DRRs, checked in X0.
