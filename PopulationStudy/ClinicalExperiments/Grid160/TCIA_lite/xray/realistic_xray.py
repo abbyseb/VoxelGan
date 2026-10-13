@@ -99,3 +99,42 @@ def from_line_integrals(ls: torch.Tensor, lb: torch.Tensor, level: str, gen: tor
     counts = torch.poisson(lam.cpu(), generator=gen).to(hu.device).float()
     counts = counts + cfg["sigma_e"] * torch.randn(counts.shape, generator=gen).to(hu.device)
     return -torch.log(counts.clamp_min(1.0) / n0)
+
+
+# ------------------------------------------------------------------ "clinic-like" randomised setting
+# Chosen after comparing with a real SPARE ClinicalVarian projection (check/real_vs_sim_spare_p1.png): the real image
+# looks between our 'physics' and 'mild' levels, with couch rails and cables that the CT does not contain.
+CLINIC = dict(spr=(0.0, 0.5), n0_log10=(4.7, 5.5), sigma_e=(5.0, 15.0), blur=(0.3, 0.8), shift=(-1, 1),
+              gamma=(0.9, 1.1), p_rails=0.7, p_cables=0.5)
+
+
+def _u(g, lo, hi):
+    return lo + (hi - lo) * float(torch.rand(1, generator=g))
+
+
+def clinic_projection(ls: torch.Tensor, lb: torch.Tensor, gen: torch.Generator, DET_PX_MM: float = dt.DET_SPACING):
+    """Mass line integrals -> one random clinic-like X-ray (-ln N/N0): random mild scatter/noise/blur/shift, a small
+    gamma (detector non-linearity), and sometimes couch rails (2 bright vertical bars) and cables (thin bright curves)."""
+    c = CLINIC
+    cfg = dict(spr=_u(gen, *c["spr"]), n0=10 ** _u(gen, *c["n0_log10"]), sigma_e=_u(gen, *c["sigma_e"]),
+               blur=_u(gen, *c["blur"]), shift=0.0)
+    LEVELS["_clinic"] = cfg
+    p = from_line_integrals(ls, lb, "_clinic", gen, DET_PX_MM=DET_PX_MM)
+    n_r, n_c = p.shape[-2:]
+    if float(torch.rand(1, generator=gen)) < c["p_rails"]:                     # carbon-fibre couch rails
+        w = max(1, int(round(6.0 / DET_PX_MM)))
+        x0 = int(_u(gen, 0.1, 0.35) * n_c); gap = int(_u(gen, 0.3, 0.5) * n_c)
+        for x in (x0, min(n_c - w, x0 + gap)):
+            p[..., :, x:x + w] += _u(gen, 0.3, 0.8)
+    if float(torch.rand(1, generator=gen)) < c["p_cables"]:                     # ECG / monitoring cables
+        yy = torch.arange(n_r, device=p.device, dtype=p.dtype)[:, None]; xx = torch.arange(n_c, device=p.device, dtype=p.dtype)[None]
+        for _ in range(int(_u(gen, 1, 3.99))):
+            a, b, f, ph = _u(gen, 0.1, 0.9) * n_r, _u(gen, 0.05, 0.2) * n_r, _u(gen, 0.5, 2.0), _u(gen, 0, 6.28)
+            line = a + b * torch.sin(2 * math.pi * f * xx / n_c + ph)
+            p += _u(gen, 0.1, 0.4) * torch.exp(-((yy - line) ** 2) / (2 * 0.8 ** 2))
+    s = int(round(_u(gen, *c["shift"])))
+    if s:
+        p = torch.roll(p, shifts=s, dims=-1)
+    gmm = _u(gen, *c["gamma"])
+    lo = p.amin((-2, -1), keepdim=True)
+    return lo + (p - lo).clamp_min(0) ** gmm
