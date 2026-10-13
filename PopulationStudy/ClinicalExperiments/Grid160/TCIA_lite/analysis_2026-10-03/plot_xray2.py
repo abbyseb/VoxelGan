@@ -17,7 +17,9 @@ ep = sorted(t1, key=int); a.plot([int(e) for e in ep], [np.mean(t1[e]["real"]["d
 for mode, c, s in (("real", "C0", "o-"), ("zero", "C1", "s--"), ("shuffled", "C3", "^--")):
     ep = sorted([e for e in t2 if mode in t2[e]], key=int)
     a.plot([int(e) for e in ep], [np.mean(t2[e][mode]["dir_plain"]) for e in ep], s, ms=4, color=c, label=f"X2 {mode} X-ray")
-a.axhline(3.5, color="k", ls=":", lw=1); a.set_ylim(3.2, 6.5); a.set_title("DIR-Lab TRE300 ↓ (dotted = 3.5 mm goal)"); a.set_ylabel("mm"); a.legend(fontsize=8)
+a.axhline(3.5, color="k", ls=":", lw=1); a.set_yscale("log"); a.set_ylim(2.5, 14)
+a.set_yticks([2.5, 3, 3.5, 4, 5, 6, 8, 10, 14]); a.set_yticklabels(["2.5", "3", "3.5", "4", "5", "6", "8", "10", "14"])
+a.set_title("DIR-Lab TRE300 ↓ (log scale; dotted = 3.5 mm goal)"); a.set_ylabel("mm"); a.legend(fontsize=8)
 a = ax[1]
 a.plot(g(h1, "epoch"), g(h1, "train_eval_lncc_loss"), ":", color="grey", label="X1 train")
 a.plot(g(h1, "epoch"), g(h1, "val_lncc_loss"), "-", color="grey", label="X1 val")
