@@ -71,17 +71,24 @@ def _gauss2d(img: torch.Tensor, sigma: float) -> torch.Tensor:
 def realistic_projection(hu: torch.Tensor, angle: float, level: str, gen: torch.Generator | None = None,
                          kvp: float = 120.0) -> torch.Tensor:
     """hu (B,1,D,H,W) on the 2 mm grid -> (B,1,n,n) -ln(N/N0). level 'clean' is not handled here (use dt.drr)."""
-    cfg = LEVELS[level]
     soft, bone = materials(hu)
     with torch.no_grad():
         ls = dt.drr(soft, [angle])[:, :1] / 10.0                                # g/cm^2 (drr integrates in mm)
         lb = dt.drr(bone, [angle])[:, :1] / 10.0
+    return from_line_integrals(ls, lb, level, gen, kvp, DET_PX_MM=dt.DET_SPACING)
+
+
+def from_line_integrals(ls: torch.Tensor, lb: torch.Tensor, level: str, gen: torch.Generator | None = None,
+                        kvp: float = 120.0, DET_PX_MM: float = dt.DET_SPACING) -> torch.Tensor:
+    """Soft-tissue / bone mass line integrals (B,1,rows,cols) in g/cm^2 -> -ln(N/N0) with the level's physics."""
+    cfg = LEVELS[level]
+    hu = ls
     e, phi = spectrum(kvp)
     w = torch.as_tensor(phi * e / (phi * e).sum(), dtype=hu.dtype, device=hu.device)   # energy-integrating detector
     ms = torch.as_tensor(_interp(e, MU_SOFT), dtype=hu.dtype, device=hu.device)
     mb = torch.as_tensor(_interp(e, MU_BONE), dtype=hu.dtype, device=hu.device)
     prim = (w.view(1, -1, 1, 1) * torch.exp(-(ms.view(1, -1, 1, 1) * ls + mb.view(1, -1, 1, 1) * lb))).sum(1, keepdim=True)
-    total = prim + cfg["spr"] * _gauss2d(prim, 48.0 / dt.DET_SPACING) if cfg["spr"] > 0 else prim
+    total = prim + cfg["spr"] * _gauss2d(prim, 48.0 / DET_PX_MM) if cfg["spr"] > 0 else prim
     total = _gauss2d(total, cfg["blur"])
     if cfg["shift"]:
         total = torch.roll(total, shifts=int(round(cfg["shift"])), dims=-1)
