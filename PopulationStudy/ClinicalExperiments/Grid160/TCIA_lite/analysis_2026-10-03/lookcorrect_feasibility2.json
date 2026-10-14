@@ -1,0 +1,316 @@
+{
+ "summary": {
+  "highpass/perfect": {
+   "mean_S/N": 0.478,
+   "corr_argmin_vs_true": 0.735,
+   "mean_abs_scale_err": 0.203
+  },
+  "highpass/realistic": {
+   "mean_S/N": -0.002,
+   "corr_argmin_vs_true": -0.132,
+   "mean_abs_scale_err": 0.28
+  },
+  "gradient/perfect": {
+   "mean_S/N": 0.536,
+   "corr_argmin_vs_true": 0.567,
+   "mean_abs_scale_err": 0.223
+  },
+  "gradient/realistic": {
+   "mean_S/N": 0.006,
+   "corr_argmin_vs_true": 0.357,
+   "mean_abs_scale_err": 0.198
+  },
+  "lncc2d/perfect": {
+   "mean_S/N": 0.48,
+   "corr_argmin_vs_true": 0.834,
+   "mean_abs_scale_err": 0.143
+  },
+  "lncc2d/realistic": {
+   "mean_S/N": 0.035,
+   "corr_argmin_vs_true": 0.273,
+   "mean_abs_scale_err": 0.179
+  }
+ },
+ "cases": [
+  {
+   "case": 1,
+   "s_true": 0.8157145090619212,
+   "highpass/perfect": {
+    "S/N": 0.3576887504627709,
+    "s_argmin": 0.7
+   },
+   "highpass/realistic": {
+    "S/N": -0.04954740782727341,
+    "s_argmin": 1.6
+   },
+   "gradient/perfect": {
+    "S/N": 0.29843423599253743,
+    "s_argmin": 0.8
+   },
+   "gradient/realistic": {
+    "S/N": -0.023012472640920476,
+    "s_argmin": 1.0
+   },
+   "lncc2d/perfect": {
+    "S/N": 0.0075255772720538155,
+    "s_argmin": 0.7
+   },
+   "lncc2d/realistic": {
+    "S/N": -0.0032852964596640395,
+    "s_argmin": 1.1
+   }
+  },
+  {
+   "case": 2,
+   "s_true": 0.7991592644082364,
+   "highpass/perfect": {
+    "S/N": 1.2601253870795213,
+    "s_argmin": 0.8
+   },
+   "highpass/realistic": {
+    "S/N": 0.04010948650291935,
+    "s_argmin": 0.8
+   },
+   "gradient/perfect": {
+    "S/N": 1.1639849958762816,
+    "s_argmin": 0.8
+   },
+   "gradient/realistic": {
+    "S/N": 0.037434178993675425,
+    "s_argmin": 0.8
+   },
+   "lncc2d/perfect": {
+    "S/N": 1.1914108350997918,
+    "s_argmin": 0.8
+   },
+   "lncc2d/realistic": {
+    "S/N": 0.031199979648767178,
+    "s_argmin": 0.8
+   }
+  },
+  {
+   "case": 3,
+   "s_true": 0.8271451484282601,
+   "highpass/perfect": {
+    "S/N": 0.483827477674508,
+    "s_argmin": 0.8
+   },
+   "highpass/realistic": {
+    "S/N": -0.0157069346002672,
+    "s_argmin": 0.9
+   },
+   "gradient/perfect": {
+    "S/N": 0.6660352487515653,
+    "s_argmin": 0.8
+   },
+   "gradient/realistic": {
+    "S/N": -0.0021159674322452885,
+    "s_argmin": 0.8
+   },
+   "lncc2d/perfect": {
+    "S/N": 0.06901020102227697,
+    "s_argmin": 0.8
+   },
+   "lncc2d/realistic": {
+    "S/N": 0.007188543724977035,
+    "s_argmin": 0.8
+   }
+  },
+  {
+   "case": 4,
+   "s_true": 1.0327363914836591,
+   "highpass/perfect": {
+    "S/N": 0.3870256495911783,
+    "s_argmin": 0.8
+   },
+   "highpass/realistic": {
+    "S/N": -0.03597390392096866,
+    "s_argmin": 1.45
+   },
+   "gradient/perfect": {
+    "S/N": 0.508646022265424,
+    "s_argmin": 0.7
+   },
+   "gradient/realistic": {
+    "S/N": -0.02209703365333097,
+    "s_argmin": 0.9
+   },
+   "lncc2d/perfect": {
+    "S/N": 0.041332790659140015,
+    "s_argmin": 1.0
+   },
+   "lncc2d/realistic": {
+    "S/N": 0.02220588844892751,
+    "s_argmin": 1.0
+   }
+  },
+  {
+   "case": 5,
+   "s_true": 0.9802681171082835,
+   "highpass/perfect": {
+    "S/N": 0.1287231380100734,
+    "s_argmin": 0.8
+   },
+   "highpass/realistic": {
+    "S/N": -0.048126055386431894,
+    "s_argmin": 1.0
+   },
+   "gradient/perfect": {
+    "S/N": 0.15271866886373262,
+    "s_argmin": 0.7
+   },
+   "gradient/realistic": {
+    "S/N": -0.03648847992251622,
+    "s_argmin": 0.7
+   },
+   "lncc2d/perfect": {
+    "S/N": 0.05016918578487225,
+    "s_argmin": 0.8
+   },
+   "lncc2d/realistic": {
+    "S/N": 0.01994174672868756,
+    "s_argmin": 0.7
+   }
+  },
+  {
+   "case": 6,
+   "s_true": 1.21116562295796,
+   "highpass/perfect": {
+    "S/N": 0.18996909037523652,
+    "s_argmin": 0.9
+   },
+   "highpass/realistic": {
+    "S/N": -0.0063453250294184,
+    "s_argmin": 1.0
+   },
+   "gradient/perfect": {
+    "S/N": 0.20778847660807784,
+    "s_argmin": 0.9
+   },
+   "gradient/realistic": {
+    "S/N": 0.0006854619848858085,
+    "s_argmin": 0.9
+   },
+   "lncc2d/perfect": {
+    "S/N": 0.4695509698404217,
+    "s_argmin": 1.0
+   },
+   "lncc2d/realistic": {
+    "S/N": 0.030642105653803903,
+    "s_argmin": 0.9
+   }
+  },
+  {
+   "case": 7,
+   "s_true": 1.1583948144751248,
+   "highpass/perfect": {
+    "S/N": 0.8279230220477943,
+    "s_argmin": 0.9
+   },
+   "highpass/realistic": {
+    "S/N": 0.03740744080155984,
+    "s_argmin": 1.0
+   },
+   "gradient/perfect": {
+    "S/N": 0.8900711185236362,
+    "s_argmin": 0.8
+   },
+   "gradient/realistic": {
+    "S/N": 0.03062773444314548,
+    "s_argmin": 0.9
+   },
+   "lncc2d/perfect": {
+    "S/N": 1.0797582909772574,
+    "s_argmin": 1.0
+   },
+   "lncc2d/realistic": {
+    "S/N": 0.04814948058974727,
+    "s_argmin": 1.0
+   }
+  },
+  {
+   "case": 8,
+   "s_true": 1.3669609754674175,
+   "highpass/perfect": {
+    "S/N": 0.5896406586440482,
+    "s_argmin": 1.1
+   },
+   "highpass/realistic": {
+    "S/N": 0.054452367619222015,
+    "s_argmin": 1.1
+   },
+   "gradient/perfect": {
+    "S/N": 0.8403032307888898,
+    "s_argmin": 1.1
+   },
+   "gradient/realistic": {
+    "S/N": 0.06556752778873558,
+    "s_argmin": 1.2
+   },
+   "lncc2d/perfect": {
+    "S/N": 1.768085094446259,
+    "s_argmin": 1.1
+   },
+   "lncc2d/realistic": {
+    "S/N": 0.1762815450286763,
+    "s_argmin": 1.1
+   }
+  },
+  {
+   "case": 9,
+   "s_true": 1.123680676044761,
+   "highpass/perfect": {
+    "S/N": 0.07914561535956915,
+    "s_argmin": 0.7
+   },
+   "highpass/realistic": {
+    "S/N": 0.007049495098480829,
+    "s_argmin": 0.7
+   },
+   "gradient/perfect": {
+    "S/N": 0.10622124945080318,
+    "s_argmin": 0.7
+   },
+   "gradient/realistic": {
+    "S/N": 0.013162935642300188,
+    "s_argmin": 0.7
+   },
+   "lncc2d/perfect": {
+    "S/N": 0.0075420815342302485,
+    "s_argmin": 0.8
+   },
+   "lncc2d/realistic": {
+    "S/N": 0.0011270933386079826,
+    "s_argmin": 0.7
+   }
+  },
+  {
+   "case": 10,
+   "s_true": 1.0092714618856233,
+   "highpass/perfect": {
+    "S/N": 0.4784724340649265,
+    "s_argmin": 0.8
+   },
+   "highpass/realistic": {
+    "S/N": -0.004095555268167437,
+    "s_argmin": 1.45
+   },
+   "gradient/perfect": {
+    "S/N": 0.5284404208760075,
+    "s_argmin": 0.8
+   },
+   "gradient/realistic": {
+    "S/N": -0.004299831463026625,
+    "s_argmin": 1.2
+   },
+   "lncc2d/perfect": {
+    "S/N": 0.12002866150171076,
+    "s_argmin": 0.9
+   },
+   "lncc2d/realistic": {
+    "S/N": 0.012600303571250825,
+    "s_argmin": 1.0
+   }
+  }
+ ]
+}

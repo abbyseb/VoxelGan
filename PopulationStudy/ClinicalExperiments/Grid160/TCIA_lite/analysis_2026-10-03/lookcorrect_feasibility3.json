@@ -1,0 +1,50 @@
+{
+ "lncc2d/physics": {
+  "mean_S/N": 0.228,
+  "corr_argmin_vs_true": 0.834
+ },
+ "lncc2d/noise": {
+  "mean_S/N": 0.167,
+  "corr_argmin_vs_true": 0.834
+ },
+ "lncc2d/scatter": {
+  "mean_S/N": 0.07,
+  "corr_argmin_vs_true": 0.707
+ },
+ "lncc2d/blur": {
+  "mean_S/N": 0.22,
+  "corr_argmin_vs_true": 0.908
+ },
+ "lncc2d/rails_cables": {
+  "mean_S/N": 0.098,
+  "corr_argmin_vs_true": 0.834
+ },
+ "lncc2d/clinic": {
+  "mean_S/N": 0.037,
+  "corr_argmin_vs_true": 0.547
+ },
+ "gradient/physics": {
+  "mean_S/N": 0.22,
+  "corr_argmin_vs_true": 0.595
+ },
+ "gradient/noise": {
+  "mean_S/N": 0.204,
+  "corr_argmin_vs_true": 0.595
+ },
+ "gradient/scatter": {
+  "mean_S/N": 0.017,
+  "corr_argmin_vs_true": 0.705
+ },
+ "gradient/blur": {
+  "mean_S/N": 0.249,
+  "corr_argmin_vs_true": 0.595
+ },
+ "gradient/rails_cables": {
+  "mean_S/N": 0.069,
+  "corr_argmin_vs_true": 0.513
+ },
+ "gradient/clinic": {
+  "mean_S/N": 0.009,
+  "corr_argmin_vs_true": 0.47
+ }
+}
