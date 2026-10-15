@@ -394,6 +394,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--epochs", type=int, default=40)
     ap.add_argument("--stop-after", type=int, default=None, help="pilot: stop after this epoch (schedule still 40 ep)")
+    ap.add_argument("--resume", action="store_true", help="continue from DecoderCRB/checkpoints/latest.pt (model, optimiser, lr "
+                    "schedule, history); data-order / augmentation RNG streams restart from their seeds")
     ap.add_argument("--lr", type=float, default=1e-4)
     ap.add_argument("--lr-min", type=float, default=1e-6)
     ap.add_argument("--gpu", type=int, default=1)
@@ -510,7 +512,15 @@ def main() -> int:
 
     train_losses, val_losses, hist = [], [], []
     min_val, best_epoch, t0 = float("inf"), 0, time.time()
-    for epoch in range(1, (args.stop_after or args.epochs) + 1):
+    start = 1
+    if args.resume:
+        P = torch.load(str(CKPT_DIR / "latest.pt"), map_location="cpu", weights_only=False)
+        generator.load_state_dict(P["generator"]); optimizer_g.load_state_dict(P["optimizer"]); sched.load_state_dict(P["scheduler"])
+        train_losses, val_losses, hist = list(P["train_losses"]), list(P["val_losses"]), list(P["cfg"]["history"])
+        min_val, best_epoch, start = P["min_val_loss"], P["best_epoch"], P["epoch_done"] + 1
+        t0 -= P.get("elapsed_s", 0.0)
+        print(f"[{FILENAME}] RESUMED after epoch {P['epoch_done']} | lr {optimizer_g.param_groups[0]['lr']:.2e}", flush=True)
+    for epoch in range(start, (args.stop_after or args.epochs) + 1):
         generator.train()
         tr, n = 0.0, 0
         for data in trainloader:
