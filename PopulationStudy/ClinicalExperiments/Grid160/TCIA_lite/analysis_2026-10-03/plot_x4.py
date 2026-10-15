@@ -36,5 +36,5 @@ a = ax[2]
 if hr: a.plot(g(hr, "epoch"), np.array(g(hr, "val_lncc_loss")) - np.array(g(hr, "train_eval_lncc_loss")), "-", color="grey", label="X3S gap")
 if hs: a.plot(g(hs, "epoch"), np.array(g(hs, "val_lncc_loss")) - np.array(g(hs, "train_eval_lncc_loss")), "C2-o", ms=4, label="X4 gap")
 a.axhline(0, color="k", lw=.8); a.set_title("Gap: val − train (0 = together)"); a.legend(fontsize=8)
-for a in ax: a.set_xlabel("epoch"); a.grid(alpha=.3); a.set_xlim(0.5, 12.5)
+for a in ax: a.set_xlabel("epoch"); a.grid(alpha=.3); a.set_xlim(0.5, 40.5)
 fig.suptitle(f"X4 (cleaner + front/side + deep-breath practice) · epoch {hs[-1]['epoch'] if hs else 0}/40"); fig.tight_layout(); fig.savefig(sys.argv[1], dpi=105)
