@@ -24,7 +24,7 @@ spec = importlib.util.spec_from_file_location("x5a", L / "run_A2_full160_aug_x5a
 X1 = importlib.util.module_from_spec(spec); spec.loader.exec_module(X1)
 RUNS = {"x5a": L / "run_A2_full160_aug_x5a"}
 OUT = Path(__file__).resolve().parent / "x5a_tre.json"
-dev = torch.device("cuda:0"); Sp = v2.SPACING; EPOCHS = 10
+dev = torch.device("cuda:0"); Sp = v2.SPACING; EPOCHS = 40
 mm = v2.minmax
 
 packs = {c: v2.pack_case(c) for c in range(1, 11)}
