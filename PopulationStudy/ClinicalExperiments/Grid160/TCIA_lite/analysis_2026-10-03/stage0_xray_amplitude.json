@@ -1,0 +1,99 @@
+{
+ "summary": {
+  "tre_x4": 3.335163821515514,
+  "tre_scaled": 4.235102851754872,
+  "corr_k_vs_oracle": 0.329895339755793
+ },
+ "cases": [
+  {
+   "case": 1,
+   "s_xray_px": 0.25,
+   "s_pred_px": 0.5,
+   "k": 0.7,
+   "tre_x4": 2.2249679525770163,
+   "tre_scaled": 1.7985737250384162,
+   "oracle_scale_X3S_diagnostic_only": 0.8255751447619628
+  },
+  {
+   "case": 2,
+   "s_xray_px": 1.0,
+   "s_pred_px": 0.75,
+   "k": 1.3333333333333333,
+   "tre_x4": 2.0100057936574967,
+   "tre_scaled": 2.8870697488901573,
+   "oracle_scale_X3S_diagnostic_only": 0.7900119820029292
+  },
+  {
+   "case": 3,
+   "s_xray_px": 0.75,
+   "s_pred_px": 1.25,
+   "k": 0.7,
+   "tre_x4": 2.396069625880837,
+   "tre_scaled": 3.1252356033964515,
+   "oracle_scale_X3S_diagnostic_only": 0.8283901736817572
+  },
+  {
+   "case": 4,
+   "s_xray_px": 0.5,
+   "s_pred_px": 0.75,
+   "k": 0.7,
+   "tre_x4": 2.5965814698013543,
+   "tre_scaled": 3.697460615477939,
+   "oracle_scale_X3S_diagnostic_only": 1.0339956766889953
+  },
+  {
+   "case": 5,
+   "s_xray_px": 0.75,
+   "s_pred_px": 0.75,
+   "k": 1.0,
+   "tre_x4": 3.5163815281674866,
+   "tre_scaled": 3.5163815281674866,
+   "oracle_scale_X3S_diagnostic_only": 0.9704075503501923
+  },
+  {
+   "case": 6,
+   "s_xray_px": 1.25,
+   "s_pred_px": 0.75,
+   "k": 1.6666666666666667,
+   "tre_x4": 2.8795745677549816,
+   "tre_scaled": 7.115346258076683,
+   "oracle_scale_X3S_diagnostic_only": 1.1888543903349966
+  },
+  {
+   "case": 7,
+   "s_xray_px": 0.75,
+   "s_pred_px": 0.75,
+   "k": 1.0,
+   "tre_x4": 5.1927200650424625,
+   "tre_scaled": 5.1927200650424625,
+   "oracle_scale_X3S_diagnostic_only": 1.1425602360219909
+  },
+  {
+   "case": 8,
+   "s_xray_px": 1.5,
+   "s_pred_px": 1.5,
+   "k": 1.0,
+   "tre_x4": 6.526134469902542,
+   "tre_scaled": 6.526134469902542,
+   "oracle_scale_X3S_diagnostic_only": 1.3688864648485266
+  },
+  {
+   "case": 9,
+   "s_xray_px": 1.25,
+   "s_pred_px": 0.75,
+   "k": 1.6666666666666667,
+   "tre_x4": 2.9768071693212232,
+   "tre_scaled": 4.666999957869535,
+   "oracle_scale_X3S_diagnostic_only": 1.1254469833509004
+  },
+  {
+   "case": 10,
+   "s_xray_px": 2.25,
+   "s_pred_px": 1.75,
+   "k": 1.2857142857142858,
+   "tre_x4": 3.0323955730497425,
+   "tre_scaled": 3.8251065456870537,
+   "oracle_scale_X3S_diagnostic_only": 0.9953931714706433
+  }
+ ]
+}
